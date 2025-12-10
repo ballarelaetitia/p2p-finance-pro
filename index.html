@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>P2P Finance Pro – Plateforme de Prêt Financier Sécurisé</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo">P2P Finance Pro</div>
+  <p>Plateforme sécurisée de prêt entre particuliers</p>
+</header>
+
+<nav>
+  <a href="#pret">Demander un prêt</a>
+  <a href="#invest">Devenir investisseur</a>
+  <a href="#simulation">Simulation</a>
+  <a href="#securite">Sécurité</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section class="section" id="pret">
+  <h2>Demander un prêt</h2>
+  <p>Empruntez de <strong>2 500 €</strong> à <strong>75 000 €</strong> avec un taux fixe de <strong>2,5%</strong> et une durée de 1 à 30 ans.</p>
+  <a class="cta" href="#simulation">Faire une simulation</a>
+</section>
+
+<section class="section" id="simulation">
+  <h2>Simulation instantanée</h2>
+  <form id="simulForm">
+    <label>Montant du prêt (€) :</label>
+    <input type="number" id="loanAmount" min="2500" max="75000" value="5000">
+    <label>Durée (années) :</label>
+    <input type="number" id="loanYears" min="1" max="30" value="5">
+    <label>Taux annuel (%) :</label>
+    <input type="number" id="loanRate" min="0" max="20" value="2.5" step="0.1">
+    <button class="cta" type="button" onclick="calculateLoan()">Calculer</button>
+  </form>
+  <div id="loanResult"></div>
+</section>
+
+<section class="section" id="invest">
+  <h2>Devenir investisseur</h2>
+  <p>Investissez dans des prêts entre particuliers avec rendement stable.</p>
+</section>
+
+<section class="section" id="securite">
+  <h2>Sécurité & Vérification</h2>
+  <p>Plateforme protégée par 2FA et chiffrement SSL.</p>
+</section>
+
+<section class="section" id="contact">
+  <h2>Contactez-nous</h2>
+  <p>Email : <input type="email" id="contactEmail" value="contact@p2pfinance.com"></p>
+  <p>Téléphone : +33 7 55 10 20 30</p>
+  <p>Adresse : Paris, France</p>
+</section>
+
+<section class="section" id="avis">
+  <h2>Avis clients</h2>
+  <p>⭐⭐⭐⭐⭐ "Service rapide et fiable !" – Marc D.</p>
+</section>
+
+<section class="section" id="faq">
+  <h2>FAQ</h2>
+  <p><strong>Comment déposer une demande de prêt ?</strong><br>Via la section "Demander un prêt".</p>
+</section>
+
+<div class="footer">
+  © 2025 P2P Finance Pro – Tous droits réservés
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
