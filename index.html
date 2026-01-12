@@ -15,3 +15,63 @@
   </footer>
 </body>
 </html>
+``html
+<!-- Formulaire de demande de prêt -->
+<form action="/submit-form" method="POST">
+  <label>
+    Nom :
+    <input type="text" name="nom" required>
+  </label>
+  <br>
+  <label>
+    Email :
+    <input type="email" name="email" required>
+  </label>
+  <br>
+  <label>
+    Téléphone :
+    <input type="tel" name="telephone" required>
+  </label>
+  <br>
+  <!-- Case consentement obligatoire -->
+  <label>
+    <input type="checkbox" name="consentement" required>
+    J'accepte que mes informations personnelles soient utilisées selon la 
+    <a href="/politique-de-confidentialite.html" target="_blank">
+      Politique de confidentialité
+    </a>.
+  </label>
+  <br>
+  <button type="submit">Envoyer la demande</button>
+</form>
+
+<!-- Footer (bas de page) -->
+<footer>
+  <p>
+    <a href="/politique-de-confidentialite.html" target="_blank">
+      Politique de confidentialité
+    </a>
+  </p>
+</footer>
+```
+
+---
+
+### 🔹 Explications :
+
+1. **Case à cocher** `required` → TikTok valide que l’utilisateur donne son consentement avant de soumettre le formulaire.
+2. **Lien vers la politique** → `/politique-de-confidentialite.html` → page déjà créée et publiée sur Vercel.
+3. **Footer** → le lien est visible sur toutes les pages si tu le mets dans `index.html`.
+4. **target="_blank"** → ouvre la politique dans un nouvel onglet, pratique pour les utilisateurs.
+
+---
+
+Après avoir ajouté ce code :
+
+* Clique sur **Commit changes** sur GitHub → Vercel déploie automatiquement
+* Teste sur :
+
+  * Formulaire : vérifier que tu ne peux pas envoyer sans cocher la case
+  * Footer : vérifier que le lien ouvre la politique de confidentialité
+
+---
