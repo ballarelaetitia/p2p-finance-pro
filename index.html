@@ -15,29 +15,116 @@
   </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>P2P Finance Pro</title>
+
+</head>
+<body>
+<h1>P2P Finance Pro</h1>
+<p>Peer-to-peer lending platform.</p>
+
+<!-- Complete loan application form -->
 <form action="/submit-form" method="POST">
-  <label>
-    Nom :
-    <input type="text" name="nom" required>
-  </label>
-  <br>
-  <label>
-    Email :
-    <input type="email" name="email" required>
-  </label>
-  <br>
-  <label>
-    <input type="checkbox" name="consentement" required>
-    J'accepte la collecte et l'utilisation de mes données personnelles
-    conformément à la 
-    <a href="/politique-de-confidentialite.html">Politique de confidentialité</a>.
-  </label>
-  <br>
-  <button type="submit">Envoyer</button>
+
+<label>
+Last Name:
+
+<input type="text" name="nom" required>
+
+</label>
+<br>
+
+First Name:
+
+<input type="text" name="prenom" required>
+
+</label>
+<br>
+
+Email:
+
+<input type="email" name="email" required>
+
+</label>
+<br>
+
+Phone Number:
+
+<input type="tel" name="telephone" required>
+
+</label>
+<br>
+
+Amount Requested (€) :
+
+<input type="number" name="amount" required>
+
+</label>
+<br>
+
+<label>
+Desired repayment period (months):
+
+<input type="number" name="duration" required>
+
+</label>
+<br>
+
+<label>
+Are you able to repay?:
+
+<select name="repayment" required>
+<option value="">Select</option>
+
+<option value="yes">Yes</option>
+
+<option value="no">No</option>
+
+</select>
+
+</label>
+<br>
+<!-- Mandatory consent checkbox -->
+
+<label>
+<input type="checkbox" name="consent" required>
+I agree that my personal information will be used in accordance with the
+
+<a href="/privacy-policy.html" target="_blank">
+
+Privacy Policy
+
+</a>.
+
+</label>
+<br>
+<button type="submit">Submit Request</button>
+
 </form>
-🔹 Points importants pour TikTok Ads
-Case à cocher obligatoire : l’utilisateur doit cocher pour continuer → cela prouve le consentement.
 
-Lien vers la politique de confidentialité visible et cliquable.
+<!-- Footer with link to policy -->
 
-Politique conforme : ton texte actuel est déjà conforme au RGPD britannique, donc c’est parfait.
+<footer>
+<p>
+<a href="/politique-de-confidentialite.html" target="_blank">
+Privacy Policy
+
+</a>
+
+</p>
+
+</footer>
+
+</body>
+</html>
+✅ Key Points
+All fields are required: first name, last name, email, phone number, amount, duration, repayment capacity.
+
+Required consent checkbox → valid for TikTok Ads and UK GDPR.
+
+Link to the privacy policy → in the form and footer.
+
+“Submit Request” button → ready to connect to your backend or receiving form.
