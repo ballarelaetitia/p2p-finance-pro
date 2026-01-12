@@ -29,102 +29,87 @@
 <!-- Complete loan application form -->
 <form action="/submit-form" method="POST">
 
-<label>
-Last Name:
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>P2P Finance Pro</title>
+</head>
+<body>
+  <h1>P2P Finance Pro</h1>
+  <p>Peer-to-peer lending platform.</p>
 
-<input type="text" name="nom" required>
+  <!-- Complete loan request form -->
+  <form action="/submit-form" method="POST">
+    <label>
+      First Name:
+      <input type="text" name="first_name" required>
+    </label>
+    <br>
+    <label>
+      Last Name:
+      <input type="text" name="last_name" required>
+    </label>
+    <br>
+    <label>
+      Email:
+      <input type="email" name="email" required>
+    </label>
+    <br>
+    <label>
+      Phone:
+      <input type="tel" name="phone" required>
+    </label>
+    <br>
+    <label>
+      Loan Amount (€ or $):
+      <input type="number" name="amount" step="0.01" required>
+    </label>
+    <br>
+    <label>
+      Desired Repayment Period (months):
+      <input type="number" name="repayment_period" required>
+    </label>
+    <br>
+    <label>
+      Are you able to repay?:
+      <select name="repayment_ability" required>
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </label>
+    <br>
+    <!-- Mandatory consent checkbox -->
+    <label>
+      <input type="checkbox" name="consent" required>
+      I agree that my personal information may be used in accordance with the 
+      <a href="/politique-de-confidentialite.html" target="_blank">
+        Privacy Policy
+      </a>.
+    </label>
+    <br>
+    <button type="submit">Submit Request</button>
+  </form>
 
-</label>
-<br>
-
-First Name:
-
-<input type="text" name="prenom" required>
-
-</label>
-<br>
-
-Email:
-
-<input type="email" name="email" required>
-
-</label>
-<br>
-
-Phone Number:
-
-<input type="tel" name="telephone" required>
-
-</label>
-<br>
-
-Amount Requested (€) :
-
-<input type="number" name="amount" required>
-
-</label>
-<br>
-
-<label>
-Desired repayment period (months):
-
-<input type="number" name="duration" required>
-
-</label>
-<br>
-
-<label>
-Are you able to repay?:
-
-<select name="repayment" required>
-<option value="">Select</option>
-
-<option value="yes">Yes</option>
-
-<option value="no">No</option>
-
-</select>
-
-</label>
-<br>
-<!-- Mandatory consent checkbox -->
-
-<label>
-<input type="checkbox" name="consent" required>
-I agree that my personal information will be used in accordance with the
-
-<a href="/privacy-policy.html" target="_blank">
-
-Privacy Policy
-
-</a>.
-
-</label>
-<br>
-<button type="submit">Submit Request</button>
-
-</form>
-
-<!-- Footer with link to policy -->
-
-<footer>
-<p>
-<a href="/politique-de-confidentialite.html" target="_blank">
-Privacy Policy
-
-</a>
-
-</p>
-
-</footer>
-
+  <!-- Footer with privacy link -->
+  <footer>
+    <p>
+      <a href="/politique-de-confidentialite.html" target="_blank">
+        Privacy Policy
+      </a>
+    </p>
+  </footer>
 </body>
 </html>
-✅ Key Points
-All fields are required: first name, last name, email, phone number, amount, duration, repayment capacity.
+✅ Key points
+Collects all the essential loan request info.
 
-Required consent checkbox → valid for TikTok Ads and UK GDPR.
+Ensures user consent before submission → TikTok Ads compliant.
 
-Link to the privacy policy → in the form and footer.
+Privacy policy link is visible in the form and footer.
+
+Ready to deploy on Vercel and use as a landing page for ads.
+  
 
 “Submit Request” button → ready to connect to your backend or receiving form.
