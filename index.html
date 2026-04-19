@@ -1,143 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Privacy Policy - P2P Finance Pro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2P Finance Pro - Financement International</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .lang-content { display: none; }
+        .active-lang { display: block; }
+        .hero-bg { background: linear-gradient(rgba(0,20,50,0.8), rgba(0,20,50,0.8)), url('https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?auto=format&fit=crop&q=80'); background-size: cover; }
+        video, img { width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    </style>
 </head>
-<body>
-  <h1>Privacy Policy</h1>
+<body class="bg-gray-50 font-sans">
 
-  <p>
-    This Privacy Policy explains how personal data is collected, used, and protected.
-  </p>
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-900">P2P <span class="text-yellow-600">Finance Pro</span></div>
+            <div class="flex space-x-2 md:space-x-4">
+                <button onclick="setLang('fr')" class="px-2 py-1 border rounded hover:bg-gray-100">🇫🇷 FR</button>
+                <button onclick="setLang('de')" class="px-2 py-1 border rounded hover:bg-gray-100">🇩🇪 DE</button>
+                <button onclick="setLang('es')" class="px-2 py-1 border rounded hover:bg-gray-100">🇪🇸 ES</button>
+                <button onclick="setLang('en')" class="px-2 py-1 border rounded hover:bg-gray-100">🇬🇧 EN</button>
+            </div>
+        </div>
+    </nav>
 
-  <p>
-    We may collect personal information such as name, surname, email address, phone number,
-    and any information voluntarily provided through our contact or application forms.
-  </p>
+    <header class="hero-bg text-white py-20 px-6 text-center">
+        <div class="lang-content fr active-lang">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Crédit entre Particuliers à 1,99%</h1>
+            <p class="text-xl mb-8 text-gray-200">Votre financement sérieux et rapide en 24h sans protocole bancaire.</p>
+        </div>
+        <div class="lang-content de">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Privatkredit ab 1,99%</h1>
+            <p class="text-xl mb-8 text-gray-200">Ihre seriöse und schnelle Finanzierung in 24h ohne Bankprotokoll.</p>
+        </div>
+        <div class="lang-content es">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Préstamo al 1,99%</h1>
+            <p class="text-xl mb-8 text-gray-200">Su financiación seria y rápida en 24h sin protocolo bancario.</p>
+        </div>
+        <div class="lang-content en">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Private Loan at 1.99%</h1>
+            <p class="text-xl mb-8 text-gray-200">Your serious and fast funding in 24h without bank protocol.</p>
+        </div>
+        <a href="https://wa.me/33780976404" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-10 rounded-full text-lg shadow-xl transform transition hover:scale-105">
+            <i class="fab fa-whatsapp mr-2"></i> CONTACTER SUR WHATSAPP
+        </a>
+    </header>
 
-  <p>
-    Personal data is collected solely for the purpose of:
-    <ul>
-      <li>Reviewing private loan requests</li>
-      <li>Contacting applicants</li>
-      <li>Providing information related to financing services</li>
-    </ul>
-  </p>
+    <section class="py-16 container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-blue-900 mb-12">
+            <span class="lang-content fr active-lang">Preuves de Réussite & Avis</span>
+            <span class="lang-content de">Erfolgsnachweise & Bewertungen</span>
+            <span class="lang-content es">Pruebas de éxito y Opiniones</span>
+            <span class="lang-content en">Proof of Success & Reviews</span>
+        </h2>
 
-  <p>
-    All information is handled confidentially and securely. Personal data is never sold,
-    shared, or transferred to third parties.
-  </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <div class="bg-white p-6 rounded-xl shadow-md border-b-4 border-blue-900">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center font-bold text-blue-900 mr-4">L.M</div>
+                    <div>
+                        <h4 class="font-bold">Lukas (München, DE)</h4>
+                        <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-4 lang-content fr active-lang">"Retrait réussi au guichet LCL après avoir reçu ma carte. Merci beaucoup !"</p>
+                <p class="text-gray-600 mb-4 lang-content de">"Erfolgreiche Abhebung am LCL-Schalter nach Erhalt meiner Karte. Vielen Dank!"</p>
+                <video controls>
+                    <source src="VID-20260419-WA0031.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+            </div>
 
-  <p>
-    In accordance with applicable data protection laws (UK GDPR), users have the right
-    to access, correct, or request deletion of their personal data at any time.
-  </p>
+            <div class="bg-white p-6 rounded-xl shadow-md border-b-4 border-blue-900">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center font-bold text-blue-900 mr-4">J.D</div>
+                    <div>
+                        <h4 class="font-bold">Jean (Paris, FR)</h4>
+                        <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-4 lang-content fr active-lang">"Carte bien reçue par la poste, elle fonctionne parfaitement pour mes achats."</p>
+                <p class="text-gray-600 mb-4 lang-content en">"Card well received by mail, it works perfectly for my purchases."</p>
+                <img src="IMG-20260419-WA0013(1).jpg" alt="Carte Chase">
+            </div>
 
-  <p>
-    For any questions regarding data protection or privacy, you may contact us directly.
-  </p>
+            <div class="bg-white p-6 rounded-xl shadow-md border-b-4 border-blue-900">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center font-bold text-blue-900 mr-4">C.R</div>
+                    <div>
+                        <h4 class="font-bold">Carlos (Madrid, ES)</h4>
+                        <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-4 lang-content es">"Recibí 8.000€ muy rápido para mi negocio."</p>
+                <p class="text-gray-600 mb-4 lang-content fr active-lang">"J'ai reçu 8 000€ très rapidement pour mon entreprise."</p>
+                <img src="IMG-20260419-WA0021.jpg" alt="Preuve 8000 euros">
+            </div>
 
-  <p>🌍 Target Countries:</p>
-  <ul>
-    <li>✔ United Kingdom</li>
-    <li>✔ UK GDPR Compliant</li>
-    <li>✔ Acceptable for TikTok Ads / Meta Ads</li>
-    <li>✔ No banking license required (peer-to-peer loans, not a bank)</li>
-  </ul>
+        </div>
+    </section>
+
+    <footer class="bg-blue-900 text-white py-12 px-6">
+        <div class="container mx-auto text-center">
+            <p class="text-sm opacity-80 mb-4">
+                Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
+                <br>TAEG fixe : 1,99% | Durée : 12 à 120 mois | Aucun frais caché.
+            </p>
+            <hr class="border-blue-800 mb-6">
+            <p>© 2026 P2P Finance Pro - International Private Funding.</p>
+        </div>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active-lang'));
+            document.querySelectorAll('.' + lang).forEach(el => el.classList.add('active-lang'));
+        }
+    </script>
 </body>
 </html>
-
-
-
-<section id="financement">
-
-<h2>Start getting support to finance your business</h2>
-
-<p>
-Fill out the form below to receive personalized assistance and
-
-discover how our peer-to-peer lending platform can help you finance your project.
-
-</p>
-</section>
-
-  
-
-  <!-- Complete loan request form -->
-  <form action="/submit-form" method="POST">
-    <label>
-      First Name:
-      <input type="text" name="first_name" required>
-    </label>
-    <br>
-    <label>
-      Last Name:
-      <input type="text" name="last_name" required>
-    </label>
-    <br>
-    <label>
-      Email:
-      <input type="email" name="email" required>
-    </label>
-    <br>
-    <label>
-      Phone:
-      <input type="tel" name="phone" required>
-    </label>
-    <br>
-    <label>
-      Loan Amount (€ or $):
-      <input type="number" name="amount" step="0.01" required>
-    </label>
-    <br>
-    <label>
-      Desired Repayment Period (months):
-      <input type="number" name="repayment_period" required>
-    </label>
-    <br>
-    <label>
-      Are you able to repay?:
-      <select name="repayment_ability" required>
-        <option value="">Select</option>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </label>
-    <br>
-    <!-- Mandatory consent checkbox -->
-    <label>
-      <input type="checkbox" name="consent" required>
-      I agree that my personal information may be used in accordance with the 
-      <a href="/politique-de-confidentialite.html" target="_blank">
-        Privacy Policy
-      </a>.
-    </label>
-    <br>
-    <button type="submit">Submit Request</button>
-  </form>
-
-  <!-- Footer with privacy link -->
-  <footer>
-    <p>
-      <a href="/politique-de-confidentialite.html" target="_blank">
-        Privacy Policy
-      </a>
-    </p>
-  </footer>
-</body>
-</html>
-✅ Key points
-Collects all the essential loan request info.
-
-Ensures user consent before submission → TikTok Ads compliant.
-
-Privacy policy link is visible in the form and footer.
-
-Ready to deploy on Vercel and use as a landing page for ads.
-  
-
-“Submit Request” button → ready to connect to your backend or receiving form.
-
-
