@@ -1,59 +1,144 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
+<html lang="fr" class="notranslate"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P2P Finance Pro - Officiel</title>
+    <meta name="google" content="notranslate">
+    <title>P2P FINANCE PRO | Crédit & Retrait Immédiat</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; text-align: center; color: #333; }
-        header { background: #004080; color: white; padding: 20px; }
-        .logo-img { width: 130px; height: 130px; border-radius: 50%; border: 4px solid white; margin-bottom: 10px; object-fit: cover; background: white; }
-        .container { max-width: 900px; margin: auto; padding: 20px; }
-        h2 { color: #004080; margin-top: 40px; border-bottom: 2px solid #004080; padding-bottom: 10px; text-transform: uppercase; font-size: 1.1em; letter-spacing: 1px; }
-        video, img { width: 100%; max-width: 500px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); margin: 15px 0; }
-        .btn-whatsapp { display: inline-block; background: #25d366; color: white; padding: 18px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 20px; margin: 30px 0; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
-        footer { background: #222; color: white; padding: 20px; margin-top: 40px; font-size: 0.9em; }
-        #google_translate_element { margin: 10px 0; }
+        :root { --blue: #002e5b; --green: #27ae60; --light-bg: #f4f7f9; }
+        
+        body { font-family: 'Inter', -apple-system, sans-serif; margin: 0; background: var(--light-bg); color: #333; overflow-x: hidden; }
+
+        /* HEADER TYPE BANQUE */
+        header { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
+        .logo img { height: 45px; }
+        .secure-tag { color: var(--green); font-weight: bold; font-size: 0.9rem; }
+
+        /* HERO VIDEO (PERSONNE DE L'ENTREPRISE) */
+        .hero { position: relative; height: 75vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+        .hero video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -1; transform: translate(-50%, -50%); filter: brightness(40%); object-fit: cover; }
+        .hero-content h1 { font-size: 3rem; margin-bottom: 15px; font-weight: 800; }
+        .hero-content p { font-size: 1.2rem; background: var(--green); padding: 8px 20px; border-radius: 4px; display: inline-block; }
+
+        /* SECTION OFFRE "D'OFFICE" */
+        .grid-info { padding: 50px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: -50px; position: relative; z-index: 10; }
+        .info-card { background: white; padding: 35px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+        .info-card i { font-size: 45px; color: var(--blue); margin-bottom: 20px; }
+        .info-card h3 { color: var(--blue); margin-bottom: 10px; }
+        .highlight { color: var(--green); font-weight: bold; }
+
+        /* LE SLIDER DE PREUVES (7 IMAGES) - DÉFILEMENT AUTOMATIQUE */
+        .proof-slider { background: white; padding: 60px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .proof-slider h2 { text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--blue); }
+        
+        .slider-wrapper { display: flex; width: calc(280px * 14); animation: slideInfinite 30s linear infinite; } /* 14 car on double les 7 images */
+        .slider-wrapper img { width: 260px; height: auto; margin: 0 10px; border-radius: 12px; border: 1px solid #ddd; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        @keyframes slideInfinite {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-280px * 7)); }
+        }
+
+        /* SECTION VIDEO RETRAIT */
+        .video-section { padding: 60px 8%; text-align: center; background: var(--blue); color: white; }
+        .video-section video { width: 100%; max-width: 750px; border-radius: 15px; border: 6px solid rgba(255,255,255,0.1); margin-top: 30px; }
+
+        /* PROFIL & CONFIANCE */
+        .profile-section { padding: 60px 8%; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; background: white; }
+        .profile-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid var(--green); }
+        .profile-text { max-width: 500px; }
+
+        /* CTA FINAL WHATSAPP */
+        .cta { padding: 80px 5%; text-align: center; background: #f9f9f9; }
+        .btn-ws { background: #25D366; color: white; padding: 22px 45px; border-radius: 50px; text-decoration: none; font-size: 1.4rem; font-weight: bold; display: inline-flex; align-items: center; gap: 15px; box-shadow: 0 10px 20px rgba(37,211,102,0.3); transition: 0.3s; }
+        .btn-ws:hover { transform: translateY(-5px); background: #1ebd5b; }
+
     </style>
 </head>
 <body>
 
-<header>
-    <div id="google_translate_element"></div>
-    <img src="preuve4.jpg.jpg" alt="Logo P2P Finance Pro" class="logo-img"><br>
-    <strong style="font-size: 1.5em;">P2P FINANCE PRO</strong>
-</header>
+    <header>
+        <div class="logo"><img src="logo.png" alt="P2P Finance Logo"></div>
+        <div class="secure-tag"><i class="fas fa-lock"></i> Connexion Sécurisée</div>
+    </header>
 
-<div class="container">
-    <h2>🏢 Notre Siège Officiel</h2>
-    <video controls><source src="presentation.mp4.mp4" type="video/mp4"></video>
+    <section class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="accueil.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Financement Express</h1>
+            <p>Taux fixe exceptionnel de 2,5%</p>
+        </div>
+    </section>
 
-    <h2>✅ Preuves de Retraits (Vidéos)</h2>
-    <video controls><source src="retrait1.mp4.mp4" type="video/mp4"></video>
-    <video controls><source src="retrait2.mp4.mp4" type="video/mp4"></video>
+    <section class="grid-info">
+        <div class="info-card">
+            <i class="fas fa-hand-holding-usd"></i>
+            <h3>Frais de Dossier</h3>
+            <p>Pris en charge <span class="highlight">d'office</span> par nos services financiers.</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-bolt"></i>
+            <h3>Transfert Rapide</h3>
+            <p>Fonds débloqués en 24h après validation du contrat d'assurance.</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-credit-card"></i>
+            <h3>Carte de Retrait</h3>
+            <p>Recevez votre carte active directement à votre domicile.</p>
+        </div>
+    </section>
 
-    <h2>💳 Nos Cartes Bancaires</h2>
-    <video controls><source src="carte1.mp4.mp4" type="video/mp4"></video>
-    <video controls><source src="carte2.mp4.mp4" type="video/mp4"></video>
+    <section class="proof-slider">
+        <h2>Preuves de retrait et remerciements</h2>
+        <div style="overflow: hidden;">
+            <div class="slider-wrapper">
+                <img src="preuve1.jpg">
+                <img src="preuve2.jpg">
+                <img src="preuve3.jpg">
+                <img src="preuve4.jpg">
+                <img src="preuve5.jpg">
+                <img src="preuve6.jpg">
+                <img src="preuve7.jpg">
+                <img src="preuve1.jpg">
+                <img src="preuve2.jpg">
+                <img src="preuve3.jpg">
+                <img src="preuve4.jpg">
+                <img src="preuve5.jpg">
+                <img src="preuve6.jpg">
+                <img src="preuve7.jpg">
+            </div>
+        </div>
+    </section>
 
-    <h2>📸 Témoignages & Captures Clients</h2>
-    <img src="preuve1.jpg.jpg" alt="Preuve 1">
-    <img src="preuve2.jpg.jpg" alt="Preuve 2">
-    <img src="preuve3.jpg.jpg" alt="Preuve 3">
-    <img src="preuve4.jpg.jpg" alt="Preuve 4">
+    <section class="video-section">
+        <h2>Preuve réelle de retrait au guichet</h2>
+        <p>Regardez la vidéo du retrait effectué par l'un de nos bénéficiaires.</p>
+        <video controls>
+            <source src="temoignage.mp4" type="video/mp4">
+        </video>
+    </section>
 
-    <br>
-    <a href="https://wa.me/33780976404" class="btn-whatsapp">CONTACTER UN AGENT SUR WHATSAPP</a>
-</div>
+    <section class="profile-section">
+        <img src="profil.jpg" alt="Directeur" class="profile-img">
+        <div class="profile-text">
+            <h3>Votre succès est notre priorité</h3>
+            <p><em>"Nous offrons les frais d'office car nous croyons en la réussite de vos projets. Notre transparence est le socle de votre confiance."</em></p>
+        </div>
+    </section>
 
-<footer>&copy; 2026 P2P Finance Pro - La finance simplifiée.</footer>
-
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <section class="cta">
+        <h2>Obtenez votre financement aujourd'hui</h2>
+        <p>Cliquez ci-dessous pour démarrer l'analyse de votre dossier avec un expert.</p>
+        <br>
+        <a href="https://wa.me/TON_NUMERO" class="btn-ws">
+            <i class="fab fa-whatsapp"></i> COMMENCER SUR WHATSAPP
+        </a>
+    </section>
 
 </body>
 </html>
