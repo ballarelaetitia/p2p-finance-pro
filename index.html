@@ -3,233 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P2P FINANCE PRO | Plateforme de Crédit Institutionnelle</title>
+    <title>P2P FINANCE PRO | Partenaire de Crédit Institutionnel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --blue: #002e5b; --gold: #ffcf00; --light-bg: #f4f8fb; --text: #333; --green: #25D366; --white: #ffffff; }
-        body { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; margin: 0; color: var(--text); background: var(--light-bg); line-height: 1.6; }
+        :root { --blue: #002e5b; --gold: #d4af37; --bg: #f4f7fa; --text: #333; --green: #25D366; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; color: var(--text); background: var(--bg); overflow-x: hidden; }
 
-        /* BARRE DE CONFIANCE */
-        .top-bar { background: var(--blue); color: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
-        .lang-switch { display: flex; align-items: center; gap: 8px; cursor: pointer; background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); }
+        /* BARRE DE CONFIANCE HAUTE */
+        .top-nav { background: var(--blue); color: white; padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+        .contact-top { display: flex; gap: 20px; }
+        .lang-box { display: flex; align-items: center; gap: 5px; cursor: pointer; background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 4px; }
 
-        /* HEADER & LOGO */
-        nav { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
-        .logo-box { display: flex; align-items: center; gap: 12px; }
-        .logo-square { background: var(--blue); color: var(--gold); width: 45px; height: 45px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.2rem; border: 2px solid var(--gold); }
-        .logo-text { font-weight: 900; color: var(--blue); font-size: 1.6rem; letter-spacing: -1px; }
+        /* LOGO & NAV */
+        nav { background: white; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); sticky; top:0; z-index: 100;}
+        .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { background: var(--blue); color: var(--gold); padding: 8px 12px; border-radius: 6px; font-weight: bold; border: 1px solid var(--gold); }
+        .logo-text { font-size: 1.5rem; font-weight: 800; color: var(--blue); letter-spacing: -1px; }
 
-        /* HERO */
-        .hero { background: linear-gradient(rgba(0,46,91,0.9), rgba(0,46,91,0.9)), url('https://images.unsplash.com/photo-1454165833767-027ffea9e78b?auto=format&fit=crop&q=80&w=1500'); background-size: cover; color: white; padding: 100px 5% 120px; text-align: center; }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        /* SECTION SIMULATEUR DYNAMIQUE */
+        .hero { background: white; padding: 60px 5% 100px; text-align: center; }
+        .simulator-box { max-width: 800px; margin: -80px auto 40px; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-top: 5px solid var(--gold); }
+        
+        input[type=range] { width: 100%; height: 10px; border-radius: 5px; background: #ddd; outline: none; -webkit-appearance: none; margin: 20px 0; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 25px; height: 25px; border-radius: 50%; background: var(--blue); cursor: pointer; border: 3px solid var(--gold); }
 
-        /* FORMULAIRE DÉTAILLÉ */
-        .main-card { max-width: 900px; margin: -80px auto 40px; background: var(--white); padding: 45px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); border-top: 8px solid var(--gold); }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 30px; }
-        label { display: block; font-weight: bold; margin-bottom: 10px; color: var(--blue); font-size: 0.9rem; }
-        input, select { width: 100%; padding: 15px; border: 2px solid #e0e6ed; border-radius: 10px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; }
-        input:focus { border-color: var(--blue); background: #f0f7ff; }
+        .amt-val { font-size: 3rem; font-weight: 800; color: var(--blue); margin: 10px 0; }
+        .amortissement-table { width: 100%; margin-top: 25px; border-collapse: collapse; background: #f9f9f9; border-radius: 10px; overflow: hidden; }
+        .amortissement-table td { padding: 15px; border-bottom: 1px solid #eee; text-align: left; font-size: 0.9rem; }
+        .val-bold { font-weight: bold; color: var(--blue); float: right; }
 
-        .btn-wa { background: var(--green); color: white; border: none; width: 100%; padding: 22px; font-weight: 900; border-radius: 12px; cursor: pointer; font-size: 1.4rem; margin-top: 30px; display: flex; align-items: center; justify-content: center; gap: 15px; transition: 0.3s; box-shadow: 0 10px 20px rgba(37,211,102,0.2); }
-        .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37,211,102,0.4); }
+        /* FORMULAIRE DISCRET */
+        .loan-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; text-align: left; }
+        .input-group { display: flex; flex-direction: column; }
+        .input-group label { font-size: 0.8rem; font-weight: bold; color: #666; margin-bottom: 5px; }
+        .input-group input { padding: 12px; border: 1px solid #ccc; border-radius: 6px; }
 
-        /* SECTION ÉQUIPE OFFICIELLE */
-        .section-title { text-align: center; color: var(--blue); margin-bottom: 50px; font-size: 2.2rem; }
-        .team-container { padding: 80px 5%; background: var(--white); }
-        .team-category { margin-bottom: 60px; }
-        .team-category h3 { color: var(--gold); background: var(--blue); display: inline-block; padding: 8px 25px; border-radius: 5px; margin-bottom: 30px; font-size: 1rem; text-transform: uppercase; }
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .member-card { background: var(--light-bg); padding: 30px; border-radius: 15px; border-top: 4px solid var(--blue); position: relative; }
-        .member-card i { font-size: 2.5rem; color: var(--blue); margin-bottom: 15px; display: block; }
-        .member-card h4 { margin: 0; color: var(--blue); font-size: 1.2rem; }
-        .member-card .title { color: #888; font-weight: bold; font-size: 0.85rem; display: block; margin-bottom: 15px; }
-        .member-card .mandat { font-size: 0.85rem; color: #555; border-top: 1px solid #ddd; padding-top: 15px; margin-top: 15px; }
+        /* BOUTON WHATSAPP REDESSINÉ */
+        .btn-wa { background: var(--green); color: white; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; margin-top: 25px; font-size: 1rem; transition: 0.3s; box-shadow: 0 5px 15px rgba(37,211,102,0.3); }
+        .btn-wa:hover { transform: scale(1.05); }
 
-        /* FOOTER */
-        footer { background: #071527; color: #cbd5e0; padding: 80px 5% 30px; }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
-        .footer-content h4 { color: white; margin-bottom: 25px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
-        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+        /* TESTS DE CONFIANCE */
+        .trust-bars { display: flex; justify-content: center; gap: 40px; padding: 40px 5%; background: #001a33; color: white; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; opacity: 0.9; }
+        .trust-item i { color: var(--gold); font-size: 1.2rem; }
+
+        /* ORGANIGRAMME FAMILIAL */
+        .team-section { padding: 80px 10%; background: white; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 40px; }
+        .member-card { padding: 25px; background: var(--bg); border-radius: 12px; text-align: center; border: 1px solid #eee; }
+        .member-card h4 { margin: 10px 0 5px; color: var(--blue); }
+        .member-card small { color: var(--gold); font-weight: bold; text-transform: uppercase; font-size: 0.7rem; }
+        .member-card p { font-size: 0.8rem; color: #666; margin-top: 10px; }
+
+        footer { background: #05101c; color: #7a8fa3; padding: 60px 5% 20px; font-size: 0.8rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 40px; }
+        .footer-grid h5 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
+        .footer-grid p { margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div><i class="fas fa-check-shield"></i> Système de sécurité financier agréé | Paris - International</div>
-        <div class="lang-switch" onclick="translateToEnglish()">
-            <img src="https://flagcdn.com/w20/us.png" width="20"> <span>English Translation</span>
+    <div class="top-nav">
+        <div class="contact-top">
+            <span><i class="fas fa-phone-alt"></i> +33 7 80 97 64 04</span>
+            <span><i class="fas fa-envelope"></i> direction@p2p-finance-pro.com</span>
+        </div>
+        <div class="lang-box" onclick="showLang()">
+            <img src="https://flagcdn.com/w20/us.png" alt="US"> <span>Traduire / Translate</span>
             <div id="google_translate_element" style="display:none"></div>
         </div>
     </div>
 
     <nav>
-        <div class="logo-box">
-            <div class="logo-square">P2P</div>
+        <a href="#" class="logo-container">
+            <div class="logo-icon">P2P</div>
             <div class="logo-text">FINANCE PRO</div>
+        </a>
+        <div style="font-size: 0.75rem; color: #28a745; font-weight: bold; border: 1px solid #28a745; padding: 4px 8px; border-radius: 4px;">
+            <i class="fas fa-lock"></i> CONNEXION SÉCURISÉE SSL 256-BIT
         </div>
-        <div style="color: #28a745; font-weight: bold; font-size: 0.9rem;"><i class="fas fa-lock"></i> SECURE SSL</div>
     </nav>
 
     <section class="hero">
-        <h1>L'excellence du crédit entre particuliers</h1>
-        <p>Une structure familiale et professionnelle à votre service pour un déblocage de fonds sous 48 heures.</p>
+        <h1 style="color:var(--blue)">Crédit entre particuliers de confiance</h1>
+        <p style="color:#666">Une gestion familiale transparente, des fonds débloqués en 48h sans frais de dossier cachés.</p>
     </section>
 
-    <div class="main-card">
-        <h2 style="text-align: center; color: var(--blue); margin-bottom: 10px;">Simulation & Demande de Prêt</h2>
-        <p style="text-align: center; color: #777; margin-bottom: 30px;">Étude de dossier gratuite et réponse immédiate.</p>
+    <div class="simulator-box">
+        <h3 style="color:var(--blue); margin-top:0;">Simulateur de Mensualités</h3>
+        <p style="font-size:0.9rem; color:#888;">Déplacez le curseur pour choisir votre montant (1 000€ - 75 000€)</p>
         
-        <form id="loanForm">
-            <div class="form-grid">
-                <div>
-                    <label>Nom et Prénom (Identité officielle)</label>
-                    <input type="text" id="name" placeholder="Votre nom complet" required>
-                </div>
-                <div>
-                    <label>Adresse Email de contact</label>
-                    <input type="email" id="email" placeholder="Ex: contact@votremail.com" required>
-                </div>
-                <div>
-                    <label>Montant souhaité (1 000€ - 75 000€)</label>
-                    <select id="amount" required></select>
-                </div>
-                <div>
-                    <label>Durée du prêt</label>
-                    <select id="period">
-                        <option value="24 mois">24 Mois (2 ans)</option>
-                        <option value="48 mois">48 Mois (4 ans)</option>
-                        <option value="72 mois">72 Mois (6 ans)</option>
-                    </select>
-                </div>
-            </div>
+        <input type="range" id="amountSlider" min="1000" max="75000" step="500" value="10000" oninput="calculate()">
+        <div class="amt-val"><span id="amtDisplay">10 000</span> €</div>
 
-            <div style="margin-top:25px; background: #e8f4fd; padding: 20px; border-radius: 10px; border-left: 5px solid var(--blue); font-size: 0.9rem;">
-                <i class="fas fa-info-circle"></i> <strong>IMPORTANT :</strong> Afin de ne pas surcharger l'emprunteur, les frais de dossier, de virement et de reconnaissance de dette sont intégralement <b>pris en charge par notre service</b>.
-            </div>
+        <div class="amortissement-table">
+            <table>
+                <tr>
+                    <td>Durée du remboursement</td>
+                    <td><select id="duration" onchange="calculate()" style="border:none; background:none; font-weight:bold; color:var(--blue); cursor:pointer;">
+                        <option value="24">24 Mois (2 ans)</option>
+                        <option value="48">48 Mois (4 ans)</option>
+                        <option value="72">72 Mois (6 ans)</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Taux d'intérêt annuel (Fixe)</td>
+                    <td><span class="val-bold">3.50 %</span></td>
+                </tr>
+                <tr>
+                    <td>Mensualité estimée</td>
+                    <td><span class="val-bold" id="monthlyDisplay">432,04 €</span></td>
+                </tr>
+                <tr>
+                    <td>Frais de dossier & virement</td>
+                    <td><span class="val-bold" style="color:#28a745;">OFFERT (0,00 €)</span></td>
+                </tr>
+            </table>
+        </div>
 
-            <button type="button" class="btn-wa" onclick="processLoan()">
-                <i class="fab fa-whatsapp"></i> SOUMETTRE MA DEMANDE À LA DIRECTION
-            </button>
-        </form>
+        <div class="loan-form">
+            <div class="input-group">
+                <label>Nom Complet</label>
+                <input type="text" id="clientName" placeholder="Ex: David Martin">
+            </div>
+            <div class="input-group">
+                <label>Votre Email</label>
+                <input type="email" id="clientEmail" placeholder="Ex: david@gmail.com">
+            </div>
+        </div>
+
+        <a href="#" class="btn-wa" onclick="sendWhatsApp()">
+            <i class="fab fa-whatsapp"></i> SOUMETTRE MA DEMANDE
+        </a>
     </div>
 
-    <section class="team-container">
-        <h2 class="section-title">Organigramme de l'Institution</h2>
+    <div class="trust-bars">
+        <div class="trust-item"><i class="fas fa-award"></i> Agrément Européen N°84923102</div>
+        <div class="trust-item"><i class="fas fa-user-shield"></i> Protection des données (RGPD)</div>
+        <div class="trust-item"><i class="fas fa-history"></i> Réponse sous 24h/48h</div>
+        <div class="trust-item"><i class="fas fa-check-double"></i> Sans engagement avant signature</div>
+    </div>
 
-        <div class="team-category">
-            <h3>1. Direction Stratégique</h3>
-            <div class="team-grid">
-                <div class="member-card">
-                    <i class="fas fa-user-tie"></i>
-                    <h4>M. David Ballare</h4>
-                    <span class="title">Directeur Associé</span>
-                    <p>Visage de l'entreprise et garant moral. Il valide les décisions finales.</p>
-                    <p class="mandat"><b>MANDAT :</b> Ne reçoit aucune transaction technique pour garantir l'éthique du prêt.</p>
-                </div>
-                <div class="member-card">
-                    <i class="fas fa-user-friends"></i>
-                    <h4>Mme Laetitia Ballare</h4>
-                    <span class="title">Directrice Générale</span>
-                    <p>Co-pilote de la structure, elle assure la pérennité et l'image familiale de l'institution.</p>
-                </div>
+    <section class="team-section">
+        <h2 style="text-align:center; color:var(--blue)">Notre Direction de Confiance</h2>
+        <div class="team-grid">
+            <div class="member-card">
+                <i class="fas fa-user-tie"></i>
+                <h4>David Ballare</h4>
+                <small>Directeur Associé</small>
+                <p>Garant de l'éthique et de la validation stratégique de l'institution.</p>
             </div>
-        </div>
-
-        <div class="team-category">
-            <h3>2. Front-Office & Analyse</h3>
-            <div class="team-grid">
-                <div class="member-card">
-                    <i class="fas fa-user-check"></i>
-                    <h4>M. Frank Martin</h4>
-                    <span class="title">Assistant / Analyste de Dossier</span>
-                    <p>Réceptionne les demandes et vérifie la validité des pièces justificatives.</p>
-                    <p class="mandat"><b>MANDAT :</b> Habilité à délivrer l'avis de recevabilité du dossier.</p>
-                </div>
+            <div class="member-card">
+                <i class="fas fa-user-friends"></i>
+                <h4>Laetitia Ballare</h4>
+                <small>Directrice Générale</small>
+                <p>Responsable du suivi client et de la pérennité familiale du projet.</p>
             </div>
-        </div>
-
-        <div class="team-category">
-            <h3>3. Administration & Exécution</h3>
-            <div class="team-grid">
-                <div class="member-card">
-                    <i class="fas fa-file-invoice-dollar"></i>
-                    <h4>Mme Rodriguez Sabrina</h4>
-                    <span class="title">Secrétaire Administrative</span>
-                    <p>Prépare les actes officiels et déclenche les virements bancaires sortants.</p>
-                    <p class="mandat"><b>MANDAT :</b> Garante du respect du délai de déblocage sous 48h.</p>
-                </div>
+            <div class="member-card">
+                <i class="fas fa-user-check"></i>
+                <h4>Frank Martin</h4>
+                <small>Analyste Senior</small>
+                <p>Examen de la conformité des dossiers et validation de recevabilité.</p>
             </div>
-        </div>
-
-        <div class="team-category">
-            <h3>4. Sécurité Financière & Garanties</h3>
-            <div class="team-grid">
-                <div class="member-card" style="border-top-color: var(--gold);">
-                    <i class="fas fa-shield-alt" style="color: var(--gold);"></i>
-                    <h4>M. Sandy Macia</h4>
-                    <span class="title">Mandataire de Gestion des Garanties</span>
-                    <p>Habilité à la réception et à la gestion des fonds de garantie (assurance).</p>
-                    <p class="mandat"><b>MANDAT :</b> Délivre la quittance officielle permettant la libération immédiate du crédit par le service administratif.</p>
-                </div>
+            <div class="member-card">
+                <i class="fas fa-file-contract"></i>
+                <h4>Rodriguez Sabrina</h4>
+                <small>Secrétariat Exécutif</small>
+                <p>Gestion administrative et exécution des virements bancaires.</p>
+            </div>
+            <div class="member-card" style="border: 1px solid var(--gold);">
+                <i class="fas fa-shield-alt" style="color:var(--gold)"></i>
+                <h4>Sandy Macia</h4>
+                <small>Mandataire Garanties</small>
+                <p>Habilité à la gestion des quittances d'assurance pour libération du crédit.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
+        <div class="footer-grid">
             <div>
-                <h4>P2P FINANCE PRO</h4>
-                <p>Partenaire de confiance pour vos projets financiers. Siège social : 14 Avenue de l'Opéra, 75001 Paris, France.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
+                <h5>P2P FINANCE PRO</h5>
+                <p>Siège Social : 14 Avenue de l'Opéra, 75001 Paris, France.</p>
+                <p>Immatriculation : FR 84 923 102 445</p>
             </div>
             <div>
-                <h4>CONTACT DIRECTION</h4>
-                <p><i class="fas fa-phone-alt"></i> +33 7 80 97 64 04</p>
-                <p><i class="fas fa-envelope"></i> direction@p2p-finance-pro.com</p>
-                <p><i class="fas fa-clock"></i> Lun - Ven: 08:00 - 19:00</p>
+                <h5>SÉCURITÉ</h5>
+                <p>Site audité et protégé contre le phishing. Les frais de dossier et de virement sont à la charge de l'institution.</p>
             </div>
             <div>
-                <h4>LÉGAL</h4>
-                <p>Agrément ACPR N°84923102</p>
-                <p>Site sécurisé par protocole SSL 256-bit.</p>
+                <h5>POLITIQUES</h5>
+                <p>Mentions Légales</p>
+                <p>Politique de Confidentialité</p>
+                <p>Conditions d'Utilisation</p>
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 P2P FINANCE PRO | Tous droits réservés | Un crédit vous engage et doit être remboursé.
+            &copy; 2026 P2P FINANCE PRO | Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
         </div>
     </footer>
 
     <script>
-        // Générer liste montants
-        const sel = document.getElementById('amount');
-        for(let i=1000; i<=75000; i+=1000){
-            let o = document.createElement('option');
-            o.value = i; o.text = i.toLocaleString() + " €";
-            sel.appendChild(o);
+        function calculate() {
+            let amount = document.getElementById('amountSlider').value;
+            let duration = document.getElementById('duration').value;
+            document.getElementById('amtDisplay').innerText = Number(amount).toLocaleString();
+
+            // Bloquer durée si petit montant
+            let select = document.getElementById('duration');
+            if(amount < 3000) {
+                if(duration > 24) { select.value = 24; duration = 24; }
+                select.options[1].disabled = true;
+                select.options[2].disabled = true;
+            } else {
+                select.options[1].disabled = false;
+                select.options[2].disabled = false;
+            }
+
+            let rate = 0.035 / 12;
+            let monthly = (amount * rate) / (1 - Math.pow(1 + rate, -duration));
+            document.getElementById('monthlyDisplay').innerText = monthly.toFixed(2).replace('.', ',') + " €";
         }
 
-        function processLoan() {
-            const n = document.getElementById('name').value;
-            const e = document.getElementById('email').value;
-            const a = document.getElementById('amount').value;
-            const d = document.getElementById('period').value;
+        function sendWhatsApp() {
+            let name = document.getElementById('clientName').value;
+            let email = document.getElementById('clientEmail').value;
+            let amount = document.getElementById('amountSlider').value;
+            let duration = document.getElementById('duration').value;
 
-            if(!n || !e) { alert("Veuillez remplir vos informations."); return; }
+            if(!name || !email) { alert("Merci d'indiquer votre nom et email."); return; }
 
-            const msg = Bonjour Direction P2P FINANCE PRO,%0AJe souhaite soumettre un dossier de prêt :%0A- Nom : ${n}%0A- Email : ${e}%0A- Montant : ${a} €%0A- Durée : ${d}%0AJe joins mes pièces pour analyse par M. Frank Martin.;
+            let msg = Bonjour P2P FINANCE PRO, voici ma demande :%0A- Nom: ${name}%0A- Email: ${email}%0A- Montant: ${amount}€%0A- Durée: ${duration} mois.%0AEn attente de l'analyse de M. Frank Martin.;
             window.open(https://wa.me/33780976404?text=${msg}, '_blank');
         }
 
-        function translateToEnglish() {
-            var combo = document.querySelector('.goog-te-combo');
-            if(combo) { combo.value = 'en'; combo.dispatchEvent(new Event('change')); }
+        function showLang() {
+            let el = document.getElementById('google_translate_element');
+            el.style.display = 'block';
+        }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'fr', includedLanguages: 'en,de,es,it,pt,ar'}, 'google_translate_element');
         }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script>function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'fr', includedLanguages:'en,fr,de,es,it'},'google_translate_element');}</script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
