@@ -1,144 +1,28 @@
 <!DOCTYPE html>
-<html lang="fr" class="notranslate"> <head>
+<html lang="fr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google" content="notranslate">
-    <title>P2P FINANCE PRO | Crédit & Retrait Immédiat</title>
-    
+    <title>P2P FINANCE PRO | Direction Ballare</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        :root { --blue: #002e5b; --green: #27ae60; --light-bg: #f4f7f9; }
-        
-        body { font-family: 'Inter', -apple-system, sans-serif; margin: 0; background: var(--light-bg); color: #333; overflow-x: hidden; }
-
-        /* HEADER TYPE BANQUE */
-        header { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
-        .logo img { height: 45px; }
-        .secure-tag { color: var(--green); font-weight: bold; font-size: 0.9rem; }
-
-        /* HERO VIDEO (PERSONNE DE L'ENTREPRISE) */
-        .hero { position: relative; height: 75vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-        .hero video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -1; transform: translate(-50%, -50%); filter: brightness(40%); object-fit: cover; }
-        .hero-content h1 { font-size: 3rem; margin-bottom: 15px; font-weight: 800; }
-        .hero-content p { font-size: 1.2rem; background: var(--green); padding: 8px 20px; border-radius: 4px; display: inline-block; }
-
-        /* SECTION OFFRE "D'OFFICE" */
-        .grid-info { padding: 50px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: -50px; position: relative; z-index: 10; }
-        .info-card { background: white; padding: 35px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
-        .info-card i { font-size: 45px; color: var(--blue); margin-bottom: 20px; }
-        .info-card h3 { color: var(--blue); margin-bottom: 10px; }
-        .highlight { color: var(--green); font-weight: bold; }
-
-        /* LE SLIDER DE PREUVES (7 IMAGES) - DÉFILEMENT AUTOMATIQUE */
-        .proof-slider { background: white; padding: 60px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
-        .proof-slider h2 { text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--blue); }
-        
-        .slider-wrapper { display: flex; width: calc(280px * 14); animation: slideInfinite 30s linear infinite; } /* 14 car on double les 7 images */
-        .slider-wrapper img { width: 260px; height: auto; margin: 0 10px; border-radius: 12px; border: 1px solid #ddd; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-
-        @keyframes slideInfinite {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-280px * 7)); }
-        }
-
-        /* SECTION VIDEO RETRAIT */
-        .video-section { padding: 60px 8%; text-align: center; background: var(--blue); color: white; }
-        .video-section video { width: 100%; max-width: 750px; border-radius: 15px; border: 6px solid rgba(255,255,255,0.1); margin-top: 30px; }
-
-        /* PROFIL & CONFIANCE */
-        .profile-section { padding: 60px 8%; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; background: white; }
-        .profile-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid var(--green); }
-        .profile-text { max-width: 500px; }
-
-        /* CTA FINAL WHATSAPP */
-        .cta { padding: 80px 5%; text-align: center; background: #f9f9f9; }
-        .btn-ws { background: #25D366; color: white; padding: 22px 45px; border-radius: 50px; text-decoration: none; font-size: 1.4rem; font-weight: bold; display: inline-flex; align-items: center; gap: 15px; box-shadow: 0 10px 20px rgba(37,211,102,0.3); transition: 0.3s; }
-        .btn-ws:hover { transform: translateY(-5px); background: #1ebd5b; }
-
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo"><img src="logo.png" alt="P2P Finance Logo"></div>
-        <div class="secure-tag"><i class="fas fa-lock"></i> Connexion Sécurisée</div>
-    </header>
-
-    <section class="hero">
-        <video autoplay muted loop playsinline>
-            <source src="accueil.mp4" type="video/mp4">
-        </video>
-        <div class="hero-content">
-            <h1>Financement Express</h1>
-            <p>Taux fixe exceptionnel de 2,5%</p>
-        </div>
-    </section>
-
-    <section class="grid-info">
-        <div class="info-card">
-            <i class="fas fa-hand-holding-usd"></i>
-            <h3>Frais de Dossier</h3>
-            <p>Pris en charge <span class="highlight">d'office</span> par nos services financiers.</p>
-        </div>
-        <div class="info-card">
-            <i class="fas fa-bolt"></i>
-            <h3>Transfert Rapide</h3>
-            <p>Fonds débloqués en 24h après validation du contrat d'assurance.</p>
-        </div>
-        <div class="info-card">
-            <i class="fas fa-credit-card"></i>
-            <h3>Carte de Retrait</h3>
-            <p>Recevez votre carte active directement à votre domicile.</p>
-        </div>
-    </section>
-
-    <section class="proof-slider">
-        <h2>Preuves de retrait et remerciements</h2>
-        <div style="overflow: hidden;">
-            <div class="slider-wrapper">
-                <img src="preuve1.jpg">
-                <img src="preuve2.jpg">
-                <img src="preuve3.jpg">
-                <img src="preuve4.jpg">
-                <img src="preuve5.jpg">
-                <img src="preuve6.jpg">
-                <img src="preuve7.jpg">
-                <img src="preuve1.jpg">
-                <img src="preuve2.jpg">
-                <img src="preuve3.jpg">
-                <img src="preuve4.jpg">
-                <img src="preuve5.jpg">
-                <img src="preuve6.jpg">
-                <img src="preuve7.jpg">
-            </div>
-        </div>
-    </section>
-
-    <section class="video-section">
-        <h2>Preuve réelle de retrait au guichet</h2>
-        <p>Regardez la vidéo du retrait effectué par l'un de nos bénéficiaires.</p>
-        <video controls>
-            <source src="temoignage.mp4" type="video/mp4">
-        </video>
-    </section>
-
-    <section class="profile-section">
-        <img src="profil.jpg" alt="Directeur" class="profile-img">
-        <div class="profile-text">
-            <h3>Votre succès est notre priorité</h3>
-            <p><em>"Nous offrons les frais d'office car nous croyons en la réussite de vos projets. Notre transparence est le socle de votre confiance."</em></p>
-        </div>
-    </section>
-
-    <section class="cta">
-        <h2>Obtenez votre financement aujourd'hui</h2>
-        <p>Cliquez ci-dessous pour démarrer l'analyse de votre dossier avec un expert.</p>
-        <br>
-        <a href="https://wa.me/TON_NUMERO" class="btn-ws">
-            <i class="fab fa-whatsapp"></i> COMMENCER SUR WHATSAPP
-        </a>
-    </section>
-
-</body>
-</html>
+        :root { --primary: #002e5b; --accent: #ffcf00; --whatsapp: #25D366; --bg: #f4f7f9; --danger: #d9534f; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #333; line-height: 1.6; }
+        nav { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top:0; z-index:1000; }
+        .logo { font-weight: 800; font-size: 1.6rem; color: var(--primary); }
+        .nav-btn { background: var(--whatsapp); color: #fff; padding: 10px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(rgba(0,46,91,0.8), rgba(0,46,91,0.8)), url('images/banniere-paris.jpg'); background-size: cover; color: #fff; padding: 80px 8% 140px 8%; text-align: center; }
+        .container { padding: 0 8%; margin-top: -100px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; }
+        @media (max-width: 900px) { .container { grid-template-columns: 1fr; margin-top: -40px; } }
+        .card { background: #fff; padding: 35px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); border-top: 6px solid var(--accent); }
+        .resultat { background: #f0f4f8; padding: 25px; text-align: center; border-radius: 15px; margin: 20px 0; border: 1px dashed var(--primary); }
+        .mens-val { font-size: 3rem; font-weight: 800; color: var(--primary); }
+        .btn-submit { background: var(--accent); color: var(--primary); width: 100%; border: none; padding: 20px; border-radius: 10px; font-weight: 800; cursor: pointer; font-size: 1.2rem; }
+        .alerte-securite { background: #fff1f1; border: 2px solid #ffcccc; padding: 25px; border-radius: 15px; margin: 30px 0; display: flex; align-items: center; gap: 15px; }
+        .section-explication { background: #fff; padding: 60px 8%; }
+        .box { padding: 25px; border-radius: 15px; background: #f9f9f9; border-left: 5px solid var(--whatsapp); margin-bottom: 20px; }
+        .equipe-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 40px 8%; background: #f4f7f9; }
+        .member-card { background: #fff; padding: 25px; border-radius: 15px; width: 220px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .member-card img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--accent); }
+        footer { background: #111; color: #fff; padding: 60px 8%; text-align: center; }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp); width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center;
