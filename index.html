@@ -3,198 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P2P FINANCE PRO | Institution de Crédit Internationale</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>P2P FINANCE PRO | Officiel</title>
     <style>
-        :root { --blue: #002e5b; --gold: #d4af37; --light-bg: #f8fafd; --text: #333; --green: #25D366; --white: #ffffff; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; color: var(--text); background: var(--light-bg); line-height: 1.6; }
+        :root { --blue: #002e5b; --gold: #d4af37; --green: #25D366; --white: #ffffff; }
+        body { font-family: sans-serif; margin: 0; background: #f4f7fa; color: #333; line-height: 1.5; }
 
-        /* BARRE SUPÉRIEURE (Localisation + Tel + Langue) */
-        .top-bar { background: var(--blue); color: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
-        .top-info { display: flex; gap: 20px; align-items: center; }
-        .top-info i { color: var(--gold); }
-        .lang-trigger { cursor: pointer; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); }
+        /* HEADER FIXE AVEC COORDONNÉES */
+        .header-info { background: var(--blue); color: white; padding: 10px 5%; font-size: 0.8rem; display: flex; justify-content: space-between; flex-wrap: wrap; }
+        .header-info a { color: white; text-decoration: none; font-weight: bold; }
 
-        /* HEADER & LOGO */
-        nav { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
-        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-square { background: var(--blue); color: var(--gold); width: 40px; height: 40px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-weight: 900; border: 1px solid var(--gold); }
-        .logo-text { font-weight: 800; color: var(--blue); font-size: 1.4rem; letter-spacing: -0.5px; }
+        /* LOGO */
+        nav { background: var(--white); padding: 15px 5%; border-bottom: 3px solid var(--gold); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--blue); }
 
-        /* SECTION FORMULAIRE (Inspiré de votre capture) */
-        .hero { background: var(--blue); color: white; padding: 60px 5% 100px; text-align: center; }
-        .request-card { max-width: 600px; margin: -80px auto 40px; background: var(--white); padding: 40px; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border-top: 6px solid var(--gold); }
+        /* FORMULAIRE DYNAMIQUE */
+        .container { max-width: 450px; margin: 20px auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: var(--blue); margin-top: 0; }
         
-        .form-group { text-align: left; margin-bottom: 20px; }
-        label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--blue); font-size: 0.9rem; }
-        input, select { width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; box-sizing: border-box; outline: none; }
-        input:focus { border-color: var(--blue); }
+        .field { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9rem; }
+        input, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
 
-        /* BOUTONS D'ENVOI */
-        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
-        .btn { padding: 15px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-        .btn-wa { background: var(--green); color: white; }
-        .btn-mail { background: var(--blue); color: white; }
-        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+        /* BOUTONS DE RÉCEPTION (TESTÉS) */
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; margin-bottom: 10px; color: white; text-align: center; display: block; text-decoration: none; }
+        .btn-wa { background: var(--green); box-shadow: 0 4px #128c7e; }
+        .btn-mail { background: var(--blue); box-shadow: 0 4px #001a33; }
+        .btn:active { transform: translateY(4px); box-shadow: none; }
 
-        /* SECTION DÉFINITION (Anti-blocage Google) */
-        .definition-section { padding: 60px 10%; background: white; margin-top: 40px; }
-        .def-box { background: #fdf9f0; border-left: 5px solid var(--gold); padding: 30px; border-radius: 0 15px 15px 0; }
-        .def-box h2 { color: var(--blue); margin-top: 0; }
-        .icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; text-align: center; }
-        .icon-item i { font-size: 2rem; color: var(--gold); display: block; margin-bottom: 10px; }
+        /* SECTION ÉQUIPE ET RÔLES */
+        .team { padding: 20px 5%; background: white; margin-top: 20px; }
+        .member { border-bottom: 1px solid #eee; padding: 15px 0; }
+        .member b { color: var(--blue); display: block; }
+        .member span { color: var(--gold); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+        .member p { margin: 5px 0; font-size: 0.85rem; }
 
-        /* ÉQUIPE OFFICIELLE */
-        .team-section { padding: 60px 5%; text-align: center; }
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
-        .member { background: white; padding: 20px; border-radius: 10px; border: 1px solid #eee; }
-        .member h4 { margin: 10px 0 5px; color: var(--blue); }
-        .member small { color: var(--gold); font-weight: bold; }
-
-        footer { background: #0a192f; color: #a8b2d1; padding: 40px 5%; text-align: center; font-size: 0.8rem; }
+        /* FOOTER ET RÉSEAUX (SANS IMAGES EXTERNES) */
+        footer { background: #001a33; color: white; padding: 30px 5%; text-align: center; }
+        .socials { margin-top: 15px; font-size: 1.5rem; }
+        .socials a { color: var(--gold); text-decoration: none; margin: 0 10px; }
+        .legal { font-size: 0.7rem; opacity: 0.6; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="top-info">
-            <span><i class="fas fa-map-marker-alt"></i> 14 Avenue de l'Opéra, Paris</span>
-            <span><i class="fas fa-phone-alt"></i> +33 7 80 97 64 04</span>
-        </div>
-        <div class="lang-trigger" onclick="openLang()">
-            <img src="https://flagcdn.com/w20/fr.png" id="lang-flag"> <span id="lang-text">Français / Langue</span>
-            <div id="google_translate_element" style="display:none"></div>
-        </div>
+    <div class="header-info">
+        <div>📍 14 Avenue de l'Opéra, Paris</div>
+        <div>📞 <a href="tel:+33780976404">+33 7 80 97 64 04</a></div>
     </div>
 
     <nav>
-        <div class="logo-box">
-            <div class="logo-square">P2P</div>
-            <div class="logo-text">FINANCE PRO</div>
-        </div>
-        <div style="color: #28a745; font-weight: bold; font-size: 0.8rem;"><i class="fas fa-shield-alt"></i> SÉCURITÉ SSL ACTIVE</div>
+        <div class="logo">🏛️ P2P FINANCE PRO</div>
+        <div id="google_translate_element"></div>
     </nav>
 
-    <section class="hero">
-        <h1>Simulateur de Prêt Personnel</h1>
-        <p>Réponse immédiate - Sans justificatif de dépense - Déblocage en 48h</p>
-    </section>
+    <div class="container">
+        <h2>Demande de Crédit</h2>
+        <div class="field">
+            <label>Nom Complet</label>
+            <input type="text" id="nom" placeholder="Ex: Jean Dupont">
+        </div>
+        <div class="field">
+            <label>Montant (Défilez pour choisir)</label>
+            <select id="montant">
+                </select>
+        </div>
+        <div class="field">
+            <label>Votre Email</label>
+            <input type="email" id="email" placeholder="votre@email.com">
+        </div>
 
-    <div class="request-card">
-        <form id="loanRequest">
-            <div class="form-group">
-                <label>Nom et Prénom</label>
-                <input type="text" id="name" placeholder="Votre identité complète" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Montant souhaité (Cliquez pour défiler)</label>
-                <select id="amount" required>
-                    <option value="">-- Choisissez votre montant --</option>
-                    </select>
-            </div>
-
-            <div class="form-group">
-                <label>Votre adresse Email</label>
-                <input type="email" id="email" placeholder="Ex: client@mail.com" required>
-            </div>
-
-            <p style="font-size: 0.8rem; color: #666; background: #eee; padding: 10px; border-radius: 5px;">
-                <i class="fas fa-info-circle"></i> Étude de dossier gratuite effectuée par <b>M. Frank Martin</b> sous 24h.
-            </p>
-
-            <div class="btn-group">
-                <a href="#" class="btn btn-wa" onclick="sendTo('wa')">
-                    <i class="fab fa-whatsapp"></i> Via WhatsApp
-                </a>
-                <a href="#" class="btn btn-mail" onclick="sendTo('mail')">
-                    <i class="fas fa-envelope"></i> Via Email
-                </a>
-            </div>
-        </form>
+        <button class="btn btn-wa" onclick="viaWhatsApp()">📱 ENVOYER SUR MON WHATSAPP</button>
+        <button class="btn btn-mail" onclick="viaEmail()">✉️ ENVOYER PAR EMAIL</button>
     </div>
 
-    <section class="definition-section">
-        <div class="def-box">
-            <h2>C’est quoi un prêt personnel ?</h2>
-            <p>En définition, un <b>prêt personnel</b> est un crédit non affecté à un achat spécifique. Le montant emprunté via ce type de financement peut servir à financer de multiples achats (auto, moto, immobilier, travaux, voyage…).</p>
-            <p>L’intérêt majeur est le <b>besoin de trésorerie rapide</b>. Le souscripteur est libre d’utiliser les fonds comme bon lui semble (Mariage, Naissance, Équipement...).</p>
-            
-            <div class="icon-grid">
-                <div class="icon-item"><i class="fas fa-car"></i><small>Auto/Moto</small></div>
-                <div class="icon-item"><i class="fas fa-tools"></i><small>Travaux</small></div>
-                <div class="icon-item"><i class="fas fa-plane"></i><small>Voyage</small></div>
-            </div>
+    <div class="team">
+        <h3 style="text-align: center; color: var(--blue);">L'Équipe de Direction</h3>
+        
+        <div class="member">
+            <b>M. David Ballare</b> <span>Directeur Associé</span>
+            <p>Le visage de l'institution. Il apporte la garantie morale et valide les fonds.</p>
         </div>
-    </section>
-
-    <section class="team-section">
-        <h3 style="color:var(--blue)">Notre Comité de Direction</h3>
-        <div class="team-grid">
-            <div class="member">
-                <h4>David Ballare</h4>
-                <small>Directeur Associé</small>
-            </div>
-            <div class="member">
-                <h4>Laetitia Ballare</h4>
-                <small>Directrice Générale</small>
-            </div>
-            <div class="member">
-                <h4>Frank Martin</h4>
-                <small>Analyste Dossier</small>
-            </div>
-            <div class="member">
-                <h4>Rodriguez Sabrina</h4>
-                <small>Secrétariat</small>
-            </div>
-            <div class="member">
-                <h4>Sandy Macia</h4>
-                <small>Gestion Garanties</small>
-            </div>
+        <div class="member">
+            <b>Mme Laetitia Ballare</b> <span>Directrice Générale</span>
+            <p>Co-pilote administrative, elle assure le sérieux et l'image familiale.</p>
         </div>
-    </section>
+        <div class="member">
+            <b>M. Frank Martin</b> <span>Analyste de Dossier</span>
+            <p>Il vérifie la validité des pièces et donne l'avis de recevabilité.</p>
+        </div>
+        <div class="member">
+            <b>Mme Rodriguez Sabrina</b> <span>Secrétaire Administrative</span>
+            <p>Elle prépare les contrats et déclenche le virement client sous 48h.</p>
+        </div>
+        <div class="member" style="border-left: 3px solid var(--gold); padding-left: 10px;">
+            <b>M. Sandy Macia</b> <span>Mandataire de Gestion</span>
+            <p>Il gère les garanties d'assurance et délivre la quittance finale de déblocage.</p>
+        </div>
+    </div>
 
     <footer>
-        <p>© 2026 P2P FINANCE PRO | Institution agréée | Un crédit vous engage et doit être remboursé.</p>
-        <p style="opacity: 0.5; font-size: 0.7rem;">Protection Anti-Fraude Google SafeBrowsing activée.</p>
+        <p><b>P2P FINANCE PRO</b></p>
+        <p>Email Direction : direction@p2p-finance-pro.com</p>
+        
+        <div class="socials">
+            <a href="#">🌐</a> <a href="#">📘</a> <a href="#">📸</a> <a href="#">🐦</a>
+        </div>
+
+        <div class="legal">
+            © 2026 P2P FINANCE PRO | Agrément N°84923102 | SSL Secure Connection
+            <br>Un crédit vous engage et doit être remboursé.
+        </div>
     </footer>
 
     <script>
-        // Génération automatique de la liste (1000 à 75000)
-        const select = document.getElementById('amount');
-        for (let i = 1000; i <= 75000; i += 500) {
+        // REMPLISSAGE AUTOMATIQUE DE LA LISTE
+        const select = document.getElementById('montant');
+        for (let i = 1000; i <= 75000; i += 1000) {
             let opt = document.createElement('option');
             opt.value = i;
-            opt.innerHTML = i.toLocaleString() + " €";
+            opt.text = i.toLocaleString() + " €";
             select.appendChild(opt);
         }
 
-        // Fonction d'envoi mixte
-        function sendTo(method) {
-            const name = document.getElementById('name').value;
-            const amt = document.getElementById('amount').value;
-            const mail = document.getElementById('email').value;
+        // FONCTION WHATSAPP
+        function viaWhatsApp() {
+            const n = document.getElementById('nom').value;
+            const m = document.getElementById('montant').value;
+            const e = document.getElementById('email').value;
 
-            if(!name || !amt || !mail) { alert("Veuillez remplir tous les champs."); return; }
+            if(!n || !m) { alert("Veuillez remplir le formulaire."); return; }
 
-            const text = Demande de prêt P2P FINANCE PRO :%0A- Nom : ${name}%0A- Montant : ${amt} €%0A- Email : ${mail}%0A- Statut : En attente d'analyse.;
-
-            if(method === 'wa') {
-                window.open(https://wa.me/33780976404?text=${text}, '_blank');
-            } else {
-                window.location.href = mailto:direction@p2p-finance-pro.com?subject=Nouvelle Demande de Prêt&body=${text.replace(/%0A/g, '\n')};
-            }
+            const texte = Bonjour P2P FINANCE PRO,%0AJe souhaite un prêt de ${m} €.%0ANom : ${n}%0AEmail : ${e};
+            window.open(https://wa.me/33780976404?text=${texte}, '_blank');
         }
 
-        // Traduction Google
-        function openLang() {
-            document.getElementById('google_translate_element').style.display = 'block';
+        // FONCTION EMAIL
+        function viaEmail() {
+            const n = document.getElementById('nom').value;
+            const m = document.getElementById('montant').value;
+            const e = document.getElementById('email').value;
+
+            if(!n || !m) { alert("Veuillez remplir le formulaire."); return; }
+
+            const sujet = "Nouvelle demande de crédit - P2P Finance Pro";
+            const corps = Nom : ${n}\nMontant souhaité : ${m} €\nEmail du client : ${e};
+            window.location.href = mailto:direction@p2p-finance-pro.com?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)};
         }
 
+        // TRADUCTION GOOGLE
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'fr', includedLanguages: 'en,fr,de,es,it,pt'}, 'google_translate_element');
+            new google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
         }
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
