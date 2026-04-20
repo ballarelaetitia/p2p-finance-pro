@@ -3,154 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P2P FINANCE PRO | Direction Ballare</title>
+    <title>P2P FINANCE PRO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --blue: #002e5b; --gold: #ffcf00; --green: #25D366; --white: #ffffff; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: #f0f4f8; color: #333; }
+        :root { --blue: #002e5b; --gold: #ffcf00; --green: #25D366; }
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f7f9; }
         
-        /* Barre de navigation */
-        nav { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); sticky: top; }
-        .logo { font-size: 1.5rem; font-weight: 900; color: var(--blue); }
-
-        /* Bannière Principale */
+        /* ZONE PHOTO BANNIERE */
         .hero { 
-            height: 350px; 
-            background: linear-gradient(rgba(0,46,91,0.7), rgba(0,46,91,0.7)), url('Banniere-paris.jpg') center/cover no-repeat;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; color: var(--white); text-align: center;
+            height: 300px; background: var(--blue) url('Banniere-paris.jpg') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
         }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .hero p { font-size: 1.3rem; background: rgba(0,0,0,0.2); padding: 8px 20px; border-radius: 50px; }
 
-        /* Conteneur et Grille */
-        .main-container { max-width: 1100px; margin: -50px auto 50px; padding: 0 20px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; }
-        @media (max-width: 850px) { .main-container { grid-template-columns: 1fr; margin-top: 20px; } }
-
-        /* Carte du Simulateur */
-        .card { background: var(--white); padding: 35px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-top: 8px solid var(--gold); }
-        .result-display { background: #f8f9fa; border: 2px dashed var(--blue); padding: 25px; border-radius: 15px; text-align: center; margin: 25px 0; }
-        .price { font-size: 3.2rem; font-weight: 900; color: var(--blue); display: block; margin: 10px 0; }
+        .container { max-width: 1000px; margin: -50px auto 40px; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-top: 5px solid var(--gold); }
         
-        /* Formulaire et Inputs */
-        input[type="range"] { width: 100%; margin: 20px 0; cursor: pointer; }
-        .input-field { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 1rem; }
-        .btn-submit { background: var(--gold); color: var(--blue); border: none; width: 100%; padding: 20px; font-weight: 900; border-radius: 12px; cursor: pointer; font-size: 1.2rem; text-transform: uppercase; transition: 0.3s; }
-        .btn-submit:hover { transform: scale(1.02); background: #fbc02d; }
-
-        /* Engagements et Équipe */
-        .info-panel { padding: 20px; }
-        .feature-list { list-style: none; padding: 0; }
-        .feature-list li { margin-bottom: 15px; font-weight: 600; display: flex; align-items: center; }
-        .feature-list i { color: var(--blue); margin-right: 15px; font-size: 1.2rem; }
-
-        .team { display: flex; gap: 20px; justify-content: center; margin-top: 30px; }
-        .member { text-align: center; background: white; padding: 15px; border-radius: 15px; width: 150px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .member img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); margin-bottom: 10px; }
-
-        /* Réseaux Sociaux */
-        .social-section { background: var(--white); padding: 50px 20px; text-align: center; border-top: 1px solid #eee; }
-        .social-links { display: flex; justify-content: center; gap: 30px; margin-top: 20px; }
-        .social-links a { font-size: 2.8rem; transition: 0.3s; }
-        .social-links a:hover { transform: translateY(-5px); }
-
-        footer { background: #111; color: var(--white); text-align: center; padding: 30px; font-size: 0.9rem; }
+        /* ZONE PHOTO DIRECTION */
+        .member-img { width: 100px; height: 100px; border-radius: 50%; background: #ddd; border: 3px solid var(--gold); object-fit: cover; }
         
-        /* Bouton WhatsApp Flottant */
-        .whatsapp-fixed { position: fixed; bottom: 30px; right: 30px; background: var(--green); color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 9999; }
+        .btn-wa { background: var(--gold); color: var(--blue); border: none; width: 100%; padding: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; }
+        footer { background: #111; color: white; text-align: center; padding: 20px; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">P2P FINANCE PRO</div>
-        <a href="https://wa.me/33780976404" target="_blank" style="color:var(--green); font-weight:bold; text-decoration:none;"><i class="fab fa-whatsapp"></i> Direction WhatsApp</a>
-    </nav>
-
     <header class="hero">
-        <h1>Crédit de 500 € à 75 000 €</h1>
-        <p>Réponse en 24h à 48h maximum*</p>
+        <h1 style="background:rgba(0,0,0,0.5); padding:10px;">Crédit de 500 € à 75 000 €</h1>
+        
+        <p style="background:var(--gold); color:var(--blue); padding:5px 15px; font-weight:bold;">Réponse en 24h à 48h maximum*</p>
     </header>
 
-    <div class="main-container">
+    <div class="container">
         <div class="card">
-            <h2 style="text-align:center; color:var(--blue);">Simulation Rapide (Taux 3,5%)</h2>
+            <h3>Simulateur de Prêt</h3>
+            <input type="range" id="s" min="500" max="75000" step="500" value="75000" oninput="u()" style="width:100%">
             
-            <input type="range" id="montantSlider" min="500" max="75000" step="500" value="75000" oninput="calculer()">
-            
-            <div class="result-display">
-                <span style="font-size:1.1rem;">Pour un montant de <b id="valMontant">75 000</b> € :</span>
-                <span class="price" id="valResultat">3 240,33 €</span>
-                <small style="color:#666;">Mensualité fixe sur 24 mois</small>
+            <div style="text-align:center; padding:20px; border:2px dashed var(--blue); margin:15px 0;">
+                <div style="font-size:30px; font-weight:bold;" id="r">3 240,33 €</div>
+                <small>Mensualité pour <span id="m">75 000</span> €</small>
             </div>
 
             <form action="https://wa.me/33780976404" target="_blank">
-                <input type="text" class="input-field" placeholder="Nom et Prénom" required>
-                <input type="text" class="input-field" placeholder="Votre Profession" required>
-                <input type="email" class="input-field" placeholder="Adresse Email" required>
-                <button type="submit" class="btn-submit">VALIDER VIA WHATSAPP</button>
+                <input type="text" placeholder="Votre Nom complet" style="width:100%; padding:10px; margin-bottom:10px;" required>
+                
+                <button type="submit" class="btn-wa">VALIDER VIA WHATSAPP</button>
             </form>
-            <p style="font-size: 0.75rem; color: #888; text-align: center; margin-top: 15px;">*Le délai dépend de la rapidité du client après son inspection.</p>
+            
+            <p style="font-size:10px; color:gray; text-align:center;">*Délai selon la rapidité du client après son inspection.</p>
         </div>
 
-        <div class="info-panel">
-            <h2 style="color:var(--blue);">Pourquoi nous choisir ?</h2>
-            <ul class="feature-list">
-                <li><i class="fas fa-file-invoice-dollar"></i> Frais de dossier pris en charge</li>
-                <li><i class="fas fa-university"></i> Frais de virement bancaire offerts</li>
-                <li><i class="fas fa-handshake"></i> Frais de reconnaissance pris en charge</li>
+        <div>
+            <h3 style="color:var(--blue)">Nos Engagements</h3>
+            <ul>
+                <li>Frais de dossier pris en charge</li>
+                <li>Frais de virement bancaire offerts</li>
+                <li>Frais de reconnaissance offerts</li>
             </ul>
 
-            <h3 style="color:var(--blue); margin-top:40px;">Direction Ballare</h3>
-            <div class="team">
-                <div class="member">
-                    <img src="david.jpg" alt="David Ballare" onerror="this.src='https://via.placeholder.com/100?text=David'">
-                    <div style="font-weight:bold;">Ballare David</div>
-                    <div style="font-size:0.8rem; color:#777;">Direction</div>
+            <h3 style="color:var(--blue)">Direction Ballare</h3>
+            <div style="display:flex; gap:20px;">
+                <div style="text-align:center;">
+                    <img src="david.jpg" class="member-img" onerror="this.src='https://via.placeholder.com/100?text=PHOTO+DAVID'">
+                    <p><b>Ballare David</b></p>
                 </div>
-                <div class="member">
-                    <img src="laetitia.jpg" alt="Laetitia Ballare" onerror="this.src='https://via.placeholder.com/100?text=Laetitia'">
-                    <div style="font-weight:bold;">Ballare Laetitia</div>
-                    <div style="font-size:0.8rem; color:#777;">Direction</div>
+                <div style="text-align:center;">
+                    <img src="laetitia.jpg" class="member-img" onerror="this.src='https://via.placeholder.com/100?text=PHOTO+LAETITIA'">
+                    <p><b>Ballare Laetitia</b></p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="social-section">
-        <h3 style="color:#777; letter-spacing:2px; font-size:0.9rem;">SUIVEZ LA DIRECTION BALLARE</h3>
-        <div class="social-links">
-            <a href="#" style="color:#1877F2;"><i class="fab fa-facebook"></i></a>
-            <a href="#" style="color:#E4405F;"><i class="fab fa-instagram"></i></a>
-            <a href="#" style="color:#000000;"><i class="fab fa-tiktok"></i></a>
-            <a href="#" style="color:#FF0000;"><i class="fab fa-youtube"></i></a>
-            <a href="#" style="color:#1DA1F2;"><i class="fab fa-twitter"></i></a>
-        </div>
-    </div>
-
-    <footer>
-        DIRECTION BALLARE © 2026 | PARIS | SÉCURITÉ SSL GARANTIE
-    </footer>
-
-    <a href="https://wa.me/33780976404" class="whatsapp-fixed" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <footer>DIRECTION BALLARE © 2026 | PARIS</footer>
 
     <script>
-        function calculer() {
-            let m = document.getElementById('montantSlider').value;
-            document.getElementById('valMontant').innerText = Number(m).toLocaleString();
-            
-            // Formule Mensualité : (Montant * TauxMensuel) / (1 - (1 + TauxMensuel)^-NombreMois)
-            let tauxAnnuel = 0.035;
-            let tauxMensuel = tauxAnnuel / 12;
-            let dureeMois = 24;
-            
-            let mensualite = (m * tauxMensuel) / (1 - Math.pow(1 + tauxMensuel, -dureeMois));
-            
-            document.getElementById('valResultat').innerText = mensualite.toFixed(2).replace('.', ',') + " €";
+        function u() {
+            let v = document.getElementById('s').value;
+            document.getElementById('m').innerText = Number(v).toLocaleString();
+            let r = 0.035/12;
+            let res = (v*r)/(1-Math.pow(1+r,-24));
+            document.getElementById('r').innerText = res.toFixed(2).replace('.', ',') + " €";
         }
-        // Exécuter le calcul dès le chargement
-        window.onload = calculer;
+        window.onload = u;
     </script>
 </body>
 </html>
