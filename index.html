@@ -1,125 +1,274 @@
-<!DOCTYPE html>
+[15:55, 20/04/2026] V 120: <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P2P FINANCE PRO | Direction Ballare</title>
+    <title>P2P FINANCE PRO | Crédit Personnel Sécurisé</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --blue: #002e5b; --gold: #ffcf00; --green: #25D366; --red: #d93025; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f7f9; color: #333; }
+        :root { --blue: #002e5b; --gold: #ffcf00; --light-bg: #f8fafd; --text: #333; --green: #25D366; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; color: var(--text); background: var(--light-bg); line-height: 1.6; }
+
+        /* HEADER & SÉCURITÉ */
+        .top-bar { background: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+        .secure-tag { color: #28a745; font-size: 0.8rem; font-weight: bold; }
+
+        /* SECTION PRINCIPALE (Comme Younited) */
+        .hero { background: white; padding: 60px 5%; text-align: center; border-bottom: 5px solid var(--gold); }
+        .hero h1 { color: var(--blue); font-size: 2.5rem; margin-bottom: 10px; }
         
-        .hero { 
-            height: 350px; 
-            background: var(--blue) url('Banniere-paris.jpg') center/cover no-repeat;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center;
-            box-shadow: inset 0 0 0 1000px rgba(0,46,91,0.5);
+        /* LE SIMULATEUR */
+        .calculator-card { 
+            max-width: 600px; margin: -40px auto 40px; background: white; padding: 40px; 
+            border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid #eee;
         }
+        .slider { width: 100%; height: 10px; border-radius: 5px; background: #ddd; outline: none; margin: 20px 0; }
+        .amount-display { font-size: 3rem; font-weight: bold; color: var(--blue); margin: 10px 0; }
 
-        .container { max-width: 1100px; margin: -50px auto 40px; padding: 0 20px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; }
-        @media (max-width: 850px) { .container { grid-template-columns: 1fr; margin-top: 20px; } }
-
-        .card { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-top: 6px solid var(--gold); }
-        
-        /* ALERTE SÉCURITÉ */
-        .security-alert { 
-            background: #fff8f7; border: 1px solid var(--red); padding: 15px; border-radius: 10px; margin-bottom: 20px;
-            display: flex; align-items: center; gap: 15px; color: var(--red); font-size: 0.85rem; font-weight: 600;
+        /* BOUTON WHATSAPP */
+        .btn-whatsapp { 
+            background: var(--green); color: white; padding: 20px; border-radius: 8px; 
+            text-decoration: none; display: block; font-weight: bold; font-size: 1.2rem;
+            transition: 0.3s; margin-top: 20px;
         }
+        .btn-whatsapp:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); }
 
-        .result-box { background: #eef2f7; padding: 25px; border-radius: 15px; text-align: center; margin: 20px 0; border: 2px dashed var(--blue); }
-        .big-price { font-size: 3.5rem; font-weight: 900; color: var(--blue); display: block; }
+        /* SECTIONS DÉTAILLÉES (Les "Pêches" de texte) */
+        .content-section { padding: 60px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: white; margin-bottom: 20px; }
+        .content-section h2 { color: var(--blue); border-left: 5px solid var(--gold); padding-left: 15px; }
 
-        input[type="range"] { width: 100%; margin: 20px 0; cursor: pointer; }
-        .input-field { width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; }
-        .btn-submit { background: var(--gold); color: var(--blue); border: none; width: 100%; padding: 20px; font-weight: 900; border-radius: 10px; cursor: pointer; font-size: 1.2rem; text-transform: uppercase; width: 100%; }
+        /* ZONE PHOTOS DIRECTION */
+        .team-grid { display: flex; justify-content: center; gap: 30px; padding: 40px; background: var(--light-bg); }
+        .member-card { text-align: center; background: white; padding: 20px; border-radius: 10px; width: 200px; border: 1px solid #eee; }
+        .photo-placeholder { 
+            width: 120px; height: 120px; border-radius: 50%; background: #eee; margin: 0 auto 15px;
+            display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);
+            overflow: hidden;
+        }
+        .photo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
 
-        .team-section { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
-        .member { text-align: center; background: #fff; padding: 15px; border-radius: 15px; width: 150px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .member img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); background: #eee; margin-bottom: 10px; }
-
-        footer { background: #111; color: #fff; text-align: center; padding: 30px; font-size: 0.8rem; }
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--green); color: #fff; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; text-decoration: none; z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        footer { background: var(--blue); color: white; padding: 40px; text-align: center; }
     </style>
 </head>
 <body>
 
-    <nav style="background:#fff; padding:15px 5%; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
-        <div style="font-weight:900; color:var(--blue); font-size:1.5rem;">P2P FINANCE PRO</div>
-        <a href="https://wa.me/33780976404" style="color:var(--green); font-weight:bold; text-decoration:none;"><i class="fab fa-whatsapp"></i> WhatsApp Direction</a>
-    </nav>
+    <div class="top-bar">
+        <div style="font-weight: 900; color: var(--blue); font-size: 1.4rem;">P2P FINANCE PRO</div>
+        <div class="secure-tag"><i class="fas fa-lock"></i> CONNEXION SÉCURISÉE SSL</div>
+    </div>
 
-    <header class="hero">
-        <h1 style="font-size:2.5rem; margin:0;">Crédit de 500 € à 75 000 €</h1>
-        <p style="font-size:1.2rem; background:rgba(255,207,0,0.2); padding:5px 15px; border-radius:5px; margin-top:10px;">Réponse en 24h à 48h maximum*</p>
-    </header>
+    <section class="hero">
+        <h1>Votre prêt personnel 100% en ligne</h1>
+        <p>Simple, rapide et transparent. Réponse définitive sous 24h à 48h.</p>
+    </section>
 
-    <div class="container">
-        <div class="card">
-            <h3 style="text-align:center;">Simulation Rapide (Taux 3,5%)</h3>
-            <input type="range" id="slider" min="500" max="75000" step="500" value="75000" oninput="update()">
-            
-            <div class="result-box">
-                <span style="font-size:1.1rem;">Montant : <b id="m-val">75 000</b> €</span>
-                <span class="big-price" id="res-val">3 240,33 €</span>
-                <small>Mensualité fixe sur 24 mois</small>
-            </div>
-
-            <div class="security-alert">
-                <i class="fas fa-exclamation-triangle" style="font-size: 24px;"></i>
-                <span>IMPORTANT : Aucun de nos agents ne vous contactera pour demander de créer un compte bancaire ni envoyer vos identifiants de connexion.</span>
-            </div>
-
-            <form action="https://wa.me/33780976404" target="_blank">
-                <input type="text" class="input-field" placeholder="Nom et Prénom" required>
-                <input type="text" class="input-field" placeholder="Votre Profession" required>
-                <input type="email" class="input-field" placeholder="Adresse Email" required>
-                <button type="submit" class="btn-submit">VALIDER VIA WHATSAPP</button>
-            </form>
-            <p style="font-size: 0.7rem; color: #777; text-align: center; margin-top: 15px;">*Le délai dépend de la rapidité du client après son inspection.</p>
+    <div class="calculator-card">
+        <h3>Quel montant souhaitez-vous emprunter ?</h3>
+        <input type="range" id="loanAmount" min="500" max="75000" step="500" value="75000" class="slider" oninput="calculate()">
+        <div class="amount-display"><span id="amountText">75 000</span> €</div>
+        
+        <div style="background: #f0f4f8; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p style="margin: 0; color: #666;">Mensualité estimée (Taux 3.5%) :</p>
+            <div style="font-size: 2rem; color: var(--blue); font-weight: bold;" id="monthlyText">3 240,33 €</div>
+            <small>Sur une durée fixe de 24 mois</small>
         </div>
 
-        <div style="padding:10px;">
-            <h2 style="color:var(--blue);">Nos Engagements</h2>
-            <ul style="list-style: none; padding: 0; font-weight: 600;">
-                <li style="margin-bottom:15px;"><i class="fas fa-check-circle" style="color:var(--green)"></i> Frais de dossier pris en charge.</li>
-                <li style="margin-bottom:15px;"><i class="fas fa-check-circle" style="color:var(--green)"></i> Frais de virement bancaire offerts.</li>
-                <li style="margin-bottom:15px;"><i class="fas fa-check-circle" style="color:var(--green)"></i> Frais de reconnaissance pris en charge.</li>
+        <div style="color: #d93025; font-size: 0.8rem; margin-bottom: 20px; font-weight: bold;">
+            <i class="fas fa-shield-alt"></i> Sécurité : Aucun agent ne vous demandera vos codes bancaires.
+        </div>
+
+        <a href="https://wa.me/33780976404" class="btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> CONTACTER LA DIRECTION SUR WHATSAPP
+        </a>
+    </div>
+
+    <section class="content-section">
+        <div>
+            <h2>Pourquoi choisir P2P FINANCE PRO ?</h2>
+            <p>Notre entreprise s'engage à fournir des solutions de financement adaptées sans les contraintes des banques traditionnelles. Nous finançons vos projets de 500 € à 75 000 € avec une transparence totale.</p>
+            <ul>
+                <li>Zéro frais de dossier cachés</li>
+                <li>Frais de virement pris en charge</li>
+                <li>Accompagnement personnalisé</li>
             </ul>
-            
-            <h3 style="color:var(--blue); margin-top:30px;">Direction Ballare</h3>
-            <div class="team-section">
-                <div class="member">
-                    <img src="david.jpg" alt="David" onerror="this.src='https://via.placeholder.com/100?text=DAVID'">
-                    <div style="font-weight:bold; font-size:0.9rem;">Ballare David</div>
-                    <div style="font-size:0.7rem; color:#777;">Direction</div>
-                </div>
-                <div class="member">
-                    <img src="laetitia.jpg" alt="Laetitia" onerror="this.src='https://via.placeholder.com/100?text=LAETITIA'">
-                    <div style="font-weight:bold; font-size:0.9rem;">Ballare Laetitia</div>
-                    <div style="font-size:0.7rem; color:#777;">Direction</div>
-                </div>
+        </div>
+        <div>
+            <h2>Comment ça marche ?</h2>
+            <p>Le processus est simple : après votre demande via WhatsApp, un conseiller étudie votre dossier. Une fois l'inspection validée, les fonds sont débloqués en un temps record.</p>
+            <p><strong>Étape 1 :</strong> Simulation en ligne.</p>
+            <p><strong>Étape 2 :</strong> Envoi des documents par WhatsApp.</p>
+            <p><strong>Étape 3 :</strong> Réception des fonds après signature.</p>
+        </div>
+    </section>
+
+    <h2 style="text-align: center; color: var(--blue);">La Direction à votre écoute</h2>
+    <div class="team-grid">
+        <div class="member-card">
+            <div class="photo-placeholder">
+                <img src="david.jpg" alt="David" onerror="this.style.display='none';">
+                <span style="font-size: 10px; color: #999;">[JOINDRE PHOTO DAVID ICI]</span>
             </div>
+            <strong>Ballare David</strong><br>
+            <small>Directeur Général</small>
+        </div>
+        <div class="member-card">
+            <div class="photo-placeholder">
+                <img src="laetitia.jpg" alt="Laetitia" onerror="this.style.display='none';">
+                <span style="font-size: 10px; color: #999;">[JOINDRE PHOTO LAETITIA ICI]</span>
+            </div>
+            <strong>Ballare Laetitia</strong><br>
+            <small>Co-Directrice</small>
         </div>
     </div>
 
     <footer>
-        DIRECTION BALLARE © 2026 | PARIS | SÉCURITÉ SSL GARANTIE
+        <p>P2P FINANCE PRO © 2026 - Plateforme sécurisée de prêt entre particuliers.</p>
+        <p style="font-size: 0.7rem; opacity: 0.7;">Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.</p>
     </footer>
 
-    <a href="https://wa.me/33780976404" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <script>
+        function calculate() {
+            let amount = document.getElementById('loanAmount').value;
+            document.getElementById('amount…
+[15:55, 20/04/2026] V 120: <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2P FINANCE PRO | Crédit Personnel Sécurisé</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --blue: #002e5b; --gold: #ffcf00; --light-bg: #f8fafd; --text: #333; --green: #25D366; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; color: var(--text); background: var(--light-bg); line-height: 1.6; }
+
+        /* HEADER & SÉCURITÉ */
+        .top-bar { background: white; padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+        .secure-tag { color: #28a745; font-size: 0.8rem; font-weight: bold; }
+
+        /* SECTION PRINCIPALE (Comme Younited) */
+        .hero { background: white; padding: 60px 5%; text-align: center; border-bottom: 5px solid var(--gold); }
+        .hero h1 { color: var(--blue); font-size: 2.5rem; margin-bottom: 10px; }
+        
+        /* LE SIMULATEUR */
+        .calculator-card { 
+            max-width: 600px; margin: -40px auto 40px; background: white; padding: 40px; 
+            border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid #eee;
+        }
+        .slider { width: 100%; height: 10px; border-radius: 5px; background: #ddd; outline: none; margin: 20px 0; }
+        .amount-display { font-size: 3rem; font-weight: bold; color: var(--blue); margin: 10px 0; }
+
+        /* BOUTON WHATSAPP */
+        .btn-whatsapp { 
+            background: var(--green); color: white; padding: 20px; border-radius: 8px; 
+            text-decoration: none; display: block; font-weight: bold; font-size: 1.2rem;
+            transition: 0.3s; margin-top: 20px;
+        }
+        .btn-whatsapp:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); }
+
+        /* SECTIONS DÉTAILLÉES (Les "Pêches" de texte) */
+        .content-section { padding: 60px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: white; margin-bottom: 20px; }
+        .content-section h2 { color: var(--blue); border-left: 5px solid var(--gold); padding-left: 15px; }
+
+        /* ZONE PHOTOS DIRECTION */
+        .team-grid { display: flex; justify-content: center; gap: 30px; padding: 40px; background: var(--light-bg); }
+        .member-card { text-align: center; background: white; padding: 20px; border-radius: 10px; width: 200px; border: 1px solid #eee; }
+        .photo-placeholder { 
+            width: 120px; height: 120px; border-radius: 50%; background: #eee; margin: 0 auto 15px;
+            display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);
+            overflow: hidden;
+        }
+        .photo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+        footer { background: var(--blue); color: white; padding: 40px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div style="font-weight: 900; color: var(--blue); font-size: 1.4rem;">P2P FINANCE PRO</div>
+        <div class="secure-tag"><i class="fas fa-lock"></i> CONNEXION SÉCURISÉE SSL</div>
+    </div>
+
+    <section class="hero">
+        <h1>Votre prêt personnel 100% en ligne</h1>
+        <p>Simple, rapide et transparent. Réponse définitive sous 24h à 48h.</p>
+    </section>
+
+    <div class="calculator-card">
+        <h3>Quel montant souhaitez-vous emprunter ?</h3>
+        <input type="range" id="loanAmount" min="500" max="75000" step="500" value="75000" class="slider" oninput="calculate()">
+        <div class="amount-display"><span id="amountText">75 000</span> €</div>
+        
+        <div style="background: #f0f4f8; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p style="margin: 0; color: #666;">Mensualité estimée (Taux 3.5%) :</p>
+            <div style="font-size: 2rem; color: var(--blue); font-weight: bold;" id="monthlyText">3 240,33 €</div>
+            <small>Sur une durée fixe de 24 mois</small>
+        </div>
+
+        <div style="color: #d93025; font-size: 0.8rem; margin-bottom: 20px; font-weight: bold;">
+            <i class="fas fa-shield-alt"></i> Sécurité : Aucun agent ne vous demandera vos codes bancaires.
+        </div>
+
+        <a href="https://wa.me/33780976404" class="btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> CONTACTER LA DIRECTION SUR WHATSAPP
+        </a>
+    </div>
+
+    <section class="content-section">
+        <div>
+            <h2>Pourquoi choisir P2P FINANCE PRO ?</h2>
+            <p>Notre entreprise s'engage à fournir des solutions de financement adaptées sans les contraintes des banques traditionnelles. Nous finançons vos projets de 500 € à 75 000 € avec une transparence totale.</p>
+            <ul>
+                <li>Zéro frais de dossier cachés</li>
+                <li>Frais de virement pris en charge</li>
+                <li>Accompagnement personnalisé</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Comment ça marche ?</h2>
+            <p>Le processus est simple : après votre demande via WhatsApp, un conseiller étudie votre dossier. Une fois l'inspection validée, les fonds sont débloqués en un temps record.</p>
+            <p><strong>Étape 1 :</strong> Simulation en ligne.</p>
+            <p><strong>Étape 2 :</strong> Envoi des documents par WhatsApp.</p>
+            <p><strong>Étape 3 :</strong> Réception des fonds après signature.</p>
+        </div>
+    </section>
+
+    <h2 style="text-align: center; color: var(--blue);">La Direction à votre écoute</h2>
+    <div class="team-grid">
+        <div class="member-card">
+            <div class="photo-placeholder">
+                <img src="david.jpg" alt="David" onerror="this.style.display='none';">
+                <span style="font-size: 10px; color: #999;">[JOINDRE PHOTO DAVID ICI]</span>
+            </div>
+            <strong>Ballare David</strong><br>
+            <small>Directeur Général</small>
+        </div>
+        <div class="member-card">
+            <div class="photo-placeholder">
+                <img src="laetitia.jpg" alt="Laetitia" onerror="this.style.display='none';">
+                <span style="font-size: 10px; color: #999;">[JOINDRE PHOTO LAETITIA ICI]</span>
+            </div>
+            <strong>Ballare Laetitia</strong><br>
+            <small>Co-Directrice</small>
+        </div>
+    </div>
+
+    <footer>
+        <p>P2P FINANCE PRO © 2026 - Plateforme sécurisée de prêt entre particuliers.</p>
+        <p style="font-size: 0.7rem; opacity: 0.7;">Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.</p>
+    </footer>
 
     <script>
-        function update() {
-            let m = document.getElementById('slider').value;
-            document.getElementById('m-val').innerText = Number(m).toLocaleString();
-            let r = 0.035 / 12;
-            let res = (m * r) / (1 - Math.pow(1 + r, -24));
-            document.getElementById('res-val').innerText = res.toFixed(2).replace('.', ',') + " €";
+        function calculate() {
+            let amount = document.getElementById('loanAmount').value;
+            document.getElementById('amountText').innerText = Number(amount).toLocaleString();
+            
+            let rate = 0.035 / 12;
+            let monthly = (amount * rate) / (1 - Math.pow(1 + rate, -24));
+            document.getElementById('monthlyText').innerText = monthly.toFixed(2).replace('.', ',') + " €";
         }
-        window.onload = update;
+        window.onload = calculate;
     </script>
+
 </body>
 </html>
