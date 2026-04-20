@@ -2,111 +2,209 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>P2P FINANCE PRO - Officiel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2P FINANCE PRO | Excellence en Crédit Privé</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Arial', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
-        .site-container { max-width: 500px; margin: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .header { background: #002e5b; color: white; padding: 20px; text-align: center; border-bottom: 4px solid #d4af37; }
-        .content { padding: 25px; }
-        
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; color: #002e5b; }
-        
-        /* Liste déroulante forcée */
-        select, input { 
-            width: 100%; 
-            padding: 12px; 
-            border: 2px solid #ccc; 
-            border-radius: 8px; 
-            font-size: 16px; 
-            display: block !important; 
-            background: white;
-        }
+        :root { --navy: #0a192f; --gold: #c5a059; --light-gold: #e2c275; --white: #ffffff; --bg: #f8f9fa; }
+        body { font-family: 'Playfair Display', serif; font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: var(--navy); }
 
-        .btn { 
-            display: block; 
-            width: 100%; 
-            padding: 15px; 
-            margin-top: 10px; 
-            text-align: center; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            font-weight: bold; 
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            color: white;
-        }
-        .btn-whatsapp { background: #25D366; }
-        .btn-email { background: #002e5b; }
+        /* BARRE DE CONFIANCE SUPÉRIEURE */
+        .top-nav { background: var(--navy); color: white; padding: 10px 8%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; border-bottom: 2px solid var(--gold); }
+        .top-nav div { display: flex; align-items: center; gap: 15px; }
 
-        .team-info { background: #f9f9f9; padding: 15px; font-size: 13px; border-top: 1px solid #ddd; }
-        .member { margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .member b { color: #002e5b; }
+        /* HEADER PRINCIPAL */
+        header { background: var(--white); padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); sticky; top: 0; z-index: 1000; }
+        .logo-group { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-box { background: var(--navy); color: var(--gold); padding: 10px 15px; border-radius: 4px; font-weight: 900; font-size: 1.5rem; border: 1px solid var(--gold); }
+        .logo-text h1 { margin: 0; font-size: 1.6rem; color: var(--navy); letter-spacing: 1px; }
+
+        /* SECTION HERO & SIMULATEUR */
+        .hero { background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070'); background-size: cover; padding: 80px 8% 120px; text-align: center; color: white; }
+        .hero h2 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 300; }
+
+        .main-card { max-width: 550px; margin: -100px auto 50px; background: white; border-radius: 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.2); overflow: hidden; color: var(--navy); }
+        .card-header { background: var(--gold); color: var(--navy); padding: 20px; font-weight: bold; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .form-content { padding: 40px; }
+        .form-group { margin-bottom: 25px; }
+        label { display: block; font-weight: bold; margin-bottom: 10px; font-size: 0.9rem; }
+        
+        /* LISTE DÉROULANTE PREMIUM */
+        select, input { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; background: #fafafa; }
+        select:focus, input:focus { border-color: var(--gold); outline: none; background: white; }
+
+        .btn-action { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 18px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s; margin-bottom: 15px; font-size: 1rem; }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-email { background: var(--navy); color: white; border: 1px solid var(--gold); }
+        .btn-action:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* SECTION DÉFINITION LÉGALE (CRÉDIBILITÉ GOOGLE) */
+        .info-section { padding: 80px 8%; background: white; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .info-card { border: 1px solid #eee; padding: 30px; border-radius: 8px; transition: 0.3s; }
+        .info-card:hover { border-color: var(--gold); }
+        .info-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+        .info-card h3 { margin-bottom: 15px; color: var(--navy); }
+
+        /* ÉQUIPE & ROLES */
+        .team-section { background: var(--navy); color: white; padding: 80px 8%; text-align: center; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 50px; }
+        .team-member { padding: 20px; border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 4px; }
+        .team-member h4 { color: var(--gold); margin: 10px 0 5px; font-size: 1.1rem; }
+        .team-member p { font-size: 0.8rem; opacity: 0.8; }
+
+        footer { background: #050c16; color: #7a8fa3; padding: 60px 8% 20px; text-align: center; font-size: 0.8rem; }
+        .traduction { margin-bottom: 20px; display: inline-block; padding: 10px; border: 1px solid #444; border-radius: 4px; }
     </style>
 </head>
 <body>
 
-<div class="site-container">
-    <div class="header">
-        <h1 style="margin:0; font-size: 22px;">🏛️ P2P FINANCE PRO</h1>
-        <p style="font-size:12px; margin:5px 0 0;">14 Avenue de l'Opéra, 75001 Paris</p>
-    </div>
-
-    <div class="content">
-        <div class="form-group">
-            <label>Votre Nom Complet</label>
-            <input type="text" id="client_nom" placeholder="Ex: David Martin">
+    <div class="top-nav">
+        <div>
+            <span><i class="fas fa-map-marker-alt"></i> 14 Avenue de l'Opéra, Paris</span>
+            <span><i class="fas fa-phone-alt"></i> +33 7 80 97 64 04</span>
         </div>
-
-        <div class="form-group">
-            <label>Montant Souhaité</label>
-            <select id="client_montant">
-                </select>
+        <div>
+            <i class="fas fa-shield-alt" style="color:var(--gold)"></i> PROTECTION SSL 256-BIT
         </div>
-
-        <button onclick="contactWA()" class="btn btn-whatsapp">📱 ENVOYER VIA WHATSAPP</button>
-        <button onclick="contactEmail()" class="btn btn-email">✉️ ENVOYER VIA EMAIL</button>
     </div>
 
-    <div class="team-info">
-        <div class="member"><b>M. David Ballare</b> : Directeur Associé (Garant Moral)</div>
-        <div class="member"><b>Mme Laetitia Ballare</b> : Directrice Générale (Image de marque)</div>
-        <div class="member"><b>M. Frank Martin</b> : Analyste (Vérification des pièces)</div>
-        <div class="member"><b>Mme Rodriguez Sabrina</b> : Secrétaire (Gestion administrative)</div>
-        <div class="member"><b>M. Sandy Macia</b> : Mandataire (Gestion des Garanties)</div>
+    <header>
+        <a href="#" class="logo-group">
+            <div class="logo-box">P2P</div>
+            <div class="logo-text"><h1>FINANCE PRO</h1></div>
+        </a>
+        <div id="google_translate_element"></div>
+    </header>
+
+    <section class="hero">
+        <h2>Votre partenaire financier d'excellence</h2>
+        <p>Le prêt entre particuliers simplifié, sécurisé et rapide.</p>
+    </section>
+
+    <div class="main-card">
+        <div class="card-header">Demande de Prêt Personnel</div>
+        <div class="form-content">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Nom et Prénom (Identité Officielle)</label>
+                <input type="text" id="name" placeholder="Ex: Jean-Luc David">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-hand-holding-usd"></i> Montant souhaité (€)</label>
+                <select id="amount">
+                    <option value="">Sélectionnez le montant</option>
+                    </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Adresse Email de contact</label>
+                <input type="email" id="email" placeholder="votre@email.com">
+            </div>
+
+            <a href="javascript:void(0)" class="btn-action btn-whatsapp" onclick="sendAction('wa')">
+                <i class="fab fa-whatsapp"></i> SOUMETTRE VIA WHATSAPP
+            </a>
+            <a href="javascript:void(0)" class="btn-action btn-email" onclick="sendAction('mail')">
+                <i class="fas fa-paper-plane"></i> SOUMETTRE VIA EMAIL
+            </a>
+            
+            <p style="text-align:center; font-size:0.75rem; color:#888; margin-top:15px;">
+                <i class="fas fa-info-circle"></i> Étude gratuite par M. Frank Martin sous 24h.
+            </p>
+        </div>
     </div>
-</div>
 
-<script>
-    // Remplissage de la liste de 1000 à 75000
-    const list = document.getElementById('client_montant');
-    for (let i = 1000; i <= 75000; i += 1000) {
-        let opt = document.createElement('option');
-        opt.value = i;
-        opt.innerHTML = i.toLocaleString() + " €";
-        list.appendChild(opt);
-    }
+    <section class="info-section">
+        <div class="grid-3">
+            <div class="info-card">
+                <i class="fas fa-university"></i>
+                <h3>Qu'est-ce qu'un prêt personnel ?</h3>
+                <p>C'est un crédit non affecté à un achat spécifique. Il permet de financer vos projets (Auto, Mariage, Travaux, Voyage) sans avoir à justifier la nature de vos dépenses.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Rapidité d'exécution</h3>
+                <p>Notre structure familiale permet une analyse immédiate de votre dossier. Les fonds sont débloqués par Mme Rodriguez Sabrina sous un délai de 48 heures maximum.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-lock"></i>
+                <h3>Garantie de Sécurité</h3>
+                <p>Toutes les transactions sont sécurisées. M. Sandy Macia assure la conformité des garanties d'assurance pour une protection mutuelle.</p>
+            </div>
+        </div>
+    </section>
 
-    function contactWA() {
-        const n = document.getElementById('client_nom').value;
-        const m = document.getElementById('client_montant').value;
-        if(!n) { alert("Entrez votre nom"); return; }
-        
-        const url = "https://wa.me/33780976404?text=" + encodeURIComponent("Bonjour, je suis " + n + ". Je souhaite un prêt de " + m + " €.");
-        window.open(url, '_blank');
-    }
+    <section class="team-section">
+        <h2>Organigramme de l'Institution</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <h4>David Ballare</h4>
+                <p>Directeur Associé <br> (Garant Moral)</p>
+            </div>
+            <div class="team-member">
+                <h4>Laetitia Ballare</h4>
+                <p>Directrice Générale <br> (Gestion Institutionnelle)</p>
+            </div>
+            <div class="team-member">
+                <h4>Frank Martin</h4>
+                <p>Analyste Senior <br> (Vérification Dossiers)</p>
+            </div>
+            <div class="team-member">
+                <h4>Rodriguez Sabrina</h4>
+                <p>Secrétaire Admin <br> (Virements Bancaires)</p>
+            </div>
+            <div class="team-member" style="border-color: var(--gold);">
+                <h4>Sandy Macia</h4>
+                <p>Mandataire Sécurité <br> (Gestion des Garanties)</p>
+            </div>
+        </div>
+    </section>
 
-    function contactEmail() {
-        const n = document.getElementById('client_nom').value;
-        const m = document.getElementById('client_montant').value;
-        if(!n) { alert("Entrez votre nom"); return; }
+    <footer>
+        <div class="traduction">
+            🌍 Langues disponibles : <div id="google_translate_element_footer"></div>
+        </div>
+        <p>P2P FINANCE PRO - Siège Social : 14 Avenue de l'Opéra, 75001 Paris, France.</p>
+        <p>Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement.</p>
+        <p style="opacity: 0.5;">Agrément N°84923102 - Tous droits réservés 2026</p>
+    </footer>
 
-        const subject = encodeURIComponent("Demande de prêt - " + n);
-        const body = encodeURIComponent("Nom: " + n + "\nMontant souhaité: " + m + " €");
-        window.location.href = "mailto:direction@p2p-finance-pro.com?subject=" + subject + "&body=" + body;
-    }
-</script>
+    <script>
+        // Remplissage Liste 1000 - 75000
+        const sel = document.getElementById('amount');
+        for (let i = 1000; i <= 75000; i += 1000) {
+            let opt = document.createElement('option');
+            opt.value = i;
+            opt.innerHTML = i.toLocaleString() + " €";
+            sel.appendChild(opt);
+        }
+
+        // Action d'envoi
+        function sendAction(type) {
+            const n = document.getElementById('name').value;
+            const a = document.getElementById('amount').value;
+            const e = document.getElementById('email').value;
+
+            if(!n || !a || !e) { alert("Veuillez remplir tous les champs."); return; }
+
+            const msg = Demande de prêt P2P FINANCE PRO :%0A- Nom : ${n}%0A- Montant : ${a}€%0A- Email : ${e}%0AEn attente de validation.;
+
+            if(type === 'wa') {
+                window.open(https://wa.me/33780976404?text=${msg}, '_blank');
+            } else {
+                window.location.href = mailto:direction@p2p-finance-pro.com?subject=Nouvelle Demande&body=${msg.replace(/%0A/g, '\n')};
+            }
+        }
+
+        // Traduction Google
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
+            new google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element_footer');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
