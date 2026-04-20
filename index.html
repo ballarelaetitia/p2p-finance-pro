@@ -3,88 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P2P FINANCE PRO</title>
+    <title>P2P FINANCE PRO | Direction Ballare</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --blue: #002e5b; --gold: #ffcf00; --green: #25D366; }
-        body { font-family: Arial, sans-serif; margin: 0; background: #f4f7f9; }
+        :root { --blue: #002e5b; --gold: #ffcf00; --green: #25D366; --red: #d93025; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f7f9; color: #333; }
         
-        /* ZONE PHOTO BANNIERE */
         .hero { 
-            height: 300px; background: var(--blue) url('Banniere-paris.jpg') center/cover;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+            height: 350px; 
+            background: var(--blue) url('Banniere-paris.jpg') center/cover no-repeat;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center;
+            box-shadow: inset 0 0 0 1000px rgba(0,46,91,0.5);
         }
 
-        .container { max-width: 1000px; margin: -50px auto 40px; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-top: 5px solid var(--gold); }
+        .container { max-width: 1100px; margin: -50px auto 40px; padding: 0 20px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; }
+        @media (max-width: 850px) { .container { grid-template-columns: 1fr; margin-top: 20px; } }
+
+        .card { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-top: 6px solid var(--gold); }
         
-        /* ZONE PHOTO DIRECTION */
-        .member-img { width: 100px; height: 100px; border-radius: 50%; background: #ddd; border: 3px solid var(--gold); object-fit: cover; }
-        
-        .btn-wa { background: var(--gold); color: var(--blue); border: none; width: 100%; padding: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; }
-        footer { background: #111; color: white; text-align: center; padding: 20px; }
+        /* ALERTE SÉCURITÉ */
+        .security-alert { 
+            background: #fff8f7; border: 1px solid var(--red); padding: 15px; border-radius: 10px; margin-bottom: 20px;
+            display: flex; align-items: center; gap: 15px; color: var(--red); font-size: 0.85rem; font-weight: 600;
+        }
+
+        .result-box { background: #eef2f7; padding: 25px; border-radius: 15px; text-align: center; margin: 20px 0; border: 2px dashed var(--blue); }
+        .big-price { font-size: 3.5rem; font-weight: 900; color: var(--blue); display: block; }
+
+        input[type="range"] { width: 100%; margin: 20px 0; cursor: pointer; }
+        .input-field { width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; }
+        .btn-submit { background: var(--gold); color: var(--blue); border: none; width: 100%; padding: 20px; font-weight: 900; border-radius: 10px; cursor: pointer; font-size: 1.2rem; text-transform: uppercase; width: 100%; }
+
+        .team-section { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+        .member { text-align: center; background: #fff; padding: 15px; border-radius: 15px; width: 150px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .member img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); background: #eee; margin-bottom: 10px; }
+
+        footer { background: #111; color: #fff; text-align: center; padding: 30px; font-size: 0.8rem; }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--green); color: #fff; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; text-decoration: none; z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
 
+    <nav style="background:#fff; padding:15px 5%; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+        <div style="font-weight:900; color:var(--blue); font-size:1.5rem;">P2P FINANCE PRO</div>
+        <a href="https://wa.me/33780976404" style="color:var(--green); font-weight:bold; text-decoration:none;"><i class="fab fa-whatsapp"></i> WhatsApp Direction</a>
+    </nav>
+
     <header class="hero">
-        <h1 style="background:rgba(0,0,0,0.5); padding:10px;">Crédit de 500 € à 75 000 €</h1>
-        
-        <p style="background:var(--gold); color:var(--blue); padding:5px 15px; font-weight:bold;">Réponse en 24h à 48h maximum*</p>
+        <h1 style="font-size:2.5rem; margin:0;">Crédit de 500 € à 75 000 €</h1>
+        <p style="font-size:1.2rem; background:rgba(255,207,0,0.2); padding:5px 15px; border-radius:5px; margin-top:10px;">Réponse en 24h à 48h maximum*</p>
     </header>
 
     <div class="container">
         <div class="card">
-            <h3>Simulateur de Prêt</h3>
-            <input type="range" id="s" min="500" max="75000" step="500" value="75000" oninput="u()" style="width:100%">
+            <h3 style="text-align:center;">Simulation Rapide (Taux 3,5%)</h3>
+            <input type="range" id="slider" min="500" max="75000" step="500" value="75000" oninput="update()">
             
-            <div style="text-align:center; padding:20px; border:2px dashed var(--blue); margin:15px 0;">
-                <div style="font-size:30px; font-weight:bold;" id="r">3 240,33 €</div>
-                <small>Mensualité pour <span id="m">75 000</span> €</small>
+            <div class="result-box">
+                <span style="font-size:1.1rem;">Montant : <b id="m-val">75 000</b> €</span>
+                <span class="big-price" id="res-val">3 240,33 €</span>
+                <small>Mensualité fixe sur 24 mois</small>
+            </div>
+
+            <div class="security-alert">
+                <i class="fas fa-exclamation-triangle" style="font-size: 24px;"></i>
+                <span>IMPORTANT : Aucun de nos agents ne vous contactera pour demander de créer un compte bancaire ni envoyer vos identifiants de connexion.</span>
             </div>
 
             <form action="https://wa.me/33780976404" target="_blank">
-                <input type="text" placeholder="Votre Nom complet" style="width:100%; padding:10px; margin-bottom:10px;" required>
-                
-                <button type="submit" class="btn-wa">VALIDER VIA WHATSAPP</button>
+                <input type="text" class="input-field" placeholder="Nom et Prénom" required>
+                <input type="text" class="input-field" placeholder="Votre Profession" required>
+                <input type="email" class="input-field" placeholder="Adresse Email" required>
+                <button type="submit" class="btn-submit">VALIDER VIA WHATSAPP</button>
             </form>
-            
-            <p style="font-size:10px; color:gray; text-align:center;">*Délai selon la rapidité du client après son inspection.</p>
+            <p style="font-size: 0.7rem; color: #777; text-align: center; margin-top: 15px;">*Le délai dépend de la rapidité du client après son inspection.</p>
         </div>
 
-        <div>
-            <h3 style="color:var(--blue)">Nos Engagements</h3>
-            <ul>
-                <li>Frais de dossier pris en charge</li>
-                <li>Frais de virement bancaire offerts</li>
-                <li>Frais de reconnaissance offerts</li>
+        <div style="padding:10px;">
+            <h2 style="color:var(--blue);">Nos Engagements</h2>
+            <ul style="list-style: none; padding: 0; font-weight: 600;">
+                <li style="margin-bottom:15px;"><i class="fas fa-check-circle" style="color:var(--green)"></i> Frais de dossier pris en charge.</li>
+                <li style="margin-bottom:15px;"><i class="fas fa-check-circle" style="color:var(--green)"></i> Frais de virement bancaire offerts.</li>
+                <li style="margin-bottom:15px;"><i class="fas fa-check-circle" style="color:var(--green)"></i> Frais de reconnaissance pris en charge.</li>
             </ul>
-
-            <h3 style="color:var(--blue)">Direction Ballare</h3>
-            <div style="display:flex; gap:20px;">
-                <div style="text-align:center;">
-                    <img src="david.jpg" class="member-img" onerror="this.src='https://via.placeholder.com/100?text=PHOTO+DAVID'">
-                    <p><b>Ballare David</b></p>
+            
+            <h3 style="color:var(--blue); margin-top:30px;">Direction Ballare</h3>
+            <div class="team-section">
+                <div class="member">
+                    <img src="david.jpg" alt="David" onerror="this.src='https://via.placeholder.com/100?text=DAVID'">
+                    <div style="font-weight:bold; font-size:0.9rem;">Ballare David</div>
+                    <div style="font-size:0.7rem; color:#777;">Direction</div>
                 </div>
-                <div style="text-align:center;">
-                    <img src="laetitia.jpg" class="member-img" onerror="this.src='https://via.placeholder.com/100?text=PHOTO+LAETITIA'">
-                    <p><b>Ballare Laetitia</b></p>
+                <div class="member">
+                    <img src="laetitia.jpg" alt="Laetitia" onerror="this.src='https://via.placeholder.com/100?text=LAETITIA'">
+                    <div style="font-weight:bold; font-size:0.9rem;">Ballare Laetitia</div>
+                    <div style="font-size:0.7rem; color:#777;">Direction</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer>DIRECTION BALLARE © 2026 | PARIS</footer>
+    <footer>
+        DIRECTION BALLARE © 2026 | PARIS | SÉCURITÉ SSL GARANTIE
+    </footer>
+
+    <a href="https://wa.me/33780976404" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
-        function u() {
-            let v = document.getElementById('s').value;
-            document.getElementById('m').innerText = Number(v).toLocaleString();
-            let r = 0.035/12;
-            let res = (v*r)/(1-Math.pow(1+r,-24));
-            document.getElementById('r').innerText = res.toFixed(2).replace('.', ',') + " €";
+        function update() {
+            let m = document.getElementById('slider').value;
+            document.getElementById('m-val').innerText = Number(m).toLocaleString();
+            let r = 0.035 / 12;
+            let res = (m * r) / (1 - Math.pow(1 + r, -24));
+            document.getElementById('res-val').innerText = res.toFixed(2).replace('.', ',') + " €";
         }
-        window.onload = u;
+        window.onload = update;
     </script>
 </body>
 </html>
