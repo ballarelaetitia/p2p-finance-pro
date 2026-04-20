@@ -3,128 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P2P FINANCE PRO | Partenaire International</title>
+    <title>P2P FINANCE PRO | Direction & Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --blue: #002e5b; --gold: #ffcf00; --light-bg: #f4f7fa; --text: #333; --green: #25D366; }
-        body { font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; color: var(--text); background: var(--light-bg); }
+        :root { --blue: #002e5b; --gold: #ffcf00; --light-bg: #f8fafd; --text: #333; --green: #25D366; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; color: var(--text); background: var(--light-bg); line-height: 1.6; }
 
         /* BARRE DE TRADUCTION & CONTACT */
-        .top-info-bar { background: var(--blue); color: white; padding: 10px 5%; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        #google_translate_element { margin-left: 10px; }
-
-        /* STYLE DU SITE (Gardé identique à votre demande précédente) */
+        .top-info-bar { background: var(--blue); color: white; padding: 10px 5%; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
+        
         nav { background: white; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .logo { font-weight: 900; color: var(--blue); font-size: 1.6rem; }
         .secure-badge { color: #28a745; font-size: 0.85rem; font-weight: bold; border: 1px solid #28a745; padding: 5px 10px; border-radius: 4px; }
 
-        .hero { background: white; padding: 60px 5% 100px; text-align: center; }
-        .hero h1 { font-size: 2.8rem; color: var(--blue); margin-bottom: 20px; }
+        .hero { background: white; padding: 60px 5% 80px; text-align: center; border-bottom: 4px solid var(--gold); }
+        .hero h1 { font-size: 2.5rem; color: var(--blue); margin-bottom: 15px; }
 
-        .calc-container { max-width: 700px; margin: -60px auto 40px; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 30px 60px rgba(0,0,0,0.12); border-bottom: 5px solid var(--gold); }
-        .amount-box { font-size: 3.5rem; font-weight: 800; color: var(--blue); margin: 20px 0; text-align: center;}
+        .calc-container { max-width: 650px; margin: -50px auto 40px; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); text-align: center; }
+        .amount-display { font-size: 3.5rem; font-weight: 800; color: var(--blue); margin: 15px 0; }
         
-        .btn-wa { background: var(--green); color: white; text-decoration: none; display: block; padding: 20px; border-radius: 10px; font-weight: bold; font-size: 1.3rem; transition: 0.3s; margin-top: 25px; text-align: center; }
-        
-        .info-section { padding: 80px 10%; background: white; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        @media (max-width: 850px) { .info-section { grid-template-columns: 1fr; } }
+        .btn-wa { background: var(--green); color: white; text-decoration: none; display: block; padding: 20px; border-radius: 10px; font-weight: bold; font-size: 1.2rem; transition: 0.3s; margin-top: 25px; }
 
-        .team-section { padding: 80px 5%; text-align: center; }
-        .team-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
-        .member-card { background: white; padding: 30px; border-radius: 12px; width: 250px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .member-photo { width: 130px; height: 130px; border-radius: 50%; background: #eee; margin: 0 auto 20px; border: 4px solid var(--gold); overflow: hidden; }
-        .member-photo img { width: 100%; height: 100%; object-fit: cover; }
+        /* SECTION ROLES & EQUIPE (SANS PHOTOS) */
+        .team-section { padding: 60px 10%; background: white; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .member-card { padding: 30px; border-radius: 12px; background: var(--light-bg); border-left: 5px solid var(--gold); }
+        .role-icon { font-size: 2.5rem; color: var(--blue); margin-bottom: 15px; }
 
-        footer { background: #0a192f; color: #a8b2d1; padding: 60px 5% 20px; }
+        .security-note { background: #fff4f4; border: 1px solid #ffcccc; padding: 15px; border-radius: 8px; font-size: 0.85rem; color: #c00; margin: 20px 0; text-align: left; }
+
+        footer { background: #0a192f; color: #a8b2d1; padding: 60px 5% 20px; font-size: 0.85rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.75rem; margin-top: 40px;}
-        
-        /* Cacher la barre Google Translate en haut pour plus de propreté */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
+        .social-icons a { color: white; font-size: 1.5rem; margin-right: 15px; }
     </style>
 </head>
 <body>
 
     <div class="top-info-bar">
-        <div>
-            <span><i class="fas fa-map-marker-alt"></i> 14 Avenue de l'Opéra, 75001 Paris</span>
-            <span><i class="fas fa-phone-alt"></i> +33 7 80 97 64 04</span>
-        </div>
-        <div style="display: flex; align-items: center;">
-            <i class="fas fa-language"></i> <div id="google_translate_element"></div>
-        </div>
+        <div><i class="fas fa-map-marker-alt"></i> 14 Avenue de l'Opéra, 75001 Paris | <i class="fas fa-phone-alt"></i> +33 7 80 97 64 04</div>
+        <div id="google_translate_element"></div>
     </div>
 
     <nav>
         <div class="logo">P2P FINANCE PRO</div>
-        <div class="secure-badge"><i class="fas fa-shield-alt"></i> SECURE SSL CERTIFIED</div>
+        <div class="secure-badge"><i class="fas fa-lock"></i> SÉCURITÉ SSL GARANTIE</div>
     </nav>
 
     <section class="hero">
-        <h1>Financing designed for your projects</h1>
-        <p>A transparent, fast, and secure credit solution to support your ambitions without weighing down your budget.</p>
+        <h1>Solutions de Crédit Entre Particuliers</h1>
+        <p>Un accompagnement transparent pour vos besoins de financement de 500 € à 75 000 €.</p>
     </section>
 
     <div class="calc-container">
-        <h3 style="text-align:center; color: var(--blue);">Simulate your loan</h3>
-        <input type="range" id="amountRange" min="500" max="75000" step="500" value="75000" oninput="doCalc()" style="width:100%">
-        <div class="amount-box"><span id="displayAmount">75 000</span> €</div>
+        <h3>Simulateur de prêt automatique</h3>
+        <input type="range" id="amountRange" min="500" max="75000" step="500" value="75000" oninput="updateCalc()" style="width:100%">
+        <div class="amount-display"><span id="txtAmt">75 000</span> €</div>
         
-        <div style="background: var(--light-bg); padding: 25px; border-radius: 12px; text-align:center;">
-            <p style="margin:0; color:#666;">Estimated monthly payment (Rate 3.5%) :</p>
-            <div style="font-size: 2.5rem; font-weight: 800; color: var(--blue);" id="displayMonthly">3 240,33 €</div>
+        <div style="background: #eef2f7; padding: 20px; border-radius: 8px;">
+            <p style="margin:0; font-size: 0.9rem;">Mensualité estimée (Taux fixe 3.5%) :</p>
+            <div style="font-size: 2.2rem; font-weight: bold; color: var(--blue);" id="txtMon">3 240,33 €</div>
+            <small>Durée : 24 mois</small>
         </div>
 
-        <div style="margin-top:20px; background: #fff4f4; border: 1px solid #ffcccc; padding: 15px; border-radius: 8px; font-size: 0.85rem; color: #c00;">
-            <i class="fas fa-info-circle"></i> <strong>SECURITY:</strong> Our agents will never ask for your card codes or bank IDs.
+        <div class="security-note">
+            <i class="fas fa-exclamation-triangle"></i> <strong>ALERTE SÉCURITÉ :</strong> Aucun agent de notre service ne vous contactera pour demander la création d'un compte bancaire ou l'envoi de vos identifiants personnels. Soyez vigilants.
         </div>
 
         <a href="https://wa.me/33780976404" class="btn-wa">
-            <i class="fab fa-whatsapp"></i> GET MY LOAN NOW
+            <i class="fab fa-whatsapp"></i> CONTACTER LA DIRECTION WHATSAPP
         </a>
     </div>
 
-    <section class="info-section">
-        <div>
-            <h2>How our service works</h2>
-            <p>P2P FINANCE PRO simplifies credit between individuals. Our mission is to offer immediate liquidity while protecting your repayment capacity.</p>
-            <p><strong>Step 1:</strong> Online simulation.<br>
-               <strong>Step 2:</strong> Send documents via WhatsApp.<br>
-               <strong>Step 3:</strong> Final answer in 24h to 48h after inspection.</p>
-        </div>
-        <div>
-            <h2>Commitment to Transparency</h2>
-            <p>To avoid overloading the borrower, we have established a preferential fee policy:</p>
-            <ul style="list-style:none; padding:0;">
-                <li style="margin-bottom:10px;"><i class="fas fa-check" style="color:var(--gold)"></i> <strong>Application fees</strong> are fully covered by our service.</li>
-                <li style="margin-bottom:10px;"><i class="fas fa-check" style="color:var(--gold)"></i> <strong>Bank transfer fees</strong> are covered by our service.</li>
-                <li style="margin-bottom:10px;"><i class="fas fa-check" style="color:var(--gold)"></i> <strong>Debt recognition fees</strong> are covered by our service.</li>
-            </ul>
+    <section class="team-section">
+        <h2 style="text-align: center; color: var(--blue); margin-bottom: 40px;">Organisation de la Direction</h2>
+        <div class="team-grid">
+            <div class="member-card">
+                <div class="role-icon"><i class="fas fa-user-tie"></i></div>
+                <h4 style="margin:0; color: var(--blue);">M. BALLARE DAVID</h4>
+                <p style="color: var(--gold); font-weight: bold; margin-top: 5px;">Directeur Général</p>
+                <p>Responsable de la validation finale des dossiers et de la stratégie financière. M. Ballare assure la conformité de chaque prêt et supervise le déblocage des fonds après l'étape d'inspection.</p>
+            </div>
+            <div class="member-card">
+                <div class="role-icon"><i class="fas fa-user-edit"></i></div>
+                <h4 style="margin:0; color: var(--blue);">MME BALLARE LAETITIA</h4>
+                <p style="color: var(--gold); font-weight: bold; margin-top: 5px;">Co-Directrice / Audit & Conformité</p>
+                <p>En charge de la réception des documents et de l'analyse initiale. Elle veille à ce que chaque client bénéficie de la prise en charge des frais (dossier, virement, reconnaissance) pour faciliter leur projet.</p>
+            </div>
         </div>
     </section>
 
-    <section class="team-section">
-        <h2 style="color:var(--blue);">P2P FINANCE PRO Management</h2>
-        <div class="team-grid">
-            <div class="member-card">
-                <div class="member-photo"><img src="david.jpg" alt="David Ballare" onerror="this.style.display='none';"></div>
-                <strong>David Ballare</strong><br>
-                <small>Chief Executive Officer</small>
-            </div>
-            <div class="member-card">
-                <div class="member-photo"><img src="laetitia.jpg" alt="Laetitia Ballare" onerror="this.style.display='none';"></div>
-                <strong>Laetitia Ballare</strong><br>
-                <small>Co-Director</small>
-            </div>
-        </div>
+    <section style="padding: 60px 10%; background: #fff;">
+        <h2 style="color: var(--blue);">Comment fonctionne notre service ?</h2>
+        <p>Afin de ne pas surcharger l'emprunteur, <strong>P2P FINANCE PRO</strong> a mis en place un protocole simplifié :</p>
+        <p><i class="fas fa-check-circle" style="color: var(--green);"></i> <strong>Frais de dossier :</strong> Intégralement pris en charge par notre service.</p>
+        <p><i class="fas fa-check-circle" style="color: var(--green);"></i> <strong>Frais de virement bancaire :</strong> Pris en charge par notre service.</p>
+        <p><i class="fas fa-check-circle" style="color: var(--green);"></i> <strong>Frais de reconnaissance de dette :</strong> Pris en charge par notre service.</p>
+        <p style="margin-top: 20px;">Après votre premier contact WhatsApp, un conseiller vous guidera pour l'envoi sécurisé de vos pièces justificatives. La réponse définitive intervient entre 24h et 48h après l'inspection de conformité.</p>
     </section>
 
     <footer>
         <div class="footer-grid">
             <div>
-                <h4>ABOUT</h4>
-                <p>P2P FINANCE PRO is a financial service specialized in lending to individuals and professionals. Headquarters in France.</p>
+                <h4>À PROPOS</h4>
+                <p>P2P FINANCE PRO est un leader du prêt entre particuliers basé en France, offrant des solutions sécurisées et rapides à l'international.</p>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -132,35 +113,33 @@
                 </div>
             </div>
             <div>
-                <h4>HEADQUARTERS</h4>
+                <h4>SIÈGE SOCIAL</h4>
                 <p>14 Avenue de l'Opéra, 75001 Paris, France</p>
-                <p>Registration: FR 84 923 102 445</p>
+                <p>Immatriculation : FR 84 923 102 445</p>
+                <p>Email : contact@p2p-finance-pro.com</p>
             </div>
         </div>
-        <div class="footer-bottom">&copy; 2026 P2P FINANCE PRO | Secure Site</div>
+        <div style="text-align: center; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            &copy; 2026 P2P FINANCE PRO | Site Sécurisé | Mentions Légales
+        </div>
     </footer>
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'fr,en,de,it,es,pt,nl,ar,zh-CN',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: true
-            }, 'google_translate_element');
+            new google.translate.TranslateElement({pageLanguage: 'fr', includedLanguages: 'fr,en,de,it,es,pt,ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
-        function doCalc() {
-            let val = document.getElementById('amountRange').value;
-            document.getElementById('displayAmount').innerText = Number(val).toLocaleString();
-            let rate = 0.035 / 12;
-            let res = (val * rate) / (1 - Math.pow(1 + rate, -24));
-            document.getElementById('displayMonthly').innerText = res.toFixed(2).replace('.', ',') + " €";
+        function updateCalc() {
+            let v = document.getElementById('amountRange').value;
+            document.getElementById('txtAmt').innerText = Number(v).toLocaleString();
+            let r = 0.035 / 12;
+            let res = (v * r) / (1 - Math.pow(1 + r, -24));
+            document.getElementById('txtMon').innerText = res.toFixed(2).replace('.', ',') + " €";
         }
-        window.onload = doCalc;
+        window.onload = updateCalc;
     </script>
 </body>
 </html>
