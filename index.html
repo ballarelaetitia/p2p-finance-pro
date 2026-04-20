@@ -4,144 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P2P FINANCE PRO | Direction Ballare</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #002e5b; --accent: #ffcf00; --whatsapp: #25D366; --bg: #f4f7f9; --danger: #d9534f; }
+        :root { --blue: #002e5b; --gold: #ffcf00; --green: #25D366; --bg: #f4f7f9; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--bg); color: #333; line-height: 1.6; }
         
         /* Navigation */
-        nav { background: #fff; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top:0; z-index:1000; }
-        .logo { font-weight: 800; font-size: 1.6rem; color: var(--primary); }
-        .nav-btn { background: var(--whatsapp); color: #fff; padding: 10px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        nav { background: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { font-weight: 900; color: var(--blue); font-size: 1.4rem; letter-spacing: -1px; }
 
-        /* Hero */
-        .hero { background: linear-gradient(rgba(0,46,91,0.85), rgba(0,46,91,0.85)), url('images/banniere-paris.jpg'); background-size: cover; color: #fff; padding: 80px 8% 140px 8%; text-align: center; }
-        .hero h1 { font-size: 3rem; margin: 0; }
+        /* Bannière avec votre image */
+        .hero { 
+            height: 380px; 
+            background: var(--blue) url('Banniere-paris.jpg') no-repeat center center;
+            background-size: cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            color: #fff; text-align: center; position: relative;
+        }
+        .hero-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,46,91,0.5); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; padding: 0 20px; }
 
-        /* Container Principal */
-        .container { padding: 0 8%; margin-top: -100px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; }
-        @media (max-width: 900px) { .container { grid-template-columns: 1fr; margin-top: -40px; } }
+        /* Conteneur principal */
+        .container { max-width: 1100px; margin: -50px auto 40px; padding: 0 20px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; position: relative; z-index: 10; }
+        @media (max-width: 850px) { .container { grid-template-columns: 1fr; margin-top: 20px; } }
 
-        /* Card Simulateur */
-        .card { background: #fff; padding: 35px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); border-top: 6px solid var(--accent); }
-        .resultat { background: #f0f4f8; padding: 25px; text-align: center; border-radius: 15px; margin: 20px 0; border: 1px dashed var(--primary); }
-        .mens-val { font-size: 3rem; font-weight: 800; color: var(--primary); }
-        .btn-submit { background: var(--accent); color: var(--primary); width: 100%; border: none; padding: 20px; border-radius: 10px; font-weight: 800; cursor: pointer; font-size: 1.2rem; text-transform: uppercase; }
+        /* Carte Simulateur */
+        .card { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 6px solid var(--gold); }
+        .result-box { background: #eef2f7; padding: 20px; border-radius: 12px; text-align: center; margin: 20px 0; border: 2px dashed var(--blue); }
+        .big-price { font-size: 3rem; font-weight: 900; color: var(--blue); display: block; }
 
-        /* Alerte Sécurité */
-        .section-explication { background: #fff; padding: 60px 8%; }
-        .alerte-securite { background: #fff1f1; border: 2px solid #ffcccc; padding: 25px; border-radius: 15px; margin-bottom: 40px; display: flex; align-items: center; gap: 20px; }
-        
-        .box { padding: 25px; border-radius: 15px; background: #f9f9f9; border-left: 5px solid var(--whatsapp); margin-bottom: 20px; }
+        /* Formulaire */
+        input[type="range"] { width: 100%; margin: 20px 0; cursor: pointer; }
+        input[type="text"], input[type="email"] { width: 100%; padding: 14px; margin-bottom: 12px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; font-size: 1rem; }
+        .btn-wa { background: var(--gold); color: var(--blue); border: none; width: 100%; padding: 18px; font-weight: 900; border-radius: 8px; cursor: pointer; font-size: 1.1rem; transition: 0.3s; }
+        .btn-wa:hover { background: #e6bb00; }
 
-        /* Equipe */
-        .equipe-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 40px 8%; background: #f4f7f9; }
-        .member-card { background: #fff; padding: 25px; border-radius: 15px; width: 220px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .member-card img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid var(--accent); }
-        .member-card i { font-size: 3rem; color: var(--primary); margin-bottom: 15px; display: block; }
+        /* Équipe (Photos David et Laetitia) */
+        .team-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        .member { text-align: center; background: #fff; padding: 15px; border-radius: 12px; width: 160px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .member img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); margin-bottom: 10px; }
 
-        footer { background: #111; color: #fff; padding: 60px 8%; text-align: center; }
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp); width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 35px; z-index: 2000; text-decoration: none; }
+        /* Réseaux Sociaux (Tout en bas) */
+        .social-footer { background: #fff; padding: 40px 20px; text-align: center; border-top: 1px solid #eee; margin-top: 50px; }
+        .social-icons { display: flex; justify-content: center; gap: 25px; margin-top: 20px; }
+        .social-icons a { font-size: 2.5rem; color: var(--blue); text-decoration: none; transition: 0.3s; }
+        .social-icons a:hover { transform: translateY(-5px); }
+
+        footer { background: #111; color: #fff; text-align: center; padding: 25px; font-size: 0.8rem; }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--green); color: #fff; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 1000; }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo">P2P FINANCE PRO</div>
-    <a href="https://wa.me/33780976404" class="nav-btn"><i class="fab fa-whatsapp"></i> Contact Direction</a>
-</nav>
+    <nav>
+        <div class="logo">P2P FINANCE PRO</div>
+        <a href="https://wa.me/33780976404" style="color:var(--green); font-weight:bold; text-decoration:none;"><i class="fab fa-whatsapp"></i> Contact Direction</a>
+    </nav>
 
-<header class="hero">
-    <h1>Financement de 500 € à 75 000 €</h1>
-    <p>Gestion directe Famille Ballare | Accompagnement sur mesure</p>
-</header>
-
-<div class="container">
-    <div class="card">
-        <h2>Simuler mon projet</h2>
-        <div style="margin-bottom:20px;">
-            <label>Montant souhaité : <b id="atxt">5 000 €</b></label>
-            <input type="range" id="ain" min="500" max="75000" step="500" value="5000" oninput="calc()" style="width:100%;">
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 style="font-size:2.8rem; margin:0;">Prêts de 500 € à 75 000 €</h1>
+            <p style="font-size:1.2rem;">Votre projet financé en 48h par la Famille Ballare</p>
         </div>
-        <div class="resultat">
-            <div class="mens-val" id="res">215,94 €</div>
-            <small>Mensualité fixe (Taux de 3,5%)</small>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h3 style="text-align:center; margin-top:0;">Simulateur de Mensualité</h3>
+            <input type="range" id="slider" min="500" max="75000" step="500" value="75000" oninput="update()">
+            
+            <div class="result-box">
+                <span style="font-size:1rem;">Montant choisi : <b id="m-val">75 000</b> €</span>
+                <span class="big-price" id="res-val">3 240,33 €</span>
+                <small>Mensualité fixe (Taux 3,5%)</small>
+            </div>
+
+            <form action="https://wa.me/33780976404" target="_blank">
+                <input type="text" placeholder="Nom et Prénom" required>
+                <input type="text" placeholder="Votre Profession" required>
+                <input type="email" placeholder="Votre Email" required>
+                <button type="submit" class="btn-wa">DEMANDER VIA WHATSAPP</button>
+            </form>
         </div>
-        <form action="https://wa.me/33780976404" target="_blank">
-            <input type="text" placeholder="Votre Nom et Prénom" required style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ccc; box-sizing: border-box;">
-            <button type="submit" class="btn-submit">VALIDER VIA WHATSAPP</button>
-        </form>
-    </div>
 
-    <div style="padding-top:40px;">
-        <h2 style="color:var(--primary);">Notre Engagement</h2>
-        <p>La direction de <strong>P2P FINANCE PRO</strong> simplifie vos démarches. Nous prenons en charge l'intégralité de la gestion administrative pour garantir la rapidité de votre virement :</p>
-        <ul style="list-style: none; padding: 0;">
-            <li><i class="fas fa-check-circle" style="color:var(--whatsapp)"></i> Analyse complète de recevabilité</li>
-            <li><i class="fas fa-check-circle" style="color:var(--whatsapp)"></i> Traitement prioritaire des dossiers</li>
-            <li><i class="fas fa-check-circle" style="color:var(--whatsapp)"></i> Rédaction des actes officiels</li>
-        </ul>
-    </div>
-</div>
-
-<section class="section-explication">
-    <div class="alerte-securite">
-        <i class="fas fa-user-shield" style="font-size: 3rem; color: var(--danger);"></i>
-        <div>
-            <h3 style="color:var(--danger); margin:0;">PROTECTION & SÉCURITÉ</h3>
-            <p style="margin:5px 0 0 0; font-weight:600;">Aucun de nos agents ne vous demandera de créer un compte bancaire spécifique ni de fournir vos identifiants de connexion en ligne.</p>
+        <div style="padding-top:10px;">
+            <h2 style="color:var(--blue); margin-top:0;">Direction Ballare</h2>
+            <p>Une gestion familiale et humaine pour vos besoins d'argent immédiats. Aucun frais de dossier à l'avance.</p>
+            
+            <div class="team-grid">
+                <div class="member">
+                    <img src="david.jpg" alt="David" onerror="this.src='https://via.placeholder.com/100?text=David'">
+                    <div style="font-weight:bold; font-size:0.9rem;">Ballare David</div>
+                    <div style="font-size:0.75rem; color:#777;">Direction</div>
+                </div>
+                <div class="member">
+                    <img src="laetitia.jpg" alt="Laetitia" onerror="this.src='https://via.placeholder.com/100?text=Laetitia'">
+                    <div style="font-weight:bold; font-size:0.9rem;">Ballare Laetitia</div>
+                    <div style="font-size:0.75rem; color:#777;">Direction</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <h2 style="text-align:center; color:var(--primary);">Votre parcours simplifié</h2>
-    <div class="box">
-        <h3>1. Étude de recevabilité</h3>
-        <p>M. Frank Martin analyse votre demande pour une vérification immédiate de la faisabilité de votre projet.</p>
+    <div class="social-footer">
+        <p style="font-weight:bold; color:#777; letter-spacing:1px;">NOUS RETROUVER SUR LES RÉSEAUX</p>
+        <div class="social-icons">
+            <a href="#" style="color:#1877F2;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color:#E4405F;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color:#000;"><i class="fab fa-tiktok"></i></a>
+            <a href="#" style="color:#FF0000;"><i class="fab fa-youtube"></i></a>
+            <a href="#" style="color:#1DA1F2;"><i class="fab fa-twitter"></i></a>
+        </div>
     </div>
-    <div class="box">
-        <h3>2. Validation & Mise à disposition</h3>
-        <p>M. Sandy Macia valide les garanties nécessaires. Mme Rodriguez Sabrina finalise ensuite le transfert des fonds sous 48h.</p>
-    </div>
-</section>
 
-<section class="equipe-grid">
-    <div class="member-card">
-        <img src="images/david.jpg" alt="Ballare David">
-        <h4>Ballare David</h4><span>Directeur Associé</span>
-    </div>
-    <div class="member-card">
-        <img src="images/laetitia.jpg" alt="Ballare Laetitia">
-        <h4>Ballare Laetitia</h4><span>Directrice Générale</span>
-    </div>
-    <div class="member-card">
-        <i class="fas fa-user-check"></i>
-        <h4>Frank Martin</h4><span>Analyse Dossier</span>
-    </div>
-    <div class="member-card">
-        <i class="fas fa-file-signature"></i>
-        <h4>Sandy Macia</h4><span>Mandataire de Garantie</span>
-    </div>
-    <div class="member-card">
-        <i class="fas fa-user-edit"></i>
-        <h4>Rodriguez Sabrina</h4><span>Gestion Administrative</span>
-    </div>
-</section>
+    <footer>
+        DIRECTION BALLARE © 2026 | PARIS | SITE SÉCURISÉ SSL
+    </footer>
 
-<a href="https://wa.me/33780976404" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/33780976404" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<footer>
-    <p>DIRECTION BALLARE © 2026 | Paris 1er, Rue de Tolbiac 75013</p>
-    <p style="font-size: 0.8rem; opacity: 0.6;">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ. VÉRIFIEZ VOS CAPACITÉS DE REMBOURSEMENT AVANT DE VOUS ENGAGER.</p>
-</footer>
-
-<script>
-    function calc() {
-        let a = document.getElementById('ain').value;
-        document.getElementById('atxt').innerText = Number(a).toLocaleString() + ' €';
-        let r = 0.035 / 12; // Taux 3.5%
-        let m = (a * r) / (1 - Math.pow(1 + r, -24));
-        document.getElementById('res').innerText = m.toFixed(2).replace('.', ',') + ' €';
-    }
-</script>
+    <script>
+        function update() {
+            let m = document.getElementById('slider').value;
+            document.getElementById('m-val').innerText = Number(m).toLocaleString();
+            
+            let tauxM = 0.035 / 12;
+            let res = (m * tauxM) / (1 - Math.pow(1 + tauxM, -24));
+            document.getElementById('res-val').innerText = res.toFixed(2).replace('.', ',') + " €";
+        }
+        // Initialisation au chargement
+        window.onload = update;
+    </script>
 </body>
 </html>
