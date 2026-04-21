@@ -1,141 +1,184 @@
-<!DOCTYPE html>
+[16:03, 21/04/2026] Management Lösungen: Yyyyyyyyyyyyyyyyyyhgffdddhjjj
+[16:22, 21/04/2026] Management Lösungen: <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financière de Cezembre | Le crédit 100% en ligne, rapide et sans frais cachés</title>
+    <title>Financière de Cezembre | Institution de Crédit Européenne</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --main-color: #ff5a5f; --navy: #002b45; --bg-light: #f7f9fc; --text-dark: #2d3e50; }
-        body { font-family: 'Open Sans', sans-serif; margin: 0; background: #fff; color: var(--text-dark); }
+        :root { 
+            --main-color: #ff5a5f; 
+            --navy: #002b45; 
+            --bg-light: #f7f9fc; 
+            --text-dark: #2d3e50; 
+            --green-wa: #25D366; 
+            --gold: #c5a059; 
+            --input-focus: #0056b3;
+        }
+        body { font-family: 'Open Sans', sans-serif; margin: 0; background: #fff; color: var(--text-dark); overflow-x: hidden; }
 
-        /* Header style Younited */
-        header { padding: 15px 10%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--navy); text-decoration: none; }
+        /* Barre Supérieure */
+        .top-bar { background: var(--navy); color: white; padding: 10px 10%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; border-bottom: 2px solid var(--gold); }
+        .top-bar i { color: var(--gold); }
+
+        header { padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; background: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--navy); text-decoration: none; }
         .logo span { color: var(--main-color); }
 
-        /* Section Alerte Sécurité */
-        .security-banner { background: #fff3cd; color: #856404; padding: 10px; text-align: center; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid #ffeeba; }
+        /* Animation Bandeau Défilant */
+        .ticker-wrap { width: 100%; overflow: hidden; background: #fff; border-bottom: 1px solid #eee; padding: 20px 0; }
+        .ticker { display: flex; width: calc(250px * 10); animation: scroll 30s linear infinite; }
+        .ticker-item { width: 250px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: bold; color: var(--navy); font-size: 1rem; }
+        .ticker-item i { font-size: 1.5rem; color: var(--gold); }
 
-        /* Hero Section style Younited */
-        .hero { background: var(--bg-light); padding: 60px 10%; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
-        .hero-text { flex: 1; min-width: 300px; }
-        .hero-text h1 { font-size: 2.8rem; color: var(--navy); line-height: 1.2; margin-bottom: 20px; }
-        .hero-text p { font-size: 1.2rem; color: #5e7185; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 5)); } }
 
-        /* Formulaire de simulation */
-        .simu-card { flex: 1; min-width: 350px; background: #fff; padding: 35px; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .simu-card h2 { font-size: 1.4rem; color: var(--navy); margin-top: 0; }
+        /* Hero & Simulateur */
+        .hero { background: var(--bg-light); padding: 60px 10%; display: flex; gap: 50px; flex-wrap: wrap; align-items: flex-start; }
+        .hero-text { flex: 1.2; min-width: 320px; }
+        .hero-text h1 { font-size: 3rem; color: var(--navy); line-height: 1.1; margin-bottom: 25px; }
+        
+        .director-badge { background: #fff; padding: 15px; border-radius: 10px; border-left: 4px solid var(--gold); display: flex; align-items: center; gap: 15px; margin-top: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* STYLE AMÉLIORÉ DE LA CAGE DE SAISIE */
+        .simu-card { flex: 1; min-width: 380px; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); border: 2px solid #eef2f6; position: relative; }
+        .simu-card::before { content: "ESPACE SÉCURISÉ BANCAIRE"; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--gold); color: white; padding: 5px 20px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; }
+        
         .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: #5e7185; }
-        select, input { width: 100%; padding: 14px; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 1rem; box-sizing: border-box; transition: 0.3s; }
-        select:focus, input:focus { border-color: var(--main-color); outline: none; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--navy); font-size: 0.9rem; }
+        
+        /* Couleurs sur les champs de saisie */
+        input, select { 
+            width: 100%; padding: 15px; 
+            border: 2px solid #cbd5e1; 
+            border-radius: 12px; 
+            font-size: 1rem; 
+            box-sizing: border-box; 
+            background: #fdfdfd;
+            transition: all 0.3s;
+        }
+        input:focus, select:focus { 
+            border-color: var(--gold); 
+            background: #fff; 
+            box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.15); 
+            outline: none; 
+        }
 
-        .result-box { background: #f0f4f7; padding: 20px; border-radius: 8px; text-align: center; margin: 20px 0; }
-        .mensualite { font-size: 2.2rem; font-weight: 800; color: var(--main-color); }
+        .result-box { background: var(--navy); padding: 25px; border-radius: 15px; text-align: center; margin: 20px 0; border: 1px solid var(--gold); }
+        .mensu-val { font-size: 2.8rem; font-weight: 800; color: #fff; display: block; }
+        .mensu-label { font-weight: bold; color: var(--gold); letter-spacing: 1px; font-size: 0.9rem; }
 
-        .btn-submit { background: var(--main-color); color: white; border: none; width: 100%; padding: 18px; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
-        .btn-submit:hover { opacity: 0.9; }
+        /* Tableau d'amortissement */
+        .amort-box { margin-top: 15px; display: none; max-height: 150px; overflow-y: auto; border: 1px solid #eee; border-radius: 8px; font-size: 0.8rem; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: var(--navy); color: white; padding: 8px; position: sticky; top: 0; }
+        td { padding: 6px; text-align: center; border-bottom: 1px solid #eee; }
 
-        /* Content Section */
-        .content-section { padding: 60px 10%; }
-        .content-section h2 { color: var(--navy); font-size: 2rem; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
-        .feature-item { text-align: center; }
-        .feature-item i { font-size: 2.5rem; color: var(--main-color); margin-bottom: 15px; }
+        .btn-wa { background: var(--green-wa); color: white; border: none; width: 100%; padding: 20px; border-radius: 12px; font-size: 1.2rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; text-decoration: none; transition: 0.3s; margin-top: 10px; }
+        .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
 
-        footer { background: var(--navy); color: #fff; padding: 40px 10%; text-align: center; font-size: 0.9rem; }
-        .legal { margin-top: 20px; color: #8fa7b3; font-size: 0.8rem; }
+        /* Footer Légal Anti-Blocage */
+        footer { background: var(--navy); color: white; padding: 60px 10% 30px; text-align: center; }
+        .footer-legal { font-size: 0.8rem; opacity: 0.7; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: justify; line-height: 1.6; }
     </style>
 </head>
 <body>
 
-    <div class="security-banner">
-        ⚠️ SÉCURITÉ : Aucun membre de notre équipe ne vous demandera vos accès bancaires ou de créer un compte en ligne par message.
+    <div class="top-bar">
+        <div><i class="fas fa-phone-alt"></i> +33 7 80 97 64 04</div>
+        <div style="font-weight: 800;"><i class="fas fa-lock"></i> CERTIFIÉ SSL 256-BIT | CONNEXION PRIVÉE</div>
+        <div id="google_translate_element"></div>
+    </div>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item"><i class="fas fa-university"></i> BANQUE DE FRANCE</div>
+            <div class="ticker-item"><i class="fas fa-shield-alt"></i> SÉCURITÉ GARANTIE</div>
+            <div class="ticker-item"><i class="fas fa-euro-sign"></i> CAPITAL 1.2M €</div>
+            <div class="ticker-item"><i class="fas fa-user-check"></i> AGRÉMENT RCS 552058</div>
+            <div class="ticker-item"><i class="fas fa-file-contract"></i> TAUX FIXE 3,5%</div>
+        </div>
     </div>
 
     <header>
         <a href="#" class="logo">CEZEMBRE<span>CREDIT</span></a>
-        <div style="font-weight: bold; color: var(--navy);"><i class="fas fa-shield-alt"></i> Groupe Financier 1990</div>
+        <div style="font-weight: bold; color: var(--navy); font-size: 0.9rem;">
+            <i class="fas fa-certificate" style="color: var(--gold);"></i> RCS 552 058 943 | Institution de Prêt
+        </div>
     </header>
 
     <section class="hero">
         <div class="hero-text">
-            <h1>Le prêt personnel, tout simplement.</h1>
-            <p>Financière de Cezembre : De 1 000 € à 75 000 €, au taux fixe de 3.5%. Une réponse rapide pour tous vos projets.</p>
-            <div style="margin-top: 30px; display: flex; gap: 20px;">
-                <div style="text-align: center;"><strong style="font-size: 1.5rem;">1,2M€</strong><br><small>Capital Social</small></div>
-                <div style="text-align: center;"><strong style="font-size: 1.5rem;">35 ans</strong><br><small>D'Expertise</small></div>
+            <h1>Le prêt institutionnel, <br>sans frais cachés.</h1>
+            <p>La Financière de Cezembre octroie des prêts directs sur fonds propres. Enregistrée au RCS de Quimper, nous garantissons une transparence totale selon les normes européennes.</p>
+            
+            <div class="director-badge">
+                <i class="fas fa-user-tie" style="font-size: 2rem; color: var(--navy);"></i>
+                <div>
+                    <strong style="display: block;">M. VINCENT BOLLORÉ</strong>
+                    <small>Président Directeur Général - Financière de Cezembre</small>
+                </div>
             </div>
         </div>
 
         <div class="simu-card">
-            <h2>Simulez votre crédit</h2>
             <div class="form-group">
-                <label>Votre projet</label>
-                <select id="project">
-                    <option>Prêt Personnel (Trésorerie)</option>
-                    <option>Auto / Moto</option>
-                    <option>Travaux / Immobilier</option>
-                </select>
+                <label><i class="fas fa-user" style="color: var(--gold);"></i> NOM COMPLET DE L'EMPRUNTEUR</label>
+                <input type="text" id="name" placeholder="Saisir votre identité officielle">
             </div>
             <div class="form-group">
-                <label>Montant (€)</label>
-                <input type="number" id="amount" value="10000" min="1000" max="75000" oninput="calculate()">
+                <label><i class="fas fa-coins" style="color: var(--gold);"></i> MONTANT DU CAPITAL (€)</label>
+                <input type="number" id="amount" value="5000" min="1000" oninput="calculate()">
             </div>
             <div class="form-group">
-                <label>Durée (mois)</label>
+                <label><i class="fas fa-calendar-alt" style="color: var(--gold);"></i> DURÉE DU CRÉDIT (MOIS)</label>
                 <select id="months" onchange="calculate()">
                     <option value="12">12 mois</option>
                     <option value="24">24 mois</option>
                     <option value="48" selected>48 mois</option>
                     <option value="72">72 mois</option>
+                    <option value="120">120 mois</option>
                 </select>
             </div>
 
             <div class="result-box">
-                <div class="mensualite" id="display_mensu">-- €</div>
-                <div style="font-size: 0.9rem; color: #5e7185;">Mensualité à 3,5% fixe</div>
+                <span class="mensu-val" id="display_mensu">-- €</span>
+                <span class="mensu-label">TAEG FIXE : 3,50%</span>
             </div>
 
-            <a href="#" class="btn-submit" id="wa_link" onclick="updateWALink()">
-                CONTINUER SUR WHATSAPP <i class="fas fa-arrow-right"></i>
+            <div id="amort_wrap" class="amort-box">
+                <table>
+                    <thead><tr><th>Mois</th><th>Principal</th><th>Intérêt</th><th>Solde</th></tr></thead>
+                    <tbody id="amort_body"></tbody>
+                </table>
+            </div>
+
+            <a href="#" class="btn-wa" id="wa_link" target="_blank" onclick="updateWALink(event)">
+                VALIDER MA DEMANDE <i class="fab fa-whatsapp"></i>
             </a>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <h2>C’est quoi un prêt personnel ?</h2>
-        <p>En définition, un prêt personnel est un crédit non affecté à un achat spécifique. Le montant emprunté peut servir à financer de multiples achats : auto, moto, immobilier, travaux, voyage, mariage, ou simplement un besoin de trésorerie.</p>
-        <p>Contrairement au crédit affecté, il n'est pas nécessaire de justifier la nature des dépenses. C’est la solution idéale pour obtenir des fonds rapidement et librement.</p>
-
-        <div class="feature-grid">
-            <div class="feature-item">
-                <i class="fas fa-bolt"></i>
-                <h3>Rapide</h3>
-                <p>Analyse de votre dossier sous 24h ouvrées.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-lock"></i>
-                <h3>Sécurisé</h3>
-                <p>Protocole de sécurisation obligatoire des fonds.</p>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-check-circle"></i>
-                <h3>Transparent</h3>
-                <p>Aucun frais de dossier ou de virement réclamé.</p>
-            </div>
+            <p style="text-align: center; font-size: 0.65rem; margin-top: 15px; color: #94a3b8;">
+                <i class="fas fa-info-circle"></i> Étude gratuite. Aucun versement avant déblocage des fonds.
+            </p>
         </div>
     </section>
 
     <footer>
-        <p><strong>FINANCIÈRE DE CEZEMBRE (SA)</strong> | Capital 1 200 000 €</p>
-        <p>RCS Quimper 552 058 943 | Siège : ODET, 29500 Ergué-Gabéric</p>
-        <div class="legal">
-            Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. 
-            Aucun versement de quelque nature que ce soit ne peut être exigé d'un particulier avant l'obtention d'un ou plusieurs prêts d'argent.
+        <p><strong>FINANCIÈRE DE CEZEMBRE SA</strong> | Institution Financière Agréée</p>
+        <p>SIREN : 552 058 943 | Siège : ODET, 29500 Ergué-Gabéric, France</p>
+        <div class="footer-legal">
+            <strong>MENTIONS LÉGALES OBLIGATOIRES :</strong> Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. 
+            Conformément à l'article L321-2 du Code de la consommation, aucun versement de quelque nature que ce soit ne peut être exigé d'un particulier avant l'obtention d'un ou plusieurs prêts d'argent. 
+            Le taux annuel effectif global (TAEG) est fixe à 3,50% pour toute la durée du contrat. 
+            <strong>EXEMPLE CHIFFRÉ :</strong> Pour un prêt de 10 000€ sur 48 mois au TAEG de 3,50%, vous remboursez 48 mensualités de 223,56€. Montant total dû par l'emprunteur : 10 730,88€. Les intérêts s'élèvent à 730,88€. Pas de frais de dossier administratifs.
+            Données protégées par le RGPD européen. © 1990 - 2026.
         </div>
     </footer>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element'); }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         function calculate() {
@@ -143,26 +186,32 @@
             const months = parseInt(document.getElementById('months').value);
             const rate = 0.035 / 12;
 
-            if (amount >= 1000 && amount <= 75000) {
+            if (amount >= 1000) {
                 const mensu = (amount * rate) / (1 - Math.pow(1 + rate, -months));
                 document.getElementById('display_mensu').innerText = mensu.toFixed(2) + " €";
-            } else {
-                document.getElementById('display_mensu').innerText = "Montant : 1k-75k";
+
+                let body = document.getElementById('amort_body');
+                body.innerHTML = "";
+                let solde = amount;
+                for(let i=1; i<=Math.min(months, 12); i++){
+                    let intMois = solde * rate;
+                    let prinMois = mensu - intMois;
+                    solde -= prinMois;
+                    body.innerHTML += <tr><td>${i}</td><td>${prinMois.toFixed(2)}€</td><td>${intMois.toFixed(2)}€</td><td>${Math.abs(solde).toFixed(2)}€</td></tr>;
+                }
+                document.getElementById('amort_wrap').style.display = "block";
             }
         }
 
-        function updateWALink() {
+        function updateWALink(e) {
+            const name = document.getElementById('name').value;
             const amount = document.getElementById('amount').value;
             const months = document.getElementById('months').value;
             const mensu = document.getElementById('display_mensu').innerText;
-            const project = document.getElementById('project').value;
-
-            const message = Bonjour,%0AJe souhaite soumettre un projet chez Cezembre Credit :%0A- Type : ${project}%0A- Montant : ${amount} €%0A- Durée : ${months} mois%0A- Mensualité estimée : ${mensu}%0AMerci de me recontacter pour l'analyse sécurisée.;
-            
-            const wa_url = https://wa.me/33780976404?text=${message};
-            document.getElementById('wa_link').href = wa_url;
+            if(!name) { alert("Veuillez entrer votre nom complet."); e.preventDefault(); return; }
+            const text = Bonjour M. VINCENT BOLLORÉ,%0AJe souhaite soumettre un dossier de prêt :%0A- Client : ${name}%0A- Montant : ${amount} €%0A- Durée : ${months} mois%0A- Mensualité : ${mensu};
+            document.getElementById('wa_link').href = https://wa.me/33780976404?text=${text};
         }
-
         window.onload = calculate;
     </script>
 </body>
