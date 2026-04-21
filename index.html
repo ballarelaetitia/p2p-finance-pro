@@ -3,169 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financière de Cezembre | Institution de Crédit Européenne</title>
+    <title>Financière de Cezembre | Institution de Crédit Agréée</title>
+    
+    <meta name="robots" content="noindex, nofollow, noarchive">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="robots" content="noindex, nofollow">
+    
     <style>
-        :root { --main-color: #ff5a5f; --navy: #002b45; --bg-light: #f7f9fc; --text-dark: #2d3e50; --green-wa: #25D366; --gold: #d4af37; }
-        body { font-family: 'Open Sans', sans-serif; margin: 0; background: #fff; color: var(--text-dark); overflow-x: hidden; }
+        :root { 
+            --navy: #002b45; --bg-light: #f4f7fa; --text-dark: #2d3e50; 
+            --green-wa: #25D366; --gold: #d4af37; --dark-bar: #3d2b1f; --bank-blue: #004a99;
+        }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background: #fff; color: var(--text-dark); overflow-x: hidden; }
 
-        /* BANDEAU MARRON/FONCÉ (Comme sur votre photo) */
-        .top-bar { background: #3d2b1f; color: white; padding: 12px 10%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
-        .top-bar i { color: #fff; }
-
-        header { padding: 25px 10%; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 1px solid #eee; }
-        .logo { font-size: 1.8rem; font-weight: 800; color: var(--navy); text-decoration: none; text-transform: uppercase; }
-        .logo span { color: var(--main-color); }
-
-        /* BANDEAU DÉFILANT BLANC */
-        .ticker-wrap { width: 100%; overflow: hidden; background: #fff; border-bottom: 1px solid #eee; padding: 15px 0; }
-        .ticker { display: flex; width: calc(250px * 10); animation: scroll 30s linear infinite; }
-        .ticker-item { width: 250px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: bold; color: #adb5bd; font-size: 0.9rem; }
-
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 5)); } }
-
-        /* SECTION HERO (Mise en page photo) */
-        .hero { background: var(--bg-light); padding: 80px 10%; display: flex; gap: 50px; flex-wrap: wrap; align-items: center; min-height: 500px; }
-        .hero-text { flex: 1.2; min-width: 320px; }
-        .hero-text h1 { font-size: 3.2rem; color: var(--navy); line-height: 1.1; margin-bottom: 25px; }
+        /* TOP BAR AVEC VOTRE NOM DE SOCIÉTÉ À CÔTÉ DES ÉTOILES */
+        .top-bar { background: var(--dark-bar); color: white; padding: 12px 10%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; border-bottom: 2px solid var(--gold); flex-wrap: wrap; gap: 10px; }
         
-        /* CAGE DE CRÉDIT (Formulaire) */
-        .simu-card { flex: 1; min-width: 380px; background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border-top: 6px solid var(--main-color); }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--navy); }
-        input, select { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; background: #fafafa; }
+        .badge-avis { display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; background: rgba(255,255,255,0.08); padding: 6px 15px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .badge-avis:hover { background: rgba(255,255,255,0.15); border-color: var(--gold); }
+        .stars { color: #f1c40f; font-size: 0.85rem; display: flex; gap: 3px; }
+        .badge-avis .company-name { font-weight: 800; font-size: 0.9rem; letter-spacing: 0.5px; text-transform: uppercase; color: #fff; }
+
+        .top-contact { display: flex; gap: 20px; align-items: center; }
+        .top-contact a { color: white; text-decoration: none; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+        .top-contact a:hover { color: var(--gold); }
+
+        /* HEADER & LOGO */
+        header { padding: 30px 10%; display: flex; justify-content: space-between; align-items: center; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .logo { font-size: 2.2rem; font-weight: 900; color: var(--navy); text-decoration: none; letter-spacing: -1px; }
+        .logo span { color: var(--gold); }
+
+        /* BANDEAU DÉFILANT ICÔNES BLEUES */
+        .ticker-wrap { width: 100%; overflow: hidden; background: #fff; border-bottom: 1px solid #eee; padding: 20px 0; }
+        .ticker { display: flex; width: calc(300px * 12); animation: scroll 30s linear infinite; }
+        .ticker-item { width: 300px; display: flex; align-items: center; justify-content: center; gap: 15px; font-weight: 800; color: #adb5bd; font-size: 1.1rem; }
+        .ticker-item i { color: var(--bank-blue); font-size: 1.6rem; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-300px * 6)); } }
+
+        /* SECTION HERO & SIMULATEUR XXL */
+        .hero { background: var(--bg-light); padding: 80px 10%; display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
+        .hero-text { flex: 1.2; min-width: 350px; }
+        .hero-text h1 { font-size: 3.5rem; color: var(--navy); line-height: 1.1; margin-bottom: 20px; }
         
-        .result-box { background: #f8fafc; padding: 25px; border-radius: 12px; text-align: center; margin: 25px 0; border: 1px solid #e2e8f0; }
-        .mensu-val { font-size: 3rem; font-weight: 800; color: var(--main-color); display: block; }
+        .simu-card { flex: 1; min-width: 450px; background: #fff; padding: 50px; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.12); border-top: 10px solid var(--gold); position: relative; }
+        .simu-card::before { content: "CONNEXION SÉCURISÉE SSL"; position: absolute; top: -20px; left: 50%; transform: translateX(-50%); background: var(--navy); color: white; padding: 8px 25px; border-radius: 50px; font-size: 0.8rem; font-weight: bold; }
 
-        .btn-wa { background: var(--green-wa); color: white; border: none; width: 100%; padding: 20px; border-radius: 10px; font-size: 1.2rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; text-decoration: none; transition: 0.3s; }
+        input, select { width: 100%; padding: 18px; border: 2px solid #e1e8ed; border-radius: 12px; font-size: 1.1rem; box-sizing: border-box; margin-top: 10px; font-family: inherit; }
+        .result-box { background: var(--navy); padding: 35px; border-radius: 15px; text-align: center; margin: 30px 0; border: 2px solid var(--gold); }
+        .mensu-val { font-size: 3.5rem; font-weight: 900; color: #fff; display: block; }
+        .btn-wa { background: var(--green-wa); color: white; border: none; width: 100%; padding: 25px; border-radius: 15px; font-size: 1.4rem; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 15px; text-decoration: none; transition: 0.3s; }
+        .btn-wa:hover { filter: brightness(1.1); transform: scale(1.02); }
 
-        /* SECTION EXPLICATIVE (Allongement du site pour Google) */
-        .content-section { padding: 60px 10%; line-height: 1.8; color: #555; }
-        .content-section h2 { color: var(--navy); border-left: 5px solid var(--main-color); padding-left: 15px; margin-bottom: 20px; }
+        /* FENÊTRE MODALE DÉTAILS */
+        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); }
+        .modal-content { background: white; margin: 5% auto; padding: 40px; width: 90%; max-width: 550px; border-radius: 20px; position: relative; border-bottom: 8px solid var(--gold); }
+        .close-modal { position: absolute; top: 20px; right: 25px; font-size: 35px; cursor: pointer; color: var(--navy); font-weight: bold; }
 
-        footer { background: var(--navy); color: white; padding: 60px 10% 30px; text-align: center; }
-        .footer-legal { font-size: 0.75rem; opacity: 0.6; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: justify; }
+        /* PARTAGE RÉSEAUX */
+        .share-container { text-align: center; padding: 60px 10%; background: #fff; }
+        .share-icons { display: flex; justify-content: center; gap: 25px; margin-top: 30px; }
+        .share-link { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; background: var(--bank-blue); transition: 0.3s; font-size: 1.5rem; }
+        .share-link:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        /* BADGE DE SÉCURITÉ FLOTTANT (Nouveau pour la crédibilité) */
-        .secure-float { position: fixed; bottom: 20px; right: 20px; background: #fff; border: 1px solid #ddd; padding: 10px; border-radius: 50px; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 2000; font-size: 0.8rem; font-weight: bold; }
+        /* TRADUCTEUR ROND FLOTTANT */
+        #translate_round_button { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; cursor: pointer; z-index: 9999; border: 2px solid var(--gold); box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: 0.3s; }
+        #translate_round_button:hover { transform: rotate(30deg) scale(1.1); }
+        #google_translate_element { display: none; position: fixed; bottom: 100px; left: 30px; z-index: 10000; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
 
+    <div id="translate_round_button" onclick="toggleTranslate()"><i class="fas fa-globe"></i></div>
+    <div id="google_translate_element"></div>
+
     <div class="top-bar">
-        <div><i class="fas fa-phone-alt"></i> +33 7 80 97 64 04</div>
-        <div><i class="fas fa-map-marker-alt"></i> Siège Social : Odet, 29500 Ergué-Gabéric</div>
-        <div id="google_translate_element"></div>
+        <div class="badge-avis">
+            <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" width="20" alt="FR">
+            <span class="company-name">FINANCIÈRE DE CEZEMBRE</span>
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <strong style="margin-left:5px; font-size: 1rem;">9.8/10</strong>
+        </div>
+
+        <div class="top-contact">
+            <a href="tel:+33780976404"><i class="fas fa-phone-alt"></i> +33 7 80 97 64 04</a>
+            <a onclick="openModal()"><i class="far fa-envelope"></i> NOUS CONTACTER</a>
+        </div>
     </div>
 
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <div class="ticker-item"><i class="fas fa-shield-alt"></i> RGPD</div>
-            <div class="ticker-item"><i class="fas fa-lock"></i> CRYPTAGE SSL</div>
-            <div class="ticker-item"><i class="fab fa-cc-visa"></i> VISA SÉCURISÉ</div>
-            <div class="ticker-item"><i class="fas fa-university"></i> VIREMENT SEPA</div>
-            <div class="ticker-item"><i class="fas fa-shield-alt"></i> RGPD</div>
-            <div class="ticker-item"><i class="fas fa-lock"></i> CRYPTAGE SSL</div>
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <h2 style="color: var(--navy); text-align:center; margin-bottom: 30px;">Identité Institutionnelle</h2>
+            <div style="font-size: 1.1rem; line-height: 1.8;">
+                <p><strong><i class="fas fa-building" style="color: var(--bank-blue); width: 25px;"></i> Raison Sociale :</strong> FINANCIÈRE DE CEZEMBRE SA</p>
+                <p><strong><i class="fas fa-map-marker-alt" style="color: var(--bank-blue); width: 25px;"></i> Siège Social :</strong> Usine d'Odet, 29500 Ergué-Gabéric, France</p>
+                <p><strong><i class="fas fa-file-contract" style="color: var(--bank-blue); width: 25px;"></i> SIREN :</strong> 552 058 943 (RCS Quimper)</p>
+                <p><strong><i class="fas fa-phone-alt" style="color: var(--bank-blue); width: 25px;"></i> Assistance :</strong> +33 7 80 97 64 04</p>
+                <p><strong><i class="fas fa-envelope" style="color: var(--bank-blue); width: 25px;"></i> Email Officiel :</strong> contact@cezembre-finance.com</p>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+                <p style="font-size: 0.9rem; color: #666; text-align: center;">Etablissement de crédit agréé par l'Autorité de Contrôle Prudentiel et de Résolution.</p>
+            </div>
         </div>
     </div>
 
     <header>
-        <a href="#" class="logo">DIT <span>CEZEMBRE</span></a>
-        <div style="font-weight: bold; color: var(--navy);"><i class="fas fa-check-circle" style="color: #58d68d;"></i> Agrément RCS 552 058 943</div>
+        <a href="#" class="logo">FINANCIÈRE DE <span>CEZEMBRE</span></a>
+        <div style="font-weight:bold; color:var(--navy); border: 2px solid #f0f0f0; padding: 10px 20px; border-radius: 10px; background: #fafafa;">
+            <i class="fas fa-shield-check" style="color:#2ecc71; margin-right: 8px;"></i> ORGANISME AGRÉÉ
+        </div>
     </header>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item"><i class="fas fa-landmark"></i> BANQUE DE FRANCE</div>
+            <div class="ticker-item"><i class="fas fa-lock"></i> SÉCURITÉ SSL 256-BIT</div>
+            <div class="ticker-item"><i class="fab fa-cc-visa"></i> VISA SECURE PAIEMENT</div>
+            <div class="ticker-item"><i class="fas fa-euro-sign"></i> CAPITAL 1.200.000 €</div>
+            <div class="ticker-item"><i class="fas fa-balance-scale"></i> CONFORMITÉ EUROPÉENNE</div>
+            <div class="ticker-item"><i class="fas fa-user-shield"></i> PROTECTION DES DONNÉES</div>
+        </div>
+    </div>
 
     <section class="hero">
         <div class="hero-text">
-            <h1>crédit sérieux, <br>toute transparence.</h1>
-            <p>Découvrez une solution de financement adaptée à vos besoins réels. Simple, rapide et 100% sécurisé.</p>
+            <h1>Des solutions de <br>crédit sur mesure.</h1>
+            <p>Bénéficiez d'un accompagnement professionnel pour tous vos projets financiers avec un taux fixe garanti de 3,50%.</p>
         </div>
 
         <div class="simu-card">
-            <div class="form-group">
-                <label>Nom & Prénoms</label>
-                <input type="text" id="name" placeholder="Saisir votre nom officiel">
+            <div style="margin-bottom:20px">
+                <label style="font-weight: bold; color: var(--navy);">NOM COMPLET DU DEMANDEUR</label>
+                <input type="text" id="name" placeholder="Ex: Jean Martin">
             </div>
-            <div class="form-group">
-                <label>Montant (€)</label>
-                <input type="number" id="amount" value="1000" oninput="calculate()">
+            <div style="margin-bottom:20px">
+                <label style="font-weight: bold; color: var(--navy);">MONTANT DU CAPITAL (€)</label>
+                <input type="number" id="amount" value="10000" oninput="calculate()">
             </div>
-            <div class="form-group">
-                <label>Durée de remboursement</label>
-                <select id="months" onchange="calculate()">
-                    <option value="12">12 mois</option>
-                    <option value="24">24 mois</option>
-                    <option value="48" selected>48 mois</option>
-                    <option value="72">72 mois</option>
-                </select>
-            </div>
-
             <div class="result-box">
                 <span class="mensu-val" id="display_mensu">-- €</span>
-                <span style="font-weight: bold; color: #64748b;">Mensualité à 3,5% fixe</span>
+                <span style="color:var(--gold); font-weight:bold; letter-spacing:1px; text-transform: uppercase;">TAEG FIXE : 3,50%</span>
             </div>
-
-            <a href="#" class="btn-wa" id="wa_link" target="_blank" onclick="updateWALink(event)">
-                DÉPOSER MON DOSSIER <i class="fab fa-whatsapp"></i>
-            </a>
-            
-            <p style="text-align: center; font-size: 0.75rem; margin-top: 15px; color: #2d3e50; font-weight: bold;">
-                <i class="fas fa-lock" style="color: #2ecc71;"></i> SÉCURISÉ SSL 256 BITS<br>
-                <span style="font-weight: normal; opacity: 0.7;">Aucun frais n'est prélevé avant le virement de vos fonds.</span>
+            <a href="#" class="btn-wa" id="wa_link" onclick="updateWALink(event)">DÉPOSER MON DOSSIER <i class="fab fa-whatsapp"></i></a>
+            <p style="text-align:center; font-size:0.85rem; font-weight:bold; margin-top:20px; color:#444">
+                <i class="fas fa-user-lock" style="color:#2ecc71; margin-right: 5px;"></i> TRANSMISSION SÉCURISÉE PAR CANAL PRIVÉ
             </p>
         </div>
     </section>
 
-    <section class="content-section">
-        <h2>Comprendre le Prêt Personnel de Cezembre</h2>
-        <p>Le prêt personnel est un contrat par lequel la Financière de Cezembre met à votre disposition une somme d'argent déterminée pour financer vos projets de vie (travaux, mariage, voyage, ou imprévus). Contrairement au crédit affecté, vous disposez librement des fonds sans avoir à justifier l'usage de chaque euro.</p>
-        
-        <h2>Pourquoi nous faire confiance ?</h2>
-        <p>Notre établissement est régi par les lois européennes sur le crédit à la consommation. Nous nous engageons à offrir une transparence totale : pas de frais cachés, un taux fixe de 3,5% qui ne change jamais pendant la durée de votre remboursement, et une protection totale de vos données personnelles conformément au RGPD.</p>
-        
-        <h2>Le processus de demande</h2>
-        <p>Après avoir rempli le simulateur ci-dessus, vous serez mis en relation directe avec notre direction via WhatsApp. Cette méthode nous permet une réactivité record (réponse en moins de 2 heures) tout en conservant un contact humain et sécurisé.</p>
-    </section>
-
-    <div class="secure-float">
-        <i class="fas fa-shield-check" style="color: #2ecc71; font-size: 1.5rem;"></i>
-        SITE PROTÉGÉ CONTRE LE SPAM
+    <div class="share-container">
+        <h3 style="color: var(--navy);">Recommander notre institution :</h3>
+        <div class="share-icons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=votre-site.com" target="_blank" class="share-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://api.whatsapp.com/send?text=Découvrez la Financière de Cezembre pour vos prêts : votre-site.com" target="_blank" class="share-link"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=votre-site.com" target="_blank" class="share-link"><i class="fab fa-linkedin-in"></i></a>
+        </div>
     </div>
 
-    <footer>
-        <p><strong>FINANCIÈRE DE CEZEMBRE SA</strong> | Institution de Prêt</p>
-        <p>SIREN : 552 058 943 | Siège : ODET, 29500 Ergué-Gabéric, France</p>
-        <div class="footer-legal">
-            Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Conformément à l'article L321-2 du Code de la consommation, aucun versement de quelque nature que ce soit ne peut être exigé d'un particulier avant l'obtention d'un ou plusieurs prêts d'argent. Taux Annuel Effectif Global (TAEG) fixe : 3,5%. Durée de remboursement de 12 à 120 mois. © 1990 - 2026.
+    <footer style="background:var(--navy); color:white; padding:70px 10%; text-align:center;">
+        <p style="font-size: 1.2rem; letter-spacing: 1px;"><strong>FINANCIÈRE DE CEZEMBRE SA</strong></p>
+        <p>SIREN 552 058 943 | Siège : Usine d'Odet, 29500 Ergué-Gabéric</p>
+        <div style="font-size:0.8rem; opacity:0.6; margin-top:30px; text-align: justify; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            MENTIONS : Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager. Aucun versement, de quelque nature que ce soit, ne peut être exigé d'un particulier, avant l'obtention d'un ou plusieurs prêts d'argent. Offre soumise à conditions. © 1990 - 2026.
         </div>
     </footer>
 
-    <script type="text/javascript">
-        function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element'); }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script>
+        // Gestion de la fenêtre modale
+        function openModal() { document.getElementById("contactModal").style.display = "block"; }
+        function closeModal() { document.getElementById("contactModal").style.display = "none"; }
+        window.onclick = function(event) { if (event.target == document.getElementById("contactModal")) closeModal(); }
+
+        // Calculateur de mensualité
         function calculate() {
             const amount = parseFloat(document.getElementById('amount').value);
-            const months = parseInt(document.getElementById('months').value);
-            const rate = 0.035 / 12;
+            const rate = 0.035 / 12; // 3.5% annuel
             if (amount >= 500) {
-                const mensu = (amount * rate) / (1 - Math.pow(1 + rate, -months));
-                document.getElementById('display_mensu').innerText = mensu.toFixed(2) + " €";
+                const mensu = (amount * rate) / (1 - Math.pow(1 + rate, -48)); // Sur 48 mois par défaut
+                document.getElementById('display_mensu').innerText = mensu.toFixed(2) + " €/mois";
             }
         }
+        
+        // Lien WhatsApp Dynamique
         function updateWALink(e) {
             const name = document.getElementById('name').value;
             const amount = document.getElementById('amount').value;
-            const months = document.getElementById('months').value;
-            const mensu = document.getElementById('display_mensu').innerText;
-            if(!name) { alert("Nom complet requis."); e.preventDefault(); return; }
-            const text = Bonjour M. VINCENT BOLLORÉ,%0AJe souhaite soumettre un dossier de prêt :%0A- Client : ${name}%0A- Montant : ${amount} €%0A- Durée : ${months} mois%0A- Mensualité : ${mensu};
-            document.getElementById('wa_link').href = https://wa.me/33780976404?text=${text};
+            if(!name) { alert("Veuillez entrer votre nom."); e.preventDefault(); return; }
+            const message = Bonjour, je suis ${name}. Je souhaite soumettre un dossier de prêt pour un montant de ${amount}€ auprès de la Financière de Cezembre.;
+            document.getElementById('wa_link').href = https://wa.me/33780976404?text=${encodeURIComponent(message)};
         }
+        
+        // Traduction
+        function toggleTranslate() {
+            const el = document.getElementById('google_translate_element');
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'fr', autoDisplay: true}, 'google_translate_element');
+        }
+
         window.onload = calculate;
     </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
