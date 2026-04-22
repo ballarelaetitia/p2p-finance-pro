@@ -18,6 +18,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
+        /* HEADER INSTITUTIONNEL */
         header {
             background: var(--white); padding: 20px 8%; display: flex;
             justify-content: space-between; align-items: center;
@@ -28,6 +29,16 @@
         .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; }
         .lang-btn { background: #EEE; padding: 8px 15px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 8px; }
 
+        /* Style spécifique pour le menu langues sans toucher au reste */
+        #langMenu {
+            display: none; position: absolute; top: 50px; right: 0; 
+            background: white; border: 1px solid #ddd; width: 180px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); z-index: 2000;
+        }
+        #langMenu div { padding: 10px; color: #333; cursor: pointer; font-size: 0.8rem; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 8px; }
+        #langMenu div:hover { background: #f9f9f9; }
+
+        /* HERO SECTION */
         .hero {
             height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
@@ -37,6 +48,7 @@
         .hero-content { max-width: 600px; }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
+        /* SIMULATEUR */
         .simulator {
             background: var(--white); padding: 40px; border-radius: 2px; width: 480px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy);
@@ -49,12 +61,15 @@
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; margin-top: 20px; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
+        /* CHIFFRES */
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
         .stat-box h3 { font-size: 2rem; color: var(--gold); }
 
+        /* SECTIONS */
         .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
         .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
 
+        /* FOOTER */
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
         .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
         .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
@@ -74,22 +89,18 @@
         <a href="#contact">Contact</a>
         
         <div style="position: relative;">
-            <div class="lang-btn" onclick="toggleLangMenu()" id="currentLang">
-                <i class="fas fa-globe-europe"></i> FR | EU
-            </div>
-            <div id="langMenu" style="display: none; position: absolute; top: 45px; right: 0; background: white; border: 1px solid #EEE; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 4px; width: 200px; z-index: 1001;">
-                <ul style="list-style: none; padding: 10px 0;">
-                    <li style="padding: 10px 20px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; color:#333;" onclick="selectLang('🇫🇷 France')"><span>🇫🇷</span> France</li>
-                    <li style="padding: 10px 20px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; color:#333;" onclick="selectLang('🇪🇸 Espagne')"><span>🇪🇸</span> Espagne</li>
-                    <li style="padding: 10px 20px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; color:#333;" onclick="selectLang('🇮🇹 Italie')"><span>🇮🇹</span> Italie</li>
-                    <li style="padding: 10px 20px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; color:#333;" onclick="selectLang('🇬🇧 Royaume-Uni')"><span>🇬🇧</span> Royaume-Uni</li>
-                    <li style="padding: 10px 20px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; color:#333;" onclick="selectLang('🇩🇪 Allemagne')"><span>🇩🇪</span> Allemagne</li>
-                    <li style="padding: 10px 20px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; border-top: 1px solid #F0F0F0; color:#333;" onclick="selectLang('🇨🇭 Suisse')"><span>🇨🇭</span> Suisse</li>
-                    <li style="padding: 10px 20px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; color:#333;" onclick="selectLang('🇸🇰 Slovaquie')"><span>🇸🇰</span> Slovaquie</li>
-                    <li style="padding: 10px 20px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; color:#333;" onclick="selectLang('🇸🇮 Slovénie')"><span>🇸🇮</span> Slovénie</li>
-                    <li style="padding: 10px 20px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; color:#333;" onclick="selectLang('🇸🇪 Suède')"><span>🇸🇪</span> Suède</li>
-                    <li style="padding: 10px 20px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; color:#333;" onclick="selectLang('🇽🇰 Kosovo')"><span>🇽🇰</span> Kosovo</li>
-                </ul>
+            <div class="lang-btn" id="activeLang" onclick="toggleLang()"><i class="fas fa-globe-europe"></i> FR | EU</div>
+            <div id="langMenu">
+                <div onclick="updateLang('🇫🇷 France')"><span>🇫🇷</span> France</div>
+                <div onclick="updateLang('🇪🇸 Espagne')"><span>🇪🇸</span> Espagne</div>
+                <div onclick="updateLang('🇮🇹 Italie')"><span>🇮🇹</span> Italie</div>
+                <div onclick="updateLang('🇬🇧 Royaume-Uni')"><span>🇬🇧</span> Royaume-Uni</div>
+                <div onclick="updateLang('🇩🇪 Allemagne')"><span>🇩🇪</span> Allemagne</div>
+                <div onclick="updateLang('🇨🇭 Suisse')"><span>🇨🇭</span> Suisse</div>
+                <div onclick="updateLang('🇸🇰 Slovaquie')"><span>🇸🇰</span> Slovaquie</div>
+                <div onclick="updateLang('🇸🇮 Slovénie')"><span>🇸🇮</span> Slovénie</div>
+                <div onclick="updateLang('🇸🇪 Suède')"><span>🇸🇪</span> Suède</div>
+                <div onclick="updateLang('🇽🇰 Kosovo')"><span>🇽🇰</span> Kosovo</div>
             </div>
         </div>
     </div>
@@ -105,22 +116,42 @@
         </div>
     </div>
 
-    <form class="simulator" action="https://formspree.io/f/55707e6c-f919-4972-bf3e-fba1cf0e51e9" method="POST">
-        <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
+    <form class="simulator" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
+        
+        <h3 style="margin-bottom: 25px;">Simulateur de Crédit</h3>
         <div class="sim-row">
-            <label>MONTANT DU PROJET <span><input type="number" name="montant" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:700; width:80px; outline:none;"> €</span></label>
+            <label>MONTANT DU PROJET <span><input type="number" id="amtNum" name="montant" value="15000" style="border:none; text-align:right; font-weight:700; width:80px; outline:none;"> €</span></label>
             <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
         </div>
         <div class="sim-row">
             <label>DURÉE DU REMBOURSEMENT <span id="durText">36 mois</span></label>
-            <input type="range" name="duree" id="durRange" min="6" max="84" step="6" value="36">
+            <input type="range" id="durRange" name="duree" min="6" max="84" step="6" value="36">
         </div>
-        <div class="result-area">
+        <div class="result-area" style="margin-bottom: 20px;">
             <p style="font-size: 0.8rem; margin-bottom: 5px;">MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
             <span id="monthlyRes">0.00</span> <span>€</span>
             <input type="hidden" name="mensualite" id="hiddenMonthly">
         </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;">
+            <input type="text" name="nom_prenom" placeholder="Nom et Prénom" required style="width: 100%; padding: 12px; border: 1px solid #DDD; font-family: 'Montserrat'; outline:none;">
+            <select name="projet" required style="width: 100%; padding: 12px; border: 1px solid #DDD; font-family: 'Montserrat'; background:white; outline:none;">
+                <option value="" disabled selected>Choisir votre projet</option>
+                <option value="Personnel">Prêt Personnel</option>
+                <option value="Immobilier">Investissement Immobilier</option>
+                <option value="Auto">Achat Véhicule</option>
+                <option value="Travaux">Travaux / Rénovation</option>
+            </select>
+            <input type="tel" name="telephone" placeholder="Numéro de téléphone" required style="width: 100%; padding: 12px; border: 1px solid #DDD; font-family: 'Montserrat'; outline:none;">
+            <input type="email" name="email" placeholder="Adresse Mail" required style="width: 100%; padding: 12px; border: 1px solid #DDD; font-family: 'Montserrat'; outline:none;">
+        </div>
+
         <button type="submit" class="btn-main">DÉPOSER MON DOSSIER</button>
+
+        <div style="text-align: center; font-size: 0.75rem; color: #27ae60; margin-top: 15px; font-weight: 600;">
+            <i class="fas fa-lock"></i> DOSSIER SÉCURISÉ & CONFIDENTIEL <i class="fas fa-shield-check"></i>
+        </div>
     </form>
 </section>
 
@@ -137,25 +168,16 @@
 
 <footer id="legal">
     <div class="f-grid">
-        <div>
-            <h4>FINANCIÈRE DE CEZEMBRE</h4>
-            <p>Distribution de crédit et participations financières régulées.</p>
-        </div>
-        <div>
-            <h4>SIÈGE SOCIAL</h4>
-            <p>ODET, 29500 ERGUÉ-GABÉRIC</p>
-        </div>
+        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit régulée.</p></div>
+        <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500 ERGUÉ-GABÉRIC</p></div>
+        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot</p></div>
+        <div><h4>AUDIT</h4><p>Constantin Associés</p></div>
     </div>
-    <div class="legal-block">
-        <div class="tag-warning">
-            UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.
-        </div>
-    </div>
+    <div class="tag-warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</div>
+    <p style="text-align:center; margin-top:40px; color:#555;">&copy; 2026 FINANCIÈRE DE CEZEMBRE - Tous droits réservés.</p>
 </footer>
 
-<a href="https://wa.me/33780976404" target="_blank" style="position: fixed; bottom: 30px; left: 30px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 10000; text-decoration: none;">
-    <i class="fab fa-whatsapp"></i>
-</a>
+<a href="https://wa.me/33780976404" target="_blank" style="position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; z-index: 5000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);"><i class="fab fa-whatsapp"></i></a>
 
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
@@ -165,48 +187,45 @@
     const durR = document.getElementById('durRange');
     const durT = document.getElementById('durText');
     const resM = document.getElementById('monthlyRes');
-    const hiddenM = document.getElementById('hiddenMonthly');
+    const hidM = document.getElementById('hiddenMonthly');
 
-    function calc(source) {
-        if (source === 'num') {
-            if (amtN.value > 75000) amtN.value = 75000;
-            amtR.value = amtN.value;
-        } else {
-            amtN.value = amtR.value;
-        }
-        let p = parseFloat(amtN.value) || 0;
-        let n = parseInt(durR.value);
+    // Calcul automatique
+    function calc() {
+        let p = amtR.value;
+        let n = durR.value;
         let r = 0.035 / 12;
+        amtN.value = p;
         durT.innerText = n + " mois";
-        if (p > 0) {
-            let m = (p * r) / (1 - Math.pow(1 + r, -n));
-            resM.innerText = m.toFixed(2);
-            hiddenM.value = m.toFixed(2) + " €";
-        }
+        let m = (p * r) / (1 - Math.pow(1 + r, -n));
+        resM.innerText = m.toFixed(2);
+        hidM.value = m.toFixed(2) + " €";
     }
 
-    function toggleLangMenu() {
+    // Gestion des langues
+    function toggleLang() {
         const menu = document.getElementById('langMenu');
-        menu.style.display = (menu.style.display === 'none') ? 'block' : 'none';
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
     }
 
-    function selectLang(lang) {
-        document.getElementById('currentLang').innerHTML = <i class="fas fa-globe-europe"></i> ${lang};
+    function updateLang(lang) {
+        document.getElementById('activeLang').innerHTML = <i class="fas fa-globe-europe"></i> ${lang};
         document.getElementById('langMenu').style.display = 'none';
     }
 
-    amtR.oninput = () => calc('range');
-    amtN.oninput = () => calc('num');
-    durR.oninput = () => calc('range');
+    // Event Listeners
+    amtR.oninput = calc;
+    amtN.oninput = () => { amtR.value = amtN.value; calc(); };
+    durR.oninput = calc;
     window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     
-    window.onclick = function(event) {
-        if (!event.target.matches('.lang-btn') && !event.target.closest('.lang-btn')) {
+    // Fermer menu si clic ailleurs
+    window.onclick = function(e) {
+        if (!e.target.matches('.lang-btn') && !e.target.closest('.lang-btn')) {
             document.getElementById('langMenu').style.display = 'none';
         }
     }
+
     calc();
 </script>
-
 </body>
 </html>
