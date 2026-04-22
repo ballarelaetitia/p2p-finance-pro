@@ -3,263 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P2P FINANCE PRO | Institution de Crédit Régulée</title>
+<title>P2P FINANCE PRO | Crédit sécurisé</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-:root { 
-    --blue: #002e5b; 
-    --gold: #ffcf00; 
-    --light-bg: #f4f8fb; 
-    --text: #333; 
-    --white: #ffffff; 
+:root {
+--blue:#002e5b;
+--gold:#ffcf00;
+--bg:#f4f8fb;
 }
 
-body {
-    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
-    margin: 0;
-    color: var(--text);
-    background: var(--light-bg);
-}
-    .logo-slider {
-    overflow: hidden;
-    background: white;
-    padding: 15px;
-}
-.logos {
-    display: flex;
-    gap: 50px;
-    animation: scroll 20s linear infinite;
-}
-.logos img {
-    height: 40px;
-}
-@keyframes scroll {
-    0% {transform: translateX(0);}
-    100% {transform: translateX(-50%);}
-}
+body {margin:0;font-family:Arial;background:var(--bg);}
 
-.top-bar {
-    background: var(--blue);
-    color: white;
-    padding: 10px 5%;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-}
+.top-bar {background:var(--blue);color:white;padding:10px;display:flex;justify-content:space-between;}
+.warning {background:#fff3cd;padding:10px;text-align:center;font-weight:bold;}
 
-.warning-bar {
-    background: #fff3cd;
-    color: #856404;
-    padding: 10px;
-    text-align: center;
-    font-weight: bold;
-}
+nav {background:white;padding:15px;display:flex;justify-content:space-between;}
 
-nav {
-    background: var(--white);
-    padding: 15px 5%;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.logo-box {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo-square {
-    background: var(--blue);
-    color: var(--gold);
-    width: 45px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 900;
-}
-
-.logo-text {
-    font-weight: 900;
-    color: var(--blue);
-}
-
-.hero {
-    background: var(--blue);
-    color: white;
-    padding: 80px 5%;
-    text-align: center;
-}
+.hero {background:var(--blue);color:white;padding:80px;text-align:center;}
 
 .main-card {
-    max-width: 900px;
-    margin: -60px auto 40px;
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    border-top: 6px solid var(--gold);
+background:white;
+max-width:800px;
+margin:-50px auto;
+padding:30px;
+border-top:6px solid var(--gold);
+border-radius:10px;
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+input,select {width:100%;padding:12px;margin:10px 0;}
+
+.result {background:#fff8dc;padding:20px;text-align:center;border:2px solid var(--gold);}
+
+.btn {
+background:var(--gold);
+padding:15px;
+border:none;
+width:100%;
+font-weight:bold;
+cursor:pointer;
 }
 
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-}
+.logo-slider {overflow:hidden;background:white;padding:15px;margin-top:40px;}
+.logos {display:flex;gap:50px;animation:scroll 20s linear infinite;}
+.logos img {height:40px;}
+@keyframes scroll {0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
-.simulation-result {
-    background: #fff8dc;
-    border: 2px solid var(--gold);
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-}
+section {padding:50px;}
 
-.mensualite {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--blue);
+.loan-grid {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
 }
+.loan-grid div {background:white;padding:20px;border-left:5px solid var(--blue);}
 
-.btn-submit {
-    background: var(--gold);
-    border: none;
-    width: 100%;
-    padding: 20px;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-footer {
-    background: #071527;
-    color: white;
-    padding: 40px;
-}
+footer {background:#071527;color:white;padding:30px;font-size:12px;}
 </style>
 </head>
 
 <body>
 
-<div class="warning-bar">
-⚠️ Un crédit vous engage et doit être remboursé. Vérifiez vos capacités.
+<div class="warning">
+⚠️ Un crédit vous engage et doit être remboursé
 </div>
 
 <div class="top-bar">
-<div>✔ Institution déclarée | Sécurité RGPD</div>
+<div>✔ Institution déclarée</div>
 <div>☎ +33 7 80 97 64 04</div>
 </div>
 
 <nav>
-<div class="logo-box">
-<div class="logo-square">P2P</div>
-<div class="logo-text">FINANCE PRO</div>
-</div>
-<div>🔒 Connexion sécurisée</div>
+<div><b>P2P FINANCE PRO</b></div>
+<div id="google_translate_element"></div>
 </nav>
 
 <section class="hero">
-<h1>Crédit simple, rapide et sécurisé</h1>
-<p>Simulation immédiate au taux fixe de 3,5%</p>
+<h1>Votre crédit rapide et sécurisé</h1>
+<p>Taux fixe 3,5% - Réponse rapide</p>
 </section>
 
 <div class="main-card">
-<h2 style="text-align:center;">Simulateur de prêt</h2>
 
-<form id="loanForm">
+<input type="text" id="name" placeholder="Nom et prénom">
+<input type="email" id="email" placeholder="Email">
 
-<div class="form-grid">
-<div>
-<label>Nom et prénom</label>
-<input type="text" id="name" required>
-</div>
+<select id="amount" onchange="calc()"></select>
 
-<div>
-<label>Email</label>
-<input type="email" id="email" required>
-</div>
-
-<div>
-<label>Montant (€)</label>
-<select id="amount" onchange="calculate()"></select>
-</div>
-
-<div>
-<label>Durée (mois)</label>
-<select id="period" onchange="calculate()">
+<select id="duration" onchange="calc()">
 <option value="12">12 mois</option>
 <option value="24">24 mois</option>
 <option value="48">48 mois</option>
 <option value="72">72 mois</option>
 <option value="120">120 mois</option>
 </select>
+
+<div class="result">
+<div id="mensualite">-- €</div>
+<div id="total"></div>
+</div>
+
+<button class="btn" onclick="sendMail()">📩 DÉPOSER LE DOSSIER PAR MAIL</button>
+
+<p style="text-align:center;">🔒 Dossier sécurisé</p>
+
+</div>
+
+<div class="logo-slider">
+<div class="logos">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg">
 </div>
 </div>
 
-<div class="simulation-result">
-<p>Mensualité estimée :</p>
-<div class="mensualite" id="res_mensuel">-- €</div>
-<p id="res_total"></p>
+<section>
+<h2>Service fiable</h2>
+<p>Nous proposons des solutions de financement adaptées à tous vos projets.</p>
+</section>
+
+<section>
+<h2>Nos crédits</h2>
+<div class="loan-grid">
+<div>🏠 Immobilier</div>
+<div>🚗 Auto</div>
+<div>🛠 Travaux</div>
+<div>💼 Business</div>
+<div>💳 Personnel</div>
 </div>
+</section>
 
-<button type="button" class="btn-submit" onclick="sendMail()">
-📩 DÉPOSER LE DOSSIER PAR MAIL
-</button>
+<section>
+<h2>Comment ça marche</h2>
+<ol>
+<li>Simulation</li>
+<li>Analyse</li>
+<li>Validation</li>
+</ol>
+</section>
 
-<p style="text-align:center; font-size:12px;">🔒 Dossier sécurisé</p>
+<section>
+<h2>Sécurité</h2>
+<p>🔒 SSL sécurisé</p>
+<p>⚠ Aucun accès bancaire demandé</p>
+</section>
 
-</form>
-</div>
+<section>
+<h2>Avis clients</h2>
+<p>⭐⭐⭐⭐⭐ Excellent service</p>
+<p>⭐⭐⭐⭐⭐ Rapide</p>
+</section>
 
 <footer>
-<p>FINANCIERE DE CEZEMBRE - RCS 552 058 943</p>
-<p>Capital social : 1 200 000 €</p>
+<p>FINANCIERE DE CEZEMBRE</p>
+<p>RCS 552 058 943</p>
+<p>Capital 1 200 000 €</p>
 <p>Adresse : ODET 29500 ERGUE GABERIC</p>
 <p>TVA : FR05552058943</p>
-<p>Code APE : 64.92Z</p>
 </footer>
 
 <script>
-
-// Génération montants
-const sel = document.getElementById('amount');
-for(let i=1000; i<=75000; i+=1000){
-    let o = document.createElement('option');
-    o.value = i;
-    o.text = i + " €";
-    sel.appendChild(o);
+// montants
+let sel=document.getElementById("amount");
+for(let i=1000;i<=75000;i+=1000){
+let o=document.createElement("option");
+o.value=i;o.text=i+" €";
+sel.appendChild(o);
 }
 
-// Calcul avec taux 3.5%
-function calculate(){
-    const capital = document.getElementById('amount').value;
-    const mois = document.getElementById('period').value;
+function calc(){
+let m=amount.value;
+let d=duration.value;
+let t=0.035/12;
 
-    const taux = 0.035 / 12;
+let mens=(m*t)/(1-Math.pow(1+t,-d));
+let tot=mens*d;
 
-    let mensualite = (capital * taux) / (1 - Math.pow(1 + taux, -mois));
-    let total = mensualite * mois;
-
-    document.getElementById('res_mensuel').innerText = mensualite.toFixed(2) + " € / mois";
-    document.getElementById('res_total').innerText = "Total : " + total.toFixed(2) + " €";
+mensualite.innerText=mens.toFixed(2)+" €/mois";
+total.innerText="Total : "+tot.toFixed(2)+" €";
 }
 
-// Envoi email (simulation)
 function sendMail(){
-    alert("Votre dossier sera envoyé par email sécurisé.");
+alert("Demande envoyée par email sécurisé");
 }
 
-window.onload = calculate;
+window.onload=calc;
 
+// traduction
+function googleTranslateElementInit(){
+new google.translate.TranslateElement({
+pageLanguage:'fr',
+includedLanguages:'en,fr,es,de,it,pt,nl,pl'
+},'google_translate_element');
+}
 </script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
