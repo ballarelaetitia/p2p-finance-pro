@@ -1,205 +1,184 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P2P FINANCE PRO | Crédit sécurisé</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINANCIÈRE DE CEZEMBRE | Solutions de Crédit Institutionnelles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --navy: #001A4D;
+            --gold: #C5A059;
+            --light-bg: #F4F7FA;
+            --white: #FFFFFF;
+        }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
-<style>
-:root {
---blue:#002e5b;
---gold:#ffcf00;
---bg:#f4f8fb;
-}
+        /* HEADER INSTITUTIONNEL */
+        header {
+            background: var(--white); padding: 20px 8%; display: flex;
+            justify-content: space-between; align-items: center;
+            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; }
+        .lang-btn { background: #EEE; padding: 8px 15px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 8px; }
 
-body {margin:0;font-family:Arial;background:var(--bg);}
+        /* HERO SECTION DYNAMIQUE */
+        .hero {
+            height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; padding: 0 8%; color: var(--white);
+        }
+        .hero-content { max-width: 600px; }
+        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+        
+        /* SIMULATEUR PREMIUM */
+        .simulator {
+            background: var(--white); padding: 40px; border-radius: 2px; width: 480px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy);
+        }
+        .sim-row { margin-bottom: 25px; }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
+        input[type="range"] { width: 100%; height: 4px; accent-color: var(--gold); }
+        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; }
+        .result-area span { font-size: 2.2rem; font-weight: 700; color: var(--navy); }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; margin-top: 20px; cursor: pointer; transition: 0.3s; }
+        .btn-main:hover { background: var(--gold); }
 
-.top-bar {background:var(--blue);color:white;padding:10px;display:flex;justify-content:space-between;}
-.warning {background:#fff3cd;padding:10px;text-align:center;font-weight:bold;}
+        /* CHIFFRES ET RASSURANCE */
+        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
+        .stat-box h3 { font-size: 2rem; color: var(--gold); }
 
-nav {background:white;padding:15px;display:flex;justify-content:space-between;}
+        /* SECTION LONGUE (POUR GOOGLE) */
+        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
+        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
 
-.hero {background:var(--blue);color:white;padding:80px;text-align:center;}
+        /* MEGA FOOTER (L'ARMURE LÉGALE) */
+        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+        .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
+        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
 
-.main-card {
-background:white;
-max-width:800px;
-margin:-50px auto;
-padding:30px;
-border-top:6px solid var(--gold);
-border-radius:10px;
-}
-
-input,select {width:100%;padding:12px;margin:10px 0;}
-
-.result {background:#fff8dc;padding:20px;text-align:center;border:2px solid var(--gold);}
-
-.btn {
-background:var(--gold);
-padding:15px;
-border:none;
-width:100%;
-font-weight:bold;
-cursor:pointer;
-}
-
-.logo-slider {overflow:hidden;background:white;padding:15px;margin-top:40px;}
-.logos {display:flex;gap:50px;animation:scroll 20s linear infinite;}
-.logos img {height:40px;}
-@keyframes scroll {0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-
-section {padding:50px;}
-
-.loan-grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-}
-.loan-grid div {background:white;padding:20px;border-left:5px solid var(--blue);}
-
-footer {background:#071527;color:white;padding:30px;font-size:12px;}
-</style>
+        /* BOUTON TOP */
+        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
+    </style>
 </head>
-
 <body>
 
-<div class="warning">
-⚠️ Un crédit vous engage et doit être remboursé
-</div>
-
-<div class="top-bar">
-<div>✔ Institution déclarée</div>
-<div>☎ +33 7 80 97 64 04</div>
-</div>
-
-<nav>
-<div><b>P2P FINANCE PRO</b></div>
-<div id="google_translate_element"></div>
-</nav>
+<header>
+    <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
+    <div class="nav-links">
+        <a href="#about">Notre Expertise</a>
+        <a href="#legal">Gouvernance</a>
+        <a href="#contact">Contact</a>
+        <div class="lang-btn"><i class="fas fa-globe-europe"></i> FR | EU</div>
+    </div>
+</header>
 
 <section class="hero">
-<h1>Votre crédit rapide et sécurisé</h1>
-<p>Taux fixe 3,5% - Réponse rapide</p>
+    <div class="hero-content">
+        <h1>L'excellence financière <br>au service de vos projets.</h1>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
+        <div style="display: flex; gap: 20px;">
+            <i class="fas fa-shield-check" style="color: var(--gold); font-size: 2rem;"></i>
+            <p><strong>Société immatriculée au RCS 552 058 943</strong><br>Sous la supervision des autorités bancaires françaises.</p>
+        </div>
+    </div>
+
+    <div class="simulator">
+        <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
+        <div class="sim-row">
+            <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:700; width:80px;"> €</span></label>
+            <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
+        </div>
+        <div class="sim-row">
+            <label>DURÉE DU REMBOURSEMENT <span id="durText">36 mois</span></label>
+            <input type="range" id="durRange" min="6" max="84" step="6" value="36">
+        </div>
+        <div class="result-area">
+            <p style="font-size: 0.8rem; margin-bottom: 5px;">MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
+            <span id="monthlyRes">0.00</span> <span>€</span>
+        </div>
+        <button class="btn-main">DÉPOSER MON DOSSIER</button>
+    </div>
 </section>
 
-<div class="main-card">
-
-<input type="text" id="name" placeholder="Nom et prénom">
-<input type="email" id="email" placeholder="Email">
-
-<select id="amount" onchange="calc()"></select>
-
-<select id="duration" onchange="calc()">
-<option value="12">12 mois</option>
-<option value="24">24 mois</option>
-<option value="48">48 mois</option>
-<option value="72">72 mois</option>
-<option value="120">120 mois</option>
-</select>
-
-<div class="result">
-<div id="mensualite">-- €</div>
-<div id="total"></div>
-</div>
-
-<button class="btn" onclick="sendMail()">📩 DÉPOSER LE DOSSIER PAR MAIL</button>
-
-<p style="text-align:center;">🔒 Dossier sécurisé</p>
-
-</div>
-
-<div class="logo-slider">
-<div class="logos">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png">
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg">
-</div>
-</div>
-
-<section>
-<h2>Service fiable</h2>
-<p>Nous proposons des solutions de financement adaptées à tous vos projets.</p>
+<section class="stats-bar">
+    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
+    <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
 </section>
 
-<section>
-<h2>Nos crédits</h2>
-<div class="loan-grid">
-<div>🏠 Immobilier</div>
-<div>🚗 Auto</div>
-<div>🛠 Travaux</div>
-<div>💼 Business</div>
-<div>💳 Personnel</div>
-</div>
+<section class="about-section" id="about">
+    <h2>Une Institution de Référence</h2>
+    <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
+    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen. Notre engagement repose sur la transparence, le respect scrupuleux de la convention collective des établissements financiers et une conformité totale aux directives de l'ACPR.</p>
 </section>
 
-<section>
-<h2>Comment ça marche</h2>
-<ol>
-<li>Simulation</li>
-<li>Analyse</li>
-<li>Validation</li>
-</ol>
-</section>
+<footer id="legal">
+    <div class="f-grid">
+        <div>
+            <h4>FINANCIÈRE DE CEZEMBRE</h4>
+            <p>Distribution de crédit et participations financières régulées.<br>Identifiant LEI : 969500WONJGTDZG8E035</p>
+        </div>
+        <div>
+            <h4>SIÈGE SOCIAL</h4>
+            <p>ODET, 29500<br>ERGUÉ-GABÉRIC, France<br>RCS Quimper 552 058 943</p>
+        </div>
+        <div>
+            <h4>GOUVERNANCE</h4>
+            <p>Président : M. Michel Pajot<br>Administrateurs : Bolloré SE, Financière Arnil, Socotab.</p>
+        </div>
+        <div>
+            <h4>AUDIT</h4>
+            <p>Commissaire : Constantin Associés<br>Suppléant : BEAS (Paris La Défense)</p>
+        </div>
+    </div>
 
-<section>
-<h2>Sécurité</h2>
-<p>🔒 SSL sécurisé</p>
-<p>⚠ Aucun accès bancaire demandé</p>
-</section>
-
-<section>
-<h2>Avis clients</h2>
-<p>⭐⭐⭐⭐⭐ Excellent service</p>
-<p>⭐⭐⭐⭐⭐ Rapide</p>
-</section>
-
-<footer>
-<p>FINANCIERE DE CEZEMBRE</p>
-<p>RCS 552 058 943</p>
-<p>Capital 1 200 000 €</p>
-<p>Adresse : ODET 29500 ERGUE GABERIC</p>
-<p>TVA : FR05552058943</p>
+    <div class="legal-block">
+        <strong>INFORMATIONS LÉGALES ET RÉGLEMENTAIRES :</strong><br>
+        FINANCIÈRE DE CEZEMBRE SA au capital de 1 200 000 €. SIRET 552 058 943 00044. TVA FR05552058943. 
+        Conformément à la loi française, notre activité est soumise au contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). 
+        Le client dispose d'un droit de rétractation de 14 jours. L’offre est soumise à l’acceptation définitive du prêteur après analyse de la solvabilité.
+        <div class="tag-warning">
+            UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ. VÉRIFIEZ VOS CAPACITÉS DE REMBOURSEMENT AVANT DE VOUS ENGAGER.
+        </div>
+    </div>
+    <p style="text-align:center; margin-top:40px; color:#555;">&copy; 2026 FINANCIÈRE DE CEZEMBRE - Tous droits réservés.</p>
 </footer>
 
+<div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+
 <script>
-// montants
-let sel=document.getElementById("amount");
-for(let i=1000;i<=75000;i+=1000){
-let o=document.createElement("option");
-o.value=i;o.text=i+" €";
-sel.appendChild(o);
-}
+    const amtR = document.getElementById('amtRange');
+    const amtN = document.getElementById('amtNum');
+    const durR = document.getElementById('durRange');
+    const durT = document.getElementById('durText');
+    const resM = document.getElementById('monthlyRes');
 
-function calc(){
-let m=amount.value;
-let d=duration.value;
-let t=0.035/12;
+    function calc() {
+        let p = amtR.value;
+        let n = durR.value;
+        let r = 0.035 / 12;
+        amtN.value = p;
+        durT.innerText = n + " mois";
+        let m = (p * r) / (1 - Math.pow(1 + r, -n));
+        resM.innerText = m.toFixed(2);
+    }
 
-let mens=(m*t)/(1-Math.pow(1+t,-d));
-let tot=mens*d;
-
-mensualite.innerText=mens.toFixed(2)+" €/mois";
-total.innerText="Total : "+tot.toFixed(2)+" €";
-}
-
-function sendMail(){
-alert("Demande envoyée par email sécurisé");
-}
-
-window.onload=calc;
-
-// traduction
-function googleTranslateElementInit(){
-new google.translate.TranslateElement({
-pageLanguage:'fr',
-includedLanguages:'en,fr,es,de,it,pt,nl,pl'
-},'google_translate_element');
-}
+    amtR.oninput = calc;
+    durR.oninput = calc;
+    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
+    calc();
 </script>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
