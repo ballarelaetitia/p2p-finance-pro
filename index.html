@@ -67,6 +67,30 @@
         .form-input { width: 100%; padding: 12px; border: 1px solid #DDD; border-radius: 4px; margin-bottom: 10px; font-size: 0.9rem; }
         .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
 
+        /* Animation du texte défilant */
+        .scrolling-security {
+            background: #f0f4f8;
+            color: #004085;
+            font-size: 0.7rem;
+            padding: 8px 0;
+            margin: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 1px solid #d1ecf1;
+            border-bottom: 1px solid #d1ecf1;
+            display: flex;
+        }
+        .scrolling-security span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll-text 15s linear infinite;
+            font-weight: 600;
+        }
+        @keyframes scroll-text {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
         #loader-overlay {
             display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
@@ -166,7 +190,12 @@
                 <span id="monthlyRes">0.00</span> <span>€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
-            <div class="security-tag"><i class="fas fa-lock"></i> VOTRE DOSSIER EST 100% SÉCURISÉ</div>
+            
+            <div class="scrolling-security">
+                <span><i class="fas fa-user-shield" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles et ne seront jamais vendues à des tiers. • Transfert sécurisé SSL 256-bit • Protection des données garantie.</span>
+            </div>
+            
+            <div class="security-tag"><i class="fas fa-lock" style="color:var(--gold);"></i> VOTRE DOSSIER EST 100% SÉCURISÉ</div>
         </div>
 
         <div id="step2" style="display:none;">
@@ -217,11 +246,13 @@
 
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
                 <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
-                <p style="font-size: 0.65rem; color: #777; margin: 10px 0; text-align: center; line-height: 1.4;">
-                    Transfert sécurisé. Vos données sont strictement confidentielles et ne seront jamais vendues à des tiers.
-                </p>
+                
+                <div class="scrolling-security">
+                    <span><i class="fas fa-user-shield" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles et ne seront jamais vendues à des tiers. • Transfert sécurisé SSL 256-bit • Protection des données garantie.</span>
+                </div>
+
                 <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
-                <div class="security-tag"><i class="fas fa-lock"></i> Transfert sécurisé SSL 256-bit</div>
+                <div class="security-tag"><i class="fas fa-lock" style="color:var(--gold);"></i> VOTRE DOSSIER EST SÉCURISÉ</div>
             </form>
         </div>
     </div>
