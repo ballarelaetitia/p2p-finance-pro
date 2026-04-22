@@ -118,4 +118,140 @@
             box-sizing: border-box;
         }
 
-        .submit-
+        .submit-btn {
+            width: 100%;
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 18px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(255, 210, 0, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            background: #f7ca00;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">CEZEMBRE FINANCE</div>
+    </header>
+
+    <div class="container">
+        <div class="simulator-card">
+            <h1>Simulateur de Crédit Rapide</h1>
+
+            <div class="input-group">
+                <label>Montant souhaité :</label>
+                <div class="amount-display"><span id="valeurMontant">10000</span> €</div>
+                <input type="range" id="curseurMontant" min="1000" max="100000" step="1000" value="10000">
+            </div>
+
+            <div class="input-group">
+                <label>Durée du remboursement (mois) :</label>
+                <select id="dureePret">
+                    <option value="12">12 mois (1 an)</option>
+                    <option value="24">24 mois (2 ans)</option>
+                    <option value="36">36 mois (3 ans)</option>
+                    <option value="48" selected>48 mois (4 ans)</option>
+                    <option value="60">60 mois (5 ans)</option>
+                    <option value="72">72 mois (6 ans)</option>
+                </select>
+            </div>
+
+            <div class="results-box">
+                <div class="result-item">
+                    Mensualité
+                    <span id="mensualite">--</span>
+                </div>
+                <div class="result-item">
+                    Taux (TAEG)
+                    <span>3.50%</span>
+                </div>
+            </div>
+
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
+                
+                <input type="hidden" name="Montant_Demande" id="hiddenMontant">
+                <input type="hidden" name="Mensualite_Estimee" id="hiddenMensualite">
+
+                <div class="form-grid">
+                    <div>
+                        <label>Nom & Prénom</label>
+                        <input type="text" name="Nom_Client" placeholder="Ex: Jean Dupont" required>
+                    </div>
+                    <div>
+                        <label>Type de Projet</label>
+                        <select name="Type_Projet">
+                            <option>Consommation</option>
+                            <option>Automobile</option>
+                            <option>Travaux / Immobilier</option>
+                            <option>Professionnel</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-top:15px;">
+                    <label>Email de contact</label>
+                    <input type="email" name="Email_Client" placeholder="votre@email.com" required>
+                </div>
+
+                <button type="submit" class="submit-btn">OBTENIR MON FINANCEMENT</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Cezembre Finance - Tous droits réservés.
+    </footer>
+
+    <script>
+        const curseur = document.getElementById('curseurMontant');
+        const selectDuree = document.getElementById('dureePret');
+        
+        const displayM = document.getElementById('valeurMontant');
+        const displayMensu = document.getElementById('mensualite');
+        
+        const hiddenM = document.getElementById('hiddenMontant');
+        const hiddenMensu = document.getElementById('hiddenMensualite');
+
+        function updateCalcul() {
+            const montant = parseInt(curseur.value);
+            const mois = parseInt(selectDuree.value);
+            const tauxAnnuel = 0.035; // 3.5%
+            
+            const tauxMensuel = tauxAnnuel / 12;
+            const calculMensualite = (montant * tauxMensuel) / (1 - Math.pow(1 + tauxMensuel, -mois));
+            
+            displayM.innerText = montant.toLocaleString();
+            displayMensu.innerText = calculMensualite.toFixed(2) + " €";
+            
+            // Mise à jour des données pour l'email
+            hiddenM.value = montant + " €";
+            hiddenMensu.value = calculMensualite.toFixed(2) + " € / mois sur " + mois + " mois";
+        }
+
+        curseur.addEventListener('input', updateCalcul);
+        selectDuree.addEventListener('change', updateCalcul);
+        
+        // Lancer au démarrage
+        updateCalcul();
+    </script>
+</body>
+</html>
