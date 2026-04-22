@@ -31,7 +31,6 @@
             background: #EEE; padding: 8px 15px; border-radius: 4px; font-size: 0.8rem; 
             cursor: pointer; display: flex; align-items: center; gap: 8px; border: none; font-weight: 600;
         }
-        .lang-btn img { width: 20px; border-radius: 2px; }
 
         .legal-badge {
             display: inline-block; background: #FFD700; color: #000;
@@ -39,17 +38,22 @@
             margin-right: 10px; vertical-align: middle;
         }
 
+        /* VOTRE ARRIERE-PLAN D'ORIGINE RESTAURE */
         .hero {
-            height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            height: 100vh; 
+            background: linear-gradient(rgba(0,26,77,0.75), rgba(0,26,77,0.75)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover; background-position: center;
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed;
             display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
+        
         .hero-content { max-width: 600px; }
-        .welcome-msg { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; font-weight: 600; }
+        .welcome-msg { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; font-weight: 600; }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
-        .simulator { background: var(--white); padding: 40px; border-radius: 2px; width: 480px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); }
+        .simulator { background: var(--white); padding: 40px; border-radius: 2px; width: 480px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); z-index: 10; }
         .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
         input[type="range"] { width: 100%; height: 4px; accent-color: var(--gold); }
@@ -60,17 +64,18 @@
 
         .form-input { width: 100%; padding: 12px; border: 1px solid #DDD; border-radius: 4px; margin-bottom: 10px; font-size: 0.9rem; }
 
-        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
-        .stat-box h3 { font-size: 2rem; color: var(--gold); }
+        /* BARRE DE STATS RESTAUREE */
+        .stats-bar { background: var(--navy); padding: 50px 8%; display: flex; justify-content: space-around; color: white; text-align: center; position: relative; z-index: 5; }
+        .stat-box h3 { font-size: 2.2rem; color: var(--gold); margin-bottom: 5px; }
 
         .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
-        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
+        .about-section h2 { margin-bottom: 40px; color: var(--navy); text-align: center; font-size: 2rem; }
 
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
         .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
         .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
         .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
-        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
+        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; font-weight: 600; }
 
         .whatsapp-float {
             position: fixed; bottom: 30px; left: 30px;
@@ -78,7 +83,7 @@
             width: 60px; height: 60px; border-radius: 50px;
             text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
             z-index: 1000; display: flex; align-items: center; justify-content: center;
-            text-decoration: none; transition: 0.3s;
+            text-decoration: none;
         }
 
         .goog-te-banner-frame.skiptranslate { display: none !important; }
@@ -93,7 +98,7 @@
     <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     <div class="lang-container">
         <button class="lang-btn" onclick="openTranslate()">
-            <img src="https://flagcdn.com/w40/fr.png">
+            <img src="https://flagcdn.com/w40/fr.png" alt="FR">
             <span>FRANCE / PAYS</span>
         </button>
     </div>
@@ -105,12 +110,11 @@
 
 <section class="hero">
     <div class="hero-content">
-        <div class="welcome-msg">Bienvenue sur notre portail européen sécurisé</div>
-        
+        <div class="welcome-msg">Bienvenue sur notre portail financier international sécurisé</div>
         <h1>L'excellence financière <br>au service de vos projets.</h1>
-        <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
-        <div style="display: flex; align-items: flex-start; gap: 10px;">
-            <i class="fas fa-shield-check" style="color: var(--gold); font-size: 2rem;"></i>
+        <p style="margin-bottom: 30px; opacity: 0.9; font-size: 1.1rem;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
+        <div style="display: flex; align-items: flex-start; gap: 15px;">
+            <i class="fas fa-shield-check" style="color: var(--gold); font-size: 2.2rem;"></i>
             <p>
                 <span class="legal-badge">OFFICIEL</span>
                 <strong>Société immatriculée au RCS 552 058 943</strong><br>
@@ -121,9 +125,9 @@
 
     <div class="simulator" id="simBox">
         <div id="step1">
-            <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
+            <h3 style="margin-bottom: 30px; font-size: 1.3rem;">Simulateur de Crédit</h3>
             <div class="sim-row">
-                <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:700; width:80px; background:transparent;"> €</span></label>
+                <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:700; width:90px; background:transparent; color:var(--navy); font-size:1rem;"> €</span></label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
             </div>
             <div class="sim-row">
@@ -131,8 +135,8 @@
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
             <div class="result-area">
-                <p style="font-size: 0.8rem; margin-bottom: 5px;">MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
-                <span id="monthlyRes">0.00</span> <span>€</span>
+                <p style="font-size: 0.8rem; margin-bottom: 8px; color: #666;">MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
+                <span id="monthlyRes">0.00</span> <span style="font-size: 1.5rem;">€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
         </div>
@@ -143,6 +147,7 @@
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
                 <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
                 <select name="projet" class="form-input" required>
+                    <option value="" disabled selected>Type de projet</option>
                     <option value="Personnel">Prêt Personnel</option>
                     <option value="Immobilier">Prêt Immobilier</option>
                     <option value="Auto">Auto / Moto</option>
@@ -150,7 +155,7 @@
                     <option value="Autre">Autre projet</option>
                 </select>
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
-                <input type="tel" name="telephone" placeholder="Téléphone" class="form-input" required>
+                <input type="tel" name="telephone" placeholder="Numéro de téléphone" class="form-input" required>
                 <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
             </form>
         </div>
