@@ -1,200 +1,133 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financière de Cezembre | Institution de Crédit Européenne</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { --main-gold: #ffd200; --navy: #002b45; --bg-light: #f4f7f9; --text-dark: #2d3e50; --green-wa: #25D366; }
-        body { font-family: 'Open Sans', sans-serif; margin: 0; background: #fff; color: var(--text-dark); }
+<meta charset="UTF-8">
+<title>Financière de Cezembre - Crédit en ligne sécurisé</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .top-bar { background: var(--navy); color: white; padding: 10px 10%; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; border-bottom: 3px solid var(--main-gold); }
-        header { padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo { font-size: 1.8rem; font-weight: 800; color: var(--navy); text-decoration: none; }
-        .logo span { color: var(--main-gold); }
-
-        .hero { background: var(--bg-light); padding: 50px 10%; display: flex; gap: 40px; flex-wrap: wrap; }
-        .hero-text { flex: 1.2; min-width: 320px; }
-        .hero-text h1 { font-size: 2.8rem; color: var(--navy); margin-bottom: 20px; }
-
-        .simu-card { flex: 1; min-width: 380px; background: #fff; padding: 35px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-top: 8px solid var(--main-gold); }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: 700; color: var(--navy); font-size: 0.9rem; }
-        input, select { width: 100%; padding: 12px; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
-        
-        .result-box { background: var(--main-gold); color: var(--navy); padding: 15px; border-radius: 12px; text-align: center; margin: 15px 0; font-weight: bold; }
-        .mensu-val { font-size: 2.5rem; font-weight: 800; display: block; }
-
-        .tel-wrap { display: flex; gap: 5px; }
-        .tel-wrap select { width: 180px; font-size: 0.85rem; }
-
-        .btn-wa { background: var(--green-wa); color: white; text-decoration: none; width: 100%; padding: 15px; border-radius: 8px; font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; }
-        .btn-submit { background: var(--navy); color: white; border: none; width: 100%; padding: 15px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover { background: #004066; }
-
-        footer { background: var(--navy); color: white; padding: 40px 10%; text-align: center; font-size: 0.85rem; }
-    </style>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #0b1c2c;
+    color: white;
+}
+header {
+    background: #07131f;
+    padding: 15px;
+    text-align: center;
+}
+header span {
+    margin: 0 10px;
+}
+.container {
+    padding: 30px;
+}
+.card {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+.gold {
+    background: gold;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 15px;
+}
+button {
+    background: gold;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+}
+footer {
+    background: #07131f;
+    padding: 20px;
+    font-size: 12px;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="top-bar">
-        <div><i class="fas fa-globe-americas"></i> <span style="color: var(--main-gold); font-weight: bold;">JURIDICTION : EUROPE & AMÉRIQUES</span></div>
-        <div id="google_translate_element"></div>
+<header>
+📍 Service client | ☎ +33 1 80 97 64 04 / +33 07 80 97 64 04 🔒 Site sécurisé SSL
+</header>
+
+<div class="container">
+    <h1 style="text-align:center;">Votre crédit simple, rapide et sécurisé</h1>
+
+    <div class="card">
+        <label>Projet :</label>
+        <select id="projet">
+            <option>Prêt Immobilier</option>
+            <option>Auto / Moto</option>
+            <option>Travaux</option>
+            <option>Business</option>
+            <option>Prêt Personnel</option>
+        </select>
+
+        <label>Montant (€) :</label>
+        <input type="number" id="montant" min="1000" max="75000">
+
+        <label>Durée (mois) :</label>
+        <input type="number" id="duree" max="120">
+
+        <div class="gold" id="resultat">
+            Mensualité : -
+        </div>
+
+        <h3>Vos informations</h3>
+
+        <input type="text" placeholder="Nom et prénom" id="nom">
+        <input type="email" placeholder="Email" id="email">
+        <input type="tel" placeholder="Téléphone" id="tel">
+
+        <button onclick="envoyer()">DÉPOSER LE DOSSIER PAR MAIL</button>
+
+        <p style="font-size:12px;">🔒 Dossier 100% sécurisé</p>
     </div>
+</div>
 
-    <header>
-        <a href="#" class="logo">CEZEMBRE<span>FINANCE</span></a>
-        <div style="font-size: 0.9rem; color: var(--navy); font-weight: bold;"><i class="fas fa-university"></i> Agrément Bancaire n° 552 058 943</div>
-    </header>
+<footer>
+<p><strong>Mentions légales :</strong></p>
+<p>FINANCIERE DE CEZEMBRE - RCS 552 058 943</p>
+<p>Capital social : 1 200 000 €</p>
+<p>Siège : ODET, 29500 ERGUE GABERIC</p>
+<p>TVA : FR05552058943</p>
+<p>Code APE : 64.92Z</p>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Financement International à 3,5%.</h1>
-            <p>De 1 000 € à 75 000 €, nous finançons vos projets avec une rapidité européenne. Étude de dossier gratuite pour les résidents des zones Euro et Amérique.</p>
-            <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 5px solid var(--main-gold);">
-                    <i class="fas fa-check-double"></i> <strong>SÉCURITÉ</strong><br><small>Cryptage SSL</small>
-                </div>
-                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 5px solid var(--main-gold);">
-                    <i class="fas fa-clock"></i> <strong>RAPIDITÉ</strong><br><small>Fonds sous 48h</small>
-                </div>
-            </div>
-        </div>
+<p>⚠ Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement.</p>
 
-        <div class="simu-card">
-            <form action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="hidden" name="from_name" value="Cezembre Finance Officiel">
-                <input type="hidden" name="message" value="Dossier envoyé avec succès à notre siège.">
+<p>🔐 Aucun conseiller ne vous demandera vos identifiants bancaires.</p>
+</footer>
 
-                <div class="form-group">
-                    <label>Votre Projet</label>
-                    <select name="Projet" required>
-                        <option value="">-- Sélectionnez un projet --</option>
-                        <option value="Immobilier">Achat Immobilier / Maison</option>
-                        <option value="Automobile">Véhicule (Auto/Moto)</option>
-                        <option value="Travaux">Rénovation / Aménagement</option>
-                        <option value="Business">Investissement Professionnel</option>
-                        <option value="Personnel">Besoin de Trésorerie</option>
-                    </select>
-                </div>
+<script>
+function calculer() {
+    let montant = document.getElementById("montant").value;
+    let duree = document.getElementById("duree").value;
+    let taux = 0.035 / 12;
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <div class="form-group">
-                        <label>Montant (€)</label>
-                        <input type="number" name="Montant" id="loan_amount" value="5000" min="1000" max="75000" oninput="calculate()">
-                    </div>
-                    <div class="form-group">
-                        <label>Durée (Mois)</label>
-                        <select name="Duree" id="loan_months" onchange="calculate()">
-                            <option value="12">12 mois</option>
-                            <option value="24">24 mois</option>
-                            <option value="48" selected>48 mois</option>
-                            <option value="84">84 mois</option>
-                            <option value="120">120 mois</option>
-                        </select>
-                    </div>
-                </div>
+    if(montant && duree){
+        let mensualite = (montant * taux) / (1 - Math.pow(1 + taux, -duree));
+        document.getElementById("resultat").innerHTML =
+        "Mensualité : " + mensualite.toFixed(2) + " €";
+    }
+}
 
-                <div class="form-group">
-                    <label>Nom et Prénom</label>
-                    <input type="text" name="Nom_Client" id="client_name" placeholder="Comme sur votre ID" required>
-                </div>
+document.getElementById("montant").addEventListener("input", calculer);
+document.getElementById("duree").addEventListener("input", calculer);
 
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="email" name="Email_Client" placeholder="Ex: contact@gmail.com" required>
-                </div>
+function envoyer(){
+    alert("Votre demande sera envoyée par email sécurisé.");
+}
+</script>
 
-                <div class="form-group">
-                    <label>Téléphone & Pays</label>
-                    <div class="tel-wrap">
-                        <select name="Indicatif" id="country_code">
-                            <optgroup label="Europe de l'Ouest">
-                                <option value="+33">🇫🇷 France (+33)</option>
-                                <option value="+32">🇧🇪 Belgique (+32)</option>
-                                <option value="+41">🇨🇭 Suisse (+41)</option>
-                                <option value="+352">🇱🇺 Luxembourg (+352)</option>
-                                <option value="+49">🇩🇪 Allemagne (+49)</option>
-                                <option value="+44">🇬🇧 Royaume-Uni (+44)</option>
-                            </optgroup>
-                            <optgroup label="Europe du Sud & Est">
-                                <option value="+30">🇬🇷 Grèce (+30)</option>
-                                <option value="+421">🇸🇰 Slovaquie (+421)</option>
-                                <option value="+386">🇸🇮 Slovénie (+386)</option>
-                                <option value="+34">🇪🇸 Espagne (+34)</option>
-                                <option value="+39">🇮🇹 Italie (+39)</option>
-                                <option value="+351">🇵🇹 Portugal (+351)</option>
-                                <option value="+43">🇦🇹 Autriche (+43)</option>
-                                <option value="+48">🇵🇱 Pologne (+48)</option>
-                                <option value="+420">🇨🇿 Rép. Tchèque (+420)</option>
-                                <option value="+40">🇷🇴 Roumanie (+40)</option>
-                                <option value="+36">🇭🇺 Hongrie (+36)</option>
-                            </optgroup>
-                            <optgroup label="Amérique du Nord">
-                                <option value="+1">🇺🇸 États-Unis (+1)</option>
-                                <option value="+1">🇨🇦 Canada (+1)</option>
-                            </optgroup>
-                            <optgroup label="Amérique Latine">
-                                <option value="+52">🇲🇽 Mexique (+52)</option>
-                                <option value="+55">🇧🇷 Brésil (+55)</option>
-                                <option value="+54">🇦🇷 Argentine (+54)</option>
-                                <option value="+57">🇨🇴 Colombie (+57)</option>
-                                <option value="+56">🇨🇱 Chili (+56)</option>
-                            </optgroup>
-                        </select>
-                        <input type="tel" name="Telephone" id="client_tel" placeholder="Numéro" required>
-                    </div>
-                </div>
-
-                <div class="result-box">
-                    <span class="mensu-val" id="mensu_display">-- €</span>
-                    <span>Mensualité Fixe</span>
-                </div>
-
-                <a href="#" class="btn-wa" id="whatsapp_btn" target="_blank" onclick="sendToWA(event)">
-                    DOSSIER WHATSAPP <i class="fab fa-whatsapp"></i>
-                </a>
-                <button type="submit" class="btn-submit">DÉPOSER PAR EMAIL</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <p><strong>FINANCIÈRE DE CEZEMBRE SA</strong> | Capital Social : 1 200 000 €</p>
-        <p>Siège : ODET, 29500 Ergué-Gabéric, France. RCS 552 058 943</p>
-    </footer>
-
-    <script type="text/javascript">
-        function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element'); }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <script>
-        function calculate() {
-            const amount = parseFloat(document.getElementById('loan_amount').value);
-            const months = parseInt(document.getElementById('loan_months').value);
-            const rate = 0.035 / 12;
-            if (amount >= 1000 && amount <= 75000) {
-                const mensu = (amount * rate) / (1 - Math.pow(1 + rate, -months));
-                document.getElementById('mensu_display').innerText = mensu.toFixed(2) + " €";
-            }
-        }
-
-        function sendToWA(e) {
-            const name = document.getElementById('client_name').value;
-            const amount = document.getElementById('loan_amount').value;
-            const indicatif = document.getElementById('country_code').value;
-            const tel = document.getElementById('client_tel').value;
-            const mensu = document.getElementById('mensu_display').innerText;
-
-            if(!name || !tel) { alert("Veuillez remplir votre identité et téléphone."); e.preventDefault(); return; }
-
-            const msg = Bonjour Cezembre Finance,%0AJe souhaite un financement de ${amount}€.%0ANom: ${name}%0AMensualité: ${mensu}%0AContact: ${indicatif} ${tel};
-            document.getElementById('whatsapp_btn').href = https://wa.me/33780976404?text=${msg};
-        }
-        window.onload = calculate;
-    </script>
 </body>
 </html>
