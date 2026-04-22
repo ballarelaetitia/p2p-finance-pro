@@ -21,6 +21,23 @@ body {
     color: var(--text);
     background: var(--light-bg);
 }
+    .logo-slider {
+    overflow: hidden;
+    background: white;
+    padding: 15px;
+}
+.logos {
+    display: flex;
+    gap: 50px;
+    animation: scroll 20s linear infinite;
+}
+.logos img {
+    height: 40px;
+}
+@keyframes scroll {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-50%);}
+}
 
 .top-bar {
     background: var(--blue);
