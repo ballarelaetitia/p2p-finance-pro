@@ -15,7 +15,7 @@
             --navy: #001A4D;
             --gold: #C5A059;
             --bright-gold: #FFD700; 
-            --deep-gold: #E6B800; /* Jaune plus soutenu pour les bordures */
+            --deep-gold: #E6B800; 
             --light-bg: #F4F7FA;
             --white: #FFFFFF;
             --whatsapp: #25D366;
@@ -48,7 +48,7 @@
         .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
         
         .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
         .nav-links a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
 
         .intl-badge {
@@ -74,13 +74,10 @@
         .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
         
-        /* CHIFFRES EN BLEU MARINE POUR LA LISIBILITÉ */
         .sim-row label span { color: var(--navy); font-weight: 800; } 
         
-        /* CURSEURS GARDÉS EN JAUNE */
         input[type="range"] { width: 100%; height: 4px; accent-color: var(--bright-gold); cursor: pointer; }
         
-        /* ZONE RÉSULTAT - TEXTE JAUNE MAIS CHIFFRE BLEU MARINE */
         .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
         .result-area p { font-size: 0.8rem; margin-bottom: 5px; color: var(--bright-gold); font-weight: 700; }
         .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
@@ -88,7 +85,6 @@
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
-        /* FORMULAIRE AVEC CAGES JAUNES PLUS ÉPAISSES ET FOND BLANC */
         .form-input { 
             width: 100%; 
             padding: 12px; 
@@ -103,12 +99,6 @@
         }
         .form-input::placeholder { color: #999; font-weight: 400; }
         .form-input:focus { border-color: var(--navy); }
-
-        /* STYLE TABLEAU AMORTISSEMENT */
-        .amort-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.8rem; }
-        .amort-table th { background: var(--navy); color: var(--white); padding: 10px; text-align: left; }
-        .amort-table td { padding: 8px; border-bottom: 1px solid #eee; }
-        .amort-table tr:nth-child(even) { background: #f9f9f9; }
 
         .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
 
@@ -144,7 +134,6 @@
         .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
         .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
 
-        /* FOOTER : POUSSETTE 160PX VERS LA DROITE */
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
         .f-grid, .legal-block { margin-left: 160px; }
         .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
@@ -197,7 +186,7 @@
     <div class="nav-links">
         <a href="#about">Notre Expertise</a>
         <a href="#legal">Gouvernance</a>
-        <a href="#simBox">Contact</a>
+        <a onclick="goToStep1()" href="#simBox">Contact</a>
         <div class="intl-badge"><i class="fas fa-globe"></i> PORTAIL INTERNATIONAL SÉCURISÉ</div>
     </div>
 </header>
@@ -256,7 +245,7 @@
             </div>
             <div class="result-area">
                 <p>MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
-                <span id="monthlyRes">0.00</span> <span style="color: var(--navy);">€</span>
+                <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
             
@@ -385,6 +374,13 @@
     }
 
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
+    
+    // NOUVELLE FONCTION CHIRURGICALE POUR RETOURNER À L'ÉTAPE 1
+    function goToStep1() { 
+        document.getElementById('step2').style.display = 'none'; 
+        document.getElementById('step1').style.display = 'block'; 
+    }
+
     function resetAll() { location.reload(); }
 
     amtR.oninput = calc; durR.oninput = calc;
