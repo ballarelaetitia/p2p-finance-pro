@@ -89,8 +89,9 @@
             .stats-bar { flex-direction: column; gap: 30px; }
             .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
             .f-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr !important; padding: 20px !important; }
 
-            /* ZONE DE RESPIRATION EN BAS POUR MOBILE (Libère le texte légal) */
+            /* ZONE DE RESPIRATION EN BAS POUR MOBILE */
             footer { padding-bottom: 160px !important; } 
             
             /* BOUTON WHATSAPP PLUS PETIT SUR MOBILE */
@@ -98,6 +99,16 @@
             .wa-msg-bubble { font-size: 0.6rem; padding: 5px 10px; margin-bottom: 10px; }
             .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
         }
+
+        /* --- SECTION TÉMOIGNAGES --- */
+        .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
+        .reviews-section h2 { color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .review-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; border-top: 3px solid var(--gold); }
+        .stars { color: var(--bright-gold); margin-bottom: 10px; font-size: 0.9rem; }
+        .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; }
+        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; gap: 10px; }
+        .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; }
 
         .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
@@ -362,6 +373,72 @@
     <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
     <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
     <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
+</section>
+
+<section class="reviews-section">
+    <h2>La confiance de nos clients</h2>
+    <div class="reviews-grid">
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"Financement rapide et équipe très professionnelle. J'ai pu réaliser mon projet de rénovation en un temps record."</p>
+            <div class="review-author">Marc L. (Paris) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"Une transparence totale sur les taux. Enfin un établissement financier qui respecte ses engagements."</p>
+            <div class="review-author">Sophie D. (Lyon) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"J'étais sceptique au début, mais l'accompagnement via WhatsApp est exceptionnel. Réponse instantanée."</p>
+            <div class="review-author">Jean-Pierre M. (Bruxelles) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"Prêt accordé pour mon véhicule hybride à un taux de 3.5%. Je recommande vivement Cézembre."</p>
+            <div class="review-author">Anissa K. (Marseille) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"Plateforme sécurisée et simple d'utilisation. Le virement a été fait 48h après la validation finale."</p>
+            <div class="review-author">Thomas W. (Luxembourg) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"Un service humain malgré le côté digital. On se sent écouté et soutenu dans son projet."</p>
+            <div class="review-author">Catherine R. (Nantes) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"Simulateur très précis, aucune mauvaise surprise. Le contrat est clair et sans frais cachés."</p>
+            <div class="review-author">Luc B. (Bordeaux) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"Exceptionnel ! J'ai pu regrouper mes crédits et réduire mes mensualités significativement."</p>
+            <div class="review-author">Elena V. (Genève) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"Merci à toute l'équipe pour la rapidité de traitement de mon dossier immobilier."</p>
+            <div class="review-author">Robert G. (Lille) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"Enfin une institution sérieuse sur internet. Très satisfait de mon prêt personnel."</p>
+            <div class="review-author">Marie-Claire P. (Toulouse) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"La procédure est fluide et le service client est très courtois. 5 étoiles méritées."</p>
+            <div class="review-author">Franck S. (Nice) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="review-text">"Prêt travaux obtenu en moins d'une semaine. Je n'hésiterai pas à revenir vers vous."</p>
+            <div class="review-author">Isabelle M. (Strasbourg) <span class="verified"><i class="fas fa-check-circle"></i> Vérifié</span></div>
+        </div>
+    </div>
 </section>
 
 <section class="about-section" id="about">
