@@ -5,43 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FINANCIÈRE DE CEZEMBRE | Solutions de Crédit Institutionnelles</title>
     
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'fr',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: true
-            }, 'google_translate_element');
-        }
-
-        // Force la traduction automatique selon la langue du navigateur
-        (function() {
-            var userLang = navigator.language || navigator.userLanguage;
-            if (userLang.slice(0, 2) !== 'fr') {
-                var interval = setInterval(function() {
-                    var select = document.querySelector('.goog-te-combo');
-                    if (select) {
-                        select.value = userLang.slice(0, 2);
-                        select.dispatchEvent(new Event('change'));
-                        clearInterval(interval);
-                    }
-                }, 500);
-            }
-        })();
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23001A4D'/><text y='70' x='15' font-family='serif' font-size='55' font-weight='bold' fill='%23C5A059'>FC</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* Masquer la barre Google en haut pour garder le design propre */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
-        .goog-te-gadget { display: none !important; }
-
         :root {
             --navy: #001A4D;
             --gold: #C5A059;
@@ -202,18 +171,16 @@
 </head>
 <body>
 
-<div id="google_translate_element"></div>
-
 <header>
     <div class="logo-container">
         <div class="logo-sigle">FC</div>
         <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     </div>
     <div class="nav-links">
-        <a href="#about">Notre Expertise</a>
-        <a href="#legal">Gouvernance</a>
-        <a onclick="goToStep1()" href="#simBox">Contact</a>
-        <div class="intl-badge"><i class="fas fa-globe"></i> <span>PORTAIL INTERNATIONAL SÉCURISÉ</span></div>
+        <a href="#about" data-key="nav1">Notre Expertise</a>
+        <a href="#legal" data-key="nav2">Gouvernance</a>
+        <a onclick="goToStep1()" href="#simBox" data-key="nav3">Contact</a>
+        <div class="intl-badge"><i class="fas fa-globe"></i> <span data-key="intl">PORTAIL INTERNATIONAL SÉCURISÉ</span></div>
     </div>
 </header>
 
@@ -224,8 +191,8 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h1>L'excellence financière <br>au service de vos projets.</h1>
-        <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
+        <h1 data-key="heroTitle">L'excellence financière <br>au service de vos projets.</h1>
+        <p style="margin-bottom: 30px; opacity: 0.9;" data-key="heroSub">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
         
         <div style="display: flex; gap: 20px; align-items: center;">
             <div style="position: relative; display: flex; align-items: center; justify-content: center;">
@@ -233,9 +200,9 @@
                 <i class="fas fa-check" style="color: var(--navy); position: absolute; font-size: 1.2rem; font-weight: 900;"></i>
             </div>
             <p>
-                <strong style="color: #FFD700; font-size: 0.9rem; letter-spacing: 1px;">ÉTABLISSEMENT AGRÉÉ</strong><br>
-                <strong>Société immatriculée au RCS 552 058 943</strong><br>
-                <span>Sous la supervision des autorités bancaires françaises.</span>
+                <strong style="color: #FFD700; font-size: 0.9rem; letter-spacing: 1px;" data-key="badge1">ÉTABLISSEMENT AGRÉÉ</strong><br>
+                <strong data-key="badge2">Société immatriculée au RCS 552 058 943</strong><br>
+                <span data-key="badge3">Sous la supervision des autorités bancaires françaises.</span>
             </p>
         </div>
     </div>
@@ -244,86 +211,124 @@
         <div id="loader-overlay">
             <div id="loading-content">
                 <div class="spinner"></div>
-                <p style="font-weight: 600; color: var(--navy);">Analyse du dossier en cours...</p>
-                <p style="font-size: 0.7rem; color: #999; margin-top: 10px;">Vérification des bases de données ACPR</p>
+                <p style="font-weight: 600; color: var(--navy);" data-key="load1">Analyse du dossier en cours...</p>
+                <p style="font-size: 0.7rem; color: #999; margin-top: 10px;" data-key="load2">Vérification des bases de données ACPR</p>
             </div>
             <div id="success-message">
                 <i class="fas fa-check-circle"></i>
-                <h3 style="color: var(--navy); margin-bottom: 10px;">DEMANDE ENREGISTRÉE</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 20px;">Votre numéro de dossier : <strong>#CEZ-2026</strong> a été transmis avec succès.</p>
+                <h3 style="color: var(--navy); margin-bottom: 10px;" data-key="succ1">DEMANDE ENREGISTRÉE</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 20px;" data-key="succ2">Votre numéro de dossier : <strong>#CEZ-2026</strong> a été transmis avec succès.</p>
                 <button class="btn-main" onclick="resetAll()">OK</button>
             </div>
         </div>
 
         <div id="step1">
-            <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
+            <h3 style="margin-bottom: 30px;" data-key="simTitle">Simulateur de Crédit</h3>
             <div class="sim-row">
-                <label><span>MONTANT DU PROJET</span> <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent; color: var(--navy);"> €</span></label>
+                <label><span data-key="simAmt">MONTANT DU PROJET</span> <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent; color: var(--navy);"> €</span></label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
             </div>
             <div class="sim-row">
-                <label><span>DURÉE DU REMBOURSEMENT</span> <span id="durText" style="color: var(--navy); font-weight: 800;">36 mois</span></label>
+                <label><span data-key="simDur">DURÉE DU REMBOURSEMENT</span> <span id="durText" style="color: var(--navy); font-weight: 800;">36 mois</span></label>
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
             <div class="result-area">
-                <p>MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
+                <p data-key="simMens">MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
-            <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
+            <button type="button" class="btn-main" onclick="goToStep2()" data-key="btnNext">DÉPOSER MON DOSSIER</button>
             <div class="scrolling-security">
-                <span><i class="fas fa-lock"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles.</span>
+                <span data-key="scrollText"><i class="fas fa-lock"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles.</span>
             </div>
-            <div class="security-tag"><i class="fas fa-lock"></i> <span>VOTRE DOSSIER EST 100% SÉCURISÉ</span></div>
+            <div class="security-tag"><i class="fas fa-lock"></i> <span data-key="secTag">VOTRE DOSSIER EST 100% SÉCURISÉ</span></div>
         </div>
 
         <div id="step2" style="display:none;">
-            <h3 style="margin-bottom: 20px;">Finaliser votre demande</h3>
+            <h3 style="margin-bottom: 20px;" data-key="formTitle">Finaliser votre demande</h3>
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
                 <input type="hidden" name="montant_client" id="hiddenAmt"><input type="hidden" name="duree_client" id="hiddenDur"><input type="hidden" name="mensualite_client" id="hiddenMens">
-                <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
+                <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required data-key="ph1">
                 <select name="projet" class="form-input" required>
-                    <option value="" disabled selected>Choisir votre projet</option>
+                    <option value="" disabled selected data-key="opt1">Choisir votre projet</option>
                     <option value="Immobilier">Immobilier</option><option value="Personnel">Personnel</option><option value="Auto">Auto</option><option value="Autre">Autre</option>
                 </select>
-                <input type="number" name="revenu" placeholder="Revenu mensuel net" class="form-input" required>
-                <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
-                <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
-                <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
+                <input type="number" name="revenu" placeholder="Revenu mensuel net" class="form-input" required data-key="ph2">
+                <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required data-key="ph3">
+                <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required data-key="ph4">
+                <button type="submit" class="btn-main" data-key="btnSend">CONFIRMER L'ENVOI</button>
             </form>
         </div>
     </div>
 </section>
 
 <section class="stats-bar">
-    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
-    <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
+    <div class="stat-box"><h3>1 200 000 €</h3><p data-key="stat1">Capital Social</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p data-key="stat2">Taux Préférentiel</p></div>
+    <div class="stat-box"><h3>100%</h3><p data-key="stat3">Digital & Sécurisé</p></div>
 </section>
 
 <section class="reviews-section">
-    <h2>La confiance de nos clients internationaux</h2>
+    <h2 data-key="revTitle">La confiance de nos clients internationaux</h2>
     <div class="reviews-grid" id="reviews-container"></div>
 </section>
 
 <section class="about-section" id="about">
-    <h2>Une Institution de Référence</h2>
-    <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit.</p>
+    <h2 data-key="aboutTitle">Une Institution de Référence</h2>
+    <p data-key="aboutP1">FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
         <div><h4 style="color:white">FINANCIÈRE DE CEZEMBRE</h4><p>LEI : 969500WONJGTDZG8E035</p></div>
-        <div><h4 style="color:white">SIÈGE SOCIAL</h4><p>ODET, 29500 ERGUÉ-GABÉRIC, France</p></div>
+        <div><h4 data-key="footHead">SIÈGE SOCIAL</h4><p>ODET, 29500 ERGUÉ-GABÉRIC, France</p></div>
     </div>
     <div class="legal-block">
-        <div class="tag-warning"><span class="blink-gold">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</span></div>
+        <div class="tag-warning"><span class="blink-gold" data-key="warn">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</span></div>
     </div>
 </footer>
 
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
+    // --- DICTIONNAIRE DE TRADUCTION ---
+    const translations = {
+        'fr': {
+            'nav1': 'Notre Expertise', 'nav3': 'Contact', 'intl': 'PORTAIL INTERNATIONAL SÉCURISÉ',
+            'heroTitle': "L'excellence financière au service de vos projets.", 'simTitle': 'Simulateur de Crédit',
+            'simAmt': 'MONTANT DU PROJET', 'simDur': 'DURÉE', 'simMens': 'MENSUALITÉ ESTIMÉE',
+            'btnNext': 'DÉPOSER MON DOSSIER', 'ph1': 'Nom et Prénom', 'ph2': 'Revenu mensuel', 'btnSend': 'CONFIRMER L’ENVOI',
+            'warn': 'UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.', 'succ1': 'DEMANDE ENREGISTRÉE'
+        },
+        'en': {
+            'nav1': 'Our Expertise', 'nav3': 'Contact', 'intl': 'SECURED INTERNATIONAL PORTAL',
+            'heroTitle': 'Financial excellence for your projects.', 'simTitle': 'Loan Simulator',
+            'simAmt': 'PROJECT AMOUNT', 'simDur': 'DURATION', 'simMens': 'ESTIMATED PAYMENT',
+            'btnNext': 'APPLY NOW', 'ph1': 'Full Name', 'ph2': 'Monthly Income', 'btnSend': 'CONFIRM SENDING',
+            'warn': 'A LOAN COMMITS YOU AND MUST BE REPAID.', 'succ1': 'APPLICATION RECEIVED'
+        },
+        'de': {
+            'nav1': 'Unsere Expertise', 'nav3': 'Kontakt', 'intl': 'GESICHERTES PORTAL',
+            'heroTitle': 'Finanzielle Exzellenz für Ihre Projekte.', 'simTitle': 'Kreditrechner',
+            'simAmt': 'KREDITSUMME', 'simDur': 'LAUFZEIT', 'simMens': 'MONATSRATE',
+            'btnNext': 'JETZT BEANTRAGEN', 'ph1': 'Vollständiger Name', 'btnSend': 'SENDEN BESTÄTIGEN',
+            'warn': 'EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.', 'succ1': 'ANTRAG EINGEGANGEN'
+        }
+    };
+
+    function autoTranslate() {
+        const lang = navigator.language.split('-')[0];
+        const selectedLang = translations[lang] ? lang : 'en';
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (translations[selectedLang][key]) {
+                if (el.tagName === 'INPUT') el.placeholder = translations[selectedLang][key];
+                else el.innerText = translations[selectedLang][key];
+            }
+        });
+    }
+
+    // --- RESTE DU SCRIPT (Avis, Simulateur, Formulaire) ---
     const internationalReviews = [
         { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle." },
         { n: "Lars O.", p: "Germany", t: "Sehr zufrieden mit dem Zinssatz. Absolut empfehlenswert." },
@@ -371,7 +376,7 @@
     function resetAll() { location.reload(); }
     function goToStep1() { document.getElementById('step2').style.display='none'; document.getElementById('step1').style.display='block'; }
 
-    window.onload = () => { renderReviews(); calc(); };
+    window.onload = () => { autoTranslate(); renderReviews(); calc(); };
     amtR.oninput = calc; durR.oninput = calc;
 
     document.getElementById('loanForm').onsubmit = async (e) => {
