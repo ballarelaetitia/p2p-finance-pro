@@ -105,8 +105,7 @@
         .reviews-section h2 { color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .review-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; border-top: 3px solid var(--gold); }
-        .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
-        .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: block; }
+        .stars { color: var(--bright-gold); margin-bottom: 10px; font-size: 0.9rem; }
         .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px; }
         .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; }
         .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
@@ -378,7 +377,8 @@
 
 <section class="reviews-section">
     <h2>La confiance de nos clients internationaux</h2>
-    <div class="reviews-grid" id="reviews-container"></div>
+    <div class="reviews-grid" id="reviews-container">
+        </div>
 </section>
 
 <section class="about-section" id="about">
@@ -408,76 +408,31 @@
     const messages = ["Besoin d'aide ? Contactez l'assistance", "Need help? Contact support", "L'un de nos agents vous répond", "An agent is ready to help you"];
     let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
 
-    // --- BASE DE DONNÉES DES AVIS INTERNATIONAUX (40 AVIS) ---
+    // --- BASE DE DONNÉES DES AVIS INTERNATIONAUX (LANGUE D'ORIGINE) ---
     const internationalReviews = [
-        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle. Projet réalisé en un temps record.", l: "fr" },
-        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif pour mon prêt frontalier. Top !", l: "fr" },
-        { n: "Jean-Paul H.", p: "Luxembourg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für alles!", l: "de" },
-        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse pour l'achat de mon véhicule.", l: "fr" },
-        { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier de crédit. Service très courtois.", l: "fr" },
-        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask utbetaling. Meget bra!", l: "no" },
-        { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen kaikille!", l: "fi" },
-        { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar serios. Procesul a fost rapid și transparent.", l: "ro" },
-        { n: "Arber K.", p: "Kosovo", t: "Shërbim shumë i shpejtë dhe korrekt. Faleminderit shumë.", l: "sq" },
-        { n: "Maria C.", p: "Italie", t: "Finanziamento ottenuto in tempi record. Molto soddisfatta del supporto.", l: "it" },
-        { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung. Empfehlenswert.", l: "de" },
-        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo vivamente a Cézembre.", l: "pt" },
-        { n: "Luc B.", p: "Monaco", t: "Service haut de gamme et discrétion totale. Parfait pour mon investissement.", l: "fr" },
-        { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec. Très efficace.", l: "fr" },
-        { n: "Anissa K.", p: "Martinique", t: "Une aide précieuse pour mon projet local. Rapide et sérieux.", l: "fr" },
-        { n: "Hans M.", p: "Autriche", t: "Schnelle Bearbeitung und sehr freundliche Berater. Top!", l: "de" },
-        { n: "Knut S.", p: "Suède", t: "Smidig process och pengar på kontot snabbt. Tack!", l: "sv" },
-        { n: "Jan de V.", p: "Pays-Bas", t: "Zeer betrouwbaar en snelle reactie op mijn aanvraag.", l: "nl" },
-        { n: "Mette H.", p: "Danemark", t: "Fantastisk service hele vejen igennem. Kan varmt anbefales.", l: "da" },
-        { n: "Chloe M.", p: "France", t: "Prêt obtenu sans complications. Très satisfaite de l'accueil.", l: "fr" },
-        { n: "Julien R.", p: "Suisse", t: "Conseillers à l'écoute et réactifs. Taux très intéressant.", l: "fr" },
-        { n: "Sandro G.", p: "Italie", t: "Ottimo servizio, tutto chiaro e professionale. Grazie.", l: "it" },
-        { n: "Kati L.", p: "Finlande", t: "Kaikki sujui odotetusti. Erittäin nopea käsittely.", l: "fi" },
-        { n: "Enver H.", p: "Kosovo", t: "Shumë të kënaqur me kredinë dhe mbështetjen e dhënë.", l: "sq" },
-        { n: "Pierre Y.", p: "Guyane", t: "Sérieux et honnête. Pas de frais cachés. Je recommande.", l: "fr" },
-        { n: "Marta K.", p: "Pologne", t: "Szybka decyzja i profesjonalne podejście do klienta.", l: "pl" },
-        { n: "Victor D.", p: "Belgique", t: "Enfin un organisme qui comprend les besoins des indépendants.", l: "fr" },
-        { n: "Sarah P.", p: "Canada", t: "Efficacité redoutable pour mon prêt travaux au Québec.", l: "fr" },
-        { n: "Oliver L.", p: "Allemagne", t: "Kompetente Beratung und sehr schnelle Zusage. Alles bestens.", l: "de" },
-        { n: "Isabella F.", p: "Espagne", t: "Proceso muy profesional y transparente de principio a fin.", l: "es" },
-        { n: "Antonio G.", p: "Espagne", t: "Muy satisfecho con el préstamo personal obtenido aquí.", l: "es" },
-        { n: "Fiona C.", p: "Irlande", t: "Fast and reliable service. Highly recommended establishment.", l: "en" },
-        { n: "Lukas S.", p: "Slovaquie", t: "Všetko prebehlo v poriadku, som veľmi spokojný.", l: "sk" },
-        { n: "Bjorn A.", p: "Norvège", t: "Bra rente og god oppfølging under hele prosessen.", l: "no" },
-        { n: "Claire T.", p: "Guadeloupe", t: "Accompagnement parfait pour mon premier crédit immobilier.", l: "fr" },
-        { n: "Dimitri P.", p: "Grèce", t: "Πολύ καλή εξυπηρέτηση και γρήγορα αποτελέσματα.", l: "el" },
-        { n: "Mateo R.", p: "Portugal", t: "Obrigado pela rapidez no meu pedido de financiamento.", l: "pt" },
-        { n: "Ingrid S.", p: "Suède", t: "Proffsigt bemötande och tydliga villkor hela tiden.", l: "sv" },
-        { n: "Nina G.", p: "France", t: "Le meilleur taux que j'ai trouvé après plusieurs recherches.", l: "fr" },
-        { n: "Arnaud V.", p: "La Réunion", t: "Génial, mon projet est enfin lancé grâce à vous !", l: "fr" }
+        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle. J'ai pu réaliser mon projet de rénovation en un temps record." },
+        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif pour mon prêt frontalier. Top !" },
+        { n: "Jean-Paul H.", p: "Luxembourg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für alles!" }, // Allemand
+        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse pour l'achat de mon véhicule." },
+        { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier de crédit. Service très courtois." },
+        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask utbetaling. Meget bra!" }, // Norvégien
+        { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen kaikille!" }, // Finnois
+        { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar serios. Procesul a fost rapid și transparent." }, // Roumain
+        { n: "Arber K.", p: "Kosovo", t: "Shërbim shumë i shpejtë dhe korrekt. Faleminderit shumë." }, // Albanais
+        { n: "Maria C.", p: "Italie", t: "Finanziamento ottenuto in tempi record. Molto soddisfatta del supporto." }, // Italien
+        { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung. Absolut empfehlenswert." }, // Allemand
+        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo vivamente a Cézembre." }, // Portugais
+        { n: "Luc B.", p: "Monaco", t: "Service haut de gamme et discrétion totale. Parfait pour mon investissement." },
+        { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec. Très efficace." },
+        { n: "Anissa K.", p: "Martinique", t: "Une aide précieuse pour mon projet local. Rapide et sérieux." }
     ];
-
-    const timeLabels = {
-        fr: { u: ["sec", "min", "h", "j", "sem", "mois"], p: "Posté il y a" },
-        en: { u: ["sec", "min", "h", "d", "weeks", "mo"], p: "Posted" },
-        de: { u: ["sek", "min", "std", "tg", "wochen", "mon"], p: "Vor" },
-        it: { u: ["sec", "min", "ore", "giorni", "sett", "mesi"], p: "Inviato" },
-        es: { u: ["seg", "min", "h", "días", "sem", "meses"], p: "Publicado hace" }
-    };
-
-    function getTime(lang) {
-        const l = timeLabels[lang] || timeLabels.fr;
-        const rand = Math.random();
-        if (rand < 0.2) return ${l.p} ${Math.floor(Math.random()*50)+5} ${l.u[0]};
-        if (rand < 0.5) return ${l.p} ${Math.floor(Math.random()*55)+1} ${l.u[1]};
-        if (rand < 0.7) return ${l.p} ${Math.floor(Math.random()*20)+1} ${l.u[2]};
-        if (rand < 0.85) return ${l.p} ${Math.floor(Math.random()*6)+1} ${l.u[3]};
-        if (rand < 0.95) return ${l.p} ${Math.floor(Math.random()*3)+1} ${l.u[4]};
-        return ${l.p} ${Math.floor(Math.random()*2)+1} ${l.u[5]};
-    }
 
     function renderReviews() {
         const container = document.getElementById('reviews-container');
-        container.innerHTML = "";
+        // Mélanger et afficher 12 avis pour garder la section dynamique
         internationalReviews.sort(() => 0.5 - Math.random()).slice(0, 12).forEach(r => {
             container.innerHTML += `
                 <div class="review-card">
-                    <span class="review-date"><i class="far fa-clock"></i> ${getTime(r.l)}</span>
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="review-text">"${r.t}"</p>
                     <div class="review-author">
