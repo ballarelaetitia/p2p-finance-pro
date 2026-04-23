@@ -67,9 +67,9 @@
 <header>
     <div class="logo-container"><div class="logo-sigle">FC</div><div class="logo">FINANCIÈRE DE CEZEMBRE</div></div>
     <div class="nav-links">
-        <a href="#about" id="nav-exp">Expertise</a>
-        <a onclick="goToStep1()" href="#simBox" id="nav-cont">Contact</a>
-        <div class="intl-badge"><i class="fas fa-globe"></i> <span id="nav-intl">PORTAIL INTERNATIONAL</span></div>
+        <a href="#about">Expertise</a>
+        <a onclick="goToStep1()" href="#simBox">Contact</a>
+        <div class="intl-badge"><i class="fas fa-globe"></i> PORTAIL INTERNATIONAL</div>
     </div>
 </header>
 
@@ -80,53 +80,53 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h1 id="h-title">L'excellence financière.</h1>
-        <p id="h-sub">Partenaire de confiance régulé au service de vos projets européens.</p>
+        <h1>L'excellence financière.</h1>
+        <p>Partenaire de confiance régulé au service de vos projets européens.</p>
     </div>
     <div class="simulator" id="simBox">
         <div id="loader-overlay">
-            <div id="loading-content"><div class="spinner"></div><p id="load-txt">Traitement sécurisé...</p></div>
-            <div id="success-message" style="display:none;"><i class="fas fa-check-circle" style="color:var(--success); font-size:3rem;"></i><h3 id="succ-txt">ENVOYÉ</h3><button class="btn-main" onclick="location.reload()">OK</button></div>
+            <div id="loading-content"><div class="spinner"></div><p>Traitement sécurisé...</p></div>
+            <div id="success-message" style="display:none;"><i class="fas fa-check-circle" style="color:var(--success); font-size:3rem;"></i><h3>ENVOYÉ</h3><button class="btn-main" onclick="location.reload()">OK</button></div>
         </div>
         <div id="step1">
-            <h3 id="s-title" style="margin-bottom:20px;">Simulateur</h3>
-            <div class="sim-row"><label id="l-amt">Montant (€)</label><input type="range" id="amtRange" min="1000" max="75000" value="15000"></div>
-            <div class="sim-row"><label id="l-dur">Durée (mois)</label><input type="range" id="durRange" min="6" max="84" value="36"></div>
-            <div class="result-area"><span><span id="monthlyRes">0</span> €</span><span id="l-per">/mois</span></div>
-            <button class="btn-main" onclick="goToStep2()" id="b-next">DÉPOSER MON DOSSIER</button>
+            <h3 style="margin-bottom:20px;">Simulateur</h3>
+            <div class="sim-row"><label>Montant (€)</label><input type="range" id="amtRange" min="1000" max="75000" value="15000"></div>
+            <div class="sim-row"><label>Durée (mois)</label><input type="range" id="durRange" min="6" max="84" value="36"></div>
+            <div class="result-area"><span><span id="monthlyRes">0</span> €</span>/mois</div>
+            <button class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
         </div>
         <div id="step2" style="display:none;">
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="text" name="nom" id="f-name" placeholder="Nom Complet" class="form-input" required>
-                <input type="email" name="email" id="f-mail" placeholder="E-mail" class="form-input" required>
-                <input type="tel" name="tel" id="f-tel" placeholder="Téléphone" class="form-input" required>
-                <select name="pays" id="f-pays" class="form-input" required>
+                <input type="text" name="nom" placeholder="Nom Complet" class="form-input" required>
+                <input type="email" name="email" placeholder="E-mail" class="form-input" required>
+                <input type="tel" name="tel" placeholder="Téléphone" class="form-input" required>
+                <select name="pays" class="form-input" required>
                     <option value="Allemagne">Allemagne</option>
                     <option value="Belgique">Belgique</option>
                     <option value="France">France</option>
                     <option value="Suisse">Suisse</option>
                 </select>
-                <button type="submit" class="btn-main" id="b-conf">CONFIRMER</button>
+                <button type="submit" class="btn-main">CONFIRMER</button>
             </form>
         </div>
     </div>
 </section>
 
 <section class="stats-bar">
-    <div><h3>1.2M €</h3><p id="st-cap">Capital</p></div>
-    <div><h3>3.5%</h3><p id="st-rate">TAEG Fixe</p></div>
+    <div><h3>1.2M €</h3><p>Capital</p></div>
+    <div><h3>3.5%</h3><p>TAEG Fixe</p></div>
 </section>
 
 <section class="reviews-section">
-    <h2 id="r-title">Avis Clients Vérifiés</h2>
-    <p class="sub-h" id="r-sub">Transparence et satisfaction européenne</p>
+    <h2>Avis Clients Vérifiés</h2>
+    <p class="sub-h">Transparence et satisfaction européenne</p>
     <div class="reviews-grid" id="reviewsGrid"></div>
 </section>
 
 <section class="about-section" id="about">
-    <h2 id="ab-title">Une Institution de Référence</h2>
-    <p id="ab-txt">FINANCIÈRE DE CEZEMBRE est une société anonyme au capital de 1 200 000 euros. Sous la direction de M. Michel Pajot, nous garantissons une expertise financière haut de gamme.</p>
+    <h2>Une Institution de Référence</h2>
+    <p>FINANCIÈRE DE CEZEMBRE est une société anonyme au capital de 1 200 000 euros. Sous la direction de M. Michel Pajot, nous garantissons une expertise financière haut de gamme.</p>
 </section>
 
 <footer id="legal">
@@ -134,55 +134,23 @@
         <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>RCS 552 058 943</p></div>
         <div><h4>SIÈGE</h4><p>ODET, 29500 Ergué-Gabéric</p></div>
     </div>
-    <div class="legal-block" id="l-warn">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</div>
+    <div class="legal-block">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</div>
 </footer>
 
 <script>
-    // --- DICTIONNAIRE DE TRADUCTION ---
-    const i18n = {
-        fr: { h: "L'excellence financière.", sub: "Partenaire de confiance régulé au service de vos projets européens.", sim: "Simulateur", amt: "Montant (€)", dur: "Durée (mois)", per: "/mois", next: "DÉPOSER MON DOSSIER", cap: "Capital", rate: "TAEG Fixe", r_t: "Avis Clients Vérifiés", r_s: "Transparence et satisfaction européenne", ab_t: "Une Institution de Référence", ab_p: "FINANCIÈRE DE CEZEMBRE est une société anonyme au capital de 1 200 000 euros. Sous la direction de M. Michel Pajot, nous garantissons une expertise financière haut de gamme.", warn: "UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.", help: "Besoin d'aide ?", ago: "Il y a" },
-        de: { h: "Finanzielle Exzellenz.", sub: "Regulierter Partner für Ihre europäischen Projekte.", sim: "Kreditrechner", amt: "Betrag (€)", dur: "Laufzeit (Monate)", per: "/Monat", next: "JETZT BEANTRAGEN", cap: "Stammkapital", rate: "Fester TAEG", r_t: "Verifizierte Bewertungen", r_s: "Transparenz und europäische Zufriedenheit", ab_t: "Eine Referenz-Institution", ab_p: "FINANCIÈRE DE CEZEMBRE ist eine Aktiengesellschaft mit einem Kapital von 1.200.000 Euro. Unter der Leitung von Herrn Michel Pajot garantieren wir erstklassige Finanzexpertise.", warn: "EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.", help: "Brauchen Sie Hilfe?", ago: "Vor" },
-        en: { h: "Financial Excellence.", sub: "Regulated trusted partner at the service of your European projects.", sim: "Loan Simulator", amt: "Amount (€)", dur: "Duration (months)", per: "/month", next: "SUBMIT DOSSIER", cap: "Capital", rate: "Fixed APR", r_t: "Verified Customer Reviews", r_s: "Transparency and European satisfaction", ab_t: "A Reference Institution", ab_p: "FINANCIÈRE DE CEZEMBRE is a limited company with a capital of 1,200,000 euros. Under the direction of Mr. Michel Pajot, we guarantee high-end financial expertise.", warn: "A LOAN COMMITS YOU AND MUST BE REPAID.", help: "Need help?", ago: "Ago" }
-    };
-
-    // Détection auto de la langue
-    let userLng = navigator.language.split('-')[0];
-    if(!['fr', 'de'].includes(userLng)) userLng = 'en';
-
-    function setLang(l) {
-        const d = i18n[l];
-        document.getElementById('h-title').innerText = d.h;
-        document.getElementById('h-sub').innerText = d.sub;
-        document.getElementById('s-title').innerText = d.sim;
-        document.getElementById('l-amt').innerText = d.amt;
-        document.getElementById('l-dur').innerText = d.dur;
-        document.getElementById('l-per').innerText = d.per;
-        document.getElementById('b-next').innerText = d.next;
-        document.getElementById('st-cap').innerText = d.cap;
-        document.getElementById('st-rate').innerText = d.rate;
-        document.getElementById('r-title').innerText = d.r_t;
-        document.getElementById('r-sub').innerText = d.r_s;
-        document.getElementById('ab-title').innerText = d.ab_t;
-        document.getElementById('ab-txt').innerText = d.ab_p;
-        document.getElementById('l-warn').innerText = d.warn;
-        document.getElementById('wa-text').innerText = d.help;
-    }
-    setLang(userLng);
-
-    // --- AVIS AVEC TEMPS RÉALISTES ---
     const reviewsPool = [
-        { name: "Günther K.", loc: "DE", txt: "Hervorragender Service und sehr schnell.", time: "8 min" },
-        { name: "Anke S.", loc: "DE", txt: "Sehr seriös. Ich bin sehr zufrieden mit meinem Kredit.", time: "42 min" },
-        { name: "Marc G.", loc: "BE", txt: "Très professionnel, taux vraiment avantageux.", time: "3 h" },
-        { name: "Lars B.", loc: "SE", txt: "Smidig process och bra bemötande.", time: "1 j" },
-        { name: "Søren J.", loc: "DK", txt: "Alt gik som planlagt. Meget hurtig udbetaling.", time: "3 j" },
-        { name: "Hanna L.", loc: "FI", txt: "Erittäin luotettava ja nopea palvelu.", time: "1 sem" },
-        { name: "Karl W.", loc: "DE", txt: "Kompetente Beratung, alles transparent.", time: "2 sem" },
-        { name: "Sophie J.", loc: "BE", txt: "Dossier traité en 48h. Magnifique !", time: "3 sem" },
-        { name: "Erik V.", loc: "FI", txt: "Suosittelen lämpimästi tätä yritystä.", time: "1 mois" },
-        { name: "Ursula F.", loc: "DE", txt: "Alles perfekt gelaufen, danke an das Team.", time: "1 mois" },
-        { name: "Mette N.", loc: "NO", txt: "Trygt og enkelt. Pengene på konto raskt.", time: "2 mois" },
-        { name: "Jean M.", loc: "LU", txt: "Conditions claires et service impeccable.", time: "2 mois" }
+        { name: "Günther K.", loc: "DE", txt: "Hervorragender Service und sehr schnell.", time: "Il y a 8 min" },
+        { name: "Anke S.", loc: "DE", txt: "Sehr seriös. Ich bin sehr zufrieden mit meinem Kredit.", time: "Il y a 42 min" },
+        { name: "Marc G.", loc: "BE", txt: "Très professionnel, taux vraiment avantageux.", time: "Il y a 3 heures" },
+        { name: "Lars B.", loc: "SE", txt: "Smidig process och bra bemötande.", time: "Il y a 1 jour" },
+        { name: "Søren J.", loc: "DK", txt: "Alt gik som planlagt. Meget hurtig udbetaling.", time: "Il y a 3 jours" },
+        { name: "Hanna L.", loc: "FI", txt: "Erittäin luotettava ja nopea palvelu.", time: "Il y a 1 semaine" },
+        { name: "Karl W.", loc: "DE", txt: "Kompetente Beratung, alles transparent.", time: "Il y a 2 semaines" },
+        { name: "Sophie J.", loc: "BE", txt: "Dossier traité en 48h. Magnifique !", time: "Il y a 3 semaines" },
+        { name: "Erik V.", loc: "FI", txt: "Suosittelen lämpimästi tätä yritystä.", time: "Il y a 1 mois" },
+        { name: "Ursula F.", loc: "DE", txt: "Alles perfekt gelaufen, danke an das Team.", time: "Il y a 1 mois" },
+        { name: "Mette N.", loc: "NO", txt: "Trygt og enkelt. Pengene på konto raskt.", time: "Il y a 2 mois" },
+        { name: "Jean M.", loc: "LU", txt: "Conditions claires et service impeccable.", time: "Il y a 2 mois" }
     ];
 
     function genReviews() {
@@ -193,14 +161,13 @@
                 <p class="review-text">"${r.txt}"</p>
                 <div class="review-meta">
                     <div><span class="review-author">${r.name}</span> <span class="review-date">(${r.loc})</span></div>
-                    <div class="review-date">${i18n[userLng].ago} ${r.time} <span class="verified-tag"><i class="fas fa-check-circle"></i></span></div>
+                    <div class="review-date">${r.time} <span class="verified-tag"><i class="fas fa-check-circle"></i></span></div>
                 </div>
             </div>`;
         });
     }
     genReviews();
 
-    // --- CALCULATEUR ---
     const amtR = document.getElementById('amtRange'); const durR = document.getElementById('durRange');
     function calc() {
         let p = amtR.value; let n = durR.value; let r = 0.035 / 12;
@@ -214,7 +181,6 @@
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
     function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
 
-    // --- ENVOI WEB3FORMS ---
     document.getElementById('loanForm').onsubmit = async (e) => {
         e.preventDefault();
         document.getElementById('loader-overlay').style.display = 'flex';
