@@ -112,8 +112,18 @@
         .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
         .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
 
-        /* MODIFICATION ICI : AJOUT DU PADDING POUR DECALER LE TEXTE DU BOUTON WHATSAPP */
-        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; padding-left: 110px; }
+        /* FOOTER : On ajoute une marge à gauche pour pousser le texte sans changer de ligne */
+        footer { 
+            background: #0A0A0A; 
+            color: #888; 
+            padding: 80px 8% 40px; 
+            font-size: 0.8rem; 
+        }
+
+        /* ICI : La modification précise pour pousser le texte vers la droite */
+        .f-grid, .legal-block {
+            margin-left: 110px; /* Cela décale tout le contenu du bas vers la droite */
+        }
         
         .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
         .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
@@ -202,7 +212,6 @@
             <div id="loading-content">
                 <div class="spinner"></div>
                 <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse du dossier en cours...</p>
-                <p style="font-size: 0.7rem; color: #999; margin-top: 10px;">Vérification des bases de données ACPR</p>
             </div>
             <div id="success-message">
                 <i class="fas fa-check-circle"></i>
@@ -227,11 +236,9 @@
                 <span id="monthlyRes">0.00</span> <span>€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
-            
             <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles et ne seront jamais vendues à des tiers. • Transfert sécurisé SSL 256-bit • Protection garantie.</span>
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles. • Transfert sécurisé SSL 256-bit</span>
             </div>
-
             <div class="security-tag"><i class="fas fa-lock"></i> VOTRE DOSSIER EST 100% SÉCURISÉ</div>
         </div>
 
@@ -243,53 +250,22 @@
                 <input type="hidden" name="duree_client" id="hiddenDur">
                 <input type="hidden" name="mensualite_client" id="hiddenMens">
                 <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
-                
                 <select name="projet" class="form-input" required>
                     <option value="" disabled selected>Choisir votre projet</option>
                     <option value="Immobilier">Prêt Immobilier</option>
                     <option value="Personnel">Prêt Personnel</option>
                     <option value="Auto">Auto / Moto</option>
-                    <option value="Travaux">Travaux / Rénovation</option>
                 </select>
-
                 <select name="pays" class="form-input" required>
                     <option value="" disabled selected>Votre Pays de résidence</option>
                     <option value="France">France (+33)</option>
                     <option value="Belgique">Belgique (+32)</option>
                     <option value="Suisse">Suisse (+41)</option>
-                    <option value="Luxembourg">Luxembourg (+352)</option>
-                    <option value="Monaco">Monaco (+377)</option>
-                    <option value="Allemagne">Allemagne (+49)</option>
-                    <option value="Pays-Bas">Pays-Bas (+31)</option>
-                    <option value="Autriche">Autriche (+43)</option>
-                    <option value="Norvège">Norvège (+47)</option>
-                    <option value="Suède">Suède (+46)</option>
-                    <option value="Finlande">Finlande (+358)</option>
-                    <option value="Danemark">Danemark (+45)</option>
-                    <option value="Italie">Italie (+39)</option>
-                    <option value="Espagne">Espagne (+34)</option>
-                    <option value="Portugal">Portugal (+351)</option>
-                    <option value="Pologne">Pologne (+48)</option>
-                    <option value="Slovaquie">Slovaquie (+421)</option>
-                    <option value="Roumanie">Roumanie (+40)</option>
-                    <option value="Kosovo">Kosovo (+383)</option>
                     <option value="Canada">Canada (+1)</option>
-                    <option value="USA">États-Unis (+1)</option>
-                    <option value="Guadeloupe">Guadeloupe (+590)</option>
-                    <option value="Martinique">Martinique (+596)</option>
-                    <option value="Guyane">Guyane Française (+594)</option>
-                    <option value="La Réunion">La Réunion (+262)</option>
                 </select>
-
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
-                <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
-                
-                <div class="scrolling-security">
-                    <span><i class="fas fa-shield-alt" style="color:var(--gold);"></i> Transfert hautement sécurisé. Vos données sont strictement confidentielles et protégées.</span>
-                </div>
-
+                <input type="tel" name="telephone" placeholder="Téléphone" class="form-input" required>
                 <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
-                <div class="security-tag"><i class="fas fa-lock"></i> Transfert sécurisé SSL 256-bit</div>
             </form>
         </div>
     </div>
@@ -326,7 +302,7 @@
 
 <script>
     const waText = document.getElementById('wa-text');
-    const messages = ["Besoin d'aide ? Contactez l'assistance", "Need help? Contact support", "L'un de nos agents vous répond", "An agent is ready to help you"];
+    const messages = ["Besoin d'aide ? Contactez l'assistance", "L'un de nos agents vous répond"];
     let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
 
     const amtR = document.getElementById('amtRange');
@@ -364,7 +340,7 @@
                 document.getElementById('loading-content').style.display = 'none';
                 document.getElementById('success-message').style.display = 'block';
             }, 4000);
-        } catch (error) { overlay.style.display = 'none'; alert("Erreur. Veuillez réessayer."); }
+        } catch (error) { overlay.style.display = 'none'; alert("Erreur."); }
     };
 </script>
 </body>
