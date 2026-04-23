@@ -18,7 +18,7 @@
             --white: #FFFFFF;
             --whatsapp: #25D366;
             --success: #27ae60;
-            --bright-gold: #FFD700; /* Nouveau jaune pour la mensualité */
+            --text-gold: #D4AF37; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
@@ -74,18 +74,10 @@
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
         input[type="range"] { width: 100%; height: 4px; accent-color: var(--gold); }
         
-        /* DESIGN DE LA ZONE DE MENSUALITÉ AMÉLIORÉ */
-        .result-area { 
-            background: var(--bright-gold); 
-            padding: 25px; 
-            text-align: center; 
-            border: 2px solid var(--navy); 
-            margin-bottom: 20px; 
-            border-radius: 4px;
-            box-shadow: inset 0 0 15px rgba(255,255,255,0.5);
-        }
-        .result-area p { color: var(--navy); font-weight: 700; }
-        .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
+        /* ZONE RÉSULTAT : TEXTE ET CHIFFRE EN JAUNE DORÉ UNIQUEMENT */
+        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
+        .result-area p { font-size: 0.8rem; margin-bottom: 5px; color: var(--text-gold); font-weight: 700; }
+        .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--text-gold); }
         
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
@@ -125,7 +117,9 @@
         .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
         .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
 
+        /* FOOTER : POUSSETTE 160PX VERS LA DROITE */
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
+        .f-grid, .legal-block { margin-left: 160px; }
         .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
         .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
         .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
@@ -234,7 +228,7 @@
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
             <div class="result-area">
-                <p style="font-size: 0.8rem; margin-bottom: 5px;">MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
+                <p>MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
                 <span id="monthlyRes">0.00</span> <span>€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
@@ -253,6 +247,7 @@
                 <input type="hidden" name="montant_client" id="hiddenAmt">
                 <input type="hidden" name="duree_client" id="hiddenDur">
                 <input type="hidden" name="mensualite_client" id="hiddenMens">
+                
                 <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
                 
                 <select name="projet" class="form-input" required>
@@ -261,7 +256,12 @@
                     <option value="Personnel">Prêt Personnel</option>
                     <option value="Auto">Auto / Moto</option>
                     <option value="Travaux">Travaux / Rénovation</option>
+                    <option value="Autre">Autre</option>
                 </select>
+
+                <input type="number" name="revenu" placeholder="Revenu mensuel net (en €)" class="form-input" required>
+
+                <input type="text" name="profession" placeholder="Votre Profession / Travail" class="form-input" required>
 
                 <select name="pays" class="form-input" required>
                     <option value="" disabled selected>Votre Pays de résidence</option>
@@ -292,8 +292,9 @@
                     <option value="La Réunion">La Réunion (+262)</option>
                 </select>
 
-                <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
                 <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
+
+                <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
                 
                 <div class="scrolling-security">
                     <span><i class="fas fa-shield-alt" style="color:var(--gold);"></i> Transfert hautement sécurisé. Vos données sont strictement confidentielles et protégées.</span>
