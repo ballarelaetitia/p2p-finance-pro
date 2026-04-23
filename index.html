@@ -80,7 +80,7 @@
             position: relative; overflow: hidden; min-height: 520px;
         }
 
-        /* --- RÉGLAGE MOBILE SPÉCIFIQUE (INEXISTANT SUR PC) --- */
+        /* --- RÉGLAGES MOBILE SPÉCIFIQUE --- */
         @media (max-width: 991px) {
             .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
             .hero-content { max-width: 100%; margin-bottom: 40px; }
@@ -90,12 +90,13 @@
             .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
             .f-grid { grid-template-columns: 1fr; }
 
-            /* LE COUSSIN D'AIR POUR LE TEXTE LÉGAL */
-            footer { padding-bottom: 110px !important; } 
+            /* ZONE DE RESPIRATION EN BAS POUR MOBILE (Libère le texte légal) */
+            footer { padding-bottom: 160px !important; } 
             
-            /* DÉCALAGE DU BOUTON WHATSAPP SUR MOBILE */
+            /* BOUTON WHATSAPP PLUS PETIT SUR MOBILE */
             .wa-assistant-container { bottom: 15px; left: 15px; }
-            .wa-msg-bubble { font-size: 0.65rem; padding: 8px 10px; }
+            .wa-msg-bubble { font-size: 0.6rem; padding: 5px 10px; margin-bottom: 10px; }
+            .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
         }
 
         .sim-row { margin-bottom: 20px; }
