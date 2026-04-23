@@ -16,7 +16,7 @@
             --gold: #C5A059;
             --bright-gold: #FFD700; 
             --deep-gold: #E6B800; 
-            --satin-white: #fcfdfe; /* Blanc satiné */
+            --light-bg: #F4F7FA;
             --white: #FFFFFF;
             --whatsapp: #25D366;
             --success: #27ae60;
@@ -25,27 +25,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
         body { 
-            /* EFFET CHIRURGICAL : FOND BLANC SATINÉ AVEC FILIGRANE DE SÉCURITÉ */
-            background: radial-gradient(circle at center, var(--white) 0%, var(--satin-white) 100%);
-            background-attachment: fixed;
+            background-color: var(--white); 
             color: #333; 
             overflow-x: hidden; 
             top: 0 !important; 
             position: static !important; 
         }
 
-        /* AJOUT DE LIGNES DE SÉCURITÉ EN FOND (FILIGRANE) */
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: repeating-linear-gradient(45deg, rgba(0,26,77,0.01) 0px, rgba(0,26,77,0.01) 1px, transparent 1px, transparent 10px);
-            pointer-events: none; z-index: -1;
-        }
-
         header {
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-            padding: 20px 8%; display: flex;
+            background: var(--white); padding: 20px 8%; display: flex;
             justify-content: space-between; align-items: center;
-            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .logo-container { display: flex; align-items: center; gap: 15px; }
@@ -54,12 +44,8 @@
             display: flex; align-items: center; justify-content: center; 
             font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
             border: 1px solid var(--gold); flex-shrink: 0;
-            box-shadow: 0 0 10px rgba(197, 160, 89, 0.3);
         }
-        .logo { 
-            font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px;
-            text-shadow: 0 0 15px rgba(255,255,255,1); /* Lueur pour lisibilité */
-        }
+        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
         
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
@@ -69,7 +55,6 @@
             font-size: 0.7rem; font-weight: 700; color: var(--gold); 
             border: 1px solid var(--gold); padding: 5px 10px;
             display: flex; align-items: center; gap: 8px;
-            background: rgba(197, 160, 89, 0.05);
         }
 
         .hero {
@@ -79,10 +64,7 @@
             display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
         .hero-content { max-width: 600px; }
-        .hero-content h1 { 
-            font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; 
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
         .simulator { 
             background: var(--white); padding: 40px; border-radius: 2px; width: 480px; 
@@ -94,49 +76,40 @@
         
         .sim-row label span { color: var(--navy); font-weight: 800; } 
         
-        input[type="range"] { width: 100%; height: 4px; accent-color: var(--gold); cursor: pointer; }
+        input[type="range"] { width: 100%; height: 4px; accent-color: var(--bright-gold); cursor: pointer; }
         
         .result-area { 
-            background: #f8fbff; /* Bleu très pâle sérieux */
-            padding: 25px; 
-            text-align: center; 
-            border: 1px solid #e1e8f0; 
-            margin-bottom: 20px; 
-            border-radius: 4px;
-            box-shadow: inset 0 0 10px rgba(0,26,77,0.02);
+            background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; 
         }
 
-        /* TITRE MENSUALITÉ AVEC EFFET SHIMMER (SCINTILLEMENT OR) */
+        /* TITRE MENSUALITÉ : JAUNE ÉTINCELANT */
         .result-area p { 
-            font-size: 0.85rem; 
-            margin-bottom: 8px; 
-            font-weight: 700;
-            background: linear-gradient(90deg, #C5A059, #FFD700, #C5A059);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine-gold 3s linear infinite;
+            font-size: 0.85rem; margin-bottom: 8px; font-weight: 700;
+            color: var(--bright-gold);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            animation: shimmer-text 3s linear infinite;
         }
-        @keyframes shine-gold { to { background-position: 200% center; } }
+        @keyframes shimmer-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
-        /* CHIFFRE AUTOMATIQUE : NAVY (BLEU FONCÉ) */
+        /* RÉSULTAT CHIFFRÉ : BLEU MARINE TRÈS LISIBLE */
         .result-area span { 
             font-size: 2.2rem; 
             font-weight: 800; 
             color: var(--navy); 
         }
         
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,26,77,0.2); }
-        .btn-main:hover { background: var(--gold); transform: translateY(-2px); }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-main:hover { background: var(--gold); }
 
-        /* FORMULAIRE SOBRE ET LISIBLE */
+        /* CHAMPS DE FORMULAIRE OPTIMISÉS */
         .form-input { 
-            width: 100%; padding: 12px; border: 2px solid #EAECEF; 
+            width: 100%; padding: 12px; border: 2px solid var(--deep-gold); 
             background-color: var(--white); border-radius: 4px; 
-            margin-bottom: 10px; font-size: 0.95rem; outline: none;
-            color: var(--navy); font-weight: 500; transition: 0.3s;
+            margin-bottom: 10px; font-size: 1rem; outline: none;
+            color: #000c24; font-weight: 600;
         }
-        .form-input:focus { border-color: var(--gold); box-shadow: 0 0 8px rgba(197,160,89,0.1); }
+        .form-input::placeholder { color: #999; font-weight: 400; }
+        .form-input:focus { border-color: var(--navy); box-shadow: 0 0 10px rgba(0,26,77,0.1); }
 
         .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
 
@@ -148,10 +121,23 @@
         .scrolling-security span { display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600; }
         @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
+        #loader-overlay {
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
+        }
+        .spinner {
+            width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy);
+            border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        #success-message { display: none; text-align: center; }
+        #success-message i { color: var(--success); font-size: 4rem; margin-bottom: 20px; }
+
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
         .stat-box h3 { font-size: 2rem; color: var(--gold); }
 
-        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: transparent; position: relative; }
+        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
         .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
 
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
@@ -244,7 +230,6 @@
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
-            
             <div class="scrolling-security">
                 <span><i class="fas fa-lock" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles. • Transfert sécurisé SSL 256-bit • Protection garantie.</span>
             </div>
@@ -258,7 +243,9 @@
                 <input type="hidden" name="montant_client" id="hiddenAmt">
                 <input type="hidden" name="duree_client" id="hiddenDur">
                 <input type="hidden" name="mensualite_client" id="hiddenMens">
+                
                 <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
+                
                 <select name="projet" class="form-input" required>
                     <option value="" disabled selected>Choisir votre projet</option>
                     <option value="Immobilier">Prêt Immobilier</option>
@@ -267,8 +254,10 @@
                     <option value="Travaux">Travaux / Rénovation</option>
                     <option value="Autre">Autre</option>
                 </select>
+
                 <input type="number" name="revenu" placeholder="Revenu mensuel net (en €)" class="form-input" required>
                 <input type="text" name="profession" placeholder="Votre Profession / Travail" class="form-input" required>
+
                 <select name="pays" class="form-input" required>
                     <option value="" disabled selected>Votre Pays de résidence</option>
                     <option value="France">France (+33)</option>
@@ -279,26 +268,16 @@
                     <option value="Allemagne">Allemagne (+49)</option>
                     <option value="Pays-Bas">Pays-Bas (+31)</option>
                     <option value="Autriche">Autriche (+43)</option>
-                    <option value="Norvège">Norvège (+47)</option>
-                    <option value="Suède">Suède (+46)</option>
-                    <option value="Finlande">Finlande (+358)</option>
-                    <option value="Danemark">Danemark (+45)</option>
                     <option value="Italie">Italie (+39)</option>
                     <option value="Espagne">Espagne (+34)</option>
                     <option value="Portugal">Portugal (+351)</option>
-                    <option value="Pologne">Pologne (+48)</option>
-                    <option value="Slovaquie">Slovaquie (+421)</option>
-                    <option value="Roumanie">Roumanie (+40)</option>
-                    <option value="Kosovo">Kosovo (+383)</option>
                     <option value="Canada">Canada (+1)</option>
                     <option value="USA">États-Unis (+1)</option>
-                    <option value="Guadeloupe">Guadeloupe (+590)</option>
-                    <option value="Martinique">Martinique (+596)</option>
-                    <option value="Guyane">Guyane Française (+594)</option>
-                    <option value="La Réunion">La Réunion (+262)</option>
                 </select>
+
                 <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
+                
                 <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
                 <div class="security-tag"><i class="fas fa-lock"></i> Transfert sécurisé SSL 256-bit</div>
             </form>
@@ -315,21 +294,18 @@
 <section class="about-section" id="about">
     <h2>Une Institution de Référence</h2>
     <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
-    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs pour garantir une stabilité et une expertise inégalées sur le marché européen.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
-        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit régulée.<br>LEI : 969500WONJGTDZG8E035</p></div>
+        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit régulée.</p></div>
         <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, France</p></div>
-        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
-        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
+        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot</p></div>
+        <div><h4>AUDIT</h4><p>Constantin Associés</p></div>
     </div>
     <div class="legal-block">
         <strong>INFORMATIONS LÉGALES :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Soumis à l'ACPR. 
-        <div class="tag-warning">
-            <span class="blink-gold">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</span>
-        </div>
+        <div class="tag-warning"><span class="blink-gold">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</span></div>
     </div>
 </footer>
 
@@ -337,7 +313,7 @@
 
 <script>
     const waText = document.getElementById('wa-text');
-    const messages = ["Besoin d'aide ? Contactez l'assistance", "Need help? Contact support", "Un agent est prêt à vous aider"];
+    const messages = ["Besoin d'aide ? Contactez l'assistance", "Un agent est prêt à vous aider"];
     let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
 
     const amtR = document.getElementById('amtRange');
@@ -376,7 +352,7 @@
                 document.getElementById('loading-content').style.display = 'none';
                 document.getElementById('success-message').style.display = 'block';
             }, 4000);
-        } catch (error) { overlay.style.display = 'none'; alert("Erreur. Veuillez réessayer."); }
+        } catch (error) { overlay.style.display = 'none'; alert("Erreur."); }
     };
 </script>
 </body>
