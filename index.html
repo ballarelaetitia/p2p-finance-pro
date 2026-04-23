@@ -14,7 +14,8 @@
         :root {
             --navy: #001A4D;
             --gold: #C5A059;
-            --bright-gold: #FFD700; /* Le jaune exact de votre photo */
+            --bright-gold: #FFD700; 
+            --deep-gold: #E6B800; /* Jaune plus soutenu pour les bordures */
             --light-bg: #F4F7FA;
             --white: #FFFFFF;
             --whatsapp: #25D366;
@@ -72,31 +73,42 @@
         }
         .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
-        .sim-row label span { color: var(--bright-gold); } /* Montant et durée en jaune */
         
-        /* CURSEURS JAUNE ÉCLATANT */
+        /* CHIFFRES EN BLEU MARINE POUR LA LISIBILITÉ */
+        .sim-row label span { color: var(--navy); font-weight: 800; } 
+        
+        /* CURSEURS GARDÉS EN JAUNE */
         input[type="range"] { width: 100%; height: 4px; accent-color: var(--bright-gold); cursor: pointer; }
         
-        /* ZONE RÉSULTAT JAUNE COMME SUR LA PHOTO */
+        /* ZONE RÉSULTAT - TEXTE JAUNE MAIS CHIFFRE BLEU MARINE */
         .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
         .result-area p { font-size: 0.8rem; margin-bottom: 5px; color: var(--bright-gold); font-weight: 700; }
-        .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--bright-gold); }
+        .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
         
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
-        /* FORMULAIRE AVEC CAGES JAUNES ET FOND BLANC */
+        /* FORMULAIRE AVEC CAGES JAUNES PLUS ÉPAISSES ET FOND BLANC */
         .form-input { 
             width: 100%; 
             padding: 12px; 
-            border: 1.5px solid var(--bright-gold); 
+            border: 2.5px solid var(--deep-gold); 
             background-color: var(--white);
             border-radius: 4px; 
             margin-bottom: 10px; 
             font-size: 0.9rem;
             outline: none;
+            color: var(--navy);
+            font-weight: 500;
         }
-        .form-input:focus { box-shadow: 0 0 5px rgba(255, 215, 0, 0.3); }
+        .form-input::placeholder { color: #999; font-weight: 400; }
+        .form-input:focus { border-color: var(--navy); }
+
+        /* STYLE TABLEAU AMORTISSEMENT */
+        .amort-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.8rem; }
+        .amort-table th { background: var(--navy); color: var(--white); padding: 10px; text-align: left; }
+        .amort-table td { padding: 8px; border-bottom: 1px solid #eee; }
+        .amort-table tr:nth-child(even) { background: #f9f9f9; }
 
         .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
 
@@ -235,16 +247,16 @@
         <div id="step1">
             <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
             <div class="sim-row">
-                <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:700; width:80px; background:transparent; color: var(--bright-gold);"> €</span></label>
+                <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent; color: var(--navy);"> €</span></label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
             </div>
             <div class="sim-row">
-                <label>DURÉE DU REMBOURSEMENT <span id="durText" style="color: var(--bright-gold);">36 mois</span></label>
+                <label>DURÉE DU REMBOURSEMENT <span id="durText" style="color: var(--navy); font-weight: 800;">36 mois</span></label>
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
             <div class="result-area">
                 <p>MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
-                <span id="monthlyRes">0.00</span> <span>€</span>
+                <span id="monthlyRes">0.00</span> <span style="color: var(--navy);">€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
             
