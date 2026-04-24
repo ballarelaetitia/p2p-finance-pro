@@ -106,24 +106,25 @@
         }
 
         /* --- SECTION TÉMOIGNAGES --- */
-        .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; overflow: hidden; }
+        .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         
-        /* ICI : Ajout du mouvement sur ta grille d'origine sans rien bloquer */
-        .reviews-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 25px; 
-            animation: slideUp 20s linear infinite; /* Mouvement vertical lent */
+        /* AJOUT DE L'EFFET DYNAMIQUE SUR LES CARTES (SANS MOUVEMENT GLOBAL) */
+        .review-card { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 8px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
+            text-align: left; 
+            border-top: 3px solid var(--gold);
+            transition: all 0.4s ease; /* Fluidité du survol */
         }
-        .reviews-grid:hover { animation-play-state: paused; }
-        @keyframes slideUp {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
+        .review-card:hover { 
+            transform: translateY(-5px); /* Monte légèrement au survol */
+            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); /* Ombre dorée */
         }
 
-        .review-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; border-top: 3px solid var(--gold); }
         .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
         .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: block; }
         .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px; }
@@ -440,9 +441,9 @@
         { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen kaikille!" },
         { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar serios. Procesul a fost rapid și transparent." },
         { n: "Arber K.", p: "Kosovo", t: "Shërbim shumë i shpejtë dhe korrekt. Faleminderit shumë." },
-        { n: "Maria C.", p: "Italie", t: "Finanziamento obtenu in tempi record. Molto soddisfatta del supporto." },
+        { n: "Maria C.", p: "Italie", t: "Finanziamento ottenuto in tempi record. Molto soddisfatta del supporto." },
         { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung. Absolut empfehlenswert." },
-        { n: "João P.", p: "Portugal", t: "Processo simples et transparent. Recomendo vivamente a Cézembre." },
+        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo vivamente a Cézembre." },
         { n: "Luc B.", p: "Monaco", t: "Service haut de gamme et discrétion totale. Parfait pour mon investissement." },
         { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec. Très efficace." },
         { n: "Anissa K.", p: "Martinique", t: "Une aide précieuse pour mon projet local. Rapide et sérieux." },
@@ -459,7 +460,7 @@
         { n: "Robert H.", p: "Allemagne", t: "Endlich eine Bank, die zuhört. Sehr zufrieden mit dem Kredit." },
         { n: "Julie M.", p: "Belgique", t: "Top service, j'ai eu les fonds sur mon compte en 48h." },
         { n: "Mathias P.", p: "Suisse", t: "Sérieux, rapide et efficace. Je recommande sans hésiter." },
-        { n: "Elena G.", p: "Roumanie", t: "Mulțumesc pentru ajutor, projetul meu este acum realitate." },
+        { n: "Elena G.", p: "Roumanie", t: "Mulțumesc pour ajutor, proiectul meu este acum realitate." },
         { n: "Besnik S.", p: "Kosovo", t: "Kredit i shpejtë dhe pa shumë burokraci. Shumë mirë." },
         { n: "Laurent G.", p: "Guadeloupe", t: "Un accompagnement humain malgré la distance. Merci." },
         { n: "Isabelle L.", p: "Canada", t: "Efficace et sécuritaire. J'ai obtenu mon prêt travaux rapidement." },
