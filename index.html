@@ -105,40 +105,25 @@
             .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
         }
 
-        /* --- SECTION TÉMOIGNAGES ANIMÉS --- */
-        .reviews-section { padding: 80px 0; background: var(--light-bg); overflow: hidden; }
-        .reviews-section h2 { color: var(--navy); margin-bottom: 40px; font-size: 2rem; text-align: center; }
+        /* --- SECTION TÉMOIGNAGES --- */
+        .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; overflow: hidden; }
+        .reviews-section h2 { color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
         
-        /* Container des rails */
-        .reviews-container-wrapper { display: flex; flex-direction: column; gap: 20px; width: 100%; }
-        
-        /* Rail individuel */
-        .review-rail { display: flex; gap: 20px; width: max-content; }
-        
-        .review-card { 
-            background: white; padding: 25px; border-radius: 8px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; 
-            border-top: 3px solid var(--gold);
-            width: 350px; /* Taille fixe pour garder l'alignement par 3 */
-            flex-shrink: 0;
+        /* ICI : Ajout du mouvement sur ta grille d'origine sans rien bloquer */
+        .reviews-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+            animation: slideUp 20s linear infinite; /* Mouvement vertical lent */
+        }
+        .reviews-grid:hover { animation-play-state: paused; }
+        @keyframes slideUp {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
         }
 
-        /* Animations de défilement */
-        .scroll-left { animation: scrollLeft 60s linear infinite; }
-        .scroll-right { animation: scrollRight 60s linear infinite; }
-        
-        .reviews-container-wrapper:hover .review-rail { animation-play-state: paused; }
-
-        @keyframes scrollLeft {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        @keyframes scrollRight {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
-        }
-
+        .review-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; border-top: 3px solid var(--gold); }
         .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
         .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: block; }
         .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px; }
@@ -413,7 +398,7 @@
 
 <section class="reviews-section">
     <h2>La confiance de nos clients internationaux</h2>
-    <div class="reviews-container-wrapper" id="reviews-wrapper">
+    <div class="reviews-grid" id="reviews-container">
         </div>
 </section>
 
@@ -455,7 +440,7 @@
         { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen kaikille!" },
         { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar serios. Procesul a fost rapid și transparent." },
         { n: "Arber K.", p: "Kosovo", t: "Shërbim shumë i shpejtë dhe korrekt. Faleminderit shumë." },
-        { n: "Maria C.", p: "Italie", t: "Finanziamento ottenuto in tempi record. Molto soddisfatta del supporto." },
+        { n: "Maria C.", p: "Italie", t: "Finanziamento obtenu in tempi record. Molto soddisfatta del supporto." },
         { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung. Absolut empfehlenswert." },
         { n: "João P.", p: "Portugal", t: "Processo simples et transparent. Recomendo vivamente a Cézembre." },
         { n: "Luc B.", p: "Monaco", t: "Service haut de gamme et discrétion totale. Parfait pour mon investissement." },
@@ -467,14 +452,14 @@
         { n: "Mette N.", p: "Danemark", t: "Hurtig udbetaling og venlig kundeservice. Meget tilfreds." },
         { n: "Piotr K.", p: "Pologne", t: "Wszystko przebiegło sprawnie i profesjonalnie. Polecam." },
         { n: "Lukas M.", p: "Slovaquie", t: "Veľmi dobrý prístup k zákazníkovi. Úver bol schválený rýchlo." },
-        { n: "Victor R.", p: "Espagne", t: "Gestión impecable de mi crédito personal. Muy agradecido." },
+        { n: "Victor R.", p: "Espagne", t: "Gestión impecable de mi crédit personal. Muy agradecido." },
         { n: "Antonio F.", p: "Portugal", t: "Recomendo a todos, processo simples e sem complicações." },
         { n: "Sandro B.", p: "Italie", t: "Personale gentile e risposte veloci. Molto seri." },
         { n: "Claire D.", p: "France", t: "Solution idéale pour consolider mes dettes. Merci infiniment." },
         { n: "Robert H.", p: "Allemagne", t: "Endlich eine Bank, die zuhört. Sehr zufrieden mit dem Kredit." },
         { n: "Julie M.", p: "Belgique", t: "Top service, j'ai eu les fonds sur mon compte en 48h." },
         { n: "Mathias P.", p: "Suisse", t: "Sérieux, rapide et efficace. Je recommande sans hésiter." },
-        { n: "Elena G.", p: "Roumanie", t: "Mulțumesc pentru ajutor, proiectul meu este acum realitate." },
+        { n: "Elena G.", p: "Roumanie", t: "Mulțumesc pentru ajutor, projetul meu este acum realitate." },
         { n: "Besnik S.", p: "Kosovo", t: "Kredit i shpejtë dhe pa shumë burokraci. Shumë mirë." },
         { n: "Laurent G.", p: "Guadeloupe", t: "Un accompagnement humain malgré la distance. Merci." },
         { n: "Isabelle L.", p: "Canada", t: "Efficace et sécuritaire. J'ai obtenu mon prêt travaux rapidement." },
@@ -489,41 +474,23 @@
     ];
 
     function renderReviews() {
-        const wrapper = document.getElementById('reviews-wrapper');
-        wrapper.innerHTML = ""; 
-        
-        // On crée 4 lignes (rails)
-        const totalRails = 4;
-        const reviewsPerRail = 10; // 40 avis / 4 rails = 10 avis par rail
-
-        for (let i = 0; i < totalRails; i++) {
-            const directionClass = (i % 2 === 0) ? "scroll-left" : "scroll-right";
-            const rail = document.createElement('div');
-            rail.className = review-rail ${directionClass};
+        const container = document.getElementById('reviews-container');
+        container.innerHTML = ""; 
+        internationalReviews.sort(() => 0.5 - Math.random()).slice(0, 12).forEach(r => {
+            const times = ["2 min", "15 min", "1h", "3h", "5h", "1j", "2j"];
+            const randomTime = times[Math.floor(Math.random() * times.length)];
             
-            // Sélectionner un segment de 10 avis pour ce rail
-            const segment = internationalReviews.slice(i * reviewsPerRail, (i + 1) * reviewsPerRail);
-            
-            // On double le segment pour créer l'effet d'infini sans coupure
-            const doubleSegment = [...segment, ...segment];
-
-            doubleSegment.forEach(r => {
-                const times = ["2 min", "15 min", "1h", "3h", "5h", "1j", "2j"];
-                const randomTime = times[Math.floor(Math.random() * times.length)];
-                
-                rail.innerHTML += `
-                    <div class="review-card">
-                        <span class="review-date"><i class="far fa-clock"></i> Il y a ${randomTime}</span>
-                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="review-text">"${r.t}"</p>
-                        <div class="review-author">
-                            <div>${r.n} (${r.p})</div>
-                            <span class="verified"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span>
-                        </div>
-                    </div>`;
-            });
-            wrapper.appendChild(rail);
-        }
+            container.innerHTML += `
+                <div class="review-card">
+                    <span class="review-date"><i class="far fa-clock"></i> Il y a ${randomTime}</span>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"${r.t}"</p>
+                    <div class="review-author">
+                        <div>${r.n} (${r.p})</div>
+                        <span class="verified"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span>
+                    </div>
+                </div>`;
+        });
     }
     renderReviews();
 
@@ -585,6 +552,7 @@
 
     (function autoTranslate() {
         const userLang = navigator.language || navigator.userLanguage;
+        // Si la langue n'est pas le français, on lance la traduction automatique
         if (!userLang.startsWith('fr')) {
             setTimeout(() => {
                 const select = document.querySelector('select.goog-te-combo');
