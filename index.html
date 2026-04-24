@@ -6,255 +6,174 @@
     <title>FINANCIÈRE DE CEZEMBRE | Solutions de Crédit Institutionnelles</title>
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23001A4D'/><text y='70' x='15' font-family='serif' font-size='55' font-weight='bold' fill='%23C5A059'>FC</text></svg>">
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --navy: #001A4D;
-            --gold: #C5A059;
-            --bright-gold: #FFD700; 
-            --deep-gold: #E6B800; 
-            --light-bg: #F4F7FA;
-            --white: #FFFFFF;
-            --whatsapp: #25D366;
-            --success: #27ae60;
+            --navy: #001A4D; --gold: #C5A059; --bright-gold: #FFD700; 
+            --light-bg: #F4F7FA; --white: #FFFFFF; --success: #27ae60;
         }
 
-        /* --- STYLES SYSTÈME D'AVIS (AJOUTÉS AVEC PRÉCISION) --- */
-        .BADGE-GRANDS-CARACTERES {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--success);
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-            animation: blink-badge 1s infinite;
-        }
-        @keyframes blink-badge { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-        .btn-avis-authentique {
-            background: var(--navy);
-            color: white;
-            border: 2px solid var(--gold);
-            padding: 22px 40px;
-            font-weight: 700;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            text-transform: uppercase;
-            font-size: 1rem;
-            transition: 0.3s;
-            border-radius: 4px;
-        }
-        .btn-avis-authentique:hover { background: var(--gold); color: var(--navy); }
-        .stars-or { color: var(--bright-gold); font-size: 1.2rem; }
-        
-        .cadenas-anim { 
-            color: var(--bright-gold); 
-            font-size: 1.3rem;
-            animation: pulse-cadenas 1.5s infinite ease-in-out; 
-        }
-        @keyframes pulse-cadenas {
-            0% { transform: scale(1); filter: drop-shadow(0 0 0px gold); }
-            50% { transform: scale(1.3); filter: drop-shadow(0 0 15px gold); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 0px gold); }
-        }
-
-        .carrousel-container { 
-            display: none; 
-            margin-top: 40px; 
-            width: 100%; 
-            overflow: hidden; 
-            position: relative;
-        }
-        
-        .track-auto-move {
-            display: flex;
-            gap: 25px;
-            width: max-content;
-            animation: moveSlow 50s linear infinite; /* Défilement lent automatique */
-        }
-        .track-auto-move:hover { animation-play-state: paused; } /* S'arrête au survol */
-
-        @keyframes moveSlow {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .card-avis-zoom {
-            width: 320px;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-top: 4px solid var(--gold);
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            text-align: left;
-            flex-shrink: 0;
-        }
-        .card-avis-zoom:hover { transform: scale(1.1); z-index: 100; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-
-        .btn-retour-page {
-            margin-top: 30px;
-            background: transparent;
-            border: 1px solid var(--navy);
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--navy);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-
-        /* --- TON STYLE ORIGINAL (INCHANGÉ) --- */
-        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
-        body { top: 0px !important; }
-        .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: var(--white); color: #333; overflow-x: hidden; top: 0 !important; position: static !important; }
-        header { background: var(--white); padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        body { background-color: var(--white); color: #333; overflow-x: hidden; }
+
+        header {
+            background: var(--white); padding: 20px 8%; display: flex;
+            justify-content: space-between; align-items: center;
+            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
         .logo-container { display: flex; align-items: center; gap: 15px; }
-        .logo-sigle { background: var(--navy); color: var(--gold); width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem; border: 1px solid var(--gold); flex-shrink: 0; }
-        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
-        .intl-badge { font-size: 0.7rem; font-weight: 700; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; display: flex; align-items: center; gap: 8px; }
-        .hero { height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000'); background-size: cover; background-position: center; display: flex; align-items: center; padding: 0 8%; color: var(--white); }
-        .hero-content { max-width: 600px; position: relative; z-index: 1; padding: 20px; }
-        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
-        .simulator { background: var(--white); padding: 40px; border-radius: 2px; width: 480px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); position: relative; overflow: hidden; min-height: 520px; }
-        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
-        .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .logo-sigle { 
+            background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-weight: 700; border-radius: 4px; border: 1px solid var(--gold);
+        }
+        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); }
+
+        .hero {
+            height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; display: flex; align-items: center; padding: 0 8%; color: var(--white);
+        }
+
+        .simulator { 
+            background: var(--white); padding: 40px; border-radius: 2px; width: 480px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
+        }
+
+        /* --- ZONE DES AVIS (LE COEUR DU TRAVAIL) --- */
+        .badge-grand {
+            font-size: 1.5rem; font-weight: 900; color: var(--success);
+            text-transform: uppercase; display: block; margin-bottom: 20px;
+            animation: blink 1s infinite; text-align: center;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        .btn-avis-certif {
+            background: var(--navy); color: white; border: 2px solid var(--gold);
+            padding: 22px 35px; font-weight: 700; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 15px;
+            text-transform: uppercase; transition: 0.3s; width: 100%; justify-content: center;
+        }
+        .btn-avis-certif:hover { background: var(--gold); color: var(--navy); }
+        .cadenas-magnétique { color: var(--bright-gold); animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+
+        #container-avis-dynamique { display: none; margin-top: 40px; }
+        .carousel-track {
+            display: flex; gap: 20px; width: max-content;
+            animation: scroll-slow 60s linear infinite;
+        }
+        .carousel-track:hover { animation-play-state: paused; }
+        @keyframes scroll-slow { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .review-card-modern {
+            width: 320px; background: white; padding: 25px; border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-top: 4px solid var(--gold);
+            transition: 0.4s; cursor: pointer; flex-shrink: 0;
+        }
+        .review-card-modern:hover { transform: scale(1.1); z-index: 50; }
+
+        .btn-retour {
+            margin-top: 30px; background: none; border: 1px solid var(--navy);
+            padding: 10px 20px; cursor: pointer; font-weight: 600;
+        }
+
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
-        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 35px; animation: magnet-pulse 2s infinite ease-in-out; }
-        @keyframes magnet-pulse { 0% { transform: scale(1); } 10% { transform: scale(1.1); } 40% { transform: scale(1); } }
+        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; text-align: center; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo-container"><div class="logo-sigle">FC</div><div class="logo">FINANCIÈRE DE CEZEMBRE</div></div>
-    <div class="nav-links">
-        <a href="#about">Notre Expertise</a><a href="#legal">Gouvernance</a>
-        <div class="intl-badge"><i class="fas fa-globe"></i> PORTAIL INTERNATIONAL SÉCURISÉ</div>
+    <div class="logo-container">
+        <div class="logo-sigle">FC</div>
+        <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     </div>
 </header>
 
-<div style="position: fixed; bottom: 30px; left: 30px; z-index: 9999;">
-    <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
-
 <section class="hero">
-    <div class="hero-content"><h1>L'excellence financière <br>au service de vos projets.</h1></div>
-    <div class="simulator" id="simBox">
-        <h3>Simulateur de Crédit</h3>
-        <div class="result-area"><p>MENSUALITÉ ESTIMÉE</p><span id="monthlyRes">452.10</span> €</div>
-        <button class="btn-main" onclick="window.scrollTo({top: 800, behavior:'smooth'})">DÉPOSER MON DOSSIER</button>
+    <div class="simulator">
+        <h3 style="margin-bottom:20px;">Simulateur de Crédit</h3>
+        <div style="background:#F4F7FA; padding:25px; text-align:center; margin-bottom:20px;">
+            <p style="font-weight:800; font-size:0.9rem;">MENSUALITÉ ESTIMÉE</p>
+            <span id="monthlyRes" style="font-size:2.2rem; font-weight:800;">452.10</span> €
+        </div>
+        <button class="btn-avis-certif" style="width:100%;" onclick="document.getElementById('confiance').scrollIntoView({behavior:'smooth'})">VÉRIFIER LES AVIS D'ABORD</button>
     </div>
 </section>
 
-<section class="reviews-section">
-    <div id="bloc-action-avis">
-        <span class="BADGE-GRANDS-CARACTERES">
+<section id="confiance" style="padding: 100px 8%; background: var(--light-bg); text-align: center;">
+    
+    <div id="bloc-declencheur">
+        <span class="badge-grand">
             <i class="fas fa-shield-alt"></i> Système de vérification d'avis Satis-Certifié actif
         </span>
 
-        <div style="margin-bottom: 20px;">
-            <button class="btn-avis-authentique" onclick="activerAvisDynamiques()">
-                <span class="stars-or"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
-                VÉRIFIER AVIS DE NOS CLIENTS CERTIFIÉS
-                <span class="cadenas-anim"><i class="fas fa-lock"></i></span>
-            </button>
-        </div>
-        <p style="font-size: 0.8rem; color: #666;">Cliquez pour déverrouiller l'accès aux témoignages certifiés</p>
+        <button class="btn-avis-certif" id="mainBtnAction" onclick="activerLeSysteme()">
+            <span style="color:var(--bright-gold)"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+            Vérifier avis de nos clients certifiés
+            <span class="cadenas-magnétique"><i class="fas fa-lock"></i></span>
+        </button>
     </div>
 
-    <div id="carrousel-global" class="carrousel-container">
-        <div class="track-auto-move" id="piste-avis">
-            </div>
-
-        <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
-            <button onclick="manualScroll('L')" style="background:var(--navy); color:white; border:none; padding:12px 25px; cursor:pointer; border-radius:4px;"><i class="fas fa-chevron-left"></i></button>
-            <button onclick="manualScroll('R')" style="background:var(--navy); color:white; border:none; padding:12px 25px; cursor:pointer; border-radius:4px;"><i class="fas fa-chevron-right"></i></button>
+    <div id="container-avis-dynamique">
+        <div style="overflow: hidden; width: 100%;">
+            <div class="carousel-track" id="pisteDesAvis">
+                </div>
         </div>
-
-        <button class="btn-retour-page" onclick="fermerAvis()">Retour à la page d'accueil</button>
+        
+        <div style="margin-top:30px; display:flex; justify-content:center; gap:20px;">
+            <button onclick="navManuel('L')" style="background:var(--navy); color:white; border:none; padding:15px; cursor:pointer;"><i class="fas fa-arrow-left"></i></button>
+            <button onclick="navManuel('R')" style="background:var(--navy); color:white; border:none; padding:15px; cursor:pointer;"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <button class="btn-retour" onclick="window.location.reload()">Retour à l'accueil</button>
     </div>
-</section>
-
-<section class="about-section" id="about" style="padding: 100px 15%; background: white;">
-    <h2 style="text-align: center; margin-bottom: 30px; color: var(--navy);">Une Institution de Référence</h2>
-    <p style="text-align: justify; line-height: 1.8;">FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit. Sous la direction de Monsieur Michel Pajot, nous garantissons une expertise inégalée sur le marché européen.</p>
 </section>
 
 <footer id="legal">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 40px;">
-        <div><h4 style="color:white; margin-bottom:15px;">FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit régulée.</p></div>
-        <div><h4 style="color:white; margin-bottom:15px;">GOUVERNANCE</h4><p>Président : M. Michel Pajot<br>SIRET : 552 058 943 00044</p></div>
-    </div>
-    <div class="tag-warning">
-        <strong>INFORMATIONS LÉGALES :</strong> Soumis à l'ACPR. 
-        <div style="margin-top:10px; color:var(--gold); font-weight:700;">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</div>
-    </div>
+    <p><strong>INFORMATIONS LÉGALES :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Soumis à l'ACPR.</p>
+    <div class="tag-warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</div>
 </footer>
 
 <script>
-    // TES AVIS AUTHENTIQUES (INTACTS)
-    const internationalReviews = [
-        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle. Projet réalisé en un temps record." },
-        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif pour mon prêt frontalier. Top !" },
-        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse pour l'achat de mon véhicule." },
-        { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier de crédit. Service très courtois." },
-        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask utbetaling. Meget bra!" },
-        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo vivamente a Cézembre." },
-        { n: "Luc B.", p: "Monaco", t: "Service haut de gamme et discrétion totale. Parfait pour mon investissement." },
-        { n: "Isabelle L.", p: "Canada", t: "Efficace et sécuritaire. J'ai obtenu mon prêt travaux rapidement." }
+    const reviews = [
+        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle." },
+        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse." },
+        { n: "Thomas W.", p: "Luxembourg", t: "Sérieux et réactif pour mon prêt frontalier." },
+        { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier. Merci." },
+        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask utbetaling." },
+        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo." }
     ];
 
-    function activerAvisDynamiques() {
-        const bloc = document.getElementById('bloc-action-avis');
-        const carrousel = document.getElementById('carrousel-global');
-        const piste = document.getElementById('piste-avis');
-
-        bloc.style.display = 'none'; // Cache le bouton
-        carrousel.style.display = 'block'; // Affiche le carrousel
-
-        // On triple la liste pour un défilement infini fluide
-        const data = [...internationalReviews, ...internationalReviews, ...internationalReviews];
+    function activerLeSysteme() {
+        console.log("Système activé"); // Pour vérifier dans la console
+        document.getElementById('bloc-declencheur').style.display = 'none';
+        document.getElementById('container-avis-dynamique').style.display = 'block';
         
-        piste.innerHTML = data.map(r => `
-            <div class="card-avis-zoom">
-                <div style="color:var(--bright-gold); margin-bottom:10px;">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p style="font-size: 0.9rem; font-style: italic; color: #444; margin-bottom: 15px;">"${r.t}"</p>
-                <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.75rem; color: var(--navy);">
+        const piste = document.getElementById('pisteDesAvis');
+        // On double la liste pour l'effet infini
+        const doubleReviews = [...reviews, ...reviews, ...reviews];
+        
+        piste.innerHTML = doubleReviews.map(r => `
+            <div class="review-card-modern">
+                <div style="color:gold; margin-bottom:10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p style="font-style:italic; font-size:0.9rem; margin-bottom:15px;">"${r.t}"</p>
+                <div style="font-weight:700; font-size:0.8rem; display:flex; justify-content:space-between;">
                     <span>${r.n} (${r.p})</span>
-                    <span style="color: var(--success);"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span>
+                    <span style="color:green;"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span>
                 </div>
             </div>
         `).join('');
     }
 
-    function fermerAvis() {
-        document.getElementById('carrousel-global').style.display = 'none';
-        document.getElementById('bloc-action-avis').style.display = 'block';
-    }
-
-    let currentPos = 0;
-    function manualScroll(direction) {
-        const piste = document.getElementById('piste-avis');
-        piste.style.animation = 'none'; // Désactive l'auto pour le manuel
-        if(direction === 'R') currentPos -= 345;
-        else currentPos += 345;
-        piste.style.transform = translateX(${currentPos}px);
+    let pos = 0;
+    function navManuel(dir) {
+        const piste = document.getElementById('pisteDesAvis');
+        piste.style.animation = 'none';
+        if(dir === 'R') pos -= 340; else pos += 340;
+        piste.style.transform = translateX(${pos}px);
     }
 </script>
 
