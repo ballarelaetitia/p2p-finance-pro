@@ -3,113 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINANCIÈRE DE CEZEMBRE | Solutions de Crédit Institutionnelles</title>
+    <title>FINANCIÈRE DE CEZEMBRE | Officiel</title>
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23001A4D'/><text y='70' x='15' font-family='serif' font-size='55' font-weight='bold' fill='%23C5A059'>FC</text></svg>">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --navy: #001A4D;
             --gold: #C5A059;
             --bright-gold: #FFD700; 
-            --light-bg: #F4F7FA;
             --white: #FFFFFF;
-            --whatsapp: #25D366;
+            --light-bg: #F4F7FA;
             --success: #27ae60;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
+        /* HEADER LUXE */
         header {
-            background: var(--white); padding: 20px 8%; display: flex;
+            background: var(--white); padding: 15px 8%; display: flex;
             justify-content: space-between; align-items: center;
-            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
-
-        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
         .logo-sigle { 
-            background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
+            background: var(--navy); color: var(--gold); width: 40px; height: 40px; 
             display: flex; align-items: center; justify-content: center; 
-            font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
-            border: 1px solid var(--gold);
+            font-weight: 800; border-radius: 4px; border: 1px solid var(--gold);
         }
-        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
-        
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
-        .nav-links a:hover { color: var(--gold); }
+        .logo-text { font-weight: 800; font-size: 1.2rem; color: var(--navy); letter-spacing: -0.5px; }
 
+        /* HERO SECTION */
         .hero {
-            height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            height: 100vh; background: linear-gradient(rgba(0,26,77,0.75), rgba(0,26,77,0.75)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
-            display: flex; align-items: center; padding: 0 8%; color: var(--white);
+            display: flex; align-items: center; justify-content: space-between; padding: 0 8%; color: var(--white);
         }
+        .hero-content { max-width: 550px; }
+        .hero-content h1 { font-size: 3.2rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
 
-        .hero-content { max-width: 600px; }
-        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+        /* SIMULATEUR */
+        .simulator { 
+            background: var(--white); padding: 35px; border-radius: 4px; width: 450px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3); color: var(--navy); 
+        }
+        .sim-title { font-weight: 800; margin-bottom: 25px; border-bottom: 2px solid var(--light-bg); padding-bottom: 10px; }
+        .sim-row { margin-bottom: 20px; }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; }
+        .sim-row span { color: var(--gold); font-weight: 800; }
+        input[type="range"] { width: 100%; accent-color: var(--navy); cursor: pointer; }
         
-        .simulator { background: var(--white); padding: 40px; border-radius: 2px; width: 480px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); position: relative; overflow: hidden; }
+        .result-box { background: var(--light-bg); padding: 20px; text-align: center; border-radius: 4px; margin: 20px 0; border: 1px solid #e0e6ed; }
+        .result-box p { font-size: 0.75rem; font-weight: 700; color: #666; margin-bottom: 5px; }
+        .result-box .amt { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
+
+        .btn-submit { 
+            background: var(--navy); color: white; border: none; width: 100%; padding: 18px; 
+            font-weight: 800; cursor: pointer; transition: 0.3s; letter-spacing: 1px;
+        }
+        .btn-submit:hover { background: var(--gold); }
 
         /* --- SECTION AVIS AVEC LE BADGE --- */
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
-        .reviews-section h2 { color: var(--navy); margin-bottom: 15px; font-size: 2rem; }
+        .reviews-section h2 { color: var(--navy); font-weight: 800; margin-bottom: 20px; }
 
         /* LE BADGE [ ★ ★ ★ 🔒 ★ ★ ★ ] */
-        .trust-badge-container {
-            display: inline-flex; align-items: center; justify-content: center;
-            background: white; padding: 10px 30px; border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(197, 160, 89, 0.3);
-            margin-bottom: 40px;
+        .trust-badge {
+            display: inline-flex; align-items: center; gap: 15px;
+            background: white; padding: 12px 25px; border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 40px;
+            border: 1px solid rgba(197,160,89,0.2);
         }
-        .trust-stars { color: var(--bright-gold); font-size: 1.2rem; letter-spacing: 3px; }
-        .trust-lock { 
-            color: var(--gold); font-size: 1.8rem; margin: 0 20px;
-            animation: pulse-lock 3s infinite ease-in-out; 
+        .trust-badge .stars { color: var(--bright-gold); font-size: 1rem; }
+        .trust-badge .lock-icon { color: var(--gold); font-size: 1.4rem; animation: heartBeat 3s infinite; }
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            10% { transform: scale(1.15); }
+            20% { transform: scale(1); }
         }
-        @keyframes pulse-lock {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-        .trust-subtext { display: block; font-size: 0.75rem; color: #777; margin-top: -30px; margin-bottom: 40px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .review-card { 
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { 
             background: white; padding: 25px; border-radius: 8px; text-align: left; 
-            border-top: 3px solid var(--gold); opacity: 0; transform: translateY(30px); transition: 0.6s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03); border-top: 4px solid var(--gold);
+            opacity: 0; transform: translateY(20px); transition: 0.6s;
         }
-        .review-card.visible { opacity: 1; transform: translateY(0); }
-        .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin: 15px 0; line-height: 1.6; }
-        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; justify-content: space-between; }
-        .verified { color: var(--success); font-size: 0.7rem; font-weight: 800; }
+        .card.show { opacity: 1; transform: translateY(0); }
+        .card .stars-card { color: var(--bright-gold); margin-bottom: 10px; font-size: 0.8rem; }
+        .card p { font-style: italic; font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 15px; }
+        .card .author { font-weight: 800; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
+        .verified-tag { color: var(--success); font-size: 0.7rem; font-weight: 800; }
 
-        /* Styles Simulateur */
-        .sim-row { margin-bottom: 20px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; }
-        input[type="range"] { width: 100%; cursor: pointer; accent-color: var(--navy); }
-        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border-radius: 4px; margin-bottom: 20px; }
-        .result-area span { font-size: 2.2rem; font-weight: 800; }
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-main:hover { background: var(--gold); }
-        .form-input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px; outline: none; }
+        footer { background: #000c24; color: #999; padding: 50px 8%; text-align: center; }
+        .warning { border: 1px solid #333; padding: 15px; margin-top: 20px; color: var(--gold); font-weight: 700; font-size: 0.8rem; }
 
-        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
-        .stat-box h3 { font-size: 2rem; color: var(--gold); }
+        /* WHATSAPP */
+        .wa-float { position: fixed; bottom: 30px; left: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-        footer { background: #0A0A0A; color: #888; padding: 60px 8%; font-size: 0.8rem; }
-        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; text-align: center; color: var(--gold); font-weight: 700; }
-
-        .wa-assistant { position: fixed; bottom: 30px; left: 30px; z-index: 9999; }
-        .whatsapp-float { background: var(--whatsapp); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; height: auto; padding-top: 120px; }
-            .simulator { width: 100%; }
-            .stats-bar { flex-direction: column; gap: 20px; }
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
+            .simulator { width: 100%; margin-top: 30px; }
+            .hero-content h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -118,120 +117,102 @@
 <header>
     <div class="logo-container">
         <div class="logo-sigle">FC</div>
-        <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
+        <div class="logo-text">FINANCIÈRE DE CEZEMBRE</div>
     </div>
-    <div class="nav-links">
-        <a href="#about">Expertise</a>
-        <a href="#simBox">Simulation</a>
-        <div style="background: var(--light-bg); padding: 5px 15px; font-size: 0.7rem; font-weight: 700; border: 1px solid var(--gold);">PORTAIL SÉCURISÉ</div>
-    </div>
+    <div style="font-weight: 700; font-size: 0.7rem; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px;">PROJET SÉCURISÉ SSL</div>
 </header>
 
 <section class="hero">
     <div class="hero-content">
-        <h1>L'excellence financière à votre portée.</h1>
-        <p>Établissement de crédit régulé - Immatriculé au RCS 552 058 943.</p>
+        <h1>Votre futur mérite <br>le meilleur taux.</h1>
+        <p style="font-size: 1.1rem; opacity: 0.9;">Accompagnement institutionnel pour vos projets de vie. Réponse sous 24h.</p>
     </div>
 
-    <div class="simulator" id="simBox">
-        <div id="step1">
-            <h3 style="margin-bottom: 20px;">Simulateur de Prêt</h3>
-            <div class="sim-row">
-                <label>Montant : <span id="amtVal">15000</span> €</label>
-                <input type="range" id="amtRange" min="1000" max="75000" value="15000" oninput="calc()">
-            </div>
-            <div class="sim-row">
-                <label>Durée : <span id="durVal">36</span> mois</label>
-                <input type="range" id="durRange" min="6" max="84" value="36" oninput="calc()">
-            </div>
-            <div class="result-area">
-                <p>Mensualité (TAEG 3.5%)</p>
-                <span id="monthlyRes">0.00</span> €
-            </div>
-            <button class="btn-main" onclick="document.getElementById('step1').style.display='none'; document.getElementById('step2').style.display='block';">CONTINUER</button>
+    <div class="simulator">
+        <h3 class="sim-title">SIMULATEUR DE CRÉDIT</h3>
+        <div class="sim-row">
+            <label>MONTANT DU PRÊT <span id="amtText">15 000 €</span></label>
+            <input type="range" id="amtInp" min="2000" max="100000" step="1000" value="15000" oninput="update()">
         </div>
-
-        <div id="step2" style="display:none;">
-            <h3>Vos Informations</h3>
-            <form id="loanForm">
-                <input type="text" placeholder="Nom Complet" class="form-input" required>
-                <input type="email" placeholder="Email" class="form-input" required>
-                <input type="tel" placeholder="Téléphone" class="form-input" required>
-                <button type="submit" class="btn-main">ENVOYER LA DEMANDE</button>
-            </form>
+        <div class="sim-row">
+            <label>DURÉE DU REMBOURSEMENT <span id="durText">36 mois</span></label>
+            <input type="range" id="durInp" min="12" max="120" step="6" value="36" oninput="update()">
         </div>
+        <div class="result-box">
+            <p>MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
+            <div class="amt"><span id="resText">0.00</span> €</div>
+        </div>
+        <button class="btn-submit" onclick="alert('Redirection vers le formulaire sécurisé...')">DÉPOSER MON DOSSIER</button>
+        <p style="font-size: 0.65rem; text-align: center; margin-top: 15px; color: #999;">Transfert de données sécurisé et confidentiel.</p>
     </div>
-</section>
-
-<section class="stats-bar">
-    <div class="stat-box"><h3>1.2M €</h3><p>Capital Social</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Taux Fixe</p></div>
-    <div class="stat-box"><h3>24h</h3><p>Réponse Rapide</p></div>
 </section>
 
 <section class="reviews-section">
-    <h2>La confiance de nos clients internationaux</h2>
+    <h2>La confiance de nos clients</h2>
     
-    <div class="trust-badge-container">
-        <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <div class="trust-lock"><i class="fas fa-shield-alt"></i></div>
-        <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    <div class="trust-badge">
+        <div class="stars"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+        <div class="stars"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
     </div>
-    <span class="trust-subtext">Avis contrôlés & Connexion cryptée SSL</span>
 
-    <div class="reviews-grid" id="reviews-container"></div>
+    <div class="reviews-grid" id="grid">
+        </div>
 </section>
 
-<footer id="about">
-    <p>FINANCIÈRE DE CEZEMBRE SA - Siège : Ergué-Gabéric, France.</p>
-    <div class="tag-warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</div>
+<footer>
+    <p>FINANCIÈRE DE CEZEMBRE SA - SIRET 552 058 943 - Capital 1 200 000 €</p>
+    <div class="warning">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ. VÉRIFIEZ VOS CAPACITÉS DE REMBOURSEMENT AVANT DE VOUS ENGAGER.</div>
 </footer>
 
-<div class="wa-assistant">
-    <a href="https://wa.me/33780976404" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
+<a href="https://wa.me/33780976404" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-    function calc() {
-        let p = document.getElementById('amtRange').value;
-        let n = document.getElementById('durRange').value;
-        document.getElementById('amtVal').innerText = p;
-        document.getElementById('durVal').innerText = n;
+    // Calculateur
+    function update() {
+        let p = document.getElementById('amtInp').value;
+        let n = document.getElementById('durInp').value;
+        document.getElementById('amtText').innerText = Number(p).toLocaleString() + " €";
+        document.getElementById('durText').innerText = n + " mois";
+        
         let r = 0.035 / 12;
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        document.getElementById('monthlyRes').innerText = m.toFixed(2);
+        document.getElementById('resText').innerText = m.toFixed(2);
     }
-    calc();
+    update();
 
-    const reviews = [
-        {n:"Marc L.", p:"France", t:"Service rapide et très sérieux. Je recommande."},
-        {n:"Sophie D.", p:"Belgique", t:"Une équipe à l'écoute de mon projet immobilier."},
-        {n:"Thomas W.", p:"Luxembourg", t:"Taux très compétitif et dossier traité en 48h."}
+    // Avis
+    const data = [
+        {a: "Jean-Marc T.", p: "France", m: "Financement obtenu en 3 jours pour ma nouvelle voiture. Très sérieux."},
+        {a: "Elena R.", p: "Espagne", m: "Muy profesional y rápido. Gracias por el apoyo con mi proyecto."},
+        {a: "Sébastien B.", p: "Belgique", m: "Équipe à l'écoute et taux très compétitif. Dossier validé sans souci."}
     ];
 
-    const container = document.getElementById('reviews-container');
-    reviews.forEach((r, i) => {
-        container.innerHTML += `
-            <div class="review-card" id="rev-${i}">
-                <div style="color:#FFD700"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-text">"${r.t}"</p>
-                <div class="review-author">
-                    <span>${r.n} (${r.p})</span>
-                    <span class="verified"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span>
+    const grid = document.getElementById('grid');
+    data.forEach((item, i) => {
+        grid.innerHTML += `
+            <div class="card">
+                <div class="stars-card"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"${item.m}"</p>
+                <div class="author">
+                    <span>${item.a} (${item.p})</span>
+                    <span class="verified-tag"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span>
                 </div>
-            </div>`;
+            </div>
+        `;
     });
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                entry.target.querySelectorAll('.review-card').forEach((c, i) => {
-                    setTimeout(() => c.classList.add('visible'), i * 200);
+    // Animation au défilement
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if(e.isIntersecting) {
+                e.target.querySelectorAll('.card').forEach((c, idx) => {
+                    setTimeout(() => c.classList.add('show'), idx * 250);
                 });
             }
         });
     });
-    observer.observe(container);
+    obs.observe(grid);
 </script>
 
 </body>
