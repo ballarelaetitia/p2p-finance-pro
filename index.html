@@ -482,7 +482,7 @@
         { n: "Antonio F.", p: "Portugal", t: "Recomendo a todos, processo simples e sem complicações." },
         { n: "Sandro B.", p: "Italie", t: "Personale gentile e risposte veloci. Molto seri." },
         { n: "Claire D.", p: "France", t: "Solution idéale pour consolider mes dettes. Merci infiniment." },
-        { n: "Robert H.", p: "Allemagne", t: "Endlich eine Bank, die zuhört. Sehr zufrieden mit dem Kredit." },
+        { n: "Robert H.", p: "Allemagne", t: "Endlich une Bank, die zuhört. Sehr zufrieden mit dem Kredit." },
         { n: "Julie M.", p: "Belgique", t: "Top service, j'ai eu les fonds sur mon compte en 48h." },
         { n: "Mathias P.", p: "Suisse", t: "Sérieux, rapide et efficace. Je recommande sans hésiter." },
         { n: "Elena G.", p: "Roumanie", t: "Mulțumesc pour ajutor, proiectul meu este acum realitate." },
@@ -576,37 +576,44 @@
         }, 'google_translate_element');
     }
 
+    // Traduction automatique instantanée selon la langue du visiteur
     (function autoTranslate() {
-        const userLang = navigator.language || navigator.userLanguage;
-        // Si la langue n'est pas le français, on lance la traduction automatique
-        if (!userLang.startsWith('fr')) {
-            setTimeout(() => {
+        const userLang = (navigator.language || navigator.userLanguage).split('-')[0];
+        if (userLang !== 'fr') {
+            const checkExist = setInterval(function() {
                 const select = document.querySelector('select.goog-te-combo');
                 if (select) {
-                    select.value = userLang.split('-')[0];
+                    select.value = userLang;
                     select.dispatchEvent(new Event('change'));
+                    clearInterval(checkExist);
                 }
-            }, 1000);
+            }, 100); // Rapide : vérifie toutes les 100ms
         }
     })();
 
-    /* --- RENFORT DE CRÉDIBILITÉ (CORRECTION DES ERREURS GOOGLE) --- */
+    // Dictionnaire Correcteur Multi-langues (Empêche les erreurs Google)
     setInterval(function() {
-        document.querySelectorAll('button, h1, h2, h3, p, span, option').forEach(function(el) {
-            // Corrige "Candidature" qui fait "Job" au lieu de "Prêt"
-            if (el.innerText.toLowerCase().includes('candidature')) {
-                el.innerText = el.innerText.replace(/candidature/gi, 'Demande de financement');
-            }
-            // Corrige l'anglais "Application"
-            if (el.innerText.toLowerCase().includes('application') && !el.innerText.toLowerCase().includes('secure')) {
-                el.innerText = el.innerText.replace(/Application/gi, 'Loan Request');
-            }
-            // Corrige l'allemand "Bewerbung"
-            if (el.innerText.toLowerCase().includes('bewerbung')) {
-                el.innerText = el.innerText.replace(/bewerbung/gi, 'Finanzierungsantrag');
+        const dictionary = {
+            'candidature': 'Demande de financement',
+            'bewerbung': 'Finanzierungsantrag',
+            'application': 'Loan Request',
+            'candidatura': 'Solicitud de préstamo',
+            'postuler': 'Soumettre mon dossier',
+            'apply': 'Submit request'
+        };
+
+        document.querySelectorAll('button, h1, h2, h3, p, span, option').forEach(el => {
+            const currentText = el.innerText.toLowerCase();
+            // On ne touche jamais au nom de la banque
+            if (currentText.includes('cezembre')) return;
+            
+            for (let wrongWord in dictionary) {
+                if (currentText === wrongWord || currentText.includes(' ' + wrongWord + ' ')) {
+                    el.innerText = dictionary[wrongWord];
+                }
             }
         });
-    }, 1000);
+    }, 1500); // Passe toutes les 1.5s pour corriger discrètement
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
