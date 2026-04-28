@@ -88,7 +88,6 @@
             display: flex;
             gap: 10px;
             margin-top: 10px;
-            width: 100%;
         }
         .btn-wa-inline {
             background: var(--whatsapp);
@@ -97,29 +96,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
+            padding: 12px 20px;
             border-radius: 4px;
             font-size: 1.4rem;
             transition: 0.3s;
-            width: 55px; /* Largeur fixe pour garder le carré */
-            flex-shrink: 0;
+            flex: 1;
         }
         .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
 
         @media (max-width: 991px) {
-            header { padding: 15px 5%; }
-            .logo { font-size: 1.1rem; }
-            .nav-links { display: none; }
             .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
             .hero-content { max-width: 100%; margin-bottom: 40px; }
             .hero-content h1 { font-size: 2.2rem; }
-            .simulator { width: 100%; max-width: 420px; padding: 20px; min-height: auto; margin: 0 auto; }
+            .simulator { width: 100%; max-width: 420px; padding: 20px; min-height: auto; }
             .stats-bar { flex-direction: column; gap: 30px; }
             .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
             .f-grid { grid-template-columns: 1fr; }
-            .reviews-grid { grid-template-columns: 1fr !important; padding: 10px !important; }
-            footer { padding-bottom: 100px !important; } 
-            .live-btn { width: 100% !important; max-width: 100% !important; height: auto !important; padding: 8px 10px !important; white-space: normal !important; text-align: center; line-height: 1.2; }
+            .reviews-grid { grid-template-columns: 1fr !important; padding: 20px !important; }
+            footer { padding-bottom: 160px !important; } 
+            .wa-assistant-container { bottom: 15px; left: 15px; }
+            .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
+            /* AJUSTEMENT MOBILE BOUTON VERT */
+            .live-btn { width: 100%; max-width: 280px; justify-content: center; margin: 0 auto 15px auto !important; height: 32px; display: flex !important; align-items: center !important; }
         }
 
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
@@ -228,11 +226,12 @@
         
         #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
         
+        /* CORRECTIF ALIGNEMENT BOUTON VERT */
         .live-btn { 
             background: rgba(39, 174, 96, 0.1); 
             border: 1px solid var(--success);
             color: var(--success);
-            padding: 8px 15px;
+            padding: 0 15px;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 700;
@@ -241,7 +240,8 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 15px;
-            min-height: 35px;
+            height: 35px; /* Hauteur fixe pour éviter l'étirement */
+            white-space: nowrap;
         }
         .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
         @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
@@ -317,8 +317,9 @@
             </div>
 
             <div class="btn-group-flex">
-                <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
-                <a href="https://wa.me/33780976404?text=Hallo,%20ich%20habe%20Interesse%20an%20einem%20Kredit." class="btn-wa-inline" target="_blank">
+                <button type="button" class="btn-main" style="flex: 2.5;" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
+                <a href="https://wa.me/33780976404?text=Hallo,%20ich%20habe%20Interesse." 
+                   class="btn-wa-inline" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                 </a>
             </div>
@@ -326,7 +327,7 @@
             <div class="scrolling-security">
                 <span><i class="fas fa-lock" style="color:var(--gold);"></i> 256-Bit-SSL-Verschlüsselung • Garantierter Schutz • Ihre Daten sont streng vertraulich.</span>
             </div>
-            <div class="security-tag" style="font-size: 0.65rem; text-align: center; color: #999; margin-top: 5px;"><i class="fas fa-lock"></i> IHR DOSSIER IST 100% SICHER</div>
+            <div class="security-tag" style="font-size: 0.65rem;"><i class="fas fa-lock"></i> IHR DOSSIER IST 100% SICHER</div>
         </div>
 
         <div id="step2" style="display:none;">
@@ -393,8 +394,8 @@
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    /* LOGIQUE DES AVIS AVEC TEMPS RÉEL */
-    const rawReviews = [
+    /* AVIS TRADUITS EN ALLEMAND UNIQUEMENT */
+    const internationalReviews = [
         { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team. Mein Projekt wurde in Rekordzeit realisiert." },
         { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut für meinen Grenzgängerkredit. Top-Service!" },
         { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für die Unterstützung!" },
@@ -402,53 +403,35 @@
         { n: "Elena V.", p: "Schweiz", t: "Hervorragende Bearbeitung meines Kreditantrags. Sehr höfliches und kompetentes Team." },
         { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz und der schnellen Abwicklung. Absolut empfehlenswert." },
         { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Ich kann Cézembre nur wärmstens empfehlen." },
-        { n: "Luc B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion. Perfekt für meine Investition." }
+        { n: "Luc B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion. Perfekt für meine Investition." },
+        { n: "Robert H.", p: "Deutschland", t: "Endlich eine Bank, die wirklich zuhört. Sehr zufrieden mit meinem Kredit." },
+        { n: "Dimitri V.", p: "Belgien", t: "Sehr zufrieden mit der schnellen Rückmeldung der Berater. Alles reibungslos." }
     ];
 
-    function createReviewHTML(data, startTime) {
-        const diff = Math.floor((Date.now() - startTime) / 60000);
-        let timeLabel = diff === 0 ? "Gerade eben" : `Vor ${diff} Min.`;
-        if (diff >= 60) timeLabel = `Vor ${Math.floor(diff/60)} Std.`;
-
-        return `
-            <div class="review-card" data-start="${startTime}" data-name="${data.n}" data-p="${data.p}" data-t="${data.t}">
-                <span class="review-date"><i class="fas fa-clock" style="animation: blink-dot 1.5s infinite;"></i> ${timeLabel}</span>
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-text">"${data.t}"</p>
-                <div class="review-author">
-                    <div>${data.n} (${data.p})</div>
-                    <span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span>
-                </div>
-            </div>`;
+    function getGermanTime() {
+        const times = ["2 Min.", "5 Min.", "12 Min.", "28 Min.", "45 Min.", "1 Std.", "3 Std."];
+        return times[Math.floor(Math.random() * times.length)];
     }
 
-    function initReviews() {
+    function renderReviews() {
         const container = document.getElementById('reviews-container');
-        container.innerHTML = "";
-        // On initialise avec des temps décalés (ex: il y a 5 min, 15 min, etc)
-        const initialOffsets = [2, 8, 15, 30, 45, 60];
-        initialOffsets.forEach((off, i) => {
-            const r = rawReviews[i % rawReviews.length];
-            const startTime = Date.now() - (off * 60000);
-            container.innerHTML += createReviewHTML(r, startTime);
+        container.innerHTML = ""; 
+        const shuffled = [...internationalReviews].sort(() => 0.5 - Math.random());
+        shuffled.forEach(r => {
+            container.innerHTML += `
+                <div class="review-card">
+                    <span class="review-date"><i class="fas fa-clock" style="animation: blink-dot 1.5s infinite;"></i> Vor ${getGermanTime()}</span>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"${r.t}"</p>
+                    <div class="review-author">
+                        <div>${r.n} (${r.p})</div>
+                        <span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span>
+                    </div>
+                </div>`;
         });
     }
+    renderReviews();
 
-    function refreshTime() {
-        const cards = document.querySelectorAll('.review-card');
-        cards.forEach(card => {
-            const start = parseInt(card.getAttribute('data-start'));
-            const name = card.getAttribute('data-name');
-            const p = card.getAttribute('data-p');
-            const t = card.getAttribute('data-t');
-            card.outerHTML = createReviewHTML({n: name, p: p, t: t}, start);
-        });
-    }
-
-    initReviews();
-    setInterval(refreshTime, 60000); // Met à jour les minutes chaque minute
-
-    /* LOGIQUE CALCULATEUR */
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
     const durR = document.getElementById('durRange');
