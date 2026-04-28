@@ -12,80 +12,83 @@
     <style>
         :root {
             --navy: #001A4D; --gold: #C5A059; --bright-gold: #FFD700; 
-            --light-bg: #F4F7FA; --white: #FFFFFF; --whatsapp: #25D366; --success: #27ae60;
+            --deep-gold: #E6B800; --light-bg: #F4F7FA; --white: #FFFFFF;
+            --whatsapp: #25D366; --success: #27ae60;
         }
 
-        /* --- STABILITÉ MOBILE --- */
-        html, body { overflow-x: hidden !important; width: 100% !important; margin: 0; padding: 0; }
-        * { box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
+        body { background-color: var(--white); color: #333; overflow-x: hidden; width: 100%; }
+
+        /* HEADER FIXE */
         header {
             background: var(--white); padding: 15px 8%; display: flex;
             justify-content: space-between; align-items: center;
-            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .logo-container { display: flex; align-items: center; gap: 15px; }
         .logo-sigle { 
             background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
             display: flex; align-items: center; justify-content: center; 
-            font-weight: 700; border-radius: 4px; border: 1px solid var(--gold);
+            font-weight: 700; border-radius: 4px; border: 1px solid var(--gold); flex-shrink: 0;
         }
         .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); }
+        .intl-badge { font-size: 0.7rem; font-weight: 700; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; display: flex; align-items: center; gap: 8px; }
 
+        /* HERO SECTION */
         .hero {
-            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.75), rgba(0,26,77,0.75)), 
+            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: space-between; padding: 100px 8% 50px; color: var(--white);
+            display: flex; align-items: center; justify-content: space-between; padding: 120px 8% 50px; color: var(--white);
             flex-wrap: wrap;
         }
 
-        .hero-content { max-width: 550px; margin-bottom: 30px; }
+        .hero-content { max-width: 550px; }
         .hero-content h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; }
 
+        /* SIMULATEUR */
         .simulator { 
-            background: var(--white); padding: 30px; border-radius: 4px; width: 100%; max-width: 450px; 
+            background: var(--white); padding: 30px; border-radius: 4px; width: 100%; max-width: 460px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); position: relative;
         }
 
-        /* --- ANIMATION DES AVIS (CHUTE) --- */
+        .sim-row { margin-bottom: 20px; }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.9rem; margin-bottom: 10px; }
+        input[type="range"] { width: 100%; accent-color: var(--navy); cursor: pointer; height: 6px; }
+        
+        .result-area { background: #f8f9fa; padding: 20px; text-align: center; border-radius: 4px; margin-bottom: 20px; border: 1px solid #eee; }
+        .result-area span { font-size: 2rem; font-weight: 800; color: var(--navy); }
+
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 16px; font-weight: 800; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+        .btn-wa-inline { background: var(--whatsapp); color: white; padding: 12px 20px; border-radius: 4px; font-size: 1.5rem; text-decoration: none; display: flex; align-items: center; }
+
+        /* AVIS QUI TOMBENT */
         .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
-        #reviews-flow { display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto; min-height: 350px; }
+        #reviews-flow { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; min-height: 300px; }
         
         .review-card { 
-            background: white; padding: 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-            text-align: left; border-left: 4px solid var(--gold);
-            animation: dropFade 0.6s ease-out;
+            background: white; padding: 20px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
+            text-align: left; border-left: 5px solid var(--gold);
+            animation: dropFade 0.5s ease-out;
         }
-        @keyframes dropFade {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes dropFade { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- ÉLÉMENTS DU FORMULAIRE --- */
-        .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1.5px solid #ddd; border-radius: 4px; font-weight: 600; }
+        /* FORMULAIRE & SÉCURITÉ */
+        .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border: 2px solid var(--gold); border-radius: 4px; font-weight: 600; }
         .secure-notice-form {
-            display: flex; align-items: center; gap: 10px; margin-top: 15px;
-            padding: 12px; background: rgba(39, 174, 96, 0.05); border: 1px solid rgba(39, 174, 96, 0.2); border-radius: 4px;
+            display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 12px; 
+            background: rgba(39, 174, 96, 0.05); border: 1px solid rgba(39, 174, 96, 0.2); border-radius: 4px;
         }
         .secure-notice-form i { color: var(--success); font-size: 1.2rem; }
-        .secure-notice-form p { font-size: 0.7rem; color: #444; font-weight: 700; margin: 0; line-height: 1.3; }
+        .secure-notice-form p { font-size: 0.7rem; color: #444; font-weight: 700; line-height: 1.4; margin: 0; }
 
-        /* --- CALCULATEUR --- */
-        .sim-row { margin-bottom: 15px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.85rem; margin-bottom: 5px; }
-        input[type="range"] { width: 100%; accent-color: var(--navy); cursor: pointer; }
-        .result-area { background: #f8f9fa; padding: 15px; text-align: center; border-radius: 4px; margin: 15px 0; border: 1px dashed #ccc; }
-        .result-area span { font-size: 1.8rem; font-weight: 800; }
-
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 15px; font-weight: 800; border-radius: 4px; cursor: pointer; transition: 0.3s; }
-        .btn-wa-inline { background: var(--whatsapp); color: white; padding: 12px 20px; border-radius: 4px; font-size: 1.4rem; text-decoration: none; display: flex; align-items: center; justify-content: center; }
-
-        @media (max-width: 768px) {
+        /* MOBILE */
+        @media (max-width: 991px) {
             .hero { flex-direction: column; text-align: center; padding-top: 100px; }
-            .hero-content h1 { font-size: 2rem; }
-            .simulator { max-width: 100%; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .simulator { margin-top: 30px; }
         }
     </style>
 </head>
@@ -96,120 +99,113 @@
         <div class="logo-sigle">FC</div>
         <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     </div>
+    <div class="intl-badge"><i class="fas fa-globe"></i> SICHERES PORTAL</div>
 </header>
 
 <section class="hero">
     <div class="hero-content">
-        <h1>Finanzielle Exzellenz <br>für Ihre Projekte.</h1>
+        <h1>Finanzielle Exzellenz für Ihre Projekte.</h1>
         <p>Zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
+        <div style="margin-top: 30px; display: flex; gap: 15px; align-items: center;">
+            <i class="fas fa-certificate" style="color: var(--bright-gold); font-size: 3rem;"></i>
+            <p style="font-size: 0.8rem;"><strong>ZUGELASSENES INSTITUT</strong><br>Unter Aufsicht der Bankenbehörden.</p>
+        </div>
     </div>
 
-    <div class="simulator">
+    <div class="simulator" id="simBox">
         <div id="step1">
             <div style="background: rgba(39, 174, 96, 0.1); color: var(--success); padding: 8px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; margin-bottom: 20px; text-align: center; border: 1px solid var(--success);">
                 <i class="fas fa-circle" style="font-size: 6px; animation: blink 1s infinite;"></i> 12 Personen schauen sich dieses Angebot gerade an
             </div>
             
             <div class="sim-row">
-                <label>PROJEKTBETRAG <span id="amtVal">15000 €</span></label>
+                <label>BETRAG: <span id="amtText">15000</span> €</label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
             </div>
             <div class="sim-row">
-                <label>LAUFZEIT <span id="durVal">36 Monate</span></label>
+                <label>LAUFZEIT: <span id="durText">36</span> Monate</label>
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
 
             <div class="result-area">
-                <p style="font-size: 0.7rem; font-weight: 700; margin-bottom: 5px;">MONATSRATE</p>
+                <p style="font-size: 0.75rem; font-weight: 700; margin-bottom: 5px; color: #666;">MONATSRATE (3.5%)</p>
                 <span id="monthlyRes">439.53</span> €
             </div>
 
             <div style="display: flex; gap: 10px;">
-                <button class="btn-main" style="flex: 3;" onclick="showStep2()">ANTRAG STELLEN</button>
-                <a href="https://wa.me/33780976404" class="btn-wa-inline" style="flex: 1;"><i class="fab fa-whatsapp"></i></a>
+                <button class="btn-main" onclick="goToStep2()">ANTRAG STELLEN</button>
+                <a href="https://wa.me/33780976404" class="btn-wa-inline"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
 
         <div id="step2" style="display:none;">
-            <h3 style="margin-bottom: 15px; font-size: 1rem;">Antrag abschließen</h3>
             <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
                 <input type="text" name="name" placeholder="Vollständiger Name" class="form-input" required>
                 <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
                 <input type="tel" name="phone" placeholder="Telefonnummer" class="form-input" required>
-                <button type="submit" class="btn-main">BESTÄTIGEN</button>
-                
-                <div class="secure-notice-form">
-                    <i class="fas fa-lock"></i>
-                    <p>SICHERE ÜBERMITTLUNG: Ihre Daten sind nach Bankenstandard (SSL) verschlüsselt und werden streng vertraulich behandelt.</p>
-                </div>
+                <button type="submit" class="btn-main">ABSENDEN</button>
             </form>
-            <button onclick="showStep1()" style="background:none; border:none; color: #666; font-size: 0.7rem; margin-top: 10px; cursor: pointer;">← Zurück zum Rechner</button>
+            <div class="secure-notice-form">
+                <i class="fas fa-lock"></i>
+                <p>IHR DOSSIER IST 100% SICHER. Wir verwenden eine 256-Bit-SSL-Verschlüsselung zum Schutz Ihrer Daten.</p>
+            </div>
+            <button onclick="goToStep1()" style="background:none; border:none; color:#999; cursor:pointer; margin-top:15px; font-size:0.8rem;">← Zurück</button>
         </div>
     </div>
 </section>
 
 <section class="reviews-section">
-    <h2 style="font-size: 1.2rem; margin-bottom: 30px;">Echtzeit-Bewertungen</h2>
-    <div id="reviews-flow">
-        </div>
+    <h2 style="margin-bottom: 40px; color: var(--navy);">Kundenbewertungen</h2>
+    <div id="reviews-flow"></div>
 </section>
 
 <script>
-    // --- LOGIQUE CALCULATEUR ---
+    // --- CALCULATEUR ---
     const amtR = document.getElementById('amtRange');
     const durR = document.getElementById('durRange');
 
-    function updateCalc() {
+    function calculate() {
         const p = parseFloat(amtR.value);
         const n = parseInt(durR.value);
         const r = 0.035 / 12;
         const m = (p * r) / (1 - Math.pow(1 + r, -n));
-        document.getElementById('amtVal').innerText = p + " €";
-        document.getElementById('durVal').innerText = n + " Monate";
+        document.getElementById('amtText').innerText = p;
+        document.getElementById('durText').innerText = n;
         document.getElementById('monthlyRes').innerText = m.toFixed(2);
     }
-    amtR.oninput = updateCalc; durR.oninput = updateCalc; updateCalc();
+    amtR.oninput = calculate; durR.oninput = calculate; calculate();
 
-    function showStep2() { document.getElementById('step1').style.display='none'; document.getElementById('step2').style.display='block'; }
-    function showStep1() { document.getElementById('step2').style.display='none'; document.getElementById('step1').style.display='block'; }
+    function goToStep2() { document.getElementById('step1').style.display='none'; document.getElementById('step2').style.display='block'; }
+    function goToStep1() { document.getElementById('step2').style.display='none'; document.getElementById('step1').style.display='block'; }
 
-    // --- LOGIQUE DES AVIS (TEMPS RÉEL ET CHUTE) ---
-    const pool = [
-        { n: "Marc L.", t: "Schnelle Finanzierung und ein sehr professionelles Team." },
-        { n: "Thomas W.", t: "Sehr zufrieden mit dem Zinssatz und der schnellen Abwicklung." },
-        { n: "Sophie D.", t: "Einfacher und transparenter Prozess. Absolut empfehlenswert." },
-        { n: "Robert H.", t: "Endlich eine Bank, die wirklich zuhört. Top Service!" }
+    // --- AVIS DYNAMIQUES ---
+    const reviews = [
+        { n: "Marc L.", t: "Sehr professionell und schnell." },
+        { n: "Thomas W.", t: "Hervorragender Zinssatz, danke!" },
+        { n: "Sophie D.", t: "Alles reibungslos verlaufen." },
+        { n: "Elena K.", t: "Sehr zu empfehlen für Projekte." }
     ];
 
     function addReview() {
-        const container = document.getElementById('reviews-flow');
-        const item = pool[Math.floor(Math.random() * pool.length)];
+        const flow = document.getElementById('reviews-flow');
+        const r = reviews[Math.floor(Math.random() * reviews.length)];
+        const time = Math.floor(Math.random() * 59) + 1;
         
-        // Calcul du temps aléatoire
-        const sec = Math.floor(Math.random() * 50) + 10;
-        const min = Math.floor(Math.random() * 50) + 1;
-        const hour = Math.floor(Math.random() * 4) + 1;
-        const labels = [`vor ${sec} Sekunden`, `vor ${min} Minuten`, `vor ${hour} Stunden`];
-        const randomTime = labels[Math.floor(Math.random() * labels.length)];
-
         const card = document.createElement('div');
         card.className = 'review-card';
         card.innerHTML = `
-            <span style="font-size:0.65rem; color:#999; font-weight:700;"><i class="fas fa-clock"></i> ${randomTime}</span>
-            <div style="color:#FFD700; font-size:0.8rem; margin: 5px 0;">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p style="font-size:0.85rem; font-style:italic; margin:0;">"${item.t}"</p>
-            <div style="font-weight:700; font-size:0.8rem; margin-top:10px; color:var(--navy);">${item.n} <i class="fas fa-check-circle" style="color:var(--success); font-size:0.7rem;"></i></div>
+            <span style="font-size:0.7rem; color:#999; font-weight:700;"><i class="fas fa-clock"></i> Vor ${time} Min.</span>
+            <div style="color:var(--bright-gold); margin:5px 0;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p style="font-size:0.9rem; font-style:italic;">"${r.t}"</p>
+            <div style="font-weight:700; margin-top:10px; font-size:0.8rem;">${r.n} <i class="fas fa-check-circle" style="color:var(--success);"></i></div>
         `;
-
-        container.prepend(card);
-        if(container.children.length > 4) container.lastChild.remove();
+        flow.prepend(card);
+        if(flow.children.length > 4) flow.lastChild.remove();
     }
 
-    setInterval(addReview, 5000);
-    addReview(); // Premier avis immédiat
+    setInterval(addReview, 6000);
+    addReview();
 </script>
 
 </body>
