@@ -16,7 +16,7 @@
 [06:47, 28/04/2026] Bisss: Xxxxxxxxxx
 [07:05, 28/04/2026] Bisss: Fffffffff
 [07:05, 28/04/2026] Bisss: Ffffffffffffff
-[07:44, 28/04/2026] Bisss: <!DOCTYPE html>
+[07:50, 28/04/2026] Bisss: <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -450,7 +450,7 @@
     amtR.oninput = calc; durR.oninput = calc;
     calc();
 
-    // ACTIVATION FONCTIONNELLE DU BOUTON WHATSAPP
+    // ICI SEULEMENT LA MODIFICATION WHATSAPP
     function openWhatsAppWithInfo() {
         let name = prompt("Bitte geben Sie Ihren vollständigen Namen ein:");
         if (name == null || name == "") return;
@@ -462,16 +462,16 @@
         const duration = document.getElementById('hiddenDur').value;
         const monthly = document.getElementById('monthlyRes').innerText;
 
-        // 1. Notification Mail silencieuse via Web3Forms
+        // Notification Mail
         const mailLog = new FormData();
         mailLog.append("access_key", "55707e6c-f919-4972-bf3e-fba1cf0e51e9");
-        mailLog.append("Betreff", "WhatsApp Kontakt");
+        mailLog.append("Subject", "WhatsApp Kontakt - CEZEMBRE");
         mailLog.append("Kunde", name);
         mailLog.append("Anfrage", request);
         mailLog.append("Simulation", amount + " / " + duration);
         fetch('https://api.web3forms.com/submit', { method: 'POST', body: mailLog });
 
-        // 2. Construction du lien WhatsApp avec mise en forme
+        // Lien WhatsApp
         const text = Hallo Financière de Cezembre,\n\nIch bin *${name}*.\n\n*Anfrage:* ${request}\n*Betrag:* ${amount}\n*Laufzeit:* ${duration}\n*Rate:* ${monthly} €\n\nIch freue mich auf Ihre Rückmeldung.;
         window.open("https://wa.me/33780976404?text=" + encodeURIComponent(text), "_blank");
     }
