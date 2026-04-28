@@ -18,7 +18,8 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: var(--white); color: #333; overflow-x: hidden; }
+        
+        body { background-color: var(--white); color: #333; overflow-x: hidden; top: 0 !important; }
 
         header {
             background: var(--white); padding: 20px 8%; display: flex;
@@ -30,10 +31,17 @@
         .logo-sigle { 
             background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
             display: flex; align-items: center; justify-content: center; 
-            font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
-            border: 1px solid var(--gold);
+            font-weight: 700; border-radius: 4px; border: 1px solid var(--gold);
         }
         .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
+        
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; cursor: pointer; }
+
+        .intl-badge {
+            font-size: 0.7rem; font-weight: 700; color: var(--gold); 
+            border: 1px solid var(--gold); padding: 5px 10px; display: flex; align-items: center; gap: 8px;
+        }
 
         .hero {
             height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
@@ -42,70 +50,72 @@
             display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
 
+        .hero-content { max-width: 600px; z-index: 1; }
+        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+        
         .simulator { 
-            background: var(--white); padding: 35px; border-radius: 4px; width: 480px; 
+            background: var(--white); padding: 40px; border-radius: 2px; width: 480px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
-            position: relative; overflow: hidden;
+            position: relative; overflow: hidden; min-height: 520px;
         }
 
-        /* --- CORRECTION ZONE WHATSAPP --- */
-        .help-container {
+        /* --- CORRECTION WHATSAPP & BOUTONS --- */
+        .wa-help-zone {
             margin-top: 25px;
             text-align: center;
             border-top: 1px solid #eee;
             padding-top: 15px;
         }
-        .help-label-mini {
-            display: block; font-size: 0.75rem; font-weight: 700;
-            color: var(--navy); margin-bottom: 8px;
+        .wa-arrow-hint {
+            display: block; font-size: 0.75rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;
         }
-        .help-label-mini i {
+        .wa-arrow-hint i {
             color: var(--whatsapp);
-            animation: bounce-arrow 1.2s infinite;
+            animation: bounceArrow 1.5s infinite;
         }
-        @keyframes bounce-arrow {
+        @keyframes bounceArrow {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(3px); }
+            50% { transform: translateY(4px); }
         }
 
-        .btn-group-flex { display: flex; gap: 10px; align-items: stretch; }
-        
-        .btn-main { 
-            background: var(--navy); color: white; border: none; flex: 4;
-            padding: 18px; font-weight: 700; cursor: pointer; transition: 0.3s;
-            border-radius: 4px; font-size: 0.9rem;
-        }
-        .btn-main:hover { background: var(--gold); }
-
+        .btn-group-flex { display: flex; gap: 10px; margin-top: 5px; }
         .btn-wa-inline {
             background: var(--whatsapp); color: white; text-decoration: none;
-            flex: 1; display: flex; align-items: center; justify-content: center;
-            border-radius: 4px; font-size: 1.4rem; transition: 0.3s;
-        }
-
-        /* --- SÉCURITÉ --- */
-        .security-lock-badge {
             display: flex; align-items: center; justify-content: center;
-            gap: 5px; font-size: 0.65rem; color: var(--success);
-            font-weight: 700; margin-top: 12px; text-transform: uppercase;
+            width: 65px; border-radius: 4px; font-size: 1.6rem; transition: 0.3s;
         }
+        .btn-main { background: var(--navy); color: white; border: none; flex: 1; padding: 18px; font-weight: 700; cursor: pointer; border-radius: 4px; }
+        .btn-main:hover { background: var(--gold); }
 
-        /* COMPTEUR */
+        /* --- COMPTEUR --- */
         .live-counter { font-size: 0.8rem; font-weight: 700; color: var(--success); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; background: #e8f5e9; padding: 6px 12px; border-radius: 4px; width: fit-content; }
-        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-soft 1s infinite; }
+        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; }
+        @keyframes blink-dot { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        /* RESTE DU STYLE */
+        /* AUTRES STYLES RÉCUPÉRÉS */
         .sim-row { margin-bottom: 20px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; }
-        input[type="range"] { -webkit-appearance: none; width: 100%; height: 6px; background: #ddd; border-radius: 5px; accent-color: var(--navy); }
-        .result-area { background: var(--light-bg); padding: 20px; text-align: center; border-radius: 4px; margin: 15px 0; border: 1px dashed var(--gold); }
-        .result-area span { font-size: 2rem; font-weight: 800; }
-        .form-input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 4px; margin-bottom: 12px; font-size: 0.95rem; }
-        @keyframes blink-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.9rem; }
+        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
+        .result-area span { font-size: 2.2rem; font-weight: 800; }
         
-        #loader-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; }
-        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .form-input { width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); border-radius: 4px; margin-bottom: 10px; font-weight: 600; }
+        .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; }
+        
+        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
+        .stat-box h3 { font-size: 2rem; color: var(--gold); }
+
+        .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .review-card { background: white; padding: 25px; border-radius: 8px; text-align: left; border-top: 3px solid var(--gold); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        
+        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; }
+        
+        @media (max-width: 991px) {
+            .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
+            .simulator { width: 100%; }
+            .f-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -115,127 +125,124 @@
         <div class="logo-sigle">FC</div>
         <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     </div>
+    <div class="nav-links">
+        <a href="#about">Expertise</a>
+        <a onclick="goToStep1()" href="#simBox">Kontakt</a>
+        <div class="intl-badge"><i class="fas fa-globe"></i> SICHERES INTERNATIONALES PORTAL</div>
+    </div>
 </header>
 
 <section class="hero">
-    <div class="simulator" id="simBox">
-        <div id="loader-overlay">
-            <div id="loading-content" style="text-align:center;">
-                <div class="spinner"></div>
-                <p style="margin-top:15px; font-weight:600;">Analyse läuft...</p>
-            </div>
-            <div id="success-message" style="display:none; text-align:center; padding:20px;">
-                <i class="fas fa-check-circle" style="color:var(--success); font-size:3rem;"></i>
-                <h3 style="margin:15px 0;">ANTRAG GESPEICHERT</h3>
-                <button class="btn-main" onclick="location.reload()">OK</button>
-            </div>
-        </div>
+    <div class="hero-content">
+        <h1>Finanzielle Exzellenz <br>für Ihre Projekte.</h1>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
+    </div>
 
+    <div class="simulator" id="simBox">
         <div id="step1">
             <div class="live-counter"><div class="dot-live"></div> 12 Personen schauen sich dieses Angebot gerade an</div>
             
             <h3 style="margin-bottom: 20px;">Kreditrechner</h3>
-            
             <div class="sim-row">
-                <label>PROJEKTBETRAG <span id="amtVal">15000 €</span></label>
-                <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
+                <label>PROJEKTBETRAG <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent;"> €</span></label>
+                <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000" style="width:100%;">
+            </div>
+            <div class="sim-row">
+                <label>LAUFZEIT <span id="durText" style="font-weight: 800;">36 Monate</span></label>
+                <input type="range" id="durRange" min="6" max="84" step="6" value="36" style="width:100%;">
             </div>
             
-            <div class="sim-row">
-                <label>LAUFZEIT <span id="durVal">36 Monate</span></label>
-                <input type="range" id="durRange" min="6" max="84" step="6" value="36">
-            </div>
-
             <div class="result-area">
-                <p style="font-size: 0.75rem; font-weight: 700; margin-bottom: 5px;">GESCHÄTZTE MONATSRATE (3.5% FESTZINS)</p>
-                <span id="monthlyRes">439.53</span> €
+                <p style="font-size: 0.8rem; font-weight: 700;">GESCHÄTZTE MONATSRATE (3.5% FESTZINS)</p>
+                <span id="monthlyRes">0.00</span> €
             </div>
 
-            <div class="help-container">
-                <span class="help-label-mini">Schnelle Hilfe via WhatsApp <i class="fas fa-arrow-down"></i></span>
+            <div class="wa-help-zone">
+                <span class="wa-arrow-hint">Schnelle Hilfe via WhatsApp <i class="fas fa-arrow-down"></i></span>
                 <div class="btn-group-flex">
                     <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
                     <a href="https://wa.me/33780976404" class="btn-wa-inline" target="_blank">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
-                <div class="security-lock-badge">
-                    <i class="fas fa-lock"></i> Ihr Dossier ist 100% sicher & verschlüsselt
-                </div>
             </div>
+            
+            <div class="security-tag"><i class="fas fa-lock"></i> IHR DOSSIER IST 100% SICHER</div>
         </div>
 
         <div id="step2" style="display:none;">
             <h3 style="margin-bottom: 20px;">Antrag abschließen</h3>
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                
-                <input type="text" name="nom" placeholder="Name" class="form-input" required>
-                <input type="text" name="prenom" placeholder="Vorname" class="form-input" required>
-                <input type="text" name="projet" placeholder="Ihr Projekt (Auto, Immobilien...)" class="form-input" required>
-                <input type="tel" name="telephone" placeholder="Telefonnummer" class="form-input" required>
+                <input type="text" name="nom" placeholder="Vor- und Nachname" class="form-input" required>
+                <select name="projet" class="form-input" required>
+                    <option value="" disabled selected>Wählen Sie Ihr Projet</option>
+                    <option value="Auto">Auto / Motorrad</option>
+                    <option value="Perso">Privatkredit</option>
+                </select>
+                <input type="tel" name="telephone" placeholder="Telefon (z.B. +49...)" class="form-input" required>
                 <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
                 
-                <button type="submit" class="btn-main" style="width:100%; margin-top:10px;">ABSENDEN BESTÄTIGEN</button>
-                
-                <div class="security-lock-badge">
-                    <i class="fas fa-shield-alt"></i> Datenschutz konform (GDPR)
-                </div>
-                <p style="text-align:center; font-size:0.7rem; margin-top:15px; cursor:pointer; text-decoration:underline;" onclick="goToStep1()">← Zurück zum Rechner</p>
+                <button type="submit" class="btn-main" style="width:100%">ABSENDEN BESTÄTIGEN</button>
+                <div class="security-tag"><i class="fas fa-shield-alt"></i> 256-Bit-SSL-Verschlüsselung</div>
+                <p style="text-align:center; margin-top:10px; cursor:pointer;" onclick="goToStep1()">← Zurück</p>
             </form>
         </div>
     </div>
 </section>
 
+<section class="stats-bar">
+    <div class="stat-box"><h3>1 200 000 €</h3><p>Grundkapital</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Vorzugszinssatz</p></div>
+    <div class="stat-box"><h3>100%</h3><p>Digital & Sicher</p></div>
+</section>
+
+<section class="reviews-section">
+    <h2>Vertrauen unserer internationalen Kunden</h2>
+    <div class="reviews-grid" id="reviews-container">
+        </div>
+</section>
+
+<footer>
+    <div class="f-grid">
+        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>LEI : 969500WONJGTDZG8E035</p></div>
+        <div><h4>HAUPTSITZ</h4><p>ODET, 29500 ERGUÉ-GABÉRIC</p></div>
+    </div>
+</footer>
+
 <script>
+    // Script du simulateur
     const amtR = document.getElementById('amtRange');
     const durR = document.getElementById('durRange');
-    const amtV = document.getElementById('amtVal');
-    const durV = document.getElementById('durVal');
     const resM = document.getElementById('monthlyRes');
+    const amtN = document.getElementById('amtNum');
+    const durT = document.getElementById('durText');
 
-    function calculate() {
-        let p = parseFloat(amtR.value);
-        let n = parseInt(durR.value);
-        let r = 0.035 / 12;
-        amtV.innerText = p + " €";
-        durV.innerText = n + " Monate";
+    function calc() {
+        let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
+        amtN.value = p; durT.innerText = n + " Monate";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
         resM.innerText = m.toFixed(2);
     }
+    amtR.oninput = calc; durR.oninput = calc; calc();
 
-    amtR.oninput = calculate;
-    durR.oninput = calculate;
-    calculate();
+    function goToStep2() { document.getElementById('step1').style.display='none'; document.getElementById('step2').style.display='block'; }
+    function goToStep1() { document.getElementById('step2').style.display='none'; document.getElementById('step1').style.display='block'; }
 
-    function goToStep2() { 
-        document.getElementById('step1').style.display='none'; 
-        document.getElementById('step2').style.display='block'; 
-    }
-    function goToStep1() { 
-        document.getElementById('step2').style.display='none'; 
-        document.getElementById('step1').style.display='block'; 
-    }
-
-    document.getElementById('loanForm').onsubmit = async (e) => {
-        e.preventDefault();
-        document.getElementById('loader-overlay').style.display = 'flex';
-        const formData = new FormData(e.target);
-        
-        try {
-            await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            });
-            setTimeout(() => {
-                document.getElementById('loading-content').style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
-            }, 2500);
-        } catch (x) {
-            alert("Fehler. Bitte versuchen Sie es erneut.");
-            document.getElementById('loader-overlay').style.display = 'none';
-        }
-    };
+    // Génération des avis (juste quelques-uns pour l'exemple)
+    const reviews = [
+        {n:"Marc L.", p:"Frankreich", t:"Sehr professionell!"},
+        {n:"Thomas W.", p:"Luxemburg", t:"Schnell und sicher."},
+        {n:"Sabine R.", p:"Deutschland", t:"Bester Zinssatz."}
+    ];
+    reviews.forEach(r => {
+        document.getElementById('reviews-container').innerHTML += `
+            <div class="review-card">
+                <div style="color:var(--bright-gold); margin-bottom:10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"${r.t}"</p>
+                <div style="margin-top:15px; font-weight:700; font-size:0.8rem;">${r.n} (${r.p})</div>
+            </div>`;
+    });
 </script>
 
 </body>
