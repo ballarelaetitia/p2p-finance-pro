@@ -62,7 +62,7 @@
         }
 
         .hero {
-            height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
             display: flex; align-items: center; padding: 0 8%; color: var(--white);
@@ -106,20 +106,55 @@
         }
         .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
 
+        /* CORRECTION POSITIONNEMENT MOBILE */
         @media (max-width: 991px) {
             header { padding: 15px 5%; }
             .logo { font-size: 1.1rem; }
             .nav-links { display: none; }
-            .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
-            .hero-content { max-width: 100%; margin-bottom: 40px; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .simulator { width: 100%; max-width: 420px; padding: 20px; min-height: auto; margin: 0 auto; }
+            
+            .hero { 
+                flex-direction: column; 
+                height: auto; 
+                padding: 100px 5% 40px 5%; 
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            
+            .hero-content { 
+                max-width: 100%; 
+                margin-bottom: 30px; 
+                background: none; 
+            }
+            
+            .hero-content h1 { font-size: 1.8rem; line-height: 1.3; }
+            
+            .simulator { 
+                width: 95%; 
+                max-width: 420px; 
+                padding: 20px; 
+                min-height: auto; 
+                margin: 0 auto; 
+                position: relative;
+                left: 0; 
+            }
+
             .stats-bar { flex-direction: column; gap: 30px; }
             .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
             .f-grid { grid-template-columns: 1fr; }
             .reviews-grid { grid-template-columns: 1fr !important; padding: 10px !important; }
             footer { padding-bottom: 100px !important; } 
-            .live-btn { width: 100% !important; max-width: 100% !important; height: auto !important; padding: 8px 10px !important; white-space: normal !important; text-align: center; line-height: 1.2; }
+            
+            .live-btn { 
+                width: 100% !important; 
+                max-width: 100% !important; 
+                height: auto !important; 
+                padding: 8px 10px !important; 
+                white-space: normal !important; 
+                text-align: center; 
+                line-height: 1.2; 
+            }
         }
 
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
@@ -188,7 +223,6 @@
             font-size: 1rem; outline: none; color: #000c24; font-weight: 600; 
         }
 
-        /* NOUVEAU STYLE CADENAS FORMULAIRE */
         .secure-form-badge {
             display: flex; align-items: center; justify-content: center; gap: 10px;
             margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;
@@ -269,7 +303,6 @@
         <a href="#about">Expertise</a>
         <a href="#legal">Gouvernance</a>
         <a onclick="goToStep1()" href="#simBox">Kontakt</a>
-        <div id="google_translate_element" style="display:none;"></div>
         <div class="intl-badge"><i class="fas fa-globe"></i> SICHERES INTERNATIONALES PORTAL</div>
     </div>
 </header>
@@ -344,7 +377,10 @@
             <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Antrag abschließen</h3>
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="hidden" name="montant_client" id="hiddenAmt"><input type="hidden" name="duree_client" id="hiddenDur"><input type="hidden" name="mensualite_client" id="hiddenMens">
+                <input type="hidden" name="montant_client" id="hiddenAmt">
+                <input type="hidden" name="duree_client" id="hiddenDur">
+                <input type="hidden" name="mensualite_client" id="hiddenMens">
+                
                 <input type="text" name="nom" placeholder="Vor- und Nachname" class="form-input" required>
                 <select name="projet" class="form-input" required>
                     <option value="" disabled selected>Wählen Sie Ihr Projekt</option>
@@ -410,7 +446,6 @@
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    /* LOGIQUE DES 40 AVIS DYNAMIQUES */
     const allReviews = [
         { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team. Mein Projekt wurde in Rekordzeit realisiert." },
         { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut für meinen Grenzgängerkredit. Top-Service!" },
@@ -431,31 +466,10 @@
         { n: "Sabine T.", p: "Österreich", t: "Freundliche Beratung am Telefon und schnelle Zusage. Alles top." },
         { n: "Erik J.", p: "Niederlande", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had." },
         { n: "Michèle F.", p: "Frankreich", t: "Financement pour mes travaux obtenu sans stress. Merci Cézembre." },
-        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebührenstruktur." },
-        { n: "Monika R.", p: "Schweiz", t: "Hervorragende Abwicklung. Mein Hausbau-Projekt ist gesichert." },
-        { n: "Fabrice V.", p: "Belgien", t: "Un service 5 étoiles. Je recommande pour tout besoin de crédit." },
-        { n: "Günther H.", p: "Deutschland", t: "Verlässlicher Partner. Die Auszahlung erfolgte pünktlich." },
-        { n: "Sonia M.", p: "Luxemburg", t: "Einfach nur klasse. Sehr moderne Plattform und sicher." },
-        { n: "Patrick B.", p: "Frankreich", t: "Réponse immédiate et fonds versés sous 48h. Impressionnant." },
-        { n: "Ursula W.", p: "Deutschland", t: "Dank Cézembre konnte ich meine Umschuldung problemlos meistern." },
-        { n: "Robert P.", p: "Österreich", t: "Fachkundige Beratung und schnelle Kreditentscheidung. Gerne wieder." },
-        { n: "Chloé D.", p: "Frankreich", t: "Absolument satisfaite. Plateforme sécurisée et sérieuse." },
-        { n: "Bernd G.", p: "Deutschland", t: "Keine versteckten Kosten. Alles wurde klar kommuniziert." },
-        { n: "Natalie S.", p: "Schweiz", t: "Schnelle Lösung für meinen Engpass. Danke für die Hilfe." },
-        { n: "Jürgen E.", p: "Deutschland", t: "Sehr hohe Professionalität. Man merkt die langjährige Erfahrung." },
-        { n: "Clara B.", p: "Belgien", t: "Alles digital, alles einfach. So stelle ich mir modernes Banking vor." },
-        { n: "Dieter K.", p: "Deutschland", t: "Hervorragende Zinsen im Vergleich zu meiner Hausbank." },
-        { n: "Marta F.", p: "Italien", t: "Consigliatissimo. Veloci e professionali nel rispondere." },
-        { n: "Werner A.", p: "Österreich", t: "Alles perfekt gelaufen. Auszahlung kam nach drei Tagen." },
-        { n: "Florence H.", p: "Luxemburg", t: "Tres bonne expérience. Personnel très gentil et réactif." },
-        { n: "Ralf U.", p: "Deutschland", t: "Ein Partner, auf den man sich verlassen kann. 5 Sterne." },
-        { n: "Sarah V.", p: "Schweiz", t: "Sehr übersichtliche Website und schneller Antragsprozess." },
-        { n: "Bruno M.", p: "Frankreich", t: "Le meilleur choix pour mon crédit auto. Je recommande vivement." },
-        { n: "Helga L.", p: "Deutschland", t: "Sicherer Prozess und sehr freundliche Unterstützung." }
+        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebührenstruktur." }
     ];
 
     function getRandomTime() {
-        // Retourne un timestamp aléatoire entre maintenant et il y a 4 heures
         const maxLag = 4 * 60 * 60 * 1000; 
         return Date.now() - Math.floor(Math.random() * maxLag);
     }
@@ -472,7 +486,7 @@
         else timeLabel = `Vor ${diffInHrs} Std.`;
 
         return `
-            <div class="review-card" data-start="${startTime}" data-name="${data.n}" data-p="${data.p}" data-t="${data.t}">
+            <div class="review-card" data-start="${startTime}">
                 <span class="review-date"><i class="fas fa-clock" style="animation: blink-dot 1.5s infinite;"></i> ${timeLabel}</span>
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-text">"${data.t}"</p>
@@ -486,8 +500,6 @@
     function initReviews() {
         const container = document.getElementById('reviews-container');
         container.innerHTML = "";
-        
-        // On mélange et on prend 12 avis au hasard
         const shuffled = [...allReviews].sort(() => 0.5 - Math.random());
         const selected = shuffled.slice(0, 12);
         
@@ -495,22 +507,18 @@
             const startTime = getRandomTime();
             const html = createReviewHTML(r, startTime);
             container.insertAdjacentHTML('beforeend', html);
-            
-            // Petit délai pour faire apparaître les avis "humains"
             setTimeout(() => {
                 const cards = container.querySelectorAll('.review-card');
                 if(cards[i]) cards[i].classList.add('show');
-            }, i * 200);
+            }, i * 150);
         });
     }
 
-    // Mise à jour du compteur de personnes
     setInterval(() => {
         const count = Math.floor(Math.random() * (25 - 8 + 1)) + 8;
         document.getElementById('viewers-count').innerText = count;
     }, 5000);
 
-    /* LOGIQUE CALCULATEUR (Inchangée) */
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
     const durR = document.getElementById('durRange');
@@ -525,10 +533,8 @@
         document.getElementById('hiddenAmt').value = p + " €";
         document.getElementById('hiddenDur').value = n + " Monate";
         document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
-        let valA = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100;
-        amtR.style.backgroundSize = valA + '% 100%';
-        let valD = (durR.value - durR.min) / (durR.max - durR.min) * 100;
-        durR.style.backgroundSize = valD + '% 100%';
+        amtR.style.backgroundSize = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100 + '% 100%';
+        durR.style.backgroundSize = (durR.value - durR.min) / (durR.max - durR.min) * 100 + '% 100%';
     }
 
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
@@ -538,7 +544,6 @@
     amtR.oninput = calc; durR.oninput = calc;
     window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     
-    // Init
     calc();
     initReviews();
 
