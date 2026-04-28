@@ -160,12 +160,6 @@
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
-        /* ACTION AREA CONTAINER POUR ALIGNER BOUTON + WHATSAPP */
-        .action-area { display: flex; gap: 10px; align-items: stretch; margin-bottom: 10px; }
-        .btn-main-split { background: var(--navy); color: white; border: none; flex: 1; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; text-transform: uppercase; font-size: 0.85rem; }
-        .btn-main-split:hover { background: var(--gold); }
-        .btn-wa-inline { background: var(--whatsapp); color: white; width: 65px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; text-decoration: none; border-radius: 2px; animation: magnet-pulse 2s infinite ease-in-out; }
-
         .form-input { 
             width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); 
             background-color: var(--white); border-radius: 4px; margin-bottom: 10px; 
@@ -243,7 +237,7 @@
 
 <div class="wa-assistant-container">
     <div class="wa-msg-bubble"><span id="wa-text">Brauchen Sie Hilfe? Kontaktieren Sie uns</span></div>
-    <a href="https://wa.me/33780976404?text=Hallo,%20Name%20und%20Vorname%20:%20...%20Projekt%20:%20..." class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
 
 <section class="hero">
@@ -292,11 +286,7 @@
                 <p>GESCHÄTZTE MONATSRATE (3.5% FESTZINS)</p>
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
-            
-            <div class="action-area">
-                <button type="button" class="btn-main-split" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
-                <a href="https://wa.me/33780976404?text=Hallo,%20Name%20und%20Vorname%20:%20...%20Projekt%20:%20..." target="_blank" class="btn-wa-inline"><i class="fab fa-whatsapp"></i></a>
-            </div>
+            <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
             
             <div class="scrolling-security">
                 <span><i class="fas fa-lock" style="color:var(--gold);"></i> DATENSCHUTZ: Ihre Daten sind streng vertraulich. • 256-Bit-SSL-Verschlüsselung • Garantierter Schutz.</span>
