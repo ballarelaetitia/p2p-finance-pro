@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+[11:45, 28/04/2026] FINANCIERE DE CEZEMBRE: Cccc
+[12:04, 28/04/2026] FINANCIERE DE CEZEMBRE: <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -82,6 +83,36 @@
             background: var(--white); padding: 40px; border-radius: 2px; width: 480px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
             position: relative; overflow: hidden; min-height: 520px;
+        }
+
+        /* NOUVEAU : Boutons côte à côte */
+        .btn-group-flex {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .btn-wa-inline {
+            background: var(--whatsapp);
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            border-radius: 4px;
+            font-size: 1.5rem;
+            transition: 0.3s;
+            flex: 1;
+        }
+        .btn-wa-inline:hover { background: #128C7E; }
+
+        .help-label-mini {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 5px;
+            text-align: left;
         }
 
         @media (max-width: 991px) {
@@ -218,9 +249,9 @@
         
         #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
         
-        /* AJOUT COMPTEUR EN LIGNE */
-        .live-counter { font-size: 0.8rem; font-weight: 700; color: #d9534f; margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
-        .dot-live { width: 8px; height: 8px; background: #d9534f; border-radius: 50%; animation: blink-soft 1s infinite; }
+        /* AJOUT COMPTEUR EN LIGNE (CORRIGÉ EN VERT) */
+        .live-counter { font-size: 0.8rem; font-weight: 700; color: var(--success); margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
+        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-soft 1s infinite; }
     </style>
 </head>
 <body>
@@ -278,6 +309,7 @@
 
         <div id="step1">
             <div class="live-counter"><div class="dot-live"></div> 12 Personen schauen sich dieses Angebot gerade an</div>
+            
             <h3 style="margin-bottom: 20px;">Kreditrechner</h3>
             <div class="sim-row">
                 <label>PROJEKTBETRAG <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent; color: var(--navy);"> €</span></label>
@@ -291,7 +323,15 @@
                 <p>GESCHÄTZTE MONATSRATE (3.5% FESTZINS)</p>
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
-            <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
+
+            <span class="help-label-mini">Schnelle Hilfe via WhatsApp</span>
+            <div class="btn-group-flex">
+                <button type="button" class="btn-main" style="flex: 3;" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
+                <a href="https://wa.me/33780976404?text=Hallo,%20ich%20habe%20Interesse.%20Hier%20sind%20meine%20Infos:%20Name:%20...%20/%20Projekt:%20..." 
+                   class="btn-wa-inline" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
             
             <div class="scrolling-security">
                 <span><i class="fas fa-lock" style="color:var(--gold);"></i> DATENSCHUTZ: Ihre Daten sont streng vertraulich. • 256-Bit-SSL-Verschlüsselung • Garantierter Schutz.</span>
@@ -379,7 +419,7 @@
 
 <script>
     const waText = document.getElementById('wa-text');
-    const messages = ["Brauchen Sie Hilfe?", "Need help?", "Kontaktieren Sie uns", "An agent is ready"];
+    const messages = ["Brauchen Sie Hilfe?", "Schnelle Antwort", "Kontaktieren Sie uns", "Sofort via WhatsApp"];
     let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
 
     const internationalReviews = [
@@ -425,7 +465,6 @@
         { n: "Dimitri V.", p: "Belgique", t: "Très satisfait de la réactivité des conseillers." }
     ];
 
-    // FONCTION POUR LES DATES RÉELLES
     function getGermanTime() {
         const times = ["2 Minuten", "5 Minuten", "12 Minuten", "28 Minuten", "45 Minuten", "1 Stunde", "3 Stunden"];
         return times[Math.floor(Math.random() * times.length)];
@@ -434,7 +473,6 @@
     function renderReviews() {
         const container = document.getElementById('reviews-container');
         container.innerHTML = ""; 
-        // Mélange les 40 avis et en prend 12
         const shuffled = [...internationalReviews].sort(() => 0.5 - Math.random());
         shuffled.slice(0, 12).forEach(r => {
             container.innerHTML += `
