@@ -22,18 +22,6 @@
             --success: #27ae60;
         }
 
-        /* --- STYLES POUR LA MODALE WHATSAPP --- */
-        #wa-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,26,77,0.9); z-index: 2000; align-items: center; justify-content: center;
-        }
-        .wa-modal-content {
-            background: white; padding: 30px; border-radius: 4px; width: 90%; max-width: 400px;
-            text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-        .wa-modal-content h3 { color: var(--navy); margin-bottom: 15px; }
-        /* ------------------------------------- */
-
         .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
         body { top: 0px !important; }
         .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
@@ -96,6 +84,7 @@
             position: relative; overflow: hidden; min-height: 520px;
         }
 
+        /* AJOUT DU FLEX POUR LE BOUTON WHATSAPP ET FORMULAIRE */
         .btn-flex-container {
             display: flex;
             gap: 10px;
@@ -115,9 +104,9 @@
             text-decoration: none;
             transition: transform 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
         }
 
+        /* Animation de balancement au scroll */
         .shake-animation {
             animation: shake-wa 0.5s ease-in-out;
         }
@@ -247,18 +236,6 @@
 </head>
 <body>
 
-<div id="wa-modal">
-    <div class="wa-modal-content">
-        <i class="fab fa-whatsapp" style="color:var(--whatsapp); font-size: 3rem; margin-bottom:15px;"></i>
-        <h3>WhatsApp Beratung</h3>
-        <p style="font-size:0.8rem; color:#666; margin-bottom:20px;">Bitte geben Sie Ihren Namen an, um die Details Ihrer Simulation per WhatsApp zu senden.</p>
-        <input type="text" id="wa-client-name" placeholder="Vor- und Nachname" class="form-input">
-        <textarea id="wa-client-request" placeholder="Zweck des Kredits (z.B. Autokredit)" class="form-input" style="height:80px; resize:none;"></textarea>
-        <button class="btn-main" onclick="processWhatsAppRequest()">NACHRICHT SENDEN</button>
-        <p onclick="document.getElementById('wa-modal').style.display='none'" style="margin-top:15px; cursor:pointer; font-size:0.75rem; font-weight:700;">Abbrechen</p>
-    </div>
-</div>
-
 <header>
     <div class="logo-container">
         <div class="logo-sigle">FC</div>
@@ -321,13 +298,13 @@
 
             <div class="btn-flex-container">
                 <button type="button" class="btn-main" onclick="goToStep2()" style="flex: 1;">ANTRAG STELLEN</button>
-                <a href="javascript:void(0)" class="whatsapp-inline-btn" id="wa-dynamic" onclick="document.getElementById('wa-modal').style.display='flex'">
+                <a href="https://wa.me/33780976404" class="whatsapp-inline-btn" id="wa-dynamic" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                 </a>
             </div>
             
             <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> DATENSCHUTZ: Ihre Daten sont streng vertraulich. • 256-Bit SSL-Verschlüsselung.</span>
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> DATENSCHUTZ: Ihre Daten sind streng vertraulich. • 256-Bit SSL-Verschlüsselung.</span>
             </div>
             <div class="security-tag" style="text-align:center; font-size:0.7rem; color:var(--success); font-weight:600;"><i class="fas fa-lock"></i> 100% SICHERER PROZESS</div>
         </div>
@@ -374,7 +351,7 @@
 </section>
 
 <section class="reviews-section">
-    <h2>Vertrauen unserer internationaux Kunden</h2>
+    <h2>Vertrauen unserer internationalen Kunden</h2>
     <div class="trust-badge-container">
         <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <div class="trust-lock"><i class="fas fa-lock"></i></div>
@@ -412,6 +389,7 @@
         const container = document.getElementById('reviews-container');
         container.innerHTML = ""; 
         internationalReviews.sort(() => 0.5 - Math.random()).forEach(r => {
+            // SYSTÈME DE TEMPS ALÉATOIRE PRÉSERVÉ
             const times = ["2 min", "15 min", "1h", "3h", "5h", "1j", "2j"];
             const randomTime = times[Math.floor(Math.random() * times.length)];
             
@@ -456,43 +434,19 @@
     amtR.oninput = calc; durR.oninput = calc;
     calc();
 
+    // GESTION ANIMATION WHATSAPP AU SCROLL
     const waBtn = document.getElementById('wa-dynamic');
     let isScrolling;
     window.onscroll = () => { 
         document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; 
+        
+        // Effet de mouvement WhatsApp
         waBtn.classList.add('shake-animation');
         window.clearTimeout(isScrolling);
-        isScrolling = setTimeout(() => { waBtn.classList.remove('shake-animation'); }, 500);
+        isScrolling = setTimeout(() => {
+            waBtn.classList.remove('shake-animation');
+        }, 500);
     };
-
-    // --- LOGIQUE WHATSAPP + EMAIL NOTIFICATION ---
-    async function processWhatsAppRequest() {
-        const clientName = document.getElementById('wa-client-name').value;
-        const clientRequest = document.getElementById('wa-client-request').value;
-        const amount = document.getElementById('hiddenAmt').value;
-        const duration = document.getElementById('hiddenDur').value;
-        const monthly = document.getElementById('monthlyRes').innerText;
-
-        if (!clientName || !clientRequest) {
-            alert("Bitte füllen Sie alle Felder aus.");
-            return;
-        }
-
-        // 1. Envoyer notification Mail via Web3Forms
-        const mailData = new FormData();
-        mailData.append("access_key", "55707e6c-f919-4972-bf3e-fba1cf0e51e9");
-        mailData.append("Typ", "WHATSAPP ANFRAGE");
-        mailData.append("Kunde", clientName);
-        mailData.append("Anfrage", clientRequest);
-        mailData.append("Simulation", amount + " / " + duration + " (" + monthly + "€/Mon)");
-        fetch('https://api.web3forms.com/submit', { method: 'POST', body: mailData });
-
-        // 2. Ouvrir le message WhatsApp personnalisé
-        const waMsg = Hallo Financière de Cezembre,\n\nIch bin *${clientName}*.\n\n*Anfrage:* ${clientRequest}\n*Simulation:* ${amount} über ${duration} (${monthly} €/Monat).\n\nBitte kontaktieren Sie mich.;
-        window.open("https://wa.me/33780976404?text=" + encodeURIComponent(waMsg), "_blank");
-        
-        document.getElementById('wa-modal').style.display = 'none';
-    }
 
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
