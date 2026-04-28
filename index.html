@@ -106,7 +106,7 @@
         }
         .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
 
-        /* CORRECTION POSITIONNEMENT MOBILE */
+        /* AJUSTEMENT POSITIONNEMENT MOBILE OPTIMISÉ */
         @media (max-width: 991px) {
             header { padding: 15px 5%; }
             .logo { font-size: 1.1rem; }
@@ -115,7 +115,7 @@
             .hero { 
                 flex-direction: column; 
                 height: auto; 
-                padding: 100px 5% 40px 5%; 
+                padding: 110px 15px 50px 15px; /* Plus d'espace en haut pour éviter le chevauchement */
                 text-align: center;
                 display: flex;
                 align-items: center;
@@ -124,20 +124,21 @@
             
             .hero-content { 
                 max-width: 100%; 
-                margin-bottom: 30px; 
+                margin-bottom: 35px; 
                 background: none; 
             }
             
             .hero-content h1 { font-size: 1.8rem; line-height: 1.3; }
             
             .simulator { 
-                width: 95%; 
+                width: 100% !important; /* Prend toute la largeur disponible */
                 max-width: 420px; 
-                padding: 20px; 
+                padding: 25px 20px; 
                 min-height: auto; 
-                margin: 0 auto; 
+                margin: 0 auto !important; /* Centre horizontalement de force */
                 position: relative;
-                left: 0; 
+                left: 0 !important; /* Reset tout décalage gauche */
+                transform: none !important; /* Reset tout décalage par transformation */
             }
 
             .stats-bar { flex-direction: column; gap: 30px; }
@@ -380,7 +381,6 @@
                 <input type="hidden" name="montant_client" id="hiddenAmt">
                 <input type="hidden" name="duree_client" id="hiddenDur">
                 <input type="hidden" name="mensualite_client" id="hiddenMens">
-                
                 <input type="text" name="nom" placeholder="Vor- und Nachname" class="form-input" required>
                 <select name="projet" class="form-input" required>
                     <option value="" disabled selected>Wählen Sie Ihr Projekt</option>
@@ -455,7 +455,7 @@
         { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz und der schnellen Abwicklung. Absolut empfehlenswert." },
         { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Ich kann Cézembre nur wärmstens empfehlen." },
         { n: "Luc B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion. Perfekt für meine Investition." },
-        { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Die Zinsen sind wirklich fair für den Markt." },
+        { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Die Zinsen sont wirklich fair für den Markt." },
         { n: "Marie C.", p: "Frankreich", t: "Der Online-Antrag war in 5 Minuten erledigt. Schnelle Rückmeldung erhalten." },
         { n: "Klaus S.", p: "Deutschland", t: "Endlich eine seriöse Bank im Internet. Sehr guter Kundenservice." },
         { n: "Isabelle G.", p: "Schweiz", t: "Diskrete und schnelle Bearbeitung meiner Dokumente. Vielen Dank." },
@@ -466,7 +466,27 @@
         { n: "Sabine T.", p: "Österreich", t: "Freundliche Beratung am Telefon und schnelle Zusage. Alles top." },
         { n: "Erik J.", p: "Niederlande", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had." },
         { n: "Michèle F.", p: "Frankreich", t: "Financement pour mes travaux obtenu sans stress. Merci Cézembre." },
-        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebührenstruktur." }
+        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebührenstruktur." },
+        { n: "Monika R.", p: "Schweiz", t: "Hervorragende Abwicklung. Mein Hausbau-Projekt ist gesichert." },
+        { n: "Fabrice V.", p: "Belgien", t: "Un service 5 étoiles. Je recommande pour tout besoin de crédit." },
+        { n: "Günther H.", p: "Deutschland", t: "Verlässlicher Partner. Die Auszahlung erfolgte pünktlich." },
+        { n: "Sonia M.", p: "Luxemburg", t: "Einfach nur klasse. Sehr moderne Plattform und sicher." },
+        { n: "Patrick B.", p: "Frankreich", t: "Réponse immédiate et fonds versés sous 48h. Impressionnant." },
+        { n: "Ursula W.", p: "Deutschland", t: "Dank Cézembre konnte ich meine Umschuldung problemlos meistern." },
+        { n: "Robert P.", p: "Österreich", t: "Fachkundige Beratung und schnelle Kreditentscheidung. Gerne wieder." },
+        { n: "Chloé D.", p: "Frankreich", t: "Absolument satisfaite. Plateforme sécurisée et sérieuse." },
+        { n: "Bernd G.", p: "Deutschland", t: "Keine versteckten Kosten. Alles wurde klar kommuniziert." },
+        { n: "Natalie S.", p: "Schweiz", t: "Schnelle Lösung für meinen Engpass. Danke für die Hilfe." },
+        { n: "Jürgen E.", p: "Deutschland", t: "Sehr hohe Professionalität. Man merkt die langjährige Erfahrung." },
+        { n: "Clara B.", p: "Belgien", t: "Alles digital, alles einfach. So stelle ich mir modernes Banking vor." },
+        { n: "Dieter K.", p: "Deutschland", t: "Hervorragende Zinsen im Vergleich zu meiner Hausbank." },
+        { n: "Marta F.", p: "Italien", t: "Consigliatissimo. Veloci e professionali nel rispondere." },
+        { n: "Werner A.", p: "Österreich", t: "Alles perfekt gelaufen. Auszahlung kam nach drei Tagen." },
+        { n: "Florence H.", p: "Luxemburg", t: "Tres bonne expérience. Personnel très gentil et réactif." },
+        { n: "Ralf U.", p: "Deutschland", t: "Ein Partner, auf den man sich verlassen kann. 5 Sterne." },
+        { n: "Sarah V.", p: "Schweiz", t: "Sehr übersichtliche Website und schneller Antragsprozess." },
+        { n: "Bruno M.", p: "Frankreich", t: "Le meilleur choix pour mon crédit auto. Je recommande vivement." },
+        { n: "Helga L.", p: "Deutschland", t: "Sicherer Prozess und sehr freundliche Unterstützung." }
     ];
 
     function getRandomTime() {
@@ -502,15 +522,13 @@
         container.innerHTML = "";
         const shuffled = [...allReviews].sort(() => 0.5 - Math.random());
         const selected = shuffled.slice(0, 12);
-        
         selected.forEach((r, i) => {
             const startTime = getRandomTime();
-            const html = createReviewHTML(r, startTime);
-            container.insertAdjacentHTML('beforeend', html);
+            container.insertAdjacentHTML('beforeend', createReviewHTML(r, startTime));
             setTimeout(() => {
                 const cards = container.querySelectorAll('.review-card');
                 if(cards[i]) cards[i].classList.add('show');
-            }, i * 150);
+            }, i * 200);
         });
     }
 
