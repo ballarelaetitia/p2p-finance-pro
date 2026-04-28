@@ -12,15 +12,17 @@
     <style>
         :root {
             --navy: #001A4D; --gold: #C5A059; --bright-gold: #FFD700; 
-            --light-bg: #F4F7FA; --white: #FFFFFF; --whatsapp: #25D366; --success: #27ae60;
+            --deep-gold: #E6B800; --light-bg: #F4F7FA; --white: #FFFFFF;
+            --whatsapp: #25D366; --success: #27ae60;
         }
 
-        /* FIX MOBILE : Empêcher le défilement horizontal et le vide blanc */
+        /* FIX MOBILE : Empêche le vide blanc et le défilement latéral */
         html, body { 
-            overflow-x: hidden; 
-            width: 100%; 
+            overflow-x: hidden !important; 
+            width: 100% !important; 
+            margin: 0 !important; 
+            padding: 0 !important;
             position: relative;
-            margin: 0; padding: 0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
@@ -47,10 +49,6 @@
             flex-wrap: wrap;
         }
 
-        .hero-content { max-width: 500px; text-align: center; margin-bottom: 30px; }
-        .hero-content h1 { font-size: 2.2rem; margin-bottom: 20px; }
-
-        /* SIMULATEUR BIEN POSITIONNÉ */
         .simulator { 
             background: var(--white); padding: 25px; border-radius: 8px; width: 100%; max-width: 450px; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.3); color: var(--navy); position: relative;
@@ -66,8 +64,7 @@
 
         .sim-row { margin-bottom: 15px; }
         .sim-row label { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600; margin-bottom: 5px; }
-        
-        input[type="range"] { width: 100%; accent-color: var(--gold); }
+        input[type="range"] { width: 100%; accent-color: var(--navy); }
 
         .result-area { background: #f8f9fa; padding: 15px; border-radius: 5px; text-align: center; margin: 15px 0; border: 1px dashed #ccc; }
         .result-area span { font-size: 1.8rem; font-weight: 800; }
@@ -78,26 +75,33 @@
 
         /* FORMULAIRE ET CADENAS */
         .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; }
-        .security-lock { 
-            display: flex; align-items: center; justify-content: center; gap: 8px; 
-            font-size: 0.7rem; color: #666; margin-top: 15px; font-weight: 600;
+        .security-lock-container { 
+            display: flex; align-items: center; justify-content: center; gap: 10px; 
+            background: #eafaf1; color: var(--success); padding: 12px; border-radius: 5px;
+            font-size: 0.75rem; font-weight: 700; margin-top: 15px; border: 1px solid rgba(39,174,96,0.2);
         }
 
-        /* SECTION AVIS DYNAMIQUE */
-        .reviews-section { padding: 50px 5%; background: var(--light-bg); text-align: center; }
-        #reviews-container { max-width: 600px; margin: 0 auto; min-height: 180px; }
+        /* SECTION AVIS DYNAMIQUE (CHUTE UN PAR UN) */
+        .reviews-section { padding: 40px 5%; background: var(--light-bg); text-align: center; }
+        #reviews-display-area { min-height: 200px; position: relative; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        
         .review-card { 
             background: white; padding: 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-            text-align: left; border-left: 4px solid var(--gold); animation: slideIn 0.5s ease-out;
+            text-align: left; border-left: 4px solid var(--gold); width: 100%;
+            animation: dropEffect 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes dropEffect {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
 
-        .review-date { font-size: 0.7rem; color: var(--success); font-weight: 700; margin-bottom: 5px; display: block; }
+        .review-time { font-size: 0.7rem; color: #777; font-weight: 600; display: block; margin-bottom: 5px; }
         .review-author { font-weight: 700; font-size: 0.85rem; margin-top: 10px; display: block; }
+        .star-rating { color: #FFD700; font-size: 0.8rem; margin-bottom: 5px; }
 
         @media (max-width: 480px) {
-            .hero-content h1 { font-size: 1.8rem; }
-            .btn-group { flex-direction: row; }
+            .hero-content h1 { font-size: 1.6rem; }
+            .simulator { padding: 20px; width: 95%; margin: 0 auto; }
         }
     </style>
 </head>
@@ -111,11 +115,6 @@
 </header>
 
 <section class="hero">
-    <div class="hero-content">
-        <h1>Finanzielle Exzellenz für Ihre Projekte.</h1>
-        <p>Zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
-    </div>
-
     <div class="simulator">
         <div id="step1">
             <div class="live-btn">
@@ -139,91 +138,110 @@
 
             <div class="btn-group">
                 <button class="btn-main" onclick="showStep(2)">MEINEN ANTRAG STELLEN</button>
-                <a href="https://wa.me/33780976404" class="btn-wa"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/33780976404" class="btn-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <p style="font-size: 0.6rem; text-align: center; margin-top: 10px; color: #999;">256-Bit-SSL-Verschlüsselung • Garantierter Schutz</p>
         </div>
 
         <div id="step2" style="display:none;">
-            <h3 style="margin-bottom: 15px; font-size: 1rem; text-align: center;">Persönliche Informationen</h3>
-            <form id="loanForm">
-                <input type="text" placeholder="Vor- und Nachname" class="form-input" required>
-                <input type="email" placeholder="E-Mail-Adresse" class="form-input" required>
-                <input type="tel" placeholder="Telefonnummer" class="form-input" required>
-                <button type="submit" class="btn-main" style="width: 100%;">JETZT ABSENDEN</button>
+            <h3 style="margin-bottom: 15px; font-size: 1rem; text-align: center;">Dossier einreichen</h3>
+            <form id="loanForm" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
+                <input type="text" name="name" placeholder="Vollständiger Name" class="form-input" required>
+                <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
+                <input type="tel" name="phone" placeholder="Telefonnummer" class="form-input" required>
+                
+                <button type="submit" class="btn-main" style="width:100%;">JETZT ABSENDEN</button>
+                
+                <div class="security-lock-container">
+                    <i class="fas fa-lock"></i>
+                    IHR DOSSIER IST 100% SICHER & VERTRAULICH
+                </div>
             </form>
-            <div class="security-lock">
-                <i class="fas fa-lock" style="color: var(--success);"></i>
-                IHR DOSSIER IST 100% SICHER UND VERSCHLÜSSELT
-            </div>
         </div>
     </div>
 </section>
 
 <section class="reviews-section">
-    <h2 style="font-size: 1.2rem; margin-bottom: 20px;">Kundenbewertungen in Echtzeit</h2>
-    <div id="reviews-container"></div>
+    <h2 style="font-size: 1.1rem; margin-bottom: 25px;">Kundenbewertungen (Live)</h2>
+    <div id="reviews-display-area">
+        </div>
 </section>
 
 <script>
-    // --- CALCULATEUR ---
+    // 1. CALCULATEUR
     const amtR = document.getElementById('amtRange');
     const durR = document.getElementById('durRange');
-    
     function updateCalc() {
         const p = parseFloat(amtR.value);
         const n = parseInt(durR.value);
         const r = 0.035 / 12;
         const m = (p * r) / (1 - Math.pow(1 + r, -n));
-        
         document.getElementById('amtVal').innerText = p + " €";
         document.getElementById('durVal').innerText = n + " Monate";
         document.getElementById('monthlyRes').innerText = m.toFixed(2);
     }
-    amtR.oninput = updateCalc;
-    durR.oninput = updateCalc;
-    updateCalc();
+    amtR.oninput = updateCalc; durR.oninput = updateCalc; updateCalc();
 
     function showStep(s) {
         document.getElementById('step1').style.display = s === 1 ? 'block' : 'none';
         document.getElementById('step2').style.display = s === 2 ? 'block' : 'none';
     }
 
-    // --- AVIS DYNAMIQUES (TOMBE UN PAR UN) ---
-    const reviewsData = [
-        { n: "Hans Müller", t: "Sehr schnelle Bearbeitung, danke!", time: "Gerade eben" },
-        { n: "Sarah Schmidt", t: "Top Zinssatz und super Service.", time: "vor 2 Minuten" },
-        { n: "Lukas Weber", t: "Endlich mein Traumauto finanziert.", time: "vor 14 Sekunden" },
-        { n: "Elena Fischer", t: "Unkompliziert und sehr diskret.", time: "Gerade eben" },
-        { n: "Markus Wagner", t: "Empfehlenswert für Immobilienprojekte.", time: "vor 5 Minuten" }
+    // 2. SYSTÈME D'AVIS DYNAMIQUES (TEMPS DÉTAILLÉ)
+    const reviewsPool = [
+        { name: "Marc L.", text: "Schnelle Finanzierung und ein sehr professionelles Team." },
+        { name: "Thomas W.", text: "Seriöses Institut für meinen Grenzgängerkredit. Top!" },
+        { name: "Sophie D.", text: "Effizient und sicher. Eine große Hilfe beim Kauf meines Autos." },
+        { name: "Elena V.", text: "Hervorragende Bearbeitung meines Kreditantrags. Kompetent." },
+        { name: "Lars O.", text: "Sehr zufrieden mit dem Zinssatz und der Abwicklung." },
+        { name: "João P.", text: "Einfacher Prozess. Ich kann Cézembre nur empfehlen." },
+        { name: "Robert H.", text: "Endlich eine Bank, die wirklich zuhört. Sehr zufrieden." },
+        { name: "Dimitri V.", text: "Sehr zufrieden mit der schnellen Rückmeldung. Reibungslos." }
     ];
 
-    function displayNewReview() {
-        const container = document.getElementById('reviews-container');
-        const r = reviewsData[Math.floor(Math.random() * reviewsData.length)];
+    function generateReview() {
+        const area = document.getElementById('reviews-display-area');
+        const r = reviewsPool[Math.floor(Math.random() * reviewsPool.length)];
         
-        // Simuler le changement de temps (secondes/minutes)
-        const seconds = Math.floor(Math.random() * 59);
-        const timeText = seconds < 10 ? "Gerade eben" : `vor ${seconds} Sekunden`;
+        // Calcul du temps (Secondes, Minutes ou Heures)
+        const randSec = Math.floor(Math.random() * 58) + 1;
+        const randMin = Math.floor(Math.random() * 58) + 1;
+        const randHour = Math.floor(Math.random() * 12) + 1;
+        
+        const timeTypes = [
+            `vor ${randSec} Sekunden`,
+            `vor ${randMin} Minuten`,
+            `vor ${randHour} Stunden`
+        ];
+        const timeStr = timeTypes[Math.floor(Math.random() * timeTypes.length)];
 
-        container.innerHTML = `
-            <div class="review-card">
-                <span class="review-date"><i class="fas fa-clock"></i> ${timeText}</span>
-                <div style="color: #FFD700; font-size: 0.8rem; margin-bottom: 5px;">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p style="font-size: 0.85rem; font-style: italic;">"${r.t}"</p>
-                <span class="review-author">${r.n} <i class="fas fa-check-circle" style="color:var(--success); font-size: 0.7rem;"></i></span>
+        const card = document.createElement('div');
+        card.className = 'review-card';
+        card.innerHTML = `
+            <span class="review-time"><i class="fas fa-clock"></i> ${timeStr}</span>
+            <div class="star-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
+            <p style="font-size: 0.85rem; font-style: italic; color: #444;">"${r.text}"</p>
+            <span class="review-author">${r.name} <i class="fas fa-check-circle" style="color:var(--success); font-size:0.7rem;"></i></span>
         `;
+
+        // Insertion au début pour l'effet de chute
+        area.insertBefore(card, area.firstChild);
+
+        // Garder seulement les 4 derniers pour la performance mobile
+        if(area.children.length > 4) {
+            area.removeChild(area.lastChild);
+        }
     }
 
-    setInterval(displayNewReview, 5000); // Change toutes les 5 secondes
-    displayNewReview();
+    // Un nouvel avis tombe toutes les 6 secondes
+    setInterval(generateReview, 6000);
+    generateReview(); // Premier avis immédiat
 
-    // Simulation du compteur de personnes (12-18)
+    // 3. COMPTEUR LIVE
     setInterval(() => {
-        const count = 12 + Math.floor(Math.random() * 7);
+        const count = 10 + Math.floor(Math.random() * 15);
         document.getElementById('live-counter').innerText = `${count} Personen schauen sich dieses Angebot gerade an`;
     }, 8000);
 </script>
