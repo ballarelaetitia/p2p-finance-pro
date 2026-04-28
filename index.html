@@ -116,7 +116,8 @@
             footer { padding-bottom: 160px !important; } 
             .wa-assistant-container { bottom: 15px; left: 15px; }
             .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
-            .live-btn { width: 100%; justify-content: center; margin: 0 auto 15px auto !important; }
+            /* AJUSTEMENT MOBILE BOUTON VERT */
+            .live-btn { width: 100%; max-width: 280px; justify-content: center; margin: 0 auto 15px auto !important; height: 32px; display: flex !important; align-items: center !important; }
         }
 
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
@@ -151,7 +152,7 @@
 
         .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
         .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
-        .review-date i { color: var(--success); animation: blink-dot 1.5s infinite; }
+        .review-date i { color: var(--success); }
         .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px; }
         .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; }
         .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
@@ -225,21 +226,24 @@
         
         #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
         
-        /* LIVE BTN AJUSTÉ */
+        /* CORRECTIF ALIGNEMENT BOUTON VERT */
         .live-btn { 
             background: rgba(39, 174, 96, 0.1); 
             border: 1px solid var(--success);
             color: var(--success);
-            padding: 6px 12px;
+            padding: 0 15px;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 700;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 10px;
             margin-bottom: 15px;
+            height: 35px; /* Hauteur fixe pour éviter l'étirement */
+            white-space: nowrap;
         }
-        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; }
+        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
         @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
     </style>
 </head>
@@ -390,17 +394,18 @@
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
+    /* AVIS TRADUITS EN ALLEMAND UNIQUEMENT */
     const internationalReviews = [
-        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle. Projet réalisé en un temps record." },
-        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif pour mon prêt frontalier. Top !" },
-        { n: "Jean-Paul H.", p: "Luxembourg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für alles!" },
-        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse pour l'achat de mon véhicule." },
-        { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier de crédit. Service très courtois." },
-        { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung. Absolut empfehlenswert." },
-        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo vivamente a Cézembre." },
-        { n: "Luc B.", p: "Monaco", t: "Service haut de gamme et discrétion totale. Parfait pour mon investissement." },
-        { n: "Robert H.", p: "Allemagne", t: "Endlich eine Bank, die zuhört. Sehr zufrieden mit dem Kredit." },
-        { n: "Dimitri V.", p: "Belgique", t: "Très satisfait de la réactivité des conseillers." }
+        { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team. Mein Projekt wurde in Rekordzeit realisiert." },
+        { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut für meinen Grenzgängerkredit. Top-Service!" },
+        { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für die Unterstützung!" },
+        { n: "Sophie D.", p: "Belgien", t: "Effizient und sicher. Eine große Hilfe beim Kauf meines neuen Fahrzeugs." },
+        { n: "Elena V.", p: "Schweiz", t: "Hervorragende Bearbeitung meines Kreditantrags. Sehr höfliches und kompetentes Team." },
+        { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz und der schnellen Abwicklung. Absolut empfehlenswert." },
+        { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Ich kann Cézembre nur wärmstens empfehlen." },
+        { n: "Luc B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion. Perfekt für meine Investition." },
+        { n: "Robert H.", p: "Deutschland", t: "Endlich eine Bank, die wirklich zuhört. Sehr zufrieden mit meinem Kredit." },
+        { n: "Dimitri V.", p: "Belgien", t: "Sehr zufrieden mit der schnellen Rückmeldung der Berater. Alles reibungslos." }
     ];
 
     function getGermanTime() {
@@ -415,7 +420,7 @@
         shuffled.forEach(r => {
             container.innerHTML += `
                 <div class="review-card">
-                    <span class="review-date"><i class="fas fa-clock"></i> Vor ${getGermanTime()}</span>
+                    <span class="review-date"><i class="fas fa-clock" style="animation: blink-dot 1.5s infinite;"></i> Vor ${getGermanTime()}</span>
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="review-text">"${r.t}"</p>
                     <div class="review-author">
