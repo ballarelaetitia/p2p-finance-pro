@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18121475138"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18121475138');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FINANCIÈRE DE CEZEMBRE | Institutionelle Kreditlösungen</title>
@@ -106,7 +114,6 @@
         }
         .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
 
-        /* CORRECTION POSITIONNEMENT MOBILE */
         @media (max-width: 991px) {
             header { padding: 15px 5%; }
             .logo { font-size: 1.1rem; }
@@ -427,7 +434,7 @@
 
 <section class="about-section" id="about">
     <h2>Eine Referenzinstitution</h2>
-    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich der Kreditvergabe (Code APE 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
+    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich de Kreditvergabe (Code APE 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
 </section>
 
 <footer id="legal">
@@ -516,7 +523,8 @@
 
     setInterval(() => {
         const count = Math.floor(Math.random() * (25 - 8 + 1)) + 8;
-        document.getElementById('viewers-count').innerText = count;
+        const countEl = document.getElementById('viewers-count');
+        if(countEl) countEl.innerText = count;
     }, 5000);
 
     const amtR = document.getElementById('amtRange');
@@ -527,9 +535,10 @@
 
     function calc() {
         let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
-        amtN.value = p; durT.innerText = n + " Monate";
+        if(amtN) amtN.value = p; 
+        if(durT) durT.innerText = n + " Monate";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        resM.innerText = m.toFixed(2);
+        if(resM) resM.innerText = m.toFixed(2);
         document.getElementById('hiddenAmt').value = p + " €";
         document.getElementById('hiddenDur').value = n + " Monate";
         document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
@@ -550,6 +559,12 @@
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
+
+        // ÉVÉNEMENT DE CONVERSION GOOGLE ADS
+        if(typeof gtag === 'function'){
+            gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); 
+        }
+
         const overlay = document.getElementById('loader-overlay');
         overlay.style.display = 'flex';
         const formData = new FormData(form);
