@@ -157,8 +157,28 @@
         @keyframes blink-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
         .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
         
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        /* CHIRURGIE : NOUVEAUX STYLES BOUTONS */
+        .action-group { display: flex; gap: 10px; align-items: flex-end; width: 100%; }
+        
+        .btn-main { background: var(--navy); color: white; border: none; flex: 1; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; position: relative; }
         .btn-main:hover { background: var(--gold); }
+        
+        /* Lumière pulsante sur le bouton principal */
+        .glow-pulse { animation: pulse-gold 2s infinite; }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(197, 160, 89, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+        }
+
+        .btn-wa-small { background: var(--whatsapp); color: white; border: none; width: 60px; height: 58px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: 0.3s; text-decoration: none; border-radius: 2px; }
+        .btn-wa-small:hover { transform: scale(1.05); background: #1ebd59; }
+
+        .wa-tooltip-container { position: relative; }
+        .wa-tooltip { position: absolute; top: -45px; left: 50%; transform: translateX(-50%); background: var(--navy); color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; border: 1px solid var(--gold); animation: tooltip-bounce 2s infinite; }
+        .wa-tooltip::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid var(--navy); }
+
+        @keyframes tooltip-bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-5px); } }
 
         .form-input { 
             width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); 
@@ -286,7 +306,14 @@
                 <p>GESCHÄTZTE MONATSRATE (3.5% FESTZINS)</p>
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
-            <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
+
+            <div class="action-group">
+                <button type="button" class="btn-main glow-pulse" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
+                <div class="wa-tooltip-container">
+                    <div class="wa-tooltip">Brauchen Sie Hilfe?</div>
+                    <a href="https://wa.me/33780976404" target="_blank" class="btn-wa-small"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
             
             <div class="scrolling-security">
                 <span><i class="fas fa-lock" style="color:var(--gold);"></i> DATENSCHUTZ: Ihre Daten sind streng vertraulich. • 256-Bit-SSL-Verschlüsselung • Garantierter Schutz.</span>
