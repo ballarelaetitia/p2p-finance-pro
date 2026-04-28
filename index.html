@@ -65,18 +65,21 @@
             min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: space-between; padding: 100px 8% 40px; color: var(--white);
+            display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
 
         .hero-content { 
             max-width: 600px; 
             position: relative;
             z-index: 1;
+            padding: 20px;
+            background: radial-gradient(circle at center, rgba(197, 160, 89, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
         }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
         .simulator { 
-            background: var(--white); padding: 30px 40px; border-radius: 4px; width: 480px; 
+            background: var(--white); padding: 30px 40px; border-radius: 2px; width: 480px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
             position: relative; overflow: hidden; min-height: 480px;
         }
@@ -103,11 +106,10 @@
         }
         .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
 
-        /* RESPONSIVE DESIGN OPTIMISÉ */
+        /* CORRECTION POSITIONNEMENT MOBILE */
         @media (max-width: 991px) {
-            header { padding: 10px 5%; height: 70px; }
-            .logo { font-size: 1rem; }
-            .logo-sigle { width: 32px; height: 32px; font-size: 0.9rem; }
+            header { padding: 15px 5%; }
+            .logo { font-size: 1.1rem; }
             .nav-links { display: none; }
             
             .hero { 
@@ -115,44 +117,43 @@
                 height: auto; 
                 padding: 100px 5% 40px 5%; 
                 text-align: center;
-                justify-content: center;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
             }
             
             .hero-content { 
                 max-width: 100%; 
-                margin-bottom: 40px; 
+                margin-bottom: 30px; 
+                background: none; 
             }
             
-            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 1.8rem; line-height: 1.3; }
             
             .simulator { 
-                width: 100%; 
-                max-width: 450px; 
-                padding: 25px 20px; 
+                width: 95%; 
+                max-width: 420px; 
+                padding: 20px; 
                 min-height: auto; 
                 margin: 0 auto; 
+                position: relative;
+                left: 0; 
             }
 
-            .stats-bar { flex-direction: column; gap: 30px; padding: 40px 5%; }
+            .stats-bar { flex-direction: column; gap: 30px; }
+            .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
+            .f-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr !important; padding: 10px !important; }
+            footer { padding-bottom: 100px !important; } 
             
-            .f-grid { 
-                grid-template-columns: 1fr; 
-                margin-left: 0; 
-                text-align: center; 
-                gap: 30px;
-            }
-            .legal-block { margin-left: 0; text-align: center; }
-
-            .reviews-grid { grid-template-columns: 1fr; padding: 0; }
-            .reviews-section { padding: 60px 5%; }
-            .about-section { padding: 60px 8%; }
-            
-            footer { padding: 60px 5% 100px; } 
-
             .live-btn { 
-                width: 100%; 
-                font-size: 0.7rem;
-                padding: 10px;
+                width: 100% !important; 
+                max-width: 100% !important; 
+                height: auto !important; 
+                padding: 8px 10px !important; 
+                white-space: normal !important; 
+                text-align: center; 
+                line-height: 1.2; 
             }
         }
 
@@ -257,19 +258,20 @@
         .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
 
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; margin-left: 160px; }
+        .f-grid, .legal-block { margin-left: 160px; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
         .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
-        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; margin-left: 160px; }
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
         .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
         .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
         @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
         .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
-        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 60px; height: 60px; border-radius: 50%; text-align: center; font-size: 30px; box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; animation: magnet-pulse 2s infinite ease-in-out; }
+        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; animation: magnet-pulse 2s infinite ease-in-out; }
         
         @keyframes magnet-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 10% { transform: scale(1.1) rotate(5deg); } 20% { transform: scale(1.1) rotate(-5deg); } 30% { transform: scale(1.1) rotate(5deg); } 40% { transform: scale(1) rotate(0deg); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
-        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; z-index: 9999; }
+        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
         
         .live-btn { 
             background: rgba(39, 174, 96, 0.1); 
@@ -301,7 +303,7 @@
         <a href="#about">Expertise</a>
         <a href="#legal">Gouvernance</a>
         <a onclick="goToStep1()" href="#simBox">Kontakt</a>
-        <div class="intl-badge"><i class="fas fa-globe"></i> SICHERES PORTAL</div>
+        <div class="intl-badge"><i class="fas fa-globe"></i> SICHERES INTERNATIONALES PORTAL</div>
     </div>
 </header>
 
@@ -314,15 +316,15 @@
         <h1>Finanzielle Exzellenz <br>für Ihre Projekte.</h1>
         <p style="margin-bottom: 30px; opacity: 0.9;">Zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
         
-        <div style="display: flex; gap: 20px; align-items: center; text-align: left;">
-            <div style="position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
                 <i class="fas fa-certificate" style="color: #FFD700; font-size: 3.5rem;"></i>
                 <i class="fas fa-check" style="color: var(--navy); position: absolute; font-size: 1.2rem; font-weight: 900;"></i>
             </div>
             <p>
                 <strong style="color: #FFD700; font-size: 0.9rem; letter-spacing: 1px;">ZUGELASSENES INSTITUT</strong><br>
                 <strong>Eingetragen unter RCS 552 058 943</strong><br>
-                Unter Aufsicht der Behörden.
+                Unter der Aufsicht der französischen Bankenbehörden.
             </p>
         </div>
     </div>
@@ -342,7 +344,7 @@
         </div>
 
         <div id="step1">
-            <div class="live-btn"><div class="dot-live"></div> <span id="viewers-count">12</span> Personen schauen gerade</div>
+            <div class="live-btn"><div class="dot-live"></div> <span id="viewers-count">12</span> Personen schauen sich dieses Angebot gerade an</div>
             
             <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Kreditrechner</h3>
             <div class="sim-row">
@@ -359,15 +361,16 @@
             </div>
 
             <div class="btn-group-flex">
-                <button type="button" class="btn-main" onclick="goToStep2()">ANTRAG STELLEN</button>
+                <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
                 <a href="https://wa.me/33780976404?text=Hallo,%20ich%20habe%20Interesse%20an%20einem%20Kredit." class="btn-wa-inline" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                 </a>
             </div>
             
             <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> 256-Bit-SSL-Verschlüsselung • Garantierter Schutz • Ihre Daten sind streng vertraulich.</span>
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> 256-Bit-SSL-Verschlüsselung • Garantierter Schutz • Ihre Daten sont streng vertraulich.</span>
             </div>
+            <div class="security-tag" style="font-size: 0.65rem; text-align: center; color: #999; margin-top: 5px;"><i class="fas fa-lock"></i> IHR DOSSIER IST 100% SICHER</div>
         </div>
 
         <div id="step2" style="display:none;">
@@ -395,11 +398,11 @@
                 <input type="tel" name="telephone" placeholder="Telefon (z.B. +49...)" class="form-input" required>
                 <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
                 
-                <button type="submit" class="btn-main">ABSENDEN</button>
+                <button type="submit" class="btn-main">ABSENDEN BESTÄTIGEN</button>
                 
                 <div class="secure-form-badge">
                     <i class="fas fa-shield-alt"></i>
-                    <p><strong>SICHERE DATEN:</strong> Informationen werden durch SSL verschlüsselt.</p>
+                    <p><strong>100% SICHERE DATEN:</strong> Ihre Informationen werden durch SSL verschlüsselt. Wir garantieren, dass Ihre Daten niemals an Dritte verkauft oder weitergegeben werden.</p>
                 </div>
             </form>
         </div>
@@ -413,7 +416,7 @@
 </section>
 
 <section class="reviews-section">
-    <h2>Vertrauen unserer Kunden</h2>
+    <h2>Vertrauen unserer internationalen Kunden</h2>
     <div class="trust-badge-container">
         <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <div class="trust-lock"><i class="fas fa-lock"></i></div>
@@ -424,7 +427,7 @@
 
 <section class="about-section" id="about">
     <h2>Eine Referenzinstitution</h2>
-    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich der Kreditvergabe. Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
+    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich der Kreditvergabe (Code APE 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
 </section>
 
 <footer id="legal">
@@ -435,7 +438,7 @@
         <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
     </div>
     <div class="legal-block">
-        <strong>RECHTLICHE INFO :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Unterliegt der ACPR. 
+        <strong>RECHTLICHE INFORMATIONEN :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Unterliegt der ACPR. 
         <div class="tag-warning"><span class="blink-gold">EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.</span></div>
     </div>
 </footer>
@@ -462,7 +465,7 @@
         { n: "Christian B.", p: "Belgien", t: "Beste Erfahrung mit einem Online-Kredit bisher. Empfehlenswert!" },
         { n: "Sabine T.", p: "Österreich", t: "Freundliche Beratung am Telefon und schnelle Zusage. Alles top." },
         { n: "Erik J.", p: "Niederlande", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had." },
-        { n: "Michèle F.", p: "Frankreich", t: "Financement pour mes travaux obtenu ohne Stress. Merci Cézembre." },
+        { n: "Michèle F.", p: "Frankreich", t: "Financement pour mes travaux obtenu sans stress. Merci Cézembre." },
         { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebührenstruktur." }
     ];
 
@@ -513,8 +516,7 @@
 
     setInterval(() => {
         const count = Math.floor(Math.random() * (25 - 8 + 1)) + 8;
-        const viewersElem = document.getElementById('viewers-count');
-        if(viewersElem) viewersElem.innerText = count;
+        document.getElementById('viewers-count').innerText = count;
     }, 5000);
 
     const amtR = document.getElementById('amtRange');
@@ -524,7 +526,6 @@
     const resM = document.getElementById('monthlyRes');
 
     function calc() {
-        if(!amtR || !durR) return;
         let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
         amtN.value = p; durT.innerText = n + " Monate";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
@@ -536,34 +537,30 @@
         durR.style.backgroundSize = (durR.value - durR.min) / (durR.max - durR.min) * 100 + '% 100%';
     }
 
-    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; window.scrollTo({top: document.getElementById('simBox').offsetTop - 100, behavior: 'smooth'}); }
+    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
     function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
     function resetAll() { location.reload(); }
 
-    if(amtR) amtR.oninput = calc; 
-    if(durR) durR.oninput = calc;
-    
+    amtR.oninput = calc; durR.oninput = calc;
     window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     
     calc();
     initReviews();
 
     const form = document.getElementById('loanForm');
-    if(form) {
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            const overlay = document.getElementById('loader-overlay');
-            overlay.style.display = 'flex';
-            const formData = new FormData(form);
-            try {
-                await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
-                setTimeout(() => {
-                    document.getElementById('loading-content').style.display = 'none';
-                    document.getElementById('success-message').style.display = 'block';
-                }, 3000);
-            } catch (error) { overlay.style.display = 'none'; alert("Error. Please try again."); }
-        };
-    }
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+        const overlay = document.getElementById('loader-overlay');
+        overlay.style.display = 'flex';
+        const formData = new FormData(form);
+        try {
+            await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+            setTimeout(() => {
+                document.getElementById('loading-content').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+            }, 3000);
+        } catch (error) { overlay.style.display = 'none'; alert("Error. Please try again."); }
+    };
 </script>
 
 </body>
