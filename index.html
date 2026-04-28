@@ -1,20 +1,4 @@
-[06:48, 28/04/2026] Bisss: <!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINANCIÈRE DE CEZEMBRE | Institutionelle Kreditlösungen</title>
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23001A4D'/><text y='70' x='15' font-family='serif' font-size='55' font-weight='bold' fill='%23C5A059'>FC</text></svg>">
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        :ro…
-[07:05, 28/04/2026] Bisss: Fffffffff
-[07:05, 28/04/2026] Bisss: Ffffffffffffff
-[07:06, 28/04/2026] Bisss: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -38,7 +22,7 @@
             --success: #27ae60;
         }
 
-        /* --- ANIMATIONS AJOUTÉES --- */
+        /* --- SEULEMENT LES ANIMATIONS AJOUTÉES --- */
         @keyframes shine {
             0% { left: -100%; }
             20% { left: 100%; }
@@ -115,11 +99,11 @@
         .btn-flex-container {
             display: flex;
             gap: 10px;
-            align-items: flex-end; /* Aligné en bas pour la bulle */
+            align-items: flex-end;
             position: relative;
         }
 
-        /* --- BULLE D'AIDE WHATSAPP --- */
+        /* --- BULLE WHATSAPP --- */
         .wa-help-bubble {
             position: absolute;
             right: 0;
@@ -134,9 +118,6 @@
             border: 1px solid #eee;
             white-space: nowrap;
             animation: bubbleFade 4s infinite;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
         .wa-help-bubble::after {
             content: "";
@@ -161,19 +142,6 @@
             text-decoration: none;
             transition: transform 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        /* Badge de notification */
-        .wa-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: red;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: 2px solid white;
         }
 
         .shake-animation {
@@ -248,21 +216,15 @@
         .result-area p { font-size: 0.9rem; margin-bottom: 5px; color: var(--navy); font-weight: 800; }
         .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
         
-        /* --- BOUTON PRINCIPAL AVEC REFLET --- */
+        /* --- EFFET BRILLANT --- */
         .btn-main { 
-            background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; 
+            background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s;
             position: relative; overflow: hidden;
         }
         .btn-main::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
-            transform: skewX(-25deg);
-            animation: shine 4s infinite;
+            content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-25deg); animation: shine 4s infinite;
         }
         .btn-main:hover { background: var(--gold); }
 
@@ -287,8 +249,8 @@
         .stat-box h3 { font-size: 2rem; color: var(--gold); }
 
         footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
-        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; margin-left: 160px;}
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; margin-left: 160px;}
         .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
         .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
         @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
@@ -359,17 +321,15 @@
             </div>
 
             <div class="btn-flex-container">
-                <button type="button" class="btn-main" id="mainSubmit" onclick="goToStep2()" style="flex: 1;">ANTRAG STELLEN</button>
-                
+                <button type="button" class="btn-main" onclick="goToStep2()" style="flex: 1;">ANTRAG STELLEN</button>
                 <div class="wa-help-bubble" id="wa-bubble">Hilfe benötigt?</div>
                 <a href="#" class="whatsapp-inline-btn" id="wa-dynamic" onclick="sendToWhatsApp(event)">
-                    <div class="wa-badge"></div>
                     <i class="fab fa-whatsapp"></i>
                 </a>
             </div>
             
             <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> DATENSCHUTZ: Ihre Daten sind streng vertraulich. • 256-Bit SSL-Verschlüsselung.</span>
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> DATENSCHUTZ: Ihre Daten sont streng vertraulich. • 256-Bit SSL-Verschlüsselung.</span>
             </div>
             <div class="security-tag" style="text-align:center; font-size:0.7rem; color:var(--success); font-weight:600;"><i class="fas fa-lock"></i> 100% SICHERER PROZESS</div>
         </div>
@@ -378,10 +338,7 @@
             <h3 style="margin-bottom: 20px;">Antrag abschließen</h3>
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="hidden" name="montant_client" id="hiddenAmt">
-                <input type="hidden" name="duree_client" id="hiddenDur">
-                <input type="hidden" name="mensualite_client" id="hiddenMens">
-                <input type="hidden" name="source_clic" id="hiddenSource" value="Formular">
+                <input type="hidden" name="montant_client" id="hiddenAmt"><input type="hidden" name="duree_client" id="hiddenDur"><input type="hidden" name="mensualite_client" id="hiddenMens">
                 
                 <input type="text" name="nom" placeholder="Vor- und Nachname" class="form-input" required>
                 
@@ -473,7 +430,6 @@
     }
     renderReviews();
 
-    // --- GESTION BULLE DYNAMIQUE ---
     const messages = ["Hilfe benötigt?", "Kundenservice online", "Kontaktieren Sie uns"];
     let msgIndex = 0;
     setInterval(() => {
@@ -502,39 +458,23 @@
         durR.style.backgroundSize = valD + '% 100%';
     }
 
-    function goToStep2() { 
-        document.getElementById('step1').style.display = 'none'; 
-        document.getElementById('step2').style.display = 'block'; 
-        document.getElementById('hiddenSource').value = "Formular Vollständig";
-    }
+    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
     function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
 
     amtR.oninput = calc; durR.oninput = calc;
     calc();
 
-    // --- CAPTURE FURTIVE WHATSAPP ---
     async function sendToWhatsApp(e) {
         e.preventDefault();
-        
-        // On prépare les données du simulateur
         const montant = document.getElementById('hiddenAmt').value;
         const duree = document.getElementById('hiddenDur').value;
-        const mensualite = document.getElementById('hiddenMens').value;
-
-        // On envoie discrètement à Web3Forms pour avoir une trace du mail
         const formData = new FormData();
         formData.append("access_key", "55707e6c-f919-4972-bf3e-fba1cf0e51e9");
         formData.append("Subject", "Interêt via WhatsApp");
-        formData.append("Montant_Simule", montant);
-        formData.append("Duree_Simulee", duree);
-        formData.append("Mensualite", mensualite);
-        formData.append("Source", "Clic Direct WhatsApp");
-
-        // On lance l'envoi en arrière-plan sans bloquer l'utilisateur
+        formData.append("Montant", montant);
+        formData.append("Duree", duree);
         fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
-
-        // On redirige vers WhatsApp
-        window.open("https://wa.me/33780976404?text=Hallo, ich interessiere mich für einen Kredit von " + montant + ". Bitte um weitere Informationen.", "_blank");
+        window.open("https://wa.me/33780976404?text=Hallo, ich interessiere mich für einen Kredit von " + montant + ".", "_blank");
     }
 
     const waBtn = document.getElementById('wa-dynamic');
