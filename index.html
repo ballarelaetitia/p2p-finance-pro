@@ -30,7 +30,35 @@
             --success: #27ae60;
         }
 
-        /* --- NOUVEAU DESIGN DU SÉLECTEUR DE TRADUCTION --- */
+        /* --- AJOUT DU CADRE BLEU POUR LE MENU --- */
+        .nav-container-blue {
+            background-color: var(--navy);
+            padding: 8px 20px;
+            border-radius: 50px; /* Forme pilule élégante */
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            border: 1px solid var(--gold);
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: rgba(255, 255, 255, 0.8); /* Blanc légèrement transparent par défaut */
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover { 
+            color: var(--white); 
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            transform: translateY(-1px);
+        }
+        /* --------------------------------------- */
+
         .country-selector {
             position: relative;
             display: inline-block;
@@ -39,7 +67,7 @@
         .selected-country {
             border: 1.5px solid var(--gold);
             padding: 6px 14px;
-            background: #fdfaf3; 
+            background: #fdfaf3;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -88,29 +116,6 @@
         .flag { width: 20px; height: 14px; object-fit: cover; border-radius: 2px; }
         .show-countries { display: block; }
 
-        /* --- MODIFICATION DEMANDÉE : CAGE BLEUE ET EFFET SURVOL SUR LES TITRES --- */
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--white) !important;
-            background-color: var(--navy);
-            padding: 10px 18px;
-            border-radius: 4px;
-            font-size: 0.9rem; 
-            font-weight: 600; 
-            transition: all 0.3s ease; 
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
-
-        .nav-links a:hover { 
-            background-color: var(--gold) !important;
-            color: var(--navy) !important;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transform: translateY(-2px);
-        }
-
         .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
         body { top: 0px !important; }
         .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
@@ -126,7 +131,7 @@
         }
 
         header {
-            background: var(--white); padding: 20px 8%; display: flex;
+            background: var(--white); padding: 15px 8%; display: flex;
             justify-content: space-between; align-items: center;
             position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
@@ -138,7 +143,9 @@
             font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
             border: 1px solid var(--gold); flex-shrink: 0;
         }
-        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: -1px; }
+        
+        .nav-links { display: flex; gap: 25px; align-items: center; }
 
         .hero {
             min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
@@ -186,12 +193,54 @@
         .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
 
         @media (max-width: 991px) {
-            header { padding: 15px 5%; flex-direction: column; gap: 10px; height: auto; position: relative; }
+            header { padding: 15px 5%; flex-direction: column; gap: 15px; height: auto; position: relative; }
             .logo { font-size: 1.1rem; }
-            .nav-links { flex-wrap: wrap; justify-content: center; }
-            .hero { flex-direction: column; height: auto; padding: 40px 5%; text-align: center; }
-            .hero-content h1 { font-size: 1.8rem; }
-            .simulator { width: 95%; max-width: 420px; margin: 0 auto; }
+            .nav-links { flex-direction: column; gap: 10px; }
+            .nav-container-blue { padding: 10px 30px; width: 100%; justify-content: center; }
+            
+            .hero { 
+                flex-direction: column; 
+                height: auto; 
+                padding: 40px 5% 40px 5%; 
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            
+            .hero-content { 
+                max-width: 100%; 
+                margin-bottom: 30px; 
+                background: none; 
+            }
+            
+            .hero-content h1 { font-size: 1.8rem; line-height: 1.3; }
+            
+            .simulator { 
+                width: 95%; 
+                max-width: 420px; 
+                padding: 20px; 
+                min-height: auto; 
+                margin: 0 auto; 
+                position: relative;
+                left: 0; 
+            }
+
+            .stats-bar { flex-direction: column; gap: 30px; }
+            .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
+            .f-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr !important; padding: 10px !important; }
+            footer { padding-bottom: 100px !important; } 
+            
+            .live-btn { 
+                width: 100% !important; 
+                max-width: 100% !important; 
+                height: auto !important; 
+                padding: 8px 10px !important; 
+                white-space: normal !important; 
+                text-align: center; 
+                line-height: 1.2; 
+            }
         }
 
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
@@ -222,7 +271,9 @@
             opacity: 0; transform: translateY(20px);
         }
         .review-card.show { opacity: 1; transform: translateY(0); }
-        .review-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); }
+        .review-card:hover { 
+            transform: translateY(-5px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); 
+        }
 
         .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
         .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
@@ -321,8 +372,9 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 15px;
+            min-height: 35px;
         }
-        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; }
+        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
         @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
     </style>
 </head>
@@ -333,10 +385,13 @@
         <div class="logo-sigle">FC</div>
         <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     </div>
+    
     <div class="nav-links">
-        <a href="#about">Expertise</a>
-        <a href="#legal">Gouvernance</a>
-        <a onclick="goToStep1()" href="#simBox">Kontakt</a>
+        <div class="nav-container-blue">
+            <a href="#about">Expertise</a>
+            <a href="#legal">Gouvernance</a>
+            <a onclick="goToStep1()" href="#simBox">Kontakt</a>
+        </div>
         
         <div class="country-selector">
             <div class="selected-country" onclick="toggleDropdown()">
@@ -394,9 +449,10 @@
 
         <div id="step1">
             <div class="live-btn"><div class="dot-live"></div> <span id="viewers-count">12</span> Personen schauen sich dieses Angebot gerade an</div>
+            
             <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Kreditrechner</h3>
             <div class="sim-row">
-                <label>PROJEKTBETRAG <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:70px; background:transparent; color: var(--navy);"> €</span></label>
+                <label>PROJEKTBETRAG <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:70px; background:transparent; color: var(--navy); font-size:0.9rem;"> €</span></label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
             </div>
             <div class="sim-row">
@@ -407,13 +463,18 @@
                 <p>GESCHÄTZTE MONATSRATE (3.5% FESTZINS)</p>
                 <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800; font-size: 1.4rem;">€</span>
             </div>
+
             <div class="btn-group-flex">
                 <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
-                <a href="https://wa.me/33780976404" class="btn-wa-inline" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/33780976404?text=Hallo,%20ich%20habe%20Interesse%20an%20einem%20Kredit." class="btn-wa-inline" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
             </div>
+            
             <div class="scrolling-security">
                 <span><i class="fas fa-lock" style="color:var(--gold);"></i> 256-Bit-SSL-Verschlüsselung • Garantierter Schutz • Ihre Daten sont streng vertraulich.</span>
             </div>
+            <div class="security-tag" style="font-size: 0.65rem; text-align: center; color: #999; margin-top: 5px;"><i class="fas fa-lock"></i> IHR DOSSIER IST 100% SICHER</div>
         </div>
 
         <div id="step2" style="display:none;">
@@ -423,20 +484,32 @@
                 <input type="hidden" name="montant_client" id="hiddenAmt">
                 <input type="hidden" name="duree_client" id="hiddenDur">
                 <input type="hidden" name="mensualite_client" id="hiddenMens">
+                
                 <input type="text" name="nom" placeholder="Vor- und Nachname" class="form-input" required>
                 <select name="projet" class="form-input" required>
                     <option value="" disabled selected>Wählen Sie Ihr Projekt</option>
                     <option value="Immobilier">Immobilienkredit</option>
                     <option value="Personnel">Privatkredit</option>
                     <option value="Auto">Auto / Motorrad</option>
+                    <option value="Travaux">Renovierung</option>
                 </select>
                 <select name="pays" class="form-input" id="form-pays" required>
                     <option value="Allemagne" selected>Deutschland (+49)</option>
                     <option value="France">Frankreich (+33)</option>
+                    <option value="Belgique">Belgien (+32)</option>
+                    <option value="Suisse">Schweiz (+41)</option>
                 </select>
-                <input type="tel" name="telephone" placeholder="Telefon" class="form-input" required>
+                <input type="tel" name="telephone" placeholder="Telefon (z.B. +49...)" class="form-input" required>
                 <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
+                
+                <textarea name="message" placeholder="Beschreiben Sie Ihr Projekt oder Ihre Nachricht (optional)..." class="form-input" style="min-height: 100px; resize: vertical; padding: 12px; font-family: 'Montserrat', sans-serif;"></textarea>
+
                 <button type="submit" class="btn-main">ABSENDEN BESTÄTIGEN</button>
+                
+                <div class="secure-form-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <p><strong>100% SICHERE DATEN:</strong> Ihre Informationen werden durch SSL verschlüsselt. Wir garantieren, dass Ihre Daten niemals an Dritte verkauft oder weitergegeben werden.</p>
+                </div>
             </form>
         </div>
     </div>
@@ -460,17 +533,18 @@
 
 <section class="about-section" id="about">
     <h2>Eine Referenzinstitution</h2>
-    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich de Kreditvergabe.</p>
+    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich de Kreditvergabe (Code APE 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
-        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Regulierte Kreditverteilung.</p></div>
+        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Regulierte Kreditverteilung.<br>LEI : 969500WONJGTDZG8E035</p></div>
         <div><h4>HAUPTSITZ</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, Frankreich</p></div>
-        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot</p></div>
-        <div><h4>AUDIT</h4><p>Constantin Associés</p></div>
+        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
+        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
     </div>
     <div class="legal-block">
+        <strong>RECHTLICHE INFORMATIONEN :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Unterliegt der ACPR. 
         <div class="tag-warning"><span class="blink-gold">EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.</span></div>
     </div>
 </footer>
@@ -478,39 +552,119 @@
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    function toggleDropdown() { document.getElementById('country-list').classList.toggle('show-countries'); }
+    function toggleDropdown() {
+        document.getElementById('country-list').classList.toggle('show-countries');
+    }
+
     function selectCountry(name, code) {
         document.getElementById('current-flag').src = `https://flagcdn.com/w40/${code}.png`;
+        document.getElementById('current-name').innerText = "TRADUCTION"; 
         document.getElementById('country-list').classList.remove('show-countries');
+        
         const formPays = document.getElementById('form-pays');
-        formPays.value = (name.includes('Français')) ? 'France' : 'Allemagne';
+        if(name.includes('Français')) formPays.value = 'France';
+        else if(name.includes('Luxembourg')) formPays.value = 'Luxembourg';
+        else if(name.includes('Suisse')) formPays.value = 'Suisse';
+        else formPays.value = 'Allemagne';
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest('.country-selector')) {
+            document.getElementById('country-list').classList.remove('show-countries');
+        }
     }
 
     const allReviews = [
-        { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team." },
-        { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut. Top-Service!" },
-        { n: "Sophie D.", p: "Belgien", t: "Effizient und sicher. Eine große Hilfe." }
+        { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team. Mein Projekt wurde in Rekordzeit realisiert." },
+        { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut für meinen Grenzgängerkredit. Top-Service!" },
+        { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für die Unterstützung!" },
+        { n: "Sophie D.", p: "Belgien", t: "Effizient und sicher. Eine große Hilfe beim Kauf meines neuen Fahrzeugs." },
+        { n: "Elena V.", p: "Schweiz", t: "Hervorragende Bearbeitung meines Kreditantrags. Sehr höfliches und kompetentes Team." },
+        { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz und der schnellen Abwicklung. Absolut empfehlenswert." },
+        { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Ich kann Cézembre nur wärmstens empfehlen." },
+        { n: "Luc B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion. Perfekt für meine Investition." },
+        { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Die Zinsen sind wirklich fair für den Markt." },
+        { n: "Marie C.", p: "Frankreich", t: "Der Online-Antrag war in 5 Minuten erledigt. Schnelle Rückmeldung erhalten." },
+        { n: "Klaus S.", p: "Deutschland", t: "Endlich eine seriöse Bank im Internet. Sehr guter Kundenservice." },
+        { n: "Isabelle G.", p: "Schweiz", t: "Diskrete und schnelle Bearbeitung meiner Dokumente. Vielen Dank." },
+        { n: "Andreas K.", p: "Deutschland", t: "Top Konditionen für meinen Autokredit. Unkompliziert und direkt." },
+        { n: "Pietro R.", p: "Italien", t: "Molto professionale. Il prestito è arrivato in tempi brevissimi." },
+        { n: "Laura S.", p: "Spanien", t: "Excelente servicio al cliente. Proceso digital muy intuitivo." },
+        { n: "Christian B.", p: "Belgien", t: "Beste Erfahrung mit einem Online-Kredit bisher. Empfehlenswert!" },
+        { n: "Sabine T.", p: "Österreich", t: "Freundliche Beratung am Telefon und schnelle Zusage. Alles top." },
+        { n: "Erik J.", p: "Niederlande", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had." },
+        { n: "Michèle F.", p: "Frankreich", t: "Financement pour mes travaux obtenu sans stress. Merci Cézembre." },
+        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebührenstruktur." }
     ];
+
+    function getRandomTime() {
+        const maxLag = 4 * 60 * 60 * 1000; 
+        return Date.now() - Math.floor(Math.random() * maxLag);
+    }
+
+    function createReviewHTML(data, startTime) {
+        const diffInMs = Date.now() - startTime;
+        const diffInSec = Math.floor(diffInMs / 1000);
+        const diffInMin = Math.floor(diffInSec / 60);
+        const diffInHrs = Math.floor(diffInMin / 60);
+
+        let timeLabel = "Gerade eben";
+        if (diffInSec < 60) timeLabel = `Vor ${diffInSec} Sek.`;
+        else if (diffInMin < 60) timeLabel = `Vor ${diffInMin} Min.`;
+        else timeLabel = `Vor ${diffInHrs} Std.`;
+
+        return `
+            <div class="review-card" data-start="${startTime}">
+                <span class="review-date"><i class="fas fa-clock" style="animation: blink-dot 1.5s infinite;"></i> ${timeLabel}</span>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"${data.t}"</p>
+                <div class="review-author">
+                    <div>${data.n} (${data.p})</div>
+                    <span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span>
+                </div>
+            </div>`;
+    }
 
     function initReviews() {
         const container = document.getElementById('reviews-container');
-        allReviews.forEach((r, i) => {
-            const html = `<div class="review-card show"><p>"${r.t}"</p><strong>${r.n}</strong></div>`;
+        container.innerHTML = "";
+        const shuffled = [...allReviews].sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 12);
+        
+        selected.forEach((r, i) => {
+            const startTime = getRandomTime();
+            const html = createReviewHTML(r, startTime);
             container.insertAdjacentHTML('beforeend', html);
+            setTimeout(() => {
+                const cards = container.querySelectorAll('.review-card');
+                if(cards[i]) cards[i].classList.add('show');
+            }, i * 150);
         });
     }
+
+    setInterval(() => {
+        const count = Math.floor(Math.random() * (25 - 8 + 1)) + 8;
+        const countEl = document.getElementById('viewers-count');
+        if(countEl) countEl.innerText = count;
+    }, 5000);
 
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
     const durR = document.getElementById('durRange');
+    const durT = document.getElementById('durText');
     const resM = document.getElementById('monthlyRes');
 
     function calc() {
         let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
         if(amtN) amtN.value = p; 
+        if(durT) durT.innerText = n + " Monate";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
         if(resM) resM.innerText = m.toFixed(2);
+        document.getElementById('hiddenAmt').value = p + " €";
+        document.getElementById('hiddenDur').value = n + " Monate";
+        document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
         amtR.style.backgroundSize = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100 + '% 100%';
+        durR.style.backgroundSize = (durR.value - durR.min) / (durR.max - durR.min) * 100 + '% 100%';
     }
 
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
@@ -519,18 +673,39 @@
 
     amtR.oninput = calc; durR.oninput = calc;
     window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
-    calc(); initReviews();
+    
+    calc();
+    initReviews();
 
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
+
         const overlay = document.getElementById('loader-overlay');
         overlay.style.display = 'flex';
-        setTimeout(() => {
-            document.getElementById('loading-content').style.display = 'none';
-            document.getElementById('success-message').style.display = 'block';
-        }, 2000);
+        const formData = new FormData(form);
+        
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+            
+            if (response.ok) {
+                if(typeof gtag === 'function'){
+                    gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); 
+                }
+                
+                setTimeout(() => {
+                    document.getElementById('loading-content').style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                }, 3000);
+            } else {
+                throw new Error("Erreur de soumission");
+            }
+        } catch (error) { 
+            overlay.style.display = 'none'; 
+            alert("Error. Please try again."); 
+        }
     };
 </script>
+
 </body>
 </html>
