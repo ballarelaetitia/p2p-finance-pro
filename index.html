@@ -30,7 +30,35 @@
             --success: #27ae60;
         }
 
-        /* --- NOUVEAU DESIGN DU SÉLECTEUR DE TRADUCTION --- */
+        /* --- AJOUT DU CADRE BLEU POUR LE MENU --- */
+        .nav-container-blue {
+            background-color: var(--navy);
+            padding: 8px 20px;
+            border-radius: 50px; /* Forme pilule élégante */
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            border: 1px solid var(--gold);
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: rgba(255, 255, 255, 0.8); /* Blanc légèrement transparent par défaut */
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover { 
+            color: var(--white); 
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            transform: translateY(-1px);
+        }
+        /* --------------------------------------- */
+
         .country-selector {
             position: relative;
             display: inline-block;
@@ -39,7 +67,7 @@
         .selected-country {
             border: 1.5px solid var(--gold);
             padding: 6px 14px;
-            background: #fdfaf3; /* Teinte légère dorée */
+            background: #fdfaf3;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -87,7 +115,6 @@
         .country-dropdown div:hover { background: #fdfaf3; color: var(--gold); }
         .flag { width: 20px; height: 14px; object-fit: cover; border-radius: 2px; }
         .show-countries { display: block; }
-        /* ---------------------------------- */
 
         .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
         body { top: 0px !important; }
@@ -104,7 +131,7 @@
         }
 
         header {
-            background: var(--white); padding: 20px 8%; display: flex;
+            background: var(--white); padding: 15px 8%; display: flex;
             justify-content: space-between; align-items: center;
             position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
@@ -116,11 +143,9 @@
             font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
             border: 1px solid var(--gold); flex-shrink: 0;
         }
-        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: -1px; }
         
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
-        .nav-links a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
 
         .hero {
             min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
@@ -168,9 +193,10 @@
         .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
 
         @media (max-width: 991px) {
-            header { padding: 15px 5%; flex-direction: column; gap: 10px; height: auto; position: relative; }
+            header { padding: 15px 5%; flex-direction: column; gap: 15px; height: auto; position: relative; }
             .logo { font-size: 1.1rem; }
-            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .nav-links { flex-direction: column; gap: 10px; }
+            .nav-container-blue { padding: 10px 30px; width: 100%; justify-content: center; }
             
             .hero { 
                 flex-direction: column; 
@@ -359,10 +385,13 @@
         <div class="logo-sigle">FC</div>
         <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     </div>
+    
     <div class="nav-links">
-        <a href="#about">Expertise</a>
-        <a href="#legal">Gouvernance</a>
-        <a onclick="goToStep1()" href="#simBox">Kontakt</a>
+        <div class="nav-container-blue">
+            <a href="#about">Expertise</a>
+            <a href="#legal">Gouvernance</a>
+            <a onclick="goToStep1()" href="#simBox">Kontakt</a>
+        </div>
         
         <div class="country-selector">
             <div class="selected-country" onclick="toggleDropdown()">
@@ -523,14 +552,13 @@
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    /* --- LOGIQUE DU SÉLECTEUR DE PAYS --- */
     function toggleDropdown() {
         document.getElementById('country-list').classList.toggle('show-countries');
     }
 
     function selectCountry(name, code) {
         document.getElementById('current-flag').src = `https://flagcdn.com/w40/${code}.png`;
-        document.getElementById('current-name').innerText = "TRADUCTION"; // Garde le titre fixe ou affiche le nom
+        document.getElementById('current-name').innerText = "TRADUCTION"; 
         document.getElementById('country-list').classList.remove('show-countries');
         
         const formPays = document.getElementById('form-pays');
@@ -545,7 +573,6 @@
             document.getElementById('country-list').classList.remove('show-countries');
         }
     }
-    /* ---------------------------------- */
 
     const allReviews = [
         { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team. Mein Projekt wurde in Rekordzeit realisiert." },
