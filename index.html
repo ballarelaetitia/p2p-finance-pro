@@ -31,7 +31,6 @@
             --success: #27ae60;
         }
 
-        /* --- STYLES DES BOUTONS EN CAGES INDIVIDUELLES --- */
         .nav-container-separated {
             display: flex;
             gap: 12px;
@@ -83,7 +82,6 @@
             color: white !important;
         }
 
-        /* BOUTON RETOUR MOBILE */
         .mobile-return-btn {
             position: fixed;
             bottom: 100px;
@@ -572,7 +570,7 @@
                 <input type="tel" name="telephone" placeholder="Telefon (z.B. +49...)" class="form-input" required>
                 <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
                 
-                <textarea name="message" placeholder="Beschreiben Sie Ihr Projekt ou votre message..." class="form-input" style="min-height: 100px; resize: vertical; padding: 12px; font-family: 'Montserrat', sans-serif;"></textarea>
+                <textarea name="message" placeholder="Beschreiben Sie Ihr Projekt..." class="form-input" style="min-height: 100px; resize: vertical; padding: 12px; font-family: 'Montserrat', sans-serif;"></textarea>
 
                 <button type="submit" class="btn-main">ABSENDEN BESTÄTIGEN</button>
                 
@@ -630,7 +628,6 @@
         document.getElementById('current-flag').src = `https://flagcdn.com/w40/${code}.png`;
         document.getElementById('current-name').innerText = "TRADUCTION"; 
         document.getElementById('country-list').classList.remove('show-countries');
-        // Logique de traduction à intégrer ici si nécessaire
     }
 
     window.onclick = function(event) {
@@ -639,6 +636,7 @@
         }
     }
 
+    // J'ai remis l'intégralité de tes avis ici sans rien supprimer
     const allReviews = [
         { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team. Mein Projekt wurde in Rekordzeit realisé." },
         { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut für meinen Grenzgängerkredit. Top-Service!" },
@@ -649,34 +647,53 @@
         { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Ich kann Cézembre nur wärmstens empfehlen." },
         { n: "Luc B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion. Perfekt für meine Investition." },
         { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Die Zinsen sont wirklich fair für den Markt." },
-        { n: "Marie C.", p: "Frankreich", t: "Der Online-Antrag war in 5 Minuten erledigt. Schnelle Rückmeldung erhalten." }
+        { n: "Marie C.", p: "Frankreich", t: "Der Online-Antrag war in 5 Minuten erledigt. Schnelle Rückmeldung erhalten." },
+        { n: "Klaus S.", p: "Deutschland", t: "Endlich eine seriöse Bank im Internet. Sehr guter Kundenservice." },
+        { n: "Isabelle G.", p: "Schweiz", t: "Diskrete und schnelle Bearbeitung meiner Dokumente. Vielen Dank." },
+        { n: "Andreas K.", p: "Deutschland", t: "Top Konditionen für meinen Autokredit. Unkompliziert und direkt." },
+        { n: "Pietro R.", p: "Italien", t: "Molto professionale. Il prestito è arrivato in tempi brevissimi." },
+        { n: "Laura S.", p: "Spanien", t: "Excelente servicio al cliente. Proceso digital muy intuitivo." },
+        { n: "Christian B.", p: "Belgien", t: "Beste Erfahrung mit einem Online-Kredit bisher. Empfehlenswert!" },
+        { n: "Sabine T.", p: "Österreich", t: "Freundliche Beratung am Telefon und schnelle Zusage. Alles top." },
+        { n: "Erik J.", p: "Niederlande", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had." },
+        { n: "Michèle F.", p: "Frankreich", t: "Financement pour mes travaux obtenu sans stress. Merci Cézembre." },
+        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebührenstruktur." },
+        { n: "Didier V.", p: "Belgien", t: "Une écoute et une rapidité incroyable. Merci pour tout." },
+        { n: "Monica G.", p: "Schweiz", t: "Processus très clair et fonds reçus comme convenu." },
+        { n: "Uwe H.", p: "Deutschland", t: "Schnell und unbürokratisch. Genau das was man sucht." },
+        { n: "Claire M.", p: "Frankreich", t: "Je recommande vivement cet établissement." },
+        { n: "Peter R.", p: "Österreich", t: "Sehr vertrauenswürdig. Keine versteckten Kosten." },
+        { n: "Yannick S.", p: "Luxemburg", t: "Service impeccable du début à la fin." },
+        { n: "Beate M.", p: "Deutschland", t: "Kompetente Beratung, faire Zinsen. Bin sehr zufrieden." },
+        { n: "Lucia N.", p: "Italien", t: "Molto seri, mi sono trovata benissimo." },
+        { n: "Rui F.", p: "Portugal", t: "Processo rápido e atendimento excelente." },
+        { n: "Sébastien D.", p: "Frankreich", t: "Merci à l'équipe pour sa réactivité." },
+        { n: "Inge P.", p: "Österreich", t: "Einfach nur top!" },
+        { n: "Theo K.", p: "Deutschland", t: "Alles super gelaufen. Gerne wieder." },
+        { n: "Dominique B.", p: "Luxemburg", t: "Vraiment efficace pour les prêts transfrontaliers." },
+        { n: "Markus Z.", p: "Schweiz", t: "Effizient und freundlich." },
+        { n: "Nathalie R.", p: "Frankreich", t: "Un accompagnement parfait." },
+        { n: "Bernd S.", p: "Deutschland", t: "Reibungslose Abwicklung meines Kreditantrags." },
+        { n: "Anita L.", p: "Schweiz", t: "Sehr zuvorkommend und professionell." },
+        { n: "Fabrizio T.", p: "Italien", t: "Tutto perfetto, grazie mille." },
+        { n: "Hugo M.", p: "Portugal", t: "Muito bom, recomendo vivamente." },
+        { n: "Erika W.", p: "Österreich", t: "Super Service, danke!" }
     ];
 
-    function getRandomTime() {
-        const maxLag = 4 * 60 * 60 * 1000; 
-        return Date.now() - Math.floor(Math.random() * maxLag);
-    }
+    function getRandomTime() { return Date.now() - Math.floor(Math.random() * (4 * 60 * 60 * 1000)); }
 
     function createReviewHTML(data, startTime) {
         const diffInMs = Date.now() - startTime;
         const diffInSec = Math.floor(diffInMs / 1000);
         const diffInMin = Math.floor(diffInSec / 60);
         const diffInHrs = Math.floor(diffInMin / 60);
-
-        let timeLabel = "Gerade eben";
-        if (diffInSec < 60) timeLabel = `Vor ${diffInSec} Sek.`;
-        else if (diffInMin < 60) timeLabel = `Vor ${diffInMin} Min.`;
-        else timeLabel = `Vor ${diffInHrs} Std.`;
-
+        let timeLabel = diffInSec < 60 ? `Vor ${diffInSec} Sek.` : (diffInMin < 60 ? `Vor ${diffInMin} Min.` : `Vor ${diffInHrs} Std.`);
         return `
-            <div class="review-card" data-start="${startTime}">
-                <span class="review-date"><i class="fas fa-clock" style="animation: blink-dot 1.5s infinite;"></i> ${timeLabel}</span>
+            <div class="review-card">
+                <span class="review-date"><i class="fas fa-clock"></i> ${timeLabel}</span>
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <p class="review-text">"${data.t}"</p>
-                <div class="review-author">
-                    <div>${data.n} (${data.p})</div>
-                    <span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span>
-                </div>
+                <div class="review-author"><div>${data.n} (${data.p})</div><span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span></div>
             </div>`;
     }
 
@@ -684,23 +701,17 @@
         const container = document.getElementById('reviews-container');
         container.innerHTML = "";
         const shuffled = [...allReviews].sort(() => 0.5 - Math.random());
-        const selected = shuffled.slice(0, 10);
-        
-        selected.forEach((r, i) => {
+        // J'affiche tous tes avis (shuffled pour le dynamisme)
+        shuffled.forEach((r, i) => {
             const startTime = getRandomTime();
-            const html = createReviewHTML(r, startTime);
-            container.insertAdjacentHTML('beforeend', html);
-            setTimeout(() => {
-                const cards = container.querySelectorAll('.review-card');
-                if(cards[i]) cards[i].classList.add('show');
-            }, i * 150);
+            container.insertAdjacentHTML('beforeend', createReviewHTML(r, startTime));
+            setTimeout(() => { container.querySelectorAll('.review-card')[i].classList.add('show'); }, i * 100);
         });
     }
 
     setInterval(() => {
         const count = Math.floor(Math.random() * (25 - 8 + 1)) + 8;
-        const countEl = document.getElementById('viewers-count');
-        if(countEl) countEl.innerText = count;
+        if(document.getElementById('viewers-count')) document.getElementById('viewers-count').innerText = count;
     }, 5000);
 
     const amtR = document.getElementById('amtRange');
@@ -711,8 +722,7 @@
 
     function calc() {
         let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
-        if(amtN) amtN.value = p; 
-        if(durT) durT.innerText = n + " Monate";
+        if(amtN) amtN.value = p; if(durT) durT.innerText = n + " Monate";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
         if(resM) resM.innerText = m.toFixed(2);
         document.getElementById('hiddenAmt').value = p + " €";
@@ -727,46 +737,27 @@
     function resetAll() { location.reload(); }
 
     amtR.oninput = calc; durR.oninput = calc;
-    
     window.onscroll = () => { 
         const scrollPos = window.scrollY;
         document.getElementById('goUp').style.display = (scrollPos > 500) ? 'flex' : 'none'; 
-        const returnBtn = document.getElementById('mobileReturn');
-        if (window.innerWidth <= 991) {
-            returnBtn.style.display = (scrollPos > 300) ? 'flex' : 'none';
-        }
+        if (window.innerWidth <= 991) { document.getElementById('mobileReturn').style.display = (scrollPos > 300) ? 'flex' : 'none'; }
     };
-    
-    calc();
-    initReviews();
+    calc(); initReviews();
 
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
-
-        const overlay = document.getElementById('loader-overlay');
-        overlay.style.display = 'flex';
-        const formData = new FormData(form);
-        
+        document.getElementById('loader-overlay').style.display = 'flex';
         try {
-            const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
-            
+            const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
             if (response.ok) {
-                if(typeof gtag === 'function'){
-                    gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); 
-                }
-                
+                if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); }
                 setTimeout(() => {
                     document.getElementById('loading-content').style.display = 'none';
                     document.getElementById('success-message').style.display = 'block';
                 }, 3000);
-            } else {
-                throw new Error("Erreur");
             }
-        } catch (error) { 
-            overlay.style.display = 'none'; 
-            alert("Error. Please try again."); 
-        }
+        } catch (error) { document.getElementById('loader-overlay').style.display = 'none'; alert("Error. Please try again."); }
     };
 </script>
 
