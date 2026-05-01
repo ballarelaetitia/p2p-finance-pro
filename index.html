@@ -324,10 +324,9 @@
             50% { transform: scale(1.15); opacity: 0.8; }
         }
 
-        /* AJUSTEMENT POUR L'EFFET JUMELLE (CHUTE) */
         .reviews-grid { 
             display: flex; 
-            flex-direction: column-reverse; /* Les nouveaux avis apparaissent en haut */
+            flex-direction: column-reverse; 
             gap: 20px; 
             max-width: 800px; 
             margin: 0 auto;
@@ -655,61 +654,127 @@
         }
     }
 
-    // LISTE DES 40 AVIS AVEC PROFILS RÉELS ET VARIÉS (Mélange de visages, familles, fleurs, logos)
+    // LISTE DE 100 AVIS UNIQUES AVEC PROFILS VARIÉS (DAMES, MAMANS, FLEURS, DRAPEAUX, PAYSAGES)
     const allReviews = [
-        { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team. Mein Projekt wurde in Rekordzeit realisé.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
-        { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut für meinen Grenzgängerkredit. Top-Service!", i: "https://randomuser.me/api/portraits/men/1.jpg" },
-        { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für die Unterstützung!", i: "https://randomuser.me/api/portraits/men/32.jpg" },
-        { n: "Sophie D.", p: "Belgien", t: "Effizient und sicher. Eine große Hilfe beim Kauf meines neuen Fahrzeugs.", i: "https://randomuser.me/api/portraits/women/44.jpg" },
-        { n: "Elena V.", p: "Schweiz", t: "Hervorragende Bearbeitung meines Kreditantrags. Sehr höfliches und kompetentes Team.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
-        { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz und der schnellen Abwicklung. Absolut empfehlenswert.", i: "https://randomuser.me/api/portraits/men/85.jpg" },
-        { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Ich kann Cézembre nur wärmstens empfehlen.", i: "https://randomuser.me/api/portraits/men/52.jpg" },
-        { n: "Famille Luc B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion. Perfekt für meine Investition.", i: "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=100&h=100" },
-        { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Die Zinsen sont wirklich fair für den Markt.", i: "https://randomuser.me/api/portraits/men/22.jpg" },
-        { n: "Marie C.", p: "Frankreich", t: "Der Online-Antrag war in 5 Minuten erledigt. Schnelle Rückmeldung erhalten.", i: "https://randomuser.me/api/portraits/women/22.jpg" },
-        { n: "Anonyme (Fleur)", p: "Deutschland", t: "Endlich eine seriöse Bank im Internet. Sehr guter Kundenservice.", i: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=100&h=100" },
-        { n: "Isabelle G.", p: "Schweiz", t: "Diskrete und schnelle Bearbeitung meiner Dokumente. Vielen Dank.", i: "https://randomuser.me/api/portraits/women/12.jpg" },
-        { n: "Andreas K.", p: "Deutschland", t: "Top Konditionen für meinen Autokredit. Unkompliziert und direkt.", i: "https://randomuser.me/api/portraits/men/33.jpg" },
-        { n: "Pietro R.", p: "Italien", t: "Molto professionale. Il prestito è arrivato in tempi brevissimi.", i: "https://randomuser.me/api/portraits/men/15.jpg" },
-        { n: "Laura S.", p: "Spanien", t: "Excelente servicio al cliente. Proceso digital muy intuitivo.", i: "https://randomuser.me/api/portraits/women/28.jpg" },
-        { n: "Christian B.", p: "Belgien", t: "Beste Erfahrung mit einem Online-Kredit bisher. Empfehlenswert!", i: "https://randomuser.me/api/portraits/men/91.jpg" },
-        { n: "Sabine T.", p: "Österreich", t: "Freundliche Beratung am Telefon und schnelle Zusage. Alles top.", i: "https://randomuser.me/api/portraits/women/62.jpg" },
-        { n: "Erik J.", p: "Niederlande", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had.", i: "https://randomuser.me/api/portraits/men/11.jpg" },
-        { n: "Michèle F.", p: "Frankreich", t: "Financement pour mes travaux obtenu sans stress. Merci Cézembre.", i: "https://randomuser.me/api/portraits/women/55.jpg" },
-        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebührenstruktur.", i: "https://randomuser.me/api/portraits/men/3.jpg" },
-        { n: "Didier V.", p: "Belgien", t: "Une écoute et une rapidité incroyable. Merci pour tout.", i: "https://randomuser.me/api/portraits/men/67.jpg" },
+        // --- BLOC 1: DAMES & MAMANS (30) ---
+        { n: "Monika Gruber", p: "Österreich", t: "Ein sehr seriöses Haus. Als Rentnerin wurde ich wunderbar betreut.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
+        { n: "Brigitte Meyer", p: "Deutschland", t: "Dank der Finanzierung konnten wir unser Haus renovieren. Sehr dankbar.", i: "https://randomuser.me/api/portraits/women/44.jpg" },
+        { n: "Hélène B.", p: "Frankreich", t: "Service rapide et efficace. Une équipe très à l'écoute des besoins.", i: "https://randomuser.me/api/portraits/women/72.jpg" },
+        { n: "Anneliese K.", p: "Deutschland", t: "Sehr verantwortungsbewusstes Team. Alles wurde klar erklärt.", i: "https://randomuser.me/api/portraits/women/50.jpg" },
+        { n: "Martina Voss", p: "Schweiz", t: "Endlich eine Bank, die zuhört. Danke für die schnelle Hilfe.", i: "https://randomuser.me/api/portraits/women/60.jpg" },
+        { n: "Ursula Wagner", p: "Österreich", t: "Exzellenter Service. Die Zinsen sind fair und transparent.", i: "https://randomuser.me/api/portraits/women/62.jpg" },
+        { n: "Helga D.", p: "Deutschland", t: "Ein Segen für mein kleines Projekt. Die Auszahlung kam nach 48 Stunden.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
+        { n: "Karin Fischer", p: "Deutschland", t: "Sehr professionell. Ich hatte keine Probleme bei der Antragstellung.", i: "https://randomuser.me/api/portraits/women/52.jpg" },
+        { n: "Renate S.", p: "Luxemburg", t: "Ich bin sehr zufrieden mit der persönlichen Beratung. Sehr höflich.", i: "https://randomuser.me/api/portraits/women/58.jpg" },
+        { n: "Marie-Louise", p: "Luxemburg", t: "Une écoute humaine que l'on ne trouve plus ailleurs. Merci.", i: "https://randomuser.me/api/portraits/women/82.jpg" },
+        { n: "Beate Schulz", p: "Deutschland", t: "Die Auszahlung kam pünktlich. Sehr vertrauenswürdig.", i: "https://randomuser.me/api/portraits/women/59.jpg" },
+        { n: "Rosemarie Vogt", p: "Schweiz", t: "Hervorragende Betreuung für ältere Menschen wie mich.", i: "https://randomuser.me/api/portraits/women/77.jpg" },
+        { n: "Gisela R.", p: "Österreich", t: "Alles bestens. Die Unterlagen wurden schnell geprüft.", i: "https://randomuser.me/api/portraits/women/75.jpg" },
+        { n: "Anita Lang", p: "Schweiz", t: "Sehr zuvorkommend und professionell. Sehr zufrieden.", i: "https://randomuser.me/api/portraits/women/11.jpg" },
+        { n: "Sophie Durand", p: "Belgien", t: "Très efficace. J'ai reçu les fonds sur mon compte rapidement.", i: "https://randomuser.me/api/portraits/women/48.jpg" },
+        { n: "Elena Vogel", p: "Schweiz", t: "Professionelle Bearbeitung. Absolut seriös.", i: "https://randomuser.me/api/portraits/women/63.jpg" },
+        { n: "Carla S.", p: "Italien", t: "Servizio impeccabile. Grazie mille per l'aiuto.", i: "https://randomuser.me/api/portraits/women/28.jpg" },
+        { n: "Gabriela P.", p: "Portugal", t: "Muito satisfeita com o atendimento.", i: "https://randomuser.me/api/portraits/women/19.jpg" },
+        { n: "Hanna T.", p: "Österreich", t: "Einfach und klar. Keine versteckten Kosten.", i: "https://randomuser.me/api/portraits/women/33.jpg" },
+        { n: "Rose-Marie", p: "Luxemburg", t: "Une aide précieuse. Merci beaucoup.", i: "https://randomuser.me/api/portraits/women/80.jpg" },
+        { n: "Christine V.", p: "Belgien", t: "Parfait pour mon crédit auto. Rapide !", i: "https://randomuser.me/api/portraits/women/41.jpg" },
+        { n: "Alice K.", p: "Deutschland", t: "Vielen Dank für die unkomplizierte Hilfe.", i: "https://randomuser.me/api/portraits/women/32.jpg" },
+        { n: "Martha G.", p: "Schweiz", t: "Ich bin froh, Sie gefunden zu haben.", i: "https://randomuser.me/api/portraits/women/88.jpg" },
+        { n: "Inge P.", p: "Österreich", t: "Ein sehr menschliches Unternehmen. Danke für das Vertrauen.", i: "https://randomuser.me/api/portraits/women/81.jpg" },
+        { n: "Nathalie R.", p: "Frankreich", t: "Un accompagnement parfait du début à la fin.", i: "https://randomuser.me/api/portraits/women/7.jpg" },
         { n: "Monica G.", p: "Schweiz", t: "Processus très clair et fonds reçus comme convenu.", i: "https://randomuser.me/api/portraits/women/21.jpg" },
-        { n: "Uwe H.", p: "Deutschland", t: "Schnell und unbürokratisch. Genau das was man sucht.", i: "https://randomuser.me/api/portraits/men/78.jpg" },
-        { n: "Claire M.", p: "Frankreich", t: "Je recommande vivement cet établissement.", i: "https://randomuser.me/api/portraits/women/3.jpg" },
-        { n: "Famille Peter R.", p: "Österreich", t: "Sehr vertrauenswürdig. Keine versteckten Kosten.", i: "https://images.unsplash.com/photo-1595967734994-58276f755694?auto=format&fit=crop&w=100&h=100" },
-        { n: "Yannick S.", p: "Luxemburg", t: "Service impeccable du début à la fin.", i: "https://randomuser.me/api/portraits/men/50.jpg" },
         { n: "Beate M.", p: "Deutschland", t: "Kompetente Beratung, faire Zinsen. Bin sehr zufrieden.", i: "https://randomuser.me/api/portraits/women/70.jpg" },
         { n: "Lucia N.", p: "Italien", t: "Molto seri, mi sono trovata benissimo.", i: "https://randomuser.me/api/portraits/women/35.jpg" },
+        { n: "Anita L.", p: "Schweiz", t: "Sehr zuvorkommend und professionell.", i: "https://randomuser.me/api/portraits/women/8.jpg" },
+        { n: "Erika W.", p: "Österreich", t: "Super Service, danke!", i: "https://randomuser.me/api/portraits/women/10.jpg" },
+
+        // --- BLOC 2: FLEURS, PAYSAGES, DRAPEAUX & LOGOS (30) ---
+        { n: "Susanne S.", p: "Österreich", t: "Gute Zinsen, einfache Online-Abwicklung.", i: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=100&h=100&fit=crop" },
+        { n: "Wanderlust 74", p: "Luzern", t: "Die beste Wahl für meinen Kredit. Sehr diskret.", i: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=100&h=100&fit=crop" },
+        { n: "Garten-Freundin", p: "Graz", t: "Unkomplizierte Abwicklung. Gerne wieder.", i: "https://images.unsplash.com/photo-1490750967868-882002541bb7?w=100&h=100&fit=crop" },
+        { n: "Service Suisse", p: "Bern", t: "Qualität und Schnelligkeit. Bravo.", i: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=100&h=100&fit=crop" },
+        { n: "EU-Finance", p: "Berlin", t: "Sicherer Prozess nach EU-Standards.", i: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=100&h=100&fit=crop" },
+        { n: "Famille B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion.", i: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=100&h=100&fit=crop" },
+        { n: "Natur Pur", p: "Deutschland", t: "Sehr diskret und zuverlässig.", i: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=100&h=100&fit=crop" },
+        { n: "Logo Design", p: "Österreich", t: "Einfach nur top! Unterstützung für mein Business.", i: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=100&h=100&fit=crop" },
+        { n: "Vivre à Paris", p: "Frankreich", t: "Financement rapide pour mon nouvel appartement.", i: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=100&h=100&fit=crop" },
+        { n: "Alpen-Sicht", p: "Schweiz", t: "Alles korrekt und professionell gelaufen.", i: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=100&h=100&fit=crop" },
+        { n: "Boutique Mode", p: "Deutschland", t: "Sehr zuvorkommend. Faire Konditionen.", i: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=100&h=100&fit=crop" },
+        { n: "Rose G.", p: "Frankreich", t: "Merci pour tout le soutien apporté.", i: "https://images.unsplash.com/photo-1494537176433-7a3c4ef2046f?w=100&h=100&fit=crop" },
+        { n: "Consulting", p: "Luxemburg", t: "Ein verlässlicher Partner für geschäftliche Investitionen.", i: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=100&h=100&fit=crop" },
+        { n: "Famille S.", p: "Deutschland", t: "Alles super gelaufen. Gerne wieder.", i: "https://images.unsplash.com/photo-1595967734994-58276f755694?w=100&h=100&fit=crop" },
+        { n: "Bio-Hof", p: "Österreich", t: "Vertrauenswürdig und kompetent.", i: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=100&h=100&fit=crop" },
+        { n: "Design Studio", p: "Schweiz", t: "Sehr schnelle Bearbeitung meines Antrags.", i: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=100&h=100&fit=crop" },
+        { n: "Sonnenuntergang", p: "Frankreich", t: "Une expérience fluide et sécurisée.", i: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=100&h=100&fit=crop" },
+        { n: "Drapeau Belge", p: "Belgien", t: "Parfait pour mon crédit auto. Merci !", i: "https://images.unsplash.com/photo-1562331561-1773229f345c?w=100&h=100&fit=crop" },
+        { n: "Maison Rêve", p: "Luxemburg", t: "Un projet qui prend vie grâce à vous.", i: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=100&h=100&fit=crop" },
+        { n: "Ocean Blue", p: "Portugal", t: "Very easy and secure platform.", i: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=100&h=100&fit=crop" },
+        { n: "Dorte H.", p: "Dänemark", t: "Meget god service. Hurtig udbetaling.", i: "https://images.unsplash.com/photo-1513297845733-10f130f9a948?w=100&h=100&fit=crop" },
+        { n: "Euro-Travel", p: "Deutschland", t: "Kredit für die Weltreise erhalten. Top!", i: "https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?w=100&h=100&fit=crop" },
+        { n: "Zen Garden", p: "Schweiz", t: "Eine stressfreie Finanzierung. Danke.", i: "https://images.unsplash.com/photo-1558449197-27a246b7ed81?w=100&h=100&fit=crop" },
+        { n: "Architecture", p: "Österreich", t: "Professionelle Kommunikation und Abwicklung.", i: "https://images.unsplash.com/photo-1487958449913-d92799258a40?w=100&h=100&fit=crop" },
+        { n: "Blue Sky", p: "Frankreich", t: "Rapidité exceptionnelle, je recommande.", i: "https://images.unsplash.com/photo-1476673160081-cf065607f449?w=100&h=100&fit=crop" },
+        { n: "Handshake", p: "Luxemburg", t: "Ein fairer Deal für beide Seiten.", i: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=100&h=100&fit=crop" },
+        { n: "Green Field", p: "Deutschland", t: "Sehr nachhaltiger Service.", i: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=100&h=100&fit=crop" },
+        { n: "Mountain Top", p: "Schweiz", t: "Service à la hauteur de mes attentes.", i: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=100&h=100&fit=crop" },
+        { n: "City Life", p: "Österreich", t: "Zinsen sind top. Abwicklung digital.", i: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=100&h=100&fit=crop" },
+        { n: "Startup Inc.", p: "Deutschland", t: "Kredit für Expansion erhalten. Schnell!", i: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=100&h=100&fit=crop" },
+
+        // --- BLOC 3: HOMMES & CLIENTS GÉNÉRAUX (40) ---
+        { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
+        { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut. Top-Service!", i: "https://randomuser.me/api/portraits/men/1.jpg" },
+        { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service. Danke pour l'appui.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
+        { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz. Absolut empfehlenswert.", i: "https://randomuser.me/api/portraits/men/85.jpg" },
+        { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Gerne wieder.", i: "https://randomuser.me/api/portraits/men/52.jpg" },
+        { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Die Zinsen sind wirklich fair.", i: "https://randomuser.me/api/portraits/men/22.jpg" },
+        { n: "Andreas K.", p: "Deutschland", t: "Top Konditionen für meinen Autokredit. Unkompliziert.", i: "https://randomuser.me/api/portraits/men/33.jpg" },
+        { n: "Pietro R.", p: "Italien", t: "Molto professionale. Il prestito è arrivato in tempi brevi.", i: "https://randomuser.me/api/portraits/men/15.jpg" },
+        { n: "Christian B.", p: "Belgien", t: "Beste Erfahrung mit einem Online-Kredit bisher.", i: "https://randomuser.me/api/portraits/men/91.jpg" },
+        { n: "Erik J.", p: "Niederlande", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had.", i: "https://randomuser.me/api/portraits/men/11.jpg" },
+        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebühren.", i: "https://randomuser.me/api/portraits/men/3.jpg" },
+        { n: "Didier V.", p: "Belgien", t: "Une écoute et une rapidité incroyable. Merci pour tout.", i: "https://randomuser.me/api/portraits/men/67.jpg" },
+        { n: "Uwe H.", p: "Deutschland", t: "Schnell und unbürokratisch. Genau das was man sucht.", i: "https://randomuser.me/api/portraits/men/78.jpg" },
+        { n: "Yannick S.", p: "Luxemburg", t: "Service impeccable du début à la fin. Parfait.", i: "https://randomuser.me/api/portraits/men/50.jpg" },
         { n: "Rui F.", p: "Portugal", t: "Processo rápido e atendimento excelente.", i: "https://randomuser.me/api/portraits/men/29.jpg" },
-        { n: "Sébastien D.", p: "Frankreich", t: "Merci à l'équipe pour sa réactivité.", i: "https://randomuser.me/api/portraits/men/30.jpg" },
-        { n: "Logo Design", p: "Österreich", t: "Einfach nur top!", i: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?auto=format&fit=crop&w=100&h=100" },
+        { n: "Sébastien D.", p: "Frankreich", t: "Merci à l'équipe pour sa réactivité constante.", i: "https://randomuser.me/api/portraits/men/30.jpg" },
         { n: "Theo K.", p: "Deutschland", t: "Alles super gelaufen. Gerne wieder.", i: "https://randomuser.me/api/portraits/men/5.jpg" },
         { n: "Dominique B.", p: "Luxemburg", t: "Vraiment efficace pour les prêts transfrontaliers.", i: "https://randomuser.me/api/portraits/men/6.jpg" },
-        { n: "Markus Z.", p: "Schweiz", t: "Effizient und freundlich.", i: "https://randomuser.me/api/portraits/men/7.jpg" },
-        { n: "Nathalie R.", p: "Frankreich", t: "Un accompagnement parfait.", i: "https://randomuser.me/api/portraits/women/7.jpg" },
+        { n: "Markus Z.", p: "Schweiz", t: "Effizient und freundlich. Keine Beschwerden.", i: "https://randomuser.me/api/portraits/men/7.jpg" },
         { n: "Bernd S.", p: "Deutschland", t: "Reibungslose Abwicklung meines Kreditantrags.", i: "https://randomuser.me/api/portraits/men/8.jpg" },
-        { n: "Anita L.", p: "Schweiz", t: "Sehr zuvorkommend und professionell.", i: "https://randomuser.me/api/portraits/women/8.jpg" },
-        { n: "Fabrizio T.", p: "Italien", t: "Tutto perfetto, grazie mille.", i: "https://randomuser.me/api/portraits/men/9.jpg" },
-        { n: "Hugo M.", p: "Portugal", t: "Muito bom, recomendo vivamente.", i: "https://randomuser.me/api/portraits/men/10.jpg" },
-        { n: "Erika W.", p: "Österreich", t: "Super Service, danke!", i: "https://randomuser.me/api/portraits/women/10.jpg" }
+        { n: "Fabrizio T.", p: "Italien", t: "Tutto perfetto, grazie mille per il prestito.", i: "https://randomuser.me/api/portraits/men/9.jpg" },
+        { n: "Hugo M.", p: "Portugal", t: "Muito bom, recomendo vivamente a todos.", i: "https://randomuser.me/api/portraits/men/10.jpg" },
+        { n: "Paul R.", p: "Österreich", t: "Schnelle Auszahlung. Sehr zufrieden.", i: "https://randomuser.me/api/portraits/men/14.jpg" },
+        { n: "Gerd H.", p: "Deutschland", t: "Super Beratung, tolle Konditionen.", i: "https://randomuser.me/api/portraits/men/21.jpg" },
+        { n: "Pierre A.", p: "Frankreich", t: "Service client au top. Très professionnel.", i: "https://randomuser.me/api/portraits/men/31.jpg" },
+        { n: "Jürgen W.", p: "Deutschland", t: "Unkompliziert und fair. Danke.", i: "https://randomuser.me/api/portraits/men/34.jpg" },
+        { n: "Luca B.", p: "Schweiz", t: "Tutto molto chiaro. Ottimo servizio.", i: "https://randomuser.me/api/portraits/men/36.jpg" },
+        { n: "Mathieu G.", p: "Belgien", t: "Très satisfait de mon emprunt travaux.", i: "https://randomuser.me/api/portraits/men/40.jpg" },
+        { n: "Sven F.", p: "Deutschland", t: "Top Zinssatz, schnelle Entscheidung.", i: "https://randomuser.me/api/portraits/men/42.jpg" },
+        { n: "Klaus P.", p: "Österreich", t: "Seriöses Unternehmen. Alles perfekt.", i: "https://randomuser.me/api/portraits/men/46.jpg" },
+        { n: "Julien C.", p: "Frankreich", t: "Plateforme facile à utiliser. Rapide.", i: "https://randomuser.me/api/portraits/men/48.jpg" },
+        { n: "Oliver D.", p: "Deutschland", t: "Keine Probleme, Geld war schnell da.", i: "https://randomuser.me/api/portraits/men/51.jpg" },
+        { n: "Bruno L.", p: "Luxemburg", t: "Très bon suivi du dossier. Merci.", i: "https://randomuser.me/api/portraits/men/55.jpg" },
+        { n: "Tobias M.", p: "Schweiz", t: "Alles korrekt abgewickelt. Empfehlenswert.", i: "https://randomuser.me/api/portraits/men/58.jpg" },
+        { n: "Marco S.", p: "Italien", t: "Servizio veloce e cordiale.", i: "https://randomuser.me/api/portraits/men/61.jpg" },
+        { n: "David R.", p: "Frankreich", t: "Prêt obtenu sans difficultés.", i: "https://randomuser.me/api/portraits/men/64.jpg" },
+        { n: "Christian G.", p: "Deutschland", t: "Gute Kommunikation. Alles bestens.", i: "https://randomuser.me/api/portraits/men/71.jpg" },
+        { n: "Robert H.", p: "Österreich", t: "Fair und diskret. Danke.", i: "https://randomuser.me/api/portraits/men/73.jpg" },
+        { n: "Franck B.", p: "Belgien", t: "Équipe réactive. Fonds reçus rapidement.", i: "https://randomuser.me/api/portraits/men/76.jpg" },
+        { n: "Stephan Z.", p: "Schweiz", t: "Service parfait du début à la fin.", i: "https://randomuser.me/api/portraits/men/82.jpg" }
     ];
 
-    let queue = [...allReviews].sort(() => Math.random() - 0.5); // Mélange initial unique par session
+    // FONCTION DE MÉLANGE (Anti-détection : un mélange différent à chaque visite)
+    let queue = [...allReviews].sort(() => Math.random() - 0.5); 
     const container = document.getElementById('reviews-container');
 
     function createReviewHTML(data) {
-        // Temps simulé aléatoire (quelques secondes à 4h)
-        const randSec = Math.floor(Math.random() * 59) + 1;
-        const timeLabel = Math.random() > 0.5 ? `Vor ${randSec} Sek.` : `Vor 1 Min.`;
+        // Temps simulé aléatoire entre 5 et 55 secondes
+        const randSec = Math.floor(Math.random() * 50) + 5;
+        const timeLabel = `vor ${randSec} Sek.`;
         
         return `
             <div class="review-card">
-                <img src="${data.i}" class="author-img" alt="Profil">
+                <img src="${data.i}" class="author-img" alt="Profil" onerror="this.src='https://ui-avatars.com/api/?name=${data.n}'">
                 <div style="flex:1">
                     <span class="review-date"><i class="fas fa-clock"></i> ${timeLabel}</span>
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -720,21 +785,23 @@
     }
 
     function dropOneReview() {
-        if (queue.length === 0) return; // Plus d'avis à montrer sans actualiser
+        if (queue.length === 0) {
+            // Re-mélanger si on arrive au bout des 100 avis
+            queue = [...allReviews].sort(() => Math.random() - 0.5);
+        }
 
-        const nextReview = queue.pop(); // Retire l'avis de la pile (affichage unique)
+        const nextReview = queue.pop(); 
         container.insertAdjacentHTML('beforeend', createReviewHTML(nextReview));
 
-        // Garde seulement les 5 derniers avis à l'écran pour la fluidité
+        // Garde un flux continu sans décalage
         if (container.children.length > 5) {
             container.removeChild(container.firstChild);
         }
     }
 
-    // Lancer la première chute et répéter toutes les 6 secondes
     function startJumellesAnimation() {
         dropOneReview();
-        setInterval(dropOneReview, 6000); 
+        setInterval(dropOneReview, 7000); // Nouveau avis toutes les 7 secondes
     }
 
     // Le reste de tes fonctions conservées sans modification
@@ -772,7 +839,6 @@
         if (window.innerWidth <= 991) { document.getElementById('mobileReturn').style.display = (scrollPos > 300) ? 'flex' : 'none'; }
     };
     
-    // Initialisation
     calc(); 
     window.onload = startJumellesAnimation;
 
