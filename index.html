@@ -21,6 +21,7 @@
     <style>
         :root {
             --navy: #001A4D;
+            --navy-light: #003399;
             --gold: #C5A059;
             --bright-gold: #FFD700; 
             --deep-gold: #E6B800; 
@@ -30,34 +31,60 @@
             --success: #27ae60;
         }
 
-        /* --- AJOUT DU CADRE BLEU POUR LE MENU --- */
-        .nav-container-blue {
-            background-color: var(--navy);
-            padding: 8px 20px;
-            border-radius: 50px; /* Forme pilule élégante */
+        /* --- STYLES DES BOUTONS EN CAGES INDIVIDUELLES --- */
+        .nav-container-separated {
             display: flex;
-            gap: 20px;
+            gap: 12px;
             align-items: center;
-            border: 1px solid var(--gold);
         }
 
-        .nav-links a { 
-            text-decoration: none; 
-            color: rgba(255, 255, 255, 0.8); /* Blanc légèrement transparent par défaut */
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            transition: all 0.3s ease; 
-            cursor: pointer; 
+        .nav-cage {
+            background-color: var(--navy);
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--gold);
+            color: var(--white) !important;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            min-width: 110px;
         }
 
-        .nav-links a:hover { 
-            color: var(--white); 
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-            transform: translateY(-1px);
+        /* Effet au survol (souris touche) */
+        .nav-cage:hover {
+            background-color: var(--navy-light);
+            color: var(--bright-gold) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        /* --------------------------------------- */
+
+        .btn-home {
+            background-color: #f8f9fa;
+            color: var(--navy) !important;
+            border: 1.5px solid var(--gold);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-home:hover {
+            background-color: var(--gold);
+            color: white !important;
+        }
+
+        /* ----------------------------------------------- */
 
         .country-selector {
             position: relative;
@@ -145,7 +172,7 @@
         }
         .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: -1px; }
         
-        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
 
         .hero {
             min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
@@ -195,8 +222,9 @@
         @media (max-width: 991px) {
             header { padding: 15px 5%; flex-direction: column; gap: 15px; height: auto; position: relative; }
             .logo { font-size: 1.1rem; }
-            .nav-links { flex-direction: column; gap: 10px; }
-            .nav-container-blue { padding: 10px 30px; width: 100%; justify-content: center; }
+            .nav-links { flex-direction: column; gap: 15px; width: 100%; }
+            .nav-container-separated { flex-direction: column; width: 100%; gap: 8px; }
+            .nav-cage, .btn-home { width: 100%; }
             
             .hero { 
                 flex-direction: column; 
@@ -387,10 +415,14 @@
     </div>
     
     <div class="nav-links">
-        <div class="nav-container-blue">
-            <a href="#about">Expertise</a>
-            <a href="#legal">Gouvernance</a>
-            <a onclick="goToStep1()" href="#simBox">Kontakt</a>
+        <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="btn-home">
+            <i class="fas fa-home"></i> ACCUEIL
+        </a>
+
+        <div class="nav-container-separated">
+            <a href="#about" class="nav-cage">Expertise</a>
+            <a href="#legal" class="nav-cage">Gouvernance</a>
+            <a onclick="goToStep1()" href="#simBox" class="nav-cage">Kontakt</a>
         </div>
         
         <div class="country-selector">
