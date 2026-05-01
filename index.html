@@ -83,25 +83,25 @@
             color: white !important;
         }
 
-        /* BOUTON RETOUR MOBILE AMÉLIORÉ */
+        /* BOUTON RETOUR MOBILE */
         .mobile-return-btn {
             position: fixed;
-            bottom: 25px;
+            bottom: 100px;
             right: 20px;
-            background: var(--gold);
+            background: var(--navy);
             color: white;
-            padding: 12px 25px;
+            padding: 12px 20px;
             border-radius: 50px;
-            font-weight: 800;
-            font-size: 0.85rem;
-            z-index: 10000;
+            font-weight: 700;
+            font-size: 0.8rem;
+            z-index: 9999;
             display: none;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            border: 2px solid white;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--gold);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         .country-selector {
@@ -248,7 +248,7 @@
                 margin-top: 5px;
             }
             .nav-container-separated { 
-                display: contents;
+                display: contents; /* Permet aux enfants de s'intégrer à la grille parente */
             }
             .nav-cage, .btn-home { 
                 width: 100%; 
@@ -260,6 +260,8 @@
             .country-selector { grid-column: span 2; width: 100%; }
             .selected-country { width: 100%; justify-content: center; }
 
+            .mobile-return-btn { display: flex; } /* Activer le bouton retour */
+            
             .hero { 
                 flex-direction: column; 
                 height: auto; 
@@ -419,16 +421,30 @@
         
         @keyframes magnet-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 10% { transform: scale(1.1) rotate(5deg); } 20% { transform: scale(1.1) rotate(-5deg); } 30% { transform: scale(1.1) rotate(5deg); } 40% { transform: scale(1) rotate(0deg); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
-        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--navy); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; border: 2px solid var(--gold); }
+        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
         
-        .live-btn { background: rgba(39, 174, 96, 0.1); border: 1px solid var(--success); color: var(--success); padding: 8px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px; min-height: 35px; }
+        .live-btn { 
+            background: rgba(39, 174, 96, 0.1); 
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            min-height: 35px;
+        }
         .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
         @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
 
-<a href="#" onclick="handleReturnClick()" class="mobile-return-btn" id="mobileReturn">
+<a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="mobile-return-btn" id="mobileReturn">
     <i class="fas fa-arrow-left"></i> RETOUR
 </a>
 
@@ -439,14 +455,14 @@
     </div>
     
     <div class="nav-links">
-        <a href="#" onclick="handleReturnClick()" class="btn-home">
+        <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="btn-home">
             <i class="fas fa-home"></i> ACCUEIL
         </a>
 
         <div class="nav-container-separated">
-            <a href="#about" class="nav-cage" onclick="showReturnBtn()">Expertise</a>
-            <a href="#legal" class="nav-cage" onclick="showReturnBtn()">Gouvernance</a>
-            <a onclick="handleKontaktClick()" href="#simBox" class="nav-cage">Kontakt</a>
+            <a href="#about" class="nav-cage">Expertise</a>
+            <a href="#legal" class="nav-cage">Gouvernance</a>
+            <a onclick="goToStep1()" href="#simBox" class="nav-cage">Kontakt</a>
         </div>
         
         <div class="country-selector">
@@ -550,23 +566,23 @@
                     <option value="Travaux">Renovierung</option>
                 </select>
                 <select name="pays" class="form-input" id="form-pays" required>
-                    <option value="Allemagne" selected>Deutschland (+49)</option>
-                    <option value="Autriche">Österreich (+43)</option>
-                    <option value="Luxembourg">Luxemburg (+352)</option>
-                    <option value="Suisse">Schweiz (+41)</option>
-                    <option value="France">Frankreich (+33)</option>
-                    <option value="Royaume-Uni">United Kingdom (+44)</option>
+                    <option value="Deutsch" selected>Deutsch (+49)</option>
+                    <option value="Autriche">Autriche (+43)</option>
+                    <option value="Luxembourg">Luxembourg (+352)</option>
+                    <option value="Suisse">Suisse (+41)</option>
+                    <option value="Français">Français (+33)</option>
+                    <option value="English">English (+44)</option>
                 </select>
-                <input type="tel" name="telephone" id="phone-input" value="+49" class="form-input" required>
+                <input type="tel" name="telephone" placeholder="Telefon (z.B. +49...)" class="form-input" required>
                 <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
                 
-                <textarea name="message" placeholder="Beschreiben Sie Ihr Projekt (optional)..." class="form-input" style="min-height: 80px; resize: vertical;"></textarea>
+                <textarea name="message" placeholder="Beschreiben Sie Ihr Projekt oder Ihre Nachricht (optional)..." class="form-input" style="min-height: 100px; resize: vertical; padding: 12px; font-family: 'Montserrat', sans-serif;"></textarea>
 
                 <button type="submit" class="btn-main">ABSENDEN BESTÄTIGEN</button>
                 
                 <div class="secure-form-badge">
                     <i class="fas fa-shield-alt"></i>
-                    <p><strong>100% SICHERE DATEN:</strong> Ihre Informationen werden durch SSL verschlüsselt.</p>
+                    <p><strong>100% SICHERE DATEN:</strong> Ihre Informationen werden durch SSL verschlüsselt. Wir garantieren, dass Ihre Daten niemals an Dritte verkauft oder weitergegeben werden.</p>
                 </div>
             </form>
         </div>
@@ -591,19 +607,23 @@
 
 <section class="about-section" id="about">
     <h2>Eine Referenzinstitution</h2>
-    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) est une leading institution...</p>
+    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich de Kreditvergabe (Code APE 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
-        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Regulierte Kreditverteilung.</p></div>
-        <div><h4>HAUPTSITZ</h4><p>ODET, 29500 ERGUÉ-GABÉRIC</p></div>
-        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot</p></div>
-        <div><h4>AUDIT</h4><p>Constantin Associés</p></div>
+        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Regulierte Kreditverteilung.<br>LEI : 969500WONJGTDZG8E035</p></div>
+        <div><h4>HAUPTSITZ</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, Frankreich</p></div>
+        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
+        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
+    </div>
+    <div class="legal-block">
+        <strong>RECHTLICHE INFORMATIONEN :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Unterliegt der ACPR. 
+        <div class="tag-warning"><span class="blink-gold">EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.</span></div>
     </div>
 </footer>
 
-<div id="goUp" onclick="handleReturnClick()"><i class="fas fa-arrow-up"></i></div>
+<div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
     function toggleDropdown() {
@@ -616,36 +636,7 @@
         document.getElementById('country-list').classList.remove('show-countries');
         
         const formPays = document.getElementById('form-pays');
-        const phoneInput = document.getElementById('phone-input');
-
-        // Synchronisation du formulaire selon le choix de traduction
-        if(name.includes('Français')) { formPays.value = 'France'; phoneInput.value = '+33'; }
-        else if(name.includes('Luxembourg')) { formPays.value = 'Luxembourg'; phoneInput.value = '+352'; }
-        else if(name.includes('Suisse')) { formPays.value = 'Suisse'; phoneInput.value = '+41'; }
-        else if(name.includes('Autriche')) { formPays.value = 'Autriche'; phoneInput.value = '+43'; }
-        else if(name.includes('English')) { formPays.value = 'Royaume-Uni'; phoneInput.value = '+44'; }
-        else { formPays.value = 'Allemagne'; phoneInput.value = '+49'; }
-    }
-
-    // GESTION DU BOUTON RETOUR
-    function showReturnBtn() {
-        if (window.innerWidth <= 991) {
-            document.getElementById('mobileReturn').style.display = 'flex';
-        }
-    }
-
-    function hideReturnBtn() {
-        document.getElementById('mobileReturn').style.display = 'none';
-    }
-
-    function handleReturnClick() {
-        window.scrollTo({top:0, behavior:'smooth'});
-        hideReturnBtn();
-    }
-
-    function handleKontaktClick() {
-        goToStep1();
-        showReturnBtn();
+        formPays.value = name;
     }
 
     window.onclick = function(event) {
@@ -655,19 +646,78 @@
     }
 
     const allReviews = [
-        { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team." },
-        { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut." },
-        { n: "Sophie D.", p: "Belgien", t: "Effizient und sicher. Eine große Hilfe." }
+        { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team. Mein Projekt wurde in Rekordzeit realisiert." },
+        { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut für meinen Grenzgängerkredit. Top-Service!" },
+        { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für die Unterstützung!" },
+        { n: "Sophie D.", p: "Belgien", t: "Effizient und sicher. Eine große Hilfe beim Kauf meines neuen Fahrzeugs." },
+        { n: "Elena V.", p: "Schweiz", t: "Hervorragende Bearbeitung meines Kreditantrags. Sehr höfliches und kompetentes Team." },
+        { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz und der schnellen Abwicklung. Absolut empfehlenswert." },
+        { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Ich kann Cézembre nur wärmstens empfehlen." },
+        { n: "Luc B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion. Perfekt für meine Investition." },
+        { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Die Zinsen sind wirklich fair für den Markt." },
+        { n: "Marie C.", p: "Frankreich", t: "Der Online-Antrag war in 5 Minuten erledigt. Schnelle Rückmeldung erhalten." },
+        { n: "Klaus S.", p: "Deutschland", t: "Endlich eine seriöse Bank im Internet. Sehr guter Kundenservice." },
+        { n: "Isabelle G.", p: "Schweiz", t: "Diskrete und schnelle Bearbeitung meiner Dokumente. Vielen Dank." },
+        { n: "Andreas K.", p: "Deutschland", t: "Top Konditionen für meinen Autokredit. Unkompliziert und direkt." },
+        { n: "Pietro R.", p: "Italien", t: "Molto professionale. Il prestito è arrivato in tempi brevissimi." },
+        { n: "Laura S.", p: "Spanien", t: "Excelente servicio al cliente. Proceso digital muy intuitivo." },
+        { n: "Christian B.", p: "Belgien", t: "Beste Erfahrung mit einem Online-Kredit bisher. Empfehlenswert!" },
+        { n: "Sabine T.", p: "Österreich", t: "Freundliche Beratung am Telefon und schnelle Zusage. Alles top." },
+        { n: "Erik J.", p: "Niederlande", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had." },
+        { n: "Michèle F.", p: "Frankreich", t: "Financement pour mes travaux obtenu sans stress. Merci Cézembre." },
+        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebührenstruktur." }
     ];
 
+    function getRandomTime() {
+        const maxLag = 4 * 60 * 60 * 1000; 
+        return Date.now() - Math.floor(Math.random() * maxLag);
+    }
+
     function createReviewHTML(data, startTime) {
-        return `<div class="review-card show"><span class="review-date"><i class="fas fa-clock"></i> Gerade eben</span><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="review-text">"${data.t}"</p><div class="review-author"><div>${data.n} (${data.p})</div><span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span></div></div>`;
+        const diffInMs = Date.now() - startTime;
+        const diffInSec = Math.floor(diffInMs / 1000);
+        const diffInMin = Math.floor(diffInSec / 60);
+        const diffInHrs = Math.floor(diffInMin / 60);
+
+        let timeLabel = "Gerade eben";
+        if (diffInSec < 60) timeLabel = `Vor ${diffInSec} Sek.`;
+        else if (diffInMin < 60) timeLabel = `Vor ${diffInMin} Min.`;
+        else timeLabel = `Vor ${diffInHrs} Std.`;
+
+        return `
+            <div class="review-card" data-start="${startTime}">
+                <span class="review-date"><i class="fas fa-clock" style="animation: blink-dot 1.5s infinite;"></i> ${timeLabel}</span>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"${data.t}"</p>
+                <div class="review-author">
+                    <div>${data.n} (${data.p})</div>
+                    <span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span>
+                </div>
+            </div>`;
     }
 
     function initReviews() {
         const container = document.getElementById('reviews-container');
-        allReviews.forEach(r => container.insertAdjacentHTML('beforeend', createReviewHTML(r, Date.now())));
+        container.innerHTML = "";
+        const shuffled = [...allReviews].sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 12);
+        
+        selected.forEach((r, i) => {
+            const startTime = getRandomTime();
+            const html = createReviewHTML(r, startTime);
+            container.insertAdjacentHTML('beforeend', html);
+            setTimeout(() => {
+                const cards = container.querySelectorAll('.review-card');
+                if(cards[i]) cards[i].classList.add('show');
+            }, i * 150);
+        });
     }
+
+    setInterval(() => {
+        const count = Math.floor(Math.random() * (25 - 8 + 1)) + 8;
+        const countEl = document.getElementById('viewers-count');
+        if(countEl) countEl.innerText = count;
+    }, 5000);
 
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
@@ -694,10 +744,16 @@
 
     amtR.oninput = calc; durR.oninput = calc;
     
+    // GESTION DU SCROLL POUR LES BOUTONS DE RETOUR
     window.onscroll = () => { 
         const scrollPos = window.scrollY;
-        document.getElementById('goUp').style.display = (scrollPos > 600) ? 'flex' : 'none'; 
-        if(scrollPos < 100) hideReturnBtn();
+        // Bouton flèche classique
+        document.getElementById('goUp').style.display = (scrollPos > 500) ? 'flex' : 'none'; 
+        // Bouton de retour spécifique mobile
+        const returnBtn = document.getElementById('mobileReturn');
+        if (window.innerWidth <= 991) {
+            returnBtn.style.display = (scrollPos > 300) ? 'flex' : 'none';
+        }
     };
     
     calc();
@@ -706,18 +762,30 @@
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
+
         const overlay = document.getElementById('loader-overlay');
         overlay.style.display = 'flex';
         const formData = new FormData(form);
+        
         try {
             const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+            
             if (response.ok) {
+                if(typeof gtag === 'function'){
+                    gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); 
+                }
+                
                 setTimeout(() => {
                     document.getElementById('loading-content').style.display = 'none';
                     document.getElementById('success-message').style.display = 'block';
-                }, 2000);
+                }, 3000);
+            } else {
+                throw new Error("Erreur de soumission");
             }
-        } catch (error) { overlay.style.display = 'none'; }
+        } catch (error) { 
+            overlay.style.display = 'none'; 
+            alert("Error. Please try again."); 
+        }
     };
 </script>
 
