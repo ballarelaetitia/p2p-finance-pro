@@ -83,25 +83,31 @@
             color: white !important;
         }
 
-        /* BOUTON RETOUR MOBILE */
+        /* BOUTON RETOUR MOBILE AMÉLIORÉ */
         .mobile-return-btn {
             position: fixed;
-            bottom: 100px;
+            bottom: 25px;
             right: 20px;
-            background: var(--navy);
+            background: var(--gold);
             color: white;
-            padding: 12px 20px;
+            padding: 12px 25px;
             border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            z-index: 9999;
-            display: none;
+            font-weight: 800;
+            font-size: 0.85rem;
+            z-index: 10000;
+            display: none; /* Caché par défaut */
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 1px solid var(--gold);
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            border: 2px solid white;
             text-decoration: none;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .country-selector {
@@ -248,7 +254,7 @@
                 margin-top: 5px;
             }
             .nav-container-separated { 
-                display: contents; /* Permet aux enfants de s'intégrer à la grille parente */
+                display: contents;
             }
             .nav-cage, .btn-home { 
                 width: 100%; 
@@ -260,8 +266,6 @@
             .country-selector { grid-column: span 2; width: 100%; }
             .selected-country { width: 100%; justify-content: center; }
 
-            .mobile-return-btn { display: flex; } /* Activer le bouton retour */
-            
             .hero { 
                 flex-direction: column; 
                 height: auto; 
@@ -421,30 +425,12 @@
         
         @keyframes magnet-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 10% { transform: scale(1.1) rotate(5deg); } 20% { transform: scale(1.1) rotate(-5deg); } 30% { transform: scale(1.1) rotate(5deg); } 40% { transform: scale(1) rotate(0deg); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
-        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
-        
-        .live-btn { 
-            background: rgba(39, 174, 96, 0.1); 
-            border: 1px solid var(--success);
-            color: var(--success);
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            min-height: 35px;
-        }
-        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
-        @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--navy); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; border: 2px solid var(--gold); }
     </style>
 </head>
 <body>
 
-<a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="mobile-return-btn" id="mobileReturn">
+<a href="#" onclick="handleReturnClick()" class="mobile-return-btn" id="mobileReturn">
     <i class="fas fa-arrow-left"></i> RETOUR
 </a>
 
@@ -455,14 +441,14 @@
     </div>
     
     <div class="nav-links">
-        <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="btn-home">
+        <a href="#" onclick="handleReturnClick()" class="btn-home">
             <i class="fas fa-home"></i> ACCUEIL
         </a>
 
         <div class="nav-container-separated">
-            <a href="#about" class="nav-cage">Expertise</a>
-            <a href="#legal" class="nav-cage">Gouvernance</a>
-            <a onclick="goToStep1()" href="#simBox" class="nav-cage">Kontakt</a>
+            <a href="#about" class="nav-cage" onclick="showReturnBtn()">Expertise</a>
+            <a href="#legal" class="nav-cage" onclick="showReturnBtn()">Gouvernance</a>
+            <a onclick="handleKontaktClick()" href="#simBox" class="nav-cage">Kontakt</a>
         </div>
         
         <div class="country-selector">
@@ -621,7 +607,7 @@
     </div>
 </footer>
 
-<div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+<div id="goUp" onclick="handleReturnClick()"><i class="fas fa-arrow-up"></i></div>
 
 <script>
     function toggleDropdown() {
@@ -644,6 +630,27 @@
         if (!event.target.closest('.country-selector')) {
             document.getElementById('country-list').classList.remove('show-countries');
         }
+    }
+
+    // FONCTIONS POUR LE BOUTON RETOUR DYNAMIQUE
+    function showReturnBtn() {
+        if (window.innerWidth <= 991) {
+            document.getElementById('mobileReturn').style.display = 'flex';
+        }
+    }
+
+    function hideReturnBtn() {
+        document.getElementById('mobileReturn').style.display = 'none';
+    }
+
+    function handleReturnClick() {
+        window.scrollTo({top:0, behavior:'smooth'});
+        hideReturnBtn();
+    }
+
+    function handleKontaktClick() {
+        goToStep1();
+        showReturnBtn();
     }
 
     const allReviews = [
@@ -745,15 +752,15 @@
 
     amtR.oninput = calc; durR.oninput = calc;
     
-    // GESTION DU SCROLL POUR LES BOUTONS DE RETOUR
+    // GESTION DU SCROLL
     window.onscroll = () => { 
         const scrollPos = window.scrollY;
-        // Bouton flèche classique
-        document.getElementById('goUp').style.display = (scrollPos > 500) ? 'flex' : 'none'; 
-        // Bouton de retour spécifique mobile
-        const returnBtn = document.getElementById('mobileReturn');
-        if (window.innerWidth <= 991) {
-            returnBtn.style.display = (scrollPos > 300) ? 'flex' : 'none';
+        // Flèche classique (apparaît après un certain scroll)
+        document.getElementById('goUp').style.display = (scrollPos > 600) ? 'flex' : 'none'; 
+        
+        // Cacher le bouton RETOUR spécial si on revient tout en haut
+        if(scrollPos < 100) {
+            hideReturnBtn();
         }
     };
     
