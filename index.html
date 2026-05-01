@@ -30,66 +30,16 @@
             --success: #27ae60;
         }
 
-        /* BOUTON RETOUR FLOTTANT (MOBILE & DESKTOP) */
-        #floatingBackBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--navy);
-            color: var(--white);
-            border: 2px solid var(--gold);
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-decoration: none;
-            z-index: 9998;
-            display: none; /* Caché par défaut */
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
+        /* --- NOUVEAU DESIGN DU SÉLECTEUR DE TRADUCTION --- */
+        .country-selector {
+            position: relative;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
         }
-        #floatingBackBtn:hover {
-            background: var(--gold);
-            color: var(--navy);
-            transform: translateY(-5px);
-        }
-
-        /* --- AJOUT DU CADRE BLEU POUR LE MENU --- */
-        .nav-container-blue {
-            background-color: var(--navy);
-            padding: 8px 20px;
-            border-radius: 50px;
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            border: 1px solid var(--gold);
-        }
-
-        .nav-links a { 
-            text-decoration: none; 
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            transition: all 0.3s ease; 
-            cursor: pointer; 
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links a:hover { 
-            color: var(--white); 
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-            transform: translateY(-1px);
-        }
-
-        .country-selector { position: relative; display: inline-block; font-family: 'Montserrat', sans-serif; }
         .selected-country {
             border: 1.5px solid var(--gold);
             padding: 6px 14px;
-            background: #fdfaf3;
+            background: #fdfaf3; /* Teinte légère dorée */
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -103,6 +53,10 @@
             box-shadow: 0 2px 5px rgba(197, 160, 89, 0.15);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+        .selected-country:hover {
+            background: var(--white);
+            box-shadow: 0 4px 8px rgba(197, 160, 89, 0.25);
         }
         .country-dropdown {
             display: none;
@@ -129,13 +83,28 @@
             transition: background 0.2s;
             border-bottom: 1px solid #f0f0f0;
         }
+        .country-dropdown div:last-child { border-bottom: none; }
+        .country-dropdown div:hover { background: #fdfaf3; color: var(--gold); }
+        .flag { width: 20px; height: 14px; object-fit: cover; border-radius: 2px; }
         .show-countries { display: block; }
+        /* ---------------------------------- */
+
+        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
+        body { top: 0px !important; }
+        .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: var(--white); color: #333; overflow-x: hidden; }
+        
+        body { 
+            background-color: var(--white); 
+            color: #333; 
+            overflow-x: hidden; 
+            top: 0 !important; 
+            position: static !important; 
+        }
 
         header {
-            background: var(--white); padding: 15px 8%; display: flex;
+            background: var(--white); padding: 20px 8%; display: flex;
             justify-content: space-between; align-items: center;
             position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
@@ -147,16 +116,27 @@
             font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
             border: 1px solid var(--gold); flex-shrink: 0;
         }
-        .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: -1px; }
+        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
         
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
+        .nav-links a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
+
         .hero {
             min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
-            display: flex; align-items: center; padding: 100px 8% 50px; color: var(--white);
+            display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
 
-        .hero-content { max-width: 600px; z-index: 1; }
+        .hero-content { 
+            max-width: 600px; 
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            background: radial-gradient(circle at center, rgba(197, 160, 89, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
         .simulator { 
@@ -165,80 +145,224 @@
             position: relative; overflow: hidden; min-height: 480px;
         }
 
-        .btn-group-flex { display: flex; gap: 10px; margin-top: 10px; width: 100%; }
+        .btn-group-flex {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            width: 100%;
+        }
         .btn-wa-inline {
-            background: var(--whatsapp); color: white; text-decoration: none;
-            display: flex; align-items: center; justify-content: center;
-            padding: 12px; border-radius: 4px; font-size: 1.4rem; width: 55px; flex-shrink: 0;
+            background: var(--whatsapp);
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 1.4rem;
+            transition: 0.3s;
+            width: 55px; 
+            flex-shrink: 0;
         }
-
-        /* --- STYLES ÉTAPE 2 --- */
-        .btn-secondary {
-            background: #e0e0e0; color: #333; border: none; width: 100%; padding: 12px;
-            font-weight: 600; font-size: 0.85rem; cursor: pointer; border-radius: 4px; margin-top: 10px;
-        }
+        .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
 
         @media (max-width: 991px) {
-            header { padding: 15px 5%; flex-direction: column; gap: 15px; position: relative; }
-            .nav-container-blue { width: 100%; justify-content: center; }
-            .hero { flex-direction: column; padding-top: 20px; text-align: center; }
-            .hero-content h1 { font-size: 1.8rem; }
-            .simulator { width: 95%; max-width: 420px; padding: 20px; }
-            #floatingBackBtn { bottom: 20px; right: 20px; padding: 10px 15px; font-size: 0.7rem; }
+            header { padding: 15px 5%; flex-direction: column; gap: 10px; height: auto; position: relative; }
+            .logo { font-size: 1.1rem; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            
+            .hero { 
+                flex-direction: column; 
+                height: auto; 
+                padding: 40px 5% 40px 5%; 
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            
+            .hero-content { 
+                max-width: 100%; 
+                margin-bottom: 30px; 
+                background: none; 
+            }
+            
+            .hero-content h1 { font-size: 1.8rem; line-height: 1.3; }
+            
+            .simulator { 
+                width: 95%; 
+                max-width: 420px; 
+                padding: 20px; 
+                min-height: auto; 
+                margin: 0 auto; 
+                position: relative;
+                left: 0; 
+            }
+
+            .stats-bar { flex-direction: column; gap: 30px; }
+            .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
+            .f-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr !important; padding: 10px !important; }
+            footer { padding-bottom: 100px !important; } 
+            
+            .live-btn { 
+                width: 100% !important; 
+                max-width: 100% !important; 
+                height: auto !important; 
+                padding: 8px 10px !important; 
+                white-space: normal !important; 
+                text-align: center; 
+                line-height: 1.2; 
+            }
         }
 
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .reviews-section h2 { color: var(--navy); margin-bottom: 20px; font-size: 2rem; }
+        
+        .trust-badge-container {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: white; padding: 12px 30px; border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(197, 160, 89, 0.3);
+            margin-bottom: 40px;
+        }
+        .trust-stars { color: var(--bright-gold); font-size: 1.1rem; letter-spacing: 3px; }
+        .trust-lock { 
+            color: var(--gold); font-size: 1.6rem; margin: 0 20px;
+            animation: pulse-lock 3s infinite ease-in-out; 
+        }
+        @keyframes pulse-lock {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); opacity: 0.8; }
+        }
+
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; min-height: 400px; }
+        
         .review-card { 
-            background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
-            text-align: left; border-top: 3px solid var(--gold); opacity: 0; transform: translateY(20px); transition: 0.4s;
+            background: white; padding: 25px; border-radius: 8px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; 
+            border-top: 3px solid var(--gold); transition: all 0.4s ease;
+            opacity: 0; transform: translateY(20px);
         }
         .review-card.show { opacity: 1; transform: translateY(0); }
+        .review-card:hover { 
+            transform: translateY(-5px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); 
+        }
+
+        .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
+        .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+        .review-date i { color: var(--success); }
+        .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px; }
+        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; }
+        .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
 
         .sim-row { margin-bottom: 15px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.85rem; }
-        input[type="range"] { -webkit-appearance: none; width: 100%; height: 5px; background: #ddd; border-radius: 5px; background-image: linear-gradient(var(--bright-gold), var(--bright-gold)); background-repeat: no-repeat; }
-        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: var(--navy); cursor: pointer; border: 2px solid white; }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; font-size: 0.85rem; }
+        .sim-row label span { color: var(--navy); font-weight: 800; } 
         
-        .result-area { background: var(--light-bg); padding: 15px; text-align: center; border: 1px solid #EEE; margin-bottom: 15px; }
+        input[type="range"] { 
+            -webkit-appearance: none; width: 100%; height: 5px; background: #ddd; border-radius: 5px; outline: none;
+            background-image: linear-gradient(var(--bright-gold), var(--bright-gold));
+            background-repeat: no-repeat; background-size: 0% 100%;
+        }
+        input[type="range"]::-webkit-slider-thumb { 
+            -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; 
+            background: var(--navy); cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+        
+        .result-area { background: var(--light-bg); padding: 15px; text-align: center; border: 1px solid #EEE; margin-bottom: 15px; border-radius: 4px; }
+        .result-area p { font-size: 0.75rem; margin-bottom: 2px; color: var(--navy); font-weight: 700; opacity: 0.8; }
         .result-area span { font-size: 1.8rem; font-weight: 800; color: var(--navy); }
         
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 15px; font-weight: 800; cursor: pointer; border-radius: 4px; }
-        .form-input { width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); border-radius: 4px; margin-bottom: 10px; font-size: 1rem; }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 15px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s; border-radius: 4px; }
+        .btn-main:hover { background: var(--gold); transform: scale(1.02); }
+
+        .form-input { 
+            width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); 
+            background-color: var(--white); border-radius: 4px; margin-bottom: 10px; 
+            font-size: 1rem; outline: none; color: #000c24; font-weight: 600; 
+        }
+
+        .secure-form-badge {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;
+            border: 1px dashed var(--gold);
+        }
+        .secure-form-badge i { color: var(--success); font-size: 1.2rem; }
+        .secure-form-badge p { font-size: 0.65rem; color: #666; line-height: 1.2; text-align: left; font-weight: 500; }
+
+        .scrolling-security {
+            background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 6px 0; margin: 10px 0;
+            overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
+            display: flex;
+        }
+        .scrolling-security span {
+            display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600;
+        }
+        @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+
+        .shine-white { color: #FFFFFF !important; animation: blink-white 3s infinite; }
+        @keyframes blink-white { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; text-shadow: 0 0 10px #fff; } }
 
         #loader-overlay {
             display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center;
+            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
         }
-        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; }
+        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
-        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
-        .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
-        @keyframes pulse-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .stat-box h3 { font-size: 2rem; color: var(--gold); }
 
-        .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; }
-        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; text-decoration: none; animation: magnet-pulse 2s infinite; }
-        @keyframes magnet-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
+        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
+
+        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
+        .f-grid, .legal-block { margin-left: 160px; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+        .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
+        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
+        .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
+        @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
+        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; animation: magnet-pulse 2s infinite ease-in-out; }
         
-        .live-btn { border: 1px solid var(--success); color: var(--success); padding: 8px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; }
-        @keyframes blink-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @keyframes magnet-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 10% { transform: scale(1.1) rotate(5deg); } 20% { transform: scale(1.1) rotate(-5deg); } 30% { transform: scale(1.1) rotate(5deg); } 40% { transform: scale(1) rotate(0deg); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        
+        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
+        
+        .live-btn { 
+            background: rgba(39, 174, 96, 0.1); 
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            min-height: 35px;
+        }
+        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
+        @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
     </style>
 </head>
-<body id="accueil"> <header>
+<body>
+
+<header>
     <div class="logo-container">
         <div class="logo-sigle">FC</div>
         <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
     </div>
-    
     <div class="nav-links">
-        <div class="nav-container-blue">
-            <a href="#about">Expertise</a>
-            <a href="#legal">Gouvernance</a>
-            <a onclick="goToStep1()" href="#simBox">Kontakt</a>
-        </div>
+        <a href="#about">Expertise</a>
+        <a href="#legal">Gouvernance</a>
+        <a onclick="goToStep1()" href="#simBox">Kontakt</a>
         
         <div class="country-selector">
             <div class="selected-country" onclick="toggleDropdown()">
@@ -248,16 +372,15 @@
             </div>
             <div class="country-dropdown" id="country-list">
                 <div onclick="selectCountry('Deutsch', 'de')"><img src="https://flagcdn.com/w40/de.png" class="flag"> Deutsch</div>
+                <div onclick="selectCountry('Autriche', 'at')"><img src="https://flagcdn.com/w40/at.png" class="flag"> Autriche</div>
+                <div onclick="selectCountry('Luxembourg', 'lu')"><img src="https://flagcdn.com/w40/lu.png" class="flag"> Luxembourg</div>
+                <div onclick="selectCountry('Suisse', 'ch')"><img src="https://flagcdn.com/w40/ch.png" class="flag"> Suisse</div>
                 <div onclick="selectCountry('Français', 'fr')"><img src="https://flagcdn.com/w40/fr.png" class="flag"> Français</div>
                 <div onclick="selectCountry('English', 'gb')"><img src="https://flagcdn.com/w40/gb.png" class="flag"> English</div>
             </div>
         </div>
     </div>
 </header>
-
-<a href="#accueil" id="floatingBackBtn">
-    <i class="fas fa-home"></i> ACCUEIL
-</a>
 
 <div class="wa-assistant-container">
     <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -269,10 +392,14 @@
         <p style="margin-bottom: 30px; opacity: 0.9;">Zuverlässiger Partner seit 1990. Regulierte institutionelle Kreditvergabe.</p>
         
         <div style="display: flex; gap: 20px; align-items: center;">
-            <i class="fas fa-certificate" style="color: #FFD700; font-size: 3.5rem;"></i>
+            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-certificate" style="color: #FFD700; font-size: 3.5rem;"></i>
+                <i class="fas fa-check" style="color: var(--navy); position: absolute; font-size: 1.2rem; font-weight: 900;"></i>
+            </div>
             <p>
-                <strong style="color: #FFD700; font-size: 0.9rem;">ZUGELASSENES INSTITUT</strong><br>
-                <strong>Eingetragen unter RCS 552 058 943</strong>
+                <strong style="color: #FFD700; font-size: 0.9rem; letter-spacing: 1px;">ZUGELASSENES INSTITUT</strong><br>
+                <strong>Eingetragen unter RCS 552 058 943</strong><br>
+                Unter der Aufsicht der französischen Bankenbehörden.
             </p>
         </div>
     </div>
@@ -281,86 +408,218 @@
         <div id="loader-overlay">
             <div id="loading-content">
                 <div class="spinner"></div>
-                <p style="font-weight: 600; color: var(--navy);">Analyse läuft...</p>
+                <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse läuft...</p>
             </div>
-            <div id="success-message" style="display:none; text-align:center;">
+            <div id="success-message">
                 <i class="fas fa-check-circle" style="color:var(--success); font-size:3rem;"></i>
-                <h3>ANTRAG GESPEICHERT</h3>
+                <h3 style="color: var(--navy); margin: 10px 0;">ANTRAG GESPEICHERT</h3>
+                <p style="font-size: 0.85rem; margin-bottom: 15px;">Fallnummer: #CEZ-2026</p>
                 <button class="btn-main" onclick="resetAll()">OK</button>
             </div>
         </div>
 
         <div id="step1">
-            <div class="live-btn"><div class="dot-live"></div> <span id="viewers-count">12</span> Personen schauen gerade</div>
-            <h3 style="margin-bottom: 15px;">Kreditrechner</h3>
+            <div class="live-btn"><div class="dot-live"></div> <span id="viewers-count">12</span> Personen schauen sich dieses Angebot gerade an</div>
+            
+            <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Kreditrechner</h3>
             <div class="sim-row">
-                <label>BETRAG <span><input type="number" id="amtNum" value="15000" style="border:none; width:70px; background:transparent; font-weight:800; color:var(--navy);"> €</span></label>
+                <label>PROJEKTBETRAG <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:70px; background:transparent; color: var(--navy); font-size:0.9rem;"> €</span></label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
             </div>
             <div class="sim-row">
-                <label>LAUFZEIT <span id="durText" style="font-weight: 800;">36 Monate</span></label>
+                <label>LAUFZEIT <span id="durText" style="color: var(--navy); font-weight: 800;">36 Monate</span></label>
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
             <div class="result-area">
-                <p>MONATSRATE (3.5%)</p>
-                <span id="monthlyRes">0.00</span> €
+                <p>GESCHÄTZTE MONATSRATE (3.5% FESTZINS)</p>
+                <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800; font-size: 1.4rem;">€</span>
             </div>
+
             <div class="btn-group-flex">
-                <button type="button" class="btn-main" onclick="goToStep2()">WEITER</button>
-                <a href="https://wa.me/33780976404" class="btn-wa-inline" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <button type="button" class="btn-main" onclick="goToStep2()">MEINEN ANTRAG STELLEN</button>
+                <a href="https://wa.me/33780976404?text=Hallo,%20ich%20habe%20Interesse%20an%20einem%20Kredit." class="btn-wa-inline" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
             </div>
+            
+            <div class="scrolling-security">
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> 256-Bit-SSL-Verschlüsselung • Garantierter Schutz • Ihre Daten sont streng vertraulich.</span>
+            </div>
+            <div class="security-tag" style="font-size: 0.65rem; text-align: center; color: #999; margin-top: 5px;"><i class="fas fa-lock"></i> IHR DOSSIER IST 100% SICHER</div>
         </div>
 
         <div id="step2" style="display:none;">
-            <h3 style="margin-bottom: 15px;">Antrag abschließen</h3>
+            <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Antrag abschließen</h3>
             <form id="loanForm">
                 <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="text" name="nom" placeholder="Name" class="form-input" required>
-                <input type="tel" name="telephone" placeholder="Telefon" class="form-input" required>
-                <input type="email" name="email" placeholder="E-Mail" class="form-input" required>
+                <input type="hidden" name="montant_client" id="hiddenAmt">
+                <input type="hidden" name="duree_client" id="hiddenDur">
+                <input type="hidden" name="mensualite_client" id="hiddenMens">
                 
-                <button type="submit" class="btn-main">BESTÄTIGEN</button>
+                <input type="text" name="nom" placeholder="Vor- und Nachname" class="form-input" required>
+                <select name="projet" class="form-input" required>
+                    <option value="" disabled selected>Wählen Sie Ihr Projekt</option>
+                    <option value="Immobilier">Immobilienkredit</option>
+                    <option value="Personnel">Privatkredit</option>
+                    <option value="Auto">Auto / Motorrad</option>
+                    <option value="Travaux">Renovierung</option>
+                </select>
+                <select name="pays" class="form-input" id="form-pays" required>
+                    <option value="Allemagne" selected>Deutschland (+49)</option>
+                    <option value="France">Frankreich (+33)</option>
+                    <option value="Belgique">Belgien (+32)</option>
+                    <option value="Suisse">Schweiz (+41)</option>
+                </select>
+                <input type="tel" name="telephone" placeholder="Telefon (z.B. +49...)" class="form-input" required>
+                <input type="email" name="email" placeholder="E-Mail-Adresse" class="form-input" required>
                 
-                <button type="button" class="btn-secondary" onclick="goToStep1()">
-                    <i class="fas fa-edit"></i> Simulation ändern
-                </button>
+                <textarea name="message" placeholder="Beschreiben Sie Ihr Projekt oder Ihre Nachricht (optional)..." class="form-input" style="min-height: 100px; resize: vertical; padding: 12px; font-family: 'Montserrat', sans-serif;"></textarea>
+
+                <button type="submit" class="btn-main">ABSENDEN BESTÄTIGEN</button>
+                
+                <div class="secure-form-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <p><strong>100% SICHERE DATEN:</strong> Ihre Informationen werden durch SSL verschlüsselt. Wir garantieren, dass Ihre Daten niemals an Dritte verkauft oder weitergegeben werden.</p>
+                </div>
             </form>
         </div>
     </div>
 </section>
 
 <section class="stats-bar">
-    <div class="stat-box"><h3>1 200 000 €</h3><p>Kapital</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Zinssatz</p></div>
-    <div class="stat-box"><h3>100%</h3><p>Sicher</p></div>
+    <div class="stat-box"><h3>1 200 000 €</h3><p>Grundkapital</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Vorzugszinssatz</p></div>
+    <div class="stat-box"><h3>100%</h3><p>Digital & Sicher</p></div>
 </section>
 
-<section class="reviews-section" id="reviews">
-    <h2>Kundenbewertungen</h2>
+<section class="reviews-section">
+    <h2>Vertrauen unserer internationalen Kunden</h2>
+    <div class="trust-badge-container">
+        <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="trust-lock"><i class="fas fa-lock"></i></div>
+        <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    </div>
     <div class="reviews-grid" id="reviews-container"></div>
 </section>
 
+<section class="about-section" id="about">
+    <h2>Eine Referenzinstitution</h2>
+    <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich de Kreditvergabe (Code APE 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
+</section>
+
 <footer id="legal">
-    <p>FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943. Unterliegt der ACPR.</p>
-    <div class="tag-warning"><span class="blink-gold">EIN KREDIT VERPFLICHTET SIE.</span></div>
+    <div class="f-grid">
+        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Regulierte Kreditverteilung.<br>LEI : 969500WONJGTDZG8E035</p></div>
+        <div><h4>HAUPTSITZ</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, Frankreich</p></div>
+        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
+        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
+    </div>
+    <div class="legal-block">
+        <strong>RECHTLICHE INFORMATIONEN :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Unterliegt der ACPR. 
+        <div class="tag-warning"><span class="blink-gold">EIN KREDIT VERPFLICHTET SIE UND MUSS ZURÜCKGEZAHLT WERDEN.</span></div>
+    </div>
 </footer>
 
-<script>
-    // GESTION DU BOUTON RETOUR FLOTTANT
-    window.onscroll = function() {
-        const btn = document.getElementById('floatingBackBtn');
-        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-            btn.style.display = "flex";
-        } else {
-            btn.style.display = "none";
-        }
-    };
+<div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
-    function toggleDropdown() { document.getElementById('country-list').classList.toggle('show-countries'); }
+<script>
+    /* --- LOGIQUE DU SÉLECTEUR DE PAYS --- */
+    function toggleDropdown() {
+        document.getElementById('country-list').classList.toggle('show-countries');
+    }
+
     function selectCountry(name, code) {
         document.getElementById('current-flag').src = `https://flagcdn.com/w40/${code}.png`;
+        document.getElementById('current-name').innerText = "TRADUCTION"; // Garde le titre fixe ou affiche le nom
         document.getElementById('country-list').classList.remove('show-countries');
+        
+        const formPays = document.getElementById('form-pays');
+        if(name.includes('Français')) formPays.value = 'France';
+        else if(name.includes('Luxembourg')) formPays.value = 'Luxembourg';
+        else if(name.includes('Suisse')) formPays.value = 'Suisse';
+        else formPays.value = 'Allemagne';
     }
+
+    window.onclick = function(event) {
+        if (!event.target.closest('.country-selector')) {
+            document.getElementById('country-list').classList.remove('show-countries');
+        }
+    }
+    /* ---------------------------------- */
+
+    const allReviews = [
+        { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team. Mein Projekt wurde in Rekordzeit realisiert." },
+        { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut für meinen Grenzgängerkredit. Top-Service!" },
+        { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für die Unterstützung!" },
+        { n: "Sophie D.", p: "Belgien", t: "Effizient und sicher. Eine große Hilfe beim Kauf meines neuen Fahrzeugs." },
+        { n: "Elena V.", p: "Schweiz", t: "Hervorragende Bearbeitung meines Kreditantrags. Sehr höfliches und kompetentes Team." },
+        { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz und der schnellen Abwicklung. Absolut empfehlenswert." },
+        { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Ich kann Cézembre nur wärmstens empfehlen." },
+        { n: "Luc B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion. Perfekt für meine Investition." },
+        { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Die Zinsen sind wirklich fair für den Markt." },
+        { n: "Marie C.", p: "Frankreich", t: "Der Online-Antrag war in 5 Minuten erledigt. Schnelle Rückmeldung erhalten." },
+        { n: "Klaus S.", p: "Deutschland", t: "Endlich eine seriöse Bank im Internet. Sehr guter Kundenservice." },
+        { n: "Isabelle G.", p: "Schweiz", t: "Diskrete und schnelle Bearbeitung meiner Dokumente. Vielen Dank." },
+        { n: "Andreas K.", p: "Deutschland", t: "Top Konditionen für meinen Autokredit. Unkompliziert und direkt." },
+        { n: "Pietro R.", p: "Italien", t: "Molto professionale. Il prestito è arrivato in tempi brevissimi." },
+        { n: "Laura S.", p: "Spanien", t: "Excelente servicio al cliente. Proceso digital muy intuitivo." },
+        { n: "Christian B.", p: "Belgien", t: "Beste Erfahrung mit einem Online-Kredit bisher. Empfehlenswert!" },
+        { n: "Sabine T.", p: "Österreich", t: "Freundliche Beratung am Telefon und schnelle Zusage. Alles top." },
+        { n: "Erik J.", p: "Niederlande", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had." },
+        { n: "Michèle F.", p: "Frankreich", t: "Financement pour mes travaux obtenu sans stress. Merci Cézembre." },
+        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebührenstruktur." }
+    ];
+
+    function getRandomTime() {
+        const maxLag = 4 * 60 * 60 * 1000; 
+        return Date.now() - Math.floor(Math.random() * maxLag);
+    }
+
+    function createReviewHTML(data, startTime) {
+        const diffInMs = Date.now() - startTime;
+        const diffInSec = Math.floor(diffInMs / 1000);
+        const diffInMin = Math.floor(diffInSec / 60);
+        const diffInHrs = Math.floor(diffInMin / 60);
+
+        let timeLabel = "Gerade eben";
+        if (diffInSec < 60) timeLabel = `Vor ${diffInSec} Sek.`;
+        else if (diffInMin < 60) timeLabel = `Vor ${diffInMin} Min.`;
+        else timeLabel = `Vor ${diffInHrs} Std.`;
+
+        return `
+            <div class="review-card" data-start="${startTime}">
+                <span class="review-date"><i class="fas fa-clock" style="animation: blink-dot 1.5s infinite;"></i> ${timeLabel}</span>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"${data.t}"</p>
+                <div class="review-author">
+                    <div>${data.n} (${data.p})</div>
+                    <span class="verified"><i class="fas fa-check-circle"></i> VERIFIZIERT</span>
+                </div>
+            </div>`;
+    }
+
+    function initReviews() {
+        const container = document.getElementById('reviews-container');
+        container.innerHTML = "";
+        const shuffled = [...allReviews].sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 12);
+        
+        selected.forEach((r, i) => {
+            const startTime = getRandomTime();
+            const html = createReviewHTML(r, startTime);
+            container.insertAdjacentHTML('beforeend', html);
+            setTimeout(() => {
+                const cards = container.querySelectorAll('.review-card');
+                if(cards[i]) cards[i].classList.add('show');
+            }, i * 150);
+        });
+    }
+
+    setInterval(() => {
+        const count = Math.floor(Math.random() * (25 - 8 + 1)) + 8;
+        const countEl = document.getElementById('viewers-count');
+        if(countEl) countEl.innerText = count;
+    }, 5000);
 
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
@@ -370,46 +629,54 @@
 
     function calc() {
         let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
-        amtN.value = p; 
-        durT.innerText = n + " Monate";
+        if(amtN) amtN.value = p; 
+        if(durT) durT.innerText = n + " Monate";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        resM.innerText = m.toFixed(2);
+        if(resM) resM.innerText = m.toFixed(2);
+        document.getElementById('hiddenAmt').value = p + " €";
+        document.getElementById('hiddenDur').value = n + " Monate";
+        document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
         amtR.style.backgroundSize = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100 + '% 100%';
         durR.style.backgroundSize = (durR.value - durR.min) / (durR.max - durR.min) * 100 + '% 100%';
     }
 
-    function goToStep2() { 
-        document.getElementById('step1').style.display = 'none'; 
-        document.getElementById('step2').style.display = 'block';
-    }
-    function goToStep1() { 
-        document.getElementById('step2').style.display = 'none'; 
-        document.getElementById('step1').style.display = 'block'; 
-    }
+    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
+    function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
     function resetAll() { location.reload(); }
 
     amtR.oninput = calc; durR.oninput = calc;
+    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
+    
     calc();
-
-    // Init Reviews (Simple version)
-    const container = document.getElementById('reviews-container');
-    for(let i=0; i<6; i++) {
-        container.innerHTML += `
-            <div class="review-card show">
-                <div style="color:var(--bright-gold)">★★★★★</div>
-                <p>"Hervorragender Service und sehr schnell!"</p>
-                <strong>Kunde #${i+1}</strong>
-            </div>`;
-    }
+    initReviews();
 
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
-        document.getElementById('loader-overlay').style.display = 'flex';
-        setTimeout(() => {
-            document.getElementById('loading-content').style.display = 'none';
-            document.getElementById('success-message').style.display = 'block';
-        }, 2000);
+
+        const overlay = document.getElementById('loader-overlay');
+        overlay.style.display = 'flex';
+        const formData = new FormData(form);
+        
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+            
+            if (response.ok) {
+                if(typeof gtag === 'function'){
+                    gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); 
+                }
+                
+                setTimeout(() => {
+                    document.getElementById('loading-content').style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                }, 3000);
+            } else {
+                throw new Error("Erreur de soumission");
+            }
+        } catch (error) { 
+            overlay.style.display = 'none'; 
+            alert("Error. Please try again."); 
+        }
     };
 </script>
 
