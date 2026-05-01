@@ -456,6 +456,25 @@
         }
         .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
         @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+
+        /* --- NOUVELLE SECTION SLIDER --- */
+        .solutions-slider { padding: 60px 8%; background: white; overflow: hidden; }
+        .slider-title { text-align: center; color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
+        .slider-track { display: flex; gap: 30px; animation: slideTrack 25s linear infinite; width: calc(350px * 6 + 180px); }
+        @keyframes slideTrack { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-350px * 3 - 90px)); } }
+        .solution-card { width: 350px; background: var(--light-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.08); border: 1px solid #eee; flex-shrink: 0; transition: 0.3s; }
+        .solution-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        .solution-img { width: 100%; height: 220px; object-fit: cover; }
+        .solution-info { padding: 20px; text-align: center; }
+        .btn-detail { background: var(--navy); color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn-detail:hover { background: var(--gold); }
+        
+        /* MODALE POUR DÉTAILS */
+        #modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:10000; padding:20px; }
+        .modal-content { background:white; padding:40px; border-radius:8px; max-width:600px; position:relative; text-align:center; border-top: 5px solid var(--gold); }
+        .modal-close { position:absolute; top:15px; right:15px; font-size:1.5rem; cursor:pointer; color: var(--navy); }
+        .modal-content h3 { color: var(--navy); margin-bottom: 20px; font-size: 1.8rem; }
+        .modal-content p { line-height: 1.8; color: #555; }
     </style>
 </head>
 <body>
@@ -617,6 +636,64 @@
     <div class="reviews-grid" id="reviews-container"></div>
 </section>
 
+<section class="solutions-slider">
+    <h2 class="slider-title">Nos Solutions de Financement de Confiance</h2>
+    <div class="slider-track">
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=800" class="solution-img" alt="Prêt Immobilier">
+            <div class="solution-info">
+                <h3>Prêt Immobilier</h3>
+                <p style="font-size:0.85rem; margin:10px 0;">Réalisez le rêve d'une vie avec un accompagnement solide.</p>
+                <button class="btn-detail" onclick="openDetails('immo')">En savoir plus</button>
+            </div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800" class="solution-img" alt="Prêt Auto">
+            <div class="solution-info">
+                <h3>Prêt Auto Haut de Gamme</h3>
+                <p style="font-size:0.85rem; margin:10px 0;">Financez votre véhicule de prestige en toute sérénité.</p>
+                <button class="btn-detail" onclick="openDetails('auto')">En savoir plus</button>
+            </div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800" class="solution-img" alt="Prêt Personnel">
+            <div class="solution-info">
+                <h3>Prêt Personnel</h3>
+                <p style="font-size:0.85rem; margin:10px 0;">La clé de vos projets personnels, sans justificatifs complexes.</p>
+                <button class="btn-detail" onclick="openDetails('perso')">En savoir plus</button>
+            </div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=800" class="solution-img">
+            <div class="solution-info">
+                <h3>Prêt Immobilier</h3>
+                <button class="btn-detail" onclick="openDetails('immo')">En savoir plus</button>
+            </div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800" class="solution-img">
+            <div class="solution-info">
+                <h3>Prêt Auto</h3>
+                <button class="btn-detail" onclick="openDetails('auto')">En savoir plus</button>
+            </div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800" class="solution-img">
+            <div class="solution-info">
+                <h3>Prêt Personnel</h3>
+                <button class="btn-detail" onclick="openDetails('perso')">En savoir plus</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="modal-overlay" onclick="closeDetails()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="modal-close" onclick="closeDetails()">&times;</span>
+        <div id="modal-body">
+            </div>
+    </div>
+</div>
 <section class="about-section" id="about">
     <h2>Eine Referenzinstitution</h2>
     <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich de Kreditvergabe (Code APE 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
@@ -638,6 +715,31 @@
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
+    /* --- FONCTIONS POUR LA NOUVELLE SECTION --- */
+    function openDetails(type) {
+        const body = document.getElementById('modal-body');
+        let content = '';
+        
+        if(type === 'immo') {
+            content = `<h3>Le Prêt Immobilier</h3>
+                       <p>L'acquisition d'un bien immobilier est l'étape la plus importante de votre vie. Chez <strong>FINANCIÈRE DE CEZEMBRE</strong>, nous vous offrons la sécurité d'une institution établie depuis 1990. Notre prêt immobilier vous garantit des taux fixes avantageux et une protection totale contre les fluctuations du marché. Avancez avec confiance vers votre nouvelle maison, nous gérons la solidité de votre financement.</p>`;
+        } else if(type === 'auto') {
+            content = `<h3>Le Prêt Auto Haut de Gamme</h3>
+                       <p>Pour l'achat de votre futur véhicule de prestige, nous mettons en place des solutions de crédit sur-mesure. Que ce soit pour une berline de luxe ou un SUV haut de gamme, notre expertise financière vous permet d'obtenir les fonds rapidement avec une discrétion absolue et des conditions de remboursement flexibles adaptées à votre profil.</p>`;
+        } else if(type === 'perso') {
+            content = `<h3>Le Prêt Personnel de Confiance</h3>
+                       <p>Un besoin de liquidités pour un projet personnel ? Notre prêt personnel est la solution de confiance par excellence. Sans justification d'utilisation complexe, nous vous remettons les clés de votre projet. La rapidité de traitement de votre dossier et la transparence de nos contrats font de nous votre partenaire privilégié pour tous vos projets de vie.</p>`;
+        }
+        
+        body.innerHTML = content;
+        document.getElementById('modal-overlay').style.display = 'flex';
+    }
+
+    function closeDetails() {
+        document.getElementById('modal-overlay').style.display = 'none';
+    }
+
+    /* --- TOUT VOTRE CODE EXISTANT RESTE CI-DESSOUS --- */
     function toggleDropdown() {
         document.getElementById('country-list').classList.toggle('show-countries');
     }
@@ -654,21 +756,19 @@
         }
     }
 
-    // LISTE DE 100 AVIS UNIQUES AVEC PROFILS VARIÉS (DAMES, MAMANS, FLEURS, DRAPEAUX, PAYSAGES)
     const allReviews = [
-        // --- BLOC 1: DAMES & MAMANS (30) ---
         { n: "Monika Gruber", p: "Österreich", t: "Ein sehr seriöses Haus. Als Rentnerin wurde ich wunderbar betreut.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
         { n: "Brigitte Meyer", p: "Deutschland", t: "Dank der Finanzierung konnten wir unser Haus renovieren. Sehr dankbar.", i: "https://randomuser.me/api/portraits/women/44.jpg" },
         { n: "Hélène B.", p: "Frankreich", t: "Service rapide et efficace. Une équipe très à l'écoute des besoins.", i: "https://randomuser.me/api/portraits/women/72.jpg" },
         { n: "Anneliese K.", p: "Deutschland", t: "Sehr verantwortungsbewusstes Team. Alles wurde klar erklärt.", i: "https://randomuser.me/api/portraits/women/50.jpg" },
         { n: "Martina Voss", p: "Schweiz", t: "Endlich eine Bank, die zuhört. Danke für die schnelle Hilfe.", i: "https://randomuser.me/api/portraits/women/60.jpg" },
         { n: "Ursula Wagner", p: "Österreich", t: "Exzellenter Service. Die Zinsen sind fair und transparent.", i: "https://randomuser.me/api/portraits/women/62.jpg" },
-        { n: "Helga D.", p: "Deutschland", t: "Ein Segen für mein kleines Projekt. Die Auszahlung kam nach 48 Stunden.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
+        { n: "Helga D.", p: "Deutschland", t: "Ein Segen for mein kleines Projekt. Die Auszahlung kam nach 48 Stunden.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
         { n: "Karin Fischer", p: "Deutschland", t: "Sehr professionell. Ich hatte keine Probleme bei der Antragstellung.", i: "https://randomuser.me/api/portraits/women/52.jpg" },
         { n: "Renate S.", p: "Luxemburg", t: "Ich bin sehr zufrieden mit der persönlichen Beratung. Sehr höflich.", i: "https://randomuser.me/api/portraits/women/58.jpg" },
         { n: "Marie-Louise", p: "Luxemburg", t: "Une écoute humaine que l'on ne trouve plus ailleurs. Merci.", i: "https://randomuser.me/api/portraits/women/82.jpg" },
         { n: "Beate Schulz", p: "Deutschland", t: "Die Auszahlung kam pünktlich. Sehr vertrauenswürdig.", i: "https://randomuser.me/api/portraits/women/59.jpg" },
-        { n: "Rosemarie Vogt", p: "Schweiz", t: "Hervorragende Betreuung für ältere Menschen wie mich.", i: "https://randomuser.me/api/portraits/women/77.jpg" },
+        { n: "Rosemarie Vogt", p: "Schweiz", t: "Hervorragende Betreuung for ältere Menschen wie mich.", i: "https://randomuser.me/api/portraits/women/77.jpg" },
         { n: "Gisela R.", p: "Österreich", t: "Alles bestens. Die Unterlagen wurden schnell geprüft.", i: "https://randomuser.me/api/portraits/women/75.jpg" },
         { n: "Anita Lang", p: "Schweiz", t: "Sehr zuvorkommend und professionell. Sehr zufrieden.", i: "https://randomuser.me/api/portraits/women/11.jpg" },
         { n: "Sophie Durand", p: "Belgien", t: "Très efficace. J'ai reçu les fonds sur mon compte rapidement.", i: "https://randomuser.me/api/portraits/women/48.jpg" },
@@ -687,8 +787,6 @@
         { n: "Lucia N.", p: "Italien", t: "Molto seri, mi sono trovata benissimo.", i: "https://randomuser.me/api/portraits/women/35.jpg" },
         { n: "Anita L.", p: "Schweiz", t: "Sehr zuvorkommend und professionell.", i: "https://randomuser.me/api/portraits/women/8.jpg" },
         { n: "Erika W.", p: "Österreich", t: "Super Service, danke!", i: "https://randomuser.me/api/portraits/women/10.jpg" },
-
-        // --- BLOC 2: FLEURS, PAYSAGES, DRAPEAUX & LOGOS (30) ---
         { n: "Susanne S.", p: "Österreich", t: "Gute Zinsen, einfache Online-Abwicklung.", i: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=100&h=100&fit=crop" },
         { n: "Wanderlust 74", p: "Luzern", t: "Die beste Wahl für meinen Kredit. Sehr diskret.", i: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=100&h=100&fit=crop" },
         { n: "Garten-Freundin", p: "Graz", t: "Unkomplizierte Abwicklung. Gerne wieder.", i: "https://images.unsplash.com/photo-1490750967868-882002541bb7?w=100&h=100&fit=crop" },
@@ -719,8 +817,6 @@
         { n: "Mountain Top", p: "Schweiz", t: "Service à la hauteur de mes attentes.", i: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=100&h=100&fit=crop" },
         { n: "City Life", p: "Österreich", t: "Zinsen sind top. Abwicklung digital.", i: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=100&h=100&fit=crop" },
         { n: "Startup Inc.", p: "Deutschland", t: "Kredit für Expansion erhalten. Schnell!", i: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=100&h=100&fit=crop" },
-
-        // --- BLOC 3: HOMMES & CLIENTS GÉNÉRAUX (40) ---
         { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
         { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut. Top-Service!", i: "https://randomuser.me/api/portraits/men/1.jpg" },
         { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service. Danke pour l'appui.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
@@ -763,12 +859,10 @@
         { n: "Stephan Z.", p: "Schweiz", t: "Service parfait du début à la fin.", i: "https://randomuser.me/api/portraits/men/82.jpg" }
     ];
 
-    // FONCTION DE MÉLANGE (Anti-détection : un mélange différent à chaque visite)
     let queue = [...allReviews].sort(() => Math.random() - 0.5); 
     const container = document.getElementById('reviews-container');
 
     function createReviewHTML(data) {
-        // Temps simulé aléatoire entre 5 et 55 secondes
         const randSec = Math.floor(Math.random() * 50) + 5;
         const timeLabel = `vor ${randSec} Sek.`;
         
@@ -786,14 +880,10 @@
 
     function dropOneReview() {
         if (queue.length === 0) {
-            // Re-mélanger si on arrive au bout des 100 avis
             queue = [...allReviews].sort(() => Math.random() - 0.5);
         }
-
         const nextReview = queue.pop(); 
         container.insertAdjacentHTML('beforeend', createReviewHTML(nextReview));
-
-        // Garde un flux continu sans décalage
         if (container.children.length > 5) {
             container.removeChild(container.firstChild);
         }
@@ -801,10 +891,9 @@
 
     function startJumellesAnimation() {
         dropOneReview();
-        setInterval(dropOneReview, 7000); // Nouveau avis toutes les 7 secondes
+        setInterval(dropOneReview, 7000); 
     }
 
-    // Le reste de tes fonctions conservées sans modification
     setInterval(() => {
         const count = Math.floor(Math.random() * (25 - 8 + 1)) + 8;
         if(document.getElementById('viewers-count')) document.getElementById('viewers-count').innerText = count;
