@@ -56,7 +56,6 @@
             min-width: 110px;
         }
 
-        /* Effet au survol (souris touche) */
         .nav-cage:hover {
             background-color: var(--navy-light);
             color: var(--bright-gold) !important;
@@ -84,7 +83,26 @@
             color: white !important;
         }
 
-        /* ----------------------------------------------- */
+        /* BOUTON RETOUR MOBILE */
+        .mobile-return-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: var(--navy);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--gold);
+            text-decoration: none;
+            transition: 0.3s;
+        }
 
         .country-selector {
             position: relative;
@@ -219,49 +237,75 @@
         }
         .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
 
-        /* --- CORRECTIONS MOBILES CHIRURGICALES --- */
         @media (max-width: 991px) {
-            header { 
-                padding: 10px 5%; 
-                position: fixed; /* Fixé en haut */
-                top: 0;
-                width: 100%;
-            }
-            .logo { font-size: 0.9rem; }
-            .logo-sigle { width: 30px; height: 30px; font-size: 0.9rem; }
-            
-            /* Grille compacte pour les boutons */
+            header { padding: 10px 3%; flex-direction: column; gap: 10px; height: auto; position: relative; }
+            .logo { font-size: 1rem; }
             .nav-links { 
                 display: grid; 
                 grid-template-columns: 1fr 1fr; 
                 gap: 8px; 
                 width: 100%; 
+                margin-top: 5px;
             }
             .nav-container-separated { 
-                display: contents; /* Permet aux enfants d'aller dans la grille du parent */
+                display: contents; /* Permet aux enfants de s'intégrer à la grille parente */
             }
             .nav-cage, .btn-home { 
                 width: 100%; 
-                min-width: unset; 
-                padding: 8px 5px; 
+                min-width: auto; 
                 font-size: 0.65rem; 
+                padding: 12px 5px; 
+                margin: 0;
             }
-            .country-selector { grid-column: span 2; } /* Prend toute la largeur */
-            .selected-country { min-width: 100%; justify-content: center; }
+            .country-selector { grid-column: span 2; width: 100%; }
+            .selected-country { width: 100%; justify-content: center; }
 
+            .mobile-return-btn { display: flex; } /* Activer le bouton retour */
+            
             .hero { 
-                padding-top: 180px; /* Espace pour le header fixe */
                 flex-direction: column; 
                 height: auto; 
+                padding: 40px 5% 40px 5%; 
                 text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
             }
             
-            .simulator { width: 95%; margin: 0 auto; }
-            .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
-            #goUp { right: 20px; bottom: 20px; display: flex; z-index: 10001; }
-        }
+            .hero-content { 
+                max-width: 100%; 
+                margin-bottom: 30px; 
+                background: none; 
+            }
+            
+            .hero-content h1 { font-size: 1.8rem; line-height: 1.3; }
+            
+            .simulator { 
+                width: 95%; 
+                max-width: 420px; 
+                padding: 20px; 
+                min-height: auto; 
+                margin: 0 auto; 
+                position: relative;
+                left: 0; 
+            }
 
-        /* --- FIN DES CORRECTIONS --- */
+            .stats-bar { flex-direction: column; gap: 30px; }
+            .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
+            .f-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr !important; padding: 10px !important; }
+            footer { padding-bottom: 100px !important; } 
+            
+            .live-btn { 
+                width: 100% !important; 
+                max-width: 100% !important; 
+                height: auto !important; 
+                padding: 8px 10px !important; 
+                white-space: normal !important; 
+                text-align: center; 
+                line-height: 1.2; 
+            }
+        }
 
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 20px; font-size: 2rem; }
@@ -399,6 +443,10 @@
     </style>
 </head>
 <body>
+
+<a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="mobile-return-btn" id="mobileReturn">
+    <i class="fas fa-arrow-left"></i> RETOUR
+</a>
 
 <header>
     <div class="logo-container">
@@ -696,7 +744,18 @@
     function resetAll() { location.reload(); }
 
     amtR.oninput = calc; durR.oninput = calc;
-    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
+    
+    // GESTION DU SCROLL POUR LES BOUTONS DE RETOUR
+    window.onscroll = () => { 
+        const scrollPos = window.scrollY;
+        // Bouton flèche classique
+        document.getElementById('goUp').style.display = (scrollPos > 500) ? 'flex' : 'none'; 
+        // Bouton de retour spécifique mobile
+        const returnBtn = document.getElementById('mobileReturn');
+        if (window.innerWidth <= 991) {
+            returnBtn.style.display = (scrollPos > 300) ? 'flex' : 'none';
+        }
+    };
     
     calc();
     initReviews();
