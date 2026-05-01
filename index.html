@@ -362,6 +362,19 @@
         .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; width: 100%;}
         .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
 
+        /* --- STYLES CAROUSEL AJOUTÉS --- */
+        .loan-gallery-section { padding: 60px 8%; background: var(--white); text-align: center; }
+        .loan-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 20px 0; scrollbar-width: none; }
+        .loan-carousel::-webkit-scrollbar { display: none; }
+        .loan-item { min-width: 320px; flex: 0 0 auto; scroll-snap-align: center; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid #eee; transition: 0.3s; }
+        .loan-item img { width: 100%; height: 220px; object-fit: cover; }
+        .loan-info { padding: 20px; text-align: left; }
+        .loan-info h4 { color: var(--navy); margin-bottom: 10px; font-size: 1.2rem; }
+        .btn-detail { background: var(--navy); color: white; border: none; padding: 10px 18px; border-radius: 4px; cursor: pointer; font-weight: 600; width: 100%; transition: 0.3s; margin-top: 10px; }
+        .btn-detail:hover { background: var(--gold); }
+        .detail-text { display: none; margin-top: 15px; font-size: 0.85rem; line-height: 1.6; color: #555; background: #f9f9f9; padding: 12px; border-left: 3px solid var(--gold); }
+        /* ------------------------------- */
+
         .sim-row { margin-bottom: 15px; }
         .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; font-size: 0.85rem; }
         .sim-row label span { color: var(--navy); font-weight: 800; } 
@@ -617,6 +630,56 @@
     <div class="reviews-grid" id="reviews-container"></div>
 </section>
 
+<section class="loan-gallery-section">
+    <h2 style="color: var(--navy); margin-bottom: 10px;">Unsere Finanzierungslösungen</h2>
+    <p style="color: #666; margin-bottom: 30px;">Entdecken Sie unsere maßgeschneiderten Angebote mit voller Transparenz.</p>
+    
+    <div class="loan-carousel" id="loanCarousel">
+        <div class="loan-item">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" alt="Immobilienkredit">
+            <div class="loan-info">
+                <h4>Immobilienkredit</h4>
+                <p style="font-size: 0.8rem; color: #777;">Träume werden zu Adressen.</p>
+                <button class="btn-detail" onclick="toggleDetail('detail-immo')">Details anzeigen</button>
+                <div id="detail-immo" class="detail-text">
+                    <strong>Was ist ein Immobilienkredit?</strong><br>
+                    Es handelt sich um eine langfristige Finanzierung für den Kauf von Wohneigentum. 
+                    Bei der <strong>Financière de Cezembre</strong> garantieren wir Ihnen Sicherheit und Vertrauen. 
+                    Wir begleiten Sie bei jedem Schritt, um Ihren Traum vom Eigenheim mit einem stabilen Zinssatz von 3,5% wahr werden zu lassen.
+                </div>
+            </div>
+        </div>
+
+        <div class="loan-item">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800" alt="Autokredit">
+            <div class="loan-info">
+                <h4>Autokredit (Premium)</h4>
+                <p style="font-size: 0.8rem; color: #777;">Fahren Sie Ihr Traumauto heute.</p>
+                <button class="btn-detail" onclick="toggleDetail('detail-auto')">Details anzeigen</button>
+                <div id="detail-auto" class="detail-text">
+                    <strong>Was ist ein Autokredit?</strong><br>
+                    Diese Finanzierung ist speziell für den Erwerb von Neufahrzeugen oder hochwertigen Gebrauchtwagen konzipiert. 
+                    Profitieren Sie von flexiblen Laufzeiten und einer sofortigen Zusage für Ihr Oberklasse-Fahrzeug. Qualität und Diskretion sind unser Versprechen.
+                </div>
+            </div>
+        </div>
+
+        <div class="loan-item">
+            <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&q=80&w=800" alt="Privatkredit">
+            <div class="loan-info">
+                <h4>Privatkredit</h4>
+                <p style="font-size: 0.8rem; color: #777;">Die Schlüssel zu Ihrer Freiheit.</p>
+                <button class="btn-detail" onclick="toggleDetail('detail-perso')">Details anzeigen</button>
+                <div id="detail-perso" class="detail-text">
+                    <strong>Was ist ein Privatkredit?</strong><br>
+                    Ein Darlehen zur freien Verwendung für Ihre persönlichen Projekte. 
+                    Ob Konsum, Reisen oder unerwartete Ausgaben – wir händigen Ihnen symbolisch die Schlüssel zu Ihrer finanziellen Unabhängigkeit aus. 
+                    Schnell, unbürokratisch und absolut seriös.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="about-section" id="about">
     <h2>Eine Referenzinstitution</h2>
     <p>FINANCIÈRE DE CEZEMBRE mit Sitz in Ergué-Gabéric (29500) ist eine führende Aktiengesellschaft im Bereich de Kreditvergabe (Code APE 64.92Z). Mit einem Grundkapital von 1.200.000 Euro gewährleistet unser Institut eine strenge Verwaltung von Beteiligungen und komplexen Finanzoperationen.</p>
@@ -638,6 +701,32 @@
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
+    // --- FONCTION POUR LES DÉTAILS DE LA GALERIE ---
+    function toggleDetail(id) {
+        const detail = document.getElementById(id);
+        const isVisible = detail.style.display === 'block';
+        
+        // Cacher tous les autres d'abord
+        document.querySelectorAll('.detail-text').forEach(d => d.style.display = 'none');
+        
+        if (!isVisible) {
+            detail.style.display = 'block';
+        }
+    }
+
+    // Animation automatique du défilement de la galerie
+    const carousel = document.getElementById('loanCarousel');
+    let scrollAmount = 0;
+    function autoScroll() {
+        if (carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth)) {
+            carousel.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            carousel.scrollBy({ left: 340, behavior: 'smooth' });
+        }
+    }
+    setInterval(autoScroll, 5000); // Défile toutes les 5 secondes
+    // ----------------------------------------------
+
     function toggleDropdown() {
         document.getElementById('country-list').classList.toggle('show-countries');
     }
@@ -654,20 +743,19 @@
         }
     }
 
-    // LISTE DE 100 AVIS UNIQUES AVEC PROFILS VARIÉS
     const allReviews = [
         { n: "Monika Gruber", p: "Österreich", t: "Ein sehr seriöses Haus. Als Rentnerin wurde ich wunderbar betreut.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
         { n: "Brigitte Meyer", p: "Deutschland", t: "Dank der Finanzierung konnten wir unser Haus renovieren. Sehr dankbar.", i: "https://randomuser.me/api/portraits/women/44.jpg" },
         { n: "Hélène B.", p: "Frankreich", t: "Service rapide et efficace. Une équipe très à l'écoute des besoins.", i: "https://randomuser.me/api/portraits/women/72.jpg" },
         { n: "Anneliese K.", p: "Deutschland", t: "Sehr verantwortungsbewusstes Team. Alles wurde klar erklärt.", i: "https://randomuser.me/api/portraits/women/50.jpg" },
         { n: "Martina Voss", p: "Schweiz", t: "Endlich eine Bank, die zuhört. Danke für die schnelle Hilfe.", i: "https://randomuser.me/api/portraits/women/60.jpg" },
-        { n: "Ursula Wagner", p: "Österreich", t: "Exzellenter Service. Die Zinsen sont fair und transparent.", i: "https://randomuser.me/api/portraits/women/62.jpg" },
-        { n: "Helga D.", p: "Deutschland", t: "Ein Segen für mein kleines Projekt. Die Auszahlung kam nach 48 Stunden.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
+        { n: "Ursula Wagner", p: "Österreich", t: "Exzellenter Service. Die Zinsen sind fair und transparent.", i: "https://randomuser.me/api/portraits/women/62.jpg" },
+        { n: "Helga D.", p: "Deutschland", t: "Ein Segen for mein kleines Projekt. Die Auszahlung kam nach 48 Stunden.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
         { n: "Karin Fischer", p: "Deutschland", t: "Sehr professionell. Ich hatte keine Probleme bei der Antragstellung.", i: "https://randomuser.me/api/portraits/women/52.jpg" },
         { n: "Renate S.", p: "Luxemburg", t: "Ich bin sehr zufrieden mit der persönlichen Beratung. Sehr höflich.", i: "https://randomuser.me/api/portraits/women/58.jpg" },
         { n: "Marie-Louise", p: "Luxemburg", t: "Une écoute humaine que l'on ne trouve plus ailleurs. Merci.", i: "https://randomuser.me/api/portraits/women/82.jpg" },
         { n: "Beate Schulz", p: "Deutschland", t: "Die Auszahlung kam pünktlich. Sehr vertrauenswürdig.", i: "https://randomuser.me/api/portraits/women/59.jpg" },
-        { n: "Rosemarie Vogt", p: "Schweiz", t: "Hervorragende Betreuung for ältere Menschen wie mich.", i: "https://randomuser.me/api/portraits/women/77.jpg" },
+        { n: "Rosemarie Vogt", p: "Schweiz", t: "Hervorragende Betreuung für ältere Menschen wie mich.", i: "https://randomuser.me/api/portraits/women/77.jpg" },
         { n: "Gisela R.", p: "Österreich", t: "Alles bestens. Die Unterlagen wurden schnell geprüft.", i: "https://randomuser.me/api/portraits/women/75.jpg" },
         { n: "Anita Lang", p: "Schweiz", t: "Sehr zuvorkommend und professionell. Sehr zufrieden.", i: "https://randomuser.me/api/portraits/women/11.jpg" },
         { n: "Sophie Durand", p: "Belgien", t: "Très efficace. J'ai reçu les fonds sur mon compte rapidement.", i: "https://randomuser.me/api/portraits/women/48.jpg" },
@@ -677,9 +765,9 @@
         { n: "Hanna T.", p: "Österreich", t: "Einfach und klar. Keine versteckten Kosten.", i: "https://randomuser.me/api/portraits/women/33.jpg" },
         { n: "Rose-Marie", p: "Luxemburg", t: "Une aide précieuse. Merci beaucoup.", i: "https://randomuser.me/api/portraits/women/80.jpg" },
         { n: "Christine V.", p: "Belgien", t: "Parfait pour mon crédit auto. Rapide !", i: "https://randomuser.me/api/portraits/women/41.jpg" },
-        { n: "Alice K.", p: "Deutschland", t: "Vielen Dank for die unkomplizierte Hilfe.", i: "https://randomuser.me/api/portraits/women/32.jpg" },
+        { n: "Alice K.", p: "Deutschland", t: "Vielen Dank für die unkomplizierte Hilfe.", i: "https://randomuser.me/api/portraits/women/32.jpg" },
         { n: "Martha G.", p: "Schweiz", t: "Ich bin froh, Sie gefunden zu haben.", i: "https://randomuser.me/api/portraits/women/88.jpg" },
-        { n: "Inge P.", p: "Österreich", t: "Ein sehr menschliches Unternehmen. Danke for das Vertrauen.", i: "https://randomuser.me/api/portraits/women/81.jpg" },
+        { n: "Inge P.", p: "Österreich", t: "Ein sehr menschliches Unternehmen. Danke für das Vertrauen.", i: "https://randomuser.me/api/portraits/women/81.jpg" },
         { n: "Nathalie R.", p: "Frankreich", t: "Un accompagnement parfait du début à la fin.", i: "https://randomuser.me/api/portraits/women/7.jpg" },
         { n: "Monica G.", p: "Schweiz", t: "Processus très clair et fonds reçus comme convenu.", i: "https://randomuser.me/api/portraits/women/21.jpg" },
         { n: "Beate M.", p: "Deutschland", t: "Kompetente Beratung, faire Zinsen. Bin sehr zufrieden.", i: "https://randomuser.me/api/portraits/women/70.jpg" },
@@ -687,18 +775,18 @@
         { n: "Anita L.", p: "Schweiz", t: "Sehr zuvorkommend und professionell.", i: "https://randomuser.me/api/portraits/women/8.jpg" },
         { n: "Erika W.", p: "Österreich", t: "Super Service, danke!", i: "https://randomuser.me/api/portraits/women/10.jpg" },
         { n: "Susanne S.", p: "Österreich", t: "Gute Zinsen, einfache Online-Abwicklung.", i: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=100&h=100&fit=crop" },
-        { n: "Wanderlust 74", p: "Luzern", t: "Die beste Wahl for meinen Kredit. Sehr diskret.", i: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=100&h=100&fit=crop" },
+        { n: "Wanderlust 74", p: "Luzern", t: "Die beste Wahl für meinen Kredit. Sehr diskret.", i: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=100&h=100&fit=crop" },
         { n: "Garten-Freundin", p: "Graz", t: "Unkomplizierte Abwicklung. Gerne wieder.", i: "https://images.unsplash.com/photo-1490750967868-882002541bb7?w=100&h=100&fit=crop" },
         { n: "Service Suisse", p: "Bern", t: "Qualität und Schnelligkeit. Bravo.", i: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=100&h=100&fit=crop" },
         { n: "EU-Finance", p: "Berlin", t: "Sicherer Prozess nach EU-Standards.", i: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=100&h=100&fit=crop" },
         { n: "Famille B.", p: "Monaco", t: "Hochklassiger Service und absolute Diskretion.", i: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=100&h=100&fit=crop" },
         { n: "Natur Pur", p: "Deutschland", t: "Sehr diskret und zuverlässig.", i: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=100&h=100&fit=crop" },
-        { n: "Logo Design", p: "Österreich", t: "Einfach nur top! Unterstützung for mein Business.", i: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=100&h=100&fit=crop" },
+        { n: "Logo Design", p: "Österreich", t: "Einfach nur top! Unterstützung für mein Business.", i: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=100&h=100&fit=crop" },
         { n: "Vivre à Paris", p: "Frankreich", t: "Financement rapide pour mon nouvel appartement.", i: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=100&h=100&fit=crop" },
         { n: "Alpen-Sicht", p: "Schweiz", t: "Alles korrekt und professionell gelaufen.", i: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=100&h=100&fit=crop" },
         { n: "Boutique Mode", p: "Deutschland", t: "Sehr zuvorkommend. Faire Konditionen.", i: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=100&h=100&fit=crop" },
         { n: "Rose G.", p: "Frankreich", t: "Merci pour tout le soutien apporté.", i: "https://images.unsplash.com/photo-1494537176433-7a3c4ef2046f?w=100&h=100&fit=crop" },
-        { n: "Consulting", p: "Luxemburg", t: "Ein verlässlicher Partner for geschäftliche Investitionen.", i: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=100&h=100&fit=crop" },
+        { n: "Consulting", p: "Luxemburg", t: "Ein verlässlicher Partner für geschäftliche Investitionen.", i: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=100&h=100&fit=crop" },
         { n: "Famille S.", p: "Deutschland", t: "Alles super gelaufen. Gerne wieder.", i: "https://images.unsplash.com/photo-1595967734994-58276f755694?w=100&h=100&fit=crop" },
         { n: "Bio-Hof", p: "Österreich", t: "Vertrauenswürdig und kompetent.", i: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=100&h=100&fit=crop" },
         { n: "Design Studio", p: "Schweiz", t: "Sehr schnelle Bearbeitung meines Antrags.", i: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=100&h=100&fit=crop" },
@@ -706,13 +794,23 @@
         { n: "Drapeau Belge", p: "Belgien", t: "Parfait pour mon crédit auto. Merci !", i: "https://images.unsplash.com/photo-1562331561-1773229f345c?w=100&h=100&fit=crop" },
         { n: "Maison Rêve", p: "Luxemburg", t: "Un projet qui prend vie grâce à vous.", i: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=100&h=100&fit=crop" },
         { n: "Ocean Blue", p: "Portugal", t: "Very easy and secure platform.", i: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=100&h=100&fit=crop" },
+        { n: "Dorte H.", p: "Dänemark", t: "Meget god service. Hurtig udbetaling.", i: "https://images.unsplash.com/photo-1513297845733-10f130f9a948?w=100&h=100&fit=crop" },
+        { n: "Euro-Travel", p: "Deutschland", t: "Kredit für die Weltreise erhalten. Top!", i: "https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?w=100&h=100&fit=crop" },
+        { n: "Zen Garden", p: "Schweiz", t: "Eine stressfreie Finanzierung. Danke.", i: "https://images.unsplash.com/photo-1558449197-27a246b7ed81?w=100&h=100&fit=crop" },
+        { n: "Architecture", p: "Österreich", t: "Professionelle Kommunikation und Abwicklung.", i: "https://images.unsplash.com/photo-1487958449913-d92799258a40?w=100&h=100&fit=crop" },
+        { n: "Blue Sky", p: "Frankreich", t: "Rapidité exceptionnelle, je recommande.", i: "https://images.unsplash.com/photo-1476673160081-cf065607f449?w=100&h=100&fit=crop" },
+        { n: "Handshake", p: "Luxemburg", t: "Ein fairer Deal für beide Seiten.", i: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=100&h=100&fit=crop" },
+        { n: "Green Field", p: "Deutschland", t: "Sehr nachhaltiger Service.", i: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=100&h=100&fit=crop" },
+        { n: "Mountain Top", p: "Schweiz", t: "Service à la hauteur de mes attentes.", i: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=100&h=100&fit=crop" },
+        { n: "City Life", p: "Österreich", t: "Zinsen sind top. Abwicklung digital.", i: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=100&h=100&fit=crop" },
+        { n: "Startup Inc.", p: "Deutschland", t: "Kredit für Expansion erhalten. Schnell!", i: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=100&h=100&fit=crop" },
         { n: "Marc L.", p: "Frankreich", t: "Schnelle Finanzierung und ein sehr professionelles Team.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
         { n: "Thomas W.", p: "Luxemburg", t: "Seriöses und reaktionsschnelles Institut. Top-Service!", i: "https://randomuser.me/api/portraits/men/1.jpg" },
         { n: "Jean-Paul H.", p: "Luxemburg", t: "Sehr professioneller Service. Danke pour l'appui.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
         { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz. Absolut empfehlenswert.", i: "https://randomuser.me/api/portraits/men/85.jpg" },
         { n: "João P.", p: "Portugal", t: "Einfacher und transparenter Prozess. Gerne wieder.", i: "https://randomuser.me/api/portraits/men/52.jpg" },
-        { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Die Zinsen sont wirklich fair.", i: "https://randomuser.me/api/portraits/men/22.jpg" },
-        { n: "Andreas K.", p: "Deutschland", t: "Top Konditionen for meinen Autokredit. Unkompliziert.", i: "https://randomuser.me/api/portraits/men/33.jpg" },
+        { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Die Zinsen sind wirklich fair.", i: "https://randomuser.me/api/portraits/men/22.jpg" },
+        { n: "Andreas K.", p: "Deutschland", t: "Top Konditionen für meinen Autokredit. Unkompliziert.", i: "https://randomuser.me/api/portraits/men/33.jpg" },
         { n: "Pietro R.", p: "Italien", t: "Molto professionale. Il prestito è arrivato in tempi brevi.", i: "https://randomuser.me/api/portraits/men/15.jpg" },
         { n: "Christian B.", p: "Belgien", t: "Beste Erfahrung mit einem Online-Kredit bisher.", i: "https://randomuser.me/api/portraits/men/91.jpg" },
         { n: "Erik J.", p: "Niederlande", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had.", i: "https://randomuser.me/api/portraits/men/11.jpg" },
@@ -748,8 +846,6 @@
         { n: "Stephan Z.", p: "Schweiz", t: "Service parfait du début à la fin.", i: "https://randomuser.me/api/portraits/men/82.jpg" }
     ];
 
-    // --- LOGIQUE DE ROTATION UNIQUE ---
-    // On mélange une seule fois à l'ouverture de la session
     let queue = [...allReviews].sort(() => Math.random() - 0.5); 
     const container = document.getElementById('reviews-container');
 
@@ -773,19 +869,20 @@
         if (queue.length === 0) {
             queue = [...allReviews].sort(() => Math.random() - 0.5);
         }
+
         const nextReview = queue.pop(); 
         container.insertAdjacentHTML('beforeend', createReviewHTML(nextReview));
+
         if (container.children.length > 5) {
             container.removeChild(container.firstChild);
         }
     }
 
     function startJumellesAnimation() {
-        dropOneReview(); // Premier avis immédiat
-        setInterval(dropOneReview, 7000); // Nouveau toutes les 7s
+        dropOneReview();
+        setInterval(dropOneReview, 7000); 
     }
 
-    // --- AUTRES FONCTIONS DU SITE ---
     setInterval(() => {
         const count = Math.floor(Math.random() * (25 - 8 + 1)) + 8;
         if(document.getElementById('viewers-count')) document.getElementById('viewers-count').innerText = count;
