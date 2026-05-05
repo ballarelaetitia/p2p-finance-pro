@@ -589,8 +589,7 @@
         <div id="step2" style="display:none;">
             <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Antrag abschließen</h3>
             <form id="loanForm">
-                <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="hidden" name="to_email" value="contact@financiredecezembre-wyb.com">
+                <input type="hidden" name="access_key" value="192a039c-174a-4ccd-b28e-93cbb5a26215">
                 
                 <input type="hidden" name="montant_client" id="hiddenAmt">
                 <input type="hidden" name="duree_client" id="hiddenDur">
@@ -763,7 +762,7 @@
         }
     }
 
-    /* TES 100 AVIS - INTACTS */
+    /* TES 100 AVIS - TOTALEMENT PRÉSERVÉS ET INTACTS */
     const allReviews = [
         { n: "Monika Gruber", p: "Österreich", t: "Ein sehr seriöses Haus. Als Rentnerin wurde ich wunderbar betreut.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
         { n: "Brigitte Meyer", p: "Deutschland", t: "Dank der Finanzierung konnten wir unser Haus renovieren. Sehr dankbar.", i: "https://randomuser.me/api/portraits/women/44.jpg" },
@@ -836,7 +835,7 @@
         { n: "Christian B.", p: "Belgien", t: "Beste Erfahrung mit einem Online-Kredit bisher.", i: "https://randomuser.me/api/portraits/men/91.jpg" },
         { n: "Erik J.", p: "Niederlande", t: "Schnell, sicher und zuverlässig. Genau das, was ich brauchte.", i: "https://randomuser.me/api/portraits/men/11.jpg" },
         { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebühren.", i: "https://randomuser.me/api/portraits/men/33.jpg" },
-        { n: "Didier V.", p: "Belgien", t: "Eine unglaublicine Aufmerksamkeit und Schnelligkeit. Danke for alles.", i: "https://randomuser.me/api/portraits/men/67.jpg" },
+        { n: "Didier V.", p: "Belgien", t: "Eine unglaubliche Aufmerksamkeit und Schnelligkeit. Danke for alles.", i: "https://randomuser.me/api/portraits/men/67.jpg" },
         { n: "Uwe H.", p: "Deutschland", t: "Schnell und unbürokratisch. Genau das, was man sucht.", i: "https://randomuser.me/api/portraits/men/78.jpg" },
         { n: "Yannick S.", p: "Luxemburg", t: "Einwandfreier Service von Anfang bis Ende. Perfekt.", i: "https://randomuser.me/api/portraits/men/50.jpg" },
         { n: "Rui F.", p: "Portugal", t: "Schneller Prozess und exzellenter Service.", i: "https://randomuser.me/api/portraits/men/29.jpg" },
@@ -932,7 +931,7 @@
     calc(); 
     window.onload = startJumellesAnimation;
 
-    /* LOGIQUE D'ENVOI SÉCURISÉE */
+    /* LOGIQUE D'ENVOI SÉCURISÉE AVEC VOTRE NOUVELLE CLÉ */
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
@@ -948,6 +947,7 @@
             const result = await response.json();
 
             if (result.success) {
+                // Conversion Google Ads déclenchée uniquement en cas de succès
                 if(typeof gtag === 'function'){ 
                     gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); 
                 }
