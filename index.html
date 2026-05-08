@@ -6,7 +6,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      // PROTECTION BUDGET : Ne pas envoyer de conversion à l'ouverture de la page
       gtag('config', 'AW-18121475138', {'send_page_view': false});
     </script>
 
@@ -32,7 +31,6 @@
             --success: #27ae60;
         }
 
-        /* Masquage discret de la barre Google Translate */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
         #google_translate_element { display: none; }
@@ -191,6 +189,8 @@
         }
         .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: -1px; }
         
+        .header-msg { font-size: 0.7rem; color: var(--navy); font-weight: 600; margin-top: 2px; }
+
         .nav-links { display: flex; gap: 20px; align-items: center; }
 
         .hero {
@@ -460,7 +460,6 @@
         .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
         @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
 
-        /* --- NOUVELLE SECTION SLIDER --- */
         .solutions-slider { padding: 60px 8%; background: white; overflow: hidden; }
         .slider-title { text-align: center; color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
         .slider-track { display: flex; gap: 30px; animation: slideTrack 25s linear infinite; width: calc(350px * 6 + 180px); }
@@ -472,7 +471,6 @@
         .btn-detail { background: var(--navy); color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; }
         .btn-detail:hover { background: var(--gold); }
         
-        /* MODALE POUR DÉTAILS */
         #modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:10000; padding:20px; }
         .modal-content { background:white; padding:40px; border-radius:8px; max-width:600px; position:relative; text-align:center; border-top: 5px solid var(--gold); }
         .modal-close { position:absolute; top:15px; right:15px; font-size:1.5rem; cursor:pointer; color: var(--navy); }
@@ -490,8 +488,13 @@
 
 <header>
     <div class="logo-container">
-        <div class="logo-sigle">FC</div>
-        <div class="logo">ΠΙΣΤΙΣ ΠΡΟΧΡΗΜΑΤΟΔΟΤΗΣΗ</div>
+        <div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <div class="logo-sigle">FC</div>
+                <div class="logo">ΠΙΣΤΙΣ ΠΡΟΧΡΗΜΑΤΟΔΟΤΗΣΗ</div>
+            </div>
+            <div class="header-msg">Άμεση πίστωση – Υποβάλετε μια αίτηση express και λάβετε άμεση απάντηση*</div>
+        </div>
     </div>
     
     <div class="nav-links">
@@ -508,13 +511,13 @@
         <div class="country-selector">
             <div class="selected-country" onclick="toggleDropdown()">
                 <img src="https://flagcdn.com/w40/gr.png" class="flag" id="current-flag">
-                <span id="current-name">ΓΛΩΣΣΑ</span>
+                <span id="current-name">ΕΛΛΗΝΙΚΑ</span>
                 <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: auto; color: var(--gold);"></i>
             </div>
             <div class="country-dropdown" id="country-list">
-                <div onclick="selectLanguage('Deutsch', 'de')"><img src="https://flagcdn.com/w40/de.png" class="flag"> Deutsch</div>
                 <div onclick="selectLanguage('Français', 'fr')"><img src="https://flagcdn.com/w40/fr.png" class="flag"> Français</div>
                 <div onclick="selectLanguage('Greek', 'gr')"><img src="https://flagcdn.com/w40/gr.png" class="flag"> Ελληνικά</div>
+                <div onclick="selectLanguage('English', 'gb')"><img src="https://flagcdn.com/w40/gb.png" class="flag"> English</div>
             </div>
         </div>
     </div>
@@ -605,7 +608,6 @@
                 </select>
                 <select name="pays" class="form-input" id="form-pays" required>
                     <option value="Grece" selected>Ελλάδα (+30)</option>
-                    <option value="Allemagne">Γερμανία (+49)</option>
                     <option value="Chypre">Κύπρος (+357)</option>
                     <option value="France">Γαλλία (+33)</option>
                 </select>
@@ -714,7 +716,7 @@
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'el',
-            includedLanguages: 'de,fr,en,el',
+            includedLanguages: 'fr,en,el',
             autoDisplay: false
         }, 'google_translate_element');
     }
@@ -742,6 +744,7 @@
 
     function selectLanguage(name, code) {
         document.getElementById('current-flag').src = `https://flagcdn.com/w40/${code === 'gb' ? 'gb' : (code === 'gr' ? 'gr' : code)}.png`;
+        document.getElementById('current-name').innerText = name.toUpperCase();
         document.getElementById('country-list').classList.remove('show-countries');
         let langCode = (code === 'gb') ? 'en' : (code === 'gr' ? 'el' : code);
         const select = document.querySelector('.goog-te-combo');
@@ -761,13 +764,12 @@
         }
     }
 
-    /* TES 100 AVIS - TOTALEMENT PRÉSERVÉS ET INTACTS */
     const allReviews = [
         { n: "Monika Gruber", p: "Österreich", t: "Ein sehr seriöses Haus. Als Rentnerin wurde ich wunderbar betreut.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
         { n: "Brigitte Meyer", p: "Deutschland", t: "Dank der Finanzierung konnten wir unser Haus renovieren. Sehr dankbar.", i: "https://randomuser.me/api/portraits/women/44.jpg" },
         { n: "Hélène B.", p: "Frankreich", t: "Schneller und effizienter Service. Ein team, das sehr aufmerksam auf Bedürfnisse hört.", i: "https://randomuser.me/api/portraits/women/72.jpg" },
         { n: "Anneliese K.", p: "Deutschland", t: "Sehr verantwortungsbewusstes Team. Alles wurde klar erklärt.", i: "https://randomuser.me/api/portraits/women/50.jpg" },
-        { n: "Martina Voss", p: "Schweiz", t: "Endlich eine Bank, die zuhört. Danke für die schnelle Hilfe.", i: "https://randomuser.me/api/portraits/women/60.jpg" },
+        { n: "Martina Voss", p: "Schweiz", t: "Endlich eine Bank, die zuhört. Danke for die schnelle Hilfe.", i: "https://randomuser.me/api/portraits/women/60.jpg" },
         { n: "Ursula Wagner", p: "Österreich", t: "Exzellenter Service. Die Zinsen sont fair und transparent.", i: "https://randomuser.me/api/portraits/women/62.jpg" },
         { n: "Helga D.", p: "Deutschland", t: "Ein Segen for mein kleines Projekt. Die Auszahlung kam nach 48 Stunden.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
         { n: "Karin Fischer", p: "Deutschland", t: "Sehr professionell. Ich hatte keine Probleme bei der Antragstellung.", i: "https://randomuser.me/api/portraits/women/52.jpg" },
@@ -862,7 +864,13 @@
         { n: "Christian G.", p: "Deutschland", t: "Gute Kommunikation. Alles bestens.", i: "https://randomuser.me/api/portraits/men/71.jpg" },
         { n: "Robert H.", p: "Österreich", t: "Fair und diskret. Danke.", i: "https://randomuser.me/api/portraits/men/73.jpg" },
         { n: "Franck B.", p: "Belgien", t: "Reaktionsschnelles Team. Gelder schnell erhalten.", i: "https://randomuser.me/api/portraits/men/76.jpg" },
-        { n: "Stephan Z.", p: "Schweiz", t: "Perfekter Service von Anfang bis Ende.", i: "https://randomuser.me/api/portraits/men/82.jpg" }
+        { n: "Stephan Z.", p: "Schweiz", t: "Perfekτερ Service von Anfang bis Ende.", i: "https://randomuser.me/api/portraits/men/82.jpg" },
+        /* AJOUT DES 5 AVIS GRECS SUPPLÉMENTAIRES */
+        { n: "Nikos P.", p: "Ελλάδα", t: "Άψογη εξυπηρέτηση, πολύ γρήγορη και αξιόπιστη.", i: "https://randomuser.me/api/portraits/men/45.jpg" },
+        { n: "Eleni K.", p: "Ελλάδα", t: "Το συνιστώ ανεπιφύλακτα, η εμπειρία ήταν τέλεια.", i: "https://randomuser.me/api/portraits/women/45.jpg" },
+        { n: "Giorgos M.", p: "Ελλάδα", t: "Πολύ ικανοποιημένος από το αποτέλεσμα, κανένα παράπονο.", i: "https://randomuser.me/api/portraits/men/23.jpg" },
+        { n: "Dimitra L.", p: "Ελλάδα", t: "Μια επαγγελματική ομάδα που πραγματικά ακούει.", i: "https://randomuser.me/api/portraits/women/32.jpg" },
+        { n: "Kostas B.", p: "Ελλάδα", t: "Αποτελεσματικό και διαφανές. Πέντε αστέρια!", i: "https://randomuser.me/api/portraits/men/62.jpg" }
     ];
 
     let queue = [...allReviews].sort(() => Math.random() - 0.5); 
@@ -930,7 +938,6 @@
     calc(); 
     window.onload = startJumellesAnimation;
 
-    /* LOGIQUE D'ENVOI SÉCURISÉE */
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
