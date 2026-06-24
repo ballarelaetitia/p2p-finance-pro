@@ -2,88 +2,73 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POWELL | Boutique Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>POWELL | Boutique Premium Officielle</title>
     <style>
-        body { font-family: 'Roboto', sans-serif; margin: 0; background: #f4f4f4; color: #333; }
-        header { background: #131921; color: white; padding: 20px; text-align: center; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #222; }
+        .hero { background: #000; color: #fff; padding: 100px 20px; text-align: center; }
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
         
-        /* Bannière dynamique */
-        .hero { background: #232f3e; color: white; padding: 60px 20px; text-align: center; }
-        .hero h1 { margin: 0; font-size: 2.5em; }
+        /* Grille massive */
+        .catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .item { border: 1px solid #e1e1e1; padding: 20px; transition: 0.3s; background: #fff; }
+        .item img { width: 100%; height: 300px; object-fit: cover; }
         
-        .container { max-width: 1200px; margin: 20px auto; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        /* Section Avis */
+        .reviews { background: #f4f4f4; padding: 60px 20px; margin-top: 50px; text-align: center; }
         
-        /* Carte Produit Pro */
-        .product-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s; }
-        .product-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .product-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; }
-        .btn-buy { background: #f0c14b; border: 1px solid #a88734; width: 100%; padding: 10px; cursor: pointer; font-weight: bold; border-radius: 3px; }
-        
-        /* Mouvement */
-        .loader { display: none; margin: 40px auto; border: 4px solid #f3f3f3; border-top: 4px solid #f0c14b; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        footer { background: #232f3e; color: white; padding: 40px; text-align: center; margin-top: 50px; }
+        /* Pied de page complet */
+        footer { background: #111; color: #fff; padding: 60px 20px; font-size: 0.9em; }
+        .btn-main { background: #d4af37; color: white; padding: 20px 40px; border: none; font-weight: bold; cursor: pointer; width: 100%; }
     </style>
 </head>
 <body>
 
-<header>POWELL - Votre excellence au quotidien</header>
+<header class="hero">
+    <h1>POWELL</h1>
+    <p>Solutions technologiques d'excellence pour professionnels.</p>
+</header>
 
-<div class="hero">
-    <h1>Solutions Premium pour Professionnels</h1>
-    <p>Expédition rapide France & Outre-mer</p>
-</div>
-
-<div class="container" id="main-content">
-    <div class="grid" id="catalogue">
-        <!-- Article 1 -->
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1610945415247-a19368028741?auto=format&fit=crop&w=800" alt="Produit">
+<div class="container">
+    <h2>Nos Meilleures Ventes</h2>
+    <div class="catalog">
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1622445275563-3139366e7672?q=80&w=800" alt="Produit">
             <h3>Station de Charge 3-en-1 Pro</h3>
-            <p>Technologie haute performance.</p>
+            <p>Technologie induction haute vitesse. Design en aluminium.</p>
             <p><strong>129,00 €</strong></p>
-            <button class="btn-buy" onclick="commander('Station Pro')">Ajouter au panier</button>
+            <button class="btn-main" onclick="alert('Commande initiée. Veuillez finaliser sur WhatsApp.')">AJOUTER AU PANIER</button>
         </div>
-        <!-- Article 2 -->
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1593642634367-d95a832e87d6?auto=format&fit=crop&w=800" alt="Produit">
-            <h3>Support PC Ergonomique</h3>
-            <p>Aluminium brossé robuste.</p>
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1527443154391-507e9f6c58e5?q=80&w=800" alt="Produit">
+            <h3>Support Ergonomique Aéro</h3>
+            <p>Structure renforcée, dissipation thermique active.</p>
             <p><strong>99,00 €</strong></p>
-            <button class="btn-buy" onclick="commander('Support PC')">Ajouter au panier</button>
+            <button class="btn-main" onclick="alert('Commande initiée.')">AJOUTER AU PANIER</button>
         </div>
-        <!-- Article 3 -->
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?auto=format&fit=crop&w=800" alt="Produit">
-            <h3>Tondeuse de Précision</h3>
-            <p>Finition Titane professionnelle.</p>
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1621607516616-52261907797b?q=80&w=800" alt="Produit">
+            <h3>Tondeuse Précision Titane</h3>
+            <p>Lame ultra-précise pour usage professionnel.</p>
             <p><strong>89,00 €</strong></p>
-            <button class="btn-buy" onclick="commander('Tondeuse Pro')">Ajouter au panier</button>
+            <button class="btn-main" onclick="alert('Commande initiée.')">AJOUTER AU PANIER</button>
         </div>
     </div>
-    <div class="loader" id="loader"></div>
-    <div id="message" style="text-align:center;"></div>
+</div>
+
+<div class="reviews">
+    <h2>Ce que nos clients pensent de POWELL</h2>
+    <p>"La qualité des produits est exceptionnelle, livraison rapide vers la Guadeloupe." - <em>Marc D.</em></p>
+    <p>"Service client très professionnel, je recommande." - <em>Sophie L.</em></p>
 </div>
 
 <footer>
-    <p>POWELL SASU | Capital 30 000€ | SIREN 488 254 798</p>
-    <p>Confiance | Sécurité | Livraison DOM-TOM & Métropole</p>
+    <div class="container">
+        <h3>POWELL SASU</h3>
+        <p>25 Place de la République, 27400 Louviers, France</p>
+        <p>SIREN: 488 254 798 | TVA: FR95488254798</p>
+        <p><strong>Conditions Générales :</strong> Livraison sous 48h (FR) / 5-10 jours (DOM). Politique de retour : 14 jours satisfait ou remboursé.</p>
+    </div>
 </footer>
 
-<script>
-    function commander(nom) {
-        document.getElementById('catalogue').style.display = 'none';
-        document.getElementById('loader').style.display = 'block';
-        setTimeout(() => {
-            document.getElementById('loader').style.display = 'none';
-            const code = 'POW-' + Math.floor(Math.random()*99999);
-            document.getElementById('message').innerHTML = `<h2>Commande bien reçue !</h2><p>Référence client : <strong>${code}</strong></p><p>Un email de confirmation vous sera envoyé.</p><button onclick="location.reload()">Retour au catalogue</button>`;
-        }, 2000);
-    }
-</script>
 </body>
 </html>
