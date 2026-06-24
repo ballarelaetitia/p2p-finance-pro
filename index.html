@@ -2,65 +2,66 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POWELL | Solutions Technologiques Premium</title>
+    <title>POWELL | Catalogue Premium</title>
     <style>
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.8; color: #333; margin: 0; }
-        .hero { background: #0b0c10; color: #fff; padding: 120px 20px; text-align: center; }
-        .hero h1 { font-size: 4rem; margin: 0; }
+        body { font-family: 'Arial', sans-serif; background-color: #eaeded; margin: 0; }
         
-        /* Section Réassurance (Ce que vous demandiez) */
-        .trust-bar { background: #d4af37; color: #000; padding: 15px; text-align: center; font-weight: bold; }
+        /* Barre de navigation style Amazon */
+        .nav-bar { background-color: #232f3e; color: white; padding: 15px; text-align: center; font-size: 1.5em; font-weight: bold; }
         
-        .section { padding: 80px 20px; max-width: 1100px; margin: auto; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .card { border: 1px solid #ddd; padding: 30px; }
-        .card img { width: 100%; height: 300px; object-fit: cover; }
+        /* Grille dense */
+        .container { max-width: 1400px; margin: 20px auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; padding: 10px; }
         
-        .legal-block { background: #f4f4f4; padding: 50px; border-left: 5px solid #d4af37; margin: 40px 0; }
-        footer { background: #1a1a1a; color: #fff; padding: 80px 20px; text-align: center; }
+        /* Carte Produit compacte et pro */
+        .product-card { background: white; padding: 20px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-align: center; }
+        .product-card img { width: 100%; height: 200px; object-fit: contain; margin-bottom: 10px; }
+        .price { color: #b12704; font-size: 1.2em; font-weight: bold; margin: 10px 0; }
+        .btn-buy { background: #f0c14b; border: 1px solid #a88734; padding: 8px 20px; border-radius: 3px; cursor: pointer; font-weight: bold; }
+        
+        /* Footer institutionnel */
+        footer { background: #37475a; color: white; padding: 40px; margin-top: 50px; text-align: center; }
     </style>
 </head>
 <body>
 
-<div class="trust-bar">Livraison sécurisée sous 48h (France) | 5-10 jours (DOM-TOM) | Produit Certifié CE</div>
+<div class="nav-bar">POWELL STORE</div>
 
-<header class="hero">
-    <h1>POWELL</h1>
-    <p>La technologie d'excellence au service des professionnels</p>
-</header>
-
-<section class="section">
-    <h2>Catalogue Premium</h2>
-    <div class="product-grid">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1610945415247-a19368028741?q=80&w=1000" alt="Produit">
-            <h3>Station de Charge 3-en-1 Pro</h3>
-            <p><strong>Spécifications :</strong> Aluminium aéronautique, charge rapide 15W, protection surtension.</p>
-            <button style="width:100%; padding:20px; background:#000; color:#fff; cursor:pointer;">COMMANDER</button>
-        </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1593642634367-d95a832e87d6?q=80&w=1000" alt="Produit">
-            <h3>Support PC Ergonomique</h3>
-            <p><strong>Avantages :</strong> Optimisation thermique, posture corrigée, design minimaliste.</p>
-            <button style="width:100%; padding:20px; background:#000; color:#fff; cursor:pointer;">COMMANDER</button>
-        </div>
+<div class="container">
+    <!-- Répétez ce bloc pour chaque produit pour remplir la page comme Amazon -->
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1610945415247-a19368028741?auto=format&fit=crop&w=300" alt="Produit">
+        <p>Station de Charge 3-en-1 Pro</p>
+        <div class="price">129,00 €</div>
+        <button class="btn-buy">Ajouter au panier</button>
     </div>
-</section>
-
-<section class="section legal-block">
-    <h2>Processus de Commande Transparente</h2>
-    <p>1. <strong>Validation :</strong> Sélectionnez votre produit et générez votre code de commande.</p>
-    <p>2. <strong>Facturation Proforma :</strong> Notre service commercial vous transmet une facture officielle par email.</p>
-    <p>3. <strong>Paiement SEPA :</strong> Effectuez votre virement vers notre compte professionnel européen pour une sécurité totale.</p>
-    <p>4. <strong>Expédition :</strong> Dès réception des fonds, votre colis est préparé et expédié avec suivi.</p>
-</section>
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1593642634367-d95a832e87d6?auto=format&fit=crop&w=300" alt="Produit">
+        <p>Support PC Ergonomique</p>
+        <div class="price">99,00 €</div>
+        <button class="btn-buy">Ajouter au panier</button>
+    </div>
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?auto=format&fit=crop&w=300" alt="Produit">
+        <p>Tondeuse Titane Luxe</p>
+        <div class="price">89,00 €</div>
+        <button class="btn-buy">Ajouter au panier</button>
+    </div>
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=300" alt="Produit">
+        <p>Enceinte Bluetooth Pro</p>
+        <div class="price">149,00 €</div>
+        <button class="btn-buy">Ajouter au panier</button>
+    </div>
+    <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1526738546142-d69288e36780?auto=format&fit=crop&w=300" alt="Produit">
+        <p>Casque Audio Haute Fidélité</p>
+        <div class="price">199,00 €</div>
+        <button class="btn-buy">Ajouter au panier</button>
+    </div>
+</div>
 
 <footer>
-    <h3>POWELL SASU</h3>
-    <p>Capital Social : 30 000,00 € | SIREN : 488 254 798 | TVA : FR95488254798</p>
-    <p>Adresse Siège : 25 PLACE DE LA REPUBLIQUE, 27400 LOUVIERS, France</p>
-    <p><em>Conformément à la loi, vous disposez d'un droit de rétractation de 14 jours.</em></p>
+    <p>POWELL SASU | Mentions Légales | Conditions de Vente | Support Expert</p>
 </footer>
 
 </body>
