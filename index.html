@@ -3,61 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POWELL | Marketplace Pro</title>
-    <!-- Utilisation d'une police professionnelle -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>POWELL | Marketplace</title>
     <style>
         * { box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; margin: 0; background: #eaeded; }
-        
-        /* HEADER AVEC MENU BURGER */
-        header { background: #131921; color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; }
-        .menu-burger { cursor: pointer; font-size: 24px; }
-        .logo { font-size: 22px; font-weight: bold; }
-        
-        /* GRILLE DE PRODUITS DENSE */
-        .main-content { max-width: 1500px; margin: 20px auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; padding: 0 10px; }
-        .card { background: white; padding: 15px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 180px; object-fit: contain; }
-        .card h3 { font-size: 14px; margin: 10px 0; color: #0f1111; }
-        .price { font-size: 18px; font-weight: bold; color: #b12704; }
-        
-        /* BOUTON D'ACTION */
-        .btn-buy { background: #f0c14b; border: 1px solid #a88734; width: 100%; padding: 10px; cursor: pointer; border-radius: 3px; font-weight: bold; margin-top: 10px; }
-        
-        /* ESPACE JURIDIQUE / INFOS EN BAS */
-        .footer-info { background: #232f3e; color: #ddd; padding: 40px; margin-top: 40px; font-size: 12px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background: #f4f4f4; }
+
+        /* Header Authentique */
+        .header { background: #131921; padding: 12px 10px; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .burger { color: white; font-size: 24px; cursor: pointer; margin-right: 15px; }
+        .search-container { flex-grow: 1; }
+        #searchInput { width: 100%; padding: 10px; border-radius: 4px; border: none; outline: none; }
+
+        /* Grille Mobile-First (Zéro décalage) */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; padding: 10px; }
+        .card { background: white; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 160px; object-fit: cover; }
+        .info { padding: 8px; }
+        .title { font-size: 13px; font-weight: bold; margin-bottom: 5px; height: 35px; overflow: hidden; }
+        .price { color: #B12704; font-size: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="menu-burger" onclick="alert('Menu latéral ouvert : Accès CGV, Contact, Profil')">☰</div>
-    <div class="logo">POWELL</div>
-    <div>Mon Compte</div>
+<header class="header">
+    <div class="burger">☰</div>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Rechercher un article..." onkeyup="filterProducts()">
+    </div>
 </header>
 
-<div class="main-content">
-    <!-- Répétez ce bloc pour chaque article -->
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1610945415247-a19368028741?w=400" alt="Produit">
-        <h3>Station de Charge 3-en-1 Premium</h3>
-        <div class="price">129,00 €</div>
-        <button class="btn-buy" onclick="alert('Commande lancée via virement')">Ajouter au panier</button>
+<div class="grid" id="productGrid">
+    <div class="card" data-name="Station Pro">
+        <img src="https://images.unsplash.com/photo-1610945415247-a19368028741?w=300" alt="Prod">
+        <div class="info">
+            <div class="title">Station de Charge 3-en-1 Pro</div>
+            <div class="price">129,00 €</div>
+        </div>
     </div>
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1593642634367-d95a832e87d6?w=400" alt="Produit">
-        <h3>Support PC Aluminium Pro</h3>
-        <div class="price">99,00 €</div>
-        <button class="btn-buy">Ajouter au panier</button>
+    <div class="card" data-name="Support Alu">
+        <img src="https://images.unsplash.com/photo-1593642634367-d95a832e87d6?w=300" alt="Prod">
+        <div class="info">
+            <div class="title">Support PC Aluminium</div>
+            <div class="price">99,00 €</div>
+        </div>
     </div>
-    <!-- (Vous pouvez ajouter 20 blocs comme ceci pour remplir la page) -->
+    <div class="card" data-name="Tondeuse">
+        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=300" alt="Prod">
+        <div class="info">
+            <div class="title">Tondeuse Titane</div>
+            <div class="price">89,00 €</div>
+        </div>
+    </div>
 </div>
 
-<footer class="footer-info">
-    <p>POWELL SASU - Mentions Légales | Conditions de Vente | Politique de Confidentialité</p>
-    <p>Virement bancaire sécurisé | Expédition France & DOM-TOM</p>
-</footer>
-
+<script>
+    function filterProducts() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('card');
+        for (let i = 0; i < cards.length; i++) {
+            let name = cards[i].getAttribute('data-name').toLowerCase();
+            cards[i].style.display = name.includes(input) ? "" : "none";
+        }
+    }
+</script>
 </body>
 </html>
