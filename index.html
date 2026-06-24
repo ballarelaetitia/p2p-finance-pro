@@ -2,72 +2,65 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>POWELL | Boutique Premium Officielle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POWELL | Solutions Technologiques Premium</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #222; }
-        .hero { background: #000; color: #fff; padding: 100px 20px; text-align: center; }
-        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.8; color: #333; margin: 0; }
+        .hero { background: #0b0c10; color: #fff; padding: 120px 20px; text-align: center; }
+        .hero h1 { font-size: 4rem; margin: 0; }
         
-        /* Grille massive */
-        .catalog { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .item { border: 1px solid #e1e1e1; padding: 20px; transition: 0.3s; background: #fff; }
-        .item img { width: 100%; height: 300px; object-fit: cover; }
+        /* Section Réassurance (Ce que vous demandiez) */
+        .trust-bar { background: #d4af37; color: #000; padding: 15px; text-align: center; font-weight: bold; }
         
-        /* Section Avis */
-        .reviews { background: #f4f4f4; padding: 60px 20px; margin-top: 50px; text-align: center; }
+        .section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .card { border: 1px solid #ddd; padding: 30px; }
+        .card img { width: 100%; height: 300px; object-fit: cover; }
         
-        /* Pied de page complet */
-        footer { background: #111; color: #fff; padding: 60px 20px; font-size: 0.9em; }
-        .btn-main { background: #d4af37; color: white; padding: 20px 40px; border: none; font-weight: bold; cursor: pointer; width: 100%; }
+        .legal-block { background: #f4f4f4; padding: 50px; border-left: 5px solid #d4af37; margin: 40px 0; }
+        footer { background: #1a1a1a; color: #fff; padding: 80px 20px; text-align: center; }
     </style>
 </head>
 <body>
 
+<div class="trust-bar">Livraison sécurisée sous 48h (France) | 5-10 jours (DOM-TOM) | Produit Certifié CE</div>
+
 <header class="hero">
     <h1>POWELL</h1>
-    <p>Solutions technologiques d'excellence pour professionnels.</p>
+    <p>La technologie d'excellence au service des professionnels</p>
 </header>
 
-<div class="container">
-    <h2>Nos Meilleures Ventes</h2>
-    <div class="catalog">
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1622445275563-3139366e7672?q=80&w=800" alt="Produit">
+<section class="section">
+    <h2>Catalogue Premium</h2>
+    <div class="product-grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1610945415247-a19368028741?q=80&w=1000" alt="Produit">
             <h3>Station de Charge 3-en-1 Pro</h3>
-            <p>Technologie induction haute vitesse. Design en aluminium.</p>
-            <p><strong>129,00 €</strong></p>
-            <button class="btn-main" onclick="alert('Commande initiée. Veuillez finaliser sur WhatsApp.')">AJOUTER AU PANIER</button>
+            <p><strong>Spécifications :</strong> Aluminium aéronautique, charge rapide 15W, protection surtension.</p>
+            <button style="width:100%; padding:20px; background:#000; color:#fff; cursor:pointer;">COMMANDER</button>
         </div>
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1527443154391-507e9f6c58e5?q=80&w=800" alt="Produit">
-            <h3>Support Ergonomique Aéro</h3>
-            <p>Structure renforcée, dissipation thermique active.</p>
-            <p><strong>99,00 €</strong></p>
-            <button class="btn-main" onclick="alert('Commande initiée.')">AJOUTER AU PANIER</button>
-        </div>
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1621607516616-52261907797b?q=80&w=800" alt="Produit">
-            <h3>Tondeuse Précision Titane</h3>
-            <p>Lame ultra-précise pour usage professionnel.</p>
-            <p><strong>89,00 €</strong></p>
-            <button class="btn-main" onclick="alert('Commande initiée.')">AJOUTER AU PANIER</button>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1593642634367-d95a832e87d6?q=80&w=1000" alt="Produit">
+            <h3>Support PC Ergonomique</h3>
+            <p><strong>Avantages :</strong> Optimisation thermique, posture corrigée, design minimaliste.</p>
+            <button style="width:100%; padding:20px; background:#000; color:#fff; cursor:pointer;">COMMANDER</button>
         </div>
     </div>
-</div>
+</section>
 
-<div class="reviews">
-    <h2>Ce que nos clients pensent de POWELL</h2>
-    <p>"La qualité des produits est exceptionnelle, livraison rapide vers la Guadeloupe." - <em>Marc D.</em></p>
-    <p>"Service client très professionnel, je recommande." - <em>Sophie L.</em></p>
-</div>
+<section class="section legal-block">
+    <h2>Processus de Commande Transparente</h2>
+    <p>1. <strong>Validation :</strong> Sélectionnez votre produit et générez votre code de commande.</p>
+    <p>2. <strong>Facturation Proforma :</strong> Notre service commercial vous transmet une facture officielle par email.</p>
+    <p>3. <strong>Paiement SEPA :</strong> Effectuez votre virement vers notre compte professionnel européen pour une sécurité totale.</p>
+    <p>4. <strong>Expédition :</strong> Dès réception des fonds, votre colis est préparé et expédié avec suivi.</p>
+</section>
 
 <footer>
-    <div class="container">
-        <h3>POWELL SASU</h3>
-        <p>25 Place de la République, 27400 Louviers, France</p>
-        <p>SIREN: 488 254 798 | TVA: FR95488254798</p>
-        <p><strong>Conditions Générales :</strong> Livraison sous 48h (FR) / 5-10 jours (DOM). Politique de retour : 14 jours satisfait ou remboursé.</p>
-    </div>
+    <h3>POWELL SASU</h3>
+    <p>Capital Social : 30 000,00 € | SIREN : 488 254 798 | TVA : FR95488254798</p>
+    <p>Adresse Siège : 25 PLACE DE LA REPUBLIQUE, 27400 LOUVIERS, France</p>
+    <p><em>Conformément à la loi, vous disposez d'un droit de rétractation de 14 jours.</em></p>
 </footer>
 
 </body>
