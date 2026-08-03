@@ -31,6 +31,7 @@
             --success: #27ae60;
         }
 
+        /* Masquer la barre Google Translate */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
         #google_translate_element { display: none; }
@@ -108,6 +109,7 @@
             color: white !important;
         }
 
+        /* Sélecteur de langue dynamique avec drapeaux */
         .country-selector {
             position: relative;
             display: inline-block;
@@ -332,7 +334,7 @@
             <a href="#legal" class="nav-cage">Gouvernance</a>
             <a onclick="goToStep1()" href="#simBox" class="nav-cage">Dossier</a>
         </div>
-        
+
         <div class="country-selector">
             <div class="selected-country" onclick="toggleDropdown()">
                 <img src="https://flagcdn.com/w40/fr.png" class="flag" id="current-flag">
@@ -340,7 +342,12 @@
                 <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: auto; color: var(--gold);"></i>
             </div>
             <div class="country-dropdown" id="country-list">
-                <div onclick="selectLanguage('Français', 'fr')"><img src="https://flagcdn.com/w40/fr.png" class="flag"> Français</div>
+                <div onclick="changeLanguage('fr', 'Français', 'fr')"><img src="https://flagcdn.com/w40/fr.png" class="flag"> Français</div>
+                <div onclick="changeLanguage('en', 'English', 'gb')"><img src="https://flagcdn.com/w40/gb.png" class="flag"> English</div>
+                <div onclick="changeLanguage('de', 'Deutsch', 'de')"><img src="https://flagcdn.com/w40/de.png" class="flag"> Deutsch</div>
+                <div onclick="changeLanguage('it', 'Italiano', 'it')"><img src="https://flagcdn.com/w40/it.png" class="flag"> Italiano</div>
+                <div onclick="changeLanguage('es', 'Español', 'es')"><img src="https://flagcdn.com/w40/es.png" class="flag"> Español</div>
+                <div onclick="changeLanguage('pt', 'Português', 'pt')"><img src="https://flagcdn.com/w40/pt.png" class="flag"> Português</div>
             </div>
         </div>
     </div>
@@ -431,26 +438,34 @@
                 </select>
                 
                 <select name="pays" class="form-input" id="form-pays" required>
-                    <option value="France" selected>France (+33)</option>
-                    <option value="Allemagne">Allemagne (+49)</option>
-                    <option value="Italie">Italie (+39)</option>
-                    <option value="Belgique">Belgique (+32)</option>
-                    <option value="Luxembourg">Luxembourg (+352)</option>
-                    <option value="Suisse">Suisse (+41)</option>
-                    <option value="Espagne">Espagne (+34)</option>
-                    <option value="Portugal">Portugal (+351)</option>
-                    <option value="Grèce">Grèce (+30)</option>
-                    <option value="Royaume-Uni">Royaume-Uni (+44)</option>
-                    <option value="Pays-Bas">Pays-Bas (+31)</option>
-                    <option value="Autriche">Autriche (+43)</option>
-                    <option value="Canada">Canada (+1)</option>
-                    <option value="Pérou">Pérou (+51)</option>
-                    <option value="Bolivie">Bolivie (+591)</option>
-                    <option value="Brésil">Brésil (+55)</option>
-                    <option value="Mexique">Mexique (+52)</option>
-                    <option value="Argentine">Argentine (+54)</option>
-                    <option value="Colombie">Colombie (+57)</option>
-                    <option value="Chili">Chili (+56)</option>
+                    <optgroup label="Europe">
+                        <option value="France" selected>France (+33)</option>
+                        <option value="Allemagne">Allemagne (+49)</option>
+                        <option value="Italie">Italie (+39)</option>
+                        <option value="Belgique">Belgique (+32)</option>
+                        <option value="Luxembourg">Luxembourg (+352)</option>
+                        <option value="Suisse">Suisse (+41)</option>
+                        <option value="Espagne">Espagne (+34)</option>
+                        <option value="Portugal">Portugal (+351)</option>
+                        <option value="Grèce">Grèce (+30)</option>
+                        <option value="Royaume-Uni">Royaume-Uni (+44)</option>
+                        <option value="Pays-Bas">Pays-Bas (+31)</option>
+                        <option value="Autriche">Autriche (+43)</option>
+                        <option value="Pologne">Pologne (+48)</option>
+                        <option value="Suède">Suède (+46)</option>
+                    </optgroup>
+                    <optgroup label="Amérique Latine & Nord">
+                        <option value="Canada">Canada (+1)</option>
+                        <option value="Pérou">Pérou (+51)</option>
+                        <option value="Bolivie">Bolivie (+591)</option>
+                        <option value="Brésil">Brésil (+55)</option>
+                        <option value="Mexique">Mexique (+52)</option>
+                        <option value="Argentine">Argentine (+54)</option>
+                        <option value="Colombie">Colombie (+57)</option>
+                        <option value="Chili">Chili (+56)</option>
+                        <option value="Équateur">Équateur (+593)</option>
+                        <option value="Uruguay">Uruguay (+598)</option>
+                    </optgroup>
                 </select>
                 
                 <input type="tel" name="telephone" placeholder="Téléphone / WhatsApp" class="form-input" required>
@@ -507,7 +522,7 @@
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'fr',
-            includedLanguages: 'fr',
+            includedLanguages: 'fr,en,de,it,es,pt',
             autoDisplay: false
         }, 'google_translate_element');
     }
@@ -515,35 +530,53 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
-    // Avis spécialisés en agriculture et élevage couvrant TOUS les pays demandés (Europe + Amérique Latine)
+    // Gestion du changement de langue via le sélecteur graphique
+    function changeLanguage(langCode, langName, flagCode) {
+        document.getElementById('current-flag').src = `https://flagcdn.com/w40/${flagCode}.png`;
+        document.getElementById('current-name').innerText = langName.toUpperCase();
+        document.getElementById('country-list').classList.remove('show-countries');
+
+        // Déclenchement de la traduction Google Translate
+        let selectField = document.querySelector('select.goog-te-combo');
+        if (selectField) {
+            selectField.value = langCode;
+            selectField.dispatchEvent(new Event('change'));
+        }
+    }
+
+    function toggleDropdown() { 
+        document.getElementById('country-list').classList.toggle('show-countries'); 
+    }
+
+    // Avis professionnels agricoles (Europe & Amérique Latine)
     const allReviews = [
         { n: "Jean-Pierre D.", p: "France", t: "Financement rapide accordé pour l'achat de nouveaux tracteurs et matériel de labour.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
         { n: "Nathalie M.", p: "France", t: "Grâce à ce prêt, j'ai pu agrandir mon bâtiment d'élevage porcin en toute sérénité.", i: "https://randomuser.me/api/portraits/women/72.jpg" },
-        { n: "Hans K.", p: "Allemagne", t: "Exzellente Unterstützung für unseren Milchviehbetrieb. Sehr professionell.", i: "https://randomuser.me/api/portraits/men/1.jpg" },
-        { n: "Greta B.", p: "Allemagne", t: "Finanzierung für unsere Gewächshäuser problemlos erhalten. Sehr empfehlenswert.", i: "https://randomuser.me/api/portraits/women/44.jpg" },
-        { n: "Giovanni B.", p: "Italie", t: "Ottimo supporto per la mia azienda agricola e l'acquisto di macchinari.", i: "https://randomuser.me/api/portraits/men/15.jpg" },
-        { n: "Alessia V.", p: "Italie", t: "Grazie a questo credito ho potuto sviluppare il mio allevamento di bestiame.", i: "https://randomuser.me/api/portraits/women/28.jpg" },
-        { n: "Luc V.", p: "Belgique", t: "Un crédit agricole sur-mesure pour notre exploitation bovine familiale.", i: "https://randomuser.me/api/portraits/men/91.jpg" },
-        { n: "Martine P.", p: "Belgique", t: "Écoute remarquable pour les investissements en agriculture biologique.", i: "https://randomuser.me/api/portraits/women/82.jpg" },
-        { n: "Jean-François L.", p: "Canada", t: "Un accompagnement exceptionnel pour notre ferme laitière au Canada.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
-        { n: "Sylvie C.", p: "Canada", t: "Crédit obtenu rapidement pour l'achat d'équipements de culture à grande échelle.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
-        { n: "Mateo R.", p: "Pérou", t: "Excelente financiamiento para expandir nuestros cultivos de altura en el Perú.", i: "https://randomuser.me/api/portraits/men/55.jpg" },
-        { n: "Carmen T.", p: "Pérou", t: "Gracias por apoyar la modernización de nuestra cooperativa agrícola.", i: "https://randomuser.me/api/portraits/women/50.jpg" },
-        { n: "Henri S.", p: "Luxembourg", t: "Sehr seriöse Finanzierung für unseren landwirtschaftlichen Betrieb.", i: "https://randomuser.me/api/portraits/men/30.jpg" },
-        { n: "Rodrigo M.", p: "Bolivie", t: "Un gran apoyo financiero para mejorar nuestra producción ganadera en Bolivia.", i: "https://randomuser.me/api/portraits/men/40.jpg" },
-        { n: "Valeria Z.", p: "Bolivie", t: "Excelente atención y rapidez para nuestro proyecto agrícola familiar.", i: "https://randomuser.me/api/portraits/women/33.jpg" },
-        { n: "Marc W.", p: "Suisse", t: "Professionelle Kreditabwicklung für unseren Schweizer Bauernhof.", i: "https://randomuser.me/api/portraits/men/22.jpg" },
-        { n: "Javier G.", p: "Espagne", t: "Crédito excelente para renovar nuestra maquinaria agrícola en España.", i: "https://randomuser.me/api/portraits/men/65.jpg" },
-        { n: "Sofia R.", p: "Portugal", t: "Ótimo financiamento para a nossa exploração agrícola e apicultura.", i: "https://randomuser.me/api/portraits/women/45.jpg" },
-        { n: "Dimitrios P.", p: "Grèce", t: "Εξαιρετική χρηistودότηση για την κτηνοτροφική μας μονάδα.", i: "https://randomuser.me/api/portraits/men/71.jpg" },
-        { n: "William T.", p: "Royaume-Uni", t: "Fantastic agricultural loan service. Highly recommended for farmers.", i: "https://randomuser.me/api/portraits/men/48.jpg" },
-        { n: "Anouk V.", p: "Pays-Bas", t: "Geweldige ondersteuning voor onze moderne agrarische onderneming.", i: "https://randomuser.me/api/portraits/women/38.jpg" },
-        { n: "Stefan H.", p: "Autriche", t: "Perfekte Finanzierung für unseren Bergbauernhof und Viehbestand.", i: "https://randomuser.me/api/portraits/men/53.jpg" },
-        { n: "Carlos S.", p: "Brésil", t: "Excelente crédito agrícola para expandir nuestra hacienda en Brasil.", i: "https://randomuser.me/api/portraits/men/77.jpg" },
-        { n: "Alejandro F.", p: "Mexique", t: "Gran apoyo financiero para nuestra producción agrícola y ganadera.", i: "https://randomuser.me/api/portraits/men/88.jpg" },
-        { n: "Esteban H.", p: "Argentine", t: "Financiamiento transparente y rápido para nuestra estancia agrícola.", i: "https://randomuser.me/api/portraits/men/61.jpg" },
-        { n: "Felipe R.", p: "Colombie", t: "Excelente servicio para el desarrollo de nuestro proyecto ganadero.", i: "https://randomuser.me/api/portraits/men/93.jpg" },
-        { n: "Mateo C.", p: "Chili", t: "Crédito muy útil para optimizar nuestros sistemas de riego y cultivo.", i: "https://randomuser.me/api/portraits/men/41.jpg" }
+        { n: "Hans K.", p: "Allemagne", t: "Excellente aide financière obtenue pour la modernisation de notre exploitation laitière.", i: "https://randomuser.me/api/portraits/men/1.jpg" },
+        { n: "Greta B.", p: "Allemagne", t: "Prêt validé sans complication pour l'installation de nos nouveaux serres de culture.", i: "https://randomuser.me/api/portraits/women/44.jpg" },
+        { n: "Giovanni B.", p: "Italie", t: "Soutien exceptionnel reçu pour l'achat de machines agricoles de pointe en Italie.", i: "https://randomuser.me/api/portraits/men/15.jpg" },
+        { n: "Alessia V.", p: "Italie", t: "Grâce à ce crédit, j'ai pu développer mon élevage ovin et améliorer le rendement.", i: "https://randomuser.me/api/portraits/women/28.jpg" },
+        { n: "Luc V.", p: "Belgique", t: "Un crédit agricole sur-mesure et un accompagnement de grande qualité pour notre ferme.", i: "https://randomuser.me/api/portraits/men/91.jpg" },
+        { n: "Martine P.", p: "Belgique", t: "Une écoute remarquable pour nos investissements en agriculture biologique.", i: "https://randomuser.me/api/portraits/women/82.jpg" },
+        { n: "Jean-François L.", p: "Canada", t: "Un accompagnement exceptionnel et rapide pour notre ferme laitière au Canada.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
+        { n: "Sylvie C.", p: "Canada", t: "Crédit obtenu avec succès pour l'acquisition d'équipements de culture à grande échelle.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
+        { n: "Mateo R.", p: "Pérou", t: "Excellent financement pour étendre nos cultures maraîchères en haute altitude.", i: "https://randomuser.me/api/portraits/men/55.jpg" },
+        { n: "Carmen T.", p: "Pérou", t: "Merci pour votre appui précieux dans la modernisation de notre coopérative agricole.", i: "https://randomuser.me/api/portraits/women/50.jpg" },
+        { n: "Henri S.", p: "Luxembourg", t: "Financement très rigoureux et transparent pour notre exploitation professionnelle.", i: "https://randomuser.me/api/portraits/men/30.jpg" },
+        { n: "Rodrigo M.", p: "Bolivie", t: "Un soutien financier indispensable pour améliorer notre production d'élevage en Bolivie.", i: "https://randomuser.me/api/portraits/men/40.jpg" },
+        { n: "Valeria Z.", p: "Bolivie", t: "Service professionnel et sécurisé pour notre projet d'irrigation et de cultures.", i: "https://randomuser.me/api/portraits/women/33.jpg" },
+        { n: "Marc W.", p: "Suisse", t: "Traitement rapide et professionnel pour notre exploitation agricole alpine.", i: "https://randomuser.me/api/portraits/men/22.jpg" },
+        { n: "Javier G.", p: "Espagne", t: "Crédit parfait pour renouveler l'ensemble de notre flotte de tracteurs en Espagne.", i: "https://randomuser.me/api/portraits/men/65.jpg" },
+        { n: "Sofia R.", p: "Portugal", t: "Financement idéal pour notre projet d'exploitation oléicole et apicole.", i: "https://randomuser.me/api/portraits/women/45.jpg" },
+        { n: "Dimitrios P.", p: "Grèce", t: "Aide financière substantielle accordée pour notre unité d'élevage avicole.", i: "https://randomuser.me/api/portraits/men/71.jpg" },
+        { n: "William T.", p: "Royaume-Uni", t: "Un service de prêt agricole exceptionnel et très efficace pour nos terres.", i: "https://randomuser.me/api/portraits/men/48.jpg" },
+        { n: "Anouk V.", p: "Pays-Bas", t: "Soutien formidable pour notre entreprise horticole et serres automatisées.", i: "https://randomuser.me/api/portraits/women/38.jpg" },
+        { n: "Stefan H.", p: "Autriche", t: "Crédit parfaitement adapté aux besoins de notre ferme de montagne.", i: "https://randomuser.me/api/portraits/men/53.jpg" },
+        { n: "Carlos S.", p: "Brésil", t: "Financement sécurisé pour l'agrandissement de notre domaine agricole au Brésil.", i: "https://randomuser.me/api/portraits/men/77.jpg" },
+        { n: "Alejandro F.", p: "Mexique", t: "Grand appui financier pour le développement de nos cultures et de notre bétail.", i: "https://randomuser.me/api/portraits/men/88.jpg" },
+        { n: "Esteban H.", p: "Argentine", t: "Prêt accordé rapidement et sans encombre pour notre estancia agricole.", i: "https://randomuser.me/api/portraits/men/61.jpg" },
+        { n: "Felipe R.", p: "Colombie", t: "Excellent accompagnement pour la croissance de notre projet d'élevage bovin.", i: "https://randomuser.me/api/portraits/men/93.jpg" },
+        { n: "Mateo C.", p: "Chili", t: "Financement très utile pour optimiser nos installations d'irrigation moderne.", i: "https://randomuser.me/api/portraits/men/41.jpg" }
     ];
 
     let queue = [...allReviews].sort(() => Math.random() - 0.5); 
@@ -576,7 +609,7 @@
         setInterval(dropOneReview, 7000); 
     }
 
-    // Simulateur
+    // Simulateur de crédit
     const amtR = document.getElementById('amtRange');
     const amtN = document.getElementById('amtNum');
     const durR = document.getElementById('durRange');
@@ -606,16 +639,7 @@
     
     window.onload = startAnimation;
 
-    // Gestion du sélecteur pays unique (Français)
-    function selectLanguage(name, code) {
-        document.getElementById('current-flag').src = `https://flagcdn.com/w40/${code}.png`;
-        document.getElementById('current-name').innerText = name.toUpperCase();
-        document.getElementById('country-list').classList.remove('show-countries');
-    }
-
-    function toggleDropdown() { document.getElementById('country-list').classList.toggle('show-countries'); }
-
-    // Soumission Formulaire Web3Forms
+    // Soumission Formulaire Web3Forms avec suivi Google Ads
     const form = document.getElementById('loanForm');
     if (form) {
         form.onsubmit = async (e) => {
