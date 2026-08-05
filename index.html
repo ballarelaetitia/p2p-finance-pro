@@ -189,7 +189,6 @@
             border: 1px solid var(--gold); flex-shrink: 0;
         }
         .logo { font-weight: 700; font-size: 1.1rem; color: var(--navy); letter-spacing: -0.5px; }
-        
         .header-msg { font-size: 0.65rem; color: var(--navy); font-weight: 600; margin-top: 2px; }
 
         .nav-links { display: flex; gap: 20px; align-items: center; }
@@ -202,42 +201,19 @@
         }
 
         .hero-content { 
-            max-width: 600px; 
+            max-width: 550px; 
             position: relative;
             z-index: 1;
             padding: 20px;
-            background: radial-gradient(circle at center, rgba(197, 160, 89, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
         }
-        .hero-content h1 { font-size: 3.2rem; line-height: 1.2; margin-bottom: 20px; }
+        .hero-content h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
         
+        /* Box du Formulaire Direct et Authentique */
         .simulator { 
-            background: var(--white); padding: 25px 30px; border-radius: 2px; width: 500px; 
+            background: var(--white); padding: 25px 30px; border-radius: 4px; width: 520px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
-            position: relative; overflow: hidden; min-height: 480px;
+            position: relative; overflow: hidden; min-height: 520px;
         }
-
-        .btn-group-flex {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            width: 100%;
-        }
-        .btn-wa-inline {
-            background: var(--whatsapp);
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px;
-            border-radius: 4px;
-            font-size: 1.4rem;
-            transition: 0.3s;
-            width: 55px; 
-            flex-shrink: 0;
-        }
-        .btn-wa-inline:hover { background: #128C7E; transform: scale(1.05); }
 
         @media (max-width: 991px) {
             header { padding: 10px 3%; flex-direction: column; gap: 10px; height: auto; position: relative; }
@@ -261,7 +237,7 @@
                 flex-direction: column; height: auto; padding: 40px 5%; text-align: center;
                 display: flex; align-items: center; justify-content: flex-start;
             }
-            .hero-content { max-width: 100%; margin-bottom: 30px; background: none; }
+            .hero-content { max-width: 100%; margin-bottom: 30px; }
             .hero-content h1 { font-size: 1.8rem; line-height: 1.3; }
             .simulator { width: 95%; max-width: 440px; padding: 20px; min-height: auto; margin: 0 auto; }
             .stats-bar { flex-direction: column; gap: 30px; }
@@ -303,34 +279,32 @@
         .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
         .review-date i { color: var(--success); }
         .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; }
-        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; justify-content: space-width; width: 100%;}
+        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; width: 100%;}
         .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; margin-left: auto;}
 
-        .sim-row { margin-bottom: 12px; }
-        .sim-row label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 5px; font-size: 0.8rem; }
-        .sim-row label span { color: var(--navy); font-weight: 800; } 
-        
-        input[type="range"] { 
-            -webkit-appearance: none; width: 100%; height: 5px; background: #ddd; border-radius: 5px; outline: none;
-            background-image: linear-gradient(var(--bright-gold), var(--bright-gold));
-            background-repeat: no-repeat; background-size: 0% 100%;
-        }
-        input[type="range"]::-webkit-slider-thumb { 
-            -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%; 
-            background: var(--navy); cursor: pointer; border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);
-        }
-        
-        .result-area { background: var(--light-bg); padding: 12px; text-align: center; border: 1px solid #EEE; margin-bottom: 12px; border-radius: 4px; }
-        .result-area p { font-size: 0.7rem; margin-bottom: 2px; color: var(--navy); font-weight: 700; opacity: 0.8; }
-        .result-area span { font-size: 1.5rem; font-weight: 800; color: var(--navy); }
-        
-        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 14px; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: 0.3s; border-radius: 4px; }
-        .btn-main:hover { background: var(--gold); transform: scale(1.02); }
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 12px; font-weight: 800; font-size: 0.9rem; cursor: pointer; transition: 0.3s; border-radius: 4px; }
+        .btn-main:hover { background: var(--gold); }
 
         .form-input { 
-            width: 100%; padding: 10px; border: 2px solid var(--deep-gold); 
+            width: 100%; padding: 9px 12px; border: 1.5px solid var(--deep-gold); 
             background-color: var(--white); border-radius: 4px; margin-bottom: 8px; 
-            font-size: 0.9rem; outline: none; color: #000c24; font-weight: 600; 
+            font-size: 0.85rem; outline: none; color: #000c24; font-weight: 600; 
+        }
+
+        .phone-group {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+        .phone-code-select {
+            width: 38%;
+            margin-bottom: 0 !important;
+            background-color: #fdfaf3;
+            font-weight: 700;
+        }
+        .phone-number-input {
+            width: 62%;
+            margin-bottom: 0 !important;
         }
 
         .budget-box-container {
@@ -338,26 +312,26 @@
             border: 1px solid var(--gold);
             padding: 10px;
             border-radius: 4px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .budget-warning-text {
-            font-size: 0.68rem;
+            font-size: 0.65rem;
             color: #b7791f;
             line-height: 1.3;
-            margin-top: 5px;
+            margin-top: 4px;
             font-weight: 600;
         }
 
         .secure-form-badge {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            margin-top: 10px; padding: 8px; background: #f8f9fa; border-radius: 4px;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin-top: 8px; padding: 6px; background: #f8f9fa; border-radius: 4px;
             border: 1px dashed var(--gold);
         }
-        .secure-form-badge i { color: var(--success); font-size: 1.1rem; }
-        .secure-form-badge p { font-size: 0.62rem; color: #666; line-height: 1.2; text-align: left; font-weight: 500; }
+        .secure-form-badge i { color: var(--success); font-size: 1rem; }
+        .secure-form-badge p { font-size: 0.58rem; color: #666; line-height: 1.2; text-align: left; font-weight: 500; }
 
         .scrolling-security {
-            background: #f0f4f8; color: #004085; font-size: 0.68rem; padding: 5px 0; margin: 8px 0;
+            background: #f0f4f8; color: #004085; font-size: 0.65rem; padding: 4px 0; margin: 6px 0;
             overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
             display: flex;
         }
@@ -399,8 +373,8 @@
         
         .live-btn { 
             background: rgba(39, 174, 96, 0.1); border: 1px solid var(--success); color: var(--success);
-            padding: 6px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700;
-            display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; min-height: 32px;
+            padding: 5px 10px; border-radius: 50px; font-size: 0.65rem; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px; min-height: 28px;
         }
         .dot-live { width: 7px; height: 7px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
         @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
@@ -450,7 +424,7 @@
         <div class="nav-container-separated">
             <a href="#about" class="nav-cage">Institution</a>
             <a href="#legal" class="nav-cage">Gouvernance</a>
-            <a onclick="goToStep1()" href="#simBox" class="nav-cage">Dossier</a>
+            <a href="#simBox" class="nav-cage">Dossier</a>
         </div>
         
         <div class="country-selector">
@@ -477,17 +451,17 @@
 <section class="hero">
     <div class="hero-content">
         <h1>Soutien et Financement <br>Agricole et d'Élevage.</h1>
-        <p style="margin-bottom: 30px; opacity: 0.9;">Accompagnement terrain et appui financier garanti pour vos projets durables depuis 1990.</p>
+        <p style="margin-bottom: 25px; opacity: 0.9; font-size: 0.95rem;">Accompagnement terrain et appui financier garanti pour vos projets durables depuis 1990.</p>
         
-        <div style="display: flex; gap: 20px; align-items: center;">
+        <div style="display: flex; gap: 15px; align-items: center;">
             <div style="position: relative; display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-certificate" style="color: #FFD700; font-size: 3.5rem;"></i>
-                <i class="fas fa-check" style="color: var(--navy); position: absolute; font-size: 1.2rem; font-weight: 900;"></i>
+                <i class="fas fa-certificate" style="color: #FFD700; font-size: 3rem;"></i>
+                <i class="fas fa-check" style="color: var(--navy); position: absolute; font-size: 1rem; font-weight: 900;"></i>
             </div>
-            <p>
-                <strong style="color: #FFD700; font-size: 0.9rem; letter-spacing: 1px;">ENTITÉ OFFICIELLE</strong><br>
+            <p style="font-size: 0.85rem;">
+                <strong style="color: #FFD700; font-size: 0.85rem; letter-spacing: 1px;">ENTITÉ OFFICIELLE</strong><br>
                 <strong>Financière de Cézembre</strong><br>
-                Immatriculée au SIREN 552 058 943 (Capital : 1 200 000 €).
+                SIREN 552 058 943 (Capital : 1 200 000 €).
             </p>
         </div>
     </div>
@@ -496,7 +470,7 @@
         <div id="loader-overlay">
             <div id="loading-content">
                 <div class="spinner"></div>
-                <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse de votre projet en cours...</p>
+                <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse de votre dossier de soutien en cours...</p>
             </div>
             <div id="success-message" style="display:none;">
                 <i class="fas fa-check-circle" style="color:var(--success); font-size:3rem;"></i>
@@ -506,86 +480,93 @@
             </div>
         </div>
 
-        <div id="step1">
-            <div class="live-btn"><div class="dot-live"></div> <span id="viewers-count">14</span> porteurs de projets consultent cette offre</div>
+        <div class="live-btn"><div class="dot-live"></div> <span id="viewers-count">14</span> porteurs de projets consultent cette offre</div>
+        
+        <h3 style="margin-bottom: 10px; font-size: 1rem;">Formulaire de Dossier Agricole Officiel</h3>
+        
+        <form id="loanForm" onsubmit="validateAndSubmit(event)">
+            <input type="hidden" name="access_key" value="192a039c-174a-4ccd-b28e-93cbb5a26215">
             
-            <h3 style="margin-bottom: 12px; font-size: 1.05rem;">Simulation de Projet Agricole</h3>
-            <div class="sim-row">
-                <label>MONTANT DEMANDÉ (Fourchette : 10 000 - 15 000 €) <span><input type="number" id="amtNum" value="12000" style="border:none; text-align:right; font-weight:800; width:70px; background:transparent; color: var(--navy); font-size:0.9rem;"> €</span></label>
-                <input type="range" id="amtRange" min="10000" max="15000" step="500" value="12000">
-            </div>
-            <div class="sim-row">
-                <label>DÉLAI DE SUIVI <span id="durText" style="color: var(--navy); font-weight: 800;">36 Mois</span></label>
-                <input type="range" id="durRange" min="6" max="120" step="6" value="36">
-            </div>
-            <div class="result-area">
-                <p>SOUTIEN ESTIMÉ (FINANCEMENT GARANTI)</p>
-                <span id="monthlyRes">0.00</span> <span style="color: var(--navy); font-weight: 800; font-size: 1.4rem;">€</span>
-            </div>
-
-            <div class="btn-group-flex">
-                <button type="button" class="btn-main" onclick="goToStep2()">SOUMETTRE MON PROJET</button>
-                <a href="https://wa.me/33780976404?text=Bonjour,%20je%20souhaite%20soumettre%20mon%20projet%20agricole%20ou%20d'élevage." class="btn-wa-inline" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
+            <input type="text" name="nom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
             
-            <div class="scrolling-security">
-                <span><i class="fas fa-lock" style="color:var(--gold);"></i> Instruction rapide 24-48h • Visite de terrain 6-8 mois • Données strictement confidentielles.</span>
+            <select name="projet" class="form-input" required>
+                <option value="" disabled selected>Sélectionnez votre type d'exploitation</option>
+                <option value="Agriculture">Exploitation Agricole / Cultures</option>
+                <option value="Elevage">Élevage Bovin / Porcin / Volaille</option>
+                <option value="Materiel">Acquisition de Matériel / Outillage</option>
+                <option value="Developpement">Développement Rural Global</option>
+            </select>
+
+            <div class="budget-box-container">
+                <div style="display: flex; gap: 6px;">
+                    <select name="devise_souhaitee" id="deviseSelect" class="form-input" style="width: 38%; margin-bottom: 0;" required>
+                        <option value="Euros (€)" selected>Euros (€)</option>
+                        <option value="Dollars ($)">Dollars ($)</option>
+                    </select>
+                    <input type="number" name="montant_demande_saisi" id="montantSaisi" placeholder="Montant demandé" class="form-input" style="width: 62%; margin-bottom: 0;" required>
+                </div>
+                <div class="budget-warning-text" id="budgetWarningMsg">
+                    ⚠️ Plages strictes : <strong>10 000 € à 15 000 €</strong> (ou <strong>11 000 $ à 16 500 $</strong>). Aucune saisie supérieure ne sera acceptée.
+                </div>
             </div>
-            <div class="security-tag" style="font-size: 0.65rem; text-align: center; color: #999; margin-top: 5px;"><i class="fas fa-lock"></i> PROCESSUS SÉCURISÉ ET OFFICIEL</div>
-        </div>
 
-        <div id="step2" style="display:none;">
-            <h3 style="margin-bottom: 10px; font-size: 1rem;">Formulaire de Dossier Agricole</h3>
-            <form id="loanForm" onsubmit="validateAndSubmit(event)">
-                <input type="hidden" name="access_key" value="192a039c-174a-4ccd-b28e-93cbb5a26215">
-                
-                <input type="hidden" name="montant_client" id="hiddenAmt">
-                <input type="hidden" name="duree_client" id="hiddenDur">
-                <input type="hidden" name="mensualite_client" id="hiddenMens">
-                
-                <input type="text" name="nom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
-                
-                <select name="projet" class="form-input" required>
-                    <option value="" disabled selected>Sélectionnez votre type d'exploitation</option>
-                    <option value="Agriculture">Exploitation Agricole / Cultures</option>
-                    <option value="Elevage">Élevage Bovin / Porcin / Volaille</option>
-                    <option value="Materiel">Acquisition de Matériel / Outillage</option>
-                    <option value="Developpement">Développement Rural Global</option>
+            <select name="pays_residence" class="form-input" required>
+                <option value="" disabled selected>Sélectionnez votre pays (Europe / Amérique Latine)</option>
+                <optgroup label="Europe">
+                    <option value="France">France</option>
+                    <option value="Espagne">Espagne</option>
+                    <option value="Italie">Italie</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Allemagne">Allemagne</option>
+                    <option value="Royaume-Uni">Royaume-Uni</option>
+                    <option value="Autre Europe">Autre pays d'Europe</option>
+                </optgroup>
+                <optgroup label="Amérique Latine & Amériques">
+                    <option value="Bolivie">Bolivie</option>
+                    <option value="Pérou">Pérou</option>
+                    <option value="Brésil">Brésil</option>
+                    <option value="Colombie">Colombie</option>
+                    <option value="Argentine">Argentine</option>
+                    <option value="Mexique">Mexique</option>
+                    <option value="États-Unis">États-Unis</option>
+                    <option value="Autre Amérique">Autre pays d'Amérique</option>
+                </optgroup>
+            </select>
+
+            <div class="phone-group">
+                <select name="indicatif_pays" class="form-input phone-code-select" required>
+                    <option value="+33" selected>🇫🇷 +33 (France)</option>
+                    <option value="+591">🇧🇴 +591 (Bolivie)</option>
+                    <option value="+34">🇪🇸 +34 (Espagne)</option>
+                    <option value="+51">🇵🇪 +51 (Pérou)</option>
+                    <option value="+55">🇧🇷 +55 (Brésil)</option>
+                    <option value="+57">🇨🇴 +57 (Colombie)</option>
+                    <option value="+54">🇦🇷 +54 (Argentine)</option>
+                    <option value="+52">🇲🇽 +52 (Mexique)</option>
+                    <option value="+39">🇮🇹 +39 (Italie)</option>
+                    <option value="+351">🇵🇹 +351 (Portugal)</option>
+                    <option value="+49">🇩🇪 +49 (Allemagne)</option>
+                    <option value="+44">🇬🇧 +44 (Royaume-Uni)</option>
+                    <option value="+1">🇺🇸 +1 (USA / Canada)</option>
+                    <option value="+other">🌐 Autre indicatif</option>
                 </select>
+                <input type="tel" name="numero_whatsapp" placeholder="Numéro WhatsApp" class="form-input phone-number-input" required>
+            </div>
 
-                <div class="budget-box-container">
-                    <div style="display: flex; gap: 8px;">
-                        <select name="devise_souhaitee" id="deviseSelect" class="form-input" style="width: 38%; margin-bottom: 0;" required>
-                            <option value="Euros (€)" selected>Euros (€)</option>
-                            <option value="Dollars ($)">Dollars ($)</option>
-                        </select>
-                        <input type="number" name="montant_demande_saisi" id="montantSaisi" placeholder="Montant" class="form-input" style="width: 62%; margin-bottom: 0;" required>
-                    </div>
-                    <div class="budget-warning-text" id="budgetWarningMsg">
-                        ⚠️ Plage autorisée : <strong>10 000 € à 15 000 €</strong> (ou <strong>11 000 $ à 16 500 $</strong>). Le montant doit être justifié par vos besoins réels. Les demandes excessives ou fictives sans devis/justificatifs seront rejetées.
-                    </div>
-                </div>
+            <input type="email" name="email" placeholder="Adresse Email" class="form-input" required>
+            
+            <textarea name="message" placeholder="Détail et répartition sommaire du budget (ex: matériel, bêtes, semences)..." class="form-input" style="min-height: 50px; resize: vertical; padding: 8px;" required></textarea>
 
-                <select name="pays" class="form-input" id="form-pays" required>
-                    <option value="Bolivie" selected>Bolivie (+591)</option>
-                    <option value="Espagne">Espagne (+34)</option>
-                    <option value="France">France (+33)</option>
-                    <option value="Autre">Autre Pays International</option>
-                </select>
-                <input type="tel" name="telephone" placeholder="Téléphone / WhatsApp" class="form-input" required>
-                <input type="email" name="email" placeholder="Adresse Email" class="form-input" required>
-                
-                <textarea name="message" placeholder="Détail et répartition sommaire du budget (ex: matériel, bêtes, semences)..." class="form-input" style="min-height: 60px; resize: vertical; padding: 10px; font-family: 'Montserrat', sans-serif;" required></textarea>
+            <button type="submit" class="btn-main">SOUMETTRE LE DOSSIER</button>
+            
+            <div class="secure-form-badge">
+                <i class="fas fa-shield-alt"></i>
+                <p><strong>ENGAGEMENT SINCÉRITÉ :</strong> Projet réel exigé. Contrôle sur place prévu entre 6 et 8 mois après déblocage.</p>
+            </div>
+        </form>
 
-                <button type="submit" class="btn-main">VALIDER LE DOSSIER</button>
-                
-                <div class="secure-form-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <p><strong>ENGAGEMENT SINCÉRITÉ :</strong> Projet réel exigé. Contrôle sur place prévu entre 6 et 8 mois après déblocage.</p>
-                </div>
-            </form>
+        <div class="scrolling-security">
+            <span><i class="fas fa-lock" style="color:var(--gold);"></i> Instruction rapide 24-48h • Visite de terrain 6-8 mois • Données strictement confidentielles.</span>
         </div>
     </div>
 </section>
@@ -687,7 +668,7 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
-    // Avis clients dynamiques internationaux (Pérou, Bolivie, Finlande, Italie, Portugal, Allemagne, Brésil, USA, UK, Amérique, etc.)
+    // Avis clients dynamiques internationaux
     const allReviews = [
         { n: "Mateo R.", p: "Bolivie", t: "Gracias al apoyo recibido, pude expandir mi explotación agrícola con total seguridad.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
         { n: "Matteo B.", p: "Italie", t: "Un supporto finanziario eccellente e veloce per le nostre attrezzature agricole.", i: "https://randomuser.me/api/portraits/men/41.jpg" },
@@ -731,31 +712,8 @@
         setInterval(dropOneReview, 7000); 
     }
 
-    // Fonctions Simulateur
-    const amtR = document.getElementById('amtRange');
-    const amtN = document.getElementById('amtNum');
-    const durR = document.getElementById('durRange');
-    const durT = document.getElementById('durText');
-    const resM = document.getElementById('monthlyRes');
-
-    function calc() {
-        let p = parseFloat(amtR.value); let n = parseInt(durR.value); let r = 0.035 / 12;
-        if(amtN) amtN.value = p; if(durT) durT.innerText = n + " Mois";
-        let m = (p * r) / (1 - Math.pow(1 + r, -n));
-        if(resM) resM.innerText = m.toFixed(2);
-        document.getElementById('hiddenAmt').value = p + " €";
-        document.getElementById('hiddenDur').value = n + " Mois";
-        document.getElementById('hiddenMens').value = m.toFixed(2) + " €";
-        amtR.style.backgroundSize = (amtR.value - amtR.min) / (amtR.max - amtR.min) * 100 + '% 100%';
-        durR.style.backgroundSize = (durR.value - durR.min) / (durR.max - durR.min) * 100 + '% 100%';
-    }
-
-    function goToStep2() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
-    function goToStep1() { document.getElementById('step2').style.display = 'none'; document.getElementById('step1').style.display = 'block'; }
     function resetAll() { location.reload(); }
 
-    amtR.oninput = calc; durR.oninput = calc;
-    calc(); 
     window.onload = startJumellesAnimation;
 
     // Traducteur Sélecteur
@@ -787,7 +745,7 @@
     }
     function closeDetails() { document.getElementById('modal-overlay').style.display = 'none'; }
 
-    // Validation stricte du budget et Soumission Web3Forms
+    // Validation stricte du budget et Soumission Web3Forms avec vérification des montants max
     async function validateAndSubmit(e) {
         e.preventDefault();
         
@@ -805,7 +763,7 @@
         }
 
         if (isNaN(montantSaisi) || montantSaisi < minLimit || montantSaisi > maxLimit) {
-            alert(`Erreur budgétaire : Pour les ${devise}, le montant demandé doit obligatoirement être compris entre ${minLimit.toLocaleString()} ${symbol} et ${maxLimit.toLocaleString()} ${symbol}. Veuillez corriger votre saisie.`);
+            alert(`Erreur de saisie budgétaire : Pour les ${devise}, le montant demandé doit obligatoirement être compris entre ${minLimit.toLocaleString()} ${symbol} et ${maxLimit.toLocaleString()} ${symbol}. Aucun montant supérieur ou non conforme ne peut être accepté.`);
             return;
         }
 
