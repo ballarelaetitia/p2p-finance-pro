@@ -208,7 +208,6 @@
         }
         .hero-content h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
         
-        /* Box du Formulaire Direct et Authentique */
         .simulator { 
             background: var(--white); padding: 25px 30px; border-radius: 4px; width: 520px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
@@ -452,8 +451,9 @@
                 <div onclick="selectLanguage('Français', 'fr')"><img src="https://flagcdn.com/w40/fr.png" class="flag"> Français</div>
                 <div onclick="selectLanguage('Español', 'es')"><img src="https://flagcdn.com/w40/es.png" class="flag"> Español</div>
                 <div onclick="selectLanguage('English', 'gb')"><img src="https://flagcdn.com/w40/gb.png" class="flag"> English</div>
+                <div onclick="selectLanguage('Português', 'pt')"><img src="https://flagcdn.com/w40/pt.png" class="flag"> Português</div>
                 <div onclick="selectLanguage('Deutsch', 'de')"><img src="https://flagcdn.com/w40/de.png" class="flag"> Deutsch</div>
-                <div onclick="selectLanguage('Greek', 'gr')"><img src="https://flagcdn.com/w40/gr.png" class="flag"> Ελληνικά</div>
+                <div onclick="selectLanguage('Svenska', 'se')"><img src="https://flagcdn.com/w40/se.png" class="flag"> Svenska</div>
             </div>
         </div>
     </div>
@@ -538,7 +538,6 @@
                     <option value="France">France</option>
                     <option value="Espagne">Espagne</option>
                     <option value="Italie">Italie</option>
-                    <option value="Portugal">Portugal</option>
                     <option value="Allemagne">Allemagne</option>
                     <option value="Royaume-Uni">Royaume-Uni</option>
                     <option value="Belgique">Belgique</option>
@@ -561,24 +560,24 @@
 
             <div class="phone-group">
                 <select name="indicatif_pays" class="form-input phone-code-select" required>
-                    <option value="+33" selected>🇫🇷 +33 (France)</option>
-                    <option value="+591">🇧🇴 +591 (Bolivie)</option>
-                    <option value="+34">🇪🇸 +34 (Espagne)</option>
-                    <option value="+51">🇵🇪 +51 (Pérou)</option>
-                    <option value="+55">🇧🇷 +55 (Brésil)</option>
-                    <option value="+57">🇨🇴 +57 (Colombie)</option>
-                    <option value="+54">🇦🇷 +54 (Argentine)</option>
-                    <option value="+52">🇲🇽 +52 (Mexique)</option>
-                    <option value="+39">🇮🇹 +39 (Italie)</option>
-                    <option value="+351">🇵🇹 +351 (Portugal)</option>
-                    <option value="+49">🇩🇪 +49 (Allemagne)</option>
-                    <option value="+44">🇬🇧 +44 (Royaume-Uni)</option>
-                    <option value="+32">🇧🇪 +32 (Belgique)</option>
-                    <option value="+41">🇨🇭 +41 (Suisse)</option>
-                    <option value="+56">🇨🇱 +56 (Chili)</option>
-                    <option value="+593">🇪🇨 +593 (Équateur)</option>
-                    <option value="+1">🇨🇦/🇺🇸 +1 (Canada / USA)</option>
-                    <option value="+other">🌐 Autre indicatif</option>
+                    <option value="+33" selected>🇫🇷 +33</option>
+                    <option value="+591">🇧🇴 +591</option>
+                    <option value="+34">🇪🇸 +34</option>
+                    <option value="+51">🇵🇪 +51</option>
+                    <option value="+55">🇧🇷 +55</option>
+                    <option value="+57">🇨🇴 +57</option>
+                    <option value="+54">🇦🇷 +54</option>
+                    <option value="+52">🇲🇽 +52</option>
+                    <option value="+39">🇮🇹 +39</option>
+                    <option value="+351">🇵🇹 +351</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+32">🇧🇪 +32</option>
+                    <option value="+41">🇨🇭 +41</option>
+                    <option value="+56">🇨🇱 +56</option>
+                    <option value="+593">🇪🇨 +593</option>
+                    <option value="+1">🇨🇦/🇺🇸 +1</option>
+                    <option value="+other">🌐 +...</option>
                 </select>
                 <input type="tel" name="numero_whatsapp" placeholder="Numéro WhatsApp" class="form-input phone-number-input" required>
             </div>
@@ -692,6 +691,9 @@
         <strong>INFORMATIONS LÉGALES & ENGAGEMENT :</strong> FINANCIÈRE DE CÉZEMBRE. Tolérance zéro pour les projets fictifs.
         <div class="tag-warning"><span class="blink-gold">TOUT SOUTIEN ACCORDÉ DOIT CONCERNER UN PROJET AGRICOLE OU D'ÉLEVAGE RÉEL ET VÉRIFIABLE SUR LE TERRAIN.</span></div>
     </div>
+    <div style="text-align: center; margin-top: 30px; font-weight: 700; color: var(--gold); letter-spacing: 1px;">
+        Impulso Rural
+    </div>
 </footer>
 
 <div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
@@ -700,7 +702,7 @@
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'fr',
-            includedLanguages: 'fr,es,en,de,el',
+            includedLanguages: 'fr,es,en,pt,de,se',
             autoDisplay: false
         }, 'google_translate_element');
     }
@@ -708,12 +710,10 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
-    // Base élargie de plus de 105+ avis internationaux uniques (Europe, Amérique Latine, Canada, etc.)
     const allReviews = [
         { n: "Mateo R.", p: "Bolivie", t: "Gracias al apoyo recibido, pude expandir mi explotación agrícola con total seguridad.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
         { n: "Matteo B.", p: "Italie", t: "Un supporto finanziario eccellente e veloce per le nostre attrezzature agricole.", i: "https://randomuser.me/api/portraits/men/41.jpg" },
         { n: "João S.", p: "Portugal", t: "Excelente acompanhamento e apoio rápido para o desenvolvimento rural.", i: "https://randomuser.me/api/portraits/men/48.jpg" },
-        { n: "Juha K.", p: "Finlande", t: "Erittäin ammattimaista tukea maataloushankkeillemme. Suosittelen lämpimästi.", i: "https://randomuser.me/api/portraits/men/55.jpg" },
         { n: "Hans W.", p: "Allemagne", t: "Sehr professionelle Unterstützung für landwirtschaftliche Projekte. Auszahlung pünktlich.", i: "https://randomuser.me/api/portraits/men/85.jpg" },
         { n: "Carlos M.", p: "Pérou", t: "Un respaldo financiero increíble para mejorar nuestra producción de ganado.", i: "https://randomuser.me/api/portraits/men/28.jpg" },
         { n: "Lucas F.", p: "Brésil", t: "Suporte espetacular para o nosso projeto no campo. Processo transparente.", i: "https://randomuser.me/api/portraits/men/76.jpg" },
@@ -733,8 +733,7 @@
         { n: "Gabriel T.", p: "Brésil", t: "Processo rápido e seguro. Recomendo a todos os produtores rurais.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
         { n: "Lucia R.", p: "Pérou", t: "Gracias por creer en nuestro proyecto familiar de ganadería.", i: "https://randomuser.me/api/portraits/women/27.jpg" },
         { n: "Thomas B.", p: "Suisse", t: "Une institution sérieuse avec un suivi irréprochable.", i: "https://randomuser.me/api/portraits/men/38.jpg" },
-        { n: "Martín P.", p: "Uruguay", t: "Excelente asistencia para modernizar nuestra maquinaria agrícola.", i: "https://randomuser.me/api/portraits/men/73.jpg" },
-        { n: "Helena K.", p: "Finlande", t: "Luotettava ja nopea tuki maatalousyrityksellemme.", i: "https://randomuser.me/api/portraits/women/19.jpg" },
+        { n: "Martín P.", p: "Uruguay", t: "Excelente asistencia pour modernizar nuestra maquinaria agrícola.", i: "https://randomuser.me/api/portraits/men/73.jpg" },
         { n: "Rodrigo C.", p: "Mexique", t: "Un impulso definitivo para nuestra cooperativa de productores de maíz.", i: "https://randomuser.me/api/portraits/men/82.jpg" },
         { n: "Antoine V.", p: "Canada", t: "Un appui financier direct et efficace pour notre ferme familiale.", i: "https://randomuser.me/api/portraits/men/64.jpg" },
         { n: "Beatriz L.", p: "Portugal", t: "Apoio fantástico para o desenvolvimento sustentável da nossa herdade.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
@@ -751,7 +750,6 @@
         { n: "Javier H.", p: "Espagne", t: "Trámites transparentes y ayuda puntual para la cosecha.", i: "https://randomuser.me/api/portraits/men/47.jpg" },
         { n: "Camille M.", p: "France", t: "Disponibilité et professionnalisme au rendez-vous.", i: "https://randomuser.me/api/portraits/women/31.jpg" },
         { n: "Gustavo B.", p: "Brésil", t: "Excelente parceria para o crescimento da nossa fazenda.", i: "https://randomuser.me/api/portraits/men/15.jpg" },
-        { n: "Sven E.", p: "Suède", t: "Mycket professionellt stöd för vårt jordbruksinitiativ.", i: "https://randomuser.me/api/portraits/men/49.jpg" },
         { n: "Inés P.", p: "Argentine", t: "Un respaldo inigualable para la ganadería extensiva.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
         { n: "Fabrice L.", p: "France", t: "Soutien reçu dans les délais annoncés, parfait.", i: "https://randomuser.me/api/portraits/men/93.jpg" },
         { n: "Noah W.", p: "États-Unis", t: "Solid institutional backing for our agricultural operations.", i: "https://randomuser.me/api/portraits/men/17.jpg" },
@@ -762,13 +760,9 @@
         { n: "Romain T.", p: "France", t: "Structure sérieuse qui aide réellement les agriculteurs.", i: "https://randomuser.me/api/portraits/men/83.jpg" }
     ];
 
-    // Gestion de la session et des avis pour éviter qu'un utilisateur ne voie deux fois le même avis
     let seenReviews = JSON.parse(sessionStorage.getItem('seen_reviews') || '[]');
-    
-    // Filtrer les avis non encore vus dans cette session
     let availableReviews = allReviews.filter(r => !seenReviews.includes(r.n));
     if (availableReviews.length === 0) {
-        // Si tous ont été vus, réinitialiser la mémoire de session
         seenReviews = [];
         sessionStorage.setItem('seen_reviews', JSON.stringify([]));
         availableReviews = [...allReviews];
@@ -792,12 +786,9 @@
 
     function dropOneReview() {
         if (queue.length === 0) {
-            // Recharger avec la liste complète si vide
             queue = [...allReviews].sort(() => Math.random() - 0.5);
         }
         const nextReview = queue.pop(); 
-        
-        // Enregistrer qu'on a vu cet avis dans la session
         seenReviews.push(nextReview.n);
         sessionStorage.setItem('seen_reviews', JSON.stringify(seenReviews));
 
@@ -814,21 +805,19 @@
 
     window.onload = startJumellesAnimation;
 
-    // Traducteur Sélecteur
     function selectLanguage(name, code) {
         document.getElementById('current-flag').src = `https://flagcdn.com/w40/${code}.png`;
         document.getElementById('current-name').innerText = name.toUpperCase();
         document.getElementById('country-list').classList.remove('show-countries');
         const select = document.querySelector('.goog-te-combo');
         if (select) {
-            select.value = (code === 'gr') ? 'el' : (code === 'gb' ? 'en' : code);
+            select.value = (code === 'gb' ? 'en' : code);
             select.dispatchEvent(new Event('change'));
         }
     }
 
     function toggleDropdown() { document.getElementById('country-list').classList.toggle('show-countries'); }
 
-    // Modal détails
     function openDetails(type) {
         const modal = document.getElementById('modal-overlay');
         const body = document.getElementById('modal-body');
@@ -843,7 +832,6 @@
     }
     function closeDetails() { document.getElementById('modal-overlay').style.display = 'none'; }
 
-    // Validation stricte du budget et Soumission Web3Forms avec vérification des montants max
     async function validateAndSubmit(e) {
         e.preventDefault();
         
