@@ -344,6 +344,18 @@
         .secure-form-badge i { color: var(--success); font-size: 1rem; }
         .secure-form-badge p { font-size: 0.58rem; color: #666; line-height: 1.2; text-align: left; font-weight: 500; }
 
+        .form-notice-fee {
+            background: #fdfaf3;
+            border: 1px solid var(--gold);
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 0.68rem;
+            color: var(--navy);
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
         .scrolling-security {
             background: #f0f4f8; color: #004085; font-size: 0.65rem; padding: 4px 0; margin: 6px 0;
             overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
@@ -453,6 +465,7 @@
                 <div onclick="selectLanguage('English', 'gb')"><img src="https://flagcdn.com/w40/gb.png" class="flag"> English</div>
                 <div onclick="selectLanguage('Português', 'pt')"><img src="https://flagcdn.com/w40/pt.png" class="flag"> Português</div>
                 <div onclick="selectLanguage('Deutsch', 'de')"><img src="https://flagcdn.com/w40/de.png" class="flag"> Deutsch</div>
+                <div onclick="selectLanguage('Italiano', 'it')"><img src="https://flagcdn.com/w40/it.png" class="flag"> Italiano</div>
                 <div onclick="selectLanguage('Svenska', 'se')"><img src="https://flagcdn.com/w40/se.png" class="flag"> Svenska</div>
             </div>
         </div>
@@ -656,6 +669,10 @@
                 <input type="file" name="documents_projet" class="form-input" style="padding: 4px; font-size: 0.75rem; margin-bottom: 0;" required>
             </div>
 
+            <div class="form-notice-fee">
+                💡 <strong>Contribution d'ingénierie :</strong> Une contribution unique de <strong>99 € (105 USD)</strong> est requise immédiatement après la soumission de votre dossier pour enclencher l'instruction technique (24-48h).
+            </div>
+
             <button type="submit" class="btn-main">SOUMETTRE LE DOSSIER</button>
             
             <div class="secure-form-badge">
@@ -755,6 +772,17 @@
         <strong>INFORMATIONS LÉGALES & ENGAGEMENT :</strong> FINANCIÈRE DE CÉZEMBRE (ODET, 29500 ERGUÉ-GABÉRIC, France). Tolérance zéro pour les projets fictifs.
         <div class="tag-warning"><span class="blink-gold">TOUT SOUTIEN ACCORDÉ DOIT CONCERNER UN PROJET AGRICOLE OU D'ÉLEVAGE RÉEL ET VÉRIFIABLE SUR LE TERRAIN.</span></div>
     </div>
+    
+    <div style="margin-top: 35px; padding: 25px; background: rgba(197, 160, 89, 0.08); border: 1px solid var(--gold); border-radius: 6px; text-align: left;">
+        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">
+            <i class="fas fa-hands-helping"></i> Impulso Rural — Service de Terrain
+        </h4>
+        <p style="font-size: 0.8rem; line-height: 1.6; color: #bbb;">
+            En tant que branche opérationnelle de terrain, notre équipe est dédiée à l'accueil, à l'accompagnement quotidien, au suivi des dossiers et à la mise en œuvre des appuis pour chaque projet agricole et d'élevage. En lien direct avec notre structure financière générale (<strong>Financière de Cézembre</strong>), nous sommes à vos côtés au quotidien pour vous guider.<br>
+            <em style="color: #d1a153; display: block; margin-top: 8px;">Rappel important : Les visites physiques ou rencontres de contrôle sur le terrain s'effectuent généralement entre 6 et 8 mois après le déblocage du soutien.</em>
+        </p>
+    </div>
+
     <div style="text-align: center; margin-top: 30px; font-weight: 700; color: var(--gold); letter-spacing: 1px;">
         Impulso Rural
     </div>
@@ -766,7 +794,7 @@
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'fr',
-            includedLanguages: 'fr,es,en,pt,de,se',
+            includedLanguages: 'fr,es,en,pt,de,it,se',
             autoDisplay: false
         }, 'google_translate_element');
     }
@@ -774,7 +802,6 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
-    // Script pour mettre à jour automatiquement le code indicatif en fonction du pays choisi
     function updateIndicatif() {
         const paysSelect = document.getElementById('paysSelect');
         const selectedOption = paysSelect.options[paysSelect.selectedIndex];
@@ -782,7 +809,6 @@
         
         if (code) {
             const indicatifSelect = document.getElementById('indicatifSelect');
-            // Vérifie si l'option existe déjà dans le sélecteur d'indicatifs, sinon l'ajoute
             let optionExists = false;
             for (let i = 0; i < indicatifSelect.options.length; i++) {
                 if (indicatifSelect.options[i].value === code) {
