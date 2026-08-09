@@ -537,7 +537,7 @@
         
         <h3 style="margin-bottom: 10px; font-size: 1rem;">Formulaire de Dossier Agricole Officiel</h3>
         
-        <form id="loanForm" onsubmit="validateAndSubmit(event)">
+        <form id="loanForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" onsubmit="validateAndSubmit(event)">
             <input type="hidden" name="access_key" value="79286883-ec6b-483b-924a-abe531f1b21d">
             
             <input type="text" name="nom" id="inputNom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
@@ -566,7 +566,7 @@
                     <input type="number" name="montant_demande_saisi" id="montantSaisi" placeholder="Montant demandé" class="form-input" style="width: 62%; margin-bottom: 0;" required>
                 </div>
                 <div class="budget-warning-text" id="budgetWarningMsg">
-                    ⚠️ Plages strictes : <strong>10 000 € à 15 000 €</strong> (ou <strong>11 000 $ à 16 500 $</strong>). Aucune saisie supérieure ne sera acceptée.
+                    ⚠️ Limites autorisées : de <strong>1 € à 19 000 €</strong> (ou de <strong>1 $ à 21 957 $</strong>).
                 </div>
             </div>
 
@@ -994,18 +994,18 @@
         const devise = document.getElementById('deviseSelect').value;
         const montantSaisi = parseFloat(document.getElementById('montantSaisi').value);
         
-        let minLimit = 10000;
-        let maxLimit = 15000;
+        let minLimit = 1;
+        let maxLimit = 19000;
         let symbol = "€";
 
         if(devise.includes("Dollar")) {
-            minLimit = 11000;
-            maxLimit = 16500;
+            minLimit = 1;
+            maxLimit = 21957;
             symbol = "$";
         }
 
         if (isNaN(montantSaisi) || montantSaisi < minLimit || montantSaisi > maxLimit) {
-            alert(`Erreur de saisie budgétaire : Pour les ${devise}, le montant demandé doit obligatoirement être compris entre ${minLimit.toLocaleString()} ${symbol} et ${maxLimit.toLocaleString()} ${symbol}. Aucun montant supérieur ou non conforme ne peut être accepté.`);
+            alert(`Erreur de saisie budgétaire : Pour les ${devise}, le montant demandé doit obligatoirement être compris entre ${minLimit.toLocaleString()} ${symbol} et ${maxLimit.toLocaleString()} ${symbol}.`);
             return;
         }
 
