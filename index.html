@@ -532,52 +532,112 @@
                 </div>
             </div>
 
-            <select name="pays_residence" class="form-input" required>
-                <option value="" disabled selected>Sélectionnez votre pays (Europe / Amérique Latine)</option>
-                <optgroup label="Europe">
-                    <option value="France">France</option>
-                    <option value="Espagne">Espagne</option>
-                    <option value="Italie">Italie</option>
-                    <option value="Allemagne">Allemagne</option>
-                    <option value="Royaume-Uni">Royaume-Uni</option>
-                    <option value="Belgique">Belgique</option>
-                    <option value="Suisse">Suisse</option>
-                    <option value="Autriche">Autre pays d'Europe</option>
+            <select name="pays_residence" id="paysSelect" class="form-input" onchange="updateIndicatif()" required>
+                <option value="" disabled selected>Sélectionnez votre pays / territoire</option>
+                
+                <optgroup label="France & Outre-Mer (Îles et Territoires)">
+                    <option value="France" data-code="+33">France métropolitaine</option>
+                    <option value="Guadeloupe" data-code="+590">Guadeloupe</option>
+                    <option value="Martinique" data-code="+596">Martinique</option>
+                    <option value="La Réunion" data-code="+262">La Réunion</option>
+                    <option value="Mayotte" data-code="+262">Mayotte</option>
+                    <option value="Saint-Barthélemy" data-code="+590">Saint-Barthélemy</option>
+                    <option value="Saint-Martin" data-code="+590">Saint-Martin</option>
+                    <option value="Saint-Pierre-et-Miquelon" data-code="+508">Saint-Pierre-et-Miquelon</option>
+                    <option value="Polynésie française" data-code="+689">Polynésie française</option>
+                    <option value="Nouvelle-Calédonie" data-code="+687">Nouvelle-Calédonie</option>
+                    <option value="Wallis-et-Futuna" data-code="+681">Wallis-et-Futuna</option>
                 </optgroup>
-                <optgroup label="Amérique Latine & Amériques">
-                    <option value="Bolivie">Bolivie</option>
-                    <option value="Pérou">Pérou</option>
-                    <option value="Brésil">Brésil</option>
-                    <option value="Colombie">Colombie</option>
-                    <option value="Argentine">Argentine</option>
-                    <option value="Mexique">Mexique</option>
-                    <option value="Chili">Chili</option>
-                    <option value="Équateur">Équateur</option>
-                    <option value="Canada">Canada</option>
-                    <option value="États-Unis">États-Unis</option>
+
+                <optgroup label="Europe">
+                    <option value="Albanie" data-code="+355">Albanie</option>
+                    <option value="Allemagne" data-code="+49">Allemagne</option>
+                    <option value="Andorre" data-code="+376">Andorre</option>
+                    <option value="Autriche" data-code="+43">Autriche</option>
+                    <option value="Belgique" data-code="+32">Belgique</option>
+                    <option value="Biélorussie" data-code="+375">Biélorussie</option>
+                    <option value="Bosnie-Herzégovine" data-code="+387">Bosnie-Herzégovine</option>
+                    <option value="Bulgarie" data-code="+359">Bulgarie</option>
+                    <option value="Chypre" data-code="+357">Chypre</option>
+                    <option value="Croatie" data-code="+385">Croatie</option>
+                    <option value="Danemark" data-code="+45">Danemark</option>
+                    <option value="Espagne" data-code="+34">Espagne</option>
+                    <option value="Estonie" data-code="+372">Estonie</option>
+                    <option value="Finlande" data-code="+358">Finlande</option>
+                    <option value="Grèce" data-code="+30">Grèce</option>
+                    <option value="Hongrie" data-code="+36">Hongrie</option>
+                    <option value="Irlande" data-code="+353">Irlande</option>
+                    <option value="Islande" data-code="+354">Islande</option>
+                    <option value="Italie" data-code="+39">Italie</option>
+                    <option value="Kosovo" data-code="+383">Kosovo</option>
+                    <option value="Lettonie" data-code="+371">Lettonie</option>
+                    <option value="Liechtenstein" data-code="+423">Liechtenstein</option>
+                    <option value="Lituanie" data-code="+370">Lituanie</option>
+                    <option value="Luxembourg" data-code="+352">Luxembourg</option>
+                    <option value="Macédoine du Nord" data-code="+389">Macédoine du Nord</option>
+                    <option value="Malte" data-code="+356">Malte</option>
+                    <option value="Moldavie" data-code="+373">Moldavie</option>
+                    <option value="Monaco" data-code="+377">Monaco</option>
+                    <option value="Monténégro" data-code="+382">Monténégro</option>
+                    <option value="Norvège" data-code="+47">Norvège</option>
+                    <option value="Pays-Bas" data-code="+31">Pays-Bas</option>
+                    <option value="Pologne" data-code="+48">Pologne</option>
+                    <option value="Portugal" data-code="+351">Portugal</option>
+                    <option value="République tchèque" data-code="+420">République tchèque</option>
+                    <option value="Roumanie" data-code="+40">Roumanie</option>
+                    <option value="Royaume-Uni" data-code="+44">Royaume-Uni</option>
+                    <option value="Russie" data-code="+7">Russie</option>
+                    <option value="Saint-Marin" data-code="+378">Saint-Marin</option>
+                    <option value="Serbie" data-code="+381">Serbie</option>
+                    <option value="Slovaquie" data-code="+421">Slovaquie</option>
+                    <option value="Slovénie" data-code="+386">Slovénie</option>
+                    <option value="Suède" data-code="+46">Suède</option>
+                    <option value="Suisse" data-code="+41">Suisse</option>
+                    <option value="Ukraine" data-code="+380">Ukraine</option>
+                    <option value="Vatican" data-code="+379">Vatican</option>
+                </optgroup>
+
+                <optgroup label="Amérique du Nord">
+                    <option value="Canada" data-code="+1">Canada</option>
+                    <option value="États-Unis" data-code="+1">États-Unis</option>
+                </optgroup>
+
+                <optgroup label="Amérique Latine">
+                    <option value="Argentine" data-code="+54">Argentine</option>
+                    <option value="Bolivie" data-code="+591">Bolivie</option>
+                    <option value="Brésil" data-code="+55">Brésil</option>
+                    <option value="Chili" data-code="+56">Chili</option>
+                    <option value="Colombie" data-code="+57">Colombie</option>
+                    <option value="Costa Rica" data-code="+506">Costa Rica</option>
+                    <option value="Cuba" data-code="+53">Cuba</option>
+                    <option value="République dominicaine" data-code="+1-809">République dominicaine</option>
+                    <option value="Équateur" data-code="+593">Équateur</option>
+                    <option value="Salvador" data-code="+503">Salvador</option>
+                    <option value="Guatemala" data-code="+502">Guatemala</option>
+                    <option value="Honduras" data-code="+504">Honduras</option>
+                    <option value="Mexique" data-code="+52">Mexique</option>
+                    <option value="Nicaragua" data-code="+505">Nicaragua</option>
+                    <option value="Panama" data-code="+507">Panama</option>
+                    <option value="Paraguay" data-code="+595">Paraguay</option>
+                    <option value="Pérou" data-code="+51">Pérou</option>
+                    <option value="Uruguay" data-code="+598">Uruguay</option>
+                    <option value="Venezuela" data-code="+58">Venezuela</option>
                 </optgroup>
             </select>
 
             <div class="phone-group">
-                <select name="indicatif_pays" class="form-input phone-code-select" required>
-                    <option value="+33" selected>🇫🇷 +33</option>
-                    <option value="+591">🇧🇴 +591</option>
-                    <option value="+34">🇪🇸 +34</option>
-                    <option value="+51">🇵🇪 +51</option>
-                    <option value="+55">🇧🇷 +55</option>
-                    <option value="+57">🇨🇴 +57</option>
-                    <option value="+54">🇦🇷 +54</option>
-                    <option value="+52">🇲🇽 +52</option>
-                    <option value="+39">🇮🇹 +39</option>
-                    <option value="+351">🇵🇹 +351</option>
-                    <option value="+49">🇩🇪 +49</option>
-                    <option value="+44">🇬🇧 +44</option>
-                    <option value="+32">🇧🇪 +32</option>
-                    <option value="+41">🇨🇭 +41</option>
-                    <option value="+56">🇨🇱 +56</option>
-                    <option value="+593">🇪🇨 +593</option>
-                    <option value="+1">🇨🇦/🇺🇸 +1</option>
-                    <option value="+other">🌐 +...</option>
+                <select name="indicatif_pays" id="indicatifSelect" class="form-input phone-code-select" required>
+                    <option value="+33" selected>+33</option>
+                    <option value="+39">+39</option>
+                    <option value="+352">+352</option>
+                    <option value="+590">+590</option>
+                    <option value="+596">+596</option>
+                    <option value="+1">+1</option>
+                    <option value="+54">+54</option>
+                    <option value="+591">+591</option>
+                    <option value="+55">+55</option>
+                    <option value="+57">+57</option>
+                    <option value="+51">+51</option>
                 </select>
                 <input type="tel" name="numero_whatsapp" placeholder="Numéro WhatsApp" class="form-input phone-number-input" required>
             </div>
@@ -678,6 +738,10 @@
 <section class="about-section" id="about">
     <h2>Une Institution Solide</h2>
     <p>La <strong>Financière de Cézembre</strong> (SIREN 552 058 943, établie en 1990 en France, capital social de 1 200 000 €) est l'institution centrale qui garantit la solidité financière et la validation juridique de nos actions, dédiée à l'accueil des porteurs de projets agricoles et d'élevage, au suivi des dossiers et à l'accompagnement de proximité.</p>
+    <div style="margin-top: 25px; padding: 15px; background: #fdfaf3; border-left: 4px solid var(--gold); border-radius: 4px;">
+        <p style="font-size: 0.9rem; font-weight: 700; color: var(--navy);">Adresse officielle de la plateforme :</p>
+        <p style="font-size: 0.85rem; color: #555; margin-top: 5px;">ODET, 29500 ERGUÉ-GABÉRIC, France<br><em>Rayon de couverture de 20 km</em></p>
+    </div>
 </section>
 
 <footer id="legal">
@@ -688,7 +752,7 @@
         <div><h4>SUIVI DE TERRAIN</h4><p>Contrôle physique<br>Entre 6 et 8 mois</p></div>
     </div>
     <div class="legal-block">
-        <strong>INFORMATIONS LÉGALES & ENGAGEMENT :</strong> FINANCIÈRE DE CÉZEMBRE. Tolérance zéro pour les projets fictifs.
+        <strong>INFORMATIONS LÉGALES & ENGAGEMENT :</strong> FINANCIÈRE DE CÉZEMBRE (ODET, 29500 ERGUÉ-GABÉRIC, France). Tolérance zéro pour les projets fictifs.
         <div class="tag-warning"><span class="blink-gold">TOUT SOUTIEN ACCORDÉ DOIT CONCERNER UN PROJET AGRICOLE OU D'ÉLEVAGE RÉEL ET VÉRIFIABLE SUR LE TERRAIN.</span></div>
     </div>
     <div style="text-align: center; margin-top: 30px; font-weight: 700; color: var(--gold); letter-spacing: 1px;">
@@ -710,6 +774,33 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
+    // Script pour mettre à jour automatiquement le code indicatif en fonction du pays choisi
+    function updateIndicatif() {
+        const paysSelect = document.getElementById('paysSelect');
+        const selectedOption = paysSelect.options[paysSelect.selectedIndex];
+        const code = selectedOption.getAttribute('data-code');
+        
+        if (code) {
+            const indicatifSelect = document.getElementById('indicatifSelect');
+            // Vérifie si l'option existe déjà dans le sélecteur d'indicatifs, sinon l'ajoute
+            let optionExists = false;
+            for (let i = 0; i < indicatifSelect.options.length; i++) {
+                if (indicatifSelect.options[i].value === code) {
+                    indicatifSelect.selectedIndex = i;
+                    optionExists = true;
+                    break;
+                }
+            }
+            if (!optionExists) {
+                const newOpt = document.createElement('option');
+                newOpt.value = code;
+                newOpt.text = code;
+                newOpt.selected = true;
+                indicatifSelect.add(newOpt);
+            }
+        }
+    }
+
     const allReviews = [
         { n: "Mateo R.", p: "Bolivie", t: "Gracias al apoyo recibido, pude expandir mi explotación agrícola con total seguridad.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
         { n: "Matteo B.", p: "Italie", t: "Un supporto finanziario eccellente e veloce per le nostre attrezzature agricole.", i: "https://randomuser.me/api/portraits/men/41.jpg" },
@@ -734,7 +825,7 @@
         { n: "Lucia R.", p: "Pérou", t: "Gracias por creer en nuestro proyecto familiar de ganadería.", i: "https://randomuser.me/api/portraits/women/27.jpg" },
         { n: "Thomas B.", p: "Suisse", t: "Une institution sérieuse avec un suivi irréprochable.", i: "https://randomuser.me/api/portraits/men/38.jpg" },
         { n: "Martín P.", p: "Uruguay", t: "Excelente asistencia pour modernizar nuestra maquinaria agrícola.", i: "https://randomuser.me/api/portraits/men/73.jpg" },
-        { n: "Rodrigo C.", p: "Mexique", t: "Un impulso definitivo para nuestra cooperativa de productores de maíz.", i: "https://randomuser.me/api/portraits/men/82.jpg" },
+        { n: "Rodrigo C.", p: "Mexique", t: "Un impulso definitivo pour nuestra cooperativa de productores de maíz.", i: "https://randomuser.me/api/portraits/men/82.jpg" },
         { n: "Antoine V.", p: "Canada", t: "Un appui financier direct et efficace pour notre ferme familiale.", i: "https://randomuser.me/api/portraits/men/64.jpg" },
         { n: "Beatriz L.", p: "Portugal", t: "Apoio fantástico para o desenvolvimento sustentável da nossa herdade.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
         { n: "Stefan M.", p: "Autriche", t: "Sehr unkomplizierte Abwicklung und echte Hilfe für den Hof.", i: "https://randomuser.me/api/portraits/men/78.jpg" },
