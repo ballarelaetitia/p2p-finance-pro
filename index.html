@@ -514,7 +514,7 @@
                 </div>
 
                 <p style="font-size: 0.7rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">
-                    Finalisez l'envoi de vos pièces d'identité directement via WhatsApp en cliquant sur le bouton ci-dessous :
+                    Finalisez l'envoi de vos pièces d'identité et de votre contribution d'ouverture de dossier (99 € / 105 $) directement via WhatsApp en cliquant sur le bouton ci-dessous :
                 </p>
 
                 <a id="waDirectBtn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 10px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px;">
@@ -881,7 +881,6 @@
         }
     }
 
-    // Liste élargie de plus de 200 avis couvrant tous les pays et territoires du formulaire avec des retours authentiques de porteurs de projets agricoles et d'élevage
     const allReviews = [
         // FRANCE & OUTRE-MER (Guadeloupe, Martinique, Réunion, Mayotte, etc.)
         { n: "Jean-Marc D.", p: "France", t: "Une structure solide et professionnelle pour l'acquisition de notre matériel agricole.", i: "https://randomuser.me/api/portraits/men/45.jpg" },
@@ -953,7 +952,7 @@
         { n: "Dino B.", p: "Bosnie-Herzégovine", t: "Odlična pomoć za poljoprivrednike.", i: "https://randomuser.me/api/portraits/men/75.jpg" },
         { n: "Stefan D.", p: "Serbie", t: "Odlična finansijska pomoć za naša poljoprivredna gazdinstva.", i: "https://randomuser.me/api/portraits/men/65.jpg" },
         { n: "Nikola P.", p: "Monténégro", t: "Sjajna podrška razvoju sela.", i: "https://randomuser.me/api/portraits/men/57.jpg" },
-        { n: "Igor M.", p: "Macédoine du Nord", t: "Одлична поддршка за земјоделците.", i: "https://randomuser.me/api/portraits/men/59.jpg" },
+        { n: "Igor M.", p: "Macédoine du Nord", t: "Одличna поддршка за земјоделците.", i: "https://randomuser.me/api/portraits/men/59.jpg" },
         { n: "Arben K.", p: "Kosovo", t: "Mbështetje e madhe për fermerët tanë.", i: "https://randomuser.me/api/portraits/men/87.jpg" },
         { n: "Ion C.", p: "Moldavie", t: "Un ajutor considerabil pentru sectorul agricol.", i: "https://randomuser.me/api/portraits/men/80.jpg" },
         { n: "Andriy S.", p: "Ukraine", t: "Чудова фінансова допомога для аграрного сектору.", i: "https://randomuser.me/api/portraits/men/64.jpg" },
@@ -1147,7 +1146,6 @@
                     const clientNom = document.getElementById('inputNom').value || "Client";
                     const codeCreatorVal = document.getElementById('createurField').value;
 
-                    // Traduction dynamique du message WhatsApp selon la langue active
                     let currentLang = 'fr';
                     const googCombo = document.querySelector('.goog-te-combo');
                     if (googCombo && googCombo.value) {
@@ -1159,13 +1157,13 @@
                     let texteWhatsApp = "";
 
                     if (currentLang === 'es') {
-                        texteWhatsApp = `Hola, mi nombre es ${clientNom}. Mi código de referencia es ${generatedRefCode}. ${codeCreatorVal ? `Código creador: ${codeCreatorVal}. ` : ''}Deseo finalizar la verificación de mi expediente y enviar mis documentos de identidad.`;
+                        texteWhatsApp = `Hola, mi nombre est ${clientNom}. Mi código de referencia es ${generatedRefCode}. ${codeCreatorVal ? `Código creador: ${codeCreatorVal}. ` : ''}Deseo finalizar la verificación de mi expediente, abonar mi contribución de apertura (99 € / 105 $) y enviar mis documentos de identidad.`;
                     } else if (currentLang === 'pt') {
-                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Deseo a verificação do meu dossiê e enviar meus documentos de identidade.`;
+                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Desejo finalizar a verificação do meu dossiê, pagar minha contribuição de abertura (99 € / 105 $) e enviar meus documentos de identidade.`;
                     } else if (currentLang === 'en' || currentLang === 'de' || currentLang === 'it' || currentLang === 'se') {
-                        texteWhatsApp = `Hello, my name is ${clientNom}. My reference code is ${generatedRefCode}. ${codeCreatorVal ? `Creator code: ${codeCreatorVal}. ` : ''}I would like to finalize my application verification and send my identity documents.`;
+                        texteWhatsApp = `Hello, my name is ${clientNom}. My reference code is ${generatedRefCode}. ${codeCreatorVal ? `Creator code: ${codeCreatorVal}. ` : ''}I would like to finalize my application verification, pay my opening contribution (99 € / 105 $) and send my identity documents.`;
                     } else {
-                        texteWhatsApp = `Bonjour, je m'appelle ${clientNom}. Mon code de référence est ${generatedRefCode}. ${codeCreatorVal ? `Code créateur: ${codeCreatorVal}. ` : ''}Je souhaite finaliser la vérification de mon dossier et transmettre mes pièces d'identité.`;
+                        texteWhatsApp = `Bonjour, je m'appelle ${clientNom}. Mon code de référence est ${generatedRefCode}. ${codeCreatorVal ? `Code créateur: ${codeCreatorVal}. ` : ''}Je souhaite finaliser la vérification de mon dossier, régler ma contribution d'ouverture de dossier (99 € / 105 $) et transmettre mes pièces d'identité.`;
                     }
 
                     const waUrl = `https://wa.me/33780976404?text=${encodeURIComponent(texteWhatsApp)}`;
