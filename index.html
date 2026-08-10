@@ -920,7 +920,7 @@
         { n: "Fernando D.", p: "Colombie", t: "Compromiso real con el desarrollo del campo y la ganadería.", i: "https://randomuser.me/api/portraits/men/50.jpg" },
         { n: "Claire D.", p: "France", t: "Le contrôle de terrain montre le sérieux et l'engagement de la structure.", i: "https://randomuser.me/api/portraits/women/51.jpg" },
         { n: "Liam O.", p: "Royaume-Uni", t: "Fantastic assistance for rural development and farm equipment.", i: "https://randomuser.me/api/portraits/men/21.jpg" },
-        { n: "Diego F.", p: "Équateur", t: "Muy agradecido por el fondo recibido para nossa producción agrícola.", i: "https://randomuser.me/api/portraits/men/36.jpg" },
+        { n: "Diego F.", p: "Équateur", t: "Muy agradecido por el fondo recibido para nuestra producción agrícola.", i: "https://randomuser.me/api/portraits/men/36.jpg" },
         { n: "Anja L.", p: "Allemagne", t: "Tolle Unterstützung für unseren landwirtschaftlichen Betrieb.", i: "https://randomuser.me/api/portraits/women/33.jpg" },
         { n: "Matthieu R.", p: "Belgique", t: "Une aide précieuse et un vrai suivi personnalisé.", i: "https://randomuser.me/api/portraits/men/66.jpg" },
         { n: "Valeria G.", p: "Bolivie", t: "Una oportunidad única para los pequeños productores del altiplano.", i: "https://randomuser.me/api/portraits/women/77.jpg" },
@@ -975,14 +975,7 @@
     }
 
     function startJumellesAnimation() {
-        // Initialiser avec 3 avis visibles directement au chargement
-        for(let i=0; i<3; i++){
-            if(queue.length > 0) {
-                const r = queue.pop();
-                seenReviews.push(r.n);
-                container.insertAdjacentHTML('beforeend', createReviewHTML(r));
-            }
-        }
+        dropOneReview();
         setInterval(dropOneReview, 7000); 
     }
 
@@ -1084,4 +1077,9 @@
         }
 
         const clientNom = document.getElementById('inputNom').value || "Anonyme";
-        const finalUrl = `https://wa.me/33780976404?text=Message%20depuis%20le%20site%20(Réf:%20${generatedRefCode},%20Nom:%20${encodeURIComponent(
+        const finalUrl = `https://wa.me/33780976404?text=Message%20depuis%20le%20site%20(Réf:%20${generatedRefCode},%20Nom:%20${encodeURIComponent(clientNom)}):%20${encodeURIComponent(msg)}`;
+        window.open(finalUrl, '_blank');
+    }
+</script>
+</body>
+</html>
