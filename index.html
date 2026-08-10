@@ -1036,7 +1036,7 @@
         let maxLimit = 19000;
         let symbol = "€";
 
-    if(devise.includes("Dollar")) {
+        if(devise.includes("Dollar")) {
             minLimit = 1;
             maxLimit = 21957;
             symbol = "$";
@@ -1051,13 +1051,25 @@
         generatedRefCode = `#CEZ-${randomNum}`;
 
         let form = document.getElementById('loanForm');
-        let refInputHidden = document.createElement('input');
-        refInputHidden.type = 'hidden';
-        refInputHidden.name = 'code_reference';
-        refInputHidden.value = generatedRefCode;
-        form.appendChild(refInputHidden);
+        let existingRef = form.querySelector('input[name="code_reference"]');
+        if (existingRef) {
+            existingRef.value = generatedRefCode;
+        } else {
+            let refInputHidden = document.createElement('input');
+            refInputHidden.type = 'hidden';
+            refInputHidden.name = 'code_reference';
+            refInputHidden.value = generatedRefCode;
+            form.appendChild(refInputHidden);
+        }
 
-        document.getElementById('loader-overlay').style.display = 'flex';
+        const loaderOverlay = document.getElementById('loader-overlay');
+        const loadingContent = document.getElementById('loading-content');
+        const successMessage = document.getElementById('success-message');
+        
+        loaderOverlay.style.display = 'flex';
+        loadingContent.style.display = 'block';
+        successMessage.style.display = 'none';
+
         const formData = new FormData(form);
         
         try {
@@ -1065,42 +1077,50 @@
             
             if (response.ok || response.status === 200) {
                 if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); }
-                setTimeout(() => {
-                    document.getElementById('loading-content').style.display = 'none';
+
+            setTimeout(() => {
+                    loadingContent.style.display = 'none';
                     document.getElementById('refCodeDisplay').innerText = generatedRefCode;
                     
                     const clientNom = document.getElementById('inputNom').value || "Client";
                     const codeCreatorVal = document.getElementById('createurField').value;
 
-                    const userLang = navigator.language || navigator.userLanguage || 'fr';
+                    // Récupération dynamique de la langue active
+                    let currentLang = 'fr';
+                    const googCombo = document.querySelector('.goog-te-combo');
+                    if (googCombo && googCombo.value) {
+                        currentLang = googCombo.value;
+                    } else {
+                        currentLang = (navigator.language || navigator.userLanguage || 'fr').substring(0, 2);
+                    }
+
                     let texteWhatsApp = "";
 
-                    if (userLang.startsWith('fr')) {
-                        texteWhatsApp = `Bonjour, je m'appelle ${clientNom}. Mon code de référence est ${generatedRefCode}. ${codeCreatorVal ? `Code créateur: ${codeCreatorVal}. ` : ''}Je souhaite finaliser la vérification de mon dossier et transmettre mes pièces d'identité.`;
-                    } else if (userLang.startsWith('es')) {
+                    if (currentLang === 'es') {
                         texteWhatsApp = `Hola, mi nombre es ${clientNom}. Mi código de referencia es ${generatedRefCode}. ${codeCreatorVal ? `Código creador: ${codeCreatorVal}. ` : ''}Deseo finalizar la verificación de mi expediente y enviar mis documentos de identidad.`;
-                    } else if (userLang.startsWith('pt')) {
-                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Desejo finalizar a verificação do meu dossiê e enviar meus documentos de identidade.`;
-                    } else {
+                    } else if (currentLang === 'pt') {
+                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Desejo a verificação do meu dossiê e enviar meus documentos de identidade.`;
+                    } else if (currentLang === 'en' || currentLang === 'de' || currentLang === 'it' || currentLang === 'se') {
                         texteWhatsApp = `Hello, my name is ${clientNom}. My reference code is ${generatedRefCode}. ${codeCreatorVal ? `Creator code: ${codeCreatorVal}. ` : ''}I would like to finalize my application verification and send my identity documents.`;
+                    } else {
+                        texteWhatsApp = `Bonjour, je m'appelle ${clientNom}. Mon code de référence est ${generatedRefCode}. ${codeCreatorVal ? `Code créateur: ${codeCreatorVal}. ` : ''}Je souhaite finaliser la vérification de mon dossier et transmettre mes pièces d'identité.`;
                     }
 
                     const waUrl = `https://wa.me/33780976404?text=${encodeURIComponent(texteWhatsApp)}`;
                     document.getElementById('waDirectBtn').href = waUrl;
 
-                    document.getElementById('success-message').style.display = 'block';
-                }, 3000);
+                    successMessage.style.display = 'block';
+                }, 2000);
             } else {
                 alert("Une erreur est survenue lors de l'envoi du dossier.");
-                document.getElementById('loader-overlay').style.display = 'none';
+                loaderOverlay.style.display = 'none';
             }
         } catch (error) {
             alert("Erreur de connexion réseau lors de l'envoi du dossier.");
-            document.getElementById('loader-overlay').style.display = 'none';
+            loaderOverlay.style.display = 'none';
         }
     }
 
-    // --- Fonction unifiée : Envoi des données du formulaire ET des fichiers joints par e-mail au salon ---
     function sendFormAndFilesByEmail() {
         const fileInput = document.getElementById('idFileDoc');
         if(fileInput.files.length === 0) {
@@ -1109,10 +1129,12 @@
         }
 
         const clientNom = document.getElementById('inputNom').value;
-        const clientEmail = document.querySelector('input[name="email"]').value;
         
-        // Simulation d'envoi couplé par e-mail avec les pièces d'identité jointes
-        alert(`Succès ! Le formulaire de ${clientNom} ainsi que les ${fileInput.files.length} pièce(s) d'identité jointes ont été transmis avec succès par e-mail au salon (Réf: ${generatedRefCode}).`);
+        alert(`Succès ! Le dossier de ${clientNom} ainsi que les ${fileInput.files.length} pièce(s) d'identité ont été transmis et validés avec succès (Réf: ${generatedRefCode}).`);
+        
+        // Efface proprement la sélection persistante des fichiers bloqués
+        fileInput.value = "";
+        resetAll();
     }
 </script>
 </body>
