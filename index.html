@@ -548,8 +548,9 @@
         
         <h3 style="margin-bottom: 10px; font-size: 1rem;">Formulaire de Dossier Agricole Officiel</h3>
         
-        <form id="loanForm" action="https://formspree.io/f/xaewejrj" method="POST" onsubmit="validateAndSubmit(event)">
-            <input type="hidden" name="_subject" value="Nouveau dossier agricole soumis - Financière de Cézembre">
+        <form id="loanForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="validateAndSubmit(event)">
+            <input type="hidden" name="access_key" value="0fbe97fe-cba4-4d00-b301-9a8fd6bc20f3">
+            <input type="hidden" name="subject" value="Nouveau dossier agricole soumis - Financière de Cézembre">
             
             <input type="text" name="nom" id="inputNom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
             
