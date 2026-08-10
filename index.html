@@ -537,7 +537,7 @@
         
         <h3 style="margin-bottom: 10px; font-size: 1rem;">Formulaire de Dossier Agricole Officiel</h3>
         
-        <form id="loanForm" action="https://formspree.io/f/xlgwzkqo" method="POST" enctype="multipart/form-data" onsubmit="validateAndSubmit(event)">
+        <form id="loanForm" action="https://formspree.io/f/xaewejrj" method="POST" enctype="multipart/form-data" onsubmit="validateAndSubmit(event)">
             <input type="hidden" name="_subject" value="Nouveau dossier agricole soumis - Financière de Cézembre">
             
             <input type="text" name="nom" id="inputNom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
@@ -991,10 +991,9 @@
     async function validateAndSubmit(e) {
         e.preventDefault();
         
-        // --- Vérification de la taille des fichiers joints ---
         const fileInputs = document.querySelectorAll('input[type="file"]');
         let totalSize = 0;
-        const maxTotalSize = 10 * 1024 * 1024; // 10 Mo max au total
+        const maxTotalSize = 10 * 1024 * 1024;
 
         fileInputs.forEach(input => {
             if (input.files.length > 0) {
@@ -1008,7 +1007,6 @@
             alert("La taille totale des pièces jointes dépasse la limite autorisée (10 Mo). Veuillez réduire la taille de vos fichiers.");
             return;
         }
-        // ----------------------------------------------------
 
         const devise = document.getElementById('deviseSelect').value;
         const montantSaisi = parseFloat(document.getElementById('montantSaisi').value);
@@ -1048,7 +1046,6 @@
                 if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); }
                 setTimeout(() => {
                     document.getElementById('loading-content').style.display = 'none';
-                    
                     document.getElementById('refCodeDisplay').innerText = generatedRefCode;
                     
                     const clientNom = document.getElementById('inputNom').value || "Client";
