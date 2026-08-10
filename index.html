@@ -527,7 +527,7 @@
                 </div>
 
                 <p style="font-size: 0.7rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">
-                    Choisissez l'un de ces deux moyens pour finaliser :
+                    Choisissez l'un de ces moyens pour finaliser :
                 </p>
 
                 <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
@@ -536,8 +536,12 @@
                     <button type="button" onclick="uploadDocument()" style="background: var(--navy); color: white; border: none; padding: 6px 10px; font-size: 0.67rem; font-weight: 700; border-radius: 3px; cursor: pointer; width: 100%;">Télécharger et envoyer les documents</button>
                 </div>
 
-                <a id="waDirectBtn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 8px;">
+                <a id="waDirectBtn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 6px;">
                     <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Envoyer rapidement via WhatsApp
+                </a>
+
+                <a id="emailDirectBtn" href="#" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--navy); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 8px;">
+                    <i class="fas fa-envelope" style="font-size: 0.9rem;"></i> 3. Envoyer directement par e-mail
                 </a>
 
                 <button class="btn-main" onclick="resetAll()" style="padding: 7px; font-size: 0.72rem;">Fermer / Nouveau dossier</button>
@@ -843,13 +847,11 @@
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
-        // --- POINT 4 : Récupération automatique du code créateur dans l'URL ---
         const urlParams = new URLSearchParams(window.location.search);
         const codeCreator = urlParams.get('createur');
         
         if (codeCreator) {
             document.getElementById('createurField').value = codeCreator;
-            console.log("Code créateur détecté :", codeCreator);
         }
 
         const currentUrl = encodeURIComponent(window.location.href);
@@ -861,12 +863,11 @@
         document.getElementById('share-li').href = `https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}&title=${shareTitle}`;
     });
 
-    // --- POINT 1 : Validation du nombre maximum de fichiers (jusqu'à 10) ---
     document.addEventListener('change', function(e) {
         if (e.target && e.target.id === 'idFileDoc') {
             if (e.target.files.length > 10) {
                 alert("Vous ne pouvez pas sélectionner plus de 10 fichiers.");
-                e.target.value = ""; // Réinitialise l'input
+                e.target.value = "";
             }
         }
     });
@@ -1063,7 +1064,7 @@
         refInputHidden.value = generatedRefCode;
         form.appendChild(refInputHidden);
 
-    document.getElementById('loader-overlay').style.display = 'flex';
+        document.getElementById('loader-overlay').style.display = 'flex';
         const formData = new FormData(form);
         
         try {
@@ -1073,28 +1074,34 @@
                 if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); }
                 setTimeout(() => {
                     document.getElementById('loading-content').style.display = 'none';
-                    document.getElementById('refCodeDisplay').innerText = generatedRefCode;
+
+                           document.getElementById('refCodeDisplay').innerText = generatedRefCode;
                     
                     const clientNom = document.getElementById('inputNom').value || "Client";
+                    const clientEmail = document.getElementById('inputEmail') ? document.getElementById('inputEmail').value : "";
                     const codeCreatorVal = document.getElementById('createurField').value;
 
-                    // --- POINT 3 : Traduction automatique du message selon la langue du client vers WhatsApp ---
+                    // --- TRADUCTION AUTOMATIQUE DU MESSAGE WHATSAPP (SANS LE MONTANT DE CONTRIBUTION) ---
                     const userLang = navigator.language || navigator.userLanguage || 'fr';
                     let texteWhatsApp = "";
 
                     if (userLang.startsWith('fr')) {
-                        texteWhatsApp = `Bonjour, je m'appelle ${clientNom}. Mon code de référence est ${generatedRefCode}. ${codeCreatorVal ? `Code créateur: ${codeCreatorVal}. ` : ''}Je souhaite finaliser la vérification d'identité et régler la contribution technique de 99€.`;
+                        texteWhatsApp = `Bonjour, je m'appelle ${clientNom}. Mon code de référence est ${generatedRefCode}. ${codeCreatorVal ? `Code créateur: ${codeCreatorVal}. ` : ''}Je souhaite finaliser la transmission de mes informations.`;
                     } else if (userLang.startsWith('es')) {
-                        texteWhatsApp = `Hola, mi nombre es ${clientNom}. Mi código de referencia es ${generatedRefCode}. ${codeCreatorVal ? `Código creador: ${codeCreatorVal}. ` : ''}Deseo finalizar la verificación de identidad y pagar la contribución técnica de 99€.`;
+                        texteWhatsApp = `Hola, mi nombre es ${clientNom}. Mi código de referencia es ${generatedRefCode}. ${codeCreatorVal ? `Código creador: ${codeCreatorVal}. ` : ''}Deseo finalizar la transmisión de mis datos.`;
                     } else if (userLang.startsWith('pt')) {
-                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Desejo finalizar a verificação de identidade e pagar a contribuição técnica de 99€.`;
+                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Desejo finalizar a transmissão das minhas informações.`;
                     } else {
-                        // Par défaut en anglais
-                        texteWhatsApp = `Hello, my name is ${clientNom}. My reference code is ${generatedRefCode}. ${codeCreatorVal ? `Creator code: ${codeCreatorVal}. ` : ''}I would like to finalize the identity verification and pay the technical fee of 99€.`;
+                        texteWhatsApp = `Hello, my name is ${clientNom}. My reference code is ${generatedRefCode}. ${codeCreatorVal ? `Creator code: ${codeCreatorVal}. ` : ''}I would like to finalize the transmission of my details.`;
                     }
 
                     const waUrl = `https://wa.me/33780976404?text=${encodeURIComponent(texteWhatsApp)}`;
                     document.getElementById('waDirectBtn').href = waUrl;
+
+                    // --- CONFIGURATION DU BOUTON D'ENVOI PAR E-MAIL ---
+                    const emailSubject = encodeURIComponent(`Dossier ${generatedRefCode} - ${clientNom}`);
+                    const emailBody = encodeURIComponent(`Bonjour,\n\nJe m'appelle ${clientNom}.\nMon code de référence est : ${generatedRefCode}\n${codeCreatorVal ? `Code créateur : ${codeCreatorVal}\n` : ''}\nJe vous transmets mes informations pour finaliser mon dossier.`);
+                    document.getElementById('emailDirectBtn').href = `mailto:contact@financieredeezembre.com?subject=${emailSubject}&body=${emailBody}`;
 
                     document.getElementById('success-message').style.display = 'block';
                 }, 3000);
@@ -1114,7 +1121,7 @@
             alert("Veuillez sélectionner au moins un fichier avant d'envoyer.");
             return;
         }
-        alert(`${fileInput.files.length} fichier(s) pris en compte avec succès pour votre dossier ${generatedRefCode}. Veuillez cliquer sur WhatsApp pour les envoyer directement ou finaliser l'instruction.`);
+        alert(`${fileInput.files.length} fichier(s) pris en compte avec succès pour votre dossier ${generatedRefCode}. Veuillez cliquer sur WhatsApp ou sur E-mail pour finaliser l'instruction.`);
     }
 </script>
 </body>
