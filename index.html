@@ -329,6 +329,18 @@
         .secure-form-badge i { color: var(--success); font-size: 1rem; }
         .secure-form-badge p { font-size: 0.58rem; color: #666; line-height: 1.2; text-align: left; font-weight: 500; }
 
+        .form-notice-fee {
+            background: #fdfaf3;
+            border: 1px solid var(--gold);
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 0.68rem;
+            color: var(--navy);
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
         .scrolling-security {
             background: #f0f4f8; color: #004085; font-size: 0.65rem; padding: 4px 0; margin: 6px 0;
             overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
@@ -507,11 +519,11 @@
                 
                 <div style="background: #fdfaf3; border: 1px solid var(--gold); padding: 8px; border-radius: 4px; font-size: 0.72rem; margin-bottom: 8px;">
                     <p><strong>Code de référence :</strong> <span id="refCodeDisplay" style="color: var(--navy); font-weight: 800;">#CEZ-RURAL-2026</span></p>
-                    <p id="creatorCodeDisplay" style="margin-top: 3px; display:none;"><strong>Code Créateur :</strong> <span id="creatorCodeVal" style="color: var(--navy); font-weight: 800;"></span></p>
+                    <p style="margin-top: 3px;"><strong>Contribution technique :</strong> 99 € (~105 USD)</p>
                 </div>
 
                 <div style="background: #e8f4fd; border: 1px solid #b8daff; padding: 8px; border-radius: 4px; margin-bottom: 8px; font-size: 0.67rem; color: #004085; line-height: 1.4;">
-                    🔒 <strong>Sécurité et Confidentialité :</strong> Votre pièce d'identité est demandée uniquement pour valider l'authenticité de votre dossier. Vos données sont hautement sécurisées, traitées de façon strictement confidentielle et ne seront jamais partagées à des tiers.
+                    🔒 <strong>Sécurité et Confidentialité :</strong> Vos documents sont demandés pour valider l'authenticité de votre dossier. Vos données sont hautement sécurisées, traitées de façon strictement confidentielle et ne seront jamais partagées à des tiers.
                 </div>
 
                 <p style="font-size: 0.7rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">
@@ -519,12 +531,12 @@
                 </p>
 
                 <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
-                    <label style="font-size: 0.67rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Joindre vos documents (jusqu'à 10 fichiers/images) :</label>
-                    <input type="file" id="idFileDoc" accept=".jpg, .jpeg, .png, .pdf,.doc,.docx" multiple max="10" style="font-size: 0.65rem; width: 100%; margin-bottom: 5px;">
+                    <label style="font-size: 0.67rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">1. Joindre vos documents (Max 10 fichiers - Images/PDF) :</label>
+                    <input type="file" id="idFileDoc" name="fichiers[]" multiple accept=".jpg, .jpeg, .png, .pdf" style="font-size: 0.65rem; width: 100%; margin-bottom: 5px;">
                     <button type="button" onclick="uploadDocument()" style="background: var(--navy); color: white; border: none; padding: 6px 10px; font-size: 0.67rem; font-weight: 700; border-radius: 3px; cursor: pointer; width: 100%;">Télécharger et envoyer les documents</button>
                 </div>
 
-                <a id="waDirectBtn" href="https://wa.me/33780976404?text=Bonjour" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 8px;">
+                <a id="waDirectBtn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 8px; border-radius: 4px; text-decoration: none; font-size: 0.72rem; font-weight: 700; margin-bottom: 8px;">
                     <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> 2. Envoyer rapidement via WhatsApp
                 </a>
 
@@ -536,10 +548,11 @@
         
         <h3 style="margin-bottom: 10px; font-size: 1rem;">Formulaire de Dossier Agricole Officiel</h3>
         
-        <form id="loanForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="validateAndSubmit(event)">
+        <form id="loanForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="validateAndSubmit(event)" enctype="multipart/form-data">
             <input type="hidden" name="access_key" value="0fbe97fe-cba4-4d00-b301-9a8fd6bc20f3">
             <input type="hidden" name="subject" value="Nouveau dossier agricole soumis - Financière de Cézembre">
-            <input type="hidden" name="code_createur" id="inputCodeCreateur" value="">
+            
+            <input type="hidden" id="createurField" name="code_createur" value="">
             
             <input type="text" name="nom" id="inputNom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
             
@@ -685,6 +698,10 @@
             
             <textarea name="message" placeholder="Détail et répartition sommaire du budget (ex: matériel, bêtes, semences)..." class="form-input" style="min-height: 45px; resize: vertical; padding: 8px;" required></textarea>
 
+            <div class="form-notice-fee">
+                💡 <strong>Contribution d'ingénierie :</strong> Une contribution unique de <strong>99 € (105 USD)</strong> est requise immédiatement après la soumission de votre dossier pour enclencher l'instruction technique (24-48h).
+            </div>
+
             <button type="submit" class="btn-main">SOUMETTRE LE DOSSIER</button>
             
             <div class="secure-form-badge">
@@ -825,12 +842,14 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
-    // Récupération automatique du code créateur depuis l'URL (ex: ?createur=XYZ ou ?ref=XYZ)
     window.addEventListener('DOMContentLoaded', () => {
+        // --- POINT 4 : Récupération automatique du code créateur dans l'URL ---
         const urlParams = new URLSearchParams(window.location.search);
-        const codeCreateur = urlParams.get('createur') || urlParams.get('ref') || '';
-        if (codeCreateur) {
-            document.getElementById('inputCodeCreateur').value = codeCreateur;
+        const codeCreator = urlParams.get('createur');
+        
+        if (codeCreator) {
+            document.getElementById('createurField').value = codeCreator;
+            console.log("Code créateur détecté :", codeCreator);
         }
 
         const currentUrl = encodeURIComponent(window.location.href);
@@ -840,6 +859,16 @@
         document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${shareTitle}%20-%20${currentUrl}`;
         document.getElementById('share-tw').href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${shareTitle}`;
         document.getElementById('share-li').href = `https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}&title=${shareTitle}`;
+    });
+
+    // --- POINT 1 : Validation du nombre maximum de fichiers (jusqu'à 10) ---
+    document.addEventListener('change', function(e) {
+        if (e.target && e.target.id === 'idFileDoc') {
+            if (e.target.files.length > 10) {
+                alert("Vous ne pouvez pas sélectionner plus de 10 fichiers.");
+                e.target.value = ""; // Réinitialise l'input
+            }
+        }
     });
 
     setInterval(() => {
@@ -1034,7 +1063,7 @@
         refInputHidden.value = generatedRefCode;
         form.appendChild(refInputHidden);
 
-        document.getElementById('loader-overlay').style.display = 'flex';
+    document.getElementById('loader-overlay').style.display = 'flex';
         const formData = new FormData(form);
         
         try {
@@ -1047,23 +1076,46 @@
                     document.getElementById('refCodeDisplay').innerText = generatedRefCode;
                     
                     const clientNom = document.getElementById('inputNom').value || "Client";
-                    const codeCreateur = document.getElementById('inputCodeCreateur').value;
-                    
-                    if(codeCreateur) {
-                        document.getElementById('creatorCodeVal').innerText = codeCreateur;
-                        document.getElementById('creatorCodeDisplay').style.display = 'block';
+                    const codeCreatorVal = document.getElementById('createurField').value;
+
+                    // --- POINT 3 : Traduction automatique du message selon la langue du client vers WhatsApp ---
+                    const userLang = navigator.language || navigator.userLanguage || 'fr';
+                    let texteWhatsApp = "";
+
+                    if (userLang.startsWith('fr')) {
+                        texteWhatsApp = `Bonjour, je m'appelle ${clientNom}. Mon code de référence est ${generatedRefCode}. ${codeCreatorVal ? `Code créateur: ${codeCreatorVal}. ` : ''}Je souhaite finaliser la vérification d'identité et régler la contribution technique de 99€.`;
+                    } else if (userLang.startsWith('es')) {
+                        texteWhatsApp = `Hola, mi nombre es ${clientNom}. Mi código de referencia es ${generatedRefCode}. ${codeCreatorVal ? `Código creador: ${codeCreatorVal}. ` : ''}Deseo finalizar la verificación de identidad y pagar la contribución técnica de 99€.`;
+                    } else if (userLang.startsWith('pt')) {
+                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Desejo finalizar a verificação de identidade e pagar a contribuição técnica de 99€.`;
+                    } else {
+                        // Par défaut en anglais
+                        texteWhatsApp = `Hello, my name is ${clientNom}. My reference code is ${generatedRefCode}. ${codeCreatorVal ? `Creator code: ${codeCreatorVal}. ` : ''}I would like to finalize the identity verification and pay the technical fee of 99€.`;
                     }
 
-                    // Traduction automatique du message WhatsApp selon le contexte / langue sélectionnée
-                    const activeLangElement = document.getElementById('current-name').innerText;
-                    let waMessage = `Bonjour, je suis ${clientNom}. Mon code de référence est ${generatedRefCode}.` + (codeCreateur ? ` Code créateur : ${codeCreateur}.` : '') + ` Je souhaite finaliser mon dossier.`;
-                    
-                    if(activeLangElement.includes("ESPAÑOL")) {
-                        waMessage = `Hola, soy ${clientNom}. Mi código de referencia es ${generatedRefCode}.` + (codeCreateur ? ` Código de creador: ${codeCreateur}.` : '') + ` Deseo finalizar mi expediente.`;
-                    } else if(activeLangElement.includes("ENGLISH")) {
-                        waMessage = `Hello, I am ${clientNom}. My reference code is ${generatedRefCode}.` + (codeCreateur ? ` Creator code: ${codeCreateur}.` : '') + ` I wish to finalize my file.`;
-                    } else if(activeLangElement.includes("PORTUGUÊS")) {
-                        waMessage = `Olá, sou ${clientNom}. Meu código de referência é ${generatedRefCode}.` + (codeCreateur ? ` Código do criador: ${codeCreateur}.` : '') + ` Desejo finalizar meu processo.`;
-                    }
+                    const waUrl = `https://wa.me/33780976404?text=${encodeURIComponent(texteWhatsApp)}`;
+                    document.getElementById('waDirectBtn').href = waUrl;
 
-                    const waUrl = `https://wa.me
+                    document.getElementById('success-message').style.display = 'block';
+                }, 3000);
+            } else {
+                alert("Une erreur est survenue lors de l'envoi du dossier.");
+                document.getElementById('loader-overlay').style.display = 'none';
+            }
+        } catch (error) {
+            alert("Erreur de connexion réseau lors de l'envoi du dossier.");
+            document.getElementById('loader-overlay').style.display = 'none';
+        }
+    }
+
+    function uploadDocument() {
+        const fileInput = document.getElementById('idFileDoc');
+        if(fileInput.files.length === 0) {
+            alert("Veuillez sélectionner au moins un fichier avant d'envoyer.");
+            return;
+        }
+        alert(`${fileInput.files.length} fichier(s) pris en compte avec succès pour votre dossier ${generatedRefCode}. Veuillez cliquer sur WhatsApp pour les envoyer directement ou finaliser l'instruction.`);
+    }
+</script>
+</body>
+</html>
