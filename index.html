@@ -913,7 +913,7 @@
         }
     }
 
-    /* Catalogue étendu de 210 avis uniques, sans doublons inter-pays, répartis entre l'Europe et l'Amérique Latine dans leur propre langue */
+    /* Catalogue de plus de 210 avis uniques couvrant l'Europe, l'Amérique Latine et les îles françaises/lointaines dans leur langue d'origine */
     const allReviews = [
         // --- France & Dom-Tom ---
         { n: "Jean-Marc Dupont", p: "France", t: "Soutien indispensable pour l'acquisition de notre nouveau semoir et l'optimisation des cultures de céréales.", i: "https://randomuser.me/api/portraits/men/45.jpg" },
@@ -936,6 +936,8 @@
         { n: "Sandra Petit", p: "Martinique", t: "Un accompagnement humain exceptionnel pour nos producteurs de vanille et épices.", i: "https://randomuser.me/api/portraits/women/48.jpg" },
         { n: "Gilles Robert", p: "La Réunion", t: "Soutien indispensable pour nos équipements de culture de géranium et plantes à parfum.", i: "https://randomuser.me/api/portraits/men/34.jpg" },
         { n: "Nathalie Henry", p: "La Réunion", t: "Instruction rapide pour notre coopérative de production de vanille Bourbon.", i: "https://randomuser.me/api/portraits/women/24.jpg" },
+        { n: "Maëva Teissier", p: "Polynésie française", t: "Mauruuru roa ! Un appui précieux pour notre exploitation de perliculture et vanilleraie.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
+        { n: "Kévin Boucard", p: "Nouvelle-Calédonie", t: "Financement reçu pour l'achat de matériel de clôture pour notre élevage de bovins en brousse.", i: "https://randomuser.me/api/portraits/men/62.jpg" },
 
         // --- Espagne (Español) ---
         { n: "Carlos Sanchez", p: "Espagne", t: "Apoyo financiero ideal para nuestra cooperativa de aceite de oliva y viñedos.", i: "https://randomuser.me/api/portraits/men/27.jpg" },
@@ -962,7 +964,7 @@
         { n: "Miguel Santos", p: "Portugal", t: "Ajuda fulcral na compra de maquinaria agrícola e regadio para os campos.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
         { n: "Ana Rita Ferreira", p: "Portugal", t: "Processo muito seguro e transparente para o financiamento da nossa exploração pecuária.", i: "https://randomuser.me/api/portraits/women/25.jpg" },
 
-        // --- Amérique Latine (Colombie, Argentine, Brésil, Mexique, etc.) ---
+        // --- Amérique Latine & Caraïbes (Colombie, Argentine, Brésil, Mexique, République Dominicaine, etc.) ---
         { n: "Diego Vargas", p: "Colombie", t: "Respaldo financiero clave para nuestra producción cafetera y maquinaria de beneficio.", i: "https://randomuser.me/api/portraits/men/26.jpg" },
         { n: "Lucia Navas", p: "Colombie", t: "Ayuda perfecta para la compra de ganado lechero en nuestra finca.", i: "https://randomuser.me/api/portraits/women/23.jpg" },
         { n: "Mateo Rojas", p: "Argentine", t: "Excelente apoyo económico para nuestra producción ganadera vacuna en la pampa.", i: "https://randomuser.me/api/portraits/men/30.jpg" },
@@ -971,10 +973,12 @@
         { n: "Camila Ribeiro", p: "Brésil", t: "Ótimo financiamento recebido para a aquisição de tratores e insumos agrícolas.", i: "https://randomuser.me/api/portraits/women/26.jpg" },
         { n: "Esteban Morales", p: "Mexique", t: "Un apoyo invaluable para tecnificar nuestro sistema de riego en cultivos de maíz.", i: "https://randomuser.me/api/portraits/men/46.jpg" },
         { n: "Valeria Castillo", p: "Chili", t: "Excelente financiamiento para nuestro proyecto de agricultura frutal de exportación.", i: "https://randomuser.me/api/portraits/women/27.jpg" },
+        { n: "Mateo Almonte", p: "République dominicaine", t: "Excelente asistencia financiera para la producción y cosecha de plátanos y frutos.", i: "https://randomuser.me/api/portraits/men/50.jpg" },
+        { n: "Alejandro Castro", p: "Cuba", t: "Apoyo vital para modernizar nuestros equipos de cultivo en la cooperativa tabacalera.", i: "https://randomuser.me/api/portraits/men/52.jpg" },
 
-        // --- Extension programmatique rigoureuse (générant précisément le reste des 210 avis sans doublons, avec profils et pays propres) ---
-        ...Array.from({ length: 165 }, (_, index) => {
-            const id = index + 46;
+        // --- Extension programmatique pour atteindre ou dépasser 210 avis uniques multirégionaux ---
+        ...Array.from({ length: 160 }, (_, index) => {
+            const id = index + 51;
             const isMale = index % 2 === 0;
             const firstNames = isMale 
                 ? ["Julian", "Alex", "Maxime", "Damien", "Arthur", "Matthieu", "Benoit", "Cédric", "Dominique", "Samuel", "Victor", "Vincent", "Gabriel", "Thomas", "Nathan", "Lucas", "Enzo", "Louis", "Raphaël", "Hugo"] 
@@ -982,8 +986,7 @@
             
             const lastNames = ["Lefebvre", "Fontaine", "Chevalier", "Robin", "Masson", "Gauthier", "Marchand", "Dumont", "Lambert", "Perez", "Massot", "Boucher", "Rousseau", "Meunier", "Girard", "Bonnet", "Dupuis", "Laurent", "Lemaire", "Roux"];
 
-            const countriesAndLangs = [
-                { p: "France", t: "Soutien accordé pour l'acquisition de matériel agricole et outillage de culture." },
+            const globalRegions = [
                 { p: "Belgique", t: "Excellente aide financière pour l'extension de notre exploitation laitière." },
                 { p: "Suisse", t: "Professioneller und schneller Kredit für unsere alpine Weidewirtschaft." },
                 { p: "Canada", t: "Very reliable funding for our grain storage silos and farm equipment." },
@@ -991,10 +994,13 @@
                 { p: "Italie", t: "Fondi ricevuti per la modernizzazione delle attrezzature agricole." },
                 { p: "Brésil", t: "Excelente suporte financeiro para o plantio e colheita em nossa fazenda." },
                 { p: "Argentine", t: "Apoyo clave para la compra de insumos y maquinaria de labranza." },
-                { p: "Colombie", t: "Respaldo financiero muy útil para el desarrollo rural y agrícola." }
+                { p: "Colombie", t: "Respaldo financiero muy útil para el desarrollo rural y agrícola." },
+                { p: "Pérou", t: "Gran apoyo recibido para la adquisición de semillas y cultivo de papas andinas." },
+                { p: "Équateur", t: "Excelente crédito otorgado para optimizar nuestras plantaciones de cacao." },
+                { p: "Guadeloupe", t: "Aide précieuse pour le développement de notre structure agricole locale." }
             ];
 
-            const item = countriesAndLangs[index % countriesAndLangs.length];
+            const item = globalRegions[index % globalRegions.length];
             const name = `${firstNames[index % firstNames.length]} ${lastNames[index % lastNames.length]} ${id}`;
             const genderPath = isMale ? 'men' : 'women';
             const imgId = (index % 70) + 1;
@@ -1050,9 +1056,7 @@
 
     function selectLanguage(name, code) {
         document.getElementById('current-flag').src = `https://flagcdn.com/w40/${code}.png`;
-
-    document.getElementById('current-name').innerText = name.toUpperCase();
-
+        document.getElementById('current-name').innerText = name.toUpperCase();
         document.getElementById('country-list').classList.remove('show-countries');
         const select = document.querySelector('.goog-te-combo');
         if (select) {
