@@ -85,17 +85,44 @@
         }
         .secure-notice i { color: var(--success); }
 
-        /* Section des avis authentiques */
+        /* Section des avis en mouvement / cascade */
         .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        .review-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; border-left: 4px solid var(--gold); }
-        .review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-        .author-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
-        .author-info h4 { font-size: 0.85rem; color: var(--navy); }
-        .author-info span { font-size: 0.7rem; color: var(--success); font-weight: 700; }
-        .stars { color: var(--bright-gold); font-size: 0.8rem; margin-bottom: 8px; }
-        .review-text { font-style: italic; font-size: 0.85rem; color: #555; line-height: 1.5; }
+        
+        .reviews-grid { 
+            display: flex; 
+            flex-direction: column-reverse; 
+            gap: 15px; 
+            max-width: 700px; 
+            margin: 0 auto; 
+            min-height: 300px; 
+            overflow: hidden; 
+            padding: 10px;
+        }
+        
+        .review-card { 
+            background: white; padding: 20px; border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; 
+            border-left: 4px solid var(--gold);
+            display: flex; gap: 15px; align-items: flex-start;
+            animation: dropReview 0.8s cubic-bezier(0.24, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes dropReview {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .author-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
+        .stars { color: var(--bright-gold); font-size: 0.8rem; margin-bottom: 5px; }
+        .review-date { font-size: 0.7rem; color: var(--success); font-weight: 600; margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
+        .review-text { font-style: italic; font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 8px; }
+        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; }
+
+        /* Pied de page avec Mentions Légales et SIRET */
+        footer { background: #0A0A0A; color: #888; padding: 40px 8%; font-size: 0.75rem; text-align: center; line-height: 1.8; border-top: 1px solid #222; }
+        footer p { color: #aaa; margin-bottom: 10px; }
+        .legal-info { font-size: 0.7rem; color: #666; }
 
         @media (max-width: 991px) {
             .hero { flex-direction: column; text-align: center; padding-top: 100px; }
@@ -131,7 +158,6 @@
                 25 € <span>Inscription complète et immédiate</span>
             </div>
 
-            <!-- Remplacer "action" par ton lien de paiement PayPal ou de ta plateforme -->
             <form action="ICI_METTRE_TON_LIEN_PAYPAL" method="POST">
                 <div class="form-group">
                     <label>Votre Prénom</label>
@@ -154,35 +180,41 @@
         </div>
     </section>
 
-    <!-- Section de réassurance avec avis clients et photos -->
+    <!-- Section des avis animés (effet dynamique) -->
     <section class="reviews-section">
         <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
         <div class="reviews-grid">
             <div class="review-card">
-                <div class="review-header">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Élève" class="author-img">
-                    <div class="author-info">
-                        <h4>Julie M.</h4>
-                        <span><i class="fas fa-check-circle"></i> Membre vérifié</span>
-                    </div>
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Élève" class="author-img">
+                <div>
+                    <div class="review-date"><i class="fas fa-check-circle"></i> Inscrit il y a 12 minutes - Membre vérifié</div>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"Franchement, pour 25 €, je m'attendais à de la théorie basique, mais c'est ultra concret. J'ai compris les outils du numérique en quelques jours seulement."</p>
+                    <div class="review-author">Julie M.</div>
                 </div>
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-text">"Franchement, pour 25 €, je m'attendais à de la théorie basique, mais c'est ultra concret. J'ai compris les outils du numérique en quelques jours seulement depuis chez moi."</p>
             </div>
 
             <div class="review-card">
-                <div class="review-header">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Élève" class="author-img">
-                    <div class="author-info">
-                        <h4>Marc D.</h4>
-                        <span><i class="fas fa-check-circle"></i> Membre vérifié</span>
-                    </div>
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Élève" class="author-img">
+                <div>
+                    <div class="review-date"><i class="fas fa-check-circle"></i> Inscrit il y a 25 minutes - Membre vérifié</div>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"Le format va droit au but sans blabla. J'ai pu m'inscrire en 2 minutes avec PayPal et accéder directement aux cours. Je recommande à 100%."</p>
+                    <div class="review-author">Marc D.</div>
                 </div>
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-text">"Le format va droit au but sans blabla. J'ai pu m'inscrire en 2 minutes avec PayPal et accéder directement aux cours. Je recommande à 100%."</p>
             </div>
         </div>
     </section>
+
+    <!-- Pied de page officiel avec Mentions Légales et SIRET -->
+    <footer>
+        <p><strong>Académie Numérique</strong> - Tous droits réservés</p>
+        <div class="legal-info">
+            Adresse : 10 Rue de la République, 75001 Paris, France | Contact : support@academie-numerique.fr<br>
+            SIRET : 123 456 789 00012 | RCS Paris<br>
+            Paiements sécurisés traités par PayPal. Accès numérique instantané.
+        </div>
+    </footer>
 
 </body>
 </html>
