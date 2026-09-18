@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Académie Numérique | Formation Professionnelle en Ligne</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
         :root {
             --navy: #001A4D;
@@ -18,9 +15,7 @@
             --white: #FFFFFF;
             --success: #27ae60;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
-        
         body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
         header {
@@ -28,7 +23,6 @@
             justify-content: space-between; align-items: center;
             position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-
         .logo-container { display: flex; align-items: center; gap: 15px; }
         .logo-sigle { 
             background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
@@ -45,53 +39,33 @@
             display: flex; align-items: center; justify-content: space-between; padding: 120px 8% 60px; color: var(--white);
             gap: 40px;
         }
-
         .hero-content { max-width: 600px; }
         .hero-content h1 { font-size: 2.2rem; line-height: 1.3; margin-bottom: 20px; }
         .hero-content h1 span { color: var(--gold); }
         .hero-content p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; opacity: 0.95; }
 
-        /* Style du lecteur vidéo intégré */
         .video-preview-container {
-            position: relative;
-            width: 100%;
-            height: 220px;
-            background: #000;
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            border: 2px solid rgba(197, 160, 89, 0.4);
+            position: relative; width: 100%; height: 220px; background: #000;
+            border-radius: 6px; overflow: hidden; margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4); border: 2px solid rgba(197, 160, 89, 0.4);
         }
-        .video-preview-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.75;
-        }
+        .video-preview-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; }
         .play-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: rgba(0, 26, 77, 0.4);
-            transition: 0.3s;
+            background: rgba(0, 26, 77, 0.4); transition: 0.3s;
         }
         .play-overlay:hover { background: rgba(0, 26, 77, 0.2); }
         .play-btn-icon {
             width: 60px; height: 60px; background: var(--gold); color: var(--navy);
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; padding-left: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
+            font-size: 1.2rem; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .play-overlay:hover .play-btn-icon { transform: scale(1.1); }
-        .video-caption {
-            margin-top: 8px; font-size: 0.8rem; font-weight: 600; color: #fff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8); letter-spacing: 0.5px;
-        }
+        .video-caption { margin-top: 8px; font-size: 0.8rem; font-weight: 600; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
 
         .features-list { list-style: none; margin-top: 15px; }
         .features-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; }
-        .features-list i { color: var(--gold); }
+        .features-list span.check { color: var(--gold); font-weight: bold; }
 
         .registration-box { 
             background: var(--white); padding: 30px; border-radius: 8px; width: 100%; max-width: 420px; 
@@ -99,17 +73,14 @@
             border-top: 5px solid var(--gold); flex-shrink: 0;
         }
         .registration-box h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--navy); text-align: center; }
-        
         .price-tag { text-align: center; font-size: 1.8rem; font-weight: 800; color: var(--success); margin-bottom: 10px; }
         .price-tag span.old-price { font-size: 1.1rem; color: #999; text-decoration: line-through; margin-right: 8px; font-weight: 400; }
         .price-tag small { font-size: 0.75rem; color: #666; font-weight: 400; display: block; }
 
         .price-reassurance {
             font-size: 0.8rem; color: #555; background: #f8f9fa; padding: 8px 10px; 
-            border-radius: 4px; margin-bottom: 15px; border-left: 3px solid var(--gold);
-            text-align: left; line-height: 1.4;
+            border-radius: 4px; margin-bottom: 15px; border-left: 3px solid var(--gold); line-height: 1.4;
         }
-
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 4px; }
         .form-input { 
@@ -124,20 +95,13 @@
             display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;
         }
         .btn-pay:hover { background: var(--navy-light); }
-
-        .secure-notice { 
-            display: flex; align-items: center; justify-content: center; gap: 8px; 
-            margin-top: 15px; font-size: 0.7rem; color: #666; text-align: center; 
-        }
-        .secure-notice i { color: var(--success); }
+        .secure-notice { margin-top: 15px; font-size: 0.7rem; color: #666; text-align: center; }
 
         .content-section { padding: 60px 8%; background: var(--white); text-align: left; max-width: 1100px; margin: 0 auto; }
         .content-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; text-align: center; }
-        
         .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
         .module-card { background: var(--light-bg); padding: 25px; border-radius: 8px; border-top: 4px solid var(--navy); }
-        .module-card h4 { color: var(--navy); margin-bottom: 10px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
-        .module-card h4 i { color: var(--gold); }
+        .module-card h4 { color: var(--navy); margin-bottom: 10px; font-size: 1.1rem; }
         .module-card p { font-size: 0.85rem; color: #555; line-height: 1.5; }
 
         .expert-box { display: flex; align-items: center; gap: 30px; background: var(--light-bg); padding: 30px; border-radius: 8px; border-left: 5px solid var(--gold); margin-top: 20px; }
@@ -147,28 +111,15 @@
 
         .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
-        
-        .reviews-grid { 
-            display: flex; flex-direction: column-reverse; gap: 15px; 
-            max-width: 700px; margin: 0 auto; min-height: 320px; overflow: hidden; padding: 10px;
-        }
+        .reviews-grid { display: flex; flex-direction: column-reverse; gap: 15px; max-width: 700px; margin: 0 auto; min-height: 320px; overflow: hidden; padding: 10px; }
         
         .review-card { 
             background: white; padding: 20px; border-radius: 8px; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; 
-            border-left: 4px solid var(--gold);
-            display: flex; gap: 15px; align-items: flex-start;
-            animation: dropReview 0.8s cubic-bezier(0.24, 1, 0.32, 1) forwards;
+            border-left: 4px solid var(--gold); display: flex; gap: 15px; align-items: flex-start;
         }
-
-        @keyframes dropReview {
-            0% { opacity: 0; transform: translateY(-40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
         .author-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
         .stars { color: var(--bright-gold); font-size: 0.8rem; margin-bottom: 5px; }
-        .review-date { font-size: 0.7rem; color: var(--success); font-weight: 600; margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
         .review-text { font-style: italic; font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 8px; }
         .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; }
 
@@ -177,30 +128,17 @@
             border-radius: 8px; border: 1px solid #e1e8ed; text-align: left;
         }
         .legal-container h2 { color: var(--navy); font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
-        .legal-container h3 { color: var(--navy); font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px; }
-        .legal-container p, .legal-container li { font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 10px; }
-        .legal-container ul { padding-left: 20px; }
+        .legal-container p { font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 10px; }
 
         footer { background: #0A0A0A; color: #aaa; padding: 40px 8%; font-size: 0.75rem; text-align: center; line-height: 1.8; border-top: 1px solid #222; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; border-bottom: 1px solid #222; padding-bottom: 25px; }
         .footer-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .footer-links a { color: #ccc; text-decoration: none; transition: color 0.2s; }
-        .footer-links a:hover { color: var(--gold); }
-        
-        .footer-socials { display: flex; justify-content: center; gap: 15px; }
-        .footer-socials a {
-            background: #1a1a1a; color: #fff; width: 36px; height: 36px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; cursor: pointer;
-        }
-        .footer-socials a:hover { background: var(--gold); color: var(--navy); }
-
+        .footer-links a { color: #ccc; text-decoration: none; }
         .footer-bottom { margin-top: 25px; color: #666; font-size: 0.7rem; }
-        .footer-bottom p { color: #fff; font-weight: 700; margin-bottom: 5px; }
 
         @media (max-width: 991px) {
             .hero { flex-direction: column; text-align: center; padding-top: 100px; }
             .hero-content h1 { font-size: 1.7rem; }
-            .footer-links { flex-direction: column; gap: 10px; }
             .expert-box { flex-direction: column; text-align: center; }
         }
     </style>
@@ -218,24 +156,21 @@
         <div class="hero-content">
             <h1>Tu as l'impression de <span>stagner</span> alors que tout va trop vite autour de toi ?</h1>
             
-            <!-- APERÇU VIDÉO INTÉGRÉ -->
             <div class="video-preview-container">
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" alt="Aperçu vidéo de la formation">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" alt="Aperçu vidéo">
                 <div class="play-overlay">
-                    <div class="play-btn-icon">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <div class="video-caption">▶ Découvrir la présentation (1:45 min)</div>
+                    <div class="play-btn-icon">▶</div>
+                    <div class="video-caption">Découvrir la présentation (1:45 min)</div>
                 </div>
             </div>
 
-            <p>Aujourd'hui, la vraie différence ne se fait plus sur tes diplômes d'hier, mais sur ta capacité à t'adapter maintenant. Ne pas savoir maîtriser les compétences clés du numérique et des outils d'aujourd'hui, c'est accepter de rester sur la touche pendant que d'autres avancent.</p>
-            <p>Et si, en quelques minutes par jour et depuis chez toi, tu pouvais enfin acquérir cette compétence qui change tout ? Pas de théorie inutile, pas de discours compliqués : juste du concret, du pratique, et des résultats immédiats pour booster ton avenir.</p>
+            <p>Aujourd'hui, la vraie différence ne se fait plus sur tes diplômes d'hier, mais sur ta capacité à t'adapter. Ne pas maîtriser les compétences clés du numérique, c'est accepter de rester sur la touche.</p>
+            <p>Accède directement à une méthode claire, sans jargon, pensée pour des résultats immédiats.</p>
             
             <ul class="features-list">
-                <li><i class="fas fa-check-circle"></i> Session 100% en ligne (Accès immédiat)</li>
-                <li><i class="fas fa-check-circle"></i> Pas de théorie inutile : du concret et du pratique</li>
-                <li><i class="fas fa-check-circle"></i> Prends une longueur d'avance dès aujourd'hui</li>
+                <li><span class="check">✔</span> Session 100% en ligne (Accès immédiat)</li>
+                <li><span class="check">✔</span> Pas de théorie inutile : du concret et du pratique</li>
+                <li><span class="check">✔</span> Prends une longueur d'avance dès aujourd'hui</li>
             </ul>
         </div>
 
@@ -247,11 +182,11 @@
             </div>
 
             <div class="price-reassurance">
-                <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Pourquoi 25 € au lieu de 97 € ?</strong> Notre objectif est de rendre cette méthode accessible à tous sans barrière financière.
+                <strong>Pourquoi 25 € au lieu de 97 € ?</strong> Rendre cette méthode accessible à tous sans barrière financière.
             </div>
 
-            <div style="font-size: 0.75rem; color: #27ae60; background: #e8f8f0; padding: 8px 10px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--success);">
-                <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail en quelques minutes après le paiement.
+            <div style="font-size: 0.75rem; color: #27ae60; background: #e8f8f0; padding: 8px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--success);">
+                <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail en quelques minutes.
             </div>
 
             <form action="ICI_METTRE_TON_LIEN_PAYPAL" method="POST">
@@ -266,39 +201,39 @@
                 </div>
 
                 <button type="submit" class="btn-pay">
-                    <i class="fab fa-paypal"></i> Payer 25 € et S'inscrire
+                    Payer 25 € et S'inscrire (Sécurisé)
                 </button>
             </form>
 
             <div class="secure-notice">
-                <i class="fas fa-shield-alt"></i> Paiement sécurisé PayPal • <strong>Reçu en quelques minutes</strong>
+                🔒 Paiement sécurisé PayPal • <strong>Reçu en quelques minutes</strong>
             </div>
         </div>
     </section>
 
     <section class="content-section">
-        <h2>Ce qui vous attend à l'intérieur (Programme Détaillé)</h2>
+        <h2>Ce qui vous attend à l'intérieur</h2>
         <div class="modules-grid">
             <div class="module-card">
-                <h4><i class="fas fa-layer-group"></i> Module 1 : Fondations Digitales</h4>
-                <p>Comprendre les nouveaux codes du travail à distance, identifier les compétences incontournables et structurer sa veille informationnelle efficace.</p>
+                <h4>Module 1 : Fondations Digitales</h4>
+                <p>Comprendre les nouveaux codes du travail à distance et structurer sa veille efficace.</p>
             </div>
             <div class="module-card">
-                <h4><i class="fas fa-brain"></i> Module 2 : Maîtrise des Intelligences Artificielles</h4>
-                <p>Apprenez à prompter, rédiger et automatiser vos tâches quotidiennes grâce aux outils d'IA générative pour gagner un temps précieux.</p>
+                <h4>Module 2 : Maîtrise des IA</h4>
+                <p>Apprenez à prompter et automatiser vos tâches quotidiennes grâce aux intelligences génératives.</p>
             </div>
             <div class="module-card">
-                <h4><i class="fas fa-rocket"></i> Module 3 : Productivité & Exécution</h4>
-                <p>Méthodes d'organisation, gestion des flux de travail numériques et mise en place d'un système personnel prêt à l'emploi.</p>
+                <h4>Module 3 : Productivité & Exécution</h4>
+                <p>Méthodes d'organisation et mise en place d'un système personnel prêt à l'emploi.</p>
             </div>
         </div>
 
         <h2>Qui a conçu cette méthode ?</h2>
         <div class="expert-box">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Experte digital" class="expert-img">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Experte" class="expert-img">
             <div class="expert-info">
                 <h4>Équipe Pédagogique & Experts Associés</h4>
-                <p>Développée par des consultants et ingénieurs en transformation numérique et intelligence artificielle. Notre objectif est de traduire des concepts complexes en protocoles simples, actionnables et accessibles à tous.</p>
+                <p>Développée par des consultants en transformation numérique et IA. Notre objectif est de traduire des concepts complexes en protocoles simples et actionnables.</p>
             </div>
         </div>
     </section>
@@ -310,43 +245,19 @@
 
     <section id="conditions" class="legal-container">
         <h2>Conditions Générales de Vente (CGV)</h2>
-        <h3>Article 1 - Objet</h3>
-        <p>Les présentes Conditions Générales de Vente régissent la vente des sessions de formation en ligne proposées par l'Académie Numérique.</p>
-        <h3>Article 2 - Prix</h3>
-        <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Paiement unique par PayPal.</p>
-        <h3>Article 3 - Livraison</h3>
-        <p>En cas de forte affluence, l'envoi des accès par courrier électronique peut exceptionnellement s'effectuer dans un délai de 24 à 48 heures.</p>
-        <h3>Article 4 - Garantie</h3>
-        <p>Remboursement intégral et automatique sous 72 heures en cas de non-réception des accès sous 48 heures.</p>
-    </section>
-
-    <section id="confidentialite" class="legal-container">
-        <h2>Politique de Confidentialité (RGPD)</h2>
-        <p>Seuls le prénom et l'adresse e-mail sont collectés pour la livraison des accès. Aucune donnée bancaire n'est stockée.</p>
-    </section>
-
-    <section id="mentions" class="legal-container">
-        <h2>Mentions Légales</h2>
-        <p><strong>Dénomination :</strong> Académie Numérique | <strong>SIRET :</strong> 123 456 789 00012</p>
-        <p><strong>Contact :</strong> support@academie-numerique.fr</p>
+        <p>Tarif promotionnel de 25 € (au lieu de 97 €). Paiement unique par PayPal. Livraison des accès en quelques minutes (ou jusqu'à 24-48h en cas de forte affluence). Remboursement garanti si non-réception sous 48h.</p>
     </section>
 
     <footer>
         <div class="footer-content">
             <div class="footer-links">
                 <a href="#conditions">CGV</a>
-                <a href="#confidentialite">Politique de Confidentialité</a>
-                <a href="#mentions">Mentions Légales</a>
-            </div>
-            <div class="footer-socials">
-                <a onclick="shareOnFacebook()"><i class="fab fa-facebook-f"></i></a>
-                <a onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></a>
-                <a onclick="shareOnLinkedIn()"><i class="fab fa-linkedin-in"></i></a>
-                <a onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></a>
+                <a href="#conditions">Politique de Confidentialité</a>
+                <a href="#conditions">Mentions Légales</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Académie Numérique - Tous droits réservés</p>
+            <p>Académie Numérique - Tous droits réservés | Contact : support@academie-numerique.fr</p>
         </div>
     </footer>
 
@@ -354,12 +265,10 @@
         const frenchReviews = [
             { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record !", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
             { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
-            { name: "Hugo M.", city: "Marseille", text: "Enfin une formation sans jargon inutile. On va droit au but.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" },
-            { name: "Chloé B.", city: "Bordeaux", text: "J'hésitais au début vu le prix bas, mais le contenu est vraiment au rendez-vous.", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" }
+            { name: "Hugo M.", city: "Marseille", text: "Enfin une formation sans jargon inutile. On va droit au but.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" }
         ];
 
         let currentIndex = 0;
-
         function initLiveReviews() {
             const container = document.getElementById('reviewsContainer');
             function addNewReview() {
@@ -370,16 +279,14 @@
                 card.innerHTML = `
                     <img src="${currentReview.photo}" alt="${currentReview.name}" class="author-img">
                     <div>
-                        <div class="review-date"><i class="fas fa-check-circle"></i> Inscrit il y a ${randomMinutes} minutes - Membre vérifié (${currentReview.city})</div>
-                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div style="font-size: 0.7rem; color: #27ae60; font-weight: 600; margin-bottom: 3px;">✔ Inscrit il y a ${randomMinutes} min (${currentReview.city})</div>
+                        <div class="stars">★★★★★</div>
                         <p class="review-text">"${currentReview.text}"</p>
                         <div class="review-author">${currentReview.name}</div>
                     </div>
                 `;
                 container.insertBefore(card, container.firstChild);
-                if (container.children.length > 3) {
-                    container.removeChild(container.lastChild);
-                }
+                if (container.children.length > 3) container.removeChild(container.lastChild);
                 currentIndex = (currentIndex + 1) % frenchReviews.length;
             }
             container.innerHTML = "";
@@ -388,14 +295,6 @@
             addNewReview();
             setInterval(addNewReview, 6000);
         }
-
-        const shareUrl = encodeURIComponent(window.location.href);
-        const shareTitle = encodeURIComponent("Découvre l'Académie Numérique pour booster tes compétences !");
-        function shareOnFacebook() { window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank', 'width=600,height=400'); }
-        function shareOnTwitter() { window.open(`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`, '_blank', 'width=600,height=400'); }
-        function shareOnLinkedIn() { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`, '_blank', 'width=600,height=400'); }
-        function shareOnWhatsApp() { window.open(`https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`, '_blank'); }
-
         window.onload = initLiveReviews;
     </script>
 </body>
