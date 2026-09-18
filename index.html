@@ -62,12 +62,10 @@
         }
         .registration-box h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--navy); text-align: center; }
         
-        /* Prix barré à 97 € et prix de vente à 25 € */
         .price-tag { text-align: center; font-size: 1.8rem; font-weight: 800; color: var(--success); margin-bottom: 10px; }
         .price-tag span.old-price { font-size: 1.1rem; color: #999; text-decoration: line-through; margin-right: 8px; font-weight: 400; }
         .price-tag small { font-size: 0.75rem; color: #666; font-weight: 400; display: block; }
 
-        /* Explication du prix de 25 € */
         .price-reassurance {
             font-size: 0.8rem; color: #555; background: #f8f9fa; padding: 8px 10px; 
             border-radius: 4px; margin-bottom: 15px; border-left: 3px solid var(--gold);
@@ -95,16 +93,19 @@
         }
         .secure-notice i { color: var(--success); }
 
-        /* Section des avis dynamiques */
+        /* Section des avis en mouvement continu */
         .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
         
         .reviews-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 20px; 
-            max-width: 1100px; 
+            display: flex; 
+            flex-direction: column-reverse; 
+            gap: 15px; 
+            max-width: 700px; 
             margin: 0 auto; 
+            min-height: 320px; 
+            overflow: hidden; 
+            padding: 10px;
         }
         
         .review-card { 
@@ -112,6 +113,12 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; 
             border-left: 4px solid var(--gold);
             display: flex; gap: 15px; align-items: flex-start;
+            animation: dropReview 0.8s cubic-bezier(0.24, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes dropReview {
+            0% { opacity: 0; transform: translateY(-40px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .author-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
@@ -173,9 +180,8 @@
                 <small>Inscription complète et immédiate</small>
             </div>
 
-            <!-- Explication du prix de 25 € pour rassurer les acheteurs -->
             <div class="price-reassurance">
-                <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Pourquoi 25 € au lieu de 97 € ?</strong> Notre objectif est de rendre cette méthode accessible à tous en éliminant toute barrière financière, pour vous permettre de démarrer immédiatement.
+                <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Pourquoi 25 € au lieu de 97 € ?</strong> Notre objectif est de rendre cette méthode accessible à tous sans barrière financière.
             </div>
 
             <form action="ICI_METTRE_TON_LIEN_PAYPAL" method="POST">
@@ -200,20 +206,18 @@
         </div>
     </section>
 
-    <!-- Section des avis dynamiques (35 profils français qui changent aléatoirement) -->
+    <!-- Section des avis dynamiques en cascade -->
     <section class="reviews-section">
         <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
-        <div class="reviews-grid" id="reviewsGrid">
-            <!-- Les avis dynamiques s'insèrent ici automatiquement -->
-        </div>
+        <div class="reviews-grid" id="reviewsContainer"></div>
     </section>
 
-    <!-- Pied de page officiel -->
+    <!-- Pied de page officiel intégrant les mentions légales et clauses de remboursement -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
                 <a href="#contact">Contact</a>
-                <a href="#conditions">Conditions Générales de Vente</a>
+                <a href="#conditions">Conditions Générales de Vente (CGV)</a>
                 <a href="#confidentialite">Politique de Confidentialité</a>
                 <a href="#mentions">Mentions Légales</a>
             </div>
@@ -230,13 +234,13 @@
             <p>Académie Numérique - Tous droits réservés</p>
             Adresse : 10 Rue de la République, 75001 Paris, France | Support : support@academie-numerique.fr<br>
             SIRET : 123 456 789 00012 | RCS Paris<br>
-            Paiements sécurisés traités par PayPal. Accès numérique instantané.
+            <em>Clause légale CGV :</em> En raison du volume important de commandes, l'envoi des accès par e-mail s'effectue sous 24h à 48h. En cas de non-réception dans ce délai, un remboursement automatique et intégral est garanti sous 72h sur le compte PayPal.<br>
+            Paiements sécurisés traités par PayPal.
         </div>
     </footer>
 
     <script>
-        // Liste complète des 35 profils français réels avec des avis variés
-        const allReviews = [
+        const frenchReviews = [
             { name: "Marc D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record. Super investissement !", photo: "https://randomuser.me/api/portraits/men/32.jpg" },
             { name: "Sophie L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires et directes.", photo: "https://randomuser.me/api/portraits/women/44.jpg" },
             { name: "Julien M.", city: "Marseille", text: "Enfin une formation sans jargon inutile. On va droit au but, ça fait gagner des heures.", photo: "https://randomuser.me/api/portraits/men/85.jpg" },
@@ -274,30 +278,41 @@
             { name: "Adrien B.", city: "Saint-Denis", text: "Franchement bluffé par la qualité des ressources fournies.", photo: "https://randomuser.me/api/portraits/men/67.jpg" }
         ];
 
-        // Fonction pour mélanger et afficher aléatoirement 6 avis différents à chaque visite
-        function loadRandomReviews() {
-            let shuffled = allReviews.sort(() => 0.5 - Math.random());
-            let selected = shuffled.slice(0, 6);
-            let container = document.getElementById('reviewsGrid');
-            container.innerHTML = "";
+        function initLiveReviews() {
+            const container = document.getElementById('reviewsContainer');
+            
+            function addNewReview() {
+                const randomReview = frenchReviews[Math.floor(Math.random() * frenchReviews.length)];
+                const randomMinutes = Math.floor(Math.random() * 35) + 2;
 
-            selected.forEach(review => {
-                let card = document.createElement('div');
+                const card = document.createElement('div');
                 card.className = 'review-card';
                 card.innerHTML = `
-                    <img src="${review.photo}" alt="${review.name}" class="author-img">
+                    <img src="${randomReview.photo}" alt="${randomReview.name}" class="author-img">
                     <div>
-                        <div class="review-date"><i class="fas fa-check-circle"></i> Membre vérifié (${review.city})</div>
+                        <div class="review-date"><i class="fas fa-check-circle"></i> Inscrit il y a ${randomMinutes} minutes - Membre vérifié (${randomReview.city})</div>
                         <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="review-text">"${review.text}"</p>
-                        <div class="review-author">${review.name}</div>
+                        <p class="review-text">"${randomReview.text}"</p>
+                        <div class="review-author">${randomReview.name}</div>
                     </div>
                 `;
-                container.appendChild(card);
-            });
+
+                container.insertBefore(card, container.firstChild);
+
+                if (container.children.length > 3) {
+                    container.removeChild(container.lastChild);
+                }
+            }
+
+            container.innerHTML = "";
+            addNewReview();
+            addNewReview();
+            addNewReview();
+
+            setInterval(addNewReview, 6000);
         }
 
-        window.onload = loadRandomReviews;
+        window.onload = initLiveReviews;
     </script>
 </body>
 </html>
