@@ -93,7 +93,7 @@
         }
         .secure-notice i { color: var(--success); }
 
-        /* Section des avis en mouvement séquentiel strict */
+        /* Section des avis en mouvement séquentiel strict (1 à 35) */
         .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
         
@@ -137,7 +137,7 @@
         .legal-container p, .legal-container li { font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 10px; }
         .legal-container ul { padding-left: 20px; }
 
-        /* Pied de page officiel */
+        /* Pied de page officiel avec boutons de partage direct */
         footer { background: #0A0A0A; color: #aaa; padding: 40px 8%; font-size: 0.75rem; text-align: center; line-height: 1.8; border-top: 1px solid #222; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; border-bottom: 1px solid #222; padding-bottom: 25px; }
         .footer-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
@@ -147,7 +147,7 @@
         .footer-socials { display: flex; justify-content: center; gap: 15px; }
         .footer-socials a {
             background: #1a1a1a; color: #fff; width: 36px; height: 36px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; cursor: pointer;
         }
         .footer-socials a:hover { background: var(--gold); color: var(--navy); }
 
@@ -194,6 +194,11 @@
                 <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Pourquoi 25 € au lieu de 97 € ?</strong> Notre objectif est de rendre cette méthode accessible à tous sans barrière financière.
             </div>
 
+            <!-- Révélation d'un accès immédiat pour mettre le client en totale confiance -->
+            <div style="font-size: 0.75rem; color: #27ae60; background: #e8f8f0; padding: 8px 10px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--success);">
+                <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail en quelques minutes après le paiement.
+            </div>
+
             <form action="ICI_METTRE_TON_LIEN_PAYPAL" method="POST">
                 <div class="form-group">
                     <label>Votre Prénom</label>
@@ -211,7 +216,7 @@
             </form>
 
             <div class="secure-notice">
-                <i class="fas fa-shield-alt"></i> Paiement 100% sécurisé via PayPal • Accès instantané
+                <i class="fas fa-shield-alt"></i> Paiement sécurisé PayPal • <strong>Reçu en quelques minutes</strong>
             </div>
         </div>
     </section>
@@ -222,7 +227,7 @@
         <div class="reviews-grid" id="reviewsContainer"></div>
     </section>
 
-    <!-- Section Dédiée : Conditions Générales de Vente (CGV) -->
+    <!-- Section Dédiée : Conditions Générales de Vente (CGV) - C'est ici que le détail de sécurité 24-48h est stocké -->
     <section id="conditions" class="legal-container">
         <h2>Conditions Générales de Vente (CGV)</h2>
         <h3>Article 1 - Objet et Champ d'Application</h3>
@@ -232,7 +237,7 @@
         <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en un versement unique par le biais de la passerelle sécurisée PayPal.</p>
         
         <h3>Article 3 - Modalités de Livraison et Délai de Traitement</h3>
-        <p>En raison du volume important de commandes en cours, le traitement des dossiers et l'envoi des accès par courrier électronique s'effectuent dans un délai indicatif de <strong>24 à 48 heures</strong>.</p>
+        <p>En temps normal, l'accès au service est envoyé en quelques minutes après le paiement. Toutefois, <strong>en cas de forte affluence liée à un volume important de commandes</strong>, le traitement des dossiers et l'envoi des accès par courrier électronique peuvent exceptionnellement s'effectuer dans un délai indicatif de <strong>24 à 48 heures</strong>.</p>
         
         <h3>Article 4 - Garantie de Remboursement</h3>
         <p>Si l'acheteur ne recevait pas son courrier d'accès dans un délai maximal de 48 heures suivant sa commande, un <strong>remboursement intégral et automatique sous 72 heures</strong> est garanti et effectué directement sur son compte PayPal, sans aucune condition complexe.</p>
@@ -260,7 +265,7 @@
         <p><strong>Hébergement :</strong> Plateforme Cloud sécurisée</p>
     </section>
 
-    <!-- Pied de page officiel -->
+    <!-- Pied de page officiel avec boutons de partage direct -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -269,11 +274,12 @@
                 <a href="#mentions">Mentions Légales</a>
             </div>
 
+            <!-- Boutons de Partage Direct (Facebook, X, LinkedIn, WhatsApp) -->
             <div class="footer-socials">
-                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a onclick="shareOnFacebook()" title="Partager sur Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a onclick="shareOnTwitter()" title="Partager sur X (Twitter)"><i class="fab fa-twitter"></i></a>
+                <a onclick="shareOnLinkedIn()" title="Partager sur LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a onclick="shareOnWhatsApp()" title="Partager sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
 
@@ -352,7 +358,7 @@
                     container.removeChild(container.lastChild);
                 }
 
-                // Incrémentation séquentielle stricte de 0 à 34 (du 1er au 35e profil) puis boucle
+                // Rotation stricte et séquentielle de 0 à 34 (du 1er au 35e profil) sans doublon immédiat
                 currentIndex = (currentIndex + 1) % frenchReviews.length;
             }
 
@@ -362,6 +368,26 @@
             addNewReview();
 
             setInterval(addNewReview, 6000);
+        }
+
+        // Fonctions de partage direct pour les réseaux sociaux
+        const shareUrl = encodeURIComponent(window.location.href);
+        const shareTitle = encodeURIComponent("Découvre l'Académie Numérique pour booster tes compétences !");
+
+        function shareOnFacebook() {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank', 'width=600,height=400');
+        }
+
+        function shareOnTwitter() {
+            window.open(`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`, '_blank', 'width=600,height=400');
+        }
+
+        function shareOnLinkedIn() {
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`, '_blank', 'width=600,height=400');
+        }
+
+        function shareOnWhatsApp() {
+            window.open(`https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`, '_blank');
         }
 
         window.onload = initLiveReviews;
