@@ -93,19 +93,13 @@
         }
         .secure-notice i { color: var(--success); }
 
-        /* Section des avis en mouvement séquentiel strict (1 à 35) */
         .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
         
         .reviews-grid { 
-            display: flex; 
-            flex-direction: column-reverse; 
-            gap: 15px; 
-            max-width: 700px; 
-            margin: 0 auto; 
-            min-height: 320px; 
-            overflow: hidden; 
-            padding: 10px;
+            display: flex; flex-direction: column-reverse; gap: 15px; 
+            max-width: 700px; margin: 0 auto; min-height: 320px; 
+            overflow: hidden; padding: 10px;
         }
         
         .review-card { 
@@ -127,7 +121,6 @@
         .review-text { font-style: italic; font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 8px; }
         .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; }
 
-        /* Sections Juridiques Dédiées */
         .legal-container {
             max-width: 900px; margin: 40px auto; padding: 40px 8%; background: #fff;
             border-radius: 8px; border: 1px solid #e1e8ed; text-align: left;
@@ -137,7 +130,6 @@
         .legal-container p, .legal-container li { font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 10px; }
         .legal-container ul { padding-left: 20px; }
 
-        /* Pied de page officiel avec boutons de partage direct */
         footer { background: #0A0A0A; color: #aaa; padding: 40px 8%; font-size: 0.75rem; text-align: center; line-height: 1.8; border-top: 1px solid #222; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; border-bottom: 1px solid #222; padding-bottom: 25px; }
         .footer-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
@@ -177,7 +169,7 @@
             <p>Et si, en quelques minutes par jour et depuis chez toi, tu pouvais enfin acquérir cette compétence qui change tout ? Pas de théorie inutile, pas de discours compliqués : juste du concret, du pratique, et des résultats immédiats pour booster ton avenir.</p>
             
             <ul class="features-list">
-                <li><i class="fas fa-check-circle"></i> Session 100% en ligne (Accès immédiat)</li>
+                <li><i class="fas fa-check-circle"></i> Session 100% en ligne (Accès via notre plateforme)</li>
                 <li><i class="fas fa-check-circle"></i> Pas de théorie inutile : du concret et du pratique</li>
                 <li><i class="fas fa-check-circle"></i> Prends une longueur d'avance dès aujourd'hui</li>
             </ul>
@@ -187,16 +179,16 @@
             <h3>Accès à la Session</h3>
             <div class="price-tag">
                 <span class="old-price">97 €</span> 25 €
-                <small>Inscription complète et immédiate</small>
+                <small>Inscription complète</small>
             </div>
 
             <div class="price-reassurance">
                 <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Pourquoi 25 € au lieu de 97 € ?</strong> Notre objectif est de rendre cette méthode accessible à tous sans barrière financière.
             </div>
 
-            <!-- Révélation d'un accès immédiat pour mettre le client en totale confiance -->
-            <div style="font-size: 0.75rem; color: #27ae60; background: #e8f8f0; padding: 8px 10px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--success);">
-                <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail en quelques minutes après le paiement.
+            <!-- Message d'information et de réassurance sur les délais et la garantie -->
+            <div style="font-size: 0.75rem; color: var(--navy); background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--gold); line-height: 1.4;">
+                <i class="fas fa-clock" style="color: var(--gold);"></i> <strong>Délai de traitement :</strong> En raison d'un grand nombre de commandes, vous recevrez obligatoirement vos accès par e-mail sous <strong>24 à 48 heures</strong>. Si vous ne recevez rien dans les <strong>72 heures</strong>, vous serez <strong>intégralement remboursé</strong> sur votre compte PayPal (et vous resterez libre de refaire un achat si vous le souhaitez).
             </div>
 
             <form action="ICI_METTRE_TON_LIEN_PAYPAL" method="POST">
@@ -216,18 +208,16 @@
             </form>
 
             <div class="secure-notice">
-                <i class="fas fa-shield-alt"></i> Paiement sécurisé PayPal • <strong>Reçu en quelques minutes</strong>
+                <i class="fas fa-shield-alt"></i> Paiement sécurisé PayPal • <strong>Garantie 72h</strong>
             </div>
         </div>
     </section>
 
-    <!-- Section des avis dynamiques en cascade séquentielle stricte (1 à 35) -->
     <section class="reviews-section">
         <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
         <div class="reviews-grid" id="reviewsContainer"></div>
     </section>
 
-    <!-- Section Dédiée : Conditions Générales de Vente (CGV) - C'est ici que le détail de sécurité 24-48h est stocké -->
     <section id="conditions" class="legal-container">
         <h2>Conditions Générales de Vente (CGV)</h2>
         <h3>Article 1 - Objet et Champ d'Application</h3>
@@ -237,13 +227,12 @@
         <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en un versement unique par le biais de la passerelle sécurisée PayPal.</p>
         
         <h3>Article 3 - Modalités de Livraison et Délai de Traitement</h3>
-        <p>En temps normal, l'accès au service est envoyé en quelques minutes après le paiement. Toutefois, <strong>en cas de forte affluence liée à un volume important de commandes</strong>, le traitement des dossiers et l'envoi des accès par courrier électronique peuvent exceptionnellement s'effectuer dans un délai indicatif de <strong>24 à 48 heures</strong>.</p>
+        <p>En raison d'un volume important de commandes sur notre plateforme, le traitement des dossiers et l'envoi des accès par courrier électronique s'effectuent dans un délai indicatif de <strong>24 à 48 heures</strong>.</p>
         
         <h3>Article 4 - Garantie de Remboursement</h3>
-        <p>Si l'acheteur ne recevait pas son courrier d'accès dans un délai maximal de 48 heures suivant sa commande, un <strong>remboursement intégral et automatique sous 72 heures</strong> est garanti et effectué directement sur son compte PayPal, sans aucune condition complexe.</p>
+        <p>Si l'acheteur ne recevait pas son courrier d'accès dans un délai maximal de <strong>72 heures</strong> suivant son achat, un <strong>remboursement intégral</strong> est immédiatement effectué sur son compte PayPal. L'utilisateur reste ensuite totalement libre d'effectuer un nouvel achat sur la plateforme s'il le souhaite.</p>
     </section>
 
-    <!-- Section Dédiée : Politique de Confidentialité -->
     <section id="confidentialite" class="legal-container">
         <h2>Politique de Confidentialité (RGPD)</h2>
         <p>L'Académie Numérique accorde une importance majeure à la protection de la vie privée de ses utilisateurs.</p>
@@ -255,7 +244,6 @@
         <p>Conformément au RGPD, vous disposez d'un droit d'accès, de modification et de suppression de vos données en écrivant à support@academie-numerique.fr.</p>
     </section>
 
-    <!-- Section Dédiée : Mentions Légales -->
     <section id="mentions" class="legal-container">
         <h2>Mentions Légales</h2>
         <p><strong>Dénomination sociale :</strong> Académie Numérique</p>
@@ -265,7 +253,6 @@
         <p><strong>Hébergement :</strong> Plateforme Cloud sécurisée</p>
     </section>
 
-    <!-- Pied de page officiel avec boutons de partage direct -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -274,7 +261,6 @@
                 <a href="#mentions">Mentions Légales</a>
             </div>
 
-            <!-- Boutons de Partage Direct (Facebook, X, LinkedIn, WhatsApp) -->
             <div class="footer-socials">
                 <a onclick="shareOnFacebook()" title="Partager sur Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a onclick="shareOnTwitter()" title="Partager sur X (Twitter)"><i class="fab fa-twitter"></i></a>
@@ -292,7 +278,6 @@
     </footer>
 
     <script>
-        // Les 35 vrais profils humains, étudiants et jeunes français authentiques
         const frenchReviews = [
             { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record. Super investissement !", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
             { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires et directes.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
@@ -358,7 +343,6 @@
                     container.removeChild(container.lastChild);
                 }
 
-                // Rotation stricte et séquentielle de 0 à 34 (du 1er au 35e profil) sans doublon immédiat
                 currentIndex = (currentIndex + 1) % frenchReviews.length;
             }
 
@@ -370,7 +354,6 @@
             setInterval(addNewReview, 6000);
         }
 
-        // Fonctions de partage direct pour les réseaux sociaux
         const shareUrl = encodeURIComponent(window.location.href);
         const shareTitle = encodeURIComponent("Découvre l'Académie Numérique pour booster tes compétences !");
 
