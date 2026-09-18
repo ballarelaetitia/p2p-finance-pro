@@ -94,7 +94,7 @@
         .review-stars { color: #f39c12; font-size: 0.9rem; margin-bottom: 10px; }
         .review-text { font-size: 0.9rem; color: #555; font-style: italic; line-height: 1.5; }
 
-        /* Pied de page professionnel inspiré des grands sites */
+        /* Pied de page professionnel */
         footer { background: #0A0A0A; color: #aaa; padding: 50px 8% 30px 8%; font-size: 0.85rem; }
         .footer-content {
             max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 25px;
@@ -168,13 +168,11 @@
 
     <h2 class="section-title">Ce qu'en disent nos membres</h2>
     
-    <div class="reviews-container" id="reviewsGrid">
-        <!-- Avis injectés dynamiquement -->
-    </div>
+    <!-- Conteneur des avis dynamiques et changeants -->
+    <div class="reviews-container" id="reviewsGrid"></div>
 
     <footer>
         <div class="footer-content">
-            <!-- Liens de navigation du bas (type Coursera) -->
             <div class="footer-links">
                 <a href="#contact">Contact</a>
                 <a href="#conditions">Conditions Générales de Vente</a>
@@ -182,7 +180,6 @@
                 <a href="#mentions">Mentions Légales</a>
             </div>
 
-            <!-- Icônes des réseaux sociaux -->
             <div class="footer-socials">
                 <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -200,6 +197,7 @@
     </footer>
 
     <script>
+        // Liste complète des 35 avis qui se mélangent aléatoirement à chaque visite
         const allReviews = [
             { name: "Marc D.", city: "Lyon", text: "Le programme PHAP m'a permis de comprendre les étapes clés en un temps record. Super investissement !", photo: "https://randomuser.me/api/portraits/men/32.jpg" },
             { name: "Sophie L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires et directes.", photo: "https://randomuser.me/api/portraits/women/44.jpg" },
@@ -238,6 +236,7 @@
             { name: "Adrien B.", city: "Saint-Denis", text: "Franchement bluffé par la qualité des ressources fournies.", photo: "https://randomuser.me/api/portraits/men/67.jpg" }
         ];
 
+        // Fonction pour mélanger et afficher aléatoirement 6 avis différents à chaque visite
         function loadRandomReviews() {
             let shuffled = allReviews.sort(() => 0.5 - Math.random());
             let selected = shuffled.slice(0, 6);
