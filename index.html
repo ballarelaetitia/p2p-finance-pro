@@ -35,11 +35,11 @@
         .hero-content h1 span { color: #C5A059; }
         .hero-content p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; opacity: 0.95; }
 
-        /* LECTEUR AJUSTÉ ET OPTIMISÉ */
+        /* CAGE VIDÉO TRÈS RÉDUITE ET COMPACTE */
         .video-box-auto {
-            position: relative; width: 100%; height: 260px; background: #000;
-            border-radius: 8px; overflow: hidden; margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 2px solid #C5A059;
+            position: relative; width: 280px; height: 130px; background: #000;
+            border-radius: 6px; overflow: hidden; margin-bottom: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4); border: 2px solid #C5A059;
         }
 
         .diaporama-img {
@@ -49,16 +49,16 @@
         .diaporama-img.visible { opacity: 1; }
         
         .etiquette-titre {
-            position: absolute; top: 12px; left: 12px; background: rgba(0, 26, 77, 0.9);
-            padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; color: #C5A059;
-            border-left: 3px solid #C5A059; z-index: 28;
+            position: absolute; top: 6px; left: 6px; background: rgba(0, 26, 77, 0.9);
+            padding: 2px 6px; border-radius: 3px; font-size: 0.55rem; font-weight: 600; color: #C5A059;
+            border-left: 2px solid #C5A059; z-index: 28;
         }
 
         .barre-controle-bas {
-            position: absolute; bottom: 0; left: 0; width: 100%; height: 40px;
-            background: rgba(0,0,0,0.8); display: flex; align-items: center; padding: 0 15px; gap: 12px; z-index: 30;
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 24px;
+            background: rgba(0,0,0,0.8); display: flex; align-items: center; padding: 0 8px; gap: 6px; z-index: 30;
         }
-        .barre-progression { flex-grow: 1; height: 5px; background: rgba(255,255,255,0.3); border-radius: 3px; overflow: hidden; }
+        .barre-progression { flex-grow: 1; height: 3px; background: rgba(255,255,255,0.3); border-radius: 2px; overflow: hidden; }
         .progression-remplie { width: 0%; height: 100%; background: #C5A059; transition: width 0.3s linear; }
 
         .features-list { list-style: none; margin-top: 15px; }
@@ -154,20 +154,23 @@
         <div class="hero-content">
             <h1>Tu as l'impression de <span>stagner</span> alors que tout va trop vite autour de toi ?</h1>
             
-            <!-- LECTEUR EN MARCHE AUTOMATIQUE -->
+            <!-- CAGE VIDÉO TRÈS RÉDUITE AVEC 6 IMAGES -->
             <div class="video-box-auto" id="lecteurAuto">
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" class="diaporama-img visible" alt="Module 1">
-                <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Module 2">
-                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Module 3">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" class="diaporama-img visible" alt="Écran 1">
+                <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Écran 2">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Écran 3">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Écran 4">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Écran 5">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Écran 6">
                 
-                <div class="etiquette-titre" id="titreModule">▶ Aperçu : Module 1 - Fondations Digitales</div>
+                <div class="etiquette-titre" id="titreModule">▶ Module 1</div>
 
                 <div class="barre-controle-bas">
-                    <span style="color: white; font-size: 0.9rem;">▶</span>
+                    <span style="color: white; font-size: 0.6rem;">▶</span>
                     <div class="barre-progression">
                         <div class="progression-remplie" id="barreRemplie"></div>
                     </div>
-                    <span style="color: white; font-size: 0.8rem;">🔊</span>
+                    <span style="color: white; font-size: 0.6rem;">🔊</span>
                 </div>
             </div>
 
@@ -237,7 +240,6 @@
 
         <h2>Qui a conçu cette méthode ?</h2>
         <div class="expert-box">
-            <!-- Photo expert distincte (indépendante des commentaires) -->
             <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200" alt="Expert formateur" class="expert-img">
             <div class="expert-info">
                 <h4>Équipe Pédagogique & Experts Associés</h4>
@@ -246,7 +248,7 @@
         </div>
     </section>
 
-    <!-- AVIS CLIENTS (PROFILES DISTINCTS ET INTACTS) -->
+    <!-- AVIS CLIENTS -->
     <section class="reviews-section">
         <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
         <div class="reviews-grid">
@@ -277,9 +279,14 @@
         </div>
     </section>
 
+    <!-- CONDITIONS GÉNÉRALES DE VENTE COMPLÈTES -->
     <section id="conditions" class="legal-container">
         <h2>Conditions Générales de Vente (CGV)</h2>
-        <p>Tarif promotionnel de 25 € (au lieu de 97 €). Paiement unique par PayPal. Livraison des accès en quelques minutes (ou jusqu'à 24-48h en cas de forte affluence). Remboursement garanti si non-réception sous 48h.</p>
+        <p><strong>1. Objet :</strong> Les présentes conditions générales de vente régissent la vente des modules de formation en ligne proposés par l'Académie Numérique.</p>
+        <p><strong>2. Tarif et Paiement :</strong> Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en une seule fois de manière sécurisée via la plateforme PayPal.</p>
+        <p><strong>3. Livraison des accès :</strong> Les accès à la formation sont envoyés par courrier électronique dans les minutes suivant la validation du paiement (un délai de 24 à 48 heures maximum peut être observé en cas de forte affluence).</p>
+        <p><strong>4. Garantie et Remboursement :</strong> En cas de non-réception des accès sous 48 heures ou de dysfonctionnement technique avéré empêchant l'accès aux modules, un remboursement intégral est garanti sur simple demande auprès du support.</p>
+        <p><strong>5. Propriété intellectuelle :</strong> Tous les contenus, vidéos, textes et supports pédagogiques fournis restent la propriété exclusive de l'Académie Numérique et ne peuvent être rediffusés.</p>
     </section>
 
     <footer>
@@ -304,9 +311,12 @@
         const barreRemplie = document.getElementById('barreRemplie');
 
         const titresModules = [
-            "▶ Aperçu : Module 1 - Fondations Digitales",
-            "▶ Aperçu : Module 2 - Maîtrise des IA",
-            "▶ Aperçu : Module 3 - Productivité & Exécution"
+            "▶ Module 1 - Fondations Digitales",
+            "▶ Module 2 - Maîtrise des IA",
+            "▶ Module 3 - Productivité & Exécution",
+            "▶ Démo - Tableaux de Bord",
+            "▶ Démo - Pratique & Outils",
+            "▶ Résultat - Système Prêt"
         ];
 
         setInterval(() => {
