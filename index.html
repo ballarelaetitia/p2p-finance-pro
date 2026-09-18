@@ -44,24 +44,20 @@
         .hero-content h1 span { color: var(--gold); }
         .hero-content p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; opacity: 0.95; }
 
+        /* CADRE VIDÉO EN MOUVEMENT RÉEL (HTML5 VIDEO) */
         .video-preview-container {
-            position: relative; width: 100%; height: 220px; background: #000;
+            position: relative; width: 100%; height: 230px; background: #000;
             border-radius: 6px; overflow: hidden; margin-bottom: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.4); border: 2px solid rgba(197, 160, 89, 0.4);
         }
-        .video-preview-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; }
-        .play-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: rgba(0, 26, 77, 0.4); transition: 0.3s;
+        .video-preview-container video {
+            width: 100%; height: 100%; object-fit: cover; display: block;
         }
-        .play-overlay:hover { background: rgba(0, 26, 77, 0.2); }
-        .play-btn-icon {
-            width: 60px; height: 60px; background: var(--gold); color: var(--navy);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        .video-caption-overlay {
+            position: absolute; bottom: 8px; left: 8px; background: rgba(0, 26, 77, 0.75);
+            padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; color: var(--gold);
+            border-left: 2px solid var(--gold);
         }
-        .video-caption { margin-top: 8px; font-size: 0.8rem; font-weight: 600; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
 
         .features-list { list-style: none; margin-top: 15px; }
         .features-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; }
@@ -156,12 +152,13 @@
         <div class="hero-content">
             <h1>Tu as l'impression de <span>stagner</span> alors que tout va trop vite autour de toi ?</h1>
             
+            <!-- VRAI LECTEUR VIDÉO NATIF EN MOUVEMENT CONTINU (Présentation des modules) -->
             <div class="video-preview-container">
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" alt="Aperçu vidéo">
-                <div class="play-overlay">
-                    <div class="play-btn-icon">▶</div>
-                    <div class="video-caption">Découvrir la présentation (1:45 min)</div>
-                </div>
+                <video autoplay muted loop playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-typing-on-a-laptop-keyboard-42845-large.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
+                <div class="video-caption-overlay">▶ Aperçu : Immersion dans la formation</div>
             </div>
 
             <p>Aujourd'hui, la vraie différence ne se fait plus sur tes diplômes d'hier, mais sur ta capacité à t'adapter. Ne pas maîtriser les compétences clés du numérique, c'est accepter de rester sur la touche.</p>
@@ -262,6 +259,7 @@
     </footer>
 
     <script>
+        // Gestion des avis dynamiques en bas
         const frenchReviews = [
             { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record !", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
             { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
