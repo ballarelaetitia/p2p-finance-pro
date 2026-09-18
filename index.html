@@ -44,21 +44,26 @@
         .hero-content h1 span { color: var(--gold); }
         .hero-content p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; opacity: 0.95; }
 
-        /* CADRE FAUX LECTEUR VIDÉO INTERACTIF */
+        /* PREuve visuelle que le code a changé */
+        .update-proof-banner {
+            background: #e74c3c; color: white; padding: 6px 12px; font-size: 0.75rem; 
+            font-weight: bold; border-radius: 4px; margin-bottom: 10px; text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        /* FAUX LECTEUR VIDÉO INTERACTIF */
         .video-player-box {
             position: relative; width: 100%; height: 240px; background: #000;
             border-radius: 8px; overflow: hidden; margin-bottom: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.4); border: 2px solid rgba(197, 160, 89, 0.5);
         }
         
-        /* Les images du diaporama à l'intérieur */
         .player-slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; opacity: 0; transition: opacity 0.8s ease-in-out;
         }
         .player-slide.active { opacity: 1; }
 
-        /* État initial : Poster / Miniature fixe avec bouton Play géant */
         .player-poster {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800') center/cover;
@@ -75,7 +80,6 @@
         }
         .big-play-btn:hover { transform: scale(1.1); }
 
-        /* Barre de contrôle du lecteur vidéo en bas */
         .video-controls-bar {
             position: absolute; bottom: 0; left: 0; width: 100%; height: 40px;
             background: linear-gradient(transparent, rgba(0,0,0,0.85));
@@ -189,21 +193,21 @@
         <div class="hero-content">
             <h1>Tu as l'impression de <span>stagner</span> alors que tout va trop vite autour de toi ?</h1>
             
+            <!-- BANDEAU DE VÉRIFICATION -->
+            <div class="update-proof-banner">⚡ MODE LECTEUR INTERACTIF ACTIF (Cliquez sur Play pour lancer)</div>
+
             <!-- FAUX LECTEUR VIDÉO INTERACTIF -->
             <div class="video-player-box" id="videoBox">
-                <!-- Miniature fixe au départ avec bouton Play -->
                 <div class="player-poster" id="playerPoster">
                     <div class="big-play-btn" id="bigPlayBtn" onclick="togglePlayVideo()">▶</div>
                 </div>
 
-                <!-- Images des modules qui défilent quand on clique sur Play -->
                 <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" class="player-slide active" alt="Module 1">
                 <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" class="player-slide" alt="Module 2">
                 <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" class="player-slide" alt="Module 3">
                 
-                <div class="video-title-tag" id="videoTitleTag">▶ Aperçu : Module 1 - Fondations</div>
+                <div class="video-title-tag" id="videoTitleTag">▶ Aperçu : Module 1 - Fondations Digitales</div>
 
-                <!-- Barre de contrôle de la vidéo -->
                 <div class="video-controls-bar">
                     <button class="control-btn" id="playPauseControlBtn" onclick="togglePlayVideo()">⏸</button>
                     <div class="video-progress-track">
@@ -311,7 +315,6 @@
     </footer>
 
     <script>
-        // Logique du faux lecteur interactif (Play / Pause / Défilement d'images)
         let isPlaying = false;
         let slideIndex = 0;
         let slideInterval = null;
@@ -338,7 +341,6 @@
                 playPauseBtn.innerText = "⏸";
                 titleTag.style.display = "block";
 
-                // Lancement du défilement des images
                 slideInterval = setInterval(() => {
                     slides[slideIndex].classList.remove('active');
                     slideIndex = (slideIndex + 1) % slides.length;
@@ -346,7 +348,6 @@
                     titleTag.innerText = slideTitles[slideIndex];
                 }, 3000);
 
-                // Lancement de la barre de progression
                 progressInterval = setInterval(() => {
                     progressPercent += 0.5;
                     if (progressPercent > 100) progressPercent = 0;
@@ -354,7 +355,6 @@
                 }, 100);
 
             } else {
-                // Mise en pause
                 poster.classList.remove('hidden');
                 playPauseBtn.innerText = "▶";
                 titleTag.style.display = "none";
@@ -363,7 +363,6 @@
             }
         }
 
-        // Gestion des avis dynamiques en bas
         const frenchReviews = [
             { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record !", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
             { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
