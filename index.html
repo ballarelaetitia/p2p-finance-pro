@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Académie Numérique | Formation Professionnelle en Ligne</title>
+    <title>Académie Numérique | Formation Professionnelle</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -44,60 +44,47 @@
         .hero-content h1 span { color: var(--gold); }
         .hero-content p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; opacity: 0.95; }
 
-        /* PREuve visuelle que le code a changé */
-        .update-proof-banner {
-            background: #e74c3c; color: white; padding: 6px 12px; font-size: 0.75rem; 
-            font-weight: bold; border-radius: 4px; margin-bottom: 10px; text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
-
-        /* FAUX LECTEUR VIDÉO INTERACTIF */
-        .video-player-box {
+        /* LECTEUR VIDÉO INTERACTIF RECTIFIÉ */
+        .video-box-chirurgical {
             position: relative; width: 100%; height: 240px; background: #000;
             border-radius: 8px; overflow: hidden; margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4); border: 2px solid rgba(197, 160, 89, 0.5);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 2px solid var(--gold);
         }
-        
-        .player-slide {
+
+        .diaporama-img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; opacity: 0; transition: opacity 0.8s ease-in-out;
         }
-        .player-slide.active { opacity: 1; }
+        .diaporama-img.visible { opacity: 1; }
 
-        .player-poster {
+        .video-poster-init {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800') center/cover;
-            display: flex; align-items: center; justify-content: center; z-index: 20;
-            transition: opacity 0.5s ease;
+            display: flex; align-items: center; justify-content: center; z-index: 25;
+            transition: opacity 0.4s ease;
         }
-        .player-poster.hidden { opacity: 0; pointer-events: none; }
-        
-        .big-play-btn {
-            width: 65px; height: 65px; background: var(--gold); color: var(--navy);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            transition: transform 0.2s; border: 2px solid white;
-        }
-        .big-play-btn:hover { transform: scale(1.1); }
+        .video-poster-init.cache { opacity: 0; pointer-events: none; }
 
-        .video-controls-bar {
+        .btn-play-central {
+            width: 70px; height: 70px; background: var(--gold); color: var(--navy);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            border: 3px solid white; transition: transform 0.2s;
+        }
+        .btn-play-central:hover { transform: scale(1.1); }
+
+        .barre-controle-bas {
             position: absolute; bottom: 0; left: 0; width: 100%; height: 40px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.85));
-            display: flex; align-items: center; padding: 0 12px; gap: 12px; z-index: 30;
+            background: rgba(0,0,0,0.8); display: flex; align-items: center; padding: 0 15px; gap: 12px; z-index: 30;
         }
-        .control-btn {
-            background: none; border: none; color: white; font-size: 1rem; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .video-progress-track {
-            flex-grow: 1; height: 4px; background: rgba(255,255,255,0.3); border-radius: 2px;
-            overflow: hidden; cursor: pointer; position: relative;
-        }
-        .video-progress-fill { width: 0%; height: 100%; background: var(--gold); transition: width 0.3s linear; }
-        .video-title-tag {
-            position: absolute; top: 10px; left: 10px; background: rgba(0, 26, 77, 0.85);
-            padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; color: var(--gold);
-            border-left: 3px solid var(--gold); z-index: 25; display: none;
+        .btn-mini { background: none; border: none; color: white; font-size: 1.1rem; cursor: pointer; }
+        .barre-progression { flex-grow: 1; height: 5px; background: rgba(255,255,255,0.3); border-radius: 3px; overflow: hidden; }
+        .progression-remplie { width: 0%; height: 100%; background: var(--gold); transition: width 0.3s linear; }
+        
+        .etiquette-titre {
+            position: absolute; top: 12px; left: 12px; background: rgba(0, 26, 77, 0.9);
+            padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; color: var(--gold);
+            border-left: 3px solid var(--gold); z-index: 28; display: none;
         }
 
         .features-list { list-style: none; margin-top: 15px; }
@@ -193,27 +180,27 @@
         <div class="hero-content">
             <h1>Tu as l'impression de <span>stagner</span> alors que tout va trop vite autour de toi ?</h1>
             
-            <!-- BANDEAU DE VÉRIFICATION -->
-            <div class="update-proof-banner">⚡ MODE LECTEUR INTERACTIF ACTIF (Cliquez sur Play pour lancer)</div>
-
-            <!-- FAUX LECTEUR VIDÉO INTERACTIF -->
-            <div class="video-player-box" id="videoBox">
-                <div class="player-poster" id="playerPoster">
-                    <div class="big-play-btn" id="bigPlayBtn" onclick="togglePlayVideo()">▶</div>
+            <!-- BLOC LECTEUR VIDÉO INTERACTIF CORRIGÉ -->
+            <div class="video-box-chirurgical" id="lecteurVideo">
+                <!-- Miniature initiale avec bouton de lecture -->
+                <div class="video-poster-init" id="posterInitial">
+                    <div class="btn-play-central" onclick="lancerDiaporama()">▶</div>
                 </div>
 
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" class="player-slide active" alt="Module 1">
-                <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" class="player-slide" alt="Module 2">
-                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" class="player-slide" alt="Module 3">
+                <!-- Images en mouvement (Diaporama des modules) -->
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" class="diaporama-img visible" alt="Module 1">
+                <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Module 2">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Module 3">
                 
-                <div class="video-title-tag" id="videoTitleTag">▶ Aperçu : Module 1 - Fondations Digitales</div>
+                <div class="etiquette-titre" id="titreModule">▶ Aperçu : Module 1 - Fondations</div>
 
-                <div class="video-controls-bar">
-                    <button class="control-btn" id="playPauseControlBtn" onclick="togglePlayVideo()">⏸</button>
-                    <div class="video-progress-track">
-                        <div class="video-progress-fill" id="progressFill"></div>
+                <!-- Barre de contrôle de lecture -->
+                <div class="barre-controle-bas">
+                    <button class="btn-mini" id="boutonPausePlay" onclick="basculerLecture()">⏸</button>
+                    <div class="barre-progression">
+                        <div class="progression-remplie" id="barreRemplie"></div>
                     </div>
-                    <button class="control-btn" style="font-size: 0.8rem;" onclick="togglePlayVideo()">🔊</button>
+                    <button class="btn-mini" style="font-size: 0.85rem;">🔊</button>
                 </div>
             </div>
 
@@ -315,54 +302,74 @@
     </footer>
 
     <script>
-        let isPlaying = false;
-        let slideIndex = 0;
-        let slideInterval = null;
-        let progressInterval = null;
-        let progressPercent = 0;
+        // Variables de contrôle du diaporama interactif
+        let enLecture = false;
+        let indexImage = 0;
+        let intervalDiaporama = null;
+        let intervalProgression = null;
+        let pourcentageProg = 0;
 
-        const slides = document.querySelectorAll('.player-slide');
-        const poster = document.getElementById('playerPoster');
-        const playPauseBtn = document.getElementById('playPauseControlBtn');
-        const titleTag = document.getElementById('videoTitleTag');
-        const progressFill = document.getElementById('progressFill');
+        const imagesListe = document.querySelectorAll('.diaporama-img');
+        const posterInitial = document.getElementById('posterInitial');
+        const boutonPausePlay = document.getElementById('boutonPausePlay');
+        const etiquetteTitre = document.getElementById('titreModule');
+        const barreRemplie = document.getElementById('barreRemplie');
 
-        const slideTitles = [
+        const titresModules = [
             "▶ Aperçu : Module 1 - Fondations Digitales",
             "▶ Aperçu : Module 2 - Maîtrise des IA",
             "▶ Aperçu : Module 3 - Productivité & Exécution"
         ];
 
-        function togglePlayVideo() {
-            isPlaying = !isPlaying;
+        function lancerDiaporama() {
+            enLecture = true;
+            posterInitial.classList.add('cache');
+            boutonPausePlay.innerText = "⏸";
+            etiquetteTitre.style.display = "block";
 
-            if (isPlaying) {
-                poster.classList.add('hidden');
-                playPauseBtn.innerText = "⏸";
-                titleTag.style.display = "block";
+            // Défilement des images toutes les 3 secondes
+            intervalDiaporama = setInterval(() => {
+                imagesListe[indexImage].classList.remove('visible');
+                indexImage = (indexImage + 1) % imagesListe.length;
+                imagesListe[indexImage].classList.add('visible');
+                etiquetteTitre.innerText = titresModules[indexImage];
+            }, 3000);
 
-                slideInterval = setInterval(() => {
-                    slides[slideIndex].classList.remove('active');
-                    slideIndex = (slideIndex + 1) % slides.length;
-                    slides[slideIndex].classList.add('active');
-                    titleTag.innerText = slideTitles[slideIndex];
+            // Avancée fluide de la barre de progression
+            intervalProgression = setInterval(() => {
+                pourcentageProg += 0.5;
+                if (pourcentageProg > 100) pourcentageProg = 0;
+                barreRemplie.style.width = pourcentageProg + "%";
+            }, 100);
+        }
+
+        function basculerLecture() {
+            enLecture = !enLecture;
+            if (enLecture) {
+                boutonPausePlay.innerText = "⏸";
+                etiquetteTitre.style.display = "block";
+                
+                intervalDiaporama = setInterval(() => {
+                    imagesListe[indexImage].classList.remove('visible');
+                    indexImage = (indexImage + 1) % imagesListe.length;
+                    imagesListe[indexImage].classList.add('visible');
+                    etiquetteTitre.innerText = titresModules[indexImage];
                 }, 3000);
 
-                progressInterval = setInterval(() => {
-                    progressPercent += 0.5;
-                    if (progressPercent > 100) progressPercent = 0;
-                    progressFill.style.width = progressPercent + "%";
+                intervalProgression = setInterval(() => {
+                    pourcentageProg += 0.5;
+                    if (pourcentageProg > 100) pourcentageProg = 0;
+                    barreRemplie.style.width = pourcentageProg + "%";
                 }, 100);
-
             } else {
-                poster.classList.remove('hidden');
-                playPauseBtn.innerText = "▶";
-                titleTag.style.display = "none";
-                clearInterval(slideInterval);
-                clearInterval(progressInterval);
+                boutonPausePlay.innerText = "▶";
+                etiquetteTitre.style.display = "none";
+                clearInterval(intervalDiaporama);
+                clearInterval(intervalProgression);
             }
         }
 
+        // Avis dynamiques
         const frenchReviews = [
             { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record !", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
             { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
