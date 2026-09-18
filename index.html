@@ -44,8 +44,8 @@
         .hero-content h1 span { color: var(--gold); }
         .hero-content p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; opacity: 0.95; }
 
-        /* LECTEUR VIDÉO INTERACTIF RECTIFIÉ */
-        .video-box-chirurgical {
+        /* LECTEUR EN MARCHE AUTOMATIQUE DIRECTE */
+        .video-box-auto {
             position: relative; width: 100%; height: 240px; background: #000;
             border-radius: 8px; overflow: hidden; margin-bottom: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 2px solid var(--gold);
@@ -53,39 +53,22 @@
 
         .diaporama-img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0; transition: opacity 0.8s ease-in-out;
+            object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
         }
         .diaporama-img.visible { opacity: 1; }
-
-        .video-poster-init {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800') center/cover;
-            display: flex; align-items: center; justify-content: center; z-index: 25;
-            transition: opacity 0.4s ease;
+        
+        .etiquette-titre {
+            position: absolute; top: 12px; left: 12px; background: rgba(0, 26, 77, 0.9);
+            padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; color: var(--gold);
+            border-left: 3px solid var(--gold); z-index: 28;
         }
-        .video-poster-init.cache { opacity: 0; pointer-events: none; }
-
-        .btn-play-central {
-            width: 70px; height: 70px; background: var(--gold); color: var(--navy);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            border: 3px solid white; transition: transform 0.2s;
-        }
-        .btn-play-central:hover { transform: scale(1.1); }
 
         .barre-controle-bas {
             position: absolute; bottom: 0; left: 0; width: 100%; height: 40px;
             background: rgba(0,0,0,0.8); display: flex; align-items: center; padding: 0 15px; gap: 12px; z-index: 30;
         }
-        .btn-mini { background: none; border: none; color: white; font-size: 1.1rem; cursor: pointer; }
         .barre-progression { flex-grow: 1; height: 5px; background: rgba(255,255,255,0.3); border-radius: 3px; overflow: hidden; }
         .progression-remplie { width: 0%; height: 100%; background: var(--gold); transition: width 0.3s linear; }
-        
-        .etiquette-titre {
-            position: absolute; top: 12px; left: 12px; background: rgba(0, 26, 77, 0.9);
-            padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; color: var(--gold);
-            border-left: 3px solid var(--gold); z-index: 28; display: none;
-        }
 
         .features-list { list-style: none; margin-top: 15px; }
         .features-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; }
@@ -180,27 +163,23 @@
         <div class="hero-content">
             <h1>Tu as l'impression de <span>stagner</span> alors que tout va trop vite autour de toi ?</h1>
             
-            <!-- BLOC LECTEUR VIDÉO INTERACTIF CORRIGÉ -->
-            <div class="video-box-chirurgical" id="lecteurVideo">
-                <!-- Miniature initiale avec bouton de lecture -->
-                <div class="video-poster-init" id="posterInitial">
-                    <div class="btn-play-central" onclick="lancerDiaporama()">▶</div>
-                </div>
-
-                <!-- Images en mouvement (Diaporama des modules) -->
+            <!-- LECTEUR EN MARCHE AUTOMATIQUE DÈS L'OUVERTURE -->
+            <div class="video-box-auto" id="lecteurAuto">
+                <!-- Images du diaporama -->
                 <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" class="diaporama-img visible" alt="Module 1">
                 <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Module 2">
                 <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" class="diaporama-img" alt="Module 3">
                 
-                <div class="etiquette-titre" id="titreModule">▶ Aperçu : Module 1 - Fondations</div>
+                <!-- Titre dynamique du module -->
+                <div class="etiquette-titre" id="titreModule">▶ Aperçu : Module 1 - Fondations Digitales</div>
 
-                <!-- Barre de contrôle de lecture -->
+                <!-- Barre de progression en bas -->
                 <div class="barre-controle-bas">
-                    <button class="btn-mini" id="boutonPausePlay" onclick="basculerLecture()">⏸</button>
+                    <span style="color: white; font-size: 0.9rem;">▶</span>
                     <div class="barre-progression">
                         <div class="progression-remplie" id="barreRemplie"></div>
                     </div>
-                    <button class="btn-mini" style="font-size: 0.85rem;">🔊</button>
+                    <span style="color: white; font-size: 0.8rem;">🔊</span>
                 </div>
             </div>
 
@@ -302,16 +281,11 @@
     </footer>
 
     <script>
-        // Variables de contrôle du diaporama interactif
-        let enLecture = false;
+        // Le diaporama se lance AUTOMATIQUEMENT dès l'affichage de la page
         let indexImage = 0;
-        let intervalDiaporama = null;
-        let intervalProgression = null;
         let pourcentageProg = 0;
 
         const imagesListe = document.querySelectorAll('.diaporama-img');
-        const posterInitial = document.getElementById('posterInitial');
-        const boutonPausePlay = document.getElementById('boutonPausePlay');
         const etiquetteTitre = document.getElementById('titreModule');
         const barreRemplie = document.getElementById('barreRemplie');
 
@@ -321,55 +295,22 @@
             "▶ Aperçu : Module 3 - Productivité & Exécution"
         ];
 
-        function lancerDiaporama() {
-            enLecture = true;
-            posterInitial.classList.add('cache');
-            boutonPausePlay.innerText = "⏸";
-            etiquetteTitre.style.display = "block";
+        // Lancement immédiat de l'animation des images
+        setInterval(() => {
+            imagesListe[indexImage].classList.remove('visible');
+            indexImage = (indexImage + 1) % imagesListe.length;
+            imagesListe[indexImage].classList.add('visible');
+            etiquetteTitre.innerText = titresModules[indexImage];
+        }, 3000);
 
-            // Défilement des images toutes les 3 secondes
-            intervalDiaporama = setInterval(() => {
-                imagesListe[indexImage].classList.remove('visible');
-                indexImage = (indexImage + 1) % imagesListe.length;
-                imagesListe[indexImage].classList.add('visible');
-                etiquetteTitre.innerText = titresModules[indexImage];
-            }, 3000);
+        // Lancement immédiat de la barre de progression
+        setInterval(() => {
+            pourcentageProg += 0.5;
+            if (pourcentageProg > 100) pourcentageProg = 0;
+            barreRemplie.style.width = pourcentageProg + "%";
+        }, 100);
 
-            // Avancée fluide de la barre de progression
-            intervalProgression = setInterval(() => {
-                pourcentageProg += 0.5;
-                if (pourcentageProg > 100) pourcentageProg = 0;
-                barreRemplie.style.width = pourcentageProg + "%";
-            }, 100);
-        }
-
-        function basculerLecture() {
-            enLecture = !enLecture;
-            if (enLecture) {
-                boutonPausePlay.innerText = "⏸";
-                etiquetteTitre.style.display = "block";
-                
-                intervalDiaporama = setInterval(() => {
-                    imagesListe[indexImage].classList.remove('visible');
-                    indexImage = (indexImage + 1) % imagesListe.length;
-                    imagesListe[indexImage].classList.add('visible');
-                    etiquetteTitre.innerText = titresModules[indexImage];
-                }, 3000);
-
-                intervalProgression = setInterval(() => {
-                    pourcentageProg += 0.5;
-                    if (pourcentageProg > 100) pourcentageProg = 0;
-                    barreRemplie.style.width = pourcentageProg + "%";
-                }, 100);
-            } else {
-                boutonPausePlay.innerText = "▶";
-                etiquetteTitre.style.display = "none";
-                clearInterval(intervalDiaporama);
-                clearInterval(intervalProgression);
-            }
-        }
-
-        // Avis dynamiques
+        // Avis dynamiques en bas de page
         const frenchReviews = [
             { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record !", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
             { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
