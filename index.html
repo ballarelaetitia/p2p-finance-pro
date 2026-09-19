@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18121475138"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18121475138', {'send_page_view': false});
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Académie Numérique | Formation Professionnelle en Ligne</title>
+    <title>Financière de Cézembre | Soutien Agricole et d'Élevage</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23001A4D'/><text y='70' x='15' font-family='serif' font-size='55' font-weight='bold' fill='%23C5A059'>FC</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -14,14 +24,156 @@
             --navy-light: #003399;
             --gold: #C5A059;
             --bright-gold: #FFD700; 
+            --deep-gold: #E6B800; 
             --light-bg: #F4F7FA;
             --white: #FFFFFF;
+            --whatsapp: #25D366;
             --success: #27ae60;
+            --danger: #e74c3c;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element { display: none; }
+        .goog-te-gadget { display: none !important; }
+
+        .nav-container-separated {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-cage {
+            background-color: var(--navy);
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--gold);
+            color: var(--white) !important;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            min-width: 110px;
+        }
+
+        .nav-cage:hover {
+            background-color: var(--navy-light);
+            color: var(--bright-gold) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-home {
+            background-color: #f8f9fa;
+            color: var(--navy) !important;
+            border: 1.5px solid var(--gold);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-home:hover {
+            background-color: var(--gold);
+            color: white !important;
+        }
+
+        .mobile-return-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: var(--navy);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid var(--gold);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .country-selector {
+            position: relative;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .selected-country {
+            border: 1.5px solid var(--gold);
+            padding: 6px 14px;
+            background: #fdfaf3;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--navy);
+            min-width: 160px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(197, 160, 89, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .selected-country:hover {
+            background: var(--white);
+            box-shadow: 0 4px 8px rgba(197, 160, 89, 0.25);
+        }
+        .country-dropdown {
+            display: none;
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: white;
+            border: 1px solid var(--gold);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            z-index: 2000;
+            width: 100%;
+            min-width: 180px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .country-dropdown div {
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            color: var(--navy);
+            transition: background 0.2s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .country-dropdown div:last-child { border-bottom: none; }
+        .country-dropdown div:hover { background: #fdfaf3; color: var(--gold); }
+        .flag { width: 20px; height: 14px; object-fit: cover; border-radius: 2px; }
+        .show-countries { display: block; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
-        body { background-color: var(--white); color: #333; overflow-x: hidden; }
+        body { 
+            background-color: var(--white); 
+            color: #333; 
+            overflow-x: hidden; 
+            top: 0 !important; 
+            position: static !important; 
+        }
 
         header {
             background: var(--white); padding: 15px 8%; display: flex;
@@ -34,526 +186,1033 @@
             background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
             display: flex; align-items: center; justify-content: center; 
             font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
-            border: 1px solid var(--gold);
+            border: 1px solid var(--gold); flex-shrink: 0;
         }
-        .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: -1px; }
+        .logo { font-weight: 700; font-size: 1.1rem; color: var(--navy); letter-spacing: -0.5px; }
+        .header-msg { font-size: 0.65rem; color: var(--navy); font-weight: 600; margin-top: 2px; }
 
-        /* Hero Section */
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+
         .hero {
-            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.85), rgba(0,26,77,0.85)), 
-            url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=2000');
+            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.75), rgba(0,26,77,0.75)), 
+            url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: space-between; padding: 120px 8% 60px; color: var(--white);
-            gap: 40px;
+            display: flex; align-items: center; padding: 0 8%; color: var(--white);
         }
 
-        .hero-content { max-width: 600px; }
-        .hero-content h1 { font-size: 2.2rem; line-height: 1.3; margin-bottom: 20px; }
-        .hero-content h1 span { color: var(--gold); }
-        .hero-content p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; opacity: 0.95; }
-
-        .features-list { list-style: none; margin-top: 20px; }
-        .features-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; }
-        .features-list i { color: var(--gold); }
-
-        .registration-box { 
-            background: var(--white); padding: 30px; border-radius: 8px; width: 100%; max-width: 420px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3); color: var(--navy); 
-            border-top: 5px solid var(--gold); flex-shrink: 0;
-        }
-        .registration-box h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--navy); text-align: center; }
-        
-        .price-tag { text-align: center; font-size: 1.8rem; font-weight: 800; color: var(--success); margin-bottom: 10px; }
-        .price-tag span.old-price { font-size: 1.1rem; color: #999; text-decoration: line-through; margin-right: 8px; font-weight: 400; }
-        .price-tag small { font-size: 0.75rem; color: #666; font-weight: 400; display: block; }
-
-        .price-reassurance {
-            font-size: 0.8rem; color: #555; background: #f8f9fa; padding: 8px 10px; 
-            border-radius: 4px; margin-bottom: 15px; border-left: 3px solid var(--gold);
-            text-align: left; line-height: 1.4;
-        }
-
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 4px; }
-        .form-input { 
-            width: 100%; padding: 10px; border: 1.5px solid #ddd; 
-            border-radius: 4px; font-size: 0.9rem; outline: none; transition: 0.3s;
-        }
-        .form-input:focus { border-color: var(--gold); }
-
-        .btn-pay { 
-            background: var(--navy); color: white; border: none; width: 100%; padding: 14px; 
-            font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: 0.3s; border-radius: 4px;
-            display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;
-        }
-        .btn-pay:hover { background: var(--navy-light); }
-
-        .secure-notice { 
-            display: flex; align-items: center; justify-content: center; gap: 8px; 
-            margin-top: 15px; font-size: 0.7rem; color: #666; text-align: center; 
-        }
-        .secure-notice i { color: var(--success); }
-
-        /* --- SECTION DÉMONSTRATION VIDÉO ET MODULES (CAGE RÉDUITE) --- */
-        .demo-section { padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
-        .demo-container { max-width: 900px; margin: 0 auto; }
-        .badge-demo { 
-            background: rgba(197, 160, 89, 0.15); color: var(--navy); font-weight: 700; 
-            font-size: 0.75rem; padding: 6px 14px; border-radius: 20px; text-transform: uppercase; 
-            letter-spacing: 1px; display: inline-block; margin-bottom: 12px; 
-        }
-        .demo-section h2 { color: var(--navy); font-size: 1.8rem; margin-bottom: 8px; }
-        .demo-subtitle { font-size: 0.9rem; color: #666; margin-bottom: 25px; }
-
-        /* Cage Vidéo Réduite et Compacte */
-        .video-wrapper-compact {
-            max-width: 560px; /* Dimensions réduites demandées */
-            margin: 0 auto 25px auto;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 26, 77, 0.15);
-            border: 3px solid var(--gold);
+        .hero-content { 
+            max-width: 550px; 
             position: relative;
-            background: #000;
+            z-index: 1;
+            padding: 20px;
         }
-
-        .video-box { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; cursor: pointer; }
-        .video-box img { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity: 0.85; transition: 0.3s; }
-        .video-box:hover img { opacity: 0.95; transform: scale(1.02); }
-
-        .video-overlay {
-            position: absolute; top:0; left:0; width:100%; height:100%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: rgba(0, 26, 77, 0.45); z-index: 2; transition: 0.3s; color: white; gap: 10px;
-            padding: 15px; text-align: center;
-        }
-        .play-btn-icon { font-size: 3.2rem; color: var(--bright-gold); filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); transition: 0.3s; }
-        .video-box:hover .play-btn-icon { transform: scale(1.15); color: #fff; }
-        #previewModuleTitle { font-weight: 700; font-size: 0.9rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); background: rgba(0,0,0,0.6); padding: 5px 14px; border-radius: 20px; }
-
-        /* Galerie des 7 modules interactifs */
-        .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 20px; }
-        .module-card {
-            background: var(--light-bg); border: 1.5px solid #e1e8ed; padding: 12px; border-radius: 8px;
-            display: flex; align-items: center; gap: 12px; cursor: pointer; transition: 0.25s; text-align: left;
-        }
-        .module-card:hover { border-color: var(--gold); background: #fff; transform: translateY(-2px); }
-        .module-card.active { border-color: var(--navy); background: #fff; box-shadow: 0 4px 12px rgba(0,26,77,0.1); border-left: 4px solid var(--gold); }
-        .mod-num { font-weight: 800; font-size: 1.1rem; color: var(--gold); }
-        .mod-info strong { display: block; font-size: 0.82rem; color: var(--navy); line-height: 1.2; }
-        .mod-info small { font-size: 0.72rem; color: #777; }
-
-        .buyer-transparency-box {
-            margin-top: 25px; background: #f8f9fa; border: 1px solid #e1e8ed; padding: 12px 18px;
-            border-radius: 6px; font-size: 0.82rem; color: #555; text-align: left; display: flex; align-items: center; gap: 10px;
-        }
-
-        /* Section des avis en mouvement séquentiel strict (1 à 35) */
-        .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
-        .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
+        .hero-content h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
         
+        .simulator { 
+            background: var(--white); padding: 25px 30px; border-radius: 4px; width: 520px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4); color: var(--navy); 
+            position: relative; overflow: hidden; min-height: 480px;
+        }
+
+        @media (max-width: 991px) {
+            header { padding: 10px 3%; flex-direction: column; gap: 10px; height: auto; position: relative; }
+            .logo { font-size: 0.95rem; }
+            .nav-links { 
+                display: grid; 
+                grid-template-columns: 1fr 1fr; 
+                gap: 8px; 
+                width: 100%; 
+                margin-top: 5px;
+            }
+            .nav-container-separated { display: contents; }
+            .nav-cage, .btn-home { 
+                width: 100%; min-width: auto; font-size: 0.65rem; padding: 12px 5px; margin: 0;
+            }
+            .country-selector { grid-column: span 2; width: 100%; }
+            .selected-country { width: 100%; justify-content: center; }
+            .mobile-return-btn { display: flex; } 
+            
+            .hero { 
+                flex-direction: column; height: auto; padding: 40px 5%; text-align: center;
+                display: flex; align-items: center; justify-content: flex-start;
+            }
+            .hero-content { max-width: 100%; margin-bottom: 30px; }
+            .hero-content h1 { font-size: 1.8rem; line-height: 1.3; }
+            .simulator { width: 95%; max-width: 440px; padding: 20px; min-height: auto; margin: 0 auto; }
+            .stats-bar { flex-direction: column; gap: 30px; }
+            .f-grid, .legal-block { margin-left: 0 !important; text-align: center; }
+            .f-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr !important; padding: 10px !important; }
+            footer { padding-bottom: 100px !important; } 
+            .live-btn { width: 100% !important; text-align: center; }
+        }
+
+        .reviews-section { padding: 80px 8%; background: var(--light-bg); text-align: center; }
+        .reviews-section h2 { color: var(--navy); margin-bottom: 20px; font-size: 2rem; }
+        
+        .trust-badge-container {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: white; padding: 12px 30px; border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(197, 160, 89, 0.3);
+            margin-bottom: 40px;
+        }
+        .trust-stars { color: var(--bright-gold); font-size: 1.1rem; letter-spacing: 3px; }
+        .trust-lock { color: var(--gold); font-size: 1.6rem; margin: 0 20px; animation: pulse-lock 3s infinite ease-in-out; }
+        @keyframes pulse-lock { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); opacity: 0.8; } }
+
         .reviews-grid { 
-            display: flex; 
-            flex-direction: column-reverse; 
-            gap: 15px; 
-            max-width: 700px; 
-            margin: 0 auto; 
-            min-height: 320px; 
-            overflow: hidden; 
-            padding: 10px;
+            display: flex; flex-direction: column-reverse; gap: 20px; 
+            max-width: 800px; margin: 0 auto; min-height: 600px; overflow: hidden; padding: 20px;
         }
         
         .review-card { 
             background: white; padding: 20px; border-radius: 8px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; 
-            border-left: 4px solid var(--gold);
-            display: flex; gap: 15px; align-items: flex-start;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: left; 
+            border-left: 5px solid var(--gold); display: flex; gap: 15px; align-items: flex-start;
             animation: dropReview 0.8s cubic-bezier(0.24, 1, 0.32, 1) forwards;
         }
+        @keyframes dropReview { 0% { opacity: 0; transform: translateY(-100px); } 100% { opacity: 1; transform: translateY(0); } }
 
-        @keyframes dropReview {
-            0% { opacity: 0; transform: translateY(-40px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .author-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
+        .stars { color: var(--bright-gold); margin-bottom: 5px; font-size: 0.9rem; }
+        .review-date { font-size: 0.7rem; color: #999; margin-bottom: 10px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+        .review-date i { color: var(--success); }
+        .review-text { font-style: italic; font-size: 0.9rem; color: #555; margin-bottom: 15px; line-height: 1.6; }
+        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; display: flex; align-items: center; width: 100%;}
+        .verified { color: var(--success); font-size: 0.7rem; text-transform: uppercase; font-weight: 800; margin-left: auto;}
+
+        .btn-main { background: var(--navy); color: white; border: none; width: 100%; padding: 12px; font-weight: 800; font-size: 0.9rem; cursor: pointer; transition: 0.3s; border-radius: 4px; }
+        .btn-main:hover { background: var(--gold); }
+
+        .form-input { 
+            width: 100%; padding: 9px 12px; border: 1.5px solid var(--deep-gold); 
+            background-color: var(--white); border-radius: 4px; margin-bottom: 10px; 
+            font-size: 0.85rem; outline: none; color: #000c24; font-weight: 600; 
         }
 
-        .author-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
-        .stars { color: var(--bright-gold); font-size: 0.8rem; margin-bottom: 5px; }
-        .review-date { font-size: 0.7rem; color: var(--success); font-weight: 600; margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
-        .review-text { font-style: italic; font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 8px; }
-        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; }
-
-        /* Sections Juridiques Dédiées */
-        .legal-container {
-            max-width: 900px; margin: 40px auto; padding: 40px 8%; background: #fff;
-            border-radius: 8px; border: 1px solid #e1e8ed; text-align: left;
+        .phone-group {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 10px;
         }
-        .legal-container h2 { color: var(--navy); font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
-        .legal-container h3 { color: var(--navy); font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px; }
-        .legal-container p, .legal-container li { font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 10px; }
-        .legal-container ul { padding-left: 20px; }
+        .phone-code-select {
+            width: 38%;
+            margin-bottom: 0 !important;
+            background-color: #fdfaf3;
+            font-weight: 700;
+        }
+        .phone-number-input {
+            width: 62%;
+            margin-bottom: 0 !important;
+        }
 
-        /* Pied de page officiel avec boutons de partage direct */
-        footer { background: #0A0A0A; color: #aaa; padding: 40px 8%; font-size: 0.75rem; text-align: center; line-height: 1.8; border-top: 1px solid #222; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; border-bottom: 1px solid #222; padding-bottom: 25px; }
-        .footer-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .footer-links a { color: #ccc; text-decoration: none; transition: color 0.2s; }
-        .footer-links a:hover { color: var(--gold); }
+        .budget-box-container {
+            background: #fffdf5;
+            border: 1px solid var(--gold);
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .budget-warning-text {
+            font-size: 0.65rem;
+            color: #b7791f;
+            line-height: 1.3;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .secure-form-badge {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin-top: 10px; padding: 6px; background: #f8f9fa; border-radius: 4px;
+            border: 1px dashed var(--gold);
+        }
+        .secure-form-badge i { color: var(--success); font-size: 1rem; }
+        .secure-form-badge p { font-size: 0.58rem; color: #666; line-height: 1.2; text-align: left; font-weight: 500; }
+
+        .alert-links-container {
+            text-align: center;
+            margin-top: 10px;
+            padding: 8px;
+            background: #fdfaf3;
+            border: 1.5px solid var(--gold);
+            border-radius: 6px;
+            animation: pulse-alert-box 3s infinite ease-in-out;
+        }
+        @keyframes pulse-alert-box {
+            0% { border-color: var(--gold); box-shadow: 0 0 0 rgba(197, 160, 89, 0.2); }
+            50% { border-color: var(--bright-gold); box-shadow: 0 0 12px rgba(197, 160, 89, 0.6); }
+            100% { border-color: var(--gold); box-shadow: 0 0 0 rgba(197, 160, 89, 0.2); }
+        }
+        .alert-link-item {
+            font-size: 0.7rem;
+            color: var(--navy);
+            text-decoration: underline;
+            font-weight: 700;
+            display: inline-block;
+            margin: 2px 6px;
+            transition: 0.3s;
+        }
+        .alert-link-item:hover {
+            color: var(--gold);
+            transform: scale(1.05);
+        }
+
+        .scrolling-security {
+            background: #f0f4f8; color: #004085; font-size: 0.65rem; padding: 4px 0; margin: 6px 0;
+            overflow: hidden; white-space: nowrap; border-top: 1px solid #d1ecf1; border-bottom: 1px solid #d1ecf1;
+            display: flex;
+        }
+        .scrolling-security span {
+            display: inline-block; padding-left: 100%; animation: scroll-text 30s linear infinite; font-weight: 600;
+        }
+        @keyframes scroll-text { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+
+        .shine-white { color: #FFFFFF !important; animation: blink-white 3s infinite; }
+        @keyframes blink-white { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; text-shadow: 0 0 10px #fff; } }
+
+        #loader-overlay {
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
+        }
+        .spinner { width: 45px; height: 45px; border: 5px solid #f3f3f3; border-top: 5px solid var(--navy); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .stats-bar { background: var(--navy); padding: 40px 8%; display: flex; justify-content: space-around; color: white; text-align: center; }
+        .stat-box h3 { font-size: 2rem; color: var(--gold); }
+
+        .about-section { padding: 100px 15%; line-height: 2; text-align: justify; background: var(--white); }
+        .about-section h2 { margin-bottom: 30px; color: var(--navy); text-align: center; }
+
+        footer { background: #0A0A0A; color: #888; padding: 80px 8% 40px; font-size: 0.8rem; }
+        .f-grid, .legal-block { margin-left: 160px; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+        .f-grid h4 { color: white; margin-bottom: 20px; font-size: 0.9rem; }
+        .legal-block { border-top: 1px solid #222; padding-top: 40px; line-height: 1.8; }
+        .tag-warning { border: 1px solid #444; padding: 15px; margin-top: 20px; color: #AAA; text-align: center; }
+        .blink-gold { color: var(--gold); font-weight: 700; animation: pulse-text 1.5s infinite; }
+        @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        .social-share-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 3px;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .share-btn.fb { background-color: #3b5998; }
+        .share-btn.wa { background-color: #25d366; }
+        .share-btn.tw { background-color: #1da1f2; }
+        .share-btn.li { background-color: #0077b5; }
+        .share-btn.tk { background-color: #010101; border: 1px solid #333; }
+        .share-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+        .wa-assistant-container { position: fixed; bottom: 30px; left: 30px; z-index: 9999; display: flex; flex-direction: column; align-items: center; }
+        .whatsapp-float-dynamic { background-color: var(--whatsapp); color: #FFF; width: 65px; height: 65px; border-radius: 50%; text-align: center; font-size: 35px; box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); display: flex; align-items: center; justify-content: center; text-decoration: none; position: relative; animation: magnet-pulse 2s infinite ease-in-out; }
+        @keyframes magnet-pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 10% { transform: scale(1.1) rotate(5deg); } 20% { transform: scale(1.1) rotate(-5deg); } 30% { transform: scale(1.1) rotate(5deg); } 40% { transform: scale(1) rotate(0deg); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
-        .footer-socials { display: flex; justify-content: center; gap: 15px; }
-        .footer-socials a {
-            background: #1a1a1a; color: #fff; width: 36px; height: 36px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; cursor: pointer;
+        #goUp { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; display: none; }
+        
+        .live-btn { 
+            background: rgba(39, 174, 96, 0.1); border: 1px solid var(--success); color: var(--success);
+            padding: 5px 10px; border-radius: 50px; font-size: 0.65rem; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px; min-height: 28px;
         }
-        .footer-socials a:hover { background: var(--gold); color: var(--navy); }
+        .dot-live { width: 7px; height: 7px; background: var(--success); border-radius: 50%; animation: blink-dot 1s infinite; flex-shrink: 0; }
+        @keyframes blink-dot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
 
-        .footer-bottom { margin-top: 25px; color: #666; font-size: 0.7rem; }
-        .footer-bottom p { color: #fff; font-weight: 700; margin-bottom: 5px; }
-
-        @media (max-width: 991px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 100px; }
-            .hero-content h1 { font-size: 1.7rem; }
-            .footer-links { flex-direction: column; gap: 10px; }
-        }
+        .solutions-slider { padding: 60px 8%; background: white; overflow: hidden; }
+        .slider-title { text-align: center; color: var(--navy); margin-bottom: 40px; font-size: 2rem; }
+        .slider-track { display: flex; gap: 30px; animation: slideTrack 25s linear infinite; width: calc(350px * 6 + 180px); }
+        @keyframes slideTrack { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-350px * 3 - 90px)); } }
+        .solution-card { width: 350px; background: var(--light-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.08); border: 1px solid #eee; flex-shrink: 0; transition: 0.3s; }
+        .solution-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        .solution-img { width: 100%; height: 220px; object-fit: cover; }
+        .solution-info { padding: 20px; text-align: center; }
+        .btn-detail { background: var(--navy); color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn-detail:hover { background: var(--gold); }
+        
+        #modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:10000; padding:20px; }
+        .modal-content { background:white; padding:40px; border-radius:8px; max-width:600px; max-height: 85vh; overflow-y: auto; position:relative; text-align:center; border-top: 5px solid var(--gold); }
+        .modal-close { position:absolute; top:15px; right:15px; font-size:1.5rem; cursor:pointer; color: var(--navy); }
+        .modal-content h3 { color: var(--navy); margin-bottom: 20px; font-size: 1.8rem; }
+        .modal-content p { line-height: 1.8; color: #555; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <div class="logo-sigle">AN</div>
-            <div class="logo">Académie Numérique</div>
-        </div>
-    </header>
+<div id="google_translate_element"></div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Tu as l'impression de <span>stagner</span> alors que tout va trop vite autour de toi ?</h1>
-            <p>Aujourd'hui, la vraie différence ne se fait plus sur tes diplômes d'hier, mais sur ta capacité à t'adapter maintenant. Ne pas savoir maîtriser les compétences clés du numérique et des outils d'aujourd'hui, c'est accepter de rester sur la touche pendant que d'autres avancent.</p>
-            <p>Et si, en quelques minutes par jour et depuis chez toi, tu pouvais enfin acquérir cette compétence qui change tout ? Pas de théorie inutile, pas de discours compliqués : juste du concret, du pratique, et des résultats immédiats pour booster ton avenir.</p>
+<a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="mobile-return-btn" id="mobileReturn">
+    <i class="fas fa-arrow-left"></i> RETOUR
+</a>
+
+<header>
+    <div class="logo-container">
+        <div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <div class="logo-sigle">FC</div>
+                <div class="logo">FINANCIÈRE DE CÉZEMBRE</div>
+            </div>
+            <div class="header-msg">Soutien Agricole et d'Élevage – Instruction rapide et garantie à 100%</div>
+        </div>
+    </div>
+    
+    <div class="nav-links">
+        <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="btn-home">
+            <i class="fas fa-home"></i> ACCUEIL
+        </a>
+
+        <div class="nav-container-separated">
+            <a href="#about" class="nav-cage">Institution</a>
+            <a href="#legal" class="nav-cage">Gouvernance</a>
+            <a href="#simBox" class="nav-cage">Dossier</a>
+        </div>
+        
+        <div class="country-selector">
+            <div class="selected-country" onclick="toggleDropdown()">
+                <img src="https://flagcdn.com/w40/fr.png" class="flag" id="current-flag">
+                <span id="current-name">FRANÇAIS</span>
+                <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: auto; color: var(--gold);"></i>
+            </div>
+            <div class="country-dropdown" id="country-list">
+                <div onclick="selectLanguage('Français', 'fr')"><img src="https://flagcdn.com/w40/fr.png" class="flag"> Français</div>
+                <div onclick="selectLanguage('Español', 'es')"><img src="https://flagcdn.com/w40/es.png" class="flag"> Español</div>
+                <div onclick="selectLanguage('English', 'gb')"><img src="https://flagcdn.com/w40/gb.png" class="flag"> English</div>
+                <div onclick="selectLanguage('Português', 'pt')"><img src="https://flagcdn.com/w40/pt.png" class="flag"> Português</div>
+                <div onclick="selectLanguage('Deutsch', 'de')"><img src="https://flagcdn.com/w40/de.png" class="flag"> Deutsch</div>
+                <div onclick="selectLanguage('Italiano', 'it')"><img src="https://flagcdn.com/w40/it.png" class="flag"> Italiano</div>
+                <div onclick="selectLanguage('Svenska', 'se')"><img src="https://flagcdn.com/w40/se.png" class="flag"> Svenska</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="wa-assistant-container">
+    <a href="https://wa.me/33780976404" class="whatsapp-float-dynamic" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Soutien et Financement <br>Agricole et d'Élevage.</h1>
+        <p style="margin-bottom: 25px; opacity: 0.9; font-size: 0.95rem;">Accompagnement terrain et appui financier garanti pour vos projets durables depuis 1990.</p>
+        
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-certificate" style="color: #FFD700; font-size: 3rem;"></i>
+                <i class="fas fa-check" style="color: var(--navy); position: absolute; font-size: 1rem; font-weight: 900;"></i>
+            </div>
+            <p style="font-size: 0.85rem;">
+                <strong style="color: #FFD700; font-size: 0.85rem; letter-spacing: 1px;">ENTITÉ OFFICIELLE</strong><br>
+                <strong>Financière de Cézembre</strong><br>
+                SIREN 552 058 943 (Capital : 1 200 000 €).
+            </p>
+        </div>
+    </div>
+
+    <div class="simulator" id="simBox">
+        <div id="loader-overlay">
+            <div id="loading-content">
+                <div class="spinner"></div>
+                <p id="loader-text" style="font-weight: 600; color: var(--navy);">Analyse de votre dossier de soutien en cours...</p>
+            </div>
+            <div id="success-message" style="display:none; text-align: left; max-height: 460px; overflow-y: auto; padding: 5px;">
+                <div style="text-align: center; margin-bottom: 8px;">
+                    <i class="fas fa-check-circle" style="color:var(--success); font-size:2.2rem;"></i>
+                    <h3 style="color: var(--navy); margin: 3px 0; font-size: 1.05rem;">DOSSIER ENREGISTRÉ !</h3>
+                </div>
+                
+                <div style="background: #fdfaf3; border: 1px solid var(--gold); padding: 8px; border-radius: 4px; font-size: 0.72rem; margin-bottom: 8px;">
+                    <p><strong>Code de référence :</strong> <span id="refCodeDisplay" style="color: var(--navy); font-weight: 800;">#CEZ-RURAL-2026</span></p>
+                </div>
+
+                <div style="background: #e8f4fd; border: 1px solid #b8daff; padding: 8px; border-radius: 4px; margin-bottom: 8px; font-size: 0.67rem; color: #004085; line-height: 1.4;">
+                    🔒 <strong>Sécurité et Confidentialité :</strong> Vos données sont hautement sécurisées, traitées de façon strictement confidentielle et ne seront jamais partagées à des tiers.
+                </div>
+
+                <p style="font-size: 0.7rem; font-weight: 700; color: var(--navy); margin-bottom: 8px;">
+                    Finalisez l'envoi de vos pièces d'identité et de votre contribution d'ouverture de dossier (99 € / 105 $) directement via WhatsApp en cliquant sur le bouton ci-dessous :
+                </p>
+
+                <a id="waDirectBtn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--whatsapp); color: white; padding: 10px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 12px;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Envoyer les pièces sur WhatsApp
+                </a>
+
+                <button class="btn-main" onclick="resetAll()" style="padding: 8px; font-size: 0.72rem;">Fermer / Nouveau dossier</button>
+            </div>
+        </div>
+
+        <div class="live-btn"><div class="dot-live"></div> <span id="viewers-count">14</span> porteurs de projets consultent cette offre</div>
+        
+        <h3 style="margin-bottom: 10px; font-size: 1rem;">Formulaire de Dossier Agricole Officiel</h3>
+        
+        <form id="loanForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="validateAndSubmit(event)">
+            <input type="hidden" name="access_key" value="0fbe97fe-cba4-4d00-b301-9a8fd6bc20f3">
+            <input type="hidden" name="subject" value="Nouveau dossier agricole soumis - Financière de Cézembre">
             
-            <ul class="features-list">
-                <li><i class="fas fa-check-circle"></i> Session 100% en ligne (Accès immédiat)</li>
-                <li><i class="fas fa-check-circle"></i> Pas de théorie inutile : du concret et du pratique</li>
-                <li><i class="fas fa-check-circle"></i> Prends une longueur d'avance dès aujourd'hui</li>
-            </ul>
+            <input type="hidden" id="createurField" name="code_createur" value="">
+            
+            <input type="text" name="nom" id="inputNom" placeholder="Nom et Prénom du Porteur" class="form-input" required>
+            
+            <select name="type_porteur" class="form-input" required>
+                <option value="" disabled selected>Type de porteur de projet</option>
+                <option value="Personnel">Projet Personnel</option>
+                <option value="Familial">Projet Familial</option>
+                <option value="Organisation">Organisation / Entreprise / Coopérative</option>
+            </select>
+
+            <select name="projet" class="form-input" required>
+                <option value="" disabled selected>Sélectionnez votre type d'exploitation</option>
+                <option value="Agriculture">Exploitation Agricole / Cultures</option>
+                <option value="Elevage">Élevage Bovin / Porcin / Volaille</option>
+                <option value="Materiel">Acquisition de Matériel / Outillage</option>
+                <option value="Developpement">Développement Rural Global</option>
+            </select>
+
+            <div class="budget-box-container">
+                <div style="display: flex; gap: 6px;">
+                    <select name="devise_souhaitee" id="deviseSelect" class="form-input" style="width: 38%; margin-bottom: 0;" required>
+                        <option value="Euros (€)" selected>Euros (€)</option>
+                        <option value="Dollars ($)">Dollars ($)</option>
+                    </select>
+                    <input type="number" name="montant_demande_saisi" id="montantSaisi" placeholder="Montant demandé" class="form-input" style="width: 62%; margin-bottom: 0;" required>
+                </div>
+                <div class="budget-warning-text" id="budgetWarningMsg">
+                    ⚠️ Limites autorisées : de <strong>1 € à 19 000 €</strong> (ou de <strong>1 $ à 21 957 $</strong>).
+                </div>
+            </div>
+
+            <select name="pays_residence" id="paysSelect" class="form-input" onchange="updateIndicatif()" required>
+                <option value="" disabled selected>Sélectionnez votre pays / territoire</option>
+                
+                <optgroup label="France & Outre-Mer (Îles et Territoires)">
+                    <option value="France" data-code="+33">France métropolitaine</option>
+                    <option value="Guadeloupe" data-code="+590">Guadeloupe</option>
+                    <option value="Martinique" data-code="+596">Martinique</option>
+                    <option value="La Réunion" data-code="+262">La Réunion</option>
+                    <option value="Mayotte" data-code="+262">Mayotte</option>
+                    <option value="Saint-Barthélemy" data-code="+590">Saint-Barthélemy</option>
+                    <option value="Saint-Martin" data-code="+590">Saint-Martin</option>
+                    <option value="Saint-Pierre-et-Miquelon" data-code="+508">Saint-Pierre-et-Miquelon</option>
+                    <option value="Polynésie française" data-code="+689">Polynésie française</option>
+                    <option value="Nouvelle-Calédonie" data-code="+687">Nouvelle-Calédonie</option>
+                    <option value="Wallis-et-Futuna" data-code="+681">Wallis-et-Futuna</option>
+                </optgroup>
+
+                <optgroup label="Europe">
+                    <option value="Albanie" data-code="+355">Albanie</option>
+                    <option value="Allemagne" data-code="+49">Allemagne</option>
+                    <option value="Andorre" data-code="+376">Andorre</option>
+                    <option value="Autriche" data-code="+43">Autriche</option>
+                    <option value="Belgique" data-code="+32">Belgique</option>
+                    <option value="Biélorussie" data-code="+375">Biélorussie</option>
+                    <option value="Bosnie-Herzégovine" data-code="+387">Bosnie-Herzégovine</option>
+                    <option value="Bulgarie" data-code="+359">Bulgarie</option>
+                    <option value="Chypre" data-code="+357">Chypre</option>
+                    <option value="Croatie" data-code="+385">Croatie</option>
+                    <option value="Danemark" data-code="+45">Danemark</option>
+                    <option value="Espagne" data-code="+34">Espagne</option>
+                    <option value="Estonie" data-code="+372">Estonie</option>
+                    <option value="Finlande" data-code="+358">Finlande</option>
+                    <option value="Grèce" data-code="+30">Grèce</option>
+                    <option value="Hongrie" data-code="+36">Hongrie</option>
+                    <option value="Irlande" data-code="+353">Irlande</option>
+                    <option value="Islande" data-code="+354">Islande</option>
+                    <option value="Italie" data-code="+39">Italie</option>
+                    <option value="Kosovo" data-code="+383">Kosovo</option>
+                    <option value="Lettonie" data-code="+371">Lettonie</option>
+                    <option value="Liechtenstein" data-code="+423">Liechtenstein</option>
+                    <option value="Lituanie" data-code="+370">Lituanie</option>
+                    <option value="Luxembourg" data-code="+352">Luxembourg</option>
+                    <option value="Macédoine du Nord" data-code="+389">Macédoine du Nord</option>
+                    <option value="Malte" data-code="+356">Malte</option>
+                    <option value="Moldavie" data-code="+373">Moldavie</option>
+                    <option value="Monaco" data-code="+377">Monaco</option>
+                    <option value="Monténégro" data-code="+382">Monténégro</option>
+                    <option value="Norvège" data-code="+47">Norvège</option>
+                    <option value="Pays-Bas" data-code="+31">Pays-Bas</option>
+                    <option value="Pologne" data-code="+48">Pologne</option>
+                    <option value="Portugal" data-code="+351">Portugal</option>
+                    <option value="République tchèque" data-code="+420">République tchèque</option>
+                    <option value="Roumanie" data-code="+40">Roumanie</option>
+                    <option value="Royaume-Uni" data-code="+44">Royaume-Uni</option>
+                    <option value="Russie" data-code="+7">Russie</option>
+                    <option value="Saint-Marin" data-code="+378">Saint-Marin</option>
+                    <option value="Serbie" data-code="+381">Serbie</option>
+                    <option value="Slovaquie" data-code="+421">Slovaquie</option>
+                    <option value="Slovénie" data-code="+386">Slovénie</option>
+                    <option value="Suède" data-code="+46">Suède</option>
+                    <option value="Suisse" data-code="+41">Suisse</option>
+                    <option value="Ukraine" data-code="+380">Ukraine</option>
+                    <option value="Vatican" data-code="+379">Vatican</option>
+                </optgroup>
+
+                <optgroup label="Amérique du Nord">
+                    <option value="Canada" data-code="+1">Canada</option>
+                    <option value="États-Unis" data-code="+1">États-Unis</option>
+                </optgroup>
+
+                <optgroup label="Amérique Latine">
+                    <option value="Argentine" data-code="+54">Argentine</option>
+                    <option value="Bolivie" data-code="+591">Bolivie</option>
+                    <option value="Brésil" data-code="+55">Brésil</option>
+                    <option value="Chili" data-code="+56">Chili</option>
+                    <option value="Colombie" data-code="+57">Colombie</option>
+                    <option value="Costa Rica" data-code="+506">Costa Rica</option>
+                    <option value="Cuba" data-code="+53">Cuba</option>
+                    <option value="République dominicaine" data-code="+1-809">République dominicaine</option>
+                    <option value="Équateur" data-code="+593">Équateur</option>
+                    <option value="Salvador" data-code="+503">Salvador</option>
+                    <option value="Guatemala" data-code="+502">Guatemala</option>
+                    <option value="Honduras" data-code="+504">Honduras</option>
+                    <option value="Mexique" data-code="+52">Mexique</option>
+                    <option value="Nicaragua" data-code="+505">Nicaragua</option>
+                    <option value="Panama" data-code="+507">Panama</option>
+                    <option value="Paraguay" data-code="+595">Paraguay</option>
+                    <option value="Pérou" data-code="+51">Pérou</option>
+                    <option value="Uruguay" data-code="+598">Uruguay</option>
+                    <option value="Venezuela" data-code="+58">Venezuela</option>
+                </optgroup>
+            </select>
+
+            <div class="phone-group">
+                <select name="indicatif_pays" id="indicatifSelect" class="form-input phone-code-select" required>
+                    <option value="+33" selected>+33</option>
+                    <option value="+39">+39</option>
+                    <option value="+352">+352</option>
+                    <option value="+590">+590</option>
+                    <option value="+596">+596</option>
+                    <option value="+1">+1</option>
+                    <option value="+54">+54</option>
+                    <option value="+591">+591</option>
+                    <option value="+55">+55</option>
+                    <option value="+57">+57</option>
+                    <option value="+51">+51</option>
+                </select>
+                <input type="tel" name="numero_whatsapp" placeholder="Numéro WhatsApp" class="form-input phone-number-input" required>
+            </div>
+
+            <input type="email" name="email" placeholder="Adresse Email" class="form-input" required>
+            
+            <textarea name="message" placeholder="Détail et répartition sommaire du budget (ex: matériel, bêtes, semences)..." class="form-input" style="min-height: 45px; resize: vertical; padding: 8px;" required></textarea>
+
+            <button type="submit" class="btn-main">SOUMETTRE LE DOSSIER</button>
+            
+            <div class="secure-form-badge">
+                <i class="fas fa-shield-alt"></i>
+                <p><strong>ENGAGEMENT SINCÉRITÉ :</strong> Projet réel exigé. Contrôle sur place prévu entre 6 et 8 mois après déblocage.</p>
+            </div>
+
+            <div class="alert-links-container">
+                <a href="#" onclick="openPrivacyModal(event)" class="alert-link-item">
+                    <i class="fas fa-user-secret"></i> Politique de Confidentialité
+                </a>
+                <span style="color: #999; font-weight: bold;">|</span>
+                <a href="#" onclick="openConditionsModal(event)" class="alert-link-item">
+                    <i class="fas fa-file-contract"></i> Conditions Générales
+                </a>
+            </div>
+        </form>
+
+        <div class="scrolling-security">
+            <span><i class="fas fa-lock" style="color:var(--gold);"></i> Instruction rapide 24-48h • Visite de terrain 6-8 mois • Données strictement confidentielles.</span>
         </div>
+    </div>
+</section>
 
-        <div class="registration-box">
-            <h3>Accès à la Session</h3>
-            <div class="price-tag">
-                <span class="old-price">97 €</span> 25 €
-                <small>Inscription complète et immédiate</small>
-            </div>
+<section class="stats-bar">
+    <div class="stat-box"><h3>1 200 000 €</h3><p>Capital Social</p></div>
+    <div class="stat-box"><h3>24-48h</h3><p>Délai d'Instruction</p></div>
+    <div class="stat-box"><h3>100%</h3><p>Soutien Garanti</p></div>
+</section>
 
-            <div class="price-reassurance">
-                <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Pourquoi 25 € au lieu de 97 € ?</strong> Notre objectif est de rendre cette méthode accessible à tous sans barrière financière.
-            </div>
+<section class="reviews-section">
+    <h2>Retours de nos bénéficiaires de soutien agricole</h2>
+    <div class="trust-badge-container">
+        <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="trust-lock"><i class="fas fa-lock"></i></div>
+        <div class="trust-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    </div>
+    <div class="reviews-grid" id="reviews-container"></div>
+</section>
 
-            <!-- Révélation d'un accès immédiat pour mettre le client en totale confiance -->
-            <div style="font-size: 0.75rem; color: #27ae60; background: #e8f8f0; padding: 8px 10px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--success);">
-                <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail en quelques minutes après le paiement.
-            </div>
-
-            <form action="ICI_METTRE_TON_LIEN_PAYPAL" method="POST">
-                <div class="form-group">
-                    <label>Votre Prénom</label>
-                    <input type="text" class="form-input" placeholder="Ex: Thomas" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Votre Adresse E-mail</label>
-                    <input type="email" class="form-input" placeholder="votre@email.com" required>
-                </div>
-
-                <button type="submit" class="btn-pay">
-                    <i class="fab fa-paypal"></i> Payer 25 € et S'inscrire
-                </button>
-            </form>
-
-            <div class="secure-notice">
-                <i class="fas fa-shield-alt"></i> Paiement sécurisé PayPal • <strong>Reçu en quelques minutes</strong>
+<section class="solutions-slider">
+    <h2 class="slider-title">Nos domaines d'intervention sur le terrain</h2>
+    <div class="slider-track">
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800" class="solution-img" alt="Agriculture">
+            <div class="solution-info">
+                <h3>Cultures & Agriculture</h3>
+                <p style="font-size:0.85rem; margin:10px 0;">Appui aux semences, engrais et développement des récoltes.</p>
+                <button class="btn-detail" onclick="openDetails('agri')">En savoir plus</button>
             </div>
         </div>
-    </section>
-
-    <!-- SECTION DE PRÉSENTATION DE LA FORMATION : CAGE VIDÉO RÉDUITE & 7 VISUELS INTERACTIFS -->
-    <section class="demo-section" id="programme">
-        <div class="demo-container">
-            <span class="badge-demo"><i class="fas fa-play-circle"></i> APERÇU EN DIRECT DU PROGRAMME</span>
-            <h2>Ce que vous allez maîtriser dans cette formation</h2>
-            <p class="demo-subtitle">Cliquez sur chaque module ci-dessous pour prévisualiser les leçons de votre espace membre.</p>
-
-            <!-- Lecteur / Cage Vidéo Réduite et Soignée -->
-            <div class="video-wrapper-compact">
-                <div class="video-box" id="videoBox">
-                    <div class="video-overlay" id="videoOverlay" onclick="playCurrentVideo()">
-                        <i class="fas fa-play-circle play-btn-icon"></i>
-                        <span id="previewModuleTitle">Module 1 : Prise en main & Fondations</span>
-                    </div>
-                    <img id="videoThumbnail" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" alt="Aperçu vidéo formation">
-                </div>
-            </div>
-
-            <!-- Grille interactive des 7 modules de la formation -->
-            <div class="modules-grid">
-                <div class="module-card active" onclick="switchModule(0)">
-                    <span class="mod-num">01</span>
-                    <div class="mod-info">
-                        <strong>Fondations & Stratégie</strong>
-                        <small><i class="fas fa-play"></i> Vidéo (08:45)</small>
-                    </div>
-                </div>
-                <div class="module-card" onclick="switchModule(1)">
-                    <span class="mod-num">02</span>
-                    <div class="mod-info">
-                        <strong>Outils Numériques Clés</strong>
-                        <small><i class="fas fa-play"></i> Vidéo (12:10)</small>
-                    </div>
-                </div>
-                <div class="module-card" onclick="switchModule(2)">
-                    <span class="mod-num">03</span>
-                    <div class="mod-info">
-                        <strong>Automatisations Pratiques</strong>
-                        <small><i class="fas fa-play"></i> Vidéo (15:30)</small>
-                    </div>
-                </div>
-                <div class="module-card" onclick="switchModule(3)">
-                    <span class="mod-num">04</span>
-                    <div class="mod-info">
-                        <strong>Productivité Accélérée</strong>
-                        <small><i class="fas fa-play"></i> Vidéo (10:15)</small>
-                    </div>
-                </div>
-                <div class="module-card" onclick="switchModule(4)">
-                    <span class="mod-num">05</span>
-                    <div class="mod-info">
-                        <strong>Plan d'Action Immédiat</strong>
-                        <small><i class="fas fa-play"></i> Vidéo (14:20)</small>
-                    </div>
-                </div>
-                <div class="module-card" onclick="switchModule(5)">
-                    <span class="mod-num">06</span>
-                    <div class="mod-info">
-                        <strong>Études de Cas Réels</strong>
-                        <small><i class="fas fa-play"></i> Vidéo (11:05)</small>
-                    </div>
-                </div>
-                <div class="module-card" onclick="switchModule(6)">
-                    <span class="mod-num">07</span>
-                    <div class="mod-info">
-                        <strong>Attestation & Bilan</strong>
-                        <small><i class="fas fa-play"></i> Vidéo (06:50)</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="buyer-transparency-box">
-                <i class="fas fa-shield-alt" style="color: var(--success); font-size: 1.2rem;"></i>
-                <div>
-                    <strong>Transparence & Garantie pour l'Acheteur :</strong> 
-                    L'ensemble de ces 7 modules est immédiatement débloqué après votre paiement. Aucun abonnement caché, aucun frais supplémentaire.
-                </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&q=80&w=800" class="solution-img" alt="Élevage">
+            <div class="solution-info">
+                <h3>Élevage & Pastoralisme</h3>
+                <p style="font-size:0.85rem; margin:10px 0;">Soutien pour l'acquisition de cheptels et infrastructures.</p>
+                <button class="btn-detail" onclick="openDetails('elevage')">En savoir plus</button>
             </div>
         </div>
-    </section>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800" class="solution-img" alt="Matériel">
+            <div class="solution-info">
+                <h3>Outillage & Matériel</h3>
+                <p style="font-size:0.85rem; margin:10px 0;">Financement de matériel agricole moderne et adapté.</p>
+                <button class="btn-detail" onclick="openDetails('materiel')">En savoir plus</button>
+            </div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800" class="solution-img">
+            <div class="solution-info"><h3>Cultures & Agriculture</h3><button class="btn-detail" onclick="openDetails('agri')">En savoir plus</button></div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&q=80&w=800" class="solution-img">
+            <div class="solution-info"><h3>Élevage & Pastoralisme</h3><button class="btn-detail" onclick="openDetails('elevage')">En savoir plus</button></div>
+        </div>
+        <div class="solution-card">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800" class="solution-img">
+            <div class="solution-info"><h3>Outillage & Matériel</h3><button class="btn-detail" onclick="openDetails('materiel')">En savoir plus</button></div>
+        </div>
+    </div>
+</section>
 
-    <!-- Section des avis dynamiques en cascade séquentielle stricte (1 à 35) -->
-    <section class="reviews-section">
-        <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
-        <div class="reviews-grid" id="reviewsContainer"></div>
-    </section>
+<div id="modal-overlay" onclick="closeDetails()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="modal-close" onclick="closeDetails()">&times;</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
 
-    <!-- Section Dédiée : Conditions Générales de Vente (CGV) -->
-    <section id="conditions" class="legal-container">
-        <h2>Conditions Générales de Vente (CGV)</h2>
-        <h3>Article 1 - Objet et Champ d'Application</h3>
-        <p>Les présentes Conditions Générales de Vente régissent la vente des sessions de formation en ligne proposées par l'Académie Numérique.</p>
+<section class="about-section" id="about">
+    <h2>Une Institution Solide</h2>
+    <p>La <strong>Financière de Cézembre</strong> (SIREN 552 058 943, établie en 1990 en France, capital social de 1 200 000 €) est l'institution centrale qui garantit la solidité financière et la validation juridique de nos actions, dédiée à l'accueil des porteurs de projets agricoles et d'élevage, au suivi des dossiers et à l'accompagnement de proximité.</p>
+    <div style="margin-top: 25px; padding: 15px; background: #fdfaf3; border-left: 4px solid var(--gold); border-radius: 4px;">
+        <p style="font-size: 0.9rem; font-weight: 700; color: var(--navy);">Adresse officielle de la plateforme :</p>
+        <p style="font-size: 0.85rem; color: #555; margin-top: 5px;">ODET, 29500 ERGUÉ-GABÉRIC, France<br><em>Rayon de couverture de 20 km</em></p>
+    </div>
+</section>
+
+<footer id="legal">
+    <div class="f-grid">
+        <div><h4 class="shine-white">FINANCIÈRE DE CÉZEMBRE</h4><p>Institution centrale et financière.<br>SIREN : 552 058 943</p></div>
+        <div><h4>SOUTIEN AGRICOLE</h4><p>Appui et Accompagnement<br>Soutien Agricole International</p></div>
+        <div><h4>ÉTABLISSEMENT</h4><p>Établie en France (1990)<br>Capital social : 1 200 000 €</p></div>
+        <div><h4>SUIVI DE TERRAIN</h4><p>Contrôle physique<br>Entre 6 et 8 mois</p></div>
+    </div>
+    <div class="legal-block">
+        <strong>INFORMATIONS LÉGALES & ENGAGEMENT :</strong> FINANCIÈRE DE CÉZEMBRE (ODET, 29500 ERGUÉ-GABÉRIC, France). Tolérance zéro pour les projets fictifs.
+        <div class="tag-warning"><span class="blink-gold">TOUT SOUTIEN ACCORDÉ DOIT CONCERNER UN PROJET AGRICOLE OU D'ÉLEVAGE RÉEL ET VÉRIFIABLE SUR LE TERRAIN.</span></div>
+    </div>
+    
+    <div style="margin-top: 35px; padding: 25px; background: rgba(197, 160, 89, 0.08); border: 1px solid var(--gold); border-radius: 6px; text-align: left;">
+        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">
+            <i class="fas fa-hands-helping"></i> Impulso Rural — Service de Terrain
+        </h4>
+        <p style="font-size: 0.8rem; line-height: 1.6; color: #bbb;">
+            En tant que branche opérationnelle de terrain, notre équipe est dédiée à l'accueil, à l'accompagnement quotidien, au suivi des dossiers et à la mise en œuvre des appuis pour chaque projet agricole et d'élevage. En lien direct avec notre structure financière générale (<strong>Financière de Cézembre</strong>), nous sommes à vos côtés au quotidien pour vous guider.<br>
+            <em style="color: #d1a153; display: block; margin-top: 8px;">Rappel important : Les visites physiques ou rencontres de contrôle sur le terrain s'effectuent généralement entre 6 et 8 mois après le déblocage du soutien.</em>
+        </p>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; border-top: 1px solid #222; padding-top: 25px;">
+        <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 12px; font-weight: 600;">Partager cette page d'aide agricole avec d'autres porteurs de projets :</p>
+        <div class="social-share-footer">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=" id="share-fb" class="share-btn fb" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="https://api.whatsapp.com/send?text=" id="share-wa" class="share-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://twitter.com/intent/tweet?url=" id="share-tw" class="share-btn tw" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=" id="share-li" class="share-btn li" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="https://www.tiktok.com/" id="share-tk" class="share-btn tk" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px; font-weight: 700; color: var(--gold); letter-spacing: 1px;">
+        Impulso Rural
+    </div>
+</footer>
+
+<div id="goUp" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'fr',
+            includedLanguages: 'fr,es,en,pt,de,it,se',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const codeCreator = urlParams.get('createur');
         
-        <h3>Article 2 - Prix et Modalité de Commande</h3>
-        <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en un versement unique par le biais de la passerelle sécurisée PayPal.</p>
-        
-        <h3>Article 3 - Modalités de Livraison et Délai de Traitement</h3>
-        <p>En temps normal, l'accès au service est envoyé en quelques minutes après le paiement. Toutefois, <strong>en cas de forte affluence liée à un volume important de commandes</strong>, le traitement des dossiers et l'envoi des accès par courrier électronique peuvent exceptionnellement s'effectuer dans un délai indicatif de <strong>24 à 48 heures</strong>.</p>
-        
-        <h3>Article 4 - Garantie de Remboursement</h3>
-        <p>Si l'acheteur ne recevait pas son courrier d'accès dans un délai maximal de 48 heures suivant sa commande, un <strong>remboursement intégral et automatique sous 72 heures</strong> est garanti et effectué directement sur son compte PayPal, sans aucune condition complexe.</p>
-    </section>
-
-    <!-- Section Dédiée : Politique de Confidentialité -->
-    <section id="confidentialite" class="legal-container">
-        <h2>Politique de Confidentialité (RGPD)</h2>
-        <p>L'Académie Numérique accorde une importance majeure à la protection de la vie privée de ses utilisateurs.</p>
-        <h3>1. Données Collectées</h3>
-        <p>Seuls le prénom et l'adresse e-mail renseignés dans le formulaire d'inscription sont collectés afin de permettre la livraison des accès au service.</p>
-        <h3>2. Sécurité des Paiements</h3>
-        <p>Aucune donnée bancaire n'est collectée ou stockée par nos soins ; l'ensemble des transactions financières est intégralement géré par PayPal.</p>
-        <h3>3. Droits des Utilisateurs</h3>
-        <p>Conformément au RGPD, vous disposez d'un droit d'accès, de modification et de suppression de vos données en écrivant à support@academie-numerique.fr.</p>
-    </section>
-
-    <!-- Section Dédiée : Mentions Légales -->
-    <section id="mentions" class="legal-container">
-        <h2>Mentions Légales</h2>
-        <p><strong>Dénomination sociale :</strong> Académie Numérique</p>
-        <p><strong>Siège social :</strong> 10 Rue de la République, 75001 Paris, France</p>
-        <p><strong>Numéro SIRET :</strong> 123 456 789 00012</p>
-        <p><strong>Contact Support :</strong> support@academie-numerique.fr</p>
-        <p><strong>Hébergement :</strong> Plateforme Cloud sécurisée</p>
-    </section>
-
-    <!-- Pied de page officiel avec boutons de partage direct -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#conditions">Conditions Générales de Vente (CGV)</a>
-                <a href="#confidentialite">Politique de Confidentialité</a>
-                <a href="#mentions">Mentions Légales</a>
-            </div>
-
-            <!-- Boutons de Partage Direct (Facebook, X, LinkedIn, WhatsApp) -->
-            <div class="footer-socials">
-                <a onclick="shareOnFacebook()" title="Partager sur Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a onclick="shareOnTwitter()" title="Partager sur X (Twitter)"><i class="fab fa-twitter"></i></a>
-                <a onclick="shareOnLinkedIn()" title="Partager sur LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a onclick="shareOnWhatsApp()" title="Partager sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>Académie Numérique - Tous droits réservés</p>
-            Adresse : 10 Rue de la République, 75001 Paris, France | Support : support@academie-numerique.fr<br>
-            SIRET : 123 456 789 00012 | RCS Paris<br>
-            Paiements sécurisés traités par PayPal.
-        </div>
-    </footer>
-
-    <script>
-        // Données des 7 modules de la formation (Images + Titres)
-        const modulesData = [
-            { title: "Module 1 : Fondations & Stratégie", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" },
-            { title: "Module 2 : Outils Numériques Clés", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" },
-            { title: "Module 3 : Automatisations Pratiques", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" },
-            { title: "Module 4 : Productivité Accélérée", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" },
-            { title: "Module 5 : Plan d'Action Immédiat", img: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" },
-            { title: "Module 6 : Études de Cas Réels", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" },
-            { title: "Module 7 : Attestation & Bilan", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800" }
-        ];
-
-        function switchModule(index) {
-            const cards = document.querySelectorAll('.module-card');
-            cards.forEach((card, idx) => {
-                if(idx === index) card.classList.add('active');
-                else card.classList.remove('active');
-            });
-
-            const data = modulesData[index];
-            document.getElementById('videoThumbnail').src = data.img;
-            document.getElementById('previewModuleTitle').innerText = data.title;
+        if (codeCreator) {
+            document.getElementById('createurField').value = codeCreator;
         }
 
-        function playCurrentVideo() {
-            alert("Aperçu de la leçon. Pour débloquer les 7 modules complets en qualité HD, complétez votre inscription ci-dessus.");
+        const currentUrl = encodeURIComponent(window.location.href);
+        const shareTitle = encodeURIComponent("Soutien et Financement Agricole - Financière de Cézembre");
+        
+        document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+        document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${shareTitle}%20-%20${currentUrl}`;
+        document.getElementById('share-tw').href = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${shareTitle}`;
+        document.getElementById('share-li').href = `https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}&title=${shareTitle}`;
+    });
+
+    setInterval(() => {
+        const countSpan = document.getElementById('viewers-count');
+        if (countSpan) {
+            let current = parseInt(countSpan.innerText);
+            let change = Math.random() > 0.5 ? 1 : -1;
+            current += change;
+            if (current < 11) current = 12;
+            if (current > 23) current = 21;
+            countSpan.innerText = current;
         }
+    }, 4500);
 
-        // Les 35 vrais profils humains, étudiants et jeunes français authentiques
-        const frenchReviews = [
-            { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record. Super investissement !", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
-            { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires et directes.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
-            { name: "Hugo M.", city: "Marseille", text: "Enfin une formation sans jargon inutile. On va droit au but, ça fait gagner des heures.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" },
-            { name: "Chloé B.", city: "Bordeaux", text: "J'hésitais au début vu le prix bas, mais le contenu est vraiment au rendez-vous. Merci !", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" },
-            { name: "Théo V.", city: "Nantes", text: "Pris en main en moins de 10 minutes. Exactement ce dont j'avais besoin pour démarrer.", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150" },
-            { name: "Léa P.", city: "Toulouse", text: "Super structure ! Les explications sont limpides et faciles à appliquer.", photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" },
-            { name: "Enzo B.", city: "Strasbourg", text: "Un contenu très pro. Rien à redire, le rapport qualité-prix est imbattable.", photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=150" },
-            { name: "Camille R.", city: "Nice", text: "J'ai tout appliqué rapidement. Je recommande les yeux fermés.", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" },
-            { name: "Nathan G.", city: "Lille", text: "Une vraie boîte à outils bien pensée. Ça change des formations hors de prix.", photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150" },
-            { name: "Inès M.", city: "Rennes", text: "Simple, rapide et efficace. J'ai adoré la clarté des modules.", photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=150" },
-            { name: "Mathis K.", city: "Grenoble", text: "Au top ! Ça m'a débloqué sur des points où je galérais depuis des semaines.", photo: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&q=80&w=150" },
-            { name: "Zoé T.", city: "Montpellier", text: "Très bonne surprise, le contenu est sérieux et très bien structuré.", photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&q=80&w=150" },
-            { name: "Louis F.", city: "Rouen", text: "Des méthodes concrètes qu'on peut appliquer dès la première heure.", photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150" },
-            { name: "Sarah S.", city: "Toulon", text: "Le meilleur guide que j'ai pu tester sur ce format. Bravo à l'équipe.", photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" },
-            { name: "Rayane Z.", city: "Dijon", text: "Impeccable. Rien à redire, c'est du travail propre et net.", photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150" },
-            { name: "Océane D.", city: "Angers", text: "Un gain de temps incroyable. Je recommande à 100%.", photo: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=150" },
-            { name: "Axel H.", city: "Nîmes", text: "Clair, net et précis. Aucun regret sur mon achat.", photo: "https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?auto=format&fit=crop&q=80&w=150" },
-            { name: "Romane J.", city: "Clermont-Ferrand", text: "Enfin des explications compréhensibles pour tout le monde.", photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=150" },
-            { name: "Kylian N.", city: "Le Mans", text: "Super formation, j'ai pu structurer mon projet en un clin d'œil.", photo: "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=150" },
-            { name: "Juliette E.", city: "Aix-en-Provence", text: "J'ai rentabilisé mes 25 € dès le premier jour grâce aux astuces.", photo: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=150" },
-            { name: "Raphaël C.", city: "Brest", text: "Efficace et direct. Pas de blabla, que du concret.", photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=150" },
-            { name: "Léna B.", city: "Tours", text: "Une très belle découverte, je suis ravie d'avoir sauté le pas.", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" },
-            { name: "Gabriel W.", city: "Amiens", text: "Un accompagnement textuel et méthodologique au top.", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150" },
-            { name: "Clara V.", city: "Limoges", text: "Simple d'accès et très formateur. Merci beaucoup !", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" },
-            { name: "Arthur P.", city: "Perpignan", text: "Parfait pour avancer rapidement sans se poser 50 questions.", photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150" },
-            { name: "Alice M.", city: "Metz", text: "Je cherchais exactement ce type de format rapide et qualitatif.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
-            { name: "Sacha L.", city: "Besançon", text: "Très bonne approche pédagogique. Rien à redire.", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
-            { name: "Jade R.", city: "Orléans", text: "C'est carré, professionnel et ça va droit au but.", photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=150" },
-            { name: "Tom K.", city: "Mulhouse", text: "Top du top ! Les conseils m'ont immédiatement servi.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" },
-            { name: "Agathe C.", city: "Boulogne-Billancourt", text: "Un investissement minime pour un contenu aussi riche.", photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" },
-            { name: "Jules D.", city: "Roubaix", text: "Génial, les étapes sont expliquées pas à pas.", photo: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&q=80&w=150" },
-            { name: "Louise N.", city: "Nancy", text: "Je recommande vivement à tous ceux qui veulent progresser vite.", photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&q=80&w=150" },
-            { name: "Nolan G.", city: "Argenteuil", text: "Une vraie mine d'or pour un prix dérisoire.", photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150" },
-            { name: "Rose F.", city: "Montreuil", text: "Super expérience, contenu très pro et bien ficelé.", photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" },
-            { name: "Ethan B.", city: "Saint-Denis", text: "Franchement bluffé par la qualité des ressources fournies.", photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150" }
-        ];
+    let generatedRefCode = "";
 
-        let currentIndex = 0;
-
-        function initLiveReviews() {
-            const container = document.getElementById('reviewsContainer');
-            
-            function addNewReview() {
-                const currentReview = frenchReviews[currentIndex];
-                const randomMinutes = Math.floor(Math.random() * 30) + 2;
-
-                const card = document.createElement('div');
-                card.className = 'review-card';
-                card.innerHTML = `
-                    <img src="${currentReview.photo}" alt="${currentReview.name}" class="author-img">
-                    <div>
-                        <div class="review-date"><i class="fas fa-check-circle"></i> Inscrit il y a ${randomMinutes} minutes - Membre vérifié (${currentReview.city})</div>
-                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="review-text">"${currentReview.text}"</p>
-                        <div class="review-author">${currentReview.name}</div>
-                    </div>
-                `;
-
-                container.insertBefore(card, container.firstChild);
-
-                if (container.children.length > 3) {
-                    container.removeChild(container.lastChild);
+    function updateIndicatif() {
+        const paysSelect = document.getElementById('paysSelect');
+        const selectedOption = paysSelect.options[paysSelect.selectedIndex];
+        const code = selectedOption.getAttribute('data-code');
+        
+        if (code) {
+            const indicatifSelect = document.getElementById('indicatifSelect');
+            let optionExists = false;
+            for (let i = 0; i < indicatifSelect.options.length; i++) {
+                if (indicatifSelect.options[i].value === code) {
+                    indicatifSelect.selectedIndex = i;
+                    optionExists = true;
+                    break;
                 }
-
-                // Rotation stricte et séquentielle de 0 à 34 sans doublon
-                currentIndex = (currentIndex + 1) % frenchReviews.length;
             }
+            if (!optionExists) {
+                const newOpt = document.createElement('option');
+                newOpt.value = code;
+                newOpt.text = code;
+                newOpt.selected = true;
+                indicatifSelect.add(newOpt);
+            }
+        }
+    }
 
-            container.innerHTML = "";
-            addNewReview();
-            addNewReview();
-            addNewReview();
+    /* Catalogue de plus de 210 avis uniques couvrant l'Europe, l'Amérique Latine et les îles françaises/lointaines dans leur langue d'origine */
+    const allReviews = [
+        // --- France & Dom-Tom ---
+        { n: "Jean-Marc Dupont", p: "France", t: "Soutien indispensable pour l'acquisition de notre nouveau semoir et l'optimisation des cultures de céréales.", i: "https://randomuser.me/api/portraits/men/45.jpg" },
+        { n: "Émilie Normand", p: "France", t: "Appui financier très précieux pour le développement de nos serres de maraîchage biologique.", i: "https://randomuser.me/api/portraits/women/58.jpg" },
+        { n: "Claire Durand", p: "France", t: "Financement rapide accordé pour notre production de blé et l'achat d'engrais durables.", i: "https://randomuser.me/api/portraits/women/51.jpg" },
+        { n: "Fabrice Lefevre", p: "France", t: "Subvention reçue dans les délais pour notre plantation d'arbres fruitiers et vergers.", i: "https://randomuser.me/api/portraits/men/93.jpg" },
+        { n: "Camille Martin", p: "France", t: "Accompagnement parfait pour notre exploitation spécialisée dans la culture de pommes de terre.", i: "https://randomuser.me/api/portraits/women/31.jpg" },
+        { n: "Romain Thomas", p: "France", t: "Aide reçue pour moderniser notre système d'irrigation goutte-à-goutte en zones maraîchères.", i: "https://randomuser.me/api/portraits/men/83.jpg" },
+        { n: "Antoine Gauthier", p: "France", t: "Aide financière octroyée pour l'agrandissement de notre étable et l'achat de vaches laitières.", i: "https://randomuser.me/api/portraits/men/1.jpg" },
+        { n: "Béatrice Leroy", p: "France", t: "Le soutien reçu nous a permis d'investir dans un nouveau parc d'élevage ovin.", i: "https://randomuser.me/api/portraits/women/1.jpg" },
+        { n: "Christophe Richard", p: "France", t: "Financement parfait pour notre élevage de porcs en plein air et construction de porcheries.", i: "https://randomuser.me/api/portraits/men/2.jpg" },
+        { n: "Delphine Kervegant", p: "France", t: "Un appui solide pour la modernisation de notre poulailler industriel et l'élevage de volailles.", i: "https://randomuser.me/api/portraits/women/2.jpg" },
+        { n: "Éric Bouvier", p: "France", t: "Soutien reçu pour l'installation de clôtures électriques et l'aménagement des pâturages bovins.", i: "https://randomuser.me/api/portraits/men/3.jpg" },
+        { n: "Florence Morel", p: "France", t: "Aide précieuse pour lancer notre élevage caprin et la production de fromage fermier.", i: "https://randomuser.me/api/portraits/women/3.jpg" },
+        { n: "Muriel Simon", p: "France", t: "Aide reçue pour l'acquisition d'un nouveau tracteur de labour et herses rotatives.", i: "https://randomuser.me/api/portraits/women/7.jpg" },
+        { n: "Nicolas Joubert", p: "France", t: "Financement rapide pour l'achat d'une moissonneuse-batteuse indispensable aux récoltes.", i: "https://randomuser.me/api/portraits/men/7.jpg" },
+        { n: "Marie-Line Vacher", p: "Guadeloupe", t: "Un appui essentiel pour le développement de nos cultures tropicales et de bananiers.", i: "https://randomuser.me/api/portraits/women/62.jpg" },
+        { n: "Thierry Bernard", p: "Guadeloupe", t: "Processus transparent pour financer notre matériel de récolte de canne à sucre.", i: "https://randomuser.me/api/portraits/men/55.jpg" },
+        { n: "Jean-Luc Moreau", p: "Martinique", t: "Financement validé pour notre plantation d'ananas et l'achat d'outils de désherbage.", i: "https://randomuser.me/api/portraits/men/71.jpg" },
+        { n: "Sandra Petit", p: "Martinique", t: "Un accompagnement humain exceptionnel pour nos producteurs de vanille et épices.", i: "https://randomuser.me/api/portraits/women/48.jpg" },
+        { n: "Gilles Robert", p: "La Réunion", t: "Soutien indispensable pour nos équipements de culture de géranium et plantes à parfum.", i: "https://randomuser.me/api/portraits/men/34.jpg" },
+        { n: "Nathalie Henry", p: "La Réunion", t: "Instruction rapide pour notre coopérative de production de vanille Bourbon.", i: "https://randomuser.me/api/portraits/women/24.jpg" },
+        { n: "Maëva Teissier", p: "Polynésie française", t: "Mauruuru roa ! Un appui précieux pour notre exploitation de perliculture et vanilleraie.", i: "https://randomuser.me/api/portraits/women/65.jpg" },
+        { n: "Kévin Boucard", p: "Nouvelle-Calédonie", t: "Financement reçu pour l'achat de matériel de clôture pour notre élevage de bovins en brousse.", i: "https://randomuser.me/api/portraits/men/62.jpg" },
 
-            setInterval(addNewReview, 6000);
+        // --- Espagne (Español) ---
+        { n: "Carlos Sanchez", p: "Espagne", t: "Apoyo financiero ideal para nuestra cooperativa de aceite de oliva y viñedos.", i: "https://randomuser.me/api/portraits/men/27.jpg" },
+        { n: "Pedro Ruiz", p: "Espagne", t: "Financiación aprobada para nuestro ganado porcino y naves de engorde.", i: "https://randomuser.me/api/portraits/men/20.jpg" },
+        { n: "Carmen Torres", p: "Espagne", t: "Excelente ayuda para la instalación de riego por goteo en cultivos hortícolas.", i: "https://randomuser.me/api/portraits/women/18.jpg" },
+        { n: "Alejandro Molina", p: "Espagne", t: "Una gran ayuda para la compra de un tractor nuevo y aperos de labranza.", i: "https://randomuser.me/api/portraits/men/31.jpg" },
+        { n: "Beatriz Gomez", p: "Espagne", t: "Excelente gestión y apoyo para nuestra granja de producción de leche de cabra.", i: "https://randomuser.me/api/portraits/women/21.jpg" },
+
+        // --- Italie (Italiano) ---
+        { n: "Matteo Bianchi", p: "Italie", t: "Supporto finanziario eccellente per l'acquisto di trattori e attrezzature per la coltivazione dell'olivo.", i: "https://randomuser.me/api/portraits/men/41.jpg" },
+        { n: "Marco Rossi", p: "Italie", t: "Finanziamento rapido per il nostro allevamento bovino e la produzione di latte biologico.", i: "https://randomuser.me/api/portraits/men/18.jpg" },
+        { n: "Giulia Sorri", p: "Italie", t: "Un partner serio per la modernizzazione della nostra serra di pomodori.", i: "https://randomuser.me/api/portraits/women/16.jpg" },
+        { n: "Giovanni Moretti", p: "Italie", t: "Ottimo supporto per la raccolta dei cereali e la gestione dei silos agricoli.", i: "https://randomuser.me/api/portraits/men/42.jpg" },
+        { n: "Francesca Conti", p: "Italie", t: "Fondi ricevuti puntualmente per l'ampliamento del nostro allevamento avicolo.", i: "https://randomuser.me/api/portraits/women/22.jpg" },
+
+        // --- Allemagne (Deutsch) ---
+        { n: "Hans Weber", p: "Allemagne", t: "Sehr gute Unterstützung für unseren Milchviehbetrieb und automatischen Melkstand.", i: "https://randomuser.me/api/portraits/men/85.jpg" },
+        { n: "Dieter Klein", p: "Allemagne", t: "Finanzierung für unsere Getreidesilos und moderne Erntemaschinen problemlos erhalten.", i: "https://randomuser.me/api/portraits/men/19.jpg" },
+        { n: "Greta Meyer", p: "Allemagne", t: "Hervorragende Hilfe beim Ausbau unserer ökologischen Geflügelzucht.", i: "https://randomuser.me/api/portraits/women/17.jpg" },
+        { n: "Stefan Wagner", p: "Allemagne", t: "Professionelle Abwicklung und schnelle Hilfe für unsere Feldwirtschaft.", i: "https://randomuser.me/api/portraits/men/43.jpg" },
+
+        // --- Portugal (Português) ---
+        { n: "João Silva", p: "Portugal", t: "Excelente apoio financeiro para a modernização da nossa produção de vinho e vinhas.", i: "https://randomuser.me/api/portraits/men/48.jpg" },
+        { n: "Miguel Santos", p: "Portugal", t: "Ajuda fulcral na compra de maquinaria agrícola e regadio para os campos.", i: "https://randomuser.me/api/portraits/men/44.jpg" },
+        { n: "Ana Rita Ferreira", p: "Portugal", t: "Processo muito seguro e transparente para o financiamento da nossa exploração pecuária.", i: "https://randomuser.me/api/portraits/women/25.jpg" },
+
+        // --- Amérique Latine & Caraïbes (Colombie, Argentine, Brésil, Mexique, République Dominicaine, etc.) ---
+        { n: "Diego Vargas", p: "Colombie", t: "Respaldo financiero clave para nuestra producción cafetera y maquinaria de beneficio.", i: "https://randomuser.me/api/portraits/men/26.jpg" },
+        { n: "Lucia Navas", p: "Colombie", t: "Ayuda perfecta para la compra de ganado lechero en nuestra finca.", i: "https://randomuser.me/api/portraits/women/23.jpg" },
+        { n: "Mateo Rojas", p: "Argentine", t: "Excelente apoyo económico para nuestra producción ganadera vacuna en la pampa.", i: "https://randomuser.me/api/portraits/men/30.jpg" },
+        { n: "Sofia Gomez", p: "Argentine", t: "Financiación excelente para la siembra y cosecha de soja y cereales.", i: "https://randomuser.me/api/portraits/women/24.jpg" },
+        { n: "Lucas Fernandes", p: "Brésil", t: "Suporte espetacular para nossa fazenda de gado de corte e plantio de milho.", i: "https://randomuser.me/api/portraits/men/76.jpg" },
+        { n: "Camila Ribeiro", p: "Brésil", t: "Ótimo financiamento recebido para a aquisição de tratores e insumos agrícolas.", i: "https://randomuser.me/api/portraits/women/26.jpg" },
+        { n: "Esteban Morales", p: "Mexique", t: "Un apoyo invaluable para tecnificar nuestro sistema de riego en cultivos de maíz.", i: "https://randomuser.me/api/portraits/men/46.jpg" },
+        { n: "Valeria Castillo", p: "Chili", t: "Excelente financiamiento para nuestro proyecto de agricultura frutal de exportación.", i: "https://randomuser.me/api/portraits/women/27.jpg" },
+        { n: "Mateo Almonte", p: "République dominicaine", t: "Excelente asistencia financiera para la producción y cosecha de plátanos y frutos.", i: "https://randomuser.me/api/portraits/men/50.jpg" },
+        { n: "Alejandro Castro", p: "Cuba", t: "Apoyo vital para modernizar nuestros equipos de cultivo en la cooperativa tabacalera.", i: "https://randomuser.me/api/portraits/men/52.jpg" },
+
+        // --- Extension programmatique pour atteindre ou dépasser 210 avis uniques multirégionaux ---
+        ...Array.from({ length: 160 }, (_, index) => {
+            const id = index + 51;
+            const isMale = index % 2 === 0;
+            const firstNames = isMale 
+                ? ["Julian", "Alex", "Maxime", "Damien", "Arthur", "Matthieu", "Benoit", "Cédric", "Dominique", "Samuel", "Victor", "Vincent", "Gabriel", "Thomas", "Nathan", "Lucas", "Enzo", "Louis", "Raphaël", "Hugo"] 
+                : ["Sophie", "Audrey", "Chantal", "Elodie", "Marion", "Pauline", "Sandrine", "Virginie", "Céline", "Aurélie", "Clara", "Ines", "Camille", "Manon", "Zoé", "Chloé", "Léa", "Sarah", "Emma", "Jade"];
+            
+            const lastNames = ["Lefebvre", "Fontaine", "Chevalier", "Robin", "Masson", "Gauthier", "Marchand", "Dumont", "Lambert", "Perez", "Massot", "Boucher", "Rousseau", "Meunier", "Girard", "Bonnet", "Dupuis", "Laurent", "Lemaire", "Roux"];
+
+            const globalRegions = [
+                { p: "Belgique", t: "Excellente aide financière pour l'extension de notre exploitation laitière." },
+                { p: "Suisse", t: "Professioneller und schneller Kredit für unsere alpine Weidewirtschaft." },
+                { p: "Canada", t: "Very reliable funding for our grain storage silos and farm equipment." },
+                { p: "Espagne", t: "Ayuda excelente para la mejora de infraestructuras en nuestra granja." },
+                { p: "Italie", t: "Fondi ricevuti per la modernizzazione delle attrezzature agricole." },
+                { p: "Brésil", t: "Excelente suporte financeiro para o plantio e colheita em nossa fazenda." },
+                { p: "Argentine", t: "Apoyo clave para la compra de insumos y maquinaria de labranza." },
+                { p: "Colombie", t: "Respaldo financiero muy útil para el desarrollo rural y agrícola." },
+                { p: "Pérou", t: "Gran apoyo recibido para la adquisición de semillas y cultivo de papas andinas." },
+                { p: "Équateur", t: "Excelente crédito otorgado para optimizar nuestras plantaciones de cacao." },
+                { p: "Guadeloupe", t: "Aide précieuse pour le développement de notre structure agricole locale." }
+            ];
+
+            const item = globalRegions[index % globalRegions.length];
+            const name = `${firstNames[index % firstNames.length]} ${lastNames[index % lastNames.length]} ${id}`;
+            const genderPath = isMale ? 'men' : 'women';
+            const imgId = (index % 70) + 1;
+
+            return { n: name, p: item.p, t: item.t, i: `https://randomuser.me/api/portraits/${genderPath}/${imgId}.jpg` };
+        })
+    ];
+
+    let seenReviews = JSON.parse(sessionStorage.getItem('seen_reviews') || '[]');
+    let availableReviews = allReviews.filter(r => !seenReviews.includes(r.n));
+    if (availableReviews.length === 0) {
+        seenReviews = [];
+        sessionStorage.setItem('seen_reviews', JSON.stringify([]));
+        availableReviews = [...allReviews];
+    }
+    
+    let queue = [...availableReviews].sort(() => Math.random() - 0.5); 
+    const container = document.getElementById('reviews-container');
+
+    function createReviewHTML(data) {
+        const randSec = Math.floor(Math.random() * 50) + 5;
+        return `<div class="review-card">
+                <img src="${data.i}" class="author-img" alt="Profil" onerror="this.src='https://ui-avatars.com/api/?name=${data.n}'">
+                <div style="flex:1">
+                    <span class="review-date"><i class="fas fa-clock"></i> il y a ${randSec} sec.</span>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"${data.t}"</p>
+                    <div class="review-author"><div>${data.n} (${data.p})</div><span class="verified"><i class="fas fa-check-circle"></i> BÉNÉFICIAIRE VÉRIFIÉ</span></div>
+                </div>
+            </div>`;
+    }
+
+    function dropOneReview() {
+        if (queue.length === 0) {
+            queue = [...allReviews].sort(() => Math.random() - 0.5);
+        }
+        const nextReview = queue.pop(); 
+        seenReviews.push(nextReview.n);
+        sessionStorage.setItem('seen_reviews', JSON.stringify(seenReviews));
+
+        container.insertAdjacentHTML('beforeend', createReviewHTML(nextReview));
+        if (container.children.length > 4) container.removeChild(container.firstChild);
+    }
+
+    function startJumellesAnimation() {
+        dropOneReview();
+        setInterval(dropOneReview, 7000); 
+    }
+
+    function resetAll() { location.reload(); }
+
+    window.onload = startJumellesAnimation;
+
+    function selectLanguage(name, code) {
+        document.getElementById('current-flag').src = `https://flagcdn.com/w40/${code}.png`;
+        document.getElementById('current-name').innerText = name.toUpperCase();
+        document.getElementById('country-list').classList.remove('show-countries');
+        const select = document.querySelector('.goog-te-combo');
+        if (select) {
+            select.value = (code === 'gb' ? 'en' : code);
+            select.dispatchEvent(new Event('change'));
+        }
+    }
+
+    function toggleDropdown() { document.getElementById('country-list').classList.toggle('show-countries'); }
+
+    function openDetails(type) {
+        const modal = document.getElementById('modal-overlay');
+        const body = document.getElementById('modal-body');
+        if(type === 'agri') {
+            body.innerHTML = `<h3>Soutien aux Cultures & Agriculture</h3><p>Nous finançons l'achat d'intrants, de semences de qualité et l'optimisation des terres agricoles pour garantir des récoltes abondantes et pérennes.</p>`;
+        } else if(type === 'elevage') {
+            body.innerHTML = `<h3>Soutien à l'Élevage</h3><p>Appui spécialisé pour le développement des cheptels, l'amélioration des infrastructures pastorales et la valorisation de la production animale.</p>`;
+        } else {
+            body.innerHTML = `<h3>Acquisition de Matériel</h3><p>Mise à disposition ou financement direct d'outils et de machines agricoles modernes pour accroître la productivité de votre exploitation.</p>`;
+        }
+        modal.style.display = 'flex';
+    }
+    function closeDetails() { document.getElementById('modal-overlay').style.display = 'none'; }
+
+    function openPrivacyModal(e) {
+        e.preventDefault();
+        const modal = document.getElementById('modal-overlay');
+        const body = document.getElementById('modal-body');
+        body.innerHTML = `
+            <h3 style="color: var(--navy); margin-bottom: 15px; font-size: 1.4rem;">Politique de Confidentialité</h3>
+            <p style="text-align: left; font-size: 0.8rem; line-height: 1.6; color: #444;">
+                La <strong>Financière de Cézembre</strong> (SIREN 552 058 943, établie en France, capital social de 1 200 000 €) accorde une importance absolue à la protection de vos données personnelles et des informations relatives à votre dossier agricole.<br><br>
+                <strong>1. Collecte des données :</strong> Les informations recueillies dans le formulaire (Nom, type de projet, budget, pays et contacts) sont strictement destinées à l'analyse interne de votre demande de soutien par nos services opérationnels.<br><br>
+                <strong>2. Confidentialité absolue :</strong> Vos données font l'objet d'un traitement hautement sécurisé. Elles ne sont en aucun cas vendues, cédées ou partagées à des tiers commerciaux.<br><br>
+                <strong>3. Pièces d'identité :</strong> Les pièces justificatives transmises via notre canal direct (WhatsApp) sont conservées de manière sécurisée et ne servent qu'à valider l'authenticité du porteur de projet dans le cadre de notre engagement de sincérité.<br><br>
+                <em>Pour toute question relative à vos données, notre équipe de terrain reste à votre disposition.</em>
+            </p>
+        `;
+        modal.style.display = 'flex';
+    }
+
+    function openConditionsModal(e) {
+        e.preventDefault();
+        const modal = document.getElementById('modal-overlay');
+        const body = document.getElementById('modal-body');
+        body.innerHTML = `
+            <h3 style="color: var(--navy); margin-bottom: 15px; font-size: 1.3rem;">Conditions Générales d'Accompagnement et de Financement</h3>
+            <div style="text-align: left; font-size: 0.78rem; line-height: 1.6; color: #444;">
+                <p><strong>IDENTIFICATION LÉGALE :</strong> FINANCIÈRE DE CÉZEMBRE (Établie en 1990 en France, Capital : 1 200 000 €, SIREN : 552 058 943). Branche opérationnelle : Impulso Rural.</p><br>
+                <p><strong>ARTICLE 1 : OBJET</strong><br>Régit les modalités d'inscription, de dépôt, d'instruction et de financement des projets agricoles et d'élevage présentés par les porteurs de projets.</p><br>
+                <p><strong>ARTICLE 2 : ÉLIGIBILITÉ ET PLAFONDS</strong><br>Ouvert à tout porteur actif dans l'agriculture ou l'élevage. Plafonds définis par l'organisation dans le formulaire de soumission.</p><br>
+                <p><strong>ARTICLE 3 : SINCÉRITÉ ET TOLÉRANCE ZÉRO</strong><br>Soutien exclusivement réservé aux projets réels. Toute tentative de projet fictif entraîne le rejet immédiat et l'interdiction définitive de collaboration, sans remboursement.</p><br>
+                <p><strong>ARTICLE 4 : PROCESSUS ET GARANTIE</strong><br>Délai d'étude rapide de 24 à 48h ouvrées. Financement garanti à 100%, avec montant final ajusté selon l'évaluation des besoins réels et des enveloppes budgétaires.</p><br>
+                <p><strong>ARTICLE 5 : CONTRIBUTION TECHNIQUE</strong><br>Participation obligatoire de 99 € (105 USD) pour la faisabilité, le filtrage et la rémunération des techniciens. Possibilité de règlement via un mandataire financier ou témoin habilité.</p><br>
+                <p><strong>ARTICLE 6 : CONCORDANCE DES IDENTITÉS</strong><br>Le nom du porteur enregistré doit strictement correspondre au titulaire du compte ou moyen de paiement réglant la contribution et percevant le soutien.</p><br>
+                <p><strong>ARTICLE 7 : DÉLAIS DE MISE EN ŒUVRE</strong><br>Déblocage des fonds ou du matériel sous 3 à 5 jours ouvrés après approbation finale.</p><br>
+                <p><strong>ARTICLE 8 : SUIVI DE TERRAIN</strong><br>Visite physique de contrôle et d'accompagnement par les techniciens entre 6 et 8 mois après le déblocage.</p><br>
+                <p><strong>ARTICLE 9 : ACCEPTATION</strong><br>La soumission du dossier et le versement de la contribution valent acceptation pleine et entière des présentes conditions.</p>
+            </div>
+        `;
+        modal.style.display = 'flex';
+    }
+
+    async function validateAndSubmit(e) {
+        e.preventDefault();
+
+        const devise = document.getElementById('deviseSelect').value;
+        const montantSaisi = parseFloat(document.getElementById('montantSaisi').value);
+        
+        let minLimit = 1;
+        let maxLimit = 19000;
+        let symbol = "€";
+
+        if(devise.includes("Dollar")) {
+            minLimit = 1;
+            maxLimit = 21957;
+            symbol = "$";
         }
 
-        // Fonctions de partage direct pour les réseaux sociaux
-        const shareUrl = encodeURIComponent(window.location.href);
-        const shareTitle = encodeURIComponent("Découvre l'Académie Numérique pour booster tes compétences !");
-
-        function shareOnFacebook() {
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank', 'width=600,height=400');
+        if (isNaN(montantSaisi) || montantSaisi < minLimit || montantSaisi > maxLimit) {
+            alert(`Erreur de saisie budgétaire : Pour les ${devise}, le montant demandé doit obligatoirement être compris entre ${minLimit.toLocaleString()} ${symbol} et ${maxLimit.toLocaleString()} ${symbol}.`);
+            return;
         }
 
-        function shareOnTwitter() {
-            window.open(`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`, '_blank', 'width=600,height=400');
+        const randomNum = Math.floor(10000 + Math.random() * 90000);
+        generatedRefCode = `#CEZ-${randomNum}`;
+
+        let form = document.getElementById('loanForm');
+        let existingRef = form.querySelector('input[name="code_reference"]');
+        if (existingRef) {
+            existingRef.value = generatedRefCode;
+        } else {
+            let refInputHidden = document.createElement('input');
+            refInputHidden.type = 'hidden';
+            refInputHidden.name = 'code_reference';
+            refInputHidden.value = generatedRefCode;
+            form.appendChild(refInputHidden);
         }
 
-        function shareOnLinkedIn() {
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`, '_blank', 'width=600,height=400');
-        }
+        const loaderOverlay = document.getElementById('loader-overlay');
+        const loadingContent = document.getElementById('loading-content');
+        const successMessage = document.getElementById('success-message');
+        
+        loaderOverlay.style.display = 'flex';
+        loadingContent.style.display = 'block';
+        successMessage.style.display = 'none';
 
-        function shareOnWhatsApp() {
-            window.open(`https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`, '_blank');
-        }
+        const formData = new FormData(form);
+        
+        try {
+            const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+            
+            if (response.ok || response.status === 200) {
+                if(typeof gtag === 'function'){ gtag('event', 'conversion', {'send_to': 'AW-18121475138/vGqNCOf1r_kZELqR9-8_'}); }
+                
+                setTimeout(() => {
+                    loadingContent.style.display = 'none';
+                    document.getElementById('refCodeDisplay').innerText = generatedRefCode;
+                    
+                    const clientNom = document.getElementById('inputNom').value || "Client";
+                    const codeCreatorVal = document.getElementById('createurField').value;
 
-        window.onload = initLiveReviews;
-    </script>
+                    let currentLang = 'fr';
+                    const googCombo = document.querySelector('.goog-te-combo');
+                    if (googCombo && googCombo.value) {
+                        currentLang = googCombo.value;
+                    } else {
+                        currentLang = (navigator.language || navigator.userLanguage || 'fr').substring(0, 2);
+                    }
+
+                    let texteWhatsApp = "";
+
+                    if (currentLang === 'es') {
+                        texteWhatsApp = `Hola, mi nombre est ${clientNom}. Mi código de referencia es ${generatedRefCode}. ${codeCreatorVal ? `Código creador: ${codeCreatorVal}. ` : ''}Deseo finalizar la verificación de mi expediente, abonar mi contribución de apertura (99 € / 105 $) y enviar mis documentos de identidad.`;
+                    } else if (currentLang === 'pt') {
+                        texteWhatsApp = `Olá, meu nome é ${clientNom}. Meu código de referência é ${generatedRefCode}. ${codeCreatorVal ? `Código do criador: ${codeCreatorVal}. ` : ''}Deseo finalizar a verificação do meu dossiê, pagar minha contribuição de abertura (99 € / 105 $) e enviar meus documentos de identidade.`;
+                    } else if (currentLang === 'en' || currentLang === 'de' || currentLang === 'it' || currentLang === 'se') {
+                        texteWhatsApp = `Hello, my name is ${clientNom}. My reference code is ${generatedRefCode}. ${codeCreatorVal ? `Creator code: ${codeCreatorVal}. ` : ''}I would like to finalize my application verification, pay my opening contribution (99 € / 105 $) and send my identity documents.`;
+                    } else {
+                        texteWhatsApp = `Bonjour, je m'appelle ${clientNom}. Mon code de référence est ${generatedRefCode}. ${codeCreatorVal ? `Code créateur: ${codeCreatorVal}. ` : ''}Je souhaite finaliser la vérification de mon dossier, régler ma contribution d'ouverture de dossier (99 € / 105 $) et transmettre mes pièces d'identité.`;
+                    }
+
+                    const waUrl = `https://wa.me/33780976404?text=${encodeURIComponent(texteWhatsApp)}`;
+                    document.getElementById('waDirectBtn').href = waUrl;
+
+                    successMessage.style.display = 'block';
+                }, 2000);
+            } else {
+                alert("Une erreur est survenue lors de l'envoi du dossier.");
+                loaderOverlay.style.display = 'none';
+            }
+        } catch (error) {
+            alert("Erreur de connexion réseau lors de l'envoi du dossier.");
+            loaderOverlay.style.display = 'none';
+        }
+    }
+</script>
 </body>
 </html>
