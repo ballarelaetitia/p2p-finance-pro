@@ -125,7 +125,7 @@
         .video-subtitle { font-size: 0.9rem; color: #666; margin-bottom: 25px; }
 
         .video-player-wrapper {
-            position: relative; width: 100%; padding-top: 56.25%; /* Ratio 16:9 */
+            position: relative; width: 100%; padding-top: 56.25%; 
             background: #000; border-radius: 12px; overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 26, 77, 0.2);
             border: 3px solid var(--gold);
@@ -245,12 +245,17 @@
             font-size: 3rem; color: var(--gold); flex-shrink: 0; text-align: center; width: 80px;
         }
         .guarantee-content h3 { color: var(--navy); font-size: 1.2rem; margin-bottom: 8px; }
-        .guarantee-content p { font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 15px; }
+        .guarantee-content p { font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 12px; }
+
+        .guarantee-instruction {
+            font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; 
+            background: #fdfbf7; padding: 8px 12px; border-radius: 4px; border-left: 3px solid var(--gold);
+        }
 
         .btn-support-link {
             display: inline-flex; align-items: center; gap: 8px;
-            background: var(--navy); color: var(--white); padding: 6px 12px;
-            border-radius: 4px; font-size: 0.78rem; font-weight: 600; text-decoration: none;
+            background: var(--navy); color: var(--white); padding: 8px 16px;
+            border-radius: 4px; font-size: 0.82rem; font-weight: 600; text-decoration: none;
             transition: background 0.3s, transform 0.2s; cursor: pointer; border: none;
         }
         .btn-support-link:hover { background: var(--navy-light); transform: translateY(-1px); }
@@ -258,11 +263,6 @@
 
         .email-action-group {
             display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
-        }
-
-        .email-copy-box {
-            background: #fff; padding: 6px 12px; border-radius: 4px; border: 1px solid #ddd;
-            display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--navy); font-weight: 600;
         }
 
         /* --- SECTION FAQ INTERACTIVE --- */
@@ -293,7 +293,7 @@
         }
         .faq-support-box p { font-size: 0.85rem; color: #555; margin-bottom: 12px; }
 
-        /* --- AVIS DYNAMIQUES VARIÉS --- */
+        /* --- AVIS DYNAMIQUES VARIÉS (PROFIL NATUREL HUMAIN) --- */
         .reviews-section { padding: 60px 8%; background: #ffffff; text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
         
@@ -318,9 +318,9 @@
         .author-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
         
         .author-initials {
-            width: 50px; height: 50px; border-radius: 50%; background: var(--navy); color: var(--gold);
-            display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;
-            border: 2px solid var(--gold); flex-shrink: 0;
+            width: 50px; height: 50px; border-radius: 50%; background: #7f8c8d; color: white;
+            display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;
+            border: 2px solid #bdc3c7; flex-shrink: 0;
         }
 
         .stars { color: var(--bright-gold); font-size: 0.8rem; margin-bottom: 5px; }
@@ -366,7 +366,6 @@
             .footer-links { flex-direction: column; gap: 10px; }
         }
 
-        /* Ajustements spécifiques petits mobiles pour la vidéo */
         @media (max-width: 480px) {
             .video-placeholder-text h4 { font-size: 0.95rem; }
             .video-placeholder-text p { font-size: 0.75rem; }
@@ -549,18 +548,14 @@
             </div>
             <div class="guarantee-content">
                 <h3>Garantie "Satisfait ou Remboursé" de 7 jours</h3>
-                <p>Testez le contenu en toute sérénité. Si vous n'êtes pas pleinement satisfait dans les 7 jours suivant votre achat à 25 €, contactez notre support par e-mail : nous vous remboursons intégralement.</p>
+                <p>Testez le contenu en toute sérénité. Si vous n'êtes pas pleinement satisfait dans les 7 jours suivant votre achat à 25 %, contactez-nous.</p>
+                <div class="guarantee-instruction">
+                    Demande de l'aide ou remboursement :
+                </div>
                 <div class="email-action-group">
-                    <div class="email-copy-box">
-                        <i class="fas fa-envelope" style="color: var(--gold);"></i> 
-                        <span>support@academie-numerique.fr</span>
-                    </div>
                     <a href="mailto:support@academie-numerique.fr" class="btn-support-link">
                         <i class="fas fa-paper-plane"></i> Envoyer un e-mail
                     </a>
-                    <button class="btn-support-link" onclick="copyEmail()">
-                        <i class="fas fa-copy"></i> Copier
-                    </button>
                 </div>
             </div>
         </div>
@@ -614,23 +609,16 @@
         </div>
 
         <div class="faq-support-box">
-            <p><i class="fas fa-headset" style="color: var(--navy);"></i> Une question spécifique ? Notre équipe vous répond avec le sourire :</p>
+            <p><i class="fas fa-headset" style="color: var(--navy);"></i> Une question ? Besoin d'aide avec votre accès ?</p>
             <div class="email-action-group" style="justify-content: center;">
-                <div class="email-copy-box">
-                    <i class="fas fa-envelope" style="color: var(--gold);"></i> 
-                    <span>support@academie-numerique.fr</span>
-                </div>
                 <a href="mailto:support@academie-numerique.fr" class="btn-support-link">
                     <i class="fas fa-paper-plane"></i> Envoyer un e-mail
                 </a>
-                <button class="btn-support-link" onclick="copyEmail()">
-                    <i class="fas fa-copy"></i> Copier
-                </button>
             </div>
         </div>
     </section>
 
-    <!-- SECTION AVIS DYNAMIQUES -->
+    <!-- SECTION AVIS DYNAMIQUES VARIÉS (ROTATION COMPLÈTE SANS DOUBLON) -->
     <section class="reviews-section">
         <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
         <div class="reviews-grid" id="reviewsContainer"></div>
@@ -669,6 +657,7 @@
         <p><strong>Hébergement :</strong> Plateforme Cloud sécurisée</p>
     </section>
 
+    <!-- Pied de page -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -678,17 +667,11 @@
             </div>
 
             <div class="footer-support-container">
+                <p style="color: #ccc; margin-bottom: 8px;">Une question ? Contactez-nous à : <strong>support@academie-numerique.fr</strong></p>
                 <div class="email-action-group" style="justify-content: center;">
-                    <div class="email-copy-box" style="background: #1a1a1a; border-color: #333; color: #fff;">
-                        <i class="fas fa-envelope" style="color: var(--gold);"></i> 
-                        <span>support@academie-numerique.fr</span>
-                    </div>
                     <a href="mailto:support@academie-numerique.fr" class="btn-support-link">
-                        <i class="fas fa-paper-plane"></i> Écrire
+                        <i class="fas fa-paper-plane"></i> Envoyer un e-mail
                     </a>
-                    <button class="btn-support-link" onclick="copyEmail()">
-                        <i class="fas fa-copy"></i> Copier
-                    </button>
                 </div>
             </div>
 
@@ -724,12 +707,6 @@
             element.classList.toggle('active');
         }
 
-        function copyEmail() {
-            navigator.clipboard.writeText("support@academie-numerique.fr").then(() => {
-                alert("✅ Adresse e-mail copiée dans le presse-papier : support@academie-numerique.fr");
-            });
-        }
-
         const slideData = [
             "Module 1 : Fondations & Stratégie",
             "Module 2 : Outils Numériques Clés",
@@ -761,17 +738,20 @@
         function currentSlide(index) { showSlide(index); resetTimer(); }
         function resetTimer() { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 4000); }
 
+        /* LISTE ÉTENDUE ET VARIÉE D'AVIS (Visages humains, paysages, voitures, fleurs, Paris, enfants, profils vides) */
         const frenchReviews = [
-            { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record.", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Sarah K.", city: "Toulouse", text: "Très direct, pas de blabla inutile. Je recommande à 100%.", initials: "SK", type: "initials" },
-            { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Karim B.", city: "Marseille", text: "Super formation, ça éclaire vraiment sur les méthodes à suivre.", initials: "KB", type: "initials" },
-            { name: "Hugo M.", city: "Nantes", text: "Enfin une formation sans jargon inutile. On va droit au but.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Élodie P.", city: "Bordeaux", text: "J'ai appliqué les conseils dès le premier soir. Résultats immédiats !", initials: "ÉP", type: "initials" },
-            { name: "Chloé B.", city: "Lille", text: "J'hésitais au début vu le prix bas, mais le contenu est vraiment au rendez-vous.", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Julien R.", city: "Strasbourg", text: "Simple, efficace et très bien structuré du début à la fin.", initials: "JR", type: "initials" },
-            { name: "Théo V.", city: "Nice", text: "Pris en main en moins de 10 minutes. Exactement ce dont j'avais besoin.", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Nathalie S.", city: "Rennes", text: "Un grand merci pour cette clarté pédagogique irréprochable.", initials: "NS", type: "initials" }
+            { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record.", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Sarah K.", city: "Toulouse", text: "Très direct, pas de blabla inutile. Je recommande à 100%.", avatar: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=150", type: "photo" }, // Plage
+            { name: "Marc T.", city: "Nantes", text: "Enfin une formation sans jargon. On va droit au but.", initials: "MT", type: "initials" }, // Profil vide / initiales
+            { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Karim B.", city: "Marseille", text: "Super formation, ça éclaire vraiment sur les méthodes à suivre.", avatar: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&q=80&w=150", type: "photo" }, // Voiture / Route
+            { name: "Pauline V.", city: "Bordeaux", text: "J'ai appliqué les conseils dès le premier soir. Résultats immédiats !", initials: "PV", type: "initials" },
+            { name: "Chloé B.", city: "Lille", text: "J'hésitais au début vu le prix bas, mais le contenu est vraiment au rendez-vous.", avatar: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=150", type: "photo" }, // Fleurs / Nature
+            { name: "Julien R.", city: "Strasbourg", text: "Simple, efficace et très bien structuré du début à la fin.", avatar: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=150", type: "photo" }, // Paris / Tour Eiffel
+            { name: "Théo V.", city: "Nice", text: "Pris en main en moins de 10 minutes. Exactement ce dont j'avais besoin.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Nathalie S.", city: "Rennes", text: "Un grand merci pour cette clarté pédagogique irréprochable.", initials: "NS", type: "initials" },
+            { name: "David M.", city: "Toulon", text: "Le meilleur investissement de l'année pour ma structure.", avatar: "https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&q=80&w=150", type: "photo" }, // Enfant / Famille
+            { name: "Élodie P.", city: "Grenoble", text: "Excellente pédagogie, tout est limpide.", initials: "ÉP", type: "initials" }
         ];
 
         let reviewIndex = 0;
@@ -785,7 +765,7 @@
 
                 let avatarHTML = "";
                 if (currentReview.type === "photo") {
-                    avatarHTML = `<img src="${currentReview.photo}" alt="${currentReview.name}" class="author-img">`;
+                    avatarHTML = `<img src="${currentReview.avatar}" alt="${currentReview.name}" class="author-img">`;
                 } else {
                     avatarHTML = `<div class="author-initials">${currentReview.initials}</div>`;
                 }
@@ -806,6 +786,8 @@
                 if (container.children.length > 3) {
                     container.removeChild(container.lastChild);
                 }
+
+                // Passage au profil suivant de la liste (pas de répétition prématurée, défilement complet)
                 reviewIndex = (reviewIndex + 1) % frenchReviews.length;
             }
 
