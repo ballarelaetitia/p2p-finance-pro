@@ -81,24 +81,6 @@
         }
         .form-input:focus { border-color: var(--gold); }
 
-        .form-row { display: flex; gap: 10px; }
-
-        /* Styles spécifiques pour les logos de cartes bancaires */
-        .cards-brand-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px solid #eee;
-        }
-        .cards-brand-logos img {
-            height: 22px;
-            object-fit: contain;
-            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
-        }
-
         .btn-pay { 
             background: var(--navy); color: white; border: none; width: 100%; padding: 14px; 
             font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: 0.3s; border-radius: 4px;
@@ -106,15 +88,15 @@
         }
         .btn-pay:hover { background: var(--navy-light); }
 
+        .payment-logos {
+            display: flex; justify-content: center; gap: 10px; margin-top: 12px; font-size: 1.5rem; color: #555;
+        }
+
         .secure-notice { 
             display: flex; align-items: center; justify-content: center; gap: 8px; 
-            margin-top: 12px; font-size: 0.7rem; color: #666; text-align: center; 
+            margin-top: 10px; font-size: 0.7rem; color: #666; text-align: center; 
         }
         .secure-notice i { color: var(--success); }
-
-        /* Gestion des étapes du tunnel */
-        .step-container { display: none; }
-        .step-container.active { display: block; }
 
         /* --- SECTION DÉMONSTRATION VIDÉO ET MODULES --- */
         .demo-section { padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
@@ -168,6 +150,7 @@
             border-radius: 6px; font-size: 0.82rem; color: #555; text-align: left; display: flex; align-items: center; gap: 10px;
         }
 
+        /* --- SECTION : MESSAGE DE CONFIRMATION INSTANTANÉ --- */
         .confirmation-preview-section {
             padding: 50px 8%;
             background: var(--light-bg);
@@ -214,28 +197,14 @@
             color: var(--success);
             margin-top: 3px;
         }
-        .rebound-box {
-            background: #eef4fc;
-            border-left: 4px solid var(--navy);
-            padding: 12px 15px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            color: var(--navy);
-            margin-top: 15px;
-        }
 
+        /* Section des avis en mouvement */
         .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
         
         .reviews-grid { 
-            display: flex; 
-            flex-direction: column-reverse; 
-            gap: 15px; 
-            max-width: 700px; 
-            margin: 0 auto; 
-            min-height: 320px; 
-            overflow: hidden; 
-            padding: 10px;
+            display: flex; flex-direction: column-reverse; gap: 15px; 
+            max-width: 700px; margin: 0 auto; min-height: 320px; overflow: hidden; padding: 10px;
         }
         
         .review-card { 
@@ -257,6 +226,7 @@
         .review-text { font-style: italic; font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 8px; }
         .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; }
 
+        /* Sections Juridiques Dédiées */
         .legal-container {
             max-width: 900px; margin: 40px auto; padding: 40px 8%; background: #fff;
             border-radius: 8px; border: 1px solid #e1e8ed; text-align: left;
@@ -266,6 +236,7 @@
         .legal-container p, .legal-container li { font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 10px; }
         .legal-container ul { padding-left: 20px; }
 
+        /* Pied de page officiel */
         footer { background: #0A0A0A; color: #aaa; padding: 40px 8%; font-size: 0.75rem; text-align: center; line-height: 1.8; border-top: 1px solid #222; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; border-bottom: 1px solid #222; padding-bottom: 25px; }
         .footer-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
@@ -322,60 +293,34 @@
                 <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Pourquoi 25 € au lieu de 97 € ?</strong> Notre objectif est de rendre cette méthode accessible à tous sans barrière financière.
             </div>
 
-            <!-- ÉTAPE 1 : Formulaire d'introduction / e-mail -->
-            <div id="step1" class="step-container active">
-                <div class="form-group">
-                    <label>Votre Adresse E-mail</label>
-                    <input type="email" id="userEmail" class="form-input" placeholder="votre.email@exemple.com" required>
-                </div>
-                
-                <div style="font-size: 0.75rem; color: #27ae60; background: #e8f8f0; padding: 8px 10px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--success);">
-                    <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail en quelques minutes après le paiement.
-                </div>
-
-                <button type="button" class="btn-pay" onclick="goToStep2()">
-                    <i class="fas fa-arrow-right"></i> Continuer vers le Paiement
-                </button>
+            <div style="font-size: 0.75rem; color: #27ae60; background: #e8f8f0; padding: 8px 10px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--success);">
+                <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail en quelques minutes après le paiement.
             </div>
 
-            <!-- ÉTAPE 2 : Formulaire de carte bancaire (masqué au départ, s'affiche au clic) -->
-            <div id="step2" class="step-container">
-                <div style="font-size: 0.8rem; margin-bottom: 10px; color: #555; background: #f1f5f9; padding: 6px; border-radius: 4px; text-align: center;">
-                    Sécurisé pour : <strong id="displayEmail">client@email.com</strong>
+            <!-- Formulaire redirigeant vers la plateforme intermédiaire de paiement par carte -->
+            <form action="ICI_METTRE_TON_LIEN_PLATEFORME_INTERMEDIAIRE" method="POST">
+                <div class="form-group">
+                    <label>Votre Prénom</label>
+                    <input type="text" class="form-input" placeholder="Ex: Thomas" required>
                 </div>
 
-                <form action="ICI_METTRE_TON_LIEN_PAIEMENT" method="POST">
-                    <div class="form-group">
-                        <label>Numéro de Carte Bancaire</label>
-                        <input type="text" class="form-input" placeholder="4532 •••• •••• ••••" maxlength="19" required>
-                    </div>
+                <div class="form-group">
+                    <label>Votre Adresse E-mail</label>
+                    <input type="email" class="form-input" placeholder="votre@email.com" required>
+                </div>
 
-                    <div class="form-row">
-                        <div class="form-group" style="flex: 2;">
-                            <label>Expiration</label>
-                            <input type="text" class="form-input" placeholder="MM/AA" maxlength="5" required>
-                        </div>
-                        <div class="form-group" style="flex: 1;">
-                            <label>CVV</label>
-                            <input type="password" class="form-input" placeholder="123" maxlength="4" required>
-                        </div>
-                    </div>
+                <button type="submit" class="btn-pay">
+                    <i class="fas fa-lock"></i> Continuer vers le paiement 25 €
+                </button>
+            </form>
 
-                    <button type="submit" class="btn-pay">
-                        <i class="fas fa-lock"></i> Payer 25 € et S'inscrire
-                    </button>
-
-                    <!-- Logos authentiques des cartes bancaires -->
-                    <div class="cards-brand-logos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo_%282006-2014%29.svg" alt="Visa">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="American Express">
-                    </div>
-                </form>
+            <div class="payment-logos">
+                <i class="fab fa-cc-visa" title="Visa"></i>
+                <i class="fab fa-cc-mastercard" title="Mastercard"></i>
             </div>
 
             <div class="secure-notice">
-                <i class="fas fa-shield-alt"></i> Paiement sécurisé par carte • <strong>Reçu en quelques minutes</strong>
+                <i class="fas fa-shield-alt"></i> Paiement sécurisé par carte bancaire • <strong>Envoi en quelques minutes</strong>
             </div>
         </div>
     </section>
@@ -459,21 +404,16 @@
         </div>
     </section>
 
-    <!-- SECTION : MESSAGE DE CONFIRMATION -->
+    <!-- SECTION : MESSAGE DE CONFIRMATION INSTANTANÉ (SANS DÉLAI NI REMBOURSEMENT) -->
     <section class="confirmation-preview-section">
         <div class="confirmation-card">
-            <h3><i class="fas fa-envelope-open-text"></i> Aperçu de votre message de confirmation automatisé (Page de remerciement & e-mail)</h3>
-            <p>Voici le texte exact qui s'affichera et sera envoyé à votre client en arrière-plan après son achat :</p>
+            <h3><i class="fas fa-envelope-open-text"></i> Aperçu de votre message de confirmation automatisé</h3>
+            <p>Voici le texte exact envoyé automatiquement au client dans sa boîte mail immédiatement après son achat :</p>
             
             <ul class="confirmation-list">
-                <li><i class="fas fa-check-circle"></i> <strong>Envoi de votre commande :</strong> Vos accès complets aux modules de formation sont en cours de préparation et d'acheminement vers votre boîte e-mail. En temps normal, l'envoi est instantané (dans les quelques minutes qui suivent).</li>
-                <li><i class="fas fa-check-circle"></i> <strong>En cas de forte affluence :</strong> Si notre plateforme enregistre un volume important de commandes simultanées, le traitement de votre dossier et l'envoi de vos accès par courrier électronique peuvent exceptionnellement prendre un délai indicatif de <strong>24 à 48 heures</strong>.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Notre Garantie Totale (Remboursement sous 72h) :</strong> Si vous ne receviez pas vos informations d'accès dans ce délai de 48 heures, un <strong>remboursement intégral et automatique sous 72 heures</strong> sera effectué directement sur votre compte, sans aucune condition complexe.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Validation immédiate :</strong> Votre paiement a été enregistré avec succès et votre compte est créé.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Envoi instantané :</strong> Vos accès complets aux modules de formation vous sont envoyés directement par courrier électronique en quelques minutes pour que vous puissiez commencer tout de suite.</li>
             </ul>
-
-            <div class="rebound-box">
-                <i class="fas fa-lightbulb"></i> <strong>Rebonds commerciaux :</strong> Si vous êtes remboursé suite à ce délai mais que vous souhaitez toujours profiter de la formation de l'Académie Numérique, vous serez totalement libre de repasser commande sur notre site un peu plus tard. Nous serons ravis de vous accueillir à nouveau !
-            </div>
         </div>
     </section>
 
@@ -483,35 +423,32 @@
         <div class="reviews-grid" id="reviewsContainer"></div>
     </section>
 
-    <!-- CGV -->
+    <!-- Section Dédiée : Conditions Générales de Vente (CGV) -->
     <section id="conditions" class="legal-container">
         <h2>Conditions Générales de Vente (CGV)</h2>
         <h3>Article 1 - Objet et Champ d'Application</h3>
         <p>Les présentes Conditions Générales de Vente régissent la vente des sessions de formation en ligne proposées par l'Académie Numérique.</p>
         
         <h3>Article 2 - Prix et Modalité de Commande</h3>
-        <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en un versement unique par carte bancaire.</p>
+        <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en un versement unique par carte bancaire par le biais de notre plateforme de paiement sécurisée.</p>
         
-        <h3>Article 3 - Modalités de Livraison et Délai de Traitement</h3>
-        <p>En temps normal, l'accès au service est envoyé en quelques minutes après le paiement. Toutefois, <strong>en cas de forte affluence liée à un volume important de commandes</strong>, le traitement des dossiers et l'envoi des accès par courrier électronique peuvent exceptionnellement s'effectuer dans un délai indicatif de <strong>24 à 48 heures</strong>.</p>
-        
-        <h3>Article 4 - Garantie de Remboursement</h3>
-        <p>Si l'acheteur ne recevait pas son courrier d'accès dans un délai maximal de 48 heures suivant sa commande, un <strong>remboursement intégral et automatique sous 72 heures</strong> est garanti et effectué directement, sans aucune condition complexe.</p>
+        <h3>Article 3 - Modalités de Livraison</h3>
+        <p>L'accès au service est envoyé de manière automatisée par courrier électronique en quelques minutes suivant la validation du paiement.</p>
     </section>
 
-    <!-- Politique de Confidentialité -->
+    <!-- Section Dédiée : Politique de Confidentialité -->
     <section id="confidentialite" class="legal-container">
         <h2>Politique de Confidentialité (RGPD)</h2>
         <p>L'Académie Numérique accorde une importance majeure à la protection de la vie privée de ses utilisateurs.</p>
         <h3>1. Données Collectées</h3>
-        <p>Seuls les éléments nécessaires à la facturation et à la livraison des accès au service sont collectés.</p>
+        <p>Seuls le prénom et l'adresse e-mail renseignés dans le formulaire d'inscription sont collectés afin de permettre la livraison des accès au service.</p>
         <h3>2. Sécurité des Paiements</h3>
-        <p>Les transactions financières sont traitées de manière hautement sécurisée par nos passerelles de paiement partenaires.</p>
+        <p>Aucune donnée bancaire n'est collectée ou stockée par notre site ; l'ensemble des transactions financières est géré de manière sécurisée par la passerelle de paiement intermédiaire.</p>
         <h3>3. Droits des Utilisateurs</h3>
         <p>Conformément au RGPD, vous disposez d'un droit d'accès, de modification et de suppression de vos données en écrivant à support@academie-numerique.fr.</p>
     </section>
 
-    <!-- Mentions Légales -->
+    <!-- Section Dédiée : Mentions Légales -->
     <section id="mentions" class="legal-container">
         <h2>Mentions Légales</h2>
         <p><strong>Dénomination sociale :</strong> Académie Numérique</p>
@@ -521,6 +458,7 @@
         <p><strong>Hébergement :</strong> Plateforme Cloud sécurisée</p>
     </section>
 
+    <!-- Pied de page officiel -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -546,18 +484,6 @@
     </footer>
 
     <script>
-        // Fonction de transition fluide de l'Étape 1 vers l'Étape 2 (Paiement par carte)
-        function goToStep2() {
-            const emailInput = document.getElementById('userEmail').value.trim();
-            if (!emailInput || !emailInput.includes('@')) {
-                alert("Veuillez entrer une adresse e-mail valide pour continuer.");
-                return;
-            }
-            document.getElementById('displayEmail').innerText = emailInput;
-            document.getElementById('step1').classList.remove('active');
-            document.getElementById('step2').classList.add('active');
-        }
-
         const modulesData = [
             { title: "Module 1 : Fondations & Stratégie", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" },
             { title: "Module 2 : Outils Numériques Clés", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" },
