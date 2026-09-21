@@ -113,7 +113,7 @@
         }
         .secure-notice i { color: var(--success); }
 
-        /* --- SECTION VIDÉO DE PRÉSENTATION CIBLÉE & SUCCÈS --- */
+        /* --- SECTION VIDÉO DE PRÉSENTATION OPTIMISÉE MOBILE --- */
         .video-presentation-section { padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
         .video-container-box { max-width: 750px; margin: 0 auto; }
         .badge-demo { 
@@ -137,30 +137,32 @@
         }
 
         .video-placeholder-cover {
-            background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            background: linear-gradient(rgba(0,26,77,0.75), rgba(0,26,77,0.75)), 
             url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat;
             display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer;
-            transition: 0.3s; padding: 20px; text-align: center; color: white;
+            transition: 0.3s; padding: 15px; text-align: center; color: white;
+            box-sizing: border-box;
         }
 
         .video-placeholder-text {
-            position: relative; z-index: 2; margin-bottom: 15px; max-width: 600px;
+            position: relative; z-index: 2; margin-bottom: 12px; max-width: 600px; padding: 0 10px;
         }
-        .video-placeholder-text h4 { font-size: 1.2rem; color: var(--bright-gold); margin-bottom: 5px; font-weight: 700; }
+        .video-placeholder-text h4 { font-size: 1.1rem; color: var(--bright-gold); margin-bottom: 6px; font-weight: 700; line-height: 1.3; }
         .video-placeholder-text p { font-size: 0.85rem; opacity: 0.95; line-height: 1.4; }
 
         .play-button-pulse {
-            position: relative; z-index: 2; width: 70px; height: 70px; background: var(--gold);
+            position: relative; z-index: 2; width: 65px; height: 65px; background: var(--gold);
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: var(--navy); font-size: 1.6rem; padding-left: 4px;
+            color: var(--navy); font-size: 1.5rem; padding-left: 3px;
             box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7);
             animation: pulsePlay 2s infinite; transition: transform 0.2s;
+            flex-shrink: 0;
         }
         .video-placeholder-cover:hover .play-button-pulse { transform: scale(1.1); }
 
         @keyframes pulsePlay {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(197, 160, 89, 0); }
+            70% { transform: scale(1); box-shadow: 0 0 0 18px rgba(197, 160, 89, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
         }
 
@@ -247,12 +249,16 @@
 
         .btn-support-link {
             display: inline-flex; align-items: center; gap: 8px;
-            background: var(--navy); color: var(--white); padding: 10px 18px;
-            border-radius: 4px; font-size: 0.82rem; font-weight: 600; text-decoration: none;
+            background: var(--navy); color: var(--white); padding: 6px 12px;
+            border-radius: 4px; font-size: 0.78rem; font-weight: 600; text-decoration: none;
             transition: background 0.3s, transform 0.2s; cursor: pointer; border: none;
         }
         .btn-support-link:hover { background: var(--navy-light); transform: translateY(-1px); }
         .btn-support-link i { color: var(--gold); }
+
+        .email-action-group {
+            display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
+        }
 
         .email-copy-box {
             background: #fff; padding: 6px 12px; border-radius: 4px; border: 1px solid #ddd;
@@ -359,6 +365,13 @@
             .author-card { flex-direction: column; text-align: center; }
             .footer-links { flex-direction: column; gap: 10px; }
         }
+
+        /* Ajustements spécifiques petits mobiles pour la vidéo */
+        @media (max-width: 480px) {
+            .video-placeholder-text h4 { font-size: 0.95rem; }
+            .video-placeholder-text p { font-size: 0.75rem; }
+            .play-button-pulse { width: 50px; height: 50px; font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -434,7 +447,7 @@
         </div>
     </section>
 
-    <!-- SECTION VIDÉO DE PRÉSENTATION CIBLÉE SUR NOTRE SUCCÈS ET LA VALORISATION DE LA FORMATION -->
+    <!-- SECTION VIDÉO DE PRÉSENTATION CIBLÉE -->
     <section class="video-presentation-section" id="presentation-video">
         <div class="video-container-box">
             <span class="badge-demo"><i class="fas fa-play-circle"></i> DÉCOUVREZ NOTRE MÉTHODE DE SUCCÈS</span>
@@ -442,7 +455,6 @@
             <p class="video-subtitle">Cliquez ci-dessous pour lancer la vidéo de présentation exclusive de notre Académie.</p>
 
             <div class="video-player-wrapper" id="videoWrapper">
-                <!-- Couverture interactive explicative sur notre succès et les 25 € -->
                 <div class="video-placeholder-cover" id="videoCover" onclick="playVideo()">
                     <div class="video-placeholder-text">
                         <h4>« Votre satisfaction est notre plus grande réussite »</h4>
@@ -537,12 +549,17 @@
             </div>
             <div class="guarantee-content">
                 <h3>Garantie "Satisfait ou Remboursé" de 7 jours</h3>
-                <p>Testez le contenu en toute sérénité. Si vous n'êtes pas pleinement satisfait dans les 7 jours suivant votre achat à 25 €, contactez notre support : nous vous remboursons intégralement, sans aucune justification requise.</p>
-                <div class="email-copy-box">
-                    <i class="fas fa-envelope" style="color: var(--gold);"></i> 
-                    <span>support@academie-numerique.fr</span>
-                    <button class="btn-support-link" onclick="copyEmail()" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 5px;">
-                        <i class="fas fa-copy"></i> Copier l'e-mail
+                <p>Testez le contenu en toute sérénité. Si vous n'êtes pas pleinement satisfait dans les 7 jours suivant votre achat à 25 €, contactez notre support par e-mail : nous vous remboursons intégralement.</p>
+                <div class="email-action-group">
+                    <div class="email-copy-box">
+                        <i class="fas fa-envelope" style="color: var(--gold);"></i> 
+                        <span>support@academie-numerique.fr</span>
+                    </div>
+                    <a href="mailto:support@academie-numerique.fr" class="btn-support-link">
+                        <i class="fas fa-paper-plane"></i> Envoyer un e-mail
+                    </a>
+                    <button class="btn-support-link" onclick="copyEmail()">
+                        <i class="fas fa-copy"></i> Copier
                     </button>
                 </div>
             </div>
@@ -598,11 +615,16 @@
 
         <div class="faq-support-box">
             <p><i class="fas fa-headset" style="color: var(--navy);"></i> Une question spécifique ? Notre équipe vous répond avec le sourire :</p>
-            <div class="email-copy-box">
-                <i class="fas fa-envelope" style="color: var(--gold);"></i> 
-                <span>support@academie-numerique.fr</span>
-                <button class="btn-support-link" onclick="copyEmail()" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 5px;">
-                    <i class="fas fa-copy"></i> Copier l'e-mail
+            <div class="email-action-group" style="justify-content: center;">
+                <div class="email-copy-box">
+                    <i class="fas fa-envelope" style="color: var(--gold);"></i> 
+                    <span>support@academie-numerique.fr</span>
+                </div>
+                <a href="mailto:support@academie-numerique.fr" class="btn-support-link">
+                    <i class="fas fa-paper-plane"></i> Envoyer un e-mail
+                </a>
+                <button class="btn-support-link" onclick="copyEmail()">
+                    <i class="fas fa-copy"></i> Copier
                 </button>
             </div>
         </div>
@@ -656,10 +678,15 @@
             </div>
 
             <div class="footer-support-container">
-                <div class="email-copy-box" style="background: #1a1a1a; border-color: #333; color: #fff;">
-                    <i class="fas fa-envelope" style="color: var(--gold);"></i> 
-                    <span>support@academie-numerique.fr</span>
-                    <button class="btn-support-link" onclick="copyEmail()" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 5px;">
+                <div class="email-action-group" style="justify-content: center;">
+                    <div class="email-copy-box" style="background: #1a1a1a; border-color: #333; color: #fff;">
+                        <i class="fas fa-envelope" style="color: var(--gold);"></i> 
+                        <span>support@academie-numerique.fr</span>
+                    </div>
+                    <a href="mailto:support@academie-numerique.fr" class="btn-support-link">
+                        <i class="fas fa-paper-plane"></i> Écrire
+                    </a>
+                    <button class="btn-support-link" onclick="copyEmail()">
                         <i class="fas fa-copy"></i> Copier
                     </button>
                 </div>
@@ -682,7 +709,6 @@
     </footer>
 
     <script>
-        // Fonction pour activer la vidéo interactive sur le succès de la formation
         function playVideo() {
             const wrapper = document.getElementById('videoWrapper');
             wrapper.innerHTML = `
