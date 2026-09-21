@@ -3,208 +3,805 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formation Entrepreneur - Réussite et Investissement</title>
+    <title>Académie Numérique | Formation Professionnelle en Ligne</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary: #1e3a8a;
-            --secondary: #2563eb;
-            --accent: #f59e0b;
-            --dark: #1f2937;
-            --light: #f8fafc;
-            --gray: #64748b;
+            --navy: #001A4D;
+            --navy-light: #003399;
+            --gold: #C5A059;
+            --bright-gold: #FFD700; 
+            --light-bg: #F4F7FA;
+            --white: #FFFFFF;
+            --success: #27ae60;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
         
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
+        body { background-color: var(--white); color: #333; overflow-x: hidden; }
+
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2.5rem 1rem;
-            text-align: center;
+            background: var(--white); padding: 15px 8%; display: flex;
+            justify-content: space-between; align-items: center;
+            position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-sigle { 
+            background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
+            border: 1px solid var(--gold);
         }
-        
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: -1px; }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.88), rgba(0,26,77,0.88)), 
+            url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: space-between; padding: 120px 8% 60px; color: var(--white);
+            gap: 40px;
         }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+
+        .hero-content { max-width: 600px; }
+        .hero-content h1 { font-size: 2.2rem; line-height: 1.3; margin-bottom: 20px; }
+        .hero-content h1 span { color: var(--gold); }
+        .hero-content p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; opacity: 0.95; }
+
+        .features-list { list-style: none; margin-top: 20px; }
+        .features-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; }
+        .features-list i { color: var(--gold); }
+
+        .registration-box { 
+            background: var(--white); padding: 30px; border-radius: 8px; width: 100%; max-width: 420px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3); color: var(--navy); 
+            border-top: 5px solid var(--gold); flex-shrink: 0;
         }
+        .registration-box h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--navy); text-align: center; }
         
-        .video-section {
-            background: white;
+        .price-tag { text-align: center; font-size: 1.8rem; font-weight: 800; color: var(--success); margin-bottom: 10px; }
+        .price-tag span.old-price { font-size: 1.1rem; color: #999; text-decoration: line-through; margin-right: 8px; font-weight: 400; }
+        .price-tag small { font-size: 0.75rem; color: #666; font-weight: 400; display: block; }
+
+        .price-reassurance {
+            font-size: 0.8rem; color: #555; background: #f8f9fa; padding: 8px 10px; 
+            border-radius: 4px; margin-bottom: 15px; border-left: 3px solid var(--gold);
+            text-align: left; line-height: 1.4;
+        }
+
+        .quick-perks {
+            display: flex; justify-content: space-around; font-size: 0.7rem; color: #555; 
+            margin-bottom: 15px; background: #fdfbf7; padding: 6px; border-radius: 4px; border: 1px solid #f0e6d2;
+        }
+        .quick-perks span { display: flex; align-items: center; gap: 4px; font-weight: 600; }
+        .quick-perks i { color: var(--gold); }
+
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 4px; }
+        .form-input { 
+            width: 100%; padding: 10px; border: 1.5px solid #ddd; 
+            border-radius: 4px; font-size: 0.9rem; outline: none; transition: 0.3s;
+        }
+        .form-input:focus { border-color: var(--gold); }
+
+        .btn-pay { 
+            background: var(--navy); color: white; border: none; width: 100%; padding: 14px; 
+            font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: 0.3s; border-radius: 4px;
+            display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;
+        }
+        .btn-pay:hover { background: var(--navy-light); }
+
+        .payment-logos {
+            display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px;
+        }
+        .payment-logos i.fa-cc-visa { font-size: 2rem; color: #1A1F71; }
+        
+        .mastercard-logo {
+            display: inline-flex; position: relative; width: 34px; height: 22px; align-items: center; justify-content: center;
+        }
+        .mastercard-logo span { position: absolute; width: 20px; height: 20px; border-radius: 50%; }
+        .mastercard-circle-1 { background-color: #EB001B; left: 0; opacity: 0.9; }
+        .mastercard-circle-2 { background-color: #F79E1B; right: 0; opacity: 0.9; }
+
+        .secure-notice { 
+            display: flex; align-items: center; justify-content: center; gap: 8px; 
+            margin-top: 10px; font-size: 0.7rem; color: #666; text-align: center; 
+        }
+        .secure-notice i { color: var(--success); }
+
+        /* --- SECTION VIDÉO DE PRÉSENTATION CIBLÉE & SUCCÈS --- */
+        .video-presentation-section { padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
+        .video-container-box { max-width: 750px; margin: 0 auto; }
+        .badge-demo { 
+            background: rgba(197, 160, 89, 0.15); color: var(--navy); font-weight: 700; 
+            font-size: 0.75rem; padding: 6px 14px; border-radius: 20px; text-transform: uppercase; 
+            letter-spacing: 1px; display: inline-block; margin-bottom: 12px; 
+        }
+        .video-presentation-section h2 { color: var(--navy); font-size: 1.8rem; margin-bottom: 8px; }
+        .video-subtitle { font-size: 0.9rem; color: #666; margin-bottom: 25px; }
+
+        .video-player-wrapper {
+            position: relative; width: 100%; padding-top: 56.25%; /* Ratio 16:9 */
+            background: #000; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 26, 77, 0.2);
+            border: 3px solid var(--gold);
+        }
+
+        .video-player-wrapper iframe, 
+        .video-player-wrapper .video-placeholder-cover {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+
+        .video-placeholder-cover {
+            background: linear-gradient(rgba(0,26,77,0.7), rgba(0,26,77,0.7)), 
+            url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer;
+            transition: 0.3s; padding: 20px; text-align: center; color: white;
+        }
+
+        .video-placeholder-text {
+            position: relative; z-index: 2; margin-bottom: 15px; max-width: 600px;
+        }
+        .video-placeholder-text h4 { font-size: 1.2rem; color: var(--bright-gold); margin-bottom: 5px; font-weight: 700; }
+        .video-placeholder-text p { font-size: 0.85rem; opacity: 0.95; line-height: 1.4; }
+
+        .play-button-pulse {
+            position: relative; z-index: 2; width: 70px; height: 70px; background: var(--gold);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--navy); font-size: 1.6rem; padding-left: 4px;
+            box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7);
+            animation: pulsePlay 2s infinite; transition: transform 0.2s;
+        }
+        .video-placeholder-cover:hover .play-button-pulse { transform: scale(1.1); }
+
+        @keyframes pulsePlay {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(197, 160, 89, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+        }
+
+        /* --- SECTION APERÇU DU PROGRAMME (SLIDER) --- */
+        .demo-section { padding: 60px 8%; background: var(--light-bg); text-align: center; border-bottom: 1px solid #e1e8ed; }
+        .slider-wrapper-clean {
+            max-width: 650px;
+            margin: 0 auto 20px auto;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        .video-section h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* Ratio 16:9 */
-            height: 0;
-            background: #000;
-            border-radius: 8px;
             overflow: hidden;
-            margin-top: 1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0, 26, 77, 0.15);
+            border: 2px solid var(--gold);
+            position: relative;
+            background: #000;
+        }
+
+        .slider-box { position: relative; width: 100%; height: 320px; }
+        .slider-box img { 
+            position: absolute; top:0; left:0; width:100%; height:100%; 
+            object-fit: cover; opacity: 0; transition: opacity 0.8s ease-in-out; 
+        }
+        .slider-box img.active-slide { opacity: 0.9; }
+
+        .slider-overlay-title {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(transparent, rgba(0, 26, 77, 0.85));
+            padding: 25px 20px 15px; z-index: 2; color: white; text-align: center;
+        }
+        #previewModuleTitle { 
+            font-weight: 700; font-size: 1.05rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); 
+            background: var(--navy); padding: 6px 16px; border-radius: 20px; 
+            border: 1px solid var(--gold); display: inline-block;
+        }
+
+        .slider-dots {
+            display: flex; justify-content: center; gap: 8px; margin-top: 15px;
+        }
+        .dot {
+            width: 10px; height: 10px; border-radius: 50%; background: #ccc; cursor: pointer; transition: 0.3s;
+        }
+        .dot.active { background: var(--gold); width: 25px; border-radius: 5px; }
+
+        /* --- SECTION : POUR QUI / POUR QUI PAS --- */
+        .target-section {
+            padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed;
+        }
+        .target-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: left; }
+        .target-box { background: var(--light-bg); padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .target-box.yes { border-top: 4px solid var(--success); }
+        .target-box.no { border-top: 4px solid #e74c3c; }
+        .target-box h3 { font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--navy); }
+        .target-box ul { list-style: none; }
+        .target-box ul li { font-size: 0.855rem; color: #555; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.4; }
+        .target-box.yes ul li i { color: var(--success); margin-top: 3px; flex-shrink: 0; }
+        .target-box.no ul li i { color: #e74c3c; margin-top: 3px; flex-shrink: 0; }
+
+        /* --- SECTION FORMATEUR --- */
+        .author-section {
+            padding: 60px 8%; background: #fdfbf7; text-align: center; border-bottom: 1px solid #e1e8ed;
+        }
+        .author-card {
+            max-width: 700px; margin: 0 auto; background: white; padding: 35px; border-radius: 12px;
+            display: flex; align-items: center; gap: 25px; text-align: left; border: 1px solid #e1e8ed;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+        .author-avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); flex-shrink: 0; }
+        .author-details h3 { color: var(--navy); font-size: 1.2rem; margin-bottom: 5px; }
+        .author-details .author-role { font-size: 0.78rem; color: var(--gold); font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px; }
+        .author-details p { font-size: 0.85rem; color: #555; line-height: 1.6; }
+
+        /* --- SECTION GARANTIE --- */
+        .guarantee-section {
+            padding: 50px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed;
+        }
+        .guarantee-box {
+            max-width: 700px; margin: 0 auto; background: var(--light-bg); border: 2px dashed var(--gold);
+            padding: 30px; border-radius: 12px; display: flex; align-items: center; gap: 20px; text-align: left;
+        }
+        .guarantee-icon {
+            font-size: 3rem; color: var(--gold); flex-shrink: 0; text-align: center; width: 80px;
+        }
+        .guarantee-content h3 { color: var(--navy); font-size: 1.2rem; margin-bottom: 8px; }
+        .guarantee-content p { font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 15px; }
+
+        .btn-support-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--navy); color: var(--white); padding: 10px 18px;
+            border-radius: 4px; font-size: 0.82rem; font-weight: 600; text-decoration: none;
+            transition: background 0.3s, transform 0.2s; cursor: pointer; border: none;
+        }
+        .btn-support-link:hover { background: var(--navy-light); transform: translateY(-1px); }
+        .btn-support-link i { color: var(--gold); }
+
+        .email-copy-box {
+            background: #fff; padding: 6px 12px; border-radius: 4px; border: 1px solid #ddd;
+            display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--navy); font-weight: 600;
+        }
+
+        /* --- SECTION FAQ INTERACTIVE --- */
+        .faq-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
+        .faq-section h2 { color: var(--navy); font-size: 1.8rem; margin-bottom: 30px; }
+        .faq-container { max-width: 700px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 12px; }
+        
+        .faq-item { background: white; border-radius: 8px; overflow: hidden; border: 1px solid #e1e8ed; border-left: 4px solid var(--navy); }
+        .faq-question { 
+            font-weight: 700; color: var(--navy); font-size: 0.95rem; padding: 18px 20px; 
+            display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; 
+            background: white; transition: background 0.2s;
+        }
+        .faq-question:hover { background: #fafbfc; }
+        .faq-question i.fa-chevron-down { transition: transform 0.3s; color: var(--gold); }
+        
+        .faq-answer { 
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; 
+            padding: 0 20px; font-size: 0.85rem; color: #555; line-height: 1.6; background: #fafbfc; 
         }
         
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+        .faq-item.active .faq-answer { max-height: 200px; padding: 15px 20px 20px 20px; }
+        .faq-item.active .faq-question i.fa-chevron-down { transform: rotate(180deg); }
+
+        .faq-support-box {
+            max-width: 700px; margin: 30px auto 0 auto; background: white;
+            padding: 20px; border-radius: 8px; text-align: center; border: 1px dashed var(--gold);
+        }
+        .faq-support-box p { font-size: 0.85rem; color: #555; margin-bottom: 12px; }
+
+        /* --- AVIS DYNAMIQUES VARIÉS --- */
+        .reviews-section { padding: 60px 8%; background: #ffffff; text-align: center; }
+        .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
+        
+        .reviews-grid { 
+            display: flex; flex-direction: column-reverse; gap: 15px; 
+            max-width: 700px; margin: 0 auto; min-height: 320px; overflow: hidden; padding: 10px;
         }
         
-        .content-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
+        .review-card { 
+            background: var(--light-bg); padding: 20px; border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03); text-align: left; 
+            border-left: 4px solid var(--gold);
+            display: flex; gap: 15px; align-items: flex-start;
+            animation: dropReview 0.8s cubic-bezier(0.24, 1, 0.32, 1) forwards;
         }
-        
-        .content-card h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent);
-            padding-left: 10px;
+
+        @keyframes dropReview {
+            0% { opacity: 0; transform: translateY(-40px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
+
+        .author-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
         
-        .content-card p {
-            margin-bottom: 1rem;
-            color: var(--gray);
-            font-size: 1.05rem;
+        .author-initials {
+            width: 50px; height: 50px; border-radius: 50%; background: var(--navy); color: var(--gold);
+            display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;
+            border: 2px solid var(--gold); flex-shrink: 0;
         }
-        
-        .price-tag {
-            font-size: 2rem;
-            color: var(--accent);
-            font-weight: bold;
-            margin: 1rem 0;
+
+        .stars { color: var(--bright-gold); font-size: 0.8rem; margin-bottom: 5px; }
+        .review-date { font-size: 0.7rem; color: var(--success); font-weight: 600; margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
+        .review-text { font-style: italic; font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 8px; }
+        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; }
+
+        /* Sections Juridiques */
+        .legal-container {
+            max-width: 900px; margin: 40px auto; padding: 40px 8%; background: #fff;
+            border-radius: 8px; border: 1px solid #e1e8ed; text-align: left;
         }
+        .legal-container h2 { color: var(--navy); font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
+        .legal-container h3 { color: var(--navy); font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px; }
+        .legal-container p, .legal-container li { font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 10px; }
+        .legal-container ul { padding-left: 20px; }
+
+        /* Pied de page */
+        footer { background: #0A0A0A; color: #aaa; padding: 40px 8%; font-size: 0.75rem; text-align: center; line-height: 1.8; border-top: 1px solid #222; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; border-bottom: 1px solid #222; padding-bottom: 25px; }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .footer-links a { color: #ccc; text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--gold); }
         
-        .cta-box {
-            text-align: center;
-            background: linear-gradient(135deg, #1e3a8a, #1e293b);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin-top: 2rem;
+        .footer-socials { display: flex; justify-content: center; gap: 15px; }
+        .footer-socials a {
+            background: #1a1a1a; color: #fff; width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; cursor: pointer;
         }
+        .footer-socials a:hover { background: var(--gold); color: var(--navy); }
+
+        .footer-bottom { margin-top: 25px; color: #666; font-size: 0.7rem; }
+        .footer-bottom p { color: #fff; font-weight: 700; margin-bottom: 5px; }
         
-        .cta-box h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .cta-box p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--dark);
-            font-weight: bold;
-            padding: 0.9rem 2.2rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            background-color: #d97706;
-            color: white;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--gray);
-            font-size: 0.9rem;
+        .footer-support-container { margin-top: 10px; }
+
+        @media (max-width: 991px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 100px; }
+            .hero-content h1 { font-size: 1.7rem; }
+            .guarantee-box { flex-direction: column; text-align: center; }
+            .target-container { grid-template-columns: 1fr; }
+            .author-card { flex-direction: column; text-align: center; }
+            .footer-links { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Académie des Entrepreneurs</h1>
-        <p>Découvrez la méthode concrète pour réussir et transformer votre avenir</p>
+        <div class="logo-container">
+            <div class="logo-sigle">AN</div>
+            <div class="logo">Académie Numérique</div>
+        </div>
     </header>
 
-    <div class="container">
-        
-        <!-- Section Vidéo Professionnelle -->
-        <section class="video-section">
-            <h2>Regardez la présentation et comprenez l'enjeu</h2>
-            <p>Une vision claire de l'état d'esprit à adopter pour réussir en affaires.</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tu as l'impression de <span>stagner</span> alors que tout va trop vite autour de toi ?</h1>
+            <p>Aujourd'hui, la vraie différence ne se fait plus sur tes diplômes d'hier, mais sur ta capacité à t'adapter maintenant. Ne pas savoir maîtriser les compétences clés du numérique et des outils d'aujourd'hui, c'est accepter de rester sur la touche pendant que d'autres avancent.</p>
+            <p>Et si, en quelques minutes par jour et depuis chez toi, tu pouvais enfin acquérir cette compétence qui change tout ? Pas de théorie inutile, pas de discours compliqués : juste du concret, du pratique, et des résultats immédiats pour booster ton avenir.</p>
             
-            <div class="video-container">
-                <iframe src="https://www.youtube-nocookie.com/embed/pgcr9GQ7U8M" 
-                        title="Vidéo de motivation et formation entrepreneur" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                </iframe>
-            </div>
-        </section>
-
-        <!-- Section Offre & Pédagogie -->
-        <section class="content-card">
-            <h3>Votre formation complète à un prix accessible</h3>
-            <p>Fini les théories hors de prix qui ne mènent à rien. Nous vous offrons un accès direct à des stratégies actionnables, pensées pour vous faire progresser pas à pas vers la réussite.</p>
-            <div class="price-tag">Seulement 25 €</div>
-            <p>Profitez de cette opportunité unique pour investir sur vous-même et obtenir les clés indispensables pour lancer ou propulser votre projet.</p>
-        </section>
-
-        <!-- Appel à l'action final -->
-        <div class="cta-box">
-            <h3>Prêt à passer à l'action ?</h3>
-            <p>Rejoignez la formation dès maintenant pour 25 € seulement.</p>
-            <a href="#inscription" class="btn">Profiter de l'offre à 25 €</a>
+            <ul class="features-list">
+                <li><i class="fas fa-check-circle"></i> Session 100% en ligne (Accès immédiat)</li>
+                <li><i class="fas fa-check-circle"></i> Pas de théorie inutile : du concret et du pratique</li>
+                <li><i class="fas fa-check-circle"></i> Prends une longueur d'avance dès aujourd'hui</li>
+            </ul>
         </div>
 
-    </div>
+        <div class="registration-box">
+            <h3>Accès à la Session</h3>
+            <div class="price-tag">
+                <span class="old-price">97 €</span> 25 €
+                <small>Inscription complète et illimitée</small>
+            </div>
 
-<footer>
-    <p>&copy; 2026 Académie des Entrepreneurs. Tous droits réservés.</p>
-</footer>
+            <div class="quick-perks">
+                <span><i class="fas fa-bolt"></i> Accès immédiat</span>
+                <span><i class="fas fa-infinity"></i> À vie</span>
+                <span><i class="fas fa-shield-alt"></i> Garanti</span>
+            </div>
 
+            <div class="price-reassurance">
+                <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Pourquoi 25 € au lieu de 97 € ?</strong> Notre objectif est de rendre cette méthode accessible à tous sans barrière financière.
+            </div>
+
+            <div style="font-size: 0.75rem; color: #27ae60; background: #e8f8f0; padding: 8px 10px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--success);">
+                <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail <strong>en 2 minutes chrono</strong> après le paiement.
+            </div>
+
+            <form action="ICI_METTRE_TON_LIEN_PLATEFORME_INTERMEDIAIRE" method="POST">
+                <div class="form-group">
+                    <label>Votre Prénom</label>
+                    <input type="text" class="form-input" placeholder="Ex: Thomas" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Votre Adresse E-mail</label>
+                    <input type="email" class="form-input" placeholder="votre@email.com" required>
+                </div>
+
+                <button type="submit" class="btn-pay">
+                    <i class="fas fa-lock"></i> Continuer vers le paiement 25 €
+                </button>
+            </form>
+
+            <div class="payment-logos">
+                <i class="fab fa-cc-visa" title="Visa"></i>
+                <div class="mastercard-logo" title="Mastercard">
+                    <span class="mastercard-circle-1"></span>
+                    <span class="mastercard-circle-2"></span>
+                </div>
+            </div>
+
+            <div class="secure-notice">
+                <i class="fas fa-shield-alt"></i> Paiement 100% chiffré • <strong>Livraison e-mail en 2 min</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION VIDÉO DE PRÉSENTATION CIBLÉE SUR NOTRE SUCCÈS ET LA VALORISATION DE LA FORMATION -->
+    <section class="video-presentation-section" id="presentation-video">
+        <div class="video-container-box">
+            <span class="badge-demo"><i class="fas fa-play-circle"></i> DÉCOUVREZ NOTRE MÉTHODE DE SUCCÈS</span>
+            <h2>Comment cette formation va transformer vos résultats</h2>
+            <p class="video-subtitle">Cliquez ci-dessous pour lancer la vidéo de présentation exclusive de notre Académie.</p>
+
+            <div class="video-player-wrapper" id="videoWrapper">
+                <!-- Couverture interactive explicative sur notre succès et les 25 € -->
+                <div class="video-placeholder-cover" id="videoCover" onclick="playVideo()">
+                    <div class="video-placeholder-text">
+                        <h4>« Votre satisfaction est notre plus grande réussite »</h4>
+                        <p>Découvrez pourquoi notre formation à seulement 25 € vous garantit des résultats concrets, rapides et sans compromis.</p>
+                    </div>
+                    <div class="play-button-pulse">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION APERÇU DU PROGRAMME (SLIDER) -->
+    <section class="demo-section" id="programme">
+        <div class="video-container-box">
+            <span class="badge-demo"><i class="fas fa-layer-group"></i> APERÇU DES MODULES</span>
+            <h2>Ce que vous allez maîtriser pas à pas</h2>
+            <p class="video-subtitle">Découvrez ci-dessous les différents modules inclus dans votre programme.</p>
+
+            <div class="slider-wrapper-clean">
+                <div class="slider-box" id="sliderBox">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" class="active-slide" alt="Module 1">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Module 2">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Module 3">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Module 4">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" alt="Module 5">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Module 6">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800" alt="Module 7">
+
+                    <div class="slider-overlay-title">
+                        <span id="previewModuleTitle">Module 1 : Fondations & Stratégie</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-dots" id="sliderDots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION : POUR QUI / POUR QUI PAS -->
+    <section class="target-section">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center; margin-bottom: 30px;">
+            <span class="badge-demo">TRANSPARENCE TOTALE</span>
+            <h2 style="color: var(--navy); font-size: 1.8rem;">Est-ce que cette formation est faite pour vous ?</h2>
+        </div>
+        <div class="target-container">
+            <div class="target-box yes">
+                <h3><i class="fas fa-check-circle" style="color: var(--success);"></i> C'est POUR VOUS si...</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Vous débutez ou souhaitez structurer vos compétences numériques de zéro.</li>
+                    <li><i class="fas fa-check"></i> Vous cherchez des résultats concrets, rapides, applicables dès aujourd'hui.</li>
+                    <li><i class="fas fa-check"></i> Vous en avez assez des théories complexes et voulez de la simplicité efficace.</li>
+                </ul>
+            </div>
+            <div class="target-box no">
+                <h3><i class="fas fa-times-circle" style="color: #e74c3c;"></i> Ce n'est PAS pour vous si...</h3>
+                <ul>
+                    <li><i class="fas fa-times"></i> Vous cherchez une solution magique sans le moindre effort d'apprentissage.</li>
+                    <li><i class="fas fa-times"></i> Vous êtes déjà un expert confirmé et maîtrisez 100% de l'écosystème numérique.</li>
+                    <li><i class="fas fa-times"></i> Vous n'avez pas 10 minutes par jour à consacrer à votre progression.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION : LE FORMATEUR -->
+    <section class="author-section">
+        <div class="author-card">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=300" alt="Formateur" class="author-avatar">
+            <div class="author-details">
+                <div class="author-role">À propos de l'Académie Numérique</div>
+                <h3>Marc & l'équipe pédagogique</h3>
+                <p>« Notre mission à l'Académie Numérique est de simplifier l'accès aux compétences d'avenir. Nous concevons chaque module pour qu'il soit directement utile, sans bla-bla théorique, afin que chaque participant reparte avec des clés concrètes pour réussir. »</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION GARANTIE 7 JOURS -->
+    <section class="guarantee-section">
+        <div class="guarantee-box">
+            <div class="guarantee-icon">
+                <i class="fas fa-award"></i>
+            </div>
+            <div class="guarantee-content">
+                <h3>Garantie "Satisfait ou Remboursé" de 7 jours</h3>
+                <p>Testez le contenu en toute sérénité. Si vous n'êtes pas pleinement satisfait dans les 7 jours suivant votre achat à 25 €, contactez notre support : nous vous remboursons intégralement, sans aucune justification requise.</p>
+                <div class="email-copy-box">
+                    <i class="fas fa-envelope" style="color: var(--gold);"></i> 
+                    <span>support@academie-numerique.fr</span>
+                    <button class="btn-support-link" onclick="copyEmail()" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 5px;">
+                        <i class="fas fa-copy"></i> Copier l'e-mail
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION FAQ INTERACTIVE -->
+    <section class="faq-section">
+        <h2>Foire Aux Questions (FAQ)</h2>
+        <div class="faq-container">
+            
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span><i class="fas fa-question-circle" style="color: var(--gold); margin-right: 8px;"></i> Comment et quand vais-je recevoir ma formation ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Immédiatement après votre paiement validé, un e-mail contenant vos accès est envoyé automatiquement en 2 minutes chrono.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span><i class="fas fa-question-circle" style="color: var(--gold); margin-right: 8px;"></i> Est-ce que le paiement par carte bancaire est sécurisé ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Totalement. Toutes les transactions sont cryptées et gérées par une plateforme de paiement ultra-sécurisée. Vos coordonnées bancaires ne transitent jamais sur nos serveurs.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span><i class="fas fa-question-circle" style="color: var(--gold); margin-right: 8px;"></i> Y a-t-il des frais cachés ou un abonnement ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Zéro frais caché ! C'est un paiement unique de 25 € pour un accès complet et illimité à vie.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span><i class="fas fa-question-circle" style="color: var(--gold); margin-right: 8px;"></i> Que se passe-t-il si je ne suis pas satisfait ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Vous bénéficiez de notre garantie de 7 jours. Un simple e-mail à notre support suffit pour un remboursement immédiat.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="faq-support-box">
+            <p><i class="fas fa-headset" style="color: var(--navy);"></i> Une question spécifique ? Notre équipe vous répond avec le sourire :</p>
+            <div class="email-copy-box">
+                <i class="fas fa-envelope" style="color: var(--gold);"></i> 
+                <span>support@academie-numerique.fr</span>
+                <button class="btn-support-link" onclick="copyEmail()" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 5px;">
+                    <i class="fas fa-copy"></i> Copier l'e-mail
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION AVIS DYNAMIQUES -->
+    <section class="reviews-section">
+        <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
+        <div class="reviews-grid" id="reviewsContainer"></div>
+    </section>
+
+    <!-- Sections Juridiques -->
+    <section id="conditions" class="legal-container">
+        <h2>Conditions Générales de Vente (CGV)</h2>
+        <h3>Article 1 - Objet et Champ d'Application</h3>
+        <p>Les présentes Conditions Générales de Vente régissent la vente des sessions de formation en ligne proposées par l'Académie Numérique.</p>
+        
+        <h3>Article 2 - Prix et Modalité de Commande</h3>
+        <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en un versement unique par carte bancaire par le biais de notre plateforme de paiement sécurisée.</p>
+        
+        <h3>Article 3 - Modalités de Livraison</h3>
+        <p>L'accès au service est envoyé de manière automatisée par courrier électronique en 2 minutes chrono suivant la validation du paiement.</p>
+    </section>
+
+    <section id="confidentialite" class="legal-container">
+        <h2>Politique de Confidentialité (RGPD)</h2>
+        <p>L'Académie Numérique accorde une importance majeure à la protection de la vie privée de ses utilisateurs.</p>
+        <h3>1. Données Collectées</h3>
+        <p>Seuls le prénom et l'adresse e-mail renseignés dans le formulaire d'inscription sont collectés afin de permettre la livraison des accès au service.</p>
+        <h3>2. Sécurité des Paiements</h3>
+        <p>Aucune donnée bancaire n'est collectée ou stockée par notre site ; l'ensemble des transactions financières est géré de manière sécurisée par la passerelle de paiement intermédiaire.</p>
+        <h3>3. Droits des Utilisateurs</h3>
+        <p>Conformément au RGPD, vous disposez d'un droit d'accès, de modification et de suppression de vos données en écrivant à support@academie-numerique.fr.</p>
+    </section>
+
+    <section id="mentions" class="legal-container">
+        <h2>Mentions Légales</h2>
+        <p><strong>Dénomination sociale :</strong> Académie Numérique</p>
+        <p><strong>Siège social :</strong> 10 Rue de la République, 75001 Paris, France</p>
+        <p><strong>Numéro SIRET :</strong> 123 456 789 00012</p>
+        <p><strong>Contact Support :</strong> support@academie-numerique.fr</p>
+        <p><strong>Hébergement :</strong> Plateforme Cloud sécurisée</p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#conditions">Conditions Générales de Vente (CGV)</a>
+                <a href="#confidentialite">Politique de Confidentialité</a>
+                <a href="#mentions">Mentions Légales</a>
+            </div>
+
+            <div class="footer-support-container">
+                <div class="email-copy-box" style="background: #1a1a1a; border-color: #333; color: #fff;">
+                    <i class="fas fa-envelope" style="color: var(--gold);"></i> 
+                    <span>support@academie-numerique.fr</span>
+                    <button class="btn-support-link" onclick="copyEmail()" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 5px;">
+                        <i class="fas fa-copy"></i> Copier
+                    </button>
+                </div>
+            </div>
+
+            <div class="footer-socials">
+                <a onclick="shareOnFacebook()" title="Partager sur Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a onclick="shareOnTwitter()" title="Partager sur X (Twitter)"><i class="fab fa-twitter"></i></a>
+                <a onclick="shareOnLinkedIn()" title="Partager sur LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a onclick="shareOnWhatsApp()" title="Partager sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Académie Numérique - Tous droits réservés</p>
+            Adresse : 10 Rue de la République, 75001 Paris, France | Support : support@academie-numerique.fr<br>
+            SIRET : 123 456 789 00012 | RCS Paris<br>
+            Paiements sécurisés par carte bancaire.
+        </div>
+    </footer>
+
+    <script>
+        // Fonction pour activer la vidéo interactive sur le succès de la formation
+        function playVideo() {
+            const wrapper = document.getElementById('videoWrapper');
+            wrapper.innerHTML = `
+                <iframe src="https://www.youtube-nocookie.com/embed/pgcr9GQ7U8M?autoplay=1&mute=0&controls=1&rel=0" 
+                        title="Vidéo de présentation du succès de la formation" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            `;
+        }
+
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText("support@academie-numerique.fr").then(() => {
+                alert("✅ Adresse e-mail copiée dans le presse-papier : support@academie-numerique.fr");
+            });
+        }
+
+        const slideData = [
+            "Module 1 : Fondations & Stratégie",
+            "Module 2 : Outils Numériques Clés",
+            "Module 3 : Automatisations Pratiques",
+            "Module 4 : Productivité Accélérée",
+            "Module 5 : Plan d'Action Immédiat",
+            "Module 6 : Études de Cas Réels",
+            "Module 7 : Attestation & Bilan"
+        ];
+
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slider-box img');
+        const dots = document.querySelectorAll('.dot');
+        const titleElement = document.getElementById('previewModuleTitle');
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active-slide'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            currentSlideIndex = (index + slides.length) % slides.length;
+            
+            slides[currentSlideIndex].classList.add('active-slide');
+            dots[currentSlideIndex].classList.add('active');
+            titleElement.innerText = slideData[currentSlideIndex];
+        }
+
+        function nextSlide() { showSlide(currentSlideIndex + 1); }
+        function currentSlide(index) { showSlide(index); resetTimer(); }
+        function resetTimer() { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 4000); }
+
+        const frenchReviews = [
+            { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record.", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Sarah K.", city: "Toulouse", text: "Très direct, pas de blabla inutile. Je recommande à 100%.", initials: "SK", type: "initials" },
+            { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Karim B.", city: "Marseille", text: "Super formation, ça éclaire vraiment sur les méthodes à suivre.", initials: "KB", type: "initials" },
+            { name: "Hugo M.", city: "Nantes", text: "Enfin une formation sans jargon inutile. On va droit au but.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Élodie P.", city: "Bordeaux", text: "J'ai appliqué les conseils dès le premier soir. Résultats immédiats !", initials: "ÉP", type: "initials" },
+            { name: "Chloé B.", city: "Lille", text: "J'hésitais au début vu le prix bas, mais le contenu est vraiment au rendez-vous.", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Julien R.", city: "Strasbourg", text: "Simple, efficace et très bien structuré du début à la fin.", initials: "JR", type: "initials" },
+            { name: "Théo V.", city: "Nice", text: "Pris en main en moins de 10 minutes. Exactement ce dont j'avais besoin.", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Nathalie S.", city: "Rennes", text: "Un grand merci pour cette clarté pédagogique irréprochable.", initials: "NS", type: "initials" }
+        ];
+
+        let reviewIndex = 0;
+
+        function initLiveReviews() {
+            const container = document.getElementById('reviewsContainer');
+            
+            function addNewReview() {
+                const currentReview = frenchReviews[reviewIndex];
+                const randomMinutes = Math.floor(Math.random() * 45) + 3;
+
+                let avatarHTML = "";
+                if (currentReview.type === "photo") {
+                    avatarHTML = `<img src="${currentReview.photo}" alt="${currentReview.name}" class="author-img">`;
+                } else {
+                    avatarHTML = `<div class="author-initials">${currentReview.initials}</div>`;
+                }
+
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                card.innerHTML = `
+                    ${avatarHTML}
+                    <div>
+                        <div class="review-date"><i class="fas fa-check-circle"></i> Inscrit il y a ${randomMinutes} minutes - Membre vérifié (${currentReview.city})</div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text">"${currentReview.text}"</p>
+                        <div class="review-author">${currentReview.name}</div>
+                    </div>
+                `;
+
+                container.insertBefore(card, container.firstChild);
+                if (container.children.length > 3) {
+                    container.removeChild(container.lastChild);
+                }
+                reviewIndex = (reviewIndex + 1) % frenchReviews.length;
+            }
+
+            container.innerHTML = "";
+            addNewReview();
+            addNewReview();
+            addNewReview();
+            setInterval(addNewReview, 5000);
+        }
+
+        const shareUrl = encodeURIComponent(window.location.href);
+        const shareTitle = encodeURIComponent("Découvre l'Académie Numérique pour booster tes compétences !");
+
+        function shareOnFacebook() { window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank', 'width=600,height=400'); }
+        function shareOnTwitter() { window.open(`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`, '_blank', 'width=600,height=400'); }
+        function shareOnLinkedIn() { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`, '_blank', 'width=600,height=400'); }
+        function shareOnWhatsApp() { window.open(`https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`, '_blank'); }
+
+        window.onload = function() {
+            initLiveReviews();
+            slideInterval = setInterval(nextSlide, 4000);
+        };
+    </script>
 </body>
 </html>
