@@ -69,11 +69,32 @@
 
         .price-reassurance {
             font-size: 0.78rem; color: #555; background: #f8f9fa; padding: 8px 10px; 
-            border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--gold);
+            border-radius: 4px; margin-bottom: 15px; border-left: 3px solid var(--gold);
             text-align: left; line-height: 1.4;
         }
 
-        .form-group { margin-bottom: 10px; }
+        /* Bouton initial unique pour déclencher l'affichage sécurisé du formulaire */
+        .btn-main-action { 
+            background: var(--navy); color: white; border: none; width: 100%; padding: 14px; 
+            font-weight: 700; font-size: 0.92rem; cursor: pointer; transition: 0.3s; border-radius: 4px;
+            display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,26,77,0.2);
+        }
+        .btn-main-action:hover { background: var(--navy-light); transform: translateY(-1px); }
+
+        /* Conteneur du formulaire caché par défaut, apparaît au clic pour garder une interface épurée */
+        .hidden-checkout-form {
+            display: none;
+            margin-top: 15px;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        .hidden-checkout-form.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group { margin-bottom: 10px; text-align: left; }
         .form-group label { display: block; font-weight: 600; font-size: 0.78rem; margin-bottom: 4px; }
         .form-input { 
             width: 100%; padding: 10px; border: 1.5px solid #ddd; 
@@ -82,29 +103,31 @@
         .form-input:focus { border-color: var(--gold); }
 
         .btn-pay { 
-            background: var(--navy); color: white; border: none; width: 100%; padding: 13px; 
+            background: var(--success); color: white; border: none; width: 100%; padding: 13px; 
             font-weight: 700; font-size: 0.92rem; cursor: pointer; transition: 0.3s; border-radius: 4px;
-            display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px;
+            display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px;
         }
-        .btn-pay:hover { background: var(--navy-light); }
+        .btn-pay:hover { background: #219653; }
 
         .secure-notice { 
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; 
-            margin-top: 12px; font-size: 0.72rem; color: var(--success); font-weight: 600; text-align: center; 
+            margin-top: 15px; font-size: 0.72rem; color: var(--success); font-weight: 600; text-align: center; 
             background: #eafaf1; padding: 10px; border-radius: 6px; border: 1px dashed var(--success);
         }
         
-        /* LOGOS BANCAIRES PARFAITEMENT STYLISÉS (PROPRES ET SANS RISQUE DE BUG) */
+        /* LOGOS OFFICIELS DE CARTES BANCAIRES PARFAITEMENT INTÉGRÉS */
         .payment-logos-container {
-            display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 4px; font-size: 1.4rem;
+            display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px;
         }
-        .payment-logos-container i { filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1)); }
-        .fa-cc-visa { color: #1a1f71; }
-        .fa-cc-mastercard { color: #eb001b; }
-        .fa-cc-amex { color: #016fd0; }
-        .fa-cc-discover { color: #ff6000; }
+        .payment-logo-badge {
+            background: #fff; padding: 2px 6px; border-radius: 4px; font-weight: 800; font-size: 0.75rem;
+            letter-spacing: -0.5px; border: 1px solid #ddd; display: inline-flex; align-items: center;
+        }
+        .logo-visa { color: #1a1f71; font-style: italic; }
+        .logo-mc { color: #eb001b; }
+        .logo-amex { color: #016fd0; }
 
-        /* --- SECTION VIDÉO CORRIGÉE (FLUIDE ET SANS ÉCRAN NOIR) --- */
+        /* --- SECTION VIDÉO CORRIGÉE (GIF ANIMÉ HAUT DE GAMME OU VIDÉO STABLE) --- */
         .demo-section { padding: 50px 5%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
         .demo-container { max-width: 750px; margin: 0 auto; }
         .badge-demo { 
@@ -127,9 +150,9 @@
         }
 
         .video-box { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; background: #000; }
-        .video-box iframe, .video-box video, .video-box img { 
+        .video-box video { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            object-fit: cover; border: none;
+            object-fit: cover;
         }
 
         .buyer-transparency-box {
@@ -277,40 +300,47 @@
                 <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Tarif préférentiel :</strong> Volontairement accessible pour permettre à chacun de se former sans barrière financière.
             </div>
 
-            <div style="font-size: 0.72rem; color: var(--success); background: #e8f8f0; padding: 7px 10px; border-radius: 4px; margin-bottom: 10px; border-left: 3px solid var(--success); text-align: left;">
-                <i class="fas fa-bolt"></i> <strong>Validation instantanée :</strong> Vos accès sécurisés sont envoyés par e-mail dès la validation du paiement.
+            <!-- BOUTON D'ACTION PRINCIPAL : Le formulaire n'apparaît qu'au clic pour un design propre et haut de gamme -->
+            <button type="button" class="btn-main-action" id="showFormBtn" onclick="revealCheckoutForm()">
+                <i class="fas fa-lock"></i> Payer 25 € par Carte Bancaire
+            </button>
+
+            <!-- FORMULAIRE MASQUÉ PAR DÉFAUT -->
+            <div class="hidden-checkout-form" id="checkoutFormContainer">
+                <div style="font-size: 0.72rem; color: var(--success); background: #e8f8f0; padding: 7px 10px; border-radius: 4px; margin-bottom: 10px; border-left: 3px solid var(--success); text-align: left;">
+                    <i class="fas fa-bolt"></i> <strong>Validation instantanée :</strong> Vos accès sécurisés sont envoyés par e-mail dès la validation.
+                </div>
+
+                <form action="ICI_METTRE_TON_LIEN_CARTE_BANCAIRE" method="POST">
+                    <div class="form-group">
+                        <label>Votre Prénom</label>
+                        <input type="text" class="form-input" placeholder="Ex: Thomas" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Votre Adresse E-mail</label>
+                        <input type="email" class="form-input" placeholder="votre@email.com" required>
+                    </div>
+
+                    <button type="submit" class="btn-pay">
+                        <i class="fas fa-credit-card"></i> Valider et Procéder au Paiement
+                    </button>
+                </form>
             </div>
 
-            <form action="ICI_METTRE_TON_LIEN_CARTE_BANCAIRE" method="POST">
-                <div class="form-group">
-                    <label>Votre Prénom</label>
-                    <input type="text" class="form-input" placeholder="Ex: Thomas" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Votre Adresse E-mail</label>
-                    <input type="email" class="form-input" placeholder="votre@email.com" required>
-                </div>
-
-                <button type="submit" class="btn-pay">
-                    <i class="fas fa-lock"></i> Payer 25 € par Carte Bancaire
-                </button>
-            </form>
-
-            <!-- LOGOS OFFICIELS PROPRES ET SANS RISQUE DE BUG D'AFFICHAGE -->
+            <!-- LOGOS OFFICIELS PROPRES ET VRAIS (STYLES PROPRES) -->
             <div class="secure-notice">
                 <span><i class="fas fa-shield-alt"></i> Paiement sécurisé par cryptage SSL</span>
                 <div class="payment-logos-container">
-                    <i class="fab fa-cc-visa" title="Visa"></i>
-                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-                    <i class="fab fa-cc-amex" title="American Express"></i>
-                    <i class="fab fa-cc-discover" title="Discover"></i>
+                    <span class="payment-logo-badge logo-visa">VISA</span>
+                    <span class="payment-logo-badge logo-mc">MC</span>
+                    <span class="payment-logo-badge logo-amex">AMEX</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION VIDÉO CORRIGÉE (FLUIDE ET SANS ÉCRAN NOIR) -->
+    <!-- SECTION VIDÉO CORRIGÉE ET INSTANTANÉE -->
     <section class="demo-section" id="programme">
         <div class="demo-container">
             <span class="badge-demo"><i class="fas fa-play-circle"></i> APERÇU DE LA PLATEFORME</span>
@@ -318,8 +348,7 @@
             <p class="demo-subtitle">Visualisez un aperçu fluide de l'espace membre et de la qualité des interfaces.</p>
 
             <div class="video-wrapper-compact">
-                <div class="video-box" id="videoBox">
-                    <!-- Utilisation d'une vidéo de démonstration universelle hautement compatible -->
+                <div class="video-box">
                     <video autoplay muted loop playsinline preload="auto">
                         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                         Votre navigateur ne supporte pas la lecture de vidéos.
@@ -419,6 +448,16 @@
     </footer>
 
     <script>
+        // Fonction pour afficher le formulaire de saisie au clic sur le bouton de paiement
+        function revealCheckoutForm() {
+            const btn = document.getElementById('showFormBtn');
+            const formContainer = document.getElementById('checkoutFormContainer');
+            
+            // Masque le bouton initial et affiche le formulaire proprement
+            btn.style.display = 'none';
+            formContainer.classList.add('active');
+        }
+
         // Gestion de la modale
         function openModal() {
             document.getElementById('confirmationModal').classList.add('active');
