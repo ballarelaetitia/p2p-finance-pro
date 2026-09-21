@@ -24,105 +24,98 @@
         body { background-color: var(--white); color: #333; overflow-x: hidden; }
 
         header {
-            background: var(--white); padding: 15px 8%; display: flex;
+            background: var(--white); padding: 15px 5%; display: flex;
             justify-content: space-between; align-items: center;
             position: fixed; width: 100%; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
         .logo-sigle { 
-            background: var(--navy); color: var(--gold); width: 38px; height: 38px; 
+            background: var(--navy); color: var(--gold); width: 35px; height: 35px; 
             display: flex; align-items: center; justify-content: center; 
-            font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1.1rem;
+            font-weight: 700; font-family: serif; border-radius: 4px; font-size: 1rem;
             border: 1px solid var(--gold);
         }
-        .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); letter-spacing: -1px; }
+        .logo { font-weight: 700; font-size: 1.1rem; color: var(--navy); letter-spacing: -0.5px; }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.85), rgba(0,26,77,0.85)), 
+            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.88), rgba(0,26,77,0.88)), 
             url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: space-between; padding: 120px 8% 60px; color: var(--white);
-            gap: 40px;
+            display: flex; align-items: center; justify-content: space-between; padding: 130px 5% 50px; color: var(--white);
+            gap: 30px;
         }
 
-        .hero-content { max-width: 600px; }
-        .hero-content h1 { font-size: 2.2rem; line-height: 1.3; margin-bottom: 20px; }
+        .hero-content { max-width: 580px; }
+        .hero-content h1 { font-size: 2.1rem; line-height: 1.25; margin-bottom: 20px; }
         .hero-content h1 span { color: var(--gold); }
-        .hero-content p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; opacity: 0.95; }
+        .hero-content p { font-size: 0.92rem; line-height: 1.6; margin-bottom: 18px; opacity: 0.95; }
 
-        .features-list { list-style: none; margin-top: 20px; }
-        .features-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; }
+        .features-list { list-style: none; margin-top: 15px; }
+        .features-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.88rem; }
         .features-list i { color: var(--gold); }
 
         .registration-box { 
-            background: var(--white); padding: 30px; border-radius: 8px; width: 100%; max-width: 420px; 
+            background: var(--white); padding: 25px; border-radius: 8px; width: 100%; max-width: 390px; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.3); color: var(--navy); 
             border-top: 5px solid var(--gold); flex-shrink: 0;
         }
-        .registration-box h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--navy); text-align: center; }
+        .registration-box h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--navy); text-align: center; }
         
-        .price-tag { text-align: center; font-size: 1.8rem; font-weight: 800; color: var(--success); margin-bottom: 10px; }
-        .price-tag span.old-price { font-size: 1.1rem; color: #999; text-decoration: line-through; margin-right: 8px; font-weight: 400; }
-        .price-tag small { font-size: 0.75rem; color: #666; font-weight: 400; display: block; }
+        .price-tag { text-align: center; font-size: 1.7rem; font-weight: 800; color: var(--success); margin-bottom: 8px; }
+        .price-tag span.old-price { font-size: 1rem; color: #999; text-decoration: line-through; margin-right: 8px; font-weight: 400; }
+        .price-tag small { font-size: 0.72rem; color: #666; font-weight: 400; display: block; }
 
         .price-reassurance {
-            font-size: 0.8rem; color: #555; background: #f8f9fa; padding: 8px 10px; 
-            border-radius: 4px; margin-bottom: 15px; border-left: 3px solid var(--gold);
+            font-size: 0.78rem; color: #555; background: #f8f9fa; padding: 8px 10px; 
+            border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--gold);
             text-align: left; line-height: 1.4;
         }
 
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; font-weight: 600; font-size: 0.8rem; margin-bottom: 4px; }
+        .form-group { margin-bottom: 10px; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.78rem; margin-bottom: 4px; }
         .form-input { 
             width: 100%; padding: 10px; border: 1.5px solid #ddd; 
-            border-radius: 4px; font-size: 0.9rem; outline: none; transition: 0.3s;
+            border-radius: 4px; font-size: 0.88rem; outline: none; transition: 0.3s;
         }
         .form-input:focus { border-color: var(--gold); }
 
         .btn-pay { 
-            background: var(--navy); color: white; border: none; width: 100%; padding: 14px; 
-            font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: 0.3s; border-radius: 4px;
-            display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;
+            background: var(--navy); color: white; border: none; width: 100%; padding: 13px; 
+            font-weight: 700; font-size: 0.92rem; cursor: pointer; transition: 0.3s; border-radius: 4px;
+            display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px;
         }
         .btn-pay:hover { background: var(--navy-light); }
 
-        /* Paiement 100% sécurisé en vert et logos animés dynamiques */
         .secure-notice { 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; 
-            margin-top: 15px; font-size: 0.75rem; color: var(--success); font-weight: 600; text-align: center; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; 
+            margin-top: 12px; font-size: 0.72rem; color: var(--success); font-weight: 600; text-align: center; 
             background: #eafaf1; padding: 10px; border-radius: 6px; border: 1px dashed var(--success);
         }
         
-        .payment-icons { 
-            display: flex; gap: 12px; font-size: 1.5rem; color: var(--navy); margin-top: 6px; 
-            animation: pulseIcons 2s infinite ease-in-out;
+        .payment-logos-container {
+            display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 2px;
         }
+        .payment-logo-img { height: 22px; object-fit: contain; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1)); }
 
-        @keyframes pulseIcons {
-            0% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.08); opacity: 1; color: var(--navy-light); }
-            100% { transform: scale(1); opacity: 0.9; }
-        }
-
-        /* --- SECTION DÉMONSTRATION : VRAIES VIDÉOS EN DÉFILEMENT AUTOMATIQUE SANS TEXTE GÊNANT --- */
-        .demo-section { padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
-        .demo-container { max-width: 800px; margin: 0 auto; }
+        /* --- SECTION VIDÉO CORRIGÉE ET FLUIDE --- */
+        .demo-section { padding: 50px 5%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
+        .demo-container { max-width: 750px; margin: 0 auto; }
         .badge-demo { 
             background: rgba(197, 160, 89, 0.15); color: var(--navy); font-weight: 700; 
-            font-size: 0.75rem; padding: 6px 14px; border-radius: 20px; text-transform: uppercase; 
-            letter-spacing: 1px; display: inline-block; margin-bottom: 12px; 
+            font-size: 0.72rem; padding: 5px 12px; border-radius: 20px; text-transform: uppercase; 
+            letter-spacing: 1px; display: inline-block; margin-bottom: 10px; 
         }
-        .demo-section h2 { color: var(--navy); font-size: 1.8rem; margin-bottom: 8px; }
-        .demo-subtitle { font-size: 0.9rem; color: #666; margin-bottom: 25px; }
+        .demo-section h2 { color: var(--navy); font-size: 1.6rem; margin-bottom: 6px; }
+        .demo-subtitle { font-size: 0.88rem; color: #666; margin-bottom: 20px; }
 
         .video-wrapper-compact {
-            max-width: 620px;
-            margin: 0 auto 25px auto;
-            border-radius: 12px;
+            max-width: 580px;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 26, 77, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 26, 77, 0.15);
             border: 3px solid var(--gold);
             position: relative;
             background: #000;
@@ -131,113 +124,119 @@
         .video-box { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; background: #000; }
         .video-box video { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            object-fit: cover; display: none;
+            object-fit: cover; opacity: 0; transition: opacity 0.8s ease-in-out; pointer-events: none;
         }
-        .video-box video.active { display: block; }
+        .video-box video.active { opacity: 1; z-index: 2; }
 
         .buyer-transparency-box {
-            margin-top: 25px; background: #f8f9fa; border: 1px solid #e1e8ed; padding: 12px 18px;
-            border-radius: 6px; font-size: 0.82rem; color: #555; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+            margin-top: 20px; background: #f8f9fa; border: 1px solid #e1e8ed; padding: 12px 15px;
+            border-radius: 6px; font-size: 0.8rem; color: #555; text-align: left; 
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
         }
         .btn-info-modal {
             background: var(--navy); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; white-space: nowrap; transition: 0.2s;
         }
         .btn-info-modal:hover { background: var(--navy-light); }
 
-        /* --- FENÊTRE MODALE ARRIÈRE-PLAN --- */
+        /* --- MODALE --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 26, 77, 0.75); backdrop-filter: blur(5px);
+            background: rgba(0, 26, 77, 0.75); backdrop-filter: blur(4px);
             display: flex; align-items: center; justify-content: center; z-index: 2000;
-            opacity: 0; pointer-events: none; transition: 0.3s ease-in-out;
+            opacity: 0; pointer-events: none; transition: 0.3s ease-in-out; padding: 15px;
         }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
         
         .confirmation-card {
-            max-width: 650px; width: 90%;
+            max-width: 600px; width: 100%;
             background: var(--white);
             border: 2px solid var(--gold);
-            border-radius: 10px;
-            padding: 30px;
+            border-radius: 8px;
+            padding: 25px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             position: relative;
             transform: translateY(20px); transition: 0.3s ease-in-out;
+            max-height: 90vh; overflow-y: auto;
+            text-align: left;
         }
         .modal-overlay.active .confirmation-card { transform: translateY(0); }
         
         .close-modal {
-            position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: var(--navy); cursor: pointer; background: none; border: none;
+            position: absolute; top: 12px; right: 15px; font-size: 1.4rem; color: var(--navy); cursor: pointer; background: none; border: none;
         }
         .confirmation-card h3 {
-            color: var(--navy); font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;
+            color: var(--navy); font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
         }
         .confirmation-card h3 i { color: var(--gold); }
-        .confirmation-card p { font-size: 0.88rem; color: #444; line-height: 1.6; margin-bottom: 15px; }
-        .confirmation-list { list-style: none; margin-bottom: 20px; }
+        .confirmation-card p { font-size: 0.85rem; color: #444; line-height: 1.5; margin-bottom: 12px; }
+        .confirmation-list { list-style: none; margin-bottom: 15px; }
         .confirmation-list li {
-            font-size: 0.85rem; color: #444; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
+            font-size: 0.82rem; color: #444; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
         }
-        .confirmation-list li i { color: var(--success); margin-top: 3px; }
+        .confirmation-list li i { color: var(--success); margin-top: 3px; flex-shrink: 0; }
         .rebound-box {
-            background: #eef4fc; border-left: 4px solid var(--navy); padding: 12px 15px; border-radius: 4px; font-size: 0.82rem; color: var(--navy); margin-top: 15px;
+            background: #eef4fc; border-left: 4px solid var(--navy); padding: 10px 12px; border-radius: 4px; font-size: 0.8rem; color: var(--navy); margin-top: 12px; line-height: 1.4;
         }
 
-        /* Section des avis en mouvement séquentiel */
-        .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
-        .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
+        /* Section avis */
+        .reviews-section { padding: 50px 5%; background: var(--light-bg); text-align: center; }
+        .reviews-section h2 { color: var(--navy); margin-bottom: 25px; font-size: 1.6rem; }
         
         .reviews-grid { 
-            display: flex; flex-direction: column-reverse; gap: 15px; max-width: 700px; margin: 0 auto; min-height: 320px; overflow: hidden; padding: 10px;
+            display: flex; flex-direction: column; gap: 12px; max-width: 650px; margin: 0 auto; min-height: 280px; overflow: hidden; padding: 5px;
         }
         
         .review-card { 
-            background: white; padding: 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; border-left: 4px solid var(--gold);
-            display: flex; gap: 15px; align-items: flex-start;
-            animation: dropReview 0.8s cubic-bezier(0.24, 1, 0.32, 1) forwards;
+            background: white; padding: 16px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); text-align: left; border-left: 4px solid var(--gold);
+            display: flex; gap: 12px; align-items: flex-start;
+            animation: fadeInReview 0.6s ease forwards;
         }
 
-        @keyframes dropReview {
-            0% { opacity: 0; transform: translateY(-40px); }
+        @keyframes fadeInReview {
+            0% { opacity: 0; transform: translateY(15px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        .author-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
-        .stars { color: var(--bright-gold); font-size: 0.8rem; margin-bottom: 5px; }
-        .review-date { font-size: 0.7rem; color: var(--success); font-weight: 600; margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
-        .review-text { font-style: italic; font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 8px; }
-        .review-author { font-weight: 700; color: var(--navy); font-size: 0.85rem; }
+        .author-img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
+        .stars { color: var(--bright-gold); font-size: 0.75rem; margin-bottom: 4px; }
+        .review-date { font-size: 0.68rem; color: var(--success); font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
+        .review-text { font-style: italic; font-size: 0.82rem; color: #555; line-height: 1.4; margin-bottom: 6px; }
+        .review-author { font-weight: 700; color: var(--navy); font-size: 0.82rem; }
 
-        /* Sections Juridiques Dédiées */
+        /* Sections Juridiques */
         .legal-container {
-            max-width: 900px; margin: 40px auto; padding: 40px 8%; background: #fff;
+            max-width: 850px; margin: 30px auto; padding: 30px 5%; background: #fff;
             border-radius: 8px; border: 1px solid #e1e8ed; text-align: left;
         }
-        .legal-container h2 { color: var(--navy); font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
-        .legal-container h3 { color: var(--navy); font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px; }
-        .legal-container p, .legal-container li { font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 10px; }
-        .legal-container ul { padding-left: 20px; }
+        .legal-container h2 { color: var(--navy); font-size: 1.3rem; margin-bottom: 15px; border-bottom: 2px solid var(--gold); padding-bottom: 8px; }
+        .legal-container h3 { color: var(--navy); font-size: 1rem; margin-top: 15px; margin-bottom: 8px; }
+        .legal-container p, .legal-container li { font-size: 0.82rem; color: #444; line-height: 1.5; margin-bottom: 8px; }
+        .legal-container ul { padding-left: 18px; }
 
-        /* Pied de page officiel avec boutons de partage direct */
-        footer { background: #0A0A0A; color: #aaa; padding: 40px 8%; font-size: 0.75rem; text-align: center; line-height: 1.8; border-top: 1px solid #222; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; border-bottom: 1px solid #222; padding-bottom: 25px; }
-        .footer-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        /* Footer */
+        footer { background: #0A0A0A; color: #aaa; padding: 35px 5%; font-size: 0.72rem; text-align: center; line-height: 1.7; border-top: 1px solid #222; }
+        .footer-content { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; border-bottom: 1px solid #222; padding-bottom: 20px; }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
         .footer-links a { color: #ccc; text-decoration: none; transition: color 0.2s; }
         .footer-links a:hover { color: var(--gold); }
         
-        .footer-socials { display: flex; justify-content: center; gap: 15px; }
+        .footer-socials { display: flex; justify-content: center; gap: 12px; }
         .footer-socials a {
-            background: #1a1a1a; color: #fff; width: 36px; height: 36px; border-radius: 50%;
+            background: #1a1a1a; color: #fff; width: 34px; height: 34px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; cursor: pointer;
         }
         .footer-socials a:hover { background: var(--gold); color: var(--navy); }
 
-        .footer-bottom { margin-top: 25px; color: #666; font-size: 0.7rem; }
-        .footer-bottom p { color: #fff; font-weight: 700; margin-bottom: 5px; }
+        .footer-bottom { margin-top: 20px; color: #666; font-size: 0.68rem; }
+        .footer-bottom p { color: #fff; font-weight: 700; margin-bottom: 4px; }
 
-        @media (max-width: 991px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 100px; }
-            .hero-content h1 { font-size: 1.7rem; }
-            .footer-links { flex-direction: column; gap: 10px; }
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 110px; }
+            .hero-content { max-width: 100%; }
+            .features-list { display: inline-block; text-align: left; }
+            .registration-box { max-width: 100%; }
+            .buyer-transparency-box { flex-direction: column; align-items: flex-start; }
+            .btn-info-modal { width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -253,13 +252,13 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Tu as l'impression de <span>stagner</span> alors que tout va trop vite autour de toi ?</h1>
-            <p>Aujourd'hui, la vraie différence ne se fait plus sur tes diplômes d'hier, mais sur ta capacité à t'adapter maintenant. Ne pas savoir maîtriser les compétences clés du numérique et des outils d'aujourd'hui, c'est accepter de rester sur la touche pendant que d'autres avancent.</p>
-            <p>Et si, en quelques minutes par jour et depuis chez toi, tu pouvais enfin acquérir cette compétence qui change tout ? Pas de théorie inutile, pas de discours compliqués : juste du concret, du pratique, et des résultats immédiats pour booster ton avenir.</p>
+            <p>Aujourd'hui, la vraie différence ne se fait plus sur tes diplômes d'hier, mais sur ta capacité à t'adapter maintenant. Ne pas maîtriser les compétences numériques clés, c'est accepter de rester sur la touche pendant que d'autres avancent.</p>
+            <p>Accède en quelques minutes à des méthodes concrètes, pratiques et directement applicables pour booster ton avenir professionnel sans jargon inutile.</p>
             
             <ul class="features-list">
                 <li><i class="fas fa-check-circle"></i> Session 100% en ligne (Accès immédiat)</li>
-                <li><i class="fas fa-check-circle"></i> Pas de théorie inutile : du concret et du pratique</li>
-                <li><i class="fas fa-check-circle"></i> Prends une longueur d'avance dès aujourd'hui</li>
+                <li><i class="fas fa-check-circle"></i> Apprentissage pragmatique orienté résultats</li>
+                <li><i class="fas fa-check-circle"></i> Accompagnement et structure de haut niveau</li>
             </ul>
         </div>
 
@@ -271,11 +270,11 @@
             </div>
 
             <div class="price-reassurance">
-                <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Pourquoi 25 € au lieu de 97 € ?</strong> Notre objectif est de rendre cette méthode accessible à tous sans barrière financière.
+                <i class="fas fa-info-circle" style="color: var(--gold);"></i> <strong>Tarif préférentiel :</strong> Volontairement accessible pour permettre à chacun de se former sans barrière financière.
             </div>
 
-            <div style="font-size: 0.75rem; color: #27ae60; background: #e8f8f0; padding: 8px 10px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--success);">
-                <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail en quelques minutes après le paiement.
+            <div style="font-size: 0.72rem; color: var(--success); background: #e8f8f0; padding: 7px 10px; border-radius: 4px; margin-bottom: 10px; border-left: 3px solid var(--success); text-align: left;">
+                <i class="fas fa-bolt"></i> <strong>Validation instantanée :</strong> Vos accès sécurisés sont envoyés par e-mail dès la validation du paiement.
             </div>
 
             <form action="ICI_METTRE_TON_LIEN_CARTE_BANCAIRE" method="POST">
@@ -295,35 +294,32 @@
             </form>
 
             <div class="secure-notice">
-                <span><i class="fas fa-shield-alt"></i> Paiement 100% sécurisé par Carte Bancaire</span>
-                <div class="payment-icons">
-                    <i class="fab fa-cc-visa" style="color: #1a1f71;" title="Visa"></i>
-                    <i class="fab fa-cc-mastercard" style="color: #eb001b;" title="Mastercard"></i>
-                    <i class="fas fa-credit-card" style="color: var(--navy);" title="Carte bancaire sécurisée"></i>
+                <span><i class="fas fa-shield-alt"></i> Paiement sécurisé par cryptage SSL</span>
+                <div class="payment-logos-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo_%282014-2021%29.svg" alt="Visa" class="payment-logo-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="payment-logo-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo_%282018%29.svg" alt="American Express" class="payment-logo-img">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION DE PRÉSENTATION : CAGE VIDÉO AVEC DÉFILEMENT DE VRAIES VIDÉOS SANS TEXTE -->
+    <!-- SECTION VIDÉO CORRIGÉE AVEC LECTURE AUTOMATIQUE FORCÉE -->
     <section class="demo-section" id="programme">
         <div class="demo-container">
-            <span class="badge-demo"><i class="fas fa-play-circle"></i> APERÇU DE LA FORMATION EN DIRECT</span>
-            <h2>Immersion au cœur de la plateforme</h2>
-            <p class="demo-subtitle">Les séquences vidéo se relaient automatiquement en arrière-plan sans texte parasite.</p>
+            <span class="badge-demo"><i class="fas fa-play-circle"></i> APERÇU DE LA PLATEFORME</span>
+            <h2>Immersion interactive au cœur des modules</h2>
+            <p class="demo-subtitle">Visualisez un aperçu fluide de l'espace membre et de la qualité des interfaces.</p>
 
             <div class="video-wrapper-compact">
                 <div class="video-box" id="videoBox">
-                    <!-- Vidéo 1 -->
-                    <video class="promo-video active" muted autoplay loop playsinline>
+                    <video class="promo-video active" muted autoplay loop playsinline preload="auto">
                         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
                     </video>
-                    <!-- Vidéo 2 -->
-                    <video class="promo-video" muted autoplay loop playsinline>
+                    <video class="promo-video" muted autoplay loop playsinline preload="auto">
                         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
                     </video>
-                    <!-- Vidéo 3 -->
-                    <video class="promo-video" muted autoplay loop playsinline>
+                    <video class="promo-video" muted autoplay loop playsinline preload="auto">
                         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -331,124 +327,120 @@
 
             <div class="buyer-transparency-box">
                 <div style="display: flex; align-items: center; gap: 10px; text-align: left;">
-                    <i class="fas fa-shield-alt" style="color: var(--success); font-size: 1.2rem;"></i>
+                    <i class="fas fa-shield-alt" style="color: var(--success); font-size: 1.1rem;"></i>
                     <div>
-                        <strong>Transparence & Garantie pour l'Acheteur :</strong> 
-                        Accès complet et immédiat à l'ensemble des modules après votre inscription.
+                        <strong>Engagement Qualité & Transparence :</strong> 
+                        Accès immédiat après commande sécurisée.
                     </div>
                 </div>
-                <button class="btn-info-modal" onclick="openModal()"><i class="fas fa-info-circle"></i> Détails post-commande</button>
+                <button class="btn-info-modal" onclick="openModal()"><i class="fas fa-info-circle"></i> Modalités post-commande</button>
             </div>
         </div>
     </section>
 
-    <!-- FENÊTRE MODALE ARRIÈRE-PLAN : MESSAGE DE CONFIRMATION COMMANDE -->
+    <!-- FENÊTRE MODALE -->
     <div class="modal-overlay" id="confirmationModal">
         <div class="confirmation-card">
             <button class="close-modal" onclick="closeModal()">&times;</button>
-            <h3><i class="fas fa-envelope-open-text"></i> Message de confirmation après votre paiement</h3>
-            <p>Voici les informations relatives à l'envoi de votre commande et à votre espace membre :</p>
+            <h3><i class="fas fa-envelope-open-text"></i> Informations détaillées post-commande</h3>
+            <p>Notre engagement repose sur une transparence totale envers nos utilisateurs :</p>
             
             <ul class="confirmation-list">
-                <li><i class="fas fa-check-circle"></i> <strong>Envoi de votre commande :</strong> Vos accès complets aux modules de formation sont en cours de préparation et d'acheminement vers votre boîte e-mail. En temps normal, l'envoi est instantané.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>En cas de forte affluence :</strong> Si notre plateforme enregistre un volume important de commandes simultanées, le traitement de votre dossier et l'envoi de vos accès par courrier électronique peuvent exceptionnellement prendre un délai indicatif de <strong>24 à 48 heures</strong>.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Notre Garantie Totale (Remboursement sous 72h) :</strong> Si vous ne receviez pas vos informations d'accès dans ce délai de 48 heures, un <strong>remboursement intégral et automatique sous 72 heures</strong> sera effectué directement sur votre moyen de paiement, sans aucune condition complexe.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Livraison des accès :</strong> Les identifiants de connexion à votre espace de formation sont envoyés automatiquement par courrier électronique immédiatement après la validation de votre règlement.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Gestion des flux exceptionnels :</strong> En cas de forte affluence simultanée sur nos serveurs, le traitement technique de votre inscription peut nécessiter un délai indicatif de <strong>24 à 48 heures</strong>.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Garantie Sérénité (Remboursement sous 72h) :</strong> Si vos accès ne vous parvenaient pas dans ce délai maximal de 48 heures, un <strong>remboursement intégral et automatique sous 72 heures</strong> est immédiatement déclenché sur votre carte bancaire, sans tracasserie administrative.</li>
             </ul>
 
             <div class="rebound-box">
-                <i class="fas fa-lightbulb"></i> <strong>Rebonds commerciaux :</strong> Si vous êtes remboursé suite à ce délai mais que vous souhaitez toujours profiter de la formation de l'Académie Numérique, vous serez totalement libre de repasser commande sur notre site un peu plus tard. Nous serons ravis de vous accueillir à nouveau !
+                <i class="fas fa-lightbulb"></i> <strong>Note :</strong> Si vous bénéficiez de ce remboursement automatique mais souhaitez toujours intégrer l'Académie Numérique ultérieurement, vous restez totalement libre de vous réinscrire au moment de votre choix.
             </div>
         </div>
     </div>
 
-    <!-- Section des avis dynamiques en cascade -->
+    <!-- Section avis -->
     <section class="reviews-section">
-        <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
+        <h2>Retours d'expérience de nos membres</h2>
         <div class="reviews-grid" id="reviewsContainer"></div>
     </section>
 
-    <!-- Section Dédiée : Conditions Générales de Vente (CGV) -->
+    <!-- Sections Juridiques -->
     <section id="conditions" class="legal-container">
         <h2>Conditions Générales de Vente (CGV)</h2>
-        <h3>Article 1 - Objet et Champ d'Application</h3>
-        <p>Les présentes Conditions Générales de Vente régissent la vente des sessions de formation en ligne proposées par l'Académie Numérique.</p>
-        
-        <h3>Article 2 - Prix et Modalité de Commande</h3>
-        <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en un versement unique par le biais de la passerelle sécurisée par carte bancaire.</p>
-        
-        <h3>Article 3 - Modalités de Livraison et Délai de Traitement</h3>
-        <p>En temps normal, l'accès au service est envoyé en quelques minutes après le paiement. Toutefois, <strong>en cas de forte affluence liée à un volume important de commandes</strong>, le traitement des dossiers et l'envoi des accès par courrier électronique peuvent exceptionnellement s'effectuer dans un délai indicatif de <strong>24 à 48 heures</strong>.</p>
-        
+        <h3>Article 1 - Objet</h3>
+        <p>Les présentes CGV encadrent la vente des prestations de formation en ligne dispensées par l'Académie Numérique.</p>
+        <h3>Article 2 - Tarifs et Modalités de Paiement</h3>
+        <p>Le tarif promotionnel s'élève à 25 €. Le règlement s'effectue en une seule fois via la solution bancaire sécurisée.</p>
+        <h3>Article 3 - Livraison et Délais</h3>
+        <p>L'accès au service est transmis par voie électronique. En période de forte affluence, un délai technique de traitement de 24 à 48 heures peut exceptionnellement s'appliquer.</p>
         <h3>Article 4 - Garantie de Remboursement</h3>
-        <p>Si l'acheteur ne recevait pas son courrier d'accès dans un délai maximal de 48 heures suivant sa commande, un <strong>remboursement intégral et automatique sous 72 heures</strong> est garanti et effectué directement, sans aucune condition complexe.</p>
+        <p>À défaut de réception des accès dans un délai de 48 heures, un remboursement intégral intervient automatiquement dans un délai de 72 heures.</p>
     </section>
 
-    <!-- Section Dédiée : Politique de Confidentialité -->
     <section id="confidentialite" class="legal-container">
         <h2>Politique de Confidentialité (RGPD)</h2>
-        <p>L'Académie Numérique accorde une importance majeure à la protection de la vie privée de ses utilisateurs.</p>
-        <h3>1. Données Collectées</h3>
-        <p>Seuls le prénom et l'adresse e-mail renseignés dans le formulaire d'inscription sont collectés afin de permettre la livraison des accès au service.</p>
-        <h3>2. Sécurité des Paiements</h3>
-        <p>Aucune donnée bancaire sensible n'est collectée ou stockée par nos soins ; l'ensemble des transactions financières est intégralement géré par le processeur bancaire sécurisé.</p>
-        <h3>3. Droits des Utilisateurs</h3>
-        <p>Conformément au RGPD, vous disposez d'un droit d'accès, de modification et de suppression de vos données en écrivant à support@academie-numerique.fr.</p>
+        <p>L'Académie Numérique protège la confidentialité des données personnelles de ses utilisateurs conformément aux réglementations en vigueur.</p>
+        <h3>1. Données collectées</h3>
+        <p>Seuls le prénom et l'adresse e-mail sont enregistrés dans le seul but de délivrer les accès au service.</p>
+        <h3>2. Sécurité</h3>
+        <p>Aucune information bancaire sensible n'est conservée par notre structure ; les transactions sont gérées par les prestataires de paiement agréés.</p>
     </section>
 
-    <!-- Section Dédiée : Mentions Légales -->
     <section id="mentions" class="legal-container">
         <h2>Mentions Légales</h2>
-        <p><strong>Dénomination sociale :</strong> Académie Numérique</p>
+        <p><strong>Raison sociale :</strong> Académie Numérique</p>
         <p><strong>Siège social :</strong> 10 Rue de la République, 75001 Paris, France</p>
-        <p><strong>Numéro SIRET :</strong> 123 456 789 00012</p>
-        <p><strong>Contact Support :</strong> support@academie-numerique.fr</p>
-        <p><strong>Hébergement :</strong> Plateforme Cloud sécurisée</p>
+        <p><strong>SIRET :</strong> 123 456 789 00012</p>
+        <p><strong>Contact :</strong> support@academie-numerique.fr</p>
     </section>
 
-    <!-- Pied de page officiel avec boutons de partage direct -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <a href="#conditions">Conditions Générales de Vente (CGV)</a>
+                <a href="#conditions">Conditions Générales de Vente</a>
                 <a href="#confidentialite">Politique de Confidentialité</a>
                 <a href="#mentions">Mentions Légales</a>
             </div>
 
             <div class="footer-socials">
-                <a onclick="shareOnFacebook()" title="Partager sur Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a onclick="shareOnTwitter()" title="Partager sur X (Twitter)"><i class="fab fa-twitter"></i></a>
-                <a onclick="shareOnLinkedIn()" title="Partager sur LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a onclick="shareOnWhatsApp()" title="Partager sur WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a onclick="shareOnFacebook()" title="Partager"><i class="fab fa-facebook-f"></i></a>
+                <a onclick="shareOnTwitter()" title="Partager"><i class="fab fa-twitter"></i></a>
+                <a onclick="shareOnLinkedIn()" title="Partager"><i class="fab fa-linkedin-in"></i></a>
+                <a onclick="shareOnWhatsApp()" title="Partager"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
 
         <div class="footer-bottom">
             <p>Académie Numérique - Tous droits réservés</p>
-            Adresse : 10 Rue de la République, 75001 Paris, France | Support : support@academie-numerique.fr<br>
-            SIRET : 123 456 789 00012 | RCS Paris<br>
-            Paiements sécurisés par carte bancaire.
+            10 Rue de la République, 75001 Paris, France | Support : support@academie-numerique.fr<br>
+            SIRET : 123 456 789 00012 | Paiements par carte bancaire hautement sécurisés.
         </div>
     </footer>
 
     <script>
-        // Gestionnaire de défilement automatique des vraies vidéos dans la cage
-        let currentVideoIndex = 0;
-        const videos = document.querySelectorAll('.promo-video');
+        // Script de lecture vidéo robuste et forcé pour mobile et desktop
+        document.addEventListener("DOMContentLoaded", function() {
+            const videos = document.querySelectorAll('.promo-video');
+            let currentVideoIndex = 0;
 
-        function startVideoSlider() {
-            if (videos.length === 0) return;
-            setInterval(() => {
-                videos[currentVideoIndex].classList.remove('active');
-                videos[currentVideoIndex].pause();
-                
-                currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-                
-                videos[currentVideoIndex].classList.add('active');
-                videos[currentVideoIndex].play();
-            }, 6000); // Change de vidéo toutes les 6 secondes
-        }
+            // Force la lecture des vidéos sur mobile
+            videos.forEach(video => {
+                video.load();
+                video.play().catch(e => console.log("Autoplay bloqué par le navigateur, lecture en sourdine requise :", e));
+            });
 
-        // Gestion de la modale en arrière-plan
+            if (videos.length > 0) {
+                setInterval(() => {
+                    videos[currentVideoIndex].classList.remove('active');
+                    
+                    currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+                    
+                    videos[currentVideoIndex].classList.add('active');
+                    videos[currentVideoIndex].play().catch(e => {});
+                }, 5500);
+            }
+        });
+
+        // Gestion de la modale
         function openModal() {
             document.getElementById('confirmationModal').classList.add('active');
         }
@@ -464,80 +456,58 @@
             }
         }
 
+        // Système d'avis clients dynamiques
         const frenchReviews = [
             { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record. Super investissement !", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
             { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires et directes.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
-            { name: "Hugo M.", city: "Marseille", text: "Enfin une formation sans jargon inutile. On va droit au but, ça fait gagner des heures.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" },
-            { name: "Chloé B.", city: "Bordeaux", text: "J'hésitais au début vu le prix bas, mais le contenu est vraiment au rendez-vous. Merci !", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" },
-            { name: "Théo V.", city: "Nantes", text: "Pris en main en moins de 10 minutes. Exactement ce dont j'avais besoin pour démarrer.", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150" },
-            { name: "Léa P.", city: "Toulouse", text: "Super structure ! Les explications sont limpides et faciles à appliquer.", photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" },
-            { name: "Enzo B.", city: "Strasbourg", text: "Un contenu très pro. Rien à redire, le rapport qualité-prix est imbattable.", photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=150" },
-            { name: "Camille R.", city: "Nice", text: "J'ai tout appliqué rapidement. Je recommande les yeux fermés.", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" },
-            { name: "Nathan G.", city: "Lille", text: "Une vraie boîte à outils bien pensée. Ça change des formations hors de prix.", photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150" },
-            { name: "Inès M.", city: "Rennes", text: "Simple, rapide et efficace. J'ai adoré la clarté des modules.", photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=150" }
+            { name: "Hugo M.", city: "Marseille", text: "Enfin une formation sans jargon inutile. On va droit au but, ça fait gagner un temps précieux.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" },
+            { name: "Chloé B.", city: "Bordeaux", text: "J'hésitais au début vu le tarif, mais le contenu est vraiment au rendez-vous. Merci !", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" },
+            { name: "Théo V.", city: "Nantes", text: "Pris en main en quelques minutes. Exactement ce dont j'avais besoin pour structurer mes projets.", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150" }
         ];
-
-        let reviewIndex = 0;
 
         function initLiveReviews() {
             const container = document.getElementById('reviewsContainer');
+            if (!container) return;
             
-            function addNewReview() {
-                const currentReview = frenchReviews[reviewIndex];
-                const randomMinutes = Math.floor(Math.random() * 30) + 2;
+            let index = 0;
+            function addReview() {
+                const rev = frenchReviews[index];
+                const mins = Math.floor(Math.random() * 25) + 3;
 
                 const card = document.createElement('div');
                 card.className = 'review-card';
                 card.innerHTML = `
-                    <img src="${currentReview.photo}" alt="${currentReview.name}" class="author-img">
+                    <img src="${rev.photo}" alt="${rev.name}" class="author-img">
                     <div>
-                        <div class="review-date"><i class="fas fa-check-circle"></i> Inscrit il y a ${randomMinutes} minutes - Membre vérifié (${currentReview.city})</div>
+                        <div class="review-date"><i class="fas fa-check-circle"></i> Inscrit il y a ${mins} minutes - Membre vérifié (${rev.city})</div>
                         <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="review-text">"${currentReview.text}"</p>
-                        <div class="review-author">${currentReview.name}</div>
+                        <p class="review-text">"${rev.text}"</p>
+                        <div class="review-author">${rev.name}</div>
                     </div>
                 `;
 
                 container.insertBefore(card, container.firstChild);
-
                 if (container.children.length > 3) {
                     container.removeChild(container.lastChild);
                 }
-
-                reviewIndex = (reviewIndex + 1) % frenchReviews.length;
+                index = (index + 1) % frenchReviews.length;
             }
 
             container.innerHTML = "";
-            addNewReview();
-            addNewReview();
-            addNewReview();
-
-            setInterval(addNewReview, 6000);
+            addReview();
+            addReview();
+            setInterval(addReview, 6000);
         }
 
+        window.onload = initLiveReviews;
+
+        // Boutons de partage
         const shareUrl = encodeURIComponent(window.location.href);
         const shareTitle = encodeURIComponent("Découvre l'Académie Numérique pour booster tes compétences !");
-
-        function shareOnFacebook() {
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank', 'width=600,height=400');
-        }
-
-        function shareOnTwitter() {
-            window.open(`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`, '_blank', 'width=600,height=400');
-        }
-
-        function shareOnLinkedIn() {
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`, '_blank', 'width=600,height=400');
-        }
-
-        function shareOnWhatsApp() {
-            window.open(`https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`, '_blank');
-        }
-
-        window.onload = function() {
-            initLiveReviews();
-            startVideoSlider(); // Lance le défilement automatique fluide des vidéos
-        };
+        function shareOnFacebook() { window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank', 'width=600,height=400'); }
+        function shareOnTwitter() { window.open(`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`, '_blank', 'width=600,height=400'); }
+        function shareOnLinkedIn() { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`, '_blank', 'width=600,height=400'); }
+        function shareOnWhatsApp() { window.open(`https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`, '_blank'); }
     </script>
 </body>
 </html>
