@@ -81,6 +81,24 @@
         }
         .form-input:focus { border-color: var(--gold); }
 
+        .form-row { display: flex; gap: 10px; }
+
+        /* Styles spécifiques pour les logos de cartes bancaires haut de gamme */
+        .cards-brand-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        .cards-brand-logos img {
+            height: 22px;
+            object-fit: contain;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+        }
+
         .btn-pay { 
             background: var(--navy); color: white; border: none; width: 100%; padding: 14px; 
             font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: 0.3s; border-radius: 4px;
@@ -88,38 +106,13 @@
         }
         .btn-pay:hover { background: var(--navy-light); }
 
-        /* --- LOGOS DE PAIEMENT DISTINCTS (VISUALS PROPRES) --- */
-        .payment-methods {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-        .pay-badge {
-            background: #f1f3f5;
-            border: 1px solid #dcdcdc;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .pay-visa { color: #1a1f71; }
-        .pay-mastercard { color: #eb001b; }
-        .pay-amex { color: #006fcf; }
-        .pay-paypal { color: #003087; }
-
         .secure-notice { 
-            display: flex; align-items: center; justify-content: center; gap: 6px; 
-            margin-top: 10px; font-size: 0.7rem; color: #666; text-align: center; 
+            display: flex; align-items: center; justify-content: center; gap: 8px; 
+            margin-top: 12px; font-size: 0.7rem; color: #666; text-align: center; 
         }
         .secure-notice i { color: var(--success); }
 
-        /* --- SECTION DÉMONSTRATION VIDÉO ET MODULES (CAGE SANS ÉCRAN NOIR) --- */
+        /* --- SECTION DÉMONSTRATION VIDÉO ET MODULES (CAGE RÉDUITE) --- */
         .demo-section { padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
         .demo-container { max-width: 900px; margin: 0 auto; }
         .badge-demo { 
@@ -130,7 +123,7 @@
         .demo-section h2 { color: var(--navy); font-size: 1.8rem; margin-bottom: 8px; }
         .demo-subtitle { font-size: 0.9rem; color: #666; margin-bottom: 25px; }
 
-        /* Cage Vidéo Fluide et Fonctionnelle */
+        /* Cage Vidéo Réduite et Compacte */
         .video-wrapper-compact {
             max-width: 560px;
             margin: 0 auto 25px auto;
@@ -142,8 +135,19 @@
             background: #000;
         }
 
-        .video-box { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; }
-        .video-box video { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; display: block; }
+        .video-box { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; cursor: pointer; }
+        .video-box img { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity: 0.85; transition: 0.3s; }
+        .video-box:hover img { opacity: 0.95; transform: scale(1.02); }
+
+        .video-overlay {
+            position: absolute; top:0; left:0; width:100%; height:100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: rgba(0, 26, 77, 0.45); z-index: 2; transition: 0.3s; color: white; gap: 10px;
+            padding: 15px; text-align: center;
+        }
+        .play-btn-icon { font-size: 3.2rem; color: var(--bright-gold); filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); transition: 0.3s; }
+        .video-box:hover .play-btn-icon { transform: scale(1.15); color: #fff; }
+        #previewModuleTitle { font-weight: 700; font-size: 0.9rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); background: rgba(0,0,0,0.6); padding: 5px 14px; border-radius: 20px; }
 
         /* Galerie des 7 modules interactifs */
         .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 20px; }
@@ -162,7 +166,7 @@
             border-radius: 6px; font-size: 0.82rem; color: #555; text-align: left; display: flex; align-items: center; gap: 10px;
         }
 
-        /* Message de confirmation & Arrière-plan */
+        /* --- NOUVELLE SECTION : MESSAGE DE CONFIRMATION & ARRIÈRE-PLAN --- */
         .confirmation-preview-section {
             padding: 50px 8%;
             background: var(--light-bg);
@@ -219,7 +223,7 @@
             margin-top: 15px;
         }
 
-        /* Section des avis en mouvement */
+        /* Section des avis en mouvement séquentiel strict (1 à 35) */
         .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
         
@@ -263,7 +267,7 @@
         .legal-container p, .legal-container li { font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 10px; }
         .legal-container ul { padding-left: 20px; }
 
-        /* Pied de page officiel */
+        /* Pied de page officiel avec boutons de partage direct */
         footer { background: #0A0A0A; color: #aaa; padding: 40px 8%; font-size: 0.75rem; text-align: center; line-height: 1.8; border-top: 1px solid #222; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; border-bottom: 1px solid #222; padding-bottom: 25px; }
         .footer-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
@@ -324,96 +328,102 @@
                 <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail en quelques minutes après le paiement.
             </div>
 
-            <form action="ICI_METTRE_TON_LIEN_PAYPAL" method="POST">
+            <form action="ICI_METTRE_TON_LIEN_PAIEMENT" method="POST">
                 <div class="form-group">
-                    <label>Votre Prénom</label>
-                    <input type="text" class="form-input" placeholder="Ex: Thomas" required>
+                    <label>Numéro de Carte Bancaire</label>
+                    <input type="text" class="form-input" placeholder="4532 •••• •••• ••••" maxlength="19" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Votre Adresse E-mail</label>
-                    <input type="email" class="form-input" placeholder="votre@email.com" required>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 2;">
+                        <label>Expiration</label>
+                        <input type="text" class="form-input" placeholder="MM/AA" maxlength="5" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>CVV</label>
+                        <input type="password" class="form-input" placeholder="123" maxlength="4" required>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn-pay">
                     <i class="fas fa-lock"></i> Payer 25 € et S'inscrire
                 </button>
+
+                <!-- Logos authentiques des cartes bancaires -->
+                <div class="cards-brand-logos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo_%282006-2014%29.svg" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="American Express">
+                </div>
             </form>
 
-            <!-- Logos de paiement distincts et professionnels -->
-            <div class="payment-methods">
-                <div class="pay-badge pay-visa"><i class="fab fa-cc-visa"></i> VISA</div>
-                <div class="pay-badge pay-mastercard"><i class="fab fa-cc-mastercard"></i> MASTERCARD</div>
-                <div class="pay-badge pay-amex"><i class="fab fa-cc-amex"></i> AMEX</div>
-                <div class="pay-badge pay-paypal"><i class="fab fa-paypal"></i> PAYPAL</div>
-            </div>
-
             <div class="secure-notice">
-                <i class="fas fa-shield-alt"></i> Transactions chiffrées & 100% sécurisées
+                <i class="fas fa-shield-alt"></i> Paiement sécurisé par carte • <strong>Reçu en quelques minutes</strong>
             </div>
         </div>
     </section>
 
-    <!-- SECTION DE PRÉSENTATION DE LA FORMATION (VIDÉO CORRIGÉE - SANS ÉCRAN NOIR) -->
+    <!-- SECTION DE PRÉSENTATION DE LA FORMATION : CAGE VIDÉO RÉDUITE & 7 VISUELS INTERACTIFS -->
     <section class="demo-section" id="programme">
         <div class="demo-container">
             <span class="badge-demo"><i class="fas fa-play-circle"></i> APERÇU EN DIRECT DU PROGRAMME</span>
-            <h2 id="currentModuleHeading">Ce que vous allez maîtriser dans cette formation</h2>
-            <p class="demo-subtitle">Cliquez sur chaque module ci-dessous pour lancer la vidéo de prévisualisation correspondante.</p>
+            <h2>Ce que vous allez maîtriser dans cette formation</h2>
+            <p class="demo-subtitle">Cliquez sur chaque module ci-dessous pour prévisualiser les leçons de votre espace membre.</p>
 
             <div class="video-wrapper-compact">
-                <div class="video-box">
-                    <video id="activeVideoPlayer" controls poster="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-                        Votre navigateur ne supporte pas la lecture de vidéos.
-                    </video>
+                <div class="video-box" id="videoBox">
+                    <div class="video-overlay" id="videoOverlay" onclick="playCurrentVideo()">
+                        <i class="fas fa-play-circle play-btn-icon"></i>
+                        <span id="previewModuleTitle">Module 1 : Prise en main & Fondations</span>
+                    </div>
+                    <img id="videoThumbnail" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" alt="Aperçu vidéo formation">
                 </div>
             </div>
 
             <div class="modules-grid">
-                <div class="module-card active" onclick="switchModule(0, 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800')">
+                <div class="module-card active" onclick="switchModule(0)">
                     <span class="mod-num">01</span>
                     <div class="mod-info">
                         <strong>Fondations & Stratégie</strong>
                         <small><i class="fas fa-play"></i> Vidéo (08:45)</small>
                     </div>
                 </div>
-                <div class="module-card" onclick="switchModule(1, 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800')">
+                <div class="module-card" onclick="switchModule(1)">
                     <span class="mod-num">02</span>
                     <div class="mod-info">
                         <strong>Outils Numériques Clés</strong>
                         <small><i class="fas fa-play"></i> Vidéo (12:10)</small>
                     </div>
                 </div>
-                <div class="module-card" onclick="switchModule(2, 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800')">
+                <div class="module-card" onclick="switchModule(2)">
                     <span class="mod-num">03</span>
                     <div class="mod-info">
                         <strong>Automatisations Pratiques</strong>
                         <small><i class="fas fa-play"></i> Vidéo (15:30)</small>
                     </div>
                 </div>
-                <div class="module-card" onclick="switchModule(3, 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4', 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800')">
+                <div class="module-card" onclick="switchModule(3)">
                     <span class="mod-num">04</span>
                     <div class="mod-info">
                         <strong>Productivité Accélérée</strong>
                         <small><i class="fas fa-play"></i> Vidéo (10:15)</small>
                     </div>
                 </div>
-                <div class="module-card" onclick="switchModule(4, 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4', 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800')">
+                <div class="module-card" onclick="switchModule(4)">
                     <span class="mod-num">05</span>
                     <div class="mod-info">
                         <strong>Plan d'Action Immédiat</strong>
                         <small><i class="fas fa-play"></i> Vidéo (14:20)</small>
                     </div>
                 </div>
-                <div class="module-card" onclick="switchModule(5, 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4', 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800')">
+                <div class="module-card" onclick="switchModule(5)">
                     <span class="mod-num">06</span>
                     <div class="mod-info">
                         <strong>Études de Cas Réels</strong>
                         <small><i class="fas fa-play"></i> Vidéo (11:05)</small>
                     </div>
                 </div>
-                <div class="module-card" onclick="switchModule(6, 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4', 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800')">
+                <div class="module-card" onclick="switchModule(6)">
                     <span class="mod-num">07</span>
                     <div class="mod-info">
                         <strong>Attestation & Bilan</strong>
@@ -432,7 +442,7 @@
         </div>
     </section>
 
-    <!-- SECTION : MESSAGE DE CONFIRMATION & ARRIÈRE-PLAN -->
+    <!-- SECTION AJOUTÉE : PRÉVISUALISATION DU MESSAGE DE CONFIRMATION / ARRIÈRE-PLAN -->
     <section class="confirmation-preview-section">
         <div class="confirmation-card">
             <h3><i class="fas fa-envelope-open-text"></i> Aperçu de votre message de confirmation automatisé (Page de remerciement & e-mail)</h3>
@@ -450,20 +460,20 @@
         </div>
     </section>
 
-    <!-- Section des avis dynamiques -->
+    <!-- Section des avis dynamiques en cascade séquentielle stricte (1 à 35) -->
     <section class="reviews-section">
         <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
         <div class="reviews-grid" id="reviewsContainer"></div>
     </section>
 
-    <!-- Section CGV -->
+    <!-- Section Dédiée : Conditions Générales de Vente (CGV) -->
     <section id="conditions" class="legal-container">
         <h2>Conditions Générales de Vente (CGV)</h2>
         <h3>Article 1 - Objet et Champ d'Application</h3>
         <p>Les présentes Conditions Générales de Vente régissent la vente des sessions de formation en ligne proposées par l'Académie Numérique.</p>
         
         <h3>Article 2 - Prix et Modalité de Commande</h3>
-        <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en un versement unique par le biais de la passerelle sécurisée.</p>
+        <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en un versement unique par carte bancaire.</p>
         
         <h3>Article 3 - Modalités de Livraison et Délai de Traitement</h3>
         <p>En temps normal, l'accès au service est envoyé en quelques minutes après le paiement. Toutefois, <strong>en cas de forte affluence liée à un volume important de commandes</strong>, le traitement des dossiers et l'envoi des accès par courrier électronique peuvent exceptionnellement s'effectuer dans un délai indicatif de <strong>24 à 48 heures</strong>.</p>
@@ -472,19 +482,19 @@
         <p>Si l'acheteur ne recevait pas son courrier d'accès dans un délai maximal de 48 heures suivant sa commande, un <strong>remboursement intégral et automatique sous 72 heures</strong> est garanti et effectué directement, sans aucune condition complexe.</p>
     </section>
 
-    <!-- Section Politique de Confidentialité -->
+    <!-- Section Dédiée : Politique de Confidentialité -->
     <section id="confidentialite" class="legal-container">
         <h2>Politique de Confidentialité (RGPD)</h2>
         <p>L'Académie Numérique accorde une importance majeure à la protection de la vie privée de ses utilisateurs.</p>
         <h3>1. Données Collectées</h3>
-        <p>Seuls le prénom et l'adresse e-mail renseignés dans le formulaire d'inscription sont collectés afin de permettre la livraison des accès au service.</p>
+        <p>Seuls les éléments nécessaires à la facturation et à la livraison des accès au service sont collectés.</p>
         <h3>2. Sécurité des Paiements</h3>
-        <p>Aucune donnée bancaire n'est collectée ou stockée par nos soins ; l'ensemble des transactions financières est intégralement géré de manière sécurisée.</p>
+        <p>Les transactions financières sont traitées de manière hautement sécurisée par nos passerelles de paiement partenaires.</p>
         <h3>3. Droits des Utilisateurs</h3>
         <p>Conformément au RGPD, vous disposez d'un droit d'accès, de modification et de suppression de vos données en écrivant à support@academie-numerique.fr.</p>
     </section>
 
-    <!-- Section Mentions Légales -->
+    <!-- Section Dédiée : Mentions Légales -->
     <section id="mentions" class="legal-container">
         <h2>Mentions Légales</h2>
         <p><strong>Dénomination sociale :</strong> Académie Numérique</p>
@@ -494,7 +504,7 @@
         <p><strong>Hébergement :</strong> Plateforme Cloud sécurisée</p>
     </section>
 
-    <!-- Pied de page -->
+    <!-- Pied de page officiel avec boutons de partage direct -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -515,26 +525,35 @@
             <p>Académie Numérique - Tous droits réservés</p>
             Adresse : 10 Rue de la République, 75001 Paris, France | Support : support@academie-numerique.fr<br>
             SIRET : 123 456 789 00012 | RCS Paris<br>
-            Paiements sécurisés.
+            Paiements sécurisés par carte bancaire.
         </div>
     </footer>
 
     <script>
-        function switchModule(index, videoSrc, posterSrc) {
+        const modulesData = [
+            { title: "Module 1 : Fondations & Stratégie", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" },
+            { title: "Module 2 : Outils Numériques Clés", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" },
+            { title: "Module 3 : Automatisations Pratiques", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" },
+            { title: "Module 4 : Productivité Accélérée", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" },
+            { title: "Module 5 : Plan d'Action Immédiat", img: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" },
+            { title: "Module 6 : Études de Cas Réels", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" },
+            { title: "Module 7 : Attestation & Bilan", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800" }
+        ];
+
+        function switchModule(index) {
             const cards = document.querySelectorAll('.module-card');
             cards.forEach((card, idx) => {
                 if(idx === index) card.classList.add('active');
                 else card.classList.remove('active');
             });
 
-            const player = document.getElementById('activeVideoPlayer');
-            player.pause();
-            player.src = videoSrc;
-            player.poster = posterSrc;
-            player.load();
-            player.play().catch(e => {
-                console.log("Lecture automatique bloquée par le navigateur, l'utilisateur doit cliquer sur play.");
-            });
+            const data = modulesData[index];
+            document.getElementById('videoThumbnail').src = data.img;
+            document.getElementById('previewModuleTitle').innerText = data.title;
+        }
+
+        function playCurrentVideo() {
+            alert("Aperçu de la leçon. Pour débloquer les 7 modules complets en qualité HD, complétez votre inscription ci-dessus.");
         }
 
         const frenchReviews = [
@@ -547,7 +566,32 @@
             { name: "Enzo B.", city: "Strasbourg", text: "Un contenu très pro. Rien à redire, le rapport qualité-prix est imbattable.", photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=150" },
             { name: "Camille R.", city: "Nice", text: "J'ai tout appliqué rapidement. Je recommande les yeux fermés.", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" },
             { name: "Nathan G.", city: "Lille", text: "Une vraie boîte à outils bien pensée. Ça change des formations hors de prix.", photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150" },
-            { name: "Inès M.", city: "Rennes", text: "Simple, rapide et efficace. J'ai adoré la clarté des modules.", photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=150" }
+            { name: "Inès M.", city: "Rennes", text: "Simple, rapide et efficace. J'ai adoré la clarté des modules.", photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=150" },
+            { name: "Mathis K.", city: "Grenoble", text: "Au top ! Ça m'a débloqué sur des points où je galérais depuis des semaines.", photo: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&q=80&w=150" },
+            { name: "Zoé T.", city: "Montpellier", text: "Très bonne surprise, le contenu est sérieux et très bien structuré.", photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&q=80&w=150" },
+            { name: "Louis F.", city: "Rouen", text: "Des méthodes concrètes qu'on peut appliquer dès la première heure.", photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150" },
+            { name: "Sarah S.", city: "Toulon", text: "Le meilleur guide que j'ai pu tester sur ce format. Bravo à l'équipe.", photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" },
+            { name: "Rayane Z.", city: "Dijon", text: "Impeccable. Rien à redire, c'est du travail propre et net.", photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150" },
+            { name: "Océane D.", city: "Angers", text: "Un gain de temps incroyable. Je recommande à 100%.", photo: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=80&w=150" },
+            { name: "Axel H.", city: "Nîmes", text: "Clair, net et précis. Aucun regret sur mon achat.", photo: "https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?auto=format&fit=crop&q=80&w=150" },
+            { name: "Romane J.", city: "Clermont-Ferrand", text: "Enfin des explications compréhensibles pour tout le monde.", photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=150" },
+            { name: "Kylian N.", city: "Le Mans", text: "Super formation, j'ai pu structurer mon projet en un clin d'œil.", photo: "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=150" },
+            { name: "Juliette E.", city: "Aix-en-Provence", text: "J'ai rentabilisé mes 25 € dès le premier jour grâce aux astuces.", photo: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=150" },
+            { name: "Raphaël C.", city: "Brest", text: "Efficace et direct. Pas de blabla, que du concret.", photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=150" },
+            { name: "Léna B.", city: "Tours", text: "Une très belle découverte, je suis ravie d'avoir sauté le pas.", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" },
+            { name: "Gabriel W.", city: "Amiens", text: "Un accompagnement textuel et méthodologique au top.", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150" },
+            { name: "Clara V.", city: "Limoges", text: "Simple d'accès et très formateur. Merci beaucoup !", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" },
+            { name: "Arthur P.", city: "Perpignan", text: "Parfait pour avancer rapidement sans se poser 50 questions.", photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150" },
+            { name: "Alice M.", city: "Metz", text: "Je cherchais exactement ce type de format rapide et qualitatif.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
+            { name: "Sacha L.", city: "Besançon", text: "Très bonne approche pédagogique. Rien à redire.", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
+            { name: "Jade R.", city: "Orléans", text: "C'est carré, professionnel et ça va droit au but.", photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=150" },
+            { name: "Tom K.", city: "Mulhouse", text: "Top du top ! Les conseils m'ont immédiatement servi.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" },
+            { name: "Agathe C.", city: "Boulogne-Billancourt", text: "Un investissement minime pour un contenu aussi riche.", photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" },
+            { name: "Jules D.", city: "Roubaix", text: "Génial, les étapes sont expliquées pas à pas.", photo: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&q=80&w=150" },
+            { name: "Louise N.", city: "Nancy", text: "Je recommande vivement à tous ceux qui veulent progresser vite.", photo: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&q=80&w=150" },
+            { name: "Nolan G.", city: "Argenteuil", text: "Une vraie mine d'or pour un prix dérisoire.", photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150" },
+            { name: "Rose F.", city: "Montreuil", text: "Super expérience, contenu très pro et bien ficelé.", photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" },
+            { name: "Ethan B.", city: "Saint-Denis", text: "Franchement bluffé par la qualité des ressources fournies.", photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150" }
         ];
 
         let currentIndex = 0;
