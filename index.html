@@ -154,14 +154,36 @@
         }
         .dot.active { background: var(--gold); width: 25px; border-radius: 5px; }
 
-        .buyer-transparency-box {
-            margin-top: 25px; background: #f8f9fa; border: 1px solid #e1e8ed; padding: 12px 18px;
-            border-radius: 6px; font-size: 0.82rem; color: #555; text-align: left; display: flex; align-items: center; gap: 10px;
+        /* --- NOUVELLE SECTION : POUR QUI / POUR QUI PAS --- */
+        .target-section {
+            padding: 60px 8%; background: #fdfbf7; text-align: center; border-bottom: 1px solid #e1e8ed;
         }
+        .target-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: left; }
+        .target-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .target-box.yes { border-top: 4px solid var(--success); }
+        .target-box.no { border-top: 4px solid #e74c3c; }
+        .target-box h3 { font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--navy); }
+        .target-box ul { list-style: none; }
+        .target-box ul li { font-size: 0.855rem; color: #555; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.4; }
+        .target-box.yes ul li i { color: var(--success); margin-top: 3px; flex-shrink: 0; }
+        .target-box.no ul li i { color: #e74c3c; margin-top: 3px; flex-shrink: 0; }
+
+        /* --- SECTION FORMATEUR / TRANSPARENCE --- */
+        .author-section {
+            padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed;
+        }
+        .author-card {
+            max-width: 700px; margin: 0 auto; background: var(--light-bg); padding: 35px; border-radius: 12px;
+            display: flex; align-items: center; gap: 25px; text-align: left; border: 1px solid #e1e8ed;
+        }
+        .author-avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); flex-shrink: 0; }
+        .author-details h3 { color: var(--navy); font-size: 1.2rem; margin-bottom: 5px; }
+        .author-details .author-role { font-size: 0.78rem; color: var(--gold); font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px; }
+        .author-details p { font-size: 0.85rem; color: #555; line-height: 1.6; }
 
         /* --- SECTION GARANTIE --- */
         .guarantee-section {
-            padding: 40px 8%; background: #fdfbf7; text-align: center; border-bottom: 1px solid #e1e8ed;
+            padding: 50px 8%; background: #fdfbf7; text-align: center; border-bottom: 1px solid #e1e8ed;
         }
         .guarantee-box {
             max-width: 700px; margin: 0 auto; background: white; border: 2px dashed var(--gold);
@@ -173,15 +195,20 @@
         .guarantee-content h3 { color: var(--navy); font-size: 1.2rem; margin-bottom: 8px; }
         .guarantee-content p { font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 15px; }
 
-        /* --- BOUTON DE SUPPORT --- */
+        /* --- BOUTON DE SUPPORT & COPIE FACILE --- */
         .btn-support-link {
             display: inline-flex; align-items: center; gap: 8px;
             background: var(--navy); color: var(--white); padding: 10px 18px;
             border-radius: 4px; font-size: 0.82rem; font-weight: 600; text-decoration: none;
-            transition: background 0.3s, transform 0.2s;
+            transition: background 0.3s, transform 0.2s; cursor: pointer; border: none;
         }
         .btn-support-link:hover { background: var(--navy-light); transform: translateY(-1px); }
         .btn-support-link i { color: var(--gold); }
+
+        .email-copy-box {
+            background: #fff; padding: 6px 12px; border-radius: 4px; border: 1px solid #ddd;
+            display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--navy); font-weight: 600;
+        }
 
         /* --- SECTION FAQ --- */
         .faq-section { padding: 60px 8%; background: #ffffff; text-align: center; }
@@ -259,6 +286,8 @@
             .hero { flex-direction: column; text-align: center; padding-top: 100px; }
             .hero-content h1 { font-size: 1.7rem; }
             .guarantee-box { flex-direction: column; text-align: center; }
+            .target-container { grid-template-columns: 1fr; }
+            .author-card { flex-direction: column; text-align: center; }
             .footer-links { flex-direction: column; gap: 10px; }
         }
     </style>
@@ -297,7 +326,7 @@
             </div>
 
             <div style="font-size: 0.75rem; color: #27ae60; background: #e8f8f0; padding: 8px 10px; border-radius: 4px; margin-bottom: 12px; border-left: 3px solid var(--success);">
-                <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail en quelques minutes après le paiement.
+                <i class="fas fa-bolt"></i> <strong>Accès instantané :</strong> Vos accès sont envoyés dans votre boîte mail <strong>en 2 minutes chrono</strong> après le paiement.
             </div>
 
             <form action="ICI_METTRE_TON_LIEN_PLATEFORME_INTERMEDIAIRE" method="POST">
@@ -325,12 +354,12 @@
             </div>
 
             <div class="secure-notice">
-                <i class="fas fa-shield-alt"></i> Paiement sécurisé par carte bancaire • <strong>Envoi en quelques minutes</strong>
+                <i class="fas fa-shield-alt"></i> Paiement 100% chiffré • <strong>Livraison e-mail en 2 min</strong>
             </div>
         </div>
     </section>
 
-    <!-- SECTION PRÉSENTATION DES MODULES -->
+    <!-- SECTION APERÇU DU PROGRAMME -->
     <section class="demo-section" id="programme">
         <div class="demo-container">
             <span class="badge-demo"><i class="fas fa-layer-group"></i>APERÇU DU PROGRAMME</span>
@@ -362,13 +391,43 @@
                 <span class="dot" onclick="currentSlide(5)"></span>
                 <span class="dot" onclick="currentSlide(6)"></span>
             </div>
+        </div>
+    </section>
 
-            <div class="buyer-transparency-box" style="margin-top: 30px;">
-                <i class="fas fa-shield-alt" style="color: var(--success); font-size: 1.2rem;"></i>
-                <div>
-                    <strong>Transparence & Garantie pour l'Acheteur :</strong> 
-                    L'ensemble de ces modules est immédiatement débloqué après votre paiement. Aucun abonnement caché, aucun frais supplémentaire.
-                </div>
+    <!-- NOUVELLE SECTION : POUR QUI / POUR QUI PAS -->
+    <section class="target-section">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center; margin-bottom: 30px;">
+            <span class="badge-demo">TRANSPARENCE TOTALE</span>
+            <h2 style="color: var(--navy); font-size: 1.8rem;">Est-ce que cette formation est faite pour vous ?</h2>
+        </div>
+        <div class="target-container">
+            <div class="target-box yes">
+                <h3><i class="fas fa-check-circle" style="color: var(--success);"></i> C'est POUR VOUS si...</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Vous débutez ou souhaitez structurer vos compétences numériques de zéro.</li>
+                    <li><i class="fas fa-check"></i> Vous cherchez des résultats concrets, rapides, applicables dès aujourd'hui.</li>
+                    <li><i class="fas fa-check"></i> Vous en avez assez des théories complexes et voulez de la simplicité efficace.</li>
+                </ul>
+            </div>
+            <div class="target-box no">
+                <h3><i class="fas fa-times-circle" style="color: #e74c3c;"></i> Ce n'est PAS pour vous si...</h3>
+                <ul>
+                    <li><i class="fas fa-times"></i> Vous cherchez une solution magique sans le moindre effort d'apprentissage.</li>
+                    <li><i class="fas fa-times"></i> Vous êtes déjà un expert confirmé et maîtrisez 100% de l'écosystème numérique.</li>
+                    <li><i class="fas fa-times"></i> Vous n'avez pas 10 minutes par jour à consacrer à votre progression.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOUVELLE SECTION : LE FORMATEUR -->
+    <section class="author-section">
+        <div class="author-card">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300" alt="Formateur" class="author-avatar">
+            <div class="author-details">
+                <div class="author-role">À propos de l'Académie Numérique</div>
+                <h3>Votre Accompagnateur & Pédagogue</h3>
+                <p>« Notre mission à l'Académie Numérique est de simplifier l'accès aux compétences d'avenir. Nous concevons chaque module pour qu'il soit directement utile, sans bla-bla théorique, afin que chaque participant reparte avec des clés concrètes pour réussir. »</p>
             </div>
         </div>
     </section>
@@ -381,10 +440,14 @@
             </div>
             <div class="guarantee-content">
                 <h3>Garantie "Satisfait ou Remboursé" de 7 jours</h3>
-                <p>Nous sommes convaincus de la valeur de cette formation. Si toutefois vous n'étiez pas pleinement satisfait du contenu dans les 7 jours suivant votre achat, il vous suffit de nous envoyer un e-mail et nous vous rembourserons intégralement, sans poser de questions.</p>
-                <a href="mailto:support@academie-numerique.fr" class="btn-support-link">
-                    <i class="fas fa-envelope"></i> Demander de l'aide ou un remboursement
-                </a>
+                <p>Testez le contenu en toute sérénité. Si vous n'êtes pas pleinement satisfait dans les 7 jours suivant votre achat, contactez notre support : nous vous remboursons intégralement, sans aucune justification requise.</p>
+                <div class="email-copy-box">
+                    <i class="fas fa-envelope" style="color: var(--gold);"></i> 
+                    <span>support@academie-numerique.fr</span>
+                    <button class="btn-support-link" onclick="copyEmail()" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 5px;">
+                        <i class="fas fa-copy"></i> Copier l'e-mail
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -395,27 +458,31 @@
         <div class="faq-container">
             <div class="faq-item">
                 <div class="faq-question"><i class="fas fa-question-circle"></i> Comment et quand vais-je recevoir ma formation ?</div>
-                <div class="faq-answer">Immédiatement après votre paiement, un e-mail contenant vos accès est envoyé automatiquement à votre adresse e-mail en quelques minutes.</div>
+                <div class="faq-answer">Immédiatement après votre paiement validé, un e-mail contenant vos accès est envoyé automatiquement en 2 minutes chrono.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question"><i class="fas fa-question-circle"></i> Est-ce que le paiement par carte bancaire est sécurisé ?</div>
-                <div class="faq-answer">Totalement. Toutes les transactions sont cryptées et gérées par une plateforme de paiement ultra-sécurisée. Vos coordonnées bancaires ne transitent jamais par notre site.</div>
+                <div class="faq-answer">Totalement. Toutes les transactions sont cryptées et gérées par une plateforme de paiement ultra-sécurisée. Vos coordonnées bancaires ne transitent jamais sur nos serveurs.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question"><i class="fas fa-question-circle"></i> Y a-t-il des frais cachés ou un abonnement ?</div>
-                <div class="faq-answer">Aucun ! C'est un paiement unique de 25 €. Vous payez une seule fois et vous avez un accès complet à l'ensemble du contenu.</div>
+                <div class="faq-answer">Zéro frais caché ! C'est un paiement unique de 25 € pour un accès complet et illimité.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question"><i class="fas fa-question-circle"></i> Que se passe-t-il si je ne suis pas satisfait ?</div>
-                <div class="faq-answer">Vous bénéficiez de notre garantie de 7 jours. Si le contenu ne correspond pas à vos attentes, un simple e-mail à notre support suffit pour obtenir un remboursement intégral.</div>
+                <div class="faq-answer">Vous bénéficiez de notre garantie de 7 jours. Un simple e-mail à notre support suffit pour un remboursement immédiat.</div>
             </div>
         </div>
 
         <div class="faq-support-box">
-            <p><i class="fas fa-headset" style="color: var(--navy);"></i> Vous ne trouvez pas la réponse à votre question ? Notre équipe vous répond rapidement.</p>
-            <a href="mailto:support@academie-numerique.fr" class="btn-support-link">
-                <i class="fas fa-paper-plane"></i> Contacter le support par e-mail
-            </a>
+            <p><i class="fas fa-headset" style="color: var(--navy);"></i> Une question spécifique ? Notre équipe vous répond avec le sourire :</p>
+            <div class="email-copy-box">
+                <i class="fas fa-envelope" style="color: var(--gold);"></i> 
+                <span>support@academie-numerique.fr</span>
+                <button class="btn-support-link" onclick="copyEmail()" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 5px;">
+                    <i class="fas fa-copy"></i> Copier l'e-mail
+                </button>
+            </div>
         </div>
     </section>
 
@@ -435,7 +502,7 @@
         <p>Le tarif promotionnel est fixé à 25 € (au lieu de 97 €). Le paiement s'effectue en un versement unique par carte bancaire par le biais de notre plateforme de paiement sécurisée.</p>
         
         <h3>Article 3 - Modalités de Livraison</h3>
-        <p>L'accès au service est envoyé de manière automatisée par courrier électronique en quelques minutes suivant la validation du paiement.</p>
+        <p>L'accès au service est envoyé de manière automatisée par courrier électronique en 2 minutes chrono suivant la validation du paiement.</p>
     </section>
 
     <!-- Section Dédiée : Politique de Confidentialité -->
@@ -470,9 +537,13 @@
             </div>
 
             <div class="footer-support-container">
-                <a href="mailto:support@academie-numerique.fr" class="btn-support-link">
-                    <i class="fas fa-envelope"></i> Nous contacter : support@academie-numerique.fr
-                </a>
+                <div class="email-copy-box" style="background: #1a1a1a; border-color: #333; color: #fff;">
+                    <i class="fas fa-envelope" style="color: var(--gold);"></i> 
+                    <span>support@academie-numerique.fr</span>
+                    <button class="btn-support-link" onclick="copyEmail()" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 5px;">
+                        <i class="fas fa-copy"></i> Copier
+                    </button>
+                </div>
             </div>
 
             <div class="footer-socials">
@@ -492,6 +563,15 @@
     </footer>
 
     <script>
+        // Fonction pour copier l'e-mail proprement (évite le blocage sur PC)
+        function copyEmail() {
+            navigator.clipboard.writeText("support@academie-numerique.fr").then(() => {
+                alert("✅ Adresse e-mail copiée dans le presse-papier : support@academie-numerique.fr");
+            }).catch(err => {
+                console.error("Erreur lors de la copie", err);
+            });
+        }
+
         const slideData = [
             "Module 1 : Fondations & Stratégie",
             "Module 2 : Outils Numériques Clés",
