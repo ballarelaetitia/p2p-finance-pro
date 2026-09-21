@@ -106,7 +106,7 @@
         }
         .secure-notice i { color: var(--success); }
 
-        /* --- SECTION DÉMONSTRATION VIDÉO AUTOMATIQUE (SLIDER) --- */
+        /* --- SECTION APERÇU DU PROGRAMME (SLIDER PROPRE) --- */
         .demo-section { padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
         .demo-container { max-width: 800px; margin: 0 auto; }
         .badge-demo { 
@@ -117,7 +117,7 @@
         .demo-section h2 { color: var(--navy); font-size: 1.8rem; margin-bottom: 8px; }
         .demo-subtitle { font-size: 0.9rem; color: #666; margin-bottom: 25px; }
 
-        .video-wrapper-compact {
+        .slider-wrapper-clean {
             max-width: 650px;
             margin: 0 auto 20px auto;
             border-radius: 12px;
@@ -128,26 +128,25 @@
             background: #000;
         }
 
-        .video-box { position: relative; width: 100%; height: 350px; cursor: pointer; }
-        .video-box img { 
+        .slider-box { position: relative; width: 100%; height: 350px; }
+        .slider-box img { 
             position: absolute; top:0; left:0; width:100%; height:100%; 
             object-fit: cover; opacity: 0; transition: opacity 0.8s ease-in-out; 
         }
-        .video-box img.active-slide { opacity: 0.9; }
+        .slider-box img.active-slide { opacity: 0.85; }
 
-        .video-overlay {
-            position: absolute; top:0; left:0; width:100%; height:100%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: rgba(0, 26, 77, 0.4); z-index: 2; color: white; gap: 10px;
-            padding: 15px; text-align: center; pointer-events: none;
+        .slider-overlay-title {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(transparent, rgba(0, 26, 77, 0.85));
+            padding: 25px 20px 15px; z-index: 2; color: white; text-align: center;
         }
-        .play-btn-icon { font-size: 3rem; color: var(--bright-gold); filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); }
         #previewModuleTitle { 
-            font-weight: 700; font-size: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); 
-            background: rgba(0,0,0,0.7); padding: 6px 16px; border-radius: 20px; 
+            font-weight: 700; font-size: 1.05rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); 
+            background: var(--navy); padding: 6px 16px; border-radius: 20px; 
+            border: 1px solid var(--gold); display: inline-block;
         }
 
-        /* Indicateurs de défilement (petits points style lecteur vidéo) */
+        /* Indicateurs de défilement (petits points) */
         .slider-dots {
             display: flex; justify-content: center; gap: 8px; margin-top: 15px;
         }
@@ -290,20 +289,15 @@
         </div>
     </section>
 
-    <!-- SECTION APERÇU AUTOMATISÉ (STYLE VIDÉO DIAPORAMA) -->
+    <!-- SECTION PRÉSENTATION DES MODULES (DIAPORAMA PROPRE SANS BOUTON PLAY) -->
     <section class="demo-section" id="programme">
         <div class="demo-container">
-            <span class="badge-demo"><i class="fas fa-play-circle"></i> APERÇU EN DIRECT DU PROGRAMME</span>
+            <span class="badge-demo"><i class="fas fa-layer-group"></i>APERÇU DU PROGRAMME</span>
             <h2>Ce que vous allez maîtriser dans cette formation</h2>
-            <p class="demo-subtitle">Le contenu défile automatiquement sous vos yeux comme une présentation vidéo.</p>
+            <p class="demo-subtitle">Découvrez ci-dessous les différents modules inclus dans votre programme.</p>
 
-            <div class="video-wrapper-compact">
-                <div class="video-box" id="videoBox" onclick="triggerDemoClick()">
-                    <!-- Les images défilent automatiquement en fondu grâce au script -->
-                    <div class="video-overlay">
-                        <i class="fas fa-play-circle play-btn-icon"></i>
-                        <span id="previewModuleTitle">Module 1 : Fondations & Stratégie</span>
-                    </div>
+            <div class="slider-wrapper-clean">
+                <div class="slider-box" id="sliderBox">
                     <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" class="active-slide" alt="Module 1">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Module 2">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Module 3">
@@ -311,10 +305,14 @@
                     <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" alt="Module 5">
                     <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Module 6">
                     <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800" alt="Module 7">
+
+                    <div class="slider-overlay-title">
+                        <span id="previewModuleTitle">Module 1 : Fondations & Stratégie</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Indicateurs de progression automatiques (remplace les boutons 1 à 7) -->
+            <!-- Indicateurs de progression automatiques -->
             <div class="slider-dots" id="sliderDots">
                 <span class="dot active" onclick="currentSlide(0)"></span>
                 <span class="dot" onclick="currentSlide(1)"></span>
@@ -402,7 +400,7 @@
     </footer>
 
     <script>
-        // Données des titres correspondant aux images du diaporama automatique
+        // Données des titres des modules pour le diaporama
         const slideData = [
             "Module 1 : Fondations & Stratégie",
             "Module 2 : Outils Numériques Clés",
@@ -414,7 +412,7 @@
         ];
 
         let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.video-box img');
+        const slides = document.querySelectorAll('.slider-box img');
         const dots = document.querySelectorAll('.dot');
         const titleElement = document.getElementById('previewModuleTitle');
         let slideInterval;
@@ -441,11 +439,7 @@
 
         function resetTimer() {
             clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 4000); // Change d'image toutes les 4 secondes
-        }
-
-        function triggerDemoClick() {
-            alert("Aperçu de la leçon. Pour débloquer les 7 modules complets en qualité HD, complétez votre inscription ci-dessus.");
+            slideInterval = setInterval(nextSlide, 4000); // Change de module toutes les 4 secondes
         }
 
         // --- GESTION DES AVIS DYNAMIQUES ---
@@ -504,7 +498,7 @@
         // Initialisation au chargement de la page
         window.onload = function() {
             initLiveReviews();
-            slideInterval = setInterval(nextSlide, 4000); // Démarre le défilement automatique des modules
+            slideInterval = setInterval(nextSlide, 4000); // Lance le défilement automatique
         };
     </script>
 </body>
