@@ -293,7 +293,7 @@
         }
         .faq-support-box p { font-size: 0.85rem; color: #555; margin-bottom: 12px; }
 
-        /* --- AVIS DYNAMIQUES VARIÉS (35 PROFILS VARIÉS : ANIMAUX, VOITURES, FLEURS, JUMEAUX, ETC.) --- */
+        /* --- AVIS DYNAMIQUES VARIÉS (35 PROFILS HUMAINS & NATURELS) --- */
         .reviews-section { padding: 60px 8%; background: #ffffff; text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
         
@@ -618,7 +618,7 @@
         </div>
     </section>
 
-    <!-- SECTION AVIS DYNAMIQUES (35 AVIS COMPLETS AVEC PROFILS VARIÉS : ANIMAUX, VOITURES, FLEURS, JUMEAUX, ETC.) -->
+    <!-- SECTION AVIS DYNAMIQUES (35 AVIS COMPLETS SANS RÉPÉTITION) -->
     <section class="reviews-section">
         <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
         <div class="reviews-grid" id="reviewsContainer"></div>
@@ -738,43 +738,43 @@
         function currentSlide(index) { showSlide(index); resetTimer(); }
         function resetTimer() { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 4000); }
 
-        /* LISTE EXACTE DE 35 AVIS VARIÉS (Animaux, voitures, fleurs, jumeaux, paysages, objets et profils variés) */
+        /* LISTE DE 35 AVIS HUMAINS UNIQUES (SANS DOUBLON NI ANIMAUX) */
         const frenchReviews = [
-            { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record.", avatar: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=150" }, // Chien
-            { name: "Sarah K.", city: "Toulouse", text: "Très direct, pas de blabla inutile. Je recommande à 100%.", avatar: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=150" }, // Chat
-            { name: "Marc T.", city: "Nantes", text: "Enfin une formation sans jargon. On va droit au but.", avatar: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=150" }, // Voiture sportive
-            { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", avatar: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&q=80&w=150" }, // Fleurs colorées
-            { name: "Karim B.", city: "Marseille", text: "Super formation, ça éclaire vraiment sur les méthodes à suivre.", avatar: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&q=80&w=150" }, // Chaton mignon
-            { name: "Pauline V.", city: "Bordeaux", text: "J'ai appliqué les conseils dès le premier soir. Résultats immédiats !", avatar: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=150" }, // Moto
-            { name: "Chloé B.", city: "Lille", text: "J'hésitais au début vu le prix bas, mais le contenu est vraiment au rendez-vous.", avatar: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=150" }, // Jumeaux / Frères
-            { name: "Julien R.", city: "Strasbourg", text: "Simple, efficace et très bien structuré du début à la fin.", avatar: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=150" }, // Chien joueur
-            { name: "Théo V.", city: "Nice", text: "Pris en main en moins de 10 minutes. Exactement ce dont j'avais besoin.", avatar: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=150" }, // Voiture de luxe
-            { name: "Nathalie S.", city: "Rennes", text: "Un grand merci pour cette clarté pédagogique irréprochable.", avatar: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&q=80&w=150" }, // Fleurs de cerisier
-            { name: "David M.", city: "Toulon", text: "Le meilleur investissement de l'année pour ma structure.", avatar: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&q=80&w=150" }, // Chaton
-            { name: "Élodie P.", city: "Grenoble", text: "Excellente pédagogie, tout est limpide.", avatar: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=150" }, // Plage ensoleillée
-            { name: "Alexandre G.", city: "Dijon", text: "Je cherchais des outils concrets, je les ai trouvés ici.", avatar: "https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?auto=format&fit=crop&q=80&w=150" }, // Jumeaux / Enfants
-            { name: "Camille N.", city: "Angers", text: "Un format court et percutant comme on aimerait en voir plus souvent.", avatar: "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=150" }, // Chien loup
-            { name: "Romain D.", city: "Nîmes", text: "Reçu en deux minutes par e-mail, j'ai pu commencer de suite.", avatar: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=150" }, // Voiture de course
-            { name: "Audrey F.", city: "Clermont-Ferrand", text: "Très bonne surprise, contenu de grande valeur.", avatar: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=150" }, // Montagne / Paysage
-            { name: "Maxime L.", city: "Le Havre", text: "Des explications claires et sans fioritures.", avatar: "https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&q=80&w=150" }, // Chat curieux
-            { name: "Sophie M.", city: "Aix-en-Provence", text: "Idéal pour progresser rapidement à son rythme.", avatar: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=150" }, // Chambre cosy
-            { name: "Guillaume P.", city: "Brest", text: "Je recommande vivement à tous ceux qui veulent du concret.", avatar: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&q=80&w=150" }, // Berline élégante
-            { name: "Laura C.", city: "Limoges", text: "Super accompagnement et modules très bien pensés.", avatar: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=150" }, // Fleurs artistiques
-            { name: "Florian B.", city: "Tours", text: "Efficace du début à la fin, rien à redire.", avatar: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=150" }, // Chien heureux
-            { name: "Inès H.", city: "Amiens", text: "Un vrai gain de temps pour s'organiser au quotidien.", avatar: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=150" }, // Chambre moderne
-            { name: "Benjamin T.", city: "Perpignan", text: "Le rapport qualité/prix est tout simplement imbattable.", avatar: "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&q=80&w=150" }, // Jumeaux souriants
-            { name: "Charlotte V.", city: "Besançon", text: "J'ai tout de suite compris comment appliquer les méthodes.", avatar: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=150" }, // Plage paradisiaque
-            { name: "Mathieu R.", city: "Orléans", text: "Une formation directe, pragmatique et utile.", avatar: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=150" }, // Véhicule de collection
-            { name: "Morgane J.", city: "Rouen", text: "Parfait pour se lancer sans se poser mille questions.", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150" }, // Moto route
-            { name: "Nicolas S.", city: "Mulhouse", text: "Un contenu de pro accessible à tous.", avatar: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&q=80&w=150" }, // Chaton joueur
-            { name: "Émilie G.", city: "Caen", text: "Je suis ravie d'avoir franchi le pas, merci !", avatar: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&q=80&w=150" }, // Fleurs de printemps
-            { name: "Jérôme B.", city: "Nancy", text: "Structure claire et progression logique, bravo.", avatar: "https://images.unsplash.com/photo-1541348263662-e0f266287f3f?auto=format&fit=crop&q=80&w=150" }, // Chambre design
-            { name: "Clara D.", city: "Argenteuil", text: "Simple, rapide et redoutablement efficace.", avatar: "https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?auto=format&fit=crop&q=80&w=150" }, // Jumeaux
-            { name: "Damien K.", city: "Montreuil", text: "Exactement ce qu'il me fallait pour avancer.", avatar: "https://images.unsplash.com/photo-1561580125-024c36a4b4e2?auto=format&fit=crop&q=80&w=150" }, // Chien berger
-            { name: "Mélanie P.", city: "Roubaix", text: "Une vraie valeur ajoutée pour mes projets.", avatar: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&q=80&w=150" }, // Voiture élégante
-            { name: "Stéphane L.", city: "Dunkerque", text: "Rien à redire, tout est carré et pro.", avatar: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=150" }, // Plage coucher de soleil
-            { name: "Julie W.", city: "Poitiers", text: "Je recommande les yeux fermés à mon entourage.", avatar: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&q=80&w=150" }, // Fleurs variées
-            { name: "Yannick M.", city: "Pau", text: "Super expérience d'apprentissage, merci pour tout.", avatar: "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&q=80&w=150" }  // Animaux / Chat mignon
+            { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record.", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Sarah K.", city: "Toulouse", text: "Très direct, pas de blabla inutile. Je recommande à 100%.", avatar: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Marc T.", city: "Nantes", text: "Enfin une formation sans jargon. On va droit au but.", initials: "MT", type: "initials" },
+            { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Karim B.", city: "Marseille", text: "Super formation, ça éclaire vraiment sur les méthodes à suivre.", avatar: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Pauline V.", city: "Bordeaux", text: "J'ai appliqué les conseils dès le premier soir. Résultats immédiats !", initials: "PV", type: "initials" },
+            { name: "Chloé B.", city: "Lille", text: "J'hésitais au début vu le prix bas, mais le contenu est vraiment au rendez-vous.", avatar: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Julien R.", city: "Strasbourg", text: "Simple, efficace et très bien structuré du début à la fin.", avatar: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Théo V.", city: "Nice", text: "Pris en main en moins de 10 minutes. Exactement ce dont j'avais besoin.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Nathalie S.", city: "Rennes", text: "Un grand merci pour cette clarté pédagogique irréprochable.", initials: "NS", type: "initials" },
+            { name: "David M.", city: "Toulon", text: "Le meilleur investissement de l'année pour ma structure.", avatar: "https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Élodie P.", city: "Grenoble", text: "Excellente pédagogie, tout est limpide.", initials: "ÉP", type: "initials" },
+            { name: "Alexandre G.", city: "Dijon", text: "Je cherchais des outils concrets, je les ai trouvés ici.", avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Camille N.", city: "Angers", text: "Un format court et percutant comme on aimerait en voir plus souvent.", initials: "CN", type: "initials" },
+            { name: "Romain D.", city: "Nîmes", text: "Reçu en deux minutes par e-mail, j'ai pu commencer de suite.", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Audrey F.", city: "Clermont-Ferrand", text: "Très bonne surprise, contenu de grande valeur.", initials: "AF", type: "initials" },
+            { name: "Maxime L.", city: "Le Havre", text: "Des explications claires et sans fioritures.", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Sophie M.", city: "Aix-en-Provence", text: "Idéal pour progresser rapidement à son rythme.", initials: "SM", type: "initials" },
+            { name: "Guillaume P.", city: "Brest", text: "Je recommande vivement à tous ceux qui veulent du concret.", avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Laura C.", city: "Limoges", text: "Super accompagnement et modules très bien pensés.", initials: "LC", type: "initials" },
+            { name: "Florian B.", city: "Tours", text: "Efficace du début à la fin, rien à redire.", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Inès H.", city: "Amiens", text: "Un vrai gain de temps pour s'organiser au quotidien.", initials: "IH", type: "initials" },
+            { name: "Benjamin T.", city: "Perpignan", text: "Le rapport qualité/prix est tout simplement imbattable.", avatar: "https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Charlotte V.", city: "Besançon", text: "J'ai tout de suite compris comment appliquer les méthodes.", initials: "CV", type: "initials" },
+            { name: "Mathieu R.", city: "Orléans", text: "Une formation directe, pragmatique et utile.", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Morgane J.", city: "Rouen", text: "Parfait pour se lancer sans se poser mille questions.", initials: "MJ", type: "initials" },
+            { name: "Nicolas S.", city: "Mulhouse", text: "Un contenu de pro accessible à tous.", avatar: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Émilie G.", city: "Caen", text: "Je suis ravie d'avoir franchi le pas, merci !", initials: "EG", type: "initials" },
+            { name: "Jérôme B.", city: "Nancy", text: "Structure claire et progression logique, bravo.", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Clara D.", city: "Argenteuil", text: "Simple, rapide et redoutablement efficace.", initials: "CD", type: "initials" },
+            { name: "Damien K.", city: "Montreuil", text: "Exactement ce qu'il me fallait pour avancer.", avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Mélanie P.", city: "Roubaix", text: "Une vraie valeur ajoutée pour mes projets.", initials: "MP", type: "initials" },
+            { name: "Stéphane L.", city: "Dunkerque", text: "Rien à redire, tout est carré et pro.", avatar: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Julie W.", city: "Poitiers", text: "Je recommande les yeux fermés à mon entourage.", initials: "JW", type: "initials" },
+            { name: "Yannick M.", city: "Pau", text: "Super expérience d'apprentissage, merci pour tout.", avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=150", type: "photo" }
         ];
 
         let reviewIndex = 0;
@@ -786,7 +786,12 @@
                 const currentReview = frenchReviews[reviewIndex];
                 const randomMinutes = Math.floor(Math.random() * 45) + 3;
 
-                const avatarHTML = `<img src="${currentReview.avatar}" alt="${currentReview.name}" class="author-img">`;
+                let avatarHTML = "";
+                if (currentReview.type === "photo") {
+                    avatarHTML = `<img src="${currentReview.avatar}" alt="${currentReview.name}" class="author-img">`;
+                } else {
+                    avatarHTML = `<div class="author-initials">${currentReview.initials}</div>`;
+                }
 
                 const card = document.createElement('div');
                 card.className = 'review-card';
@@ -805,7 +810,7 @@
                     container.removeChild(container.lastChild);
                 }
 
-                // Parcours fluide et complet des 35 avis de 0 à 34 sans doublon immédiat
+                // Rotation séquentielle propre sur les 35 avis sans répétition simultanée
                 reviewIndex = (reviewIndex + 1) % frenchReviews.length;
             }
 
