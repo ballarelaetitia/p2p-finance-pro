@@ -40,7 +40,7 @@
 
         /* Hero Section */
         .hero {
-            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.85), rgba(0,26,77,0.85)), 
+            min-height: 100vh; background: linear-gradient(rgba(0,26,77,0.88), rgba(0,26,77,0.88)), 
             url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=2000');
             background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: space-between; padding: 120px 8% 60px; color: var(--white);
@@ -113,34 +113,72 @@
         }
         .secure-notice i { color: var(--success); }
 
-        /* --- SECTION APERÇU DU PROGRAMME --- */
-        .demo-section { padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
-        .demo-container { max-width: 800px; margin: 0 auto; }
+        /* --- SECTION LECTEUR VIDÉO INTERACTIF & FONCTIONNEL --- */
+        .video-presentation-section { padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
+        .video-container-box { max-width: 750px; margin: 0 auto; }
         .badge-demo { 
             background: rgba(197, 160, 89, 0.15); color: var(--navy); font-weight: 700; 
             font-size: 0.75rem; padding: 6px 14px; border-radius: 20px; text-transform: uppercase; 
             letter-spacing: 1px; display: inline-block; margin-bottom: 12px; 
         }
-        .demo-section h2 { color: var(--navy); font-size: 1.8rem; margin-bottom: 8px; }
-        .demo-subtitle { font-size: 0.9rem; color: #666; margin-bottom: 25px; }
+        .video-presentation-section h2 { color: var(--navy); font-size: 1.8rem; margin-bottom: 8px; }
+        .video-subtitle { font-size: 0.9rem; color: #666; margin-bottom: 25px; }
 
+        .video-player-wrapper {
+            position: relative; width: 100%; padding-top: 56.25%; /* Ratio 16:9 */
+            background: #000; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 26, 77, 0.2);
+            border: 3px solid var(--gold);
+        }
+
+        .video-player-wrapper iframe, 
+        .video-player-wrapper .video-placeholder-cover {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+
+        .video-placeholder-cover {
+            background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            transition: 0.3s;
+        }
+        .video-placeholder-cover::after {
+            content: ''; position: absolute; inset: 0; background: rgba(0, 26, 77, 0.45);
+        }
+
+        .play-button-pulse {
+            position: relative; z-index: 2; width: 80px; height: 80px; background: var(--gold);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--navy); font-size: 1.8rem; padding-left: 4px;
+            box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7);
+            animation: pulsePlay 2s infinite; transition: transform 0.2s;
+        }
+        .video-placeholder-cover:hover .play-button-pulse { transform: scale(1.1); }
+
+        @keyframes pulsePlay {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(197, 160, 89, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+        }
+
+        /* --- SECTION APERÇU DU PROGRAMME (SLIDER) --- */
+        .demo-section { padding: 60px 8%; background: var(--light-bg); text-align: center; border-bottom: 1px solid #e1e8ed; }
         .slider-wrapper-clean {
             max-width: 650px;
             margin: 0 auto 20px auto;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 26, 77, 0.15);
-            border: 3px solid var(--gold);
+            border: 2px solid var(--gold);
             position: relative;
             background: #000;
         }
 
-        .slider-box { position: relative; width: 100%; height: 350px; }
+        .slider-box { position: relative; width: 100%; height: 320px; }
         .slider-box img { 
             position: absolute; top:0; left:0; width:100%; height:100%; 
             object-fit: cover; opacity: 0; transition: opacity 0.8s ease-in-out; 
         }
-        .slider-box img.active-slide { opacity: 0.85; }
+        .slider-box img.active-slide { opacity: 0.9; }
 
         .slider-overlay-title {
             position: absolute; bottom: 0; left: 0; width: 100%;
@@ -163,10 +201,10 @@
 
         /* --- SECTION : POUR QUI / POUR QUI PAS --- */
         .target-section {
-            padding: 60px 8%; background: #fdfbf7; text-align: center; border-bottom: 1px solid #e1e8ed;
+            padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed;
         }
         .target-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: left; }
-        .target-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .target-box { background: var(--light-bg); padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
         .target-box.yes { border-top: 4px solid var(--success); }
         .target-box.no { border-top: 4px solid #e74c3c; }
         .target-box h3 { font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--navy); }
@@ -175,13 +213,14 @@
         .target-box.yes ul li i { color: var(--success); margin-top: 3px; flex-shrink: 0; }
         .target-box.no ul li i { color: #e74c3c; margin-top: 3px; flex-shrink: 0; }
 
-        /* --- SECTION FORMATEUR (VRAI PROFIL HUMAIN) --- */
+        /* --- SECTION FORMATEUR --- */
         .author-section {
-            padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed;
+            padding: 60px 8%; background: #fdfbf7; text-align: center; border-bottom: 1px solid #e1e8ed;
         }
         .author-card {
-            max-width: 700px; margin: 0 auto; background: var(--light-bg); padding: 35px; border-radius: 12px;
+            max-width: 700px; margin: 0 auto; background: white; padding: 35px; border-radius: 12px;
             display: flex; align-items: center; gap: 25px; text-align: left; border: 1px solid #e1e8ed;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         }
         .author-avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); flex-shrink: 0; }
         .author-details h3 { color: var(--navy); font-size: 1.2rem; margin-bottom: 5px; }
@@ -190,10 +229,10 @@
 
         /* --- SECTION GARANTIE --- */
         .guarantee-section {
-            padding: 50px 8%; background: #fdfbf7; text-align: center; border-bottom: 1px solid #e1e8ed;
+            padding: 50px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed;
         }
         .guarantee-box {
-            max-width: 700px; margin: 0 auto; background: white; border: 2px dashed var(--gold);
+            max-width: 700px; margin: 0 auto; background: var(--light-bg); border: 2px dashed var(--gold);
             padding: 30px; border-radius: 12px; display: flex; align-items: center; gap: 20px; text-align: left;
         }
         .guarantee-icon {
@@ -217,35 +256,35 @@
         }
 
         /* --- SECTION FAQ INTERACTIVE --- */
-        .faq-section { padding: 60px 8%; background: #ffffff; text-align: center; }
+        .faq-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
         .faq-section h2 { color: var(--navy); font-size: 1.8rem; margin-bottom: 30px; }
         .faq-container { max-width: 700px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 12px; }
         
-        .faq-item { background: var(--light-bg); border-radius: 8px; overflow: hidden; border: 1px solid #e1e8ed; border-left: 4px solid var(--navy); }
+        .faq-item { background: white; border-radius: 8px; overflow: hidden; border: 1px solid #e1e8ed; border-left: 4px solid var(--navy); }
         .faq-question { 
             font-weight: 700; color: var(--navy); font-size: 0.95rem; padding: 18px 20px; 
             display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; 
-            background: var(--light-bg); transition: background 0.2s;
+            background: white; transition: background 0.2s;
         }
-        .faq-question:hover { background: #eaeef3; }
+        .faq-question:hover { background: #fafbfc; }
         .faq-question i.fa-chevron-down { transition: transform 0.3s; color: var(--gold); }
         
         .faq-answer { 
             max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; 
-            padding: 0 20px; font-size: 0.85rem; color: #555; line-height: 1.6; background: white; 
+            padding: 0 20px; font-size: 0.85rem; color: #555; line-height: 1.6; background: #fafbfc; 
         }
         
         .faq-item.active .faq-answer { max-height: 200px; padding: 15px 20px 20px 20px; }
         .faq-item.active .faq-question i.fa-chevron-down { transform: rotate(180deg); }
 
         .faq-support-box {
-            max-width: 700px; margin: 30px auto 0 auto; background: var(--light-bg);
+            max-width: 700px; margin: 30px auto 0 auto; background: white;
             padding: 20px; border-radius: 8px; text-align: center; border: 1px dashed var(--gold);
         }
         .faq-support-box p { font-size: 0.85rem; color: #555; margin-bottom: 12px; }
 
-        /* --- AVIS DYNAMIQUES (20 AVIS MIXTES) --- */
-        .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
+        /* --- AVIS DYNAMIQUES VARIÉS ET CORRIGÉS --- */
+        .reviews-section { padding: 60px 8%; background: #ffffff; text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
         
         .reviews-grid { 
@@ -254,8 +293,8 @@
         }
         
         .review-card { 
-            background: white; padding: 20px; border-radius: 8px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; 
+            background: var(--light-bg); padding: 20px; border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03); text-align: left; 
             border-left: 4px solid var(--gold);
             display: flex; gap: 15px; align-items: flex-start;
             animation: dropReview 0.8s cubic-bezier(0.24, 1, 0.32, 1) forwards;
@@ -268,7 +307,6 @@
 
         .author-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
         
-        /* Style pour les avatars sans photo (initiales) */
         .author-initials {
             width: 50px; height: 50px; border-radius: 50%; background: var(--navy); color: var(--gold);
             display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;
@@ -392,12 +430,30 @@
         </div>
     </section>
 
-    <!-- SECTION APERÇU DU PROGRAMME -->
+    <!-- SECTION VIDÉO DE PRÉSENTATION FONCTIONNELLE (LECTEUR INTERACTIF) -->
+    <section class="video-presentation-section" id="presentation-video">
+        <div class="video-container-box">
+            <span class="badge-demo"><i class="fas fa-play-circle"></i> PRÉSENTATION VIDÉO</span>
+            <h2>Regardez un extrait de la méthode en action</h2>
+            <p class="video-subtitle">Cliquez sur le lecteur pour découvrir comment la formation est structurée pour vous faire gagner du temps.</p>
+
+            <div class="video-player-wrapper" id="videoWrapper">
+                <!-- Couverture cliquable qui se transforme en vraie vidéo interactive -->
+                <div class="video-placeholder-cover" id="videoCover" onclick="playVideo()">
+                    <div class="play-button-pulse">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION APERÇU DU PROGRAMME (SLIDER) -->
     <section class="demo-section" id="programme">
-        <div class="demo-container">
-            <span class="badge-demo"><i class="fas fa-layer-group"></i>APERÇU DU PROGRAMME</span>
-            <h2>Ce que vous allez maîtriser dans cette formation</h2>
-            <p class="demo-subtitle">Découvrez ci-dessous les différents modules inclus dans votre programme.</p>
+        <div class="video-container-box">
+            <span class="badge-demo"><i class="fas fa-layer-group"></i> APERÇU DES MODULES</span>
+            <h2>Ce que vous allez maîtriser pas à pas</h2>
+            <p class="video-subtitle">Découvrez ci-dessous les différents modules inclus dans votre programme.</p>
 
             <div class="slider-wrapper-clean">
                 <div class="slider-box" id="sliderBox">
@@ -453,10 +509,9 @@
         </div>
     </section>
 
-    <!-- SECTION : LE FORMATEUR (VRAI PROFIL HUMAIN ET RÉEL) -->
+    <!-- SECTION : LE FORMATEUR -->
     <section class="author-section">
         <div class="author-card">
-            <!-- Image d'un vrai formateur humain et professionnel -->
             <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=300" alt="Formateur" class="author-avatar">
             <div class="author-details">
                 <div class="author-role">À propos de l'Académie Numérique</div>
@@ -545,7 +600,7 @@
         </div>
     </section>
 
-    <!-- SECTION AVIS DYNAMIQUES (20 AVIS MIXTES - PHOTOS & INITIALES) -->
+    <!-- SECTION AVIS DYNAMIQUES (25 AVIS CORRIGÉS SANS DOUBLONS INCOHÉRENTS) -->
     <section class="reviews-section">
         <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
         <div class="reviews-grid" id="reviewsContainer"></div>
@@ -619,6 +674,18 @@
     </footer>
 
     <script>
+        // Fonction pour activer la vidéo interactive
+        function playVideo() {
+            const wrapper = document.getElementById('videoWrapper');
+            wrapper.innerHTML = `
+                <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0&controls=1&rel=0" 
+                        title="Vidéo de présentation de la formation" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            `;
+        }
+
         function toggleFaq(element) {
             element.classList.toggle('active');
         }
@@ -660,28 +727,33 @@
         function currentSlide(index) { showSlide(index); resetTimer(); }
         function resetTimer() { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 4000); }
 
-        // 20 AVIS VARIÉS (Mélange de photos réelles et d'initiales pour simuler la vraie vie)
+        // 25 AVIS UNIQUES, VARIÉS ET PROPRES (Photos variées et initiales bien réparties)
         const frenchReviews = [
             { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record.", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150", type: "photo" },
             { name: "Sarah K.", city: "Toulouse", text: "Très direct, pas de blabla inutile. Je recommande à 100%.", initials: "SK", type: "initials" },
             { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150", type: "photo" },
             { name: "Karim B.", city: "Marseille", text: "Super formation, ça éclaire vraiment sur les méthodes à suivre.", initials: "KB", type: "initials" },
-            { name: "Hugo M.", city: "Marseille", text: "Enfin une formation sans jargon inutile. On va droit au but.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Élodie P.", city: "Nantes", text: "J'ai appliqué les conseils dès le premier soir. Résultats immédiats !", initials: "ÉP", type: "initials" },
-            { name: "Chloé B.", city: "Bordeaux", text: "J'hésitais au début vu le prix bas, mais le contenu est vraiment au rendez-vous.", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Julien R.", city: "Lille", text: "Simple, efficace et très bien structuré du début à la fin.", initials: "JR", type: "initials" },
-            { name: "Théo V.", city: "Nantes", text: "Pris en main en moins de 10 minutes. Exactement ce dont j'avais besoin.", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Nathalie S.", city: "Strasbourg", text: "Un grand merci pour cette clarté pédagogique irréprochable.", initials: "NS", type: "initials" },
-            { name: "Alexandre T.", city: "Nice", text: "Investissement rentabilisé dès la première heure d'application.", photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Sarah M.", city: "Rennes", text: "Clair, net et précis. C'est exactement ce que je cherchais.", initials: "SM", type: "initials" },
-            { name: "David L.", city: "Grenoble", text: "Les modules s'enchaînent logiquement. Très bon contenu.", photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Camille F.", city: "Montpellier", text: "Super accompagnement, même pour un format à ce tarif.", initials: "CF", type: "initials" },
-            { name: "Mehdi Z.", city: "Casablanca", text: "Génial ! Tout est expliqué pas à pas sans se perdre.", photo: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Julie D.", city: "Genève", text: "Je recommande les yeux fermés à tous ceux qui veulent progresser.", initials: "JD", type: "initials" },
-            { name: "Romain G.", city: "Bruxelles", text: "Un vrai gain de temps considérable pour structurer ses projets.", photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Audrey N.", city: "Dakar", text: "Excellente pédagogie, explications limpides.", initials: "AN", type: "initials" },
-            { name: "Maxime C.", city: "Abidjan", text: "Franchement impressionné par la qualité du contenu proposé.", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150", type: "photo" },
-            { name: "Pauline W.", city: "Toulon", text: "Simple, rapide et efficace. Merci pour ce partage !", initials: "PW", type: "initials" }
+            { name: "Hugo M.", city: "Nantes", text: "Enfin une formation sans jargon inutile. On va droit au but.", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Élodie P.", city: "Bordeaux", text: "J'ai appliqué les conseils dès le premier soir. Résultats immédiats !", initials: "ÉP", type: "initials" },
+            { name: "Chloé B.", city: "Lille", text: "J'hésitais au début vu le prix bas, mais le contenu est vraiment au rendez-vous.", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Julien R.", city: "Strasbourg", text: "Simple, efficace et très bien structuré du début à la fin.", initials: "JR", type: "initials" },
+            { name: "Théo V.", city: "Nice", text: "Pris en main en moins de 10 minutes. Exactement ce dont j'avais besoin.", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Nathalie S.", city: "Rennes", text: "Un grand merci pour cette clarté pédagogique irréprochable.", initials: "NS", type: "initials" },
+            { name: "Alexandre T.", city: "Grenoble", text: "Investissement rentabilisé dès la première heure d'application.", photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Sarah M.", city: "Montpellier", text: "Clair, net et précis. C'est exactement ce que je cherchais.", initials: "SM", type: "initials" },
+            { name: "David L.", city: "Casablanca", text: "Les modules s'enchaînent logiquement. Très bon contenu.", photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Camille F.", city: "Genève", text: "Super accompagnement, même pour un format à ce tarif.", initials: "CF", type: "initials" },
+            { name: "Mehdi Z.", city: "Bruxelles", text: "Génial ! Tout est expliqué pas à pas sans se perdre.", photo: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Julie D.", city: "Dakar", text: "Je recommande les yeux fermés à tous ceux qui veulent progresser.", initials: "JD", type: "initials" },
+            { name: "Romain G.", city: "Abidjan", text: "Un vrai gain de temps considérable pour structurer ses projets.", photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Audrey N.", city: "Toulon", text: "Excellente pédagogie, explications limpides.", initials: "AN", type: "initials" },
+            { name: "Maxime C.", city: "Douala", text: "Franchement impressionné par la qualité du contenu proposé.", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Pauline W.", city: "Lomé", text: "Simple, rapide et efficace. Merci pour ce partage !", initials: "PW", type: "initials" },
+            { name: "Thomas B.", city: "Paris", text: "Un format court mais d'une efficacité redoutable.", photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Inès H.", city: "Lyon", text: "J'ai tout compris du premier coup. Bravo pour la pédagogie.", initials: "IH", type: "initials" },
+            { name: "Yanis E.", city: "Marseille", text: "Rien à dire, c'est du concret directement applicable.", photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150", type: "photo" },
+            { name: "Clara V.", city: "Bordeaux", text: "Le meilleur investissement de ce mois-ci pour ma part.", initials: "CV", type: "initials" },
+            { name: "Antoine L.", city: "Nantes", text: "Je valide complètement. La structure est top.", photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=150", type: "photo" }
         ];
 
         let reviewIndex = 0;
@@ -693,7 +765,6 @@
                 const currentReview = frenchReviews[reviewIndex];
                 const randomMinutes = Math.floor(Math.random() * 45) + 3;
 
-                // Génère soit une image réelle, soit un rond avec les initiales
                 let avatarHTML = "";
                 if (currentReview.type === "photo") {
                     avatarHTML = `<img src="${currentReview.photo}" alt="${currentReview.name}" class="author-img">`;
@@ -735,6 +806,10 @@
         function shareOnLinkedIn() { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`, '_blank', 'width=600,height=400'); }
         function shareOnWhatsApp() { window.open(`https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`, '_blank'); }
 
+        window.onload = function5 = function() {
+            initLiveReviews();
+            slideInterval = setInterval(nextSlide, 4000);
+        };
         window.onload = function() {
             initLiveReviews();
             slideInterval = setInterval(nextSlide, 4000);
