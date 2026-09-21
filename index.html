@@ -106,7 +106,7 @@
         }
         .secure-notice i { color: var(--success); }
 
-        /* --- SECTION APERÇU DU PROGRAMME (SLIDER PROPRE) --- */
+        /* --- SECTION APERÇU DU PROGRAMME --- */
         .demo-section { padding: 60px 8%; background: #ffffff; text-align: center; border-bottom: 1px solid #e1e8ed; }
         .demo-container { max-width: 800px; margin: 0 auto; }
         .badge-demo { 
@@ -146,7 +146,6 @@
             border: 1px solid var(--gold); display: inline-block;
         }
 
-        /* Indicateurs de défilement (petits points) */
         .slider-dots {
             display: flex; justify-content: center; gap: 8px; margin-top: 15px;
         }
@@ -159,6 +158,29 @@
             margin-top: 25px; background: #f8f9fa; border: 1px solid #e1e8ed; padding: 12px 18px;
             border-radius: 6px; font-size: 0.82rem; color: #555; text-align: left; display: flex; align-items: center; gap: 10px;
         }
+
+        /* --- SECTION GARANTIE --- */
+        .guarantee-section {
+            padding: 40px 8%; background: #fdfbf7; text-align: center; border-bottom: 1px solid #e1e8ed;
+        }
+        .guarantee-box {
+            max-width: 700px; margin: 0 auto; background: white; border: 2px dashed var(--gold);
+            padding: 30px; border-radius: 12px; display: flex; align-items: center; gap: 20px; text-align: left;
+        }
+        .guarantee-icon {
+            font-size: 3rem; color: var(--gold); flex-shrink: 0; text-align: center; width: 80px;
+        }
+        .guarantee-content h3 { color: var(--navy); font-size: 1.2rem; margin-bottom: 8px; }
+        .guarantee-content p { font-size: 0.85rem; color: #555; line-height: 1.5; }
+
+        /* --- SECTION FAQ --- */
+        .faq-section { padding: 60px 8%; background: #ffffff; text-align: center; }
+        .faq-section h2 { color: var(--navy); font-size: 1.8rem; margin-bottom: 30px; }
+        .faq-container { max-width: 700px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 15px; }
+        .faq-item { background: var(--light-bg); border-radius: 8px; padding: 20px; border-left: 4px solid var(--navy); }
+        .faq-question { font-weight: 700; color: var(--navy); font-size: 0.95rem; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .faq-question i { color: var(--gold); }
+        .faq-answer { font-size: 0.85rem; color: #555; line-height: 1.6; }
 
         /* Section des avis en mouvement */
         .reviews-section { padding: 60px 8%; background: var(--light-bg); text-align: center; }
@@ -218,6 +240,7 @@
         @media (max-width: 991px) {
             .hero { flex-direction: column; text-align: center; padding-top: 100px; }
             .hero-content h1 { font-size: 1.7rem; }
+            .guarantee-box { flex-direction: column; text-align: center; }
             .footer-links { flex-direction: column; gap: 10px; }
         }
     </style>
@@ -289,7 +312,7 @@
         </div>
     </section>
 
-    <!-- SECTION PRÉSENTATION DES MODULES (DIAPORAMA PROPRE SANS BOUTON PLAY) -->
+    <!-- SECTION PRÉSENTATION DES MODULES -->
     <section class="demo-section" id="programme">
         <div class="demo-container">
             <span class="badge-demo"><i class="fas fa-layer-group"></i>APERÇU DU PROGRAMME</span>
@@ -312,7 +335,6 @@
                 </div>
             </div>
 
-            <!-- Indicateurs de progression automatiques -->
             <div class="slider-dots" id="sliderDots">
                 <span class="dot active" onclick="currentSlide(0)"></span>
                 <span class="dot" onclick="currentSlide(1)"></span>
@@ -329,6 +351,42 @@
                     <strong>Transparence & Garantie pour l'Acheteur :</strong> 
                     L'ensemble de ces modules est immédiatement débloqué après votre paiement. Aucun abonnement caché, aucun frais supplémentaire.
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION GARANTIE 7 JOURS -->
+    <section class="guarantee-section">
+        <div class="guarantee-box">
+            <div class="guarantee-icon">
+                <i class="fas fa-award"></i>
+            </div>
+            <div class="guarantee-content">
+                <h3>Garantie "Satisfait ou Remboursé" de 7 jours</h3>
+                <p>Nous sommes convaincus de la valeur de cette formation. Si toutefois vous n'étiez pas pleinement satisfait du contenu dans les 7 jours suivant votre achat, il vous suffit de nous envoyer un e-mail et nous vous rembourserons intégralement, sans poser de questions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION FAQ (FOIRE AUX QUESTIONS) -->
+    <section class="faq-section">
+        <h2>Foire Aux Questions (FAQ)</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-question-circle"></i> Comment et quand vais-je recevoir ma formation ?</div>
+                <div class="faq-answer">Immédiatement après votre paiement, un e-mail contenant vos accès est envoyé automatiquement à votre adresse e-mail en quelques minutes.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-question-circle"></i> Est-ce que le paiement par carte bancaire est sécurisé ?</div>
+                <div class="faq-answer">Totalement. Toutes les transactions sont cryptées et gérées par une plateforme de paiement ultra-sécurisée. Vos coordonnées bancaires ne transitent jamais par notre site.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-question-circle"></i> Y a-t-il des frais cachés ou un abonnement ?</div>
+                <div class="faq-answer">Aucun ! C'est un paiement unique de 25 €. Vous payez une seule fois et vous avez un accès complet à l'ensemble du contenu.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-question-circle"></i> Que se passe-t-il si je ne suis pas satisfait ?</div>
+                <div class="faq-answer">Vous bénéficiez de notre garantie de 7 jours. Si le contenu ne correspond pas à vos attentes, un simple e-mail à notre support suffit pour obtenir un remboursement intégral.</div>
             </div>
         </div>
     </section>
@@ -400,7 +458,6 @@
     </footer>
 
     <script>
-        // Données des titres des modules pour le diaporama
         const slideData = [
             "Module 1 : Fondations & Stratégie",
             "Module 2 : Outils Numériques Clés",
@@ -439,10 +496,9 @@
 
         function resetTimer() {
             clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 4000); // Change de module toutes les 4 secondes
+            slideInterval = setInterval(nextSlide, 4000);
         }
 
-        // --- GESTION DES AVIS DYNAMIQUES ---
         const frenchReviews = [
             { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record. Super investissement !", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150" },
             { name: "Manon L.", city: "Paris", text: "Franchement, pour 25 €, c'est ultra qualitatif. Les consignes sont claires et directes.", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" },
@@ -486,7 +542,6 @@
             setInterval(addNewReview, 6000);
         }
 
-        // --- PARTAGE RÉSEAUX SOCIAUX ---
         const shareUrl = encodeURIComponent(window.location.href);
         const shareTitle = encodeURIComponent("Découvre l'Académie Numérique pour booster tes compétences !");
 
@@ -495,10 +550,9 @@
         function shareOnLinkedIn() { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`, '_blank', 'width=600,height=400'); }
         function shareOnWhatsApp() { window.open(`https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`, '_blank'); }
 
-        // Initialisation au chargement de la page
         window.onload = function() {
             initLiveReviews();
-            slideInterval = setInterval(nextSlide, 4000); // Lance le défilement automatique
+            slideInterval = setInterval(nextSlide, 4000);
         };
     </script>
 </body>
