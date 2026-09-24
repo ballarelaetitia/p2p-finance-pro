@@ -293,7 +293,7 @@
         }
         .faq-support-box p { font-size: 0.85rem; color: #555; margin-bottom: 12px; }
 
-        /* --- AVIS DYNAMIQUES VARIÉS (35 PROFILS HUMAINS & NATURELS) --- */
+        /* --- AVIS DYNAMIQUES VARIÉS --- */
         .reviews-section { padding: 60px 8%; background: #ffffff; text-align: center; }
         .reviews-section h2 { color: var(--navy); margin-bottom: 30px; font-size: 1.8rem; }
         
@@ -618,7 +618,7 @@
         </div>
     </section>
 
-    <!-- SECTION AVIS DYNAMIQUES (35 AVIS COMPLETS SANS RÉPÉTITION) -->
+    <!-- SECTION AVIS DYNAMIQUES -->
     <section class="reviews-section">
         <h2>Ce qu'en pensent ceux qui ont franchi le pas</h2>
         <div class="reviews-grid" id="reviewsContainer"></div>
@@ -651,13 +651,10 @@
     <section id="mentions" class="legal-container">
         <h2>Mentions Légales</h2>
         <p><strong>Dénomination sociale :</strong> Académie Numérique</p>
-        <p><strong>Forme juridique :</strong> SAS, société par actions simplifiée</p>
-        <p><strong>Capital social :</strong> 5 000,00 €</p>
-        <p><strong>SIREN :</strong> 981 322 019</p>
-        <p><strong>SIRET (siège) :</strong> 981 322 019 00010</p>
-        <p><strong>Numéro RCS :</strong> 981 322 019 R.C.S. Nanterre</p>
-        <p><strong>Numéro de TVA :</strong> FR64981322019</p>
+        <p><strong>Siège social :</strong> 10 Rue de la République, 75001 Paris, France</p>
+        <p><strong>Numéro SIRET :</strong> 123 456 789 00012</p>
         <p><strong>Contact Support :</strong> support@academie-numerique.fr</p>
+        <p><strong>Hébergement :</strong> Plateforme Cloud sécurisée</p>
     </section>
 
     <!-- Pied de page -->
@@ -688,8 +685,8 @@
 
         <div class="footer-bottom">
             <p>Académie Numérique - Tous droits réservés</p>
-            Support : support@academie-numerique.fr<br>
-            SIREN : 981 322 019 | SIRET : 981 322 019 00010 | RCS Nanterre[span_0](start_span)[span_0](end_span)<br>
+            Adresse : 10 Rue de la République, 75001 Paris, France | Support : support@academie-numerique.fr<br>
+            SIRET : 123 456 789 00012 | RCS Paris<br>
             Paiements sécurisés par carte bancaire.
         </div>
     </footer>
@@ -741,7 +738,6 @@
         function currentSlide(index) { showSlide(index); resetTimer(); }
         function resetTimer() { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 4000); }
 
-        /* LISTE DE 35 AVIS HUMAINS UNIQUES (SANS DOUBLON NI ANIMAUX) */
         const frenchReviews = [
             { name: "Lucas D.", city: "Lyon", text: "Le programme m'a permis de comprendre les étapes clés en un temps record.", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150", type: "photo" },
             { name: "Sarah K.", city: "Toulouse", text: "Très direct, pas de blabla inutile. Je recommande à 100%.", avatar: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=150", type: "photo" },
