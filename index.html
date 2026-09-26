@@ -1,83 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Company.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-    <title>Sneaker's Company</title>
+    <title>Mon Intime - Collection Caleçons Sensuels</title>
+    <meta name="description"
+        content="Découvrez la collection exclusive de caleçons sensuels Mon Intime. Des pièces uniques alliant confort absolu et design élégant. Profitez de notre offre en ligne !">
+    <meta name="keywords"
+        content="caleçons sensuels, lingerie, sous-vêtements, dentelle, soie, coton bio, collection exclusive, Mon Intime, confort, élégance">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Mon Intime - Collection Caleçons Sensuels">
+    <meta property="og:description" content="Découvrez la collection exclusive de caleçons sensuels Mon Intime. Des pièces uniques alliant confort absolu et design élégant.">
+    <meta property="og:image" content="https://monintime.com/images/og-image.jpg">
+    <meta property="og:url" content="https://monintime.com">
+    <meta property="og:type" content="website">
+    
+    <link rel="stylesheet" href="./css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles/syles.css">
 </head>
+
 <body>
-<div class="container">
-    <div class="header">
-    <nav  class="menu">
-     <ul>
-        <h2>sneakers</h2>
-         <li>Collections</li>
-         <li>Men</li>
-         <li>Women</li>
-         <li>About</li>
-         <li>Contact</li>
-         <li id="panier"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-          </svg></li>
-           <div class="user">
-              <div class="usering">
-               <img src="Orlane.jpg" class="cover">
-              </div>
-           </div>
-     </ul>
-    </nav>
-</div>
-    <div class="contenu">
-           <div class="shoes">
-              <div class="principal">
-                 <img src="4.jpg" width="337px" height="375px"  style ="border-radius:10px";> 
-              </div>
-               <div class="autres">
-                    <div ><img src="3.jpg"  width="60px" height="60px"  style=" border: 2px solid #ff7a00;"> </div>
-                    <div><img src="1.png"   width="60px" height="60px"></div>
-                    <div><img src="2.jfif"  width="60px" height="60px"></div>
-                    <div><img src="5.jpg"  width="60px" height="60px"></div>
+
+    <!-- section hero -->
+    <div class="hero-section">
+        <section id="hero">
+
+            <header class="py-3">
+                <div class="container text-center">
+                    <a href="#" class="logo-slogan">
+                        <span class="logo">Mon Intime</span>
+                        <span class="slogan">La lingerie qui épouse vos secrets</span>
+                    </a>
                 </div>
-              </div>
-           <div class="infos">
-                <p style="color:orange;"> SNEAKER COMPANY</p>
-                <p class= "first"><h1>Fall Limited Edition<br>Sneakers</h1>
-                 </p>
-                <p class="fourth">These low-profile sneakers are your perfect casual wear<br>
-                  companion. Featuring a durable rubber outer sole, they'll<br>
-                  withstand everything the weather can offer.</p>
-                <div class="five">
-                  <div class="dollar">$125.00</div>
-                  <div class="per-cent">50%</div>
+            </header>
+
+            <div class="container hero-contenu py-5">
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                        <h1>Une lingerie si parfaite, qu'elle devient votre secret.</h1>
+                        <p class="lead my-4">
+                            Découvrez notre collection exclusive de caleçons sensuels, conçus pour allier confort absolu
+                            et élégance discrète.
+                        </p>
+                        <a href="#produits" class="btn btn-bouton btn-lg">DÉCOUVRIR LA SELECTION</a>
+                    </div>
                 </div>
-                <p class="six"><strike>$250.00</strike></p>
-                <div class="paiement">
-                    <div class="operation">
-                     
-                        <div id="moins">&#8722</div>
-                        <div id="zero">0</div>
-                        <div id="plus">&#43</div>
-                  
-                     </div>
-                  <div class="cart">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"  class="bi bi-cart-fill" viewBox="0 0 16 16">
-                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                      </svg>
-                     Add to cart
-                  </div>
-                </div>
+            </div>
 
-             </div>
-
-
-        </div>
-
-
-
+        </section>
     </div>
-</div>
+
+    <main>
+
+        <!-- sections cartes produits -->
+        <section id="produits" class="py-5 bg-light">
+            <div class="container">
+
+                <!-- titres -->
+                <div class="text-center py-5">
+                    <h2>Notre Sélection de Caleçons Sensuels</h2>
+                    <p class="slogan">La lingerie qui épouse vos secrets.</p>
+                </div>
+
+                <!-- images et texte au coeurs de la collections-->
+                <div class="row align-items-center bg-collection-section  mb-5">
+                    <div class="col-lg-7">
+                        <img src="./images/bg_section_produits.jpg" class="img-fluid rounded"
+                            alt="Collection de lingerie Mon Intime">
+                    </div>
+                    <div class="col-lg-5 ps-lg-5">
+                        <h3 class="bg-collection-title">Le Cœur de la Collection</h3>
+                        <p>Chaque pièce est pensée pour allier un confort exceptionnel à un design qui sublime vos
+                            formes.
+                            Découvrez des matières douces et des coupes parfaites, le secret d'une confiance qui se
+                            ressent
+                            toute la journée.</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="./images/img_2_1.jpg" class="card-img-top" alt="Caleçon Dentelle Noire">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Caleçon "Nuit Étoilée"</h5>
+                                <p class="card-text">Dentelle fine et coupe taille haute pour une silhouette sublimée.
+                                </p>
+                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="./images/img_2_2.webp" class="card-img-top" alt="Caleçon Soie Rouge">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Caleçon "Passion"</h5>
+                                <p class="card-text">Pure soie rouge pour une touche de glamour et de douceur.</p>
+                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="./images/img_2_3.jpg" class="card-img-top" alt="Caleçon Coton Bio">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Caleçon "Cocon"</h5>
+                                <p class="card-text">Coton bio ultra-doux pour un confort absolu au quotidien.</p>
+                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="./images/img_2_4.jpg" class="card-img-top" alt="Caleçon Tulle Brodé">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Caleçon "Fleur de Peau"</h5>
+                                <p class="card-text">Tulle brodé transparent pour un jeu de séduction subtil.</p>
+                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="./images/img_2_5.webp" class="card-img-top" alt="Caleçon Satin Rose">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Caleçon "Aurore"</h5>
+                                <p class="card-text">Satin rose poudré, une caresse pour la peau et les yeux.</p>
+                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="./images/img_2_6.jpg" class="card-img-top" alt="Caleçon Microfibre Invisible">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Caleçon "Seconde Peau"</h5>
+                                <p class="card-text">Microfibre sans couture, totalement invisible sous les vêtements.
+                                </p>
+                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-4">
+        <div class="container text-center">
+            <div class="text-center mb-4">
+                <a href="#" class="logo-slogan">
+                    <span class="logo logo2">Mon Intime</span>
+                    <span class="slogan">La lingerie qui épouse vos secrets</span>
+                </a>
+            </div>
+            <p class="small">
+                &copy; 2025 Mon Intime. Tous droits réservés.
+            </p>
+            <div class="footer-links">
+                <a href="#">Politique de Retour</a> |
+                <a href="#">Conditions Générales de Vente</a> |
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./css/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
