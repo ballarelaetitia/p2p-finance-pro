@@ -1,180 +1,586 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Intime - Collection Caleçons Sensuels</title>
-    <meta name="description"
-        content="Découvrez la collection exclusive de caleçons sensuels Mon Intime. Des pièces uniques alliant confort absolu et design élégant. Profitez de notre offre en ligne !">
-    <meta name="keywords"
-        content="caleçons sensuels, lingerie, sous-vêtements, dentelle, soie, coton bio, collection exclusive, Mon Intime, confort, élégance">
-    <meta name="robots" content="index, follow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F2EFE7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D0E0C" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Optimisation SEO de sites WordPress pour TPE, artisans et prestataires locaux. Audit gratuit sous 48 h.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cadran SEO">
+<meta property="og:description" content="Optimisation SEO de sites WordPress pour TPE, artisans et prestataires locaux. Audit gratuit sous 48 h.">
+<meta property="og:url" content="https://cadran-seo.devanchor.company/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_GB">
+<link rel="canonical" href="https://cadran-seo.devanchor.company/">
+<link rel="alternate" hreflang="fr" href="https://cadran-seo.devanchor.company/">
+<link rel="alternate" hreflang="en" href="https://cadran-seo.devanchor.company/en/">
+<link rel="alternate" hreflang="x-default" href="https://cadran-seo.devanchor.company/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
+<title>Cadran SEO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<!-- Not deferred: Stripe advanced fraud detection collects signals over the whole visit. -->
+<script src="https://js.stripe.com/dahlia/stripe.js"></script>
 
-    <meta property="og:title" content="Mon Intime - Collection Caleçons Sensuels">
-    <meta property="og:description" content="Découvrez la collection exclusive de caleçons sensuels Mon Intime. Des pièces uniques alliant confort absolu et design élégant.">
-    <meta property="og:image" content="https://monintime.com/images/og-image.jpg">
-    <meta property="og:url" content="https://monintime.com">
-    <meta property="og:type" content="website">
-    
-    <link rel="stylesheet" href="./css/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/styles/syles.css">
+<style>
+/* ============================================================
+   Cadran SEO — "the page is the audit report"
+   Printed-report grammar: ruled paper, numbered sections in the
+   margin, tabular figures, one signal colour for what is broken.
+   ============================================================ */
+:root{
+  --paper:#F2EFE7;
+  --paper-2:#E9E4D8;
+  --card:#FBF9F4;
+  --ink:#14150F;
+  --ink-2:#4A4C41;
+  --ink-3:#7C7F70;
+  --rule:#D3CEBE;
+  --rule-soft:#E3DFD2;
+  --signal:#C43A12;
+  --signal-ink:#FFF6F2;
+  --good:#1F6B45;
+  --grid:rgba(20,21,15,.045);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D0E0C;
+    --paper-2:#15170F;
+    --card:#141610;
+    --ink:#F0EDE1;
+    --ink-2:#B4B3A2;
+    --ink-3:#7E8072;
+    --rule:#2A2C22;
+    --rule-soft:#1E2018;
+    --signal:#FF6A38;
+    --signal-ink:#1A0C06;
+    --good:#5FCB95;
+    --grid:rgba(240,237,225,.04);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D0E0C; --paper-2:#15170F; --card:#141610;
+  --ink:#F0EDE1; --ink-2:#B4B3A2; --ink-3:#7E8072;
+  --rule:#2A2C22; --rule-soft:#1E2018;
+  --signal:#FF6A38; --signal-ink:#1A0C06; --good:#5FCB95;
+  --grid:rgba(240,237,225,.04);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px);
+  background-size:100% 32px;
+}
+img{max-width:100%}
+a{color:inherit}
+::selection{background:var(--signal);color:var(--signal-ink)}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:.96;text-wrap:balance}
+h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.015em;line-height:.98;margin:0;text-wrap:balance}
+h3{font-family:"Archivo",sans-serif;font-weight:600;font-size:18px;line-height:1.3;margin:0;letter-spacing:-.01em}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ---------- section frame: number in the margin ---------- */
+.sec{border-top:1px solid var(--rule);padding:0}
+.sec > .wrap{display:grid;grid-template-columns:112px minmax(0,1fr);gap:0}
+.sec .marg{
+  border-right:1px solid var(--rule-soft);
+  padding:44px 20px 44px 0;
+}
+.sec .marg span{
+  font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--signal);
+  writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;
+}
+.sec .body{padding:44px 0 64px 36px;min-width:0}
+@media(max-width:820px){
+  .sec > .wrap{grid-template-columns:1fr}
+  .sec .marg{border-right:0;border-bottom:1px solid var(--rule-soft);padding:22px 0 12px}
+  .sec .marg span{writing-mode:horizontal-tb;transform:none}
+  .sec .body{padding:24px 0 48px}
+}
+.lead-h{font-size:clamp(30px,4.4vw,50px);max-width:20ch}
+.sub{color:var(--ink-2);font-size:18px;max-width:62ch;margin:18px 0 0}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:60px}
+.mark{display:flex;align-items:center;gap:9px;font-family:"Instrument Serif",serif;font-size:23px;letter-spacing:-.01em}
+.dial{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--ink);position:relative;flex:none}
+.dial::after{content:"";position:absolute;left:50%;top:50%;width:1.5px;height:6px;background:var(--signal);transform-origin:bottom center;transform:translate(-50%,-100%) rotate(38deg)}
+.top nav{margin-left:auto;display:flex;gap:22px;align-items:center;font-size:13px;font-family:"JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase}
+.top nav a{text-decoration:none;color:var(--ink-2)}
+.top nav a:hover{color:var(--signal)}
+@media(max-width:760px){.top nav a.hide-s{display:none}}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:"JetBrains Mono",monospace;font-weight:700;font-size:13px;
+  letter-spacing:.06em;text-transform:uppercase;
+  background:var(--signal);color:var(--signal-ink);
+  border:1px solid var(--signal);border-radius:0;
+  padding:15px 22px;text-decoration:none;cursor:pointer;
+  /* A <button> resets line-height to normal via the UA font shorthand, an
+     <a> inherits body 1.6. Without this the two CTAs in a pricing row are
+     6px apart in height, and .plan .btn{margin-top:auto} pins them to the
+     card bottom where it shows. Measured in headless Chromium. */
+  line-height:1.6;
+  box-shadow:4px 4px 0 var(--ink);
+  transition:transform .1s ease,box-shadow .1s ease;
+}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink);box-shadow:none}
+.btn.ghost:hover{background:var(--ink);color:var(--paper);transform:none}
+.btn.sm{padding:9px 14px;font-size:12px;box-shadow:2px 2px 0 var(--ink)}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin:0 0 14px}
+
+/* ---------- hero ---------- */
+.hero{border-bottom:1px solid var(--rule);padding:64px 0 0}
+.hero .wrap{display:grid;grid-template-columns:1.06fr .94fr;gap:0}
+@media(max-width:960px){.hero .wrap{grid-template-columns:1fr}}
+.hero-l{padding:0 44px 60px 0;border-right:1px solid var(--rule-soft)}
+@media(max-width:960px){.hero-l{border-right:0;padding:0 0 40px}}
+.hero h1{font-size:clamp(46px,7.6vw,92px);letter-spacing:-.025em}
+.hero h1 em{font-style:italic;color:var(--signal)}
+.lede{font-size:20px;color:var(--ink-2);margin:26px 0 0;max-width:46ch}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.reassure{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink-3);margin-top:22px;line-height:1.9}
+.hero-r{padding:0 0 60px 44px}
+@media(max-width:960px){.hero-r{padding:0 0 48px}}
+
+/* audit slip */
+.slip{border:1px solid var(--ink);background:var(--card);box-shadow:8px 8px 0 var(--rule)}
+.slip .h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 18px;border-bottom:1px solid var(--ink);background:var(--ink);color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.slip .rows{padding:6px 18px 14px}
+.mrow{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px dotted var(--rule)}
+.mrow:last-of-type{border-bottom:0}
+.mrow .l{font-size:14.5px;color:var(--ink-2)}
+.mrow .v{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:22px;font-variant-numeric:tabular-nums;color:var(--signal)}
+.mrow.ok .v{color:var(--good)}
+.mrow .track{grid-column:1/-1;height:5px;background:var(--rule-soft);position:relative;overflow:hidden}
+.mrow .track i{position:absolute;inset:0 auto 0 0;background:var(--signal);animation:grow .9s cubic-bezier(.2,.8,.2,1) both}
+.mrow.ok .track i{background:var(--good)}
+@keyframes grow{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}
+@media(prefers-reduced-motion:reduce){.mrow .track i{animation:none}}
+.slip .f{padding:14px 18px;border-top:1px solid var(--ink);font-size:13.5px;color:var(--ink-2)}
+.slip .f b{color:var(--ink)}
+
+/* ---------- ticker ---------- */
+.ticker{border-bottom:1px solid var(--rule);background:var(--ink);color:var(--paper);overflow:hidden}
+.ticker .run{display:flex;gap:0;width:max-content;animation:slide 42s linear infinite}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker .run{animation:none}}
+.ticker span{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:12px 26px;white-space:nowrap;opacity:.82}
+.ticker span b{color:var(--signal);font-weight:700}
+
+/* ---------- ledger (problème) ---------- */
+.ledger{margin-top:38px;border-top:1px solid var(--rule)}
+.item{display:grid;grid-template-columns:64px 1fr 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--rule);align-items:start}
+@media(max-width:760px){.item{grid-template-columns:44px 1fr;gap:16px}.item p{grid-column:2}}
+.item .n{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--signal);padding-top:4px}
+.item p{margin:0;color:var(--ink-2);font-size:16px}
+.item:hover{background:var(--card)}
+
+/* ---------- method rail ---------- */
+.rail{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule)}
+@media(max-width:900px){.rail{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.rail{grid-template-columns:1fr}}
+.stepc{padding:26px 22px;border-right:1px solid var(--rule);position:relative;background:var(--card)}
+.stepc:last-child{border-right:0}
+@media(max-width:900px){.stepc{border-bottom:1px solid var(--rule)}.stepc:nth-child(2n){border-right:0}}
+@media(max-width:600px){.stepc{border-right:0}}
+.stepc .k{font-family:"Instrument Serif",serif;font-size:52px;line-height:1;color:var(--rule);display:block;margin-bottom:10px}
+.stepc h3{margin-bottom:10px}
+.stepc p{margin:0;font-size:15px;color:var(--ink-2)}
+.stepc .when{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);margin-top:14px;display:block}
+
+/* ---------- proof plates ---------- */
+.plates{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.plates{grid-template-columns:1fr}}
+.plate{border:1px solid var(--ink);background:var(--card);padding:26px 22px;display:flex;flex-direction:column}
+.plate .big{font-family:"Instrument Serif",serif;font-size:clamp(40px,5vw,58px);line-height:1;letter-spacing:-.02em;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.plate .big .from{color:var(--ink-3)}
+.plate .big .to{color:var(--signal)}
+.plate .big .ar{font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--ink-3)}
+.plate blockquote{margin:20px 0 0;font-size:16px;color:var(--ink);border-left:2px solid var(--signal);padding-left:16px}
+.plate .who{margin:18px 0 0;font-family:"JetBrains Mono",monospace;font-size:11.5px;line-height:1.7;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-top:auto;padding-top:18px}
+
+/* ---------- pricing ---------- */
+.plans{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--ink)}
+@media(max-width:900px){.plans{grid-template-columns:1fr}}
+.plan{padding:28px 24px;border-right:1px solid var(--rule);display:flex;flex-direction:column;background:var(--card)}
+.plan:last-child{border-right:0}
+@media(max-width:900px){.plan{border-right:0;border-bottom:1px solid var(--rule)}.plan:last-child{border-bottom:0}}
+.plan.hi{background:var(--ink);color:var(--paper);border-right-color:var(--ink)}
+.plan.hi h3,.plan.hi .price{color:var(--paper)}
+.plan.hi li{color:color-mix(in srgb,var(--paper) 76%,transparent)}
+.plan.hi .tag{background:var(--signal);color:var(--signal-ink)}
+.tag{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:4px 8px;align-self:flex-start;margin-bottom:14px;background:var(--rule-soft);color:var(--ink-2)}
+.price{font-family:"Instrument Serif",serif;font-size:46px;line-height:1;margin:16px 0 4px}
+.price small{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:10px;line-height:1.6}
+.plan.hi .price small{color:color-mix(in srgb,var(--paper) 60%,transparent)}
+.plan ul{list-style:none;margin:20px 0 26px;padding:0;font-size:15px;color:var(--ink-2)}
+.plan li{padding:9px 0 9px 22px;position:relative;border-bottom:1px dotted var(--rule)}
+.plan.hi li{border-bottom-color:color-mix(in srgb,var(--paper) 18%,transparent)}
+.plan li::before{content:"→";position:absolute;left:0;color:var(--signal);font-family:"JetBrains Mono",monospace;font-size:12px}
+.plan .btn{margin-top:auto;justify-content:center}
+.plan.hi .btn.ghost{color:var(--paper);border-color:var(--paper)}
+.plan.hi .btn.ghost:hover{background:var(--paper);color:var(--ink)}
+
+/* ---------- FAQ ---------- */
+.faq{margin-top:34px;max-width:76ch;border-top:1px solid var(--rule)}
+details{border-bottom:1px solid var(--rule)}
+summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;position:relative;font-family:"Archivo",sans-serif;font-weight:600;font-size:17.5px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--signal)}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 22px;color:var(--ink-2);max-width:66ch;font-size:16px}
+
+/* ---------- final ---------- */
+.final{background:var(--ink);color:var(--paper);border-top:1px solid var(--ink)}
+.final .marg{border-right-color:color-mix(in srgb,var(--paper) 14%,transparent)}
+.final .sub{color:color-mix(in srgb,var(--paper) 72%,transparent)}
+.final h2{color:var(--paper)}
+.final .grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:900px){.final .grid2{grid-template-columns:1fr;gap:34px}}
+.checklist{margin-top:28px;display:grid;gap:0;border-top:1px solid color-mix(in srgb,var(--paper) 18%,transparent)}
+.checklist div{padding:14px 0 14px 28px;position:relative;font-size:15.5px;color:color-mix(in srgb,var(--paper) 80%,transparent);border-bottom:1px solid color-mix(in srgb,var(--paper) 12%,transparent)}
+.checklist div::before{content:"✓";position:absolute;left:0;color:var(--signal);font-family:"JetBrains Mono",monospace}
+form{background:var(--card);color:var(--ink);border:1px solid var(--signal);padding:28px 24px;box-shadow:8px 8px 0 var(--signal)}
+label{display:block;margin-bottom:18px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+input,textarea{
+  display:block;width:100%;margin-top:8px;padding:13px 14px;
+  border:1px solid var(--rule);background:var(--paper);color:var(--ink);
+  font-family:"Archivo",sans-serif;font-size:16px;font-weight:400;
+  letter-spacing:0;text-transform:none;border-radius:0;
+}
+input:focus,textarea:focus{outline:none;border-color:var(--signal);box-shadow:0 0 0 3px color-mix(in srgb,var(--signal) 22%,transparent)}
+textarea{min-height:88px;resize:vertical}
+form .btn{width:100%;justify-content:center;box-shadow:none;margin-top:4px}
+form .btn:hover{transform:none}
+.hint{font-size:12.5px;color:var(--ink-3);margin:14px 0 0;line-height:1.6}
+
+footer{border-top:1px solid var(--rule);padding:26px 0;font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
+
+/* ---------- language switch ---------- */
+.lang{display:inline-flex;align-items:stretch;flex:none;border:1px solid var(--rule);line-height:1}
+.top nav .lang a,.lang .cur{display:flex;align-items:center;padding:6px 8px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+.top nav .lang a{color:var(--ink-3)}
+.top nav .lang a:hover{color:var(--signal)}
+.lang .cur{background:var(--ink);color:var(--paper)}
+/* The switch is deliberately not .hide-s -- a phone visitor must still be
+   able to change language. But adding it to the nav pushed the header CTA
+   past the viewport: 411px of content in a 360px window, measured. Tighten
+   the row instead of hiding the control. */
+@media(max-width:480px){
+  .top .wrap{gap:10px}
+  .top nav{gap:10px}
+  .top nav .lang a,.lang .cur{padding:5px 6px;font-size:10px;letter-spacing:.02em}
+  .top nav .btn.sm{padding:8px 10px;font-size:11px;letter-spacing:.02em}
+}
+@media(max-width:360px){
+  .top .wrap{gap:8px}
+  .top nav{gap:8px}
+  .top nav .lang a,.lang .cur{padding:4px 5px;font-size:9px}
+  .top nav .btn.sm{padding:7px 8px;font-size:10px;gap:6px}
+}
+</style>
 </head>
 
 <body>
+<header class="top">
+  <div class="wrap">
+    <span class="mark"><span class="dial" aria-hidden="true"></span> Cadran SEO</span>
+    <nav>
+      <a href="#methode" class="hide-s">Méthode</a>
+      <a href="#resultats" class="hide-s">Résultats</a>
+      <a href="#tarifs" class="hide-s">Tarifs</a>
+      <span class="lang" role="group" aria-label="Langue"><span class="cur" aria-current="page">Français</span><a href="/en/" hreflang="en" lang="en">English</a></span>
+      <a href="#audit" class="btn sm">Audit gratuit</a>
+    </nav>
+  </div>
+</header>
 
-    <!-- section hero -->
-    <div class="hero-section">
-        <section id="hero">
-
-            <header class="py-3">
-                <div class="container text-center">
-                    <a href="#" class="logo-slogan">
-                        <span class="logo">Mon Intime</span>
-                        <span class="slogan">La lingerie qui épouse vos secrets</span>
-                    </a>
-                </div>
-            </header>
-
-            <div class="container hero-contenu py-5">
-                <div class="row align-items-center">
-                    <div class="col-md-7">
-                        <h1>Une lingerie si parfaite, qu'elle devient votre secret.</h1>
-                        <p class="lead my-4">
-                            Découvrez notre collection exclusive de caleçons sensuels, conçus pour allier confort absolu
-                            et élégance discrète.
-                        </p>
-                        <a href="#produits" class="btn btn-bouton btn-lg">DÉCOUVRIR LA SELECTION</a>
-                    </div>
-                </div>
-            </div>
-
-        </section>
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-l">
+      <p class="eyebrow">Rapport nº 001 — SEO technique WordPress · TPE, PME et artisans</p>
+      <h1>Votre site est en ligne. <em>Personne ne le trouve.</em></h1>
+      <p class="lede">Nous remettons votre site sur la première page pour les recherches qui déclenchent vraiment un appel — « plombier Nantes », « expert-comptable Angers » — et nous vous montrons chaque mois combien de demandes cela vous rapporte.</p>
+      <div class="cta">
+        <a href="#audit" class="btn">Recevoir mon audit gratuit</a>
+        <a href="#methode" class="btn ghost">Voir la méthode</a>
+      </div>
+      <p class="reassure">Audit sous 48 h · 12 pages de constats chiffrés · Sans engagement<br>Aucun accès à votre site n'est demandé à cette étape.</p>
     </div>
 
-    <main>
-
-        <!-- sections cartes produits -->
-        <section id="produits" class="py-5 bg-light">
-            <div class="container">
-
-                <!-- titres -->
-                <div class="text-center py-5">
-                    <h2>Notre Sélection de Caleçons Sensuels</h2>
-                    <p class="slogan">La lingerie qui épouse vos secrets.</p>
-                </div>
-
-                <!-- images et texte au coeurs de la collections-->
-                <div class="row align-items-center bg-collection-section  mb-5">
-                    <div class="col-lg-7">
-                        <img src="./images/bg_section_produits.jpg" class="img-fluid rounded"
-                            alt="Collection de lingerie Mon Intime">
-                    </div>
-                    <div class="col-lg-5 ps-lg-5">
-                        <h3 class="bg-collection-title">Le Cœur de la Collection</h3>
-                        <p>Chaque pièce est pensée pour allier un confort exceptionnel à un design qui sublime vos
-                            formes.
-                            Découvrez des matières douces et des coupes parfaites, le secret d'une confiance qui se
-                            ressent
-                            toute la journée.</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <img src="./images/img_2_1.jpg" class="card-img-top" alt="Caleçon Dentelle Noire">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Caleçon "Nuit Étoilée"</h5>
-                                <p class="card-text">Dentelle fine et coupe taille haute pour une silhouette sublimée.
-                                </p>
-                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <img src="./images/img_2_2.webp" class="card-img-top" alt="Caleçon Soie Rouge">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Caleçon "Passion"</h5>
-                                <p class="card-text">Pure soie rouge pour une touche de glamour et de douceur.</p>
-                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <img src="./images/img_2_3.jpg" class="card-img-top" alt="Caleçon Coton Bio">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Caleçon "Cocon"</h5>
-                                <p class="card-text">Coton bio ultra-doux pour un confort absolu au quotidien.</p>
-                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <img src="./images/img_2_4.jpg" class="card-img-top" alt="Caleçon Tulle Brodé">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Caleçon "Fleur de Peau"</h5>
-                                <p class="card-text">Tulle brodé transparent pour un jeu de séduction subtil.</p>
-                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <img src="./images/img_2_5.webp" class="card-img-top" alt="Caleçon Satin Rose">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Caleçon "Aurore"</h5>
-                                <p class="card-text">Satin rose poudré, une caresse pour la peau et les yeux.</p>
-                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <img src="./images/img_2_6.jpg" class="card-img-top" alt="Caleçon Microfibre Invisible">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Caleçon "Seconde Peau"</h5>
-                                <p class="card-text">Microfibre sans couture, totalement invisible sous les vêtements.
-                                </p>
-                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="py-4">
-        <div class="container text-center">
-            <div class="text-center mb-4">
-                <a href="#" class="logo-slogan">
-                    <span class="logo logo2">Mon Intime</span>
-                    <span class="slogan">La lingerie qui épouse vos secrets</span>
-                </a>
-            </div>
-            <p class="small">
-                &copy; 2025 Mon Intime. Tous droits réservés.
-            </p>
-            <div class="footer-links">
-                <a href="#">Politique de Retour</a> |
-                <a href="#">Conditions Générales de Vente</a> |
-                <a href="#">Contact</a>
-            </div>
+    <div class="hero-r">
+      <div class="slip" role="img" aria-label="Extrait d'audit : chargement mobile 4,8 secondes, 61 pages sur 74 sans balise titre, position moyenne 38e, fiche Google non renseignée, et 4e position après 90 jours d'optimisation.">
+        <div class="h"><span>Extrait d'audit réel</span><span>Menuiserie · 44</span></div>
+        <div class="rows">
+          <div class="mrow"><span class="l">Chargement mobile</span><span class="v">4,8 s</span><span class="track"><i style="width:88%"></i></span></div>
+          <div class="mrow"><span class="l">Pages sans balise titre</span><span class="v">61/74</span><span class="track"><i style="width:82%;animation-delay:.08s"></i></span></div>
+          <div class="mrow"><span class="l">Position moyenne</span><span class="v">38<sup>e</sup></span><span class="track"><i style="width:55%;animation-delay:.16s"></i></span></div>
+          <div class="mrow"><span class="l">Fiche Google renseignée</span><span class="v">non</span><span class="track"><i style="width:95%;animation-delay:.24s"></i></span></div>
+          <div class="mrow ok"><span class="l">Après 90 jours d'optimisation</span><span class="v">4<sup>e</sup></span><span class="track"><i style="width:22%;animation-delay:.32s"></i></span></div>
         </div>
-    </footer>
+        <p class="f" style="margin:0">Le même site, trois mois plus tard : <b>11 demandes de devis par mois</b>, contre 2 auparavant.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <script src="./css/bootstrap/js/bootstrap.bundle.min.js"></script>
+<div class="ticker" aria-hidden="true">
+  <div class="run">
+    <span>plombier nantes <b>1 900 rech./mois</b></span>
+    <span>expert-comptable angers <b>720</b></span>
+    <span>ravalement façade rennes <b>480</b></span>
+    <span>kiné sport rennes <b>1 100</b></span>
+    <span>couvreur 44 urgence <b>590</b></span>
+    <span>bureau d'études thermiques <b>310</b></span>
+    <span>plombier nantes <b>1 900 rech./mois</b></span>
+    <span>expert-comptable angers <b>720</b></span>
+    <span>ravalement façade rennes <b>480</b></span>
+    <span>kiné sport rennes <b>1 100</b></span>
+    <span>couvreur 44 urgence <b>590</b></span>
+    <span>bureau d'études thermiques <b>310</b></span>
+  </div>
+</div>
+
+<section class="sec" id="probleme">
+  <div class="wrap">
+    <div class="marg"><span>§ 01 — Constat</span></div>
+    <div class="body">
+      <h2 class="lead-h">Ce n'est pas votre métier qui manque de clients. C'est votre site qui ne parle pas à Google.</h2>
+      <p class="sub">Un site WordPress installé sans travail SEO est un panneau posé dans une rue où personne ne passe. Voici ce que nous retrouvons dans neuf audits sur dix.</p>
+      <div class="ledger">
+        <div class="item">
+          <span class="n">01</span>
+          <h3>Un thème lourd qui décourage les visiteurs</h3>
+          <p>Quatre à six secondes de chargement sur mobile. La moitié de vos visiteurs referment la page avant même de voir votre numéro de téléphone.</p>
+        </div>
+        <div class="item">
+          <span class="n">02</span>
+          <h3>Des pages invisibles pour Google</h3>
+          <p>Titres dupliqués, descriptions vides, images sans texte alternatif. Google ne sait pas ce que vous vendez, ni où vous intervenez.</p>
+        </div>
+        <div class="item">
+          <span class="n">03</span>
+          <h3>Aucune page par ville ni par prestation</h3>
+          <p>Vos concurrents ont une page « ravalement de façade à Rennes ». Vous avez une page « Nos services ». C'est ce détail qui vous coûte la première position.</p>
+        </div>
+        <div class="item">
+          <span class="n">04</span>
+          <h3>Des extensions qui se contredisent</h3>
+          <p>Trois plugins SEO installés au fil des ans, deux caches concurrents, un sitemap qui pointe vers des pages supprimées. Le site se sabote tout seul.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="methode">
+  <div class="wrap">
+    <div class="marg"><span>§ 02 — Méthode</span></div>
+    <div class="body">
+      <h2 class="lead-h">Quatre étapes, un calendrier, aucun jargon</h2>
+      <p class="sub">Vous savez à chaque instant ce qui est fait, pourquoi, et ce que cela change pour votre chiffre d'affaires.</p>
+      <div class="rail">
+        <div class="stepc">
+          <span class="k">1</span>
+          <h3>Diagnostic chiffré</h3>
+          <p>Vitesse, indexation, structure des pages et positions actuelles. Un document de douze pages qui nomme chaque défaut, son coût estimé en demandes perdues, et l'ordre dans lequel le corriger.</p>
+          <span class="when">Jour 0 → jour 2</span>
+        </div>
+        <div class="stepc">
+          <span class="k">2</span>
+          <h3>Nettoyage technique</h3>
+          <p>Extensions redondantes retirées, cache et images optimisés, balises réécrites page par page, sitemap remis d'aplomb. Sauvegarde complète avant toute intervention.</p>
+          <span class="when">Jour 3 → jour 15</span>
+        </div>
+        <div class="stepc">
+          <span class="k">3</span>
+          <h3>Pages de conversion</h3>
+          <p>Nous créons les pages que vos clients tapent réellement dans Google, avec les arguments, les preuves et le bouton d'appel au bon endroit. C'est ici que les devis apparaissent.</p>
+          <span class="when">Jour 15 → jour 45</span>
+        </div>
+        <div class="stepc">
+          <span class="k">4</span>
+          <h3>Suivi en une page</h3>
+          <p>Positions gagnées, visiteurs, appels et formulaires reçus. Une page, trois chiffres, une recommandation. Pas de tableau de bord à déchiffrer.</p>
+          <span class="when">Chaque mois</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="resultats">
+  <div class="wrap">
+    <div class="marg"><span>§ 03 — Relevés</span></div>
+    <div class="body">
+      <h2 class="lead-h">Ce que trois mois de travail changent concrètement</h2>
+      <p class="sub">Chiffres relevés dans Google Search Console et dans les formulaires reçus, entre le premier et le quatre-vingt-dixième jour.</p>
+      <div class="plates">
+        <div class="plate">
+          <div class="big"><span class="from">2</span><span class="ar">→</span><span class="to">11</span></div>
+          <blockquote>« Je recevais deux demandes par mois, toutes du bouche-à-oreille. Aujourd'hui j'en ai onze, et je choisis mes chantiers. »</blockquote>
+          <p class="who">Menuiserie artisanale · Loire-Atlantique<br>Demandes de devis mensuelles</p>
+        </div>
+        <div class="plate">
+          <div class="big"><span class="from">4,8 s</span><span class="ar">→</span><span class="to">1,2 s</span></div>
+          <blockquote>« Le site était devenu injouable sur téléphone. Il s'ouvre maintenant instantanément, et ça se voit dans les appels. »</blockquote>
+          <p class="who">Cabinet de kinésithérapie · Rennes<br>Temps de chargement mobile</p>
+        </div>
+        <div class="plate">
+          <div class="big"><span class="from">38<sup>e</sup></span><span class="ar">→</span><span class="to">3<sup>e</sup></span></div>
+          <blockquote>« Nous sommes devant les deux agences qui nous prenaient tous les appels depuis trois ans. »</blockquote>
+          <p class="who">Bureau d'études thermiques · Angers<br>Position sur la requête principale</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="tarifs">
+  <div class="wrap">
+    <div class="marg"><span>§ 04 — Tarifs</span></div>
+    <div class="body">
+      <h2 class="lead-h">Un prix ferme, annoncé avant de commencer</h2>
+      <p class="sub">Pas de forfait à rallonge, pas de facturation à l'heure. Vous savez ce que vous payez et ce que vous recevez.</p>
+      <div class="plans">
+        <div class="plan">
+          <span class="tag">Point de départ</span>
+          <h3>Diagnostic</h3>
+          <div class="price">Gratuit<small>Livré sous 48 h</small></div>
+          <ul>
+            <li>Audit technique en 12 points</li>
+            <li>Positions actuelles sur vos 10 requêtes clés</li>
+            <li>Estimation des demandes perdues chaque mois</li>
+            <li>Plan de correction hiérarchisé</li>
+          </ul>
+          <a href="#audit" class="btn ghost">Demander l'audit</a>
+        </div>
+        <div class="plan hi">
+          <span class="tag">Le plus demandé</span>
+          <h3>Remise à niveau</h3>
+          <div class="price">1 490 €<small>HT</small></div>
+          <ul>
+            <li>Nettoyage technique complet du WordPress</li>
+            <li>Réécriture des balises de toutes les pages</li>
+            <li>4 pages prestation ou ville rédigées</li>
+            <li>Fiche Google Business Profile optimisée</li>
+            <li>Rapport de résultats à 90 jours</li>
+          </ul>
+          <button type="button" class="btn" data-plan="overhaul">Lancer la remise à niveau</button>
+        </div>
+        <div class="plan">
+          <span class="tag">Ensuite, si vous voulez</span>
+          <h3>Accompagnement — premier mois</h3>
+          <div class="price">390 €<small>HT · premier mois seul, paiement unique — aucun prélèvement récurrent</small></div>
+          <ul>
+            <li>2 nouvelles pages optimisées pendant ce premier mois</li>
+            <li>Surveillance des positions et des pannes</li>
+            <li>Rapport en une page à la fin du mois</li>
+            <li>Ligne directe par e-mail sous 24 h</li>
+          </ul>
+          <button type="button" class="btn ghost" data-plan="retainer_first_month">Payer le premier mois</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="objections">
+  <div class="wrap">
+    <div class="marg"><span>§ 05 — Objections</span></div>
+    <div class="body">
+      <h2 class="lead-h">Ce que l'on nous demande avant de signer</h2>
+      <div class="faq">
+        <details open>
+          <summary>Combien de temps avant de voir des résultats ?</summary>
+          <p>Les gains techniques — vitesse, indexation — sont visibles en deux à trois semaines. Les positions sur les requêtes locales bougent généralement entre le quarante-cinquième et le quatre-vingt-dixième jour. Nous vous donnons une estimation datée dans l'audit, pas une promesse vague.</p>
+        </details>
+        <details>
+          <summary>Est-ce que vous allez casser mon site ?</summary>
+          <p>Une sauvegarde complète, fichiers et base de données, est réalisée avant chaque intervention et conservée trente jours. Les modifications sont d'abord appliquées sur une copie de test. Si un problème apparaît, la remise en état prend moins de dix minutes et ne vous est pas facturée.</p>
+        </details>
+        <details>
+          <summary>J'ai déjà une agence qui s'en occupe.</summary>
+          <p>Alors demandez-lui vos trois derniers rapports de positions. S'ils existent et montrent une progression, ne changez rien. S'ils n'existent pas, l'audit gratuit vous dira en quarante-huit heures ce qui est réellement fait sur votre site.</p>
+        </details>
+        <details>
+          <summary>Mon métier est très spécifique, vous ne le connaissez pas.</summary>
+          <p>C'est exact, et c'est pour cela que la première étape est un entretien de trente minutes où vous nous expliquez qui vous appelle, pour quoi, et ce qui fait qu'on vous choisit vous. Ce sont vos mots, pas les nôtres, qui finissent sur vos pages.</p>
+        </details>
+        <details>
+          <summary>Et si je veux arrêter ?</summary>
+          <p>L'accompagnement mensuel s'interrompt par un simple e-mail, sans préavis ni pénalité. Tout ce qui a été produit — pages, réglages, accès — vous appartient et reste en place.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec final" id="audit">
+  <div class="wrap">
+    <div class="marg"><span>§ 06 — Demande</span></div>
+    <div class="body">
+      <div class="grid2">
+        <div>
+          <h2 class="lead-h">Découvrez en 48 heures ce que votre site vous fait perdre</h2>
+          <p class="sub">Remplissez ces quatre champs. Nous analysons votre site et vous renvoyons un document chiffré. S'il n'y a rien à corriger, nous vous le dirons aussi.</p>
+          <div class="checklist">
+            <div>Un document de 12 pages, lisible sans être technicien</div>
+            <div>Le nombre de demandes que vous perdez chaque mois, estimé</div>
+            <div>Les trois corrections qui rapportent le plus, dans l'ordre</div>
+            <div>Aucun accès à votre site, aucun engagement, aucune relance insistante</div>
+          </div>
+        </div>
+        <form data-lead>
+          <label>Adresse de votre site
+            <input type="url" name="website" autocomplete="url" placeholder="https://votre-entreprise.fr" required>
+          </label>
+          <label>Votre métier et votre zone d'intervention
+            <input type="text" name="trade" autocomplete="off" placeholder="Ex. : couvreur, agglomération de Nantes" required>
+          </label>
+          <label>Votre e-mail
+            <input type="email" name="email" autocomplete="email" placeholder="prenom@entreprise.fr" required>
+          </label>
+          <label>Quelle demande aimeriez-vous recevoir plus souvent ?
+            <textarea name="goal" autocomplete="off" placeholder="Ex. : des devis de rénovation complète plutôt que des petits dépannages"></textarea>
+          </label>
+          <button class="btn" type="submit">Recevoir mon audit gratuit</button>
+          <p class="hint">Réponse sous 48 h ouvrées. Vos informations servent uniquement à réaliser l'audit ; elles transitent par Resend, notre prestataire d'envoi d'e-mails établi aux États-Unis, qui conserve les métadonnées et les journaux de ces messages. Elles ne sont ni revendues ni utilisées à d'autres fins.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Cadran SEO — optimisation WordPress pour entreprises locales</span>
+    <span>Exemple de page de vente · paiements en mode test, aucun encaissement réel · rédaction et conception : Tony</span>
+  </div>
+</footer>
+
+<script defer src="/checkout.js"></script>
 </body>
-
 </html>
